@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -65,66 +65,25 @@ class MetricArgs:
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
-        MetricArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filter=filter,
-            bucket_name=bucket_name,
-            bucket_options=bucket_options,
-            description=description,
-            disabled=disabled,
-            label_extractors=label_extractors,
-            metric_descriptor=metric_descriptor,
-            name=name,
-            project=project,
-            value_extractor=value_extractor,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filter: Optional[pulumi.Input[str]] = None,
-             bucket_name: Optional[pulumi.Input[str]] = None,
-             bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if filter is None:
-            raise TypeError("Missing 'filter' argument")
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_options is None and 'bucketOptions' in kwargs:
-            bucket_options = kwargs['bucketOptions']
-        if label_extractors is None and 'labelExtractors' in kwargs:
-            label_extractors = kwargs['labelExtractors']
-        if metric_descriptor is None and 'metricDescriptor' in kwargs:
-            metric_descriptor = kwargs['metricDescriptor']
-        if value_extractor is None and 'valueExtractor' in kwargs:
-            value_extractor = kwargs['valueExtractor']
-
-        _setter("filter", filter)
+        pulumi.set(__self__, "filter", filter)
         if bucket_name is not None:
-            _setter("bucket_name", bucket_name)
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
-            _setter("bucket_options", bucket_options)
+            pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if label_extractors is not None:
-            _setter("label_extractors", label_extractors)
+            pulumi.set(__self__, "label_extractors", label_extractors)
         if metric_descriptor is not None:
-            _setter("metric_descriptor", metric_descriptor)
+            pulumi.set(__self__, "metric_descriptor", metric_descriptor)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if value_extractor is not None:
-            _setter("value_extractor", value_extractor)
+            pulumi.set(__self__, "value_extractor", value_extractor)
 
     @property
     @pulumi.getter
@@ -325,65 +284,26 @@ class _MetricState:
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
-        _MetricState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            bucket_options=bucket_options,
-            description=description,
-            disabled=disabled,
-            filter=filter,
-            label_extractors=label_extractors,
-            metric_descriptor=metric_descriptor,
-            name=name,
-            project=project,
-            value_extractor=value_extractor,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[pulumi.Input[str]] = None,
-             bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_options is None and 'bucketOptions' in kwargs:
-            bucket_options = kwargs['bucketOptions']
-        if label_extractors is None and 'labelExtractors' in kwargs:
-            label_extractors = kwargs['labelExtractors']
-        if metric_descriptor is None and 'metricDescriptor' in kwargs:
-            metric_descriptor = kwargs['metricDescriptor']
-        if value_extractor is None and 'valueExtractor' in kwargs:
-            value_extractor = kwargs['valueExtractor']
-
         if bucket_name is not None:
-            _setter("bucket_name", bucket_name)
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
-            _setter("bucket_options", bucket_options)
+            pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if label_extractors is not None:
-            _setter("label_extractors", label_extractors)
+            pulumi.set(__self__, "label_extractors", label_extractors)
         if metric_descriptor is not None:
-            _setter("metric_descriptor", metric_descriptor)
+            pulumi.set(__self__, "metric_descriptor", metric_descriptor)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if value_extractor is not None:
-            _setter("value_extractor", value_extractor)
+            pulumi.set(__self__, "value_extractor", value_extractor)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -855,10 +775,6 @@ class Metric(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MetricArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -884,7 +800,6 @@ class Metric(pulumi.CustomResource):
             __props__ = MetricArgs.__new__(MetricArgs)
 
             __props__.__dict__["bucket_name"] = bucket_name
-            bucket_options = _utilities.configure(bucket_options, MetricBucketOptionsArgs, True)
             __props__.__dict__["bucket_options"] = bucket_options
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
@@ -892,7 +807,6 @@ class Metric(pulumi.CustomResource):
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
             __props__.__dict__["label_extractors"] = label_extractors
-            metric_descriptor = _utilities.configure(metric_descriptor, MetricMetricDescriptorArgs, True)
             __props__.__dict__["metric_descriptor"] = metric_descriptor
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

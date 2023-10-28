@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,62 +51,25 @@ class JobArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        JobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template=template,
-            annotations=annotations,
-            binary_authorization=binary_authorization,
-            client=client,
-            client_version=client_version,
-            labels=labels,
-            launch_stage=launch_stage,
-            location=location,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template: Optional[pulumi.Input['JobTemplateArgs']] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             launch_stage: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template is None:
-            raise TypeError("Missing 'template' argument")
-        if binary_authorization is None and 'binaryAuthorization' in kwargs:
-            binary_authorization = kwargs['binaryAuthorization']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if launch_stage is None and 'launchStage' in kwargs:
-            launch_stage = kwargs['launchStage']
-
-        _setter("template", template)
+        pulumi.set(__self__, "template", template)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
-            _setter("binary_authorization", binary_authorization)
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
-            _setter("launch_stage", launch_stage)
+            pulumi.set(__self__, "launch_stage", launch_stage)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -317,139 +280,56 @@ class _JobState:
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
         """
-        _JobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            binary_authorization=binary_authorization,
-            client=client,
-            client_version=client_version,
-            conditions=conditions,
-            create_time=create_time,
-            creator=creator,
-            delete_time=delete_time,
-            etag=etag,
-            execution_count=execution_count,
-            expire_time=expire_time,
-            generation=generation,
-            labels=labels,
-            last_modifier=last_modifier,
-            latest_created_executions=latest_created_executions,
-            launch_stage=launch_stage,
-            location=location,
-            name=name,
-            observed_generation=observed_generation,
-            project=project,
-            reconciling=reconciling,
-            template=template,
-            terminal_conditions=terminal_conditions,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             creator: Optional[pulumi.Input[str]] = None,
-             delete_time: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             execution_count: Optional[pulumi.Input[int]] = None,
-             expire_time: Optional[pulumi.Input[str]] = None,
-             generation: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             last_modifier: Optional[pulumi.Input[str]] = None,
-             latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]] = None,
-             launch_stage: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             observed_generation: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             template: Optional[pulumi.Input['JobTemplateArgs']] = None,
-             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binary_authorization is None and 'binaryAuthorization' in kwargs:
-            binary_authorization = kwargs['binaryAuthorization']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_time is None and 'deleteTime' in kwargs:
-            delete_time = kwargs['deleteTime']
-        if execution_count is None and 'executionCount' in kwargs:
-            execution_count = kwargs['executionCount']
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if last_modifier is None and 'lastModifier' in kwargs:
-            last_modifier = kwargs['lastModifier']
-        if latest_created_executions is None and 'latestCreatedExecutions' in kwargs:
-            latest_created_executions = kwargs['latestCreatedExecutions']
-        if launch_stage is None and 'launchStage' in kwargs:
-            launch_stage = kwargs['launchStage']
-        if observed_generation is None and 'observedGeneration' in kwargs:
-            observed_generation = kwargs['observedGeneration']
-        if terminal_conditions is None and 'terminalConditions' in kwargs:
-            terminal_conditions = kwargs['terminalConditions']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
-            _setter("binary_authorization", binary_authorization)
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
-            _setter("creator", creator)
+            pulumi.set(__self__, "creator", creator)
         if delete_time is not None:
-            _setter("delete_time", delete_time)
+            pulumi.set(__self__, "delete_time", delete_time)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if execution_count is not None:
-            _setter("execution_count", execution_count)
+            pulumi.set(__self__, "execution_count", execution_count)
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if last_modifier is not None:
-            _setter("last_modifier", last_modifier)
+            pulumi.set(__self__, "last_modifier", last_modifier)
         if latest_created_executions is not None:
-            _setter("latest_created_executions", latest_created_executions)
+            pulumi.set(__self__, "latest_created_executions", latest_created_executions)
         if launch_stage is not None:
-            _setter("launch_stage", launch_stage)
+            pulumi.set(__self__, "launch_stage", launch_stage)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if observed_generation is not None:
-            _setter("observed_generation", observed_generation)
+            pulumi.set(__self__, "observed_generation", observed_generation)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
-            _setter("terminal_conditions", terminal_conditions)
+            pulumi.set(__self__, "terminal_conditions", terminal_conditions)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -1321,10 +1201,6 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1350,7 +1226,6 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["annotations"] = annotations
-            binary_authorization = _utilities.configure(binary_authorization, JobBinaryAuthorizationArgs, True)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
@@ -1359,7 +1234,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            template = _utilities.configure(template, JobTemplateArgs, True)
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template

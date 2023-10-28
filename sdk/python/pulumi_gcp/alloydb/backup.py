@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,52 +38,17 @@ class BackupArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        BackupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_id=backup_id,
-            cluster_name=cluster_name,
-            location=location,
-            description=description,
-            encryption_config=encryption_config,
-            labels=labels,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_id: Optional[pulumi.Input[str]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if backup_id is None:
-            raise TypeError("Missing 'backup_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-
-        _setter("backup_id", backup_id)
-        _setter("cluster_name", cluster_name)
-        _setter("location", location)
+        pulumi.set(__self__, "backup_id", backup_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="backupId")
@@ -217,87 +182,36 @@ class _BackupState:
         :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         :param pulumi.Input[str] update_time: Time the Backup was updated in UTC.
         """
-        _BackupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_id=backup_id,
-            cluster_name=cluster_name,
-            create_time=create_time,
-            description=description,
-            encryption_config=encryption_config,
-            encryption_infos=encryption_infos,
-            etag=etag,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            reconciling=reconciling,
-            state=state,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_id: Optional[pulumi.Input[str]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
-             encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if encryption_infos is None and 'encryptionInfos' in kwargs:
-            encryption_infos = kwargs['encryptionInfos']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if backup_id is not None:
-            _setter("backup_id", backup_id)
+            pulumi.set(__self__, "backup_id", backup_id)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if encryption_infos is not None:
-            _setter("encryption_infos", encryption_infos)
+            pulumi.set(__self__, "encryption_infos", encryption_infos)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="backupId")
@@ -716,10 +630,6 @@ class Backup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BackupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -748,7 +658,6 @@ class Backup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["description"] = description
-            encryption_config = _utilities.configure(encryption_config, BackupEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,59 +48,22 @@ class OrganizationSinkArgs:
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
-        OrganizationSinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination=destination,
-            org_id=org_id,
-            bigquery_options=bigquery_options,
-            description=description,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            include_children=include_children,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             bigquery_options: Optional[pulumi.Input['OrganizationSinkBigqueryOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             include_children: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-        if include_children is None and 'includeChildren' in kwargs:
-            include_children = kwargs['includeChildren']
-
-        _setter("destination", destination)
-        _setter("org_id", org_id)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "org_id", org_id)
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if include_children is not None:
-            _setter("include_children", include_children)
+            pulumi.set(__self__, "include_children", include_children)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -260,63 +223,26 @@ class _OrganizationSinkState:
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
         """
-        _OrganizationSinkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_options=bigquery_options,
-            description=description,
-            destination=destination,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            include_children=include_children,
-            name=name,
-            org_id=org_id,
-            writer_identity=writer_identity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_options: Optional[pulumi.Input['OrganizationSinkBigqueryOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             include_children: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-        if include_children is None and 'includeChildren' in kwargs:
-            include_children = kwargs['includeChildren']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if writer_identity is None and 'writerIdentity' in kwargs:
-            writer_identity = kwargs['writerIdentity']
-
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if include_children is not None:
-            _setter("include_children", include_children)
+            pulumi.set(__self__, "include_children", include_children)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if writer_identity is not None:
-            _setter("writer_identity", writer_identity)
+            pulumi.set(__self__, "writer_identity", writer_identity)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -569,10 +495,6 @@ class OrganizationSink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationSinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -596,7 +518,6 @@ class OrganizationSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationSinkArgs.__new__(OrganizationSinkArgs)
 
-            bigquery_options = _utilities.configure(bigquery_options, OrganizationSinkBigqueryOptionsArgs, True)
             __props__.__dict__["bigquery_options"] = bigquery_options
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:

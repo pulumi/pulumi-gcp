@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallPolicyArgs', 'FirewallPolicy']
@@ -27,31 +27,10 @@ class FirewallPolicyArgs:
                - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         """
-        FirewallPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            short_name=short_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             short_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if short_name is None and 'shortName' in kwargs:
-            short_name = kwargs['shortName']
-        if short_name is None:
-            raise TypeError("Missing 'short_name' argument")
-
-        _setter("parent", parent)
-        _setter("short_name", short_name)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "short_name", short_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -124,67 +103,26 @@ class _FirewallPolicyState:
                
                - - -
         """
-        _FirewallPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            fingerprint=fingerprint,
-            firewall_policy_id=firewall_policy_id,
-            name=name,
-            parent=parent,
-            rule_tuple_count=rule_tuple_count,
-            self_link=self_link,
-            self_link_with_id=self_link_with_id,
-            short_name=short_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             firewall_policy_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             rule_tuple_count: Optional[pulumi.Input[int]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             self_link_with_id: Optional[pulumi.Input[str]] = None,
-             short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if firewall_policy_id is None and 'firewallPolicyId' in kwargs:
-            firewall_policy_id = kwargs['firewallPolicyId']
-        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
-            rule_tuple_count = kwargs['ruleTupleCount']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
-            self_link_with_id = kwargs['selfLinkWithId']
-        if short_name is None and 'shortName' in kwargs:
-            short_name = kwargs['shortName']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if firewall_policy_id is not None:
-            _setter("firewall_policy_id", firewall_policy_id)
+            pulumi.set(__self__, "firewall_policy_id", firewall_policy_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if rule_tuple_count is not None:
-            _setter("rule_tuple_count", rule_tuple_count)
+            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
-            _setter("self_link_with_id", self_link_with_id)
+            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if short_name is not None:
-            _setter("short_name", short_name)
+            pulumi.set(__self__, "short_name", short_name)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -408,10 +346,6 @@ class FirewallPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

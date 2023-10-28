@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -52,27 +52,10 @@ class ConnectionGithubConfig(dict):
         :param int app_installation_id: GitHub App installation id.
         :param 'ConnectionGithubConfigAuthorizerCredentialArgs' authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
         """
-        ConnectionGithubConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_installation_id=app_installation_id,
-            authorizer_credential=authorizer_credential,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_installation_id: Optional[int] = None,
-             authorizer_credential: Optional['outputs.ConnectionGithubConfigAuthorizerCredential'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_installation_id is None and 'appInstallationId' in kwargs:
-            app_installation_id = kwargs['appInstallationId']
-        if authorizer_credential is None and 'authorizerCredential' in kwargs:
-            authorizer_credential = kwargs['authorizerCredential']
-
         if app_installation_id is not None:
-            _setter("app_installation_id", app_installation_id)
+            pulumi.set(__self__, "app_installation_id", app_installation_id)
         if authorizer_credential is not None:
-            _setter("authorizer_credential", authorizer_credential)
+            pulumi.set(__self__, "authorizer_credential", authorizer_credential)
 
     @property
     @pulumi.getter(name="appInstallationId")
@@ -117,25 +100,10 @@ class ConnectionGithubConfigAuthorizerCredential(dict):
         :param str oauth_token_secret_version: A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param str username: Output only. The username associated to this token.
         """
-        ConnectionGithubConfigAuthorizerCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            oauth_token_secret_version=oauth_token_secret_version,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             oauth_token_secret_version: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if oauth_token_secret_version is None and 'oauthTokenSecretVersion' in kwargs:
-            oauth_token_secret_version = kwargs['oauthTokenSecretVersion']
-
         if oauth_token_secret_version is not None:
-            _setter("oauth_token_secret_version", oauth_token_secret_version)
+            pulumi.set(__self__, "oauth_token_secret_version", oauth_token_secret_version)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="oauthTokenSecretVersion")
@@ -206,64 +174,21 @@ class ConnectionGithubEnterpriseConfig(dict):
         :param str ssl_ca: SSL certificate to use for requests to GitHub Enterprise.
         :param str webhook_secret_secret_version: SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
-        ConnectionGithubEnterpriseConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_uri=host_uri,
-            app_id=app_id,
-            app_installation_id=app_installation_id,
-            app_slug=app_slug,
-            private_key_secret_version=private_key_secret_version,
-            service_directory_config=service_directory_config,
-            ssl_ca=ssl_ca,
-            webhook_secret_secret_version=webhook_secret_secret_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_uri: Optional[str] = None,
-             app_id: Optional[int] = None,
-             app_installation_id: Optional[int] = None,
-             app_slug: Optional[str] = None,
-             private_key_secret_version: Optional[str] = None,
-             service_directory_config: Optional['outputs.ConnectionGithubEnterpriseConfigServiceDirectoryConfig'] = None,
-             ssl_ca: Optional[str] = None,
-             webhook_secret_secret_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_uri is None and 'hostUri' in kwargs:
-            host_uri = kwargs['hostUri']
-        if host_uri is None:
-            raise TypeError("Missing 'host_uri' argument")
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_installation_id is None and 'appInstallationId' in kwargs:
-            app_installation_id = kwargs['appInstallationId']
-        if app_slug is None and 'appSlug' in kwargs:
-            app_slug = kwargs['appSlug']
-        if private_key_secret_version is None and 'privateKeySecretVersion' in kwargs:
-            private_key_secret_version = kwargs['privateKeySecretVersion']
-        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
-            service_directory_config = kwargs['serviceDirectoryConfig']
-        if ssl_ca is None and 'sslCa' in kwargs:
-            ssl_ca = kwargs['sslCa']
-        if webhook_secret_secret_version is None and 'webhookSecretSecretVersion' in kwargs:
-            webhook_secret_secret_version = kwargs['webhookSecretSecretVersion']
-
-        _setter("host_uri", host_uri)
+        pulumi.set(__self__, "host_uri", host_uri)
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if app_installation_id is not None:
-            _setter("app_installation_id", app_installation_id)
+            pulumi.set(__self__, "app_installation_id", app_installation_id)
         if app_slug is not None:
-            _setter("app_slug", app_slug)
+            pulumi.set(__self__, "app_slug", app_slug)
         if private_key_secret_version is not None:
-            _setter("private_key_secret_version", private_key_secret_version)
+            pulumi.set(__self__, "private_key_secret_version", private_key_secret_version)
         if service_directory_config is not None:
-            _setter("service_directory_config", service_directory_config)
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
         if ssl_ca is not None:
-            _setter("ssl_ca", ssl_ca)
+            pulumi.set(__self__, "ssl_ca", ssl_ca)
         if webhook_secret_secret_version is not None:
-            _setter("webhook_secret_secret_version", webhook_secret_secret_version)
+            pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
 
     @property
     @pulumi.getter(name="hostUri")
@@ -337,20 +262,7 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfig(dict):
         """
         :param str service: Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
-        ConnectionGithubEnterpriseConfigServiceDirectoryConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("service", service)
+        pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -409,60 +321,17 @@ class ConnectionGitlabConfig(dict):
         :param 'ConnectionGitlabConfigServiceDirectoryConfigArgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
         :param str ssl_ca: SSL certificate to use for requests to GitLab Enterprise.
         """
-        ConnectionGitlabConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorizer_credential=authorizer_credential,
-            read_authorizer_credential=read_authorizer_credential,
-            webhook_secret_secret_version=webhook_secret_secret_version,
-            host_uri=host_uri,
-            server_version=server_version,
-            service_directory_config=service_directory_config,
-            ssl_ca=ssl_ca,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorizer_credential: Optional['outputs.ConnectionGitlabConfigAuthorizerCredential'] = None,
-             read_authorizer_credential: Optional['outputs.ConnectionGitlabConfigReadAuthorizerCredential'] = None,
-             webhook_secret_secret_version: Optional[str] = None,
-             host_uri: Optional[str] = None,
-             server_version: Optional[str] = None,
-             service_directory_config: Optional['outputs.ConnectionGitlabConfigServiceDirectoryConfig'] = None,
-             ssl_ca: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorizer_credential is None and 'authorizerCredential' in kwargs:
-            authorizer_credential = kwargs['authorizerCredential']
-        if authorizer_credential is None:
-            raise TypeError("Missing 'authorizer_credential' argument")
-        if read_authorizer_credential is None and 'readAuthorizerCredential' in kwargs:
-            read_authorizer_credential = kwargs['readAuthorizerCredential']
-        if read_authorizer_credential is None:
-            raise TypeError("Missing 'read_authorizer_credential' argument")
-        if webhook_secret_secret_version is None and 'webhookSecretSecretVersion' in kwargs:
-            webhook_secret_secret_version = kwargs['webhookSecretSecretVersion']
-        if webhook_secret_secret_version is None:
-            raise TypeError("Missing 'webhook_secret_secret_version' argument")
-        if host_uri is None and 'hostUri' in kwargs:
-            host_uri = kwargs['hostUri']
-        if server_version is None and 'serverVersion' in kwargs:
-            server_version = kwargs['serverVersion']
-        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
-            service_directory_config = kwargs['serviceDirectoryConfig']
-        if ssl_ca is None and 'sslCa' in kwargs:
-            ssl_ca = kwargs['sslCa']
-
-        _setter("authorizer_credential", authorizer_credential)
-        _setter("read_authorizer_credential", read_authorizer_credential)
-        _setter("webhook_secret_secret_version", webhook_secret_secret_version)
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
         if host_uri is not None:
-            _setter("host_uri", host_uri)
+            pulumi.set(__self__, "host_uri", host_uri)
         if server_version is not None:
-            _setter("server_version", server_version)
+            pulumi.set(__self__, "server_version", server_version)
         if service_directory_config is not None:
-            _setter("service_directory_config", service_directory_config)
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
         if ssl_ca is not None:
-            _setter("ssl_ca", ssl_ca)
+            pulumi.set(__self__, "ssl_ca", ssl_ca)
 
     @property
     @pulumi.getter(name="authorizerCredential")
@@ -547,26 +416,9 @@ class ConnectionGitlabConfigAuthorizerCredential(dict):
         :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param str username: Output only. The username associated to this token.
         """
-        ConnectionGitlabConfigAuthorizerCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user_token_secret_version=user_token_secret_version,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user_token_secret_version: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_token_secret_version is None and 'userTokenSecretVersion' in kwargs:
-            user_token_secret_version = kwargs['userTokenSecretVersion']
-        if user_token_secret_version is None:
-            raise TypeError("Missing 'user_token_secret_version' argument")
-
-        _setter("user_token_secret_version", user_token_secret_version)
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="userTokenSecretVersion")
@@ -613,26 +465,9 @@ class ConnectionGitlabConfigReadAuthorizerCredential(dict):
                
                - - -
         """
-        ConnectionGitlabConfigReadAuthorizerCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user_token_secret_version=user_token_secret_version,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user_token_secret_version: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_token_secret_version is None and 'userTokenSecretVersion' in kwargs:
-            user_token_secret_version = kwargs['userTokenSecretVersion']
-        if user_token_secret_version is None:
-            raise TypeError("Missing 'user_token_secret_version' argument")
-
-        _setter("user_token_secret_version", user_token_secret_version)
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="userTokenSecretVersion")
@@ -660,20 +495,7 @@ class ConnectionGitlabConfigServiceDirectoryConfig(dict):
         """
         :param str service: Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
         """
-        ConnectionGitlabConfigServiceDirectoryConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("service", service)
+        pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -690,29 +512,10 @@ class ConnectionIAMBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConnectionIAMBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -736,29 +539,10 @@ class ConnectionIAMMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConnectionIAMMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -799,29 +583,12 @@ class ConnectionInstallationState(dict):
                  action_uri: Optional[str] = None,
                  message: Optional[str] = None,
                  stage: Optional[str] = None):
-        ConnectionInstallationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_uri=action_uri,
-            message=message,
-            stage=stage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_uri: Optional[str] = None,
-             message: Optional[str] = None,
-             stage: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_uri is None and 'actionUri' in kwargs:
-            action_uri = kwargs['actionUri']
-
         if action_uri is not None:
-            _setter("action_uri", action_uri)
+            pulumi.set(__self__, "action_uri", action_uri)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if stage is not None:
-            _setter("stage", stage)
+            pulumi.set(__self__, "stage", stage)
 
     @property
     @pulumi.getter(name="actionUri")

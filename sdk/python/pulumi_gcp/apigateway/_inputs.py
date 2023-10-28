@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,22 +34,7 @@ class ApiConfigGatewayConfigArgs:
         :param pulumi.Input['ApiConfigGatewayConfigBackendConfigArgs'] backend_config: Backend settings that are applied to all backends of the Gateway.
                Structure is documented below.
         """
-        ApiConfigGatewayConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_config=backend_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_config: Optional[pulumi.Input['ApiConfigGatewayConfigBackendConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_config is None and 'backendConfig' in kwargs:
-            backend_config = kwargs['backendConfig']
-        if backend_config is None:
-            raise TypeError("Missing 'backend_config' argument")
-
-        _setter("backend_config", backend_config)
+        pulumi.set(__self__, "backend_config", backend_config)
 
     @property
     @pulumi.getter(name="backendConfig")
@@ -73,22 +58,7 @@ class ApiConfigGatewayConfigBackendConfigArgs:
         :param pulumi.Input[str] google_service_account: Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
                (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
         """
-        ApiConfigGatewayConfigBackendConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            google_service_account=google_service_account,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             google_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if google_service_account is None and 'googleServiceAccount' in kwargs:
-            google_service_account = kwargs['googleServiceAccount']
-        if google_service_account is None:
-            raise TypeError("Missing 'google_service_account' argument")
-
-        _setter("google_service_account", google_service_account)
+        pulumi.set(__self__, "google_service_account", google_service_account)
 
     @property
     @pulumi.getter(name="googleServiceAccount")
@@ -117,26 +87,9 @@ class ApiConfigGrpcServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceSourceArgs']]] sources: Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate fileDescriptorSet.
                Structure is documented below.
         """
-        ApiConfigGrpcServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            file_descriptor_set=file_descriptor_set,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             file_descriptor_set: Optional[pulumi.Input['ApiConfigGrpcServiceFileDescriptorSetArgs']] = None,
-             sources: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceSourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if file_descriptor_set is None and 'fileDescriptorSet' in kwargs:
-            file_descriptor_set = kwargs['fileDescriptorSet']
-        if file_descriptor_set is None:
-            raise TypeError("Missing 'file_descriptor_set' argument")
-
-        _setter("file_descriptor_set", file_descriptor_set)
+        pulumi.set(__self__, "file_descriptor_set", file_descriptor_set)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter(name="fileDescriptorSet")
@@ -176,25 +129,8 @@ class ApiConfigGrpcServiceFileDescriptorSetArgs:
         :param pulumi.Input[str] contents: Base64 encoded content of the file.
         :param pulumi.Input[str] path: The file path (full or relative path). This is typically the path of the file when it is uploaded.
         """
-        ApiConfigGrpcServiceFileDescriptorSetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contents=contents,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contents: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contents is None:
-            raise TypeError("Missing 'contents' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("contents", contents)
-        _setter("path", path)
+        pulumi.set(__self__, "contents", contents)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -230,25 +166,8 @@ class ApiConfigGrpcServiceSourceArgs:
         :param pulumi.Input[str] contents: Base64 encoded content of the file.
         :param pulumi.Input[str] path: The file path (full or relative path). This is typically the path of the file when it is uploaded.
         """
-        ApiConfigGrpcServiceSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contents=contents,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contents: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contents is None:
-            raise TypeError("Missing 'contents' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("contents", contents)
-        _setter("path", path)
+        pulumi.set(__self__, "contents", contents)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -281,29 +200,10 @@ class ApiConfigIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        ApiConfigIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -339,29 +239,10 @@ class ApiConfigIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        ApiConfigIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -400,25 +281,8 @@ class ApiConfigManagedServiceConfigArgs:
         :param pulumi.Input[str] contents: Base64 encoded content of the file.
         :param pulumi.Input[str] path: The file path (full or relative path). This is typically the path of the file when it is uploaded.
         """
-        ApiConfigManagedServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contents=contents,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contents: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contents is None:
-            raise TypeError("Missing 'contents' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("contents", contents)
-        _setter("path", path)
+        pulumi.set(__self__, "contents", contents)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -453,20 +317,7 @@ class ApiConfigOpenapiDocumentArgs:
         :param pulumi.Input['ApiConfigOpenapiDocumentDocumentArgs'] document: The OpenAPI Specification document file.
                Structure is documented below.
         """
-        ApiConfigOpenapiDocumentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            document=document,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             document: Optional[pulumi.Input['ApiConfigOpenapiDocumentDocumentArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if document is None:
-            raise TypeError("Missing 'document' argument")
-
-        _setter("document", document)
+        pulumi.set(__self__, "document", document)
 
     @property
     @pulumi.getter
@@ -491,25 +342,8 @@ class ApiConfigOpenapiDocumentDocumentArgs:
         :param pulumi.Input[str] contents: Base64 encoded content of the file.
         :param pulumi.Input[str] path: The file path (full or relative path). This is typically the path of the file when it is uploaded.
         """
-        ApiConfigOpenapiDocumentDocumentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contents=contents,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contents: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contents is None:
-            raise TypeError("Missing 'contents' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("contents", contents)
-        _setter("path", path)
+        pulumi.set(__self__, "contents", contents)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -542,29 +376,10 @@ class ApiIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        ApiIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -600,29 +415,10 @@ class ApiIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        ApiIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -658,29 +454,10 @@ class GatewayIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        GatewayIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -716,29 +493,10 @@ class GatewayIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        GatewayIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

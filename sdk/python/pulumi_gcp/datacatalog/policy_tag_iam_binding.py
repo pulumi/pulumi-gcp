@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,36 +39,11 @@ class PolicyTagIamBindingArgs:
                `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        PolicyTagIamBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            members=members,
-            policy_tag=policy_tag,
-            role=role,
-            condition=condition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             policy_tag: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['PolicyTagIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if policy_tag is None and 'policyTag' in kwargs:
-            policy_tag = kwargs['policyTag']
-        if policy_tag is None:
-            raise TypeError("Missing 'policy_tag' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("members", members)
-        _setter("policy_tag", policy_tag)
-        _setter("role", role)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "policy_tag", policy_tag)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
@@ -155,37 +130,16 @@ class _PolicyTagIamBindingState:
                `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _PolicyTagIamBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            members=members,
-            policy_tag=policy_tag,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['PolicyTagIamBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             policy_tag: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_tag is None and 'policyTag' in kwargs:
-            policy_tag = kwargs['policyTag']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if policy_tag is not None:
-            _setter("policy_tag", policy_tag)
+            pulumi.set(__self__, "policy_tag", policy_tag)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -457,10 +411,6 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PolicyTagIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -479,7 +429,6 @@ class PolicyTagIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyTagIamBindingArgs.__new__(PolicyTagIamBindingArgs)
 
-            condition = _utilities.configure(condition, PolicyTagIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

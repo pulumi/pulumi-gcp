@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,47 +36,16 @@ class AiDatasetArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         """
-        AiDatasetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            metadata_schema_uri=metadata_schema_uri,
-            encryption_spec=encryption_spec,
-            labels=labels,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
-             encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if metadata_schema_uri is None and 'metadataSchemaUri' in kwargs:
-            metadata_schema_uri = kwargs['metadataSchemaUri']
-        if metadata_schema_uri is None:
-            raise TypeError("Missing 'metadata_schema_uri' argument")
-        if encryption_spec is None and 'encryptionSpec' in kwargs:
-            encryption_spec = kwargs['encryptionSpec']
-
-        _setter("display_name", display_name)
-        _setter("metadata_schema_uri", metadata_schema_uri)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "metadata_schema_uri", metadata_schema_uri)
         if encryption_spec is not None:
-            _setter("encryption_spec", encryption_spec)
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -185,61 +154,24 @@ class _AiDatasetState:
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
-        _AiDatasetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            display_name=display_name,
-            encryption_spec=encryption_spec,
-            labels=labels,
-            metadata_schema_uri=metadata_schema_uri,
-            name=name,
-            project=project,
-            region=region,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if encryption_spec is None and 'encryptionSpec' in kwargs:
-            encryption_spec = kwargs['encryptionSpec']
-        if metadata_schema_uri is None and 'metadataSchemaUri' in kwargs:
-            metadata_schema_uri = kwargs['metadataSchemaUri']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if encryption_spec is not None:
-            _setter("encryption_spec", encryption_spec)
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metadata_schema_uri is not None:
-            _setter("metadata_schema_uri", metadata_schema_uri)
+            pulumi.set(__self__, "metadata_schema_uri", metadata_schema_uri)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -449,10 +381,6 @@ class AiDataset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AiDatasetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -476,7 +404,6 @@ class AiDataset(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            encryption_spec = _utilities.configure(encryption_spec, AiDatasetEncryptionSpecArgs, True)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             if metadata_schema_uri is None and not opts.urn:

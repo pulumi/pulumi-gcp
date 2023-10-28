@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,42 +46,15 @@ class ClusterIAMBindingArgs:
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, the provider will use a default.
         """
-        ClusterIAMBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster=cluster,
-            members=members,
-            role=role,
-            condition=condition,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster is None:
-            raise TypeError("Missing 'cluster' argument")
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("cluster", cluster)
-        _setter("members", members)
-        _setter("role", role)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -202,43 +175,20 @@ class _ClusterIAMBindingState:
                
                `dataproc.ClusterIAMPolicy` only:
         """
-        _ClusterIAMBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster=cluster,
-            condition=condition,
-            etag=etag,
-            members=members,
-            project=project,
-            region=region,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['ClusterIAMBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if cluster is not None:
-            _setter("cluster", cluster)
+            pulumi.set(__self__, "cluster", cluster)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -532,10 +482,6 @@ class ClusterIAMBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterIAMBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -559,7 +505,6 @@ class ClusterIAMBinding(pulumi.CustomResource):
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
-            condition = _utilities.configure(condition, ClusterIAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

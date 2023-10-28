@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DataExchangeArgs', 'DataExchange']
@@ -37,56 +37,19 @@ class DataExchangeArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DataExchangeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_exchange_id=data_exchange_id,
-            display_name=display_name,
-            location=location,
-            description=description,
-            documentation=documentation,
-            icon=icon,
-            primary_contact=primary_contact,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_exchange_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             documentation: Optional[pulumi.Input[str]] = None,
-             icon: Optional[pulumi.Input[str]] = None,
-             primary_contact: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_exchange_id is None and 'dataExchangeId' in kwargs:
-            data_exchange_id = kwargs['dataExchangeId']
-        if data_exchange_id is None:
-            raise TypeError("Missing 'data_exchange_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if primary_contact is None and 'primaryContact' in kwargs:
-            primary_contact = kwargs['primaryContact']
-
-        _setter("data_exchange_id", data_exchange_id)
-        _setter("display_name", display_name)
-        _setter("location", location)
+        pulumi.set(__self__, "data_exchange_id", data_exchange_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if documentation is not None:
-            _setter("documentation", documentation)
+            pulumi.set(__self__, "documentation", documentation)
         if icon is not None:
-            _setter("icon", icon)
+            pulumi.set(__self__, "icon", icon)
         if primary_contact is not None:
-            _setter("primary_contact", primary_contact)
+            pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -220,63 +183,26 @@ class _DataExchangeState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _DataExchangeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_exchange_id=data_exchange_id,
-            description=description,
-            display_name=display_name,
-            documentation=documentation,
-            icon=icon,
-            listing_count=listing_count,
-            location=location,
-            name=name,
-            primary_contact=primary_contact,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_exchange_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             documentation: Optional[pulumi.Input[str]] = None,
-             icon: Optional[pulumi.Input[str]] = None,
-             listing_count: Optional[pulumi.Input[int]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             primary_contact: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_exchange_id is None and 'dataExchangeId' in kwargs:
-            data_exchange_id = kwargs['dataExchangeId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if listing_count is None and 'listingCount' in kwargs:
-            listing_count = kwargs['listingCount']
-        if primary_contact is None and 'primaryContact' in kwargs:
-            primary_contact = kwargs['primaryContact']
-
         if data_exchange_id is not None:
-            _setter("data_exchange_id", data_exchange_id)
+            pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
-            _setter("documentation", documentation)
+            pulumi.set(__self__, "documentation", documentation)
         if icon is not None:
-            _setter("icon", icon)
+            pulumi.set(__self__, "icon", icon)
         if listing_count is not None:
-            _setter("listing_count", listing_count)
+            pulumi.set(__self__, "listing_count", listing_count)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if primary_contact is not None:
-            _setter("primary_contact", primary_contact)
+            pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -535,10 +461,6 @@ class DataExchange(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DataExchangeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

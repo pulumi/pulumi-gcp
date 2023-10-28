@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,51 +40,16 @@ class BudgetArgs:
                budget.
                Structure is documented below.
         """
-        BudgetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            amount=amount,
-            billing_account=billing_account,
-            all_updates_rule=all_updates_rule,
-            budget_filter=budget_filter,
-            display_name=display_name,
-            threshold_rules=threshold_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             amount: Optional[pulumi.Input['BudgetAmountArgs']] = None,
-             billing_account: Optional[pulumi.Input[str]] = None,
-             all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
-             budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if amount is None:
-            raise TypeError("Missing 'amount' argument")
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if billing_account is None:
-            raise TypeError("Missing 'billing_account' argument")
-        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
-            all_updates_rule = kwargs['allUpdatesRule']
-        if budget_filter is None and 'budgetFilter' in kwargs:
-            budget_filter = kwargs['budgetFilter']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if threshold_rules is None and 'thresholdRules' in kwargs:
-            threshold_rules = kwargs['thresholdRules']
-
-        _setter("amount", amount)
-        _setter("billing_account", billing_account)
+        pulumi.set(__self__, "amount", amount)
+        pulumi.set(__self__, "billing_account", billing_account)
         if all_updates_rule is not None:
-            _setter("all_updates_rule", all_updates_rule)
+            pulumi.set(__self__, "all_updates_rule", all_updates_rule)
         if budget_filter is not None:
-            _setter("budget_filter", budget_filter)
+            pulumi.set(__self__, "budget_filter", budget_filter)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if threshold_rules is not None:
-            _setter("threshold_rules", threshold_rules)
+            pulumi.set(__self__, "threshold_rules", threshold_rules)
 
     @property
     @pulumi.getter
@@ -199,53 +164,20 @@ class _BudgetState:
                budget.
                Structure is documented below.
         """
-        _BudgetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all_updates_rule=all_updates_rule,
-            amount=amount,
-            billing_account=billing_account,
-            budget_filter=budget_filter,
-            display_name=display_name,
-            name=name,
-            threshold_rules=threshold_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
-             amount: Optional[pulumi.Input['BudgetAmountArgs']] = None,
-             billing_account: Optional[pulumi.Input[str]] = None,
-             budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if all_updates_rule is None and 'allUpdatesRule' in kwargs:
-            all_updates_rule = kwargs['allUpdatesRule']
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if budget_filter is None and 'budgetFilter' in kwargs:
-            budget_filter = kwargs['budgetFilter']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if threshold_rules is None and 'thresholdRules' in kwargs:
-            threshold_rules = kwargs['thresholdRules']
-
         if all_updates_rule is not None:
-            _setter("all_updates_rule", all_updates_rule)
+            pulumi.set(__self__, "all_updates_rule", all_updates_rule)
         if amount is not None:
-            _setter("amount", amount)
+            pulumi.set(__self__, "amount", amount)
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if budget_filter is not None:
-            _setter("budget_filter", budget_filter)
+            pulumi.set(__self__, "budget_filter", budget_filter)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if threshold_rules is not None:
-            _setter("threshold_rules", threshold_rules)
+            pulumi.set(__self__, "threshold_rules", threshold_rules)
 
     @property
     @pulumi.getter(name="allUpdatesRule")
@@ -777,10 +709,6 @@ class Budget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BudgetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -801,16 +729,13 @@ class Budget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BudgetArgs.__new__(BudgetArgs)
 
-            all_updates_rule = _utilities.configure(all_updates_rule, BudgetAllUpdatesRuleArgs, True)
             __props__.__dict__["all_updates_rule"] = all_updates_rule
-            amount = _utilities.configure(amount, BudgetAmountArgs, True)
             if amount is None and not opts.urn:
                 raise TypeError("Missing required property 'amount'")
             __props__.__dict__["amount"] = amount
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
             __props__.__dict__["billing_account"] = billing_account
-            budget_filter = _utilities.configure(budget_filter, BudgetBudgetFilterArgs, True)
             __props__.__dict__["budget_filter"] = budget_filter
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["threshold_rules"] = threshold_rules

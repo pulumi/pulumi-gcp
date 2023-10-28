@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,29 +25,8 @@ class DiskAsyncReplicationArgs:
                
                The `secondary_disk` block includes:
         """
-        DiskAsyncReplicationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            primary_disk=primary_disk,
-            secondary_disk=secondary_disk,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             primary_disk: Optional[pulumi.Input[str]] = None,
-             secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if primary_disk is None and 'primaryDisk' in kwargs:
-            primary_disk = kwargs['primaryDisk']
-        if primary_disk is None:
-            raise TypeError("Missing 'primary_disk' argument")
-        if secondary_disk is None and 'secondaryDisk' in kwargs:
-            secondary_disk = kwargs['secondaryDisk']
-        if secondary_disk is None:
-            raise TypeError("Missing 'secondary_disk' argument")
-
-        _setter("primary_disk", primary_disk)
-        _setter("secondary_disk", secondary_disk)
+        pulumi.set(__self__, "primary_disk", primary_disk)
+        pulumi.set(__self__, "secondary_disk", secondary_disk)
 
     @property
     @pulumi.getter(name="primaryDisk")
@@ -88,27 +67,10 @@ class _DiskAsyncReplicationState:
                
                The `secondary_disk` block includes:
         """
-        _DiskAsyncReplicationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            primary_disk=primary_disk,
-            secondary_disk=secondary_disk,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             primary_disk: Optional[pulumi.Input[str]] = None,
-             secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if primary_disk is None and 'primaryDisk' in kwargs:
-            primary_disk = kwargs['primaryDisk']
-        if secondary_disk is None and 'secondaryDisk' in kwargs:
-            secondary_disk = kwargs['secondaryDisk']
-
         if primary_disk is not None:
-            _setter("primary_disk", primary_disk)
+            pulumi.set(__self__, "primary_disk", primary_disk)
         if secondary_disk is not None:
-            _setter("secondary_disk", secondary_disk)
+            pulumi.set(__self__, "secondary_disk", secondary_disk)
 
     @property
     @pulumi.getter(name="primaryDisk")
@@ -226,10 +188,6 @@ class DiskAsyncReplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DiskAsyncReplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -249,7 +207,6 @@ class DiskAsyncReplication(pulumi.CustomResource):
             if primary_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_disk'")
             __props__.__dict__["primary_disk"] = primary_disk
-            secondary_disk = _utilities.configure(secondary_disk, DiskAsyncReplicationSecondaryDiskArgs, True)
             if secondary_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'secondary_disk'")
             __props__.__dict__["secondary_disk"] = secondary_disk

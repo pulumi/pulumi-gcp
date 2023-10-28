@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,45 +40,16 @@ class FieldArgs:
         :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: If set, this field is configured for TTL deletion.
                Structure is documented below.
         """
-        FieldArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            field=field,
-            database=database,
-            index_config=index_config,
-            project=project,
-            ttl_config=ttl_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             field: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             index_config: Optional[pulumi.Input['FieldIndexConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collection is None:
-            raise TypeError("Missing 'collection' argument")
-        if field is None:
-            raise TypeError("Missing 'field' argument")
-        if index_config is None and 'indexConfig' in kwargs:
-            index_config = kwargs['indexConfig']
-        if ttl_config is None and 'ttlConfig' in kwargs:
-            ttl_config = kwargs['ttlConfig']
-
-        _setter("collection", collection)
-        _setter("field", field)
+        pulumi.set(__self__, "collection", collection)
+        pulumi.set(__self__, "field", field)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if index_config is not None:
-            _setter("index_config", index_config)
+            pulumi.set(__self__, "index_config", index_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if ttl_config is not None:
-            _setter("ttl_config", ttl_config)
+            pulumi.set(__self__, "ttl_config", ttl_config)
 
     @property
     @pulumi.getter
@@ -192,47 +163,20 @@ class _FieldState:
         :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: If set, this field is configured for TTL deletion.
                Structure is documented below.
         """
-        _FieldState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            database=database,
-            field=field,
-            index_config=index_config,
-            name=name,
-            project=project,
-            ttl_config=ttl_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             field: Optional[pulumi.Input[str]] = None,
-             index_config: Optional[pulumi.Input['FieldIndexConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             ttl_config: Optional[pulumi.Input['FieldTtlConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if index_config is None and 'indexConfig' in kwargs:
-            index_config = kwargs['indexConfig']
-        if ttl_config is None and 'ttlConfig' in kwargs:
-            ttl_config = kwargs['ttlConfig']
-
         if collection is not None:
-            _setter("collection", collection)
+            pulumi.set(__self__, "collection", collection)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
         if index_config is not None:
-            _setter("index_config", index_config)
+            pulumi.set(__self__, "index_config", index_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if ttl_config is not None:
-            _setter("ttl_config", ttl_config)
+            pulumi.set(__self__, "ttl_config", ttl_config)
 
     @property
     @pulumi.getter
@@ -549,10 +493,6 @@ class Field(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FieldArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -580,10 +520,8 @@ class Field(pulumi.CustomResource):
             if field is None and not opts.urn:
                 raise TypeError("Missing required property 'field'")
             __props__.__dict__["field"] = field
-            index_config = _utilities.configure(index_config, FieldIndexConfigArgs, True)
             __props__.__dict__["index_config"] = index_config
             __props__.__dict__["project"] = project
-            ttl_config = _utilities.configure(ttl_config, FieldTtlConfigArgs, True)
             __props__.__dict__["ttl_config"] = ttl_config
             __props__.__dict__["name"] = None
         super(Field, __self__).__init__(

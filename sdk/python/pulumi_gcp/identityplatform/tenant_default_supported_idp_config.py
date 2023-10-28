@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TenantDefaultSupportedIdpConfigArgs', 'TenantDefaultSupportedIdpConfig']
@@ -43,49 +43,14 @@ class TenantDefaultSupportedIdpConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        TenantDefaultSupportedIdpConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            client_secret=client_secret,
-            idp_id=idp_id,
-            tenant=tenant,
-            enabled=enabled,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             idp_id: Optional[pulumi.Input[str]] = None,
-             tenant: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if client_secret is None:
-            raise TypeError("Missing 'client_secret' argument")
-        if idp_id is None and 'idpId' in kwargs:
-            idp_id = kwargs['idpId']
-        if idp_id is None:
-            raise TypeError("Missing 'idp_id' argument")
-        if tenant is None:
-            raise TypeError("Missing 'tenant' argument")
-
-        _setter("client_id", client_id)
-        _setter("client_secret", client_secret)
-        _setter("idp_id", idp_id)
-        _setter("tenant", tenant)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "idp_id", idp_id)
+        pulumi.set(__self__, "tenant", tenant)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="clientId")
@@ -208,49 +173,20 @@ class _TenantDefaultSupportedIdpConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tenant: The name of the tenant where this DefaultSupportedIdpConfig resource exists
         """
-        _TenantDefaultSupportedIdpConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            client_secret=client_secret,
-            enabled=enabled,
-            idp_id=idp_id,
-            name=name,
-            project=project,
-            tenant=tenant,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             idp_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             tenant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if idp_id is None and 'idpId' in kwargs:
-            idp_id = kwargs['idpId']
-
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
-            _setter("client_secret", client_secret)
+            pulumi.set(__self__, "client_secret", client_secret)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if idp_id is not None:
-            _setter("idp_id", idp_id)
+            pulumi.set(__self__, "idp_id", idp_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if tenant is not None:
-            _setter("tenant", tenant)
+            pulumi.set(__self__, "tenant", tenant)
 
     @property
     @pulumi.getter(name="clientId")
@@ -480,10 +416,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TenantDefaultSupportedIdpConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

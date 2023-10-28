@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,43 +36,14 @@ class PreventionDeidentifyTemplateArgs:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
         """
-        PreventionDeidentifyTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deidentify_config=deidentify_config,
-            parent=parent,
-            description=description,
-            display_name=display_name,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deidentify_config is None and 'deidentifyConfig' in kwargs:
-            deidentify_config = kwargs['deidentifyConfig']
-        if deidentify_config is None:
-            raise TypeError("Missing 'deidentify_config' argument")
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
-        _setter("deidentify_config", deidentify_config)
-        _setter("parent", parent)
+        pulumi.set(__self__, "deidentify_config", deidentify_config)
+        pulumi.set(__self__, "parent", parent)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -171,57 +142,22 @@ class _PreventionDeidentifyTemplateState:
                100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[str] update_time: The last update timestamp of an deidentifyTemplate. Set by the server.
         """
-        _PreventionDeidentifyTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            deidentify_config=deidentify_config,
-            description=description,
-            display_name=display_name,
-            name=name,
-            parent=parent,
-            template_id=template_id,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deidentify_config is None and 'deidentifyConfig' in kwargs:
-            deidentify_config = kwargs['deidentifyConfig']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deidentify_config is not None:
-            _setter("deidentify_config", deidentify_config)
+            pulumi.set(__self__, "deidentify_config", deidentify_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -495,10 +431,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PreventionDeidentifyTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -518,7 +450,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PreventionDeidentifyTemplateArgs.__new__(PreventionDeidentifyTemplateArgs)
 
-            deidentify_config = _utilities.configure(deidentify_config, PreventionDeidentifyTemplateDeidentifyConfigArgs, True)
             if deidentify_config is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_config'")
             __props__.__dict__["deidentify_config"] = deidentify_config

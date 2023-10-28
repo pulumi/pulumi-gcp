@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,23 +33,10 @@ class GCPolicyMaxAge(dict):
                
                -----
         """
-        GCPolicyMaxAge._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            days=days,
-            duration=duration,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             days: Optional[int] = None,
-             duration: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if days is not None:
-            _setter("days", days)
+            pulumi.set(__self__, "days", days)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
 
     @property
     @pulumi.getter
@@ -83,20 +70,7 @@ class GCPolicyMaxVersion(dict):
                -----
                `gc_rules` include 2 fields:
         """
-        GCPolicyMaxVersion._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            number=number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             number: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if number is None:
-            raise TypeError("Missing 'number' argument")
-
-        _setter("number", number)
+        pulumi.set(__self__, "number", number)
 
     @property
     @pulumi.getter
@@ -165,50 +139,17 @@ class InstanceCluster(dict):
                specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
-        InstanceCluster._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            autoscaling_config=autoscaling_config,
-            kms_key_name=kms_key_name,
-            num_nodes=num_nodes,
-            storage_type=storage_type,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
-             kms_key_name: Optional[str] = None,
-             num_nodes: Optional[int] = None,
-             storage_type: Optional[str] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if autoscaling_config is None and 'autoscalingConfig' in kwargs:
-            autoscaling_config = kwargs['autoscalingConfig']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if num_nodes is None and 'numNodes' in kwargs:
-            num_nodes = kwargs['numNodes']
-        if storage_type is None and 'storageType' in kwargs:
-            storage_type = kwargs['storageType']
-
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if autoscaling_config is not None:
-            _setter("autoscaling_config", autoscaling_config)
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if num_nodes is not None:
-            _setter("num_nodes", num_nodes)
+            pulumi.set(__self__, "num_nodes", num_nodes)
         if storage_type is not None:
-            _setter("storage_type", storage_type)
+            pulumi.set(__self__, "storage_type", storage_type)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -310,42 +251,11 @@ class InstanceClusterAutoscalingConfig(dict):
                
                !> **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
-        InstanceClusterAutoscalingConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_target=cpu_target,
-            max_nodes=max_nodes,
-            min_nodes=min_nodes,
-            storage_target=storage_target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_target: Optional[int] = None,
-             max_nodes: Optional[int] = None,
-             min_nodes: Optional[int] = None,
-             storage_target: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_target is None and 'cpuTarget' in kwargs:
-            cpu_target = kwargs['cpuTarget']
-        if cpu_target is None:
-            raise TypeError("Missing 'cpu_target' argument")
-        if max_nodes is None and 'maxNodes' in kwargs:
-            max_nodes = kwargs['maxNodes']
-        if max_nodes is None:
-            raise TypeError("Missing 'max_nodes' argument")
-        if min_nodes is None and 'minNodes' in kwargs:
-            min_nodes = kwargs['minNodes']
-        if min_nodes is None:
-            raise TypeError("Missing 'min_nodes' argument")
-        if storage_target is None and 'storageTarget' in kwargs:
-            storage_target = kwargs['storageTarget']
-
-        _setter("cpu_target", cpu_target)
-        _setter("max_nodes", max_nodes)
-        _setter("min_nodes", min_nodes)
+        pulumi.set(__self__, "cpu_target", cpu_target)
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
         if storage_target is not None:
-            _setter("storage_target", storage_target)
+            pulumi.set(__self__, "storage_target", storage_target)
 
     @property
     @pulumi.getter(name="cpuTarget")
@@ -388,29 +298,10 @@ class InstanceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        InstanceIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -434,29 +325,10 @@ class InstanceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        InstanceIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -481,20 +353,7 @@ class TableColumnFamily(dict):
         """
         :param str family: The name of the column family.
         """
-        TableColumnFamily._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            family=family,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             family: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if family is None:
-            raise TypeError("Missing 'family' argument")
-
-        _setter("family", family)
+        pulumi.set(__self__, "family", family)
 
     @property
     @pulumi.getter
@@ -511,29 +370,10 @@ class TableIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        TableIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -557,29 +397,10 @@ class TableIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        TableIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

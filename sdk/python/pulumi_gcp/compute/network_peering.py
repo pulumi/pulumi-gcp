@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkPeeringArgs', 'NetworkPeering']
@@ -34,61 +34,20 @@ class NetworkPeeringArgs:
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         """
-        NetworkPeeringArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            peer_network=peer_network,
-            export_custom_routes=export_custom_routes,
-            export_subnet_routes_with_public_ip=export_subnet_routes_with_public_ip,
-            import_custom_routes=import_custom_routes,
-            import_subnet_routes_with_public_ip=import_subnet_routes_with_public_ip,
-            name=name,
-            stack_type=stack_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[pulumi.Input[str]] = None,
-             peer_network: Optional[pulumi.Input[str]] = None,
-             export_custom_routes: Optional[pulumi.Input[bool]] = None,
-             export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-             import_custom_routes: Optional[pulumi.Input[bool]] = None,
-             import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if peer_network is None and 'peerNetwork' in kwargs:
-            peer_network = kwargs['peerNetwork']
-        if peer_network is None:
-            raise TypeError("Missing 'peer_network' argument")
-        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
-            export_custom_routes = kwargs['exportCustomRoutes']
-        if export_subnet_routes_with_public_ip is None and 'exportSubnetRoutesWithPublicIp' in kwargs:
-            export_subnet_routes_with_public_ip = kwargs['exportSubnetRoutesWithPublicIp']
-        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
-            import_custom_routes = kwargs['importCustomRoutes']
-        if import_subnet_routes_with_public_ip is None and 'importSubnetRoutesWithPublicIp' in kwargs:
-            import_subnet_routes_with_public_ip = kwargs['importSubnetRoutesWithPublicIp']
-        if stack_type is None and 'stackType' in kwargs:
-            stack_type = kwargs['stackType']
-
-        _setter("network", network)
-        _setter("peer_network", peer_network)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "peer_network", peer_network)
         if export_custom_routes is not None:
-            _setter("export_custom_routes", export_custom_routes)
+            pulumi.set(__self__, "export_custom_routes", export_custom_routes)
         if export_subnet_routes_with_public_ip is not None:
-            _setter("export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
+            pulumi.set(__self__, "export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
         if import_custom_routes is not None:
-            _setter("import_custom_routes", import_custom_routes)
+            pulumi.set(__self__, "import_custom_routes", import_custom_routes)
         if import_subnet_routes_with_public_ip is not None:
-            _setter("import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
+            pulumi.set(__self__, "import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if stack_type is not None:
-            _setter("stack_type", stack_type)
+            pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter
@@ -216,69 +175,26 @@ class _NetworkPeeringState:
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[str] state_details: Details about the current state of the peering.
         """
-        _NetworkPeeringState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            export_custom_routes=export_custom_routes,
-            export_subnet_routes_with_public_ip=export_subnet_routes_with_public_ip,
-            import_custom_routes=import_custom_routes,
-            import_subnet_routes_with_public_ip=import_subnet_routes_with_public_ip,
-            name=name,
-            network=network,
-            peer_network=peer_network,
-            stack_type=stack_type,
-            state=state,
-            state_details=state_details,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             export_custom_routes: Optional[pulumi.Input[bool]] = None,
-             export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-             import_custom_routes: Optional[pulumi.Input[bool]] = None,
-             import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             peer_network: Optional[pulumi.Input[str]] = None,
-             stack_type: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             state_details: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
-            export_custom_routes = kwargs['exportCustomRoutes']
-        if export_subnet_routes_with_public_ip is None and 'exportSubnetRoutesWithPublicIp' in kwargs:
-            export_subnet_routes_with_public_ip = kwargs['exportSubnetRoutesWithPublicIp']
-        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
-            import_custom_routes = kwargs['importCustomRoutes']
-        if import_subnet_routes_with_public_ip is None and 'importSubnetRoutesWithPublicIp' in kwargs:
-            import_subnet_routes_with_public_ip = kwargs['importSubnetRoutesWithPublicIp']
-        if peer_network is None and 'peerNetwork' in kwargs:
-            peer_network = kwargs['peerNetwork']
-        if stack_type is None and 'stackType' in kwargs:
-            stack_type = kwargs['stackType']
-        if state_details is None and 'stateDetails' in kwargs:
-            state_details = kwargs['stateDetails']
-
         if export_custom_routes is not None:
-            _setter("export_custom_routes", export_custom_routes)
+            pulumi.set(__self__, "export_custom_routes", export_custom_routes)
         if export_subnet_routes_with_public_ip is not None:
-            _setter("export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
+            pulumi.set(__self__, "export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
         if import_custom_routes is not None:
-            _setter("import_custom_routes", import_custom_routes)
+            pulumi.set(__self__, "import_custom_routes", import_custom_routes)
         if import_subnet_routes_with_public_ip is not None:
-            _setter("import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
+            pulumi.set(__self__, "import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if peer_network is not None:
-            _setter("peer_network", peer_network)
+            pulumi.set(__self__, "peer_network", peer_network)
         if stack_type is not None:
-            _setter("stack_type", stack_type)
+            pulumi.set(__self__, "stack_type", stack_type)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if state_details is not None:
-            _setter("state_details", state_details)
+            pulumi.set(__self__, "state_details", state_details)
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
@@ -515,10 +431,6 @@ class NetworkPeering(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkPeeringArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

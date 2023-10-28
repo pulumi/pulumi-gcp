@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -54,29 +54,8 @@ class BitbucketServerConfigConnectedRepositoryArgs:
         :param pulumi.Input[str] project_key: Identifier for the project storing the repository.
         :param pulumi.Input[str] repo_slug: Identifier for the repository.
         """
-        BitbucketServerConfigConnectedRepositoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_key=project_key,
-            repo_slug=repo_slug,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_key: Optional[pulumi.Input[str]] = None,
-             repo_slug: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_key is None and 'projectKey' in kwargs:
-            project_key = kwargs['projectKey']
-        if project_key is None:
-            raise TypeError("Missing 'project_key' argument")
-        if repo_slug is None and 'repoSlug' in kwargs:
-            repo_slug = kwargs['repoSlug']
-        if repo_slug is None:
-            raise TypeError("Missing 'repo_slug' argument")
-
-        _setter("project_key", project_key)
-        _setter("repo_slug", repo_slug)
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "repo_slug", repo_slug)
 
     @property
     @pulumi.getter(name="projectKey")
@@ -117,36 +96,9 @@ class BitbucketServerConfigSecretsArgs:
                
                - - -
         """
-        BitbucketServerConfigSecretsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_access_token_version_name=admin_access_token_version_name,
-            read_access_token_version_name=read_access_token_version_name,
-            webhook_secret_version_name=webhook_secret_version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_access_token_version_name: Optional[pulumi.Input[str]] = None,
-             read_access_token_version_name: Optional[pulumi.Input[str]] = None,
-             webhook_secret_version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_access_token_version_name is None and 'adminAccessTokenVersionName' in kwargs:
-            admin_access_token_version_name = kwargs['adminAccessTokenVersionName']
-        if admin_access_token_version_name is None:
-            raise TypeError("Missing 'admin_access_token_version_name' argument")
-        if read_access_token_version_name is None and 'readAccessTokenVersionName' in kwargs:
-            read_access_token_version_name = kwargs['readAccessTokenVersionName']
-        if read_access_token_version_name is None:
-            raise TypeError("Missing 'read_access_token_version_name' argument")
-        if webhook_secret_version_name is None and 'webhookSecretVersionName' in kwargs:
-            webhook_secret_version_name = kwargs['webhookSecretVersionName']
-        if webhook_secret_version_name is None:
-            raise TypeError("Missing 'webhook_secret_version_name' argument")
-
-        _setter("admin_access_token_version_name", admin_access_token_version_name)
-        _setter("read_access_token_version_name", read_access_token_version_name)
-        _setter("webhook_secret_version_name", webhook_secret_version_name)
+        pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
+        pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
+        pulumi.set(__self__, "webhook_secret_version_name", webhook_secret_version_name)
 
     @property
     @pulumi.getter(name="adminAccessTokenVersionName")
@@ -196,21 +148,8 @@ class TriggerApprovalConfigArgs:
         :param pulumi.Input[bool] approval_required: Whether or not approval is needed. If this is set on a build, it will become pending when run,
                and will need to be explicitly approved to start.
         """
-        TriggerApprovalConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            approval_required=approval_required,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             approval_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if approval_required is None and 'approvalRequired' in kwargs:
-            approval_required = kwargs['approvalRequired']
-
         if approval_required is not None:
-            _setter("approval_required", approval_required)
+            pulumi.set(__self__, "approval_required", approval_required)
 
     @property
     @pulumi.getter(name="approvalRequired")
@@ -244,46 +183,13 @@ class TriggerBitbucketServerTriggerConfigArgs:
         :param pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs'] push: Filter to match changes in refs like branches, tags.
                Structure is documented below.
         """
-        TriggerBitbucketServerTriggerConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bitbucket_server_config_resource=bitbucket_server_config_resource,
-            project_key=project_key,
-            repo_slug=repo_slug,
-            pull_request=pull_request,
-            push=push,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bitbucket_server_config_resource: Optional[pulumi.Input[str]] = None,
-             project_key: Optional[pulumi.Input[str]] = None,
-             repo_slug: Optional[pulumi.Input[str]] = None,
-             pull_request: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgs']] = None,
-             push: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bitbucket_server_config_resource is None and 'bitbucketServerConfigResource' in kwargs:
-            bitbucket_server_config_resource = kwargs['bitbucketServerConfigResource']
-        if bitbucket_server_config_resource is None:
-            raise TypeError("Missing 'bitbucket_server_config_resource' argument")
-        if project_key is None and 'projectKey' in kwargs:
-            project_key = kwargs['projectKey']
-        if project_key is None:
-            raise TypeError("Missing 'project_key' argument")
-        if repo_slug is None and 'repoSlug' in kwargs:
-            repo_slug = kwargs['repoSlug']
-        if repo_slug is None:
-            raise TypeError("Missing 'repo_slug' argument")
-        if pull_request is None and 'pullRequest' in kwargs:
-            pull_request = kwargs['pullRequest']
-
-        _setter("bitbucket_server_config_resource", bitbucket_server_config_resource)
-        _setter("project_key", project_key)
-        _setter("repo_slug", repo_slug)
+        pulumi.set(__self__, "bitbucket_server_config_resource", bitbucket_server_config_resource)
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "repo_slug", repo_slug)
         if pull_request is not None:
-            _setter("pull_request", pull_request)
+            pulumi.set(__self__, "pull_request", pull_request)
         if push is not None:
-            _setter("push", push)
+            pulumi.set(__self__, "push", push)
 
     @property
     @pulumi.getter(name="bitbucketServerConfigResource")
@@ -362,32 +268,11 @@ class TriggerBitbucketServerTriggerConfigPullRequestArgs:
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
-        TriggerBitbucketServerTriggerConfigPullRequestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            comment_control=comment_control,
-            invert_regex=invert_regex,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             comment_control: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branch is None:
-            raise TypeError("Missing 'branch' argument")
-        if comment_control is None and 'commentControl' in kwargs:
-            comment_control = kwargs['commentControl']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
-        _setter("branch", branch)
+        pulumi.set(__self__, "branch", branch)
         if comment_control is not None:
-            _setter("comment_control", comment_control)
+            pulumi.set(__self__, "comment_control", comment_control)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
 
     @property
     @pulumi.getter
@@ -439,29 +324,12 @@ class TriggerBitbucketServerTriggerConfigPushArgs:
         :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
-        TriggerBitbucketServerTriggerConfigPushArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            invert_regex=invert_regex,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
         if branch is not None:
-            _setter("branch", branch)
+            pulumi.set(__self__, "branch", branch)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -547,70 +415,29 @@ class TriggerBuildArgs:
                The expected format is the number of seconds followed by s.
                Default time is ten minutes (600s).
         """
-        TriggerBuildArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            steps=steps,
-            artifacts=artifacts,
-            available_secrets=available_secrets,
-            images=images,
-            logs_bucket=logs_bucket,
-            options=options,
-            queue_ttl=queue_ttl,
-            secrets=secrets,
-            source=source,
-            substitutions=substitutions,
-            tags=tags,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             steps: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepArgs']]]] = None,
-             artifacts: Optional[pulumi.Input['TriggerBuildArtifactsArgs']] = None,
-             available_secrets: Optional[pulumi.Input['TriggerBuildAvailableSecretsArgs']] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             logs_bucket: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input['TriggerBuildOptionsArgs']] = None,
-             queue_ttl: Optional[pulumi.Input[str]] = None,
-             secrets: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildSecretArgs']]]] = None,
-             source: Optional[pulumi.Input['TriggerBuildSourceArgs']] = None,
-             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if steps is None:
-            raise TypeError("Missing 'steps' argument")
-        if available_secrets is None and 'availableSecrets' in kwargs:
-            available_secrets = kwargs['availableSecrets']
-        if logs_bucket is None and 'logsBucket' in kwargs:
-            logs_bucket = kwargs['logsBucket']
-        if queue_ttl is None and 'queueTtl' in kwargs:
-            queue_ttl = kwargs['queueTtl']
-
-        _setter("steps", steps)
+        pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
-            _setter("artifacts", artifacts)
+            pulumi.set(__self__, "artifacts", artifacts)
         if available_secrets is not None:
-            _setter("available_secrets", available_secrets)
+            pulumi.set(__self__, "available_secrets", available_secrets)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if logs_bucket is not None:
-            _setter("logs_bucket", logs_bucket)
+            pulumi.set(__self__, "logs_bucket", logs_bucket)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if queue_ttl is not None:
-            _setter("queue_ttl", queue_ttl)
+            pulumi.set(__self__, "queue_ttl", queue_ttl)
         if secrets is not None:
-            _setter("secrets", secrets)
+            pulumi.set(__self__, "secrets", secrets)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if substitutions is not None:
-            _setter("substitutions", substitutions)
+            pulumi.set(__self__, "substitutions", substitutions)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -792,23 +619,10 @@ class TriggerBuildArtifactsArgs:
                If any objects fail to be pushed, the build is marked FAILURE.
                Structure is documented below.
         """
-        TriggerBuildArtifactsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            images=images,
-            objects=objects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             objects: Optional[pulumi.Input['TriggerBuildArtifactsObjectsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if objects is not None:
-            _setter("objects", objects)
+            pulumi.set(__self__, "objects", objects)
 
     @property
     @pulumi.getter
@@ -861,27 +675,12 @@ class TriggerBuildArtifactsObjectsArgs:
                
                <a name="nested_timing"></a>The `timing` block contains:
         """
-        TriggerBuildArtifactsObjectsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            paths=paths,
-            timings=timings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             timings: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if paths is not None:
-            _setter("paths", paths)
+            pulumi.set(__self__, "paths", paths)
         if timings is not None:
-            _setter("timings", timings)
+            pulumi.set(__self__, "timings", timings)
 
     @property
     @pulumi.getter
@@ -940,27 +739,10 @@ class TriggerBuildArtifactsObjectsTimingArgs:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        TriggerBuildArtifactsObjectsTimingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_time=end_time,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_time: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -999,22 +781,7 @@ class TriggerBuildAvailableSecretsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]] secret_managers: Pairs a secret environment variable with a SecretVersion in Secret Manager.
                Structure is documented below.
         """
-        TriggerBuildAvailableSecretsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_managers=secret_managers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_managers: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_managers is None and 'secretManagers' in kwargs:
-            secret_managers = kwargs['secretManagers']
-        if secret_managers is None:
-            raise TypeError("Missing 'secret_managers' argument")
-
-        _setter("secret_managers", secret_managers)
+        pulumi.set(__self__, "secret_managers", secret_managers)
 
     @property
     @pulumi.getter(name="secretManagers")
@@ -1041,27 +808,8 @@ class TriggerBuildAvailableSecretsSecretManagerArgs:
                by at least one build step.
         :param pulumi.Input[str] version_name: Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
         """
-        TriggerBuildAvailableSecretsSecretManagerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            env=env,
-            version_name=version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             env: Optional[pulumi.Input[str]] = None,
-             version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if env is None:
-            raise TypeError("Missing 'env' argument")
-        if version_name is None and 'versionName' in kwargs:
-            version_name = kwargs['versionName']
-        if version_name is None:
-            raise TypeError("Missing 'version_name' argument")
-
-        _setter("env", env)
-        _setter("version_name", version_name)
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "version_name", version_name)
 
     @property
     @pulumi.getter
@@ -1143,81 +891,30 @@ class TriggerBuildOptionsArgs:
         :param pulumi.Input[str] worker_pool: Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
                This field is experimental.
         """
-        TriggerBuildOptionsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_size_gb=disk_size_gb,
-            dynamic_substitutions=dynamic_substitutions,
-            envs=envs,
-            log_streaming_option=log_streaming_option,
-            logging=logging,
-            machine_type=machine_type,
-            requested_verify_option=requested_verify_option,
-            secret_envs=secret_envs,
-            source_provenance_hashes=source_provenance_hashes,
-            substitution_option=substitution_option,
-            volumes=volumes,
-            worker_pool=worker_pool,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_size_gb: Optional[pulumi.Input[int]] = None,
-             dynamic_substitutions: Optional[pulumi.Input[bool]] = None,
-             envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             log_streaming_option: Optional[pulumi.Input[str]] = None,
-             logging: Optional[pulumi.Input[str]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             requested_verify_option: Optional[pulumi.Input[str]] = None,
-             secret_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             source_provenance_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             substitution_option: Optional[pulumi.Input[str]] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildOptionsVolumeArgs']]]] = None,
-             worker_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_size_gb is None and 'diskSizeGb' in kwargs:
-            disk_size_gb = kwargs['diskSizeGb']
-        if dynamic_substitutions is None and 'dynamicSubstitutions' in kwargs:
-            dynamic_substitutions = kwargs['dynamicSubstitutions']
-        if log_streaming_option is None and 'logStreamingOption' in kwargs:
-            log_streaming_option = kwargs['logStreamingOption']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if requested_verify_option is None and 'requestedVerifyOption' in kwargs:
-            requested_verify_option = kwargs['requestedVerifyOption']
-        if secret_envs is None and 'secretEnvs' in kwargs:
-            secret_envs = kwargs['secretEnvs']
-        if source_provenance_hashes is None and 'sourceProvenanceHashes' in kwargs:
-            source_provenance_hashes = kwargs['sourceProvenanceHashes']
-        if substitution_option is None and 'substitutionOption' in kwargs:
-            substitution_option = kwargs['substitutionOption']
-        if worker_pool is None and 'workerPool' in kwargs:
-            worker_pool = kwargs['workerPool']
-
         if disk_size_gb is not None:
-            _setter("disk_size_gb", disk_size_gb)
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if dynamic_substitutions is not None:
-            _setter("dynamic_substitutions", dynamic_substitutions)
+            pulumi.set(__self__, "dynamic_substitutions", dynamic_substitutions)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if log_streaming_option is not None:
-            _setter("log_streaming_option", log_streaming_option)
+            pulumi.set(__self__, "log_streaming_option", log_streaming_option)
         if logging is not None:
-            _setter("logging", logging)
+            pulumi.set(__self__, "logging", logging)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if requested_verify_option is not None:
-            _setter("requested_verify_option", requested_verify_option)
+            pulumi.set(__self__, "requested_verify_option", requested_verify_option)
         if secret_envs is not None:
-            _setter("secret_envs", secret_envs)
+            pulumi.set(__self__, "secret_envs", secret_envs)
         if source_provenance_hashes is not None:
-            _setter("source_provenance_hashes", source_provenance_hashes)
+            pulumi.set(__self__, "source_provenance_hashes", source_provenance_hashes)
         if substitution_option is not None:
-            _setter("substitution_option", substitution_option)
+            pulumi.set(__self__, "substitution_option", substitution_option)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
         if worker_pool is not None:
-            _setter("worker_pool", worker_pool)
+            pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -1401,23 +1098,10 @@ class TriggerBuildOptionsVolumeArgs:
                Paths must be absolute and cannot conflict with other volume paths on the same
                build step or with certain reserved volume paths.
         """
-        TriggerBuildOptionsVolumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -1460,28 +1144,9 @@ class TriggerBuildSecretArgs:
                and must be used by at least one build step. Values can be at most 64 KB in size.
                There can be at most 100 secret values across all of a build's secrets.
         """
-        TriggerBuildSecretArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            secret_env=secret_env,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             secret_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-        if secret_env is None and 'secretEnv' in kwargs:
-            secret_env = kwargs['secretEnv']
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if secret_env is not None:
-            _setter("secret_env", secret_env)
+            pulumi.set(__self__, "secret_env", secret_env)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1522,27 +1187,10 @@ class TriggerBuildSourceArgs:
         :param pulumi.Input['TriggerBuildSourceStorageSourceArgs'] storage_source: Location of the source in an archive file in Google Cloud Storage.
                Structure is documented below.
         """
-        TriggerBuildSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repo_source=repo_source,
-            storage_source=storage_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repo_source: Optional[pulumi.Input['TriggerBuildSourceRepoSourceArgs']] = None,
-             storage_source: Optional[pulumi.Input['TriggerBuildSourceStorageSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repo_source is None and 'repoSource' in kwargs:
-            repo_source = kwargs['repoSource']
-        if storage_source is None and 'storageSource' in kwargs:
-            storage_source = kwargs['storageSource']
-
         if repo_source is not None:
-            _setter("repo_source", repo_source)
+            pulumi.set(__self__, "repo_source", repo_source)
         if storage_source is not None:
-            _setter("storage_source", storage_source)
+            pulumi.set(__self__, "storage_source", storage_source)
 
     @property
     @pulumi.getter(name="repoSource")
@@ -1599,60 +1247,21 @@ class TriggerBuildSourceRepoSourceArgs:
                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
                described at https://github.com/google/re2/wiki/Syntax
         """
-        TriggerBuildSourceRepoSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repo_name=repo_name,
-            branch_name=branch_name,
-            commit_sha=commit_sha,
-            dir=dir,
-            invert_regex=invert_regex,
-            project_id=project_id,
-            substitutions=substitutions,
-            tag_name=tag_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repo_name: Optional[pulumi.Input[str]] = None,
-             branch_name: Optional[pulumi.Input[str]] = None,
-             commit_sha: Optional[pulumi.Input[str]] = None,
-             dir: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             tag_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if repo_name is None:
-            raise TypeError("Missing 'repo_name' argument")
-        if branch_name is None and 'branchName' in kwargs:
-            branch_name = kwargs['branchName']
-        if commit_sha is None and 'commitSha' in kwargs:
-            commit_sha = kwargs['commitSha']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if tag_name is None and 'tagName' in kwargs:
-            tag_name = kwargs['tagName']
-
-        _setter("repo_name", repo_name)
+        pulumi.set(__self__, "repo_name", repo_name)
         if branch_name is not None:
-            _setter("branch_name", branch_name)
+            pulumi.set(__self__, "branch_name", branch_name)
         if commit_sha is not None:
-            _setter("commit_sha", commit_sha)
+            pulumi.set(__self__, "commit_sha", commit_sha)
         if dir is not None:
-            _setter("dir", dir)
+            pulumi.set(__self__, "dir", dir)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if substitutions is not None:
-            _setter("substitutions", substitutions)
+            pulumi.set(__self__, "substitutions", substitutions)
         if tag_name is not None:
-            _setter("tag_name", tag_name)
+            pulumi.set(__self__, "tag_name", tag_name)
 
     @property
     @pulumi.getter(name="repoName")
@@ -1771,29 +1380,10 @@ class TriggerBuildSourceStorageSourceArgs:
         :param pulumi.Input[str] generation: Google Cloud Storage generation for the object.
                If the generation is omitted, the latest generation will be used
         """
-        TriggerBuildSourceStorageSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             object: Optional[pulumi.Input[str]] = None,
-             generation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -1921,80 +1511,33 @@ class TriggerBuildStepArgs:
                will start when all previous build steps in the `Build.Steps` list
                have completed successfully.
         """
-        TriggerBuildStepArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            allow_exit_codes=allow_exit_codes,
-            allow_failure=allow_failure,
-            args=args,
-            dir=dir,
-            entrypoint=entrypoint,
-            envs=envs,
-            id=id,
-            script=script,
-            secret_envs=secret_envs,
-            timeout=timeout,
-            timing=timing,
-            volumes=volumes,
-            wait_fors=wait_fors,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             allow_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             allow_failure: Optional[pulumi.Input[bool]] = None,
-             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             dir: Optional[pulumi.Input[str]] = None,
-             entrypoint: Optional[pulumi.Input[str]] = None,
-             envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             id: Optional[pulumi.Input[str]] = None,
-             script: Optional[pulumi.Input[str]] = None,
-             secret_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             timing: Optional[pulumi.Input[str]] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgs']]]] = None,
-             wait_fors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if allow_exit_codes is None and 'allowExitCodes' in kwargs:
-            allow_exit_codes = kwargs['allowExitCodes']
-        if allow_failure is None and 'allowFailure' in kwargs:
-            allow_failure = kwargs['allowFailure']
-        if secret_envs is None and 'secretEnvs' in kwargs:
-            secret_envs = kwargs['secretEnvs']
-        if wait_fors is None and 'waitFors' in kwargs:
-            wait_fors = kwargs['waitFors']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if allow_exit_codes is not None:
-            _setter("allow_exit_codes", allow_exit_codes)
+            pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
         if allow_failure is not None:
-            _setter("allow_failure", allow_failure)
+            pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if dir is not None:
-            _setter("dir", dir)
+            pulumi.set(__self__, "dir", dir)
         if entrypoint is not None:
-            _setter("entrypoint", entrypoint)
+            pulumi.set(__self__, "entrypoint", entrypoint)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if script is not None:
-            _setter("script", script)
+            pulumi.set(__self__, "script", script)
         if secret_envs is not None:
-            _setter("secret_envs", secret_envs)
+            pulumi.set(__self__, "secret_envs", secret_envs)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if timing is not None:
-            _setter("timing", timing)
+            pulumi.set(__self__, "timing", timing)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
         if wait_fors is not None:
-            _setter("wait_fors", wait_fors)
+            pulumi.set(__self__, "wait_fors", wait_fors)
 
     @property
     @pulumi.getter
@@ -2232,25 +1775,8 @@ class TriggerBuildStepVolumeArgs:
                Paths must be absolute and cannot conflict with other volume paths on the same
                build step or with certain reserved volume paths.
         """
-        TriggerBuildStepVolumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("name", name)
-        _setter("path", path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -2308,51 +1834,18 @@ class TriggerGitFileSourceArgs:
         :param pulumi.Input[str] uri: The URI of the repo (optional). If unspecified, the repo from which the trigger
                invocation originated is assumed to be the repo from which to read the specified path.
         """
-        TriggerGitFileSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            repo_type=repo_type,
-            bitbucket_server_config=bitbucket_server_config,
-            github_enterprise_config=github_enterprise_config,
-            repository=repository,
-            revision=revision,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             bitbucket_server_config: Optional[pulumi.Input[str]] = None,
-             github_enterprise_config: Optional[pulumi.Input[str]] = None,
-             repository: Optional[pulumi.Input[str]] = None,
-             revision: Optional[pulumi.Input[str]] = None,
-             uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-        if repo_type is None:
-            raise TypeError("Missing 'repo_type' argument")
-        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
-            bitbucket_server_config = kwargs['bitbucketServerConfig']
-        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
-            github_enterprise_config = kwargs['githubEnterpriseConfig']
-
-        _setter("path", path)
-        _setter("repo_type", repo_type)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_type", repo_type)
         if bitbucket_server_config is not None:
-            _setter("bitbucket_server_config", bitbucket_server_config)
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         if github_enterprise_config is not None:
-            _setter("github_enterprise_config", github_enterprise_config)
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if repository is not None:
-            _setter("repository", repository)
+            pulumi.set(__self__, "repository", repository)
         if revision is not None:
-            _setter("revision", revision)
+            pulumi.set(__self__, "revision", revision)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -2467,39 +1960,16 @@ class TriggerGithubArgs:
         :param pulumi.Input['TriggerGithubPushArgs'] push: filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
                Structure is documented below.
         """
-        TriggerGithubArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enterprise_config_resource_name=enterprise_config_resource_name,
-            name=name,
-            owner=owner,
-            pull_request=pull_request,
-            push=push,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enterprise_config_resource_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             pull_request: Optional[pulumi.Input['TriggerGithubPullRequestArgs']] = None,
-             push: Optional[pulumi.Input['TriggerGithubPushArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enterprise_config_resource_name is None and 'enterpriseConfigResourceName' in kwargs:
-            enterprise_config_resource_name = kwargs['enterpriseConfigResourceName']
-        if pull_request is None and 'pullRequest' in kwargs:
-            pull_request = kwargs['pullRequest']
-
         if enterprise_config_resource_name is not None:
-            _setter("enterprise_config_resource_name", enterprise_config_resource_name)
+            pulumi.set(__self__, "enterprise_config_resource_name", enterprise_config_resource_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if pull_request is not None:
-            _setter("pull_request", pull_request)
+            pulumi.set(__self__, "pull_request", pull_request)
         if push is not None:
-            _setter("push", push)
+            pulumi.set(__self__, "push", push)
 
     @property
     @pulumi.getter(name="enterpriseConfigResourceName")
@@ -2580,32 +2050,11 @@ class TriggerGithubPullRequestArgs:
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
-        TriggerGithubPullRequestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            comment_control=comment_control,
-            invert_regex=invert_regex,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             comment_control: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branch is None:
-            raise TypeError("Missing 'branch' argument")
-        if comment_control is None and 'commentControl' in kwargs:
-            comment_control = kwargs['commentControl']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
-        _setter("branch", branch)
+        pulumi.set(__self__, "branch", branch)
         if comment_control is not None:
-            _setter("comment_control", comment_control)
+            pulumi.set(__self__, "comment_control", comment_control)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
 
     @property
     @pulumi.getter
@@ -2657,29 +2106,12 @@ class TriggerGithubPushArgs:
         :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
-        TriggerGithubPushArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            invert_regex=invert_regex,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
         if branch is not None:
-            _setter("branch", branch)
+            pulumi.set(__self__, "branch", branch)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -2734,34 +2166,13 @@ class TriggerPubsubConfigArgs:
         :param pulumi.Input[str] subscription: (Output)
                Output only. Name of the subscription.
         """
-        TriggerPubsubConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic=topic,
-            service_account_email=service_account_email,
-            state=state,
-            subscription=subscription,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             subscription: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-
-        _setter("topic", topic)
+        pulumi.set(__self__, "topic", topic)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if subscription is not None:
-            _setter("subscription", subscription)
+            pulumi.set(__self__, "subscription", subscription)
 
     @property
     @pulumi.getter
@@ -2828,29 +2239,12 @@ class TriggerRepositoryEventConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] repository: The resource name of the Repo API resource.
         """
-        TriggerRepositoryEventConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pull_request=pull_request,
-            push=push,
-            repository=repository,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pull_request: Optional[pulumi.Input['TriggerRepositoryEventConfigPullRequestArgs']] = None,
-             push: Optional[pulumi.Input['TriggerRepositoryEventConfigPushArgs']] = None,
-             repository: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pull_request is None and 'pullRequest' in kwargs:
-            pull_request = kwargs['pullRequest']
-
         if pull_request is not None:
-            _setter("pull_request", pull_request)
+            pulumi.set(__self__, "pull_request", pull_request)
         if push is not None:
-            _setter("push", push)
+            pulumi.set(__self__, "push", push)
         if repository is not None:
-            _setter("repository", repository)
+            pulumi.set(__self__, "repository", repository)
 
     @property
     @pulumi.getter(name="pullRequest")
@@ -2904,31 +2298,12 @@ class TriggerRepositoryEventConfigPullRequestArgs:
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
-        TriggerRepositoryEventConfigPullRequestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            comment_control=comment_control,
-            invert_regex=invert_regex,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             comment_control: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comment_control is None and 'commentControl' in kwargs:
-            comment_control = kwargs['commentControl']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
         if branch is not None:
-            _setter("branch", branch)
+            pulumi.set(__self__, "branch", branch)
         if comment_control is not None:
-            _setter("comment_control", comment_control)
+            pulumi.set(__self__, "comment_control", comment_control)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
 
     @property
     @pulumi.getter
@@ -2980,29 +2355,12 @@ class TriggerRepositoryEventConfigPushArgs:
         :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
-        TriggerRepositoryEventConfigPushArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch=branch,
-            invert_regex=invert_regex,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-
         if branch is not None:
-            _setter("branch", branch)
+            pulumi.set(__self__, "branch", branch)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -3063,47 +2421,16 @@ class TriggerSourceToBuildArgs:
                Either uri or repository can be specified and is required.
         :param pulumi.Input[str] uri: The URI of the repo.
         """
-        TriggerSourceToBuildArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ref=ref,
-            repo_type=repo_type,
-            bitbucket_server_config=bitbucket_server_config,
-            github_enterprise_config=github_enterprise_config,
-            repository=repository,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ref: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             bitbucket_server_config: Optional[pulumi.Input[str]] = None,
-             github_enterprise_config: Optional[pulumi.Input[str]] = None,
-             repository: Optional[pulumi.Input[str]] = None,
-             uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ref is None:
-            raise TypeError("Missing 'ref' argument")
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-        if repo_type is None:
-            raise TypeError("Missing 'repo_type' argument")
-        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
-            bitbucket_server_config = kwargs['bitbucketServerConfig']
-        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
-            github_enterprise_config = kwargs['githubEnterpriseConfig']
-
-        _setter("ref", ref)
-        _setter("repo_type", repo_type)
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo_type", repo_type)
         if bitbucket_server_config is not None:
-            _setter("bitbucket_server_config", bitbucket_server_config)
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         if github_enterprise_config is not None:
-            _setter("github_enterprise_config", github_enterprise_config)
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if repository is not None:
-            _setter("repository", repository)
+            pulumi.set(__self__, "repository", repository)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -3208,55 +2535,20 @@ class TriggerTriggerTemplateArgs:
         :param pulumi.Input[str] tag_name: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
                This field is a regular expression.
         """
-        TriggerTriggerTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch_name=branch_name,
-            commit_sha=commit_sha,
-            dir=dir,
-            invert_regex=invert_regex,
-            project_id=project_id,
-            repo_name=repo_name,
-            tag_name=tag_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch_name: Optional[pulumi.Input[str]] = None,
-             commit_sha: Optional[pulumi.Input[str]] = None,
-             dir: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             repo_name: Optional[pulumi.Input[str]] = None,
-             tag_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branch_name is None and 'branchName' in kwargs:
-            branch_name = kwargs['branchName']
-        if commit_sha is None and 'commitSha' in kwargs:
-            commit_sha = kwargs['commitSha']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if tag_name is None and 'tagName' in kwargs:
-            tag_name = kwargs['tagName']
-
         if branch_name is not None:
-            _setter("branch_name", branch_name)
+            pulumi.set(__self__, "branch_name", branch_name)
         if commit_sha is not None:
-            _setter("commit_sha", commit_sha)
+            pulumi.set(__self__, "commit_sha", commit_sha)
         if dir is not None:
-            _setter("dir", dir)
+            pulumi.set(__self__, "dir", dir)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if repo_name is not None:
-            _setter("repo_name", repo_name)
+            pulumi.set(__self__, "repo_name", repo_name)
         if tag_name is not None:
-            _setter("tag_name", tag_name)
+            pulumi.set(__self__, "tag_name", tag_name)
 
     @property
     @pulumi.getter(name="branchName")
@@ -3360,24 +2652,9 @@ class TriggerWebhookConfigArgs:
                Potential issues with the underlying Pub/Sub subscription configuration.
                Only populated on get requests.
         """
-        TriggerWebhookConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-
-        _setter("secret", secret)
+        pulumi.set(__self__, "secret", secret)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -3415,28 +2692,9 @@ class WorkerPoolNetworkConfigArgs:
         :param pulumi.Input[str] peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
         :param pulumi.Input[str] peered_network_ip_range: Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
         """
-        WorkerPoolNetworkConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peered_network=peered_network,
-            peered_network_ip_range=peered_network_ip_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peered_network: Optional[pulumi.Input[str]] = None,
-             peered_network_ip_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peered_network is None and 'peeredNetwork' in kwargs:
-            peered_network = kwargs['peeredNetwork']
-        if peered_network is None:
-            raise TypeError("Missing 'peered_network' argument")
-        if peered_network_ip_range is None and 'peeredNetworkIpRange' in kwargs:
-            peered_network_ip_range = kwargs['peeredNetworkIpRange']
-
-        _setter("peered_network", peered_network)
+        pulumi.set(__self__, "peered_network", peered_network)
         if peered_network_ip_range is not None:
-            _setter("peered_network_ip_range", peered_network_ip_range)
+            pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
 
     @property
     @pulumi.getter(name="peeredNetwork")
@@ -3474,33 +2732,12 @@ class WorkerPoolWorkerConfigArgs:
         :param pulumi.Input[str] machine_type: Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
         :param pulumi.Input[bool] no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
         """
-        WorkerPoolWorkerConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_size_gb=disk_size_gb,
-            machine_type=machine_type,
-            no_external_ip=no_external_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_size_gb: Optional[pulumi.Input[int]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             no_external_ip: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_size_gb is None and 'diskSizeGb' in kwargs:
-            disk_size_gb = kwargs['diskSizeGb']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if no_external_ip is None and 'noExternalIp' in kwargs:
-            no_external_ip = kwargs['noExternalIp']
-
         if disk_size_gb is not None:
-            _setter("disk_size_gb", disk_size_gb)
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if no_external_ip is not None:
-            _setter("no_external_ip", no_external_ip)
+            pulumi.set(__self__, "no_external_ip", no_external_ip)
 
     @property
     @pulumi.getter(name="diskSizeGb")

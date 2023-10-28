@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,41 +40,16 @@ class AccessLevelArgs:
                
                - - -
         """
-        AccessLevelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            title=title,
-            basic=basic,
-            custom=custom,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
-             custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("parent", parent)
-        _setter("title", title)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "title", title)
         if basic is not None:
-            _setter("basic", basic)
+            pulumi.set(__self__, "basic", basic)
         if custom is not None:
-            _setter("custom", custom)
+            pulumi.set(__self__, "custom", custom)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -185,39 +160,18 @@ class _AccessLevelState:
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
-        _AccessLevelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            basic=basic,
-            custom=custom,
-            description=description,
-            name=name,
-            parent=parent,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
-             custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if basic is not None:
-            _setter("basic", basic)
+            pulumi.set(__self__, "basic", basic)
         if custom is not None:
-            _setter("custom", custom)
+            pulumi.set(__self__, "custom", custom)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -455,10 +409,6 @@ class AccessLevel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessLevelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -479,9 +429,7 @@ class AccessLevel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessLevelArgs.__new__(AccessLevelArgs)
 
-            basic = _utilities.configure(basic, AccessLevelBasicArgs, True)
             __props__.__dict__["basic"] = basic
-            custom = _utilities.configure(custom, AccessLevelCustomArgs, True)
             __props__.__dict__["custom"] = custom
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

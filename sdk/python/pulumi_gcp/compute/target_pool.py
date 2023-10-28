@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetPoolArgs', 'TargetPool']
@@ -51,65 +51,26 @@ class TargetPoolArgs:
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
         """
-        TargetPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_pool=backup_pool,
-            description=description,
-            failover_ratio=failover_ratio,
-            health_checks=health_checks,
-            instances=instances,
-            name=name,
-            project=project,
-            region=region,
-            security_policy=security_policy,
-            session_affinity=session_affinity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_pool: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             failover_ratio: Optional[pulumi.Input[float]] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_pool is None and 'backupPool' in kwargs:
-            backup_pool = kwargs['backupPool']
-        if failover_ratio is None and 'failoverRatio' in kwargs:
-            failover_ratio = kwargs['failoverRatio']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-
         if backup_pool is not None:
-            _setter("backup_pool", backup_pool)
+            pulumi.set(__self__, "backup_pool", backup_pool)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if failover_ratio is not None:
-            _setter("failover_ratio", failover_ratio)
+            pulumi.set(__self__, "failover_ratio", failover_ratio)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
 
     @property
     @pulumi.getter(name="backupPool")
@@ -288,71 +249,28 @@ class _TargetPoolState:
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
         """
-        _TargetPoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_pool=backup_pool,
-            description=description,
-            failover_ratio=failover_ratio,
-            health_checks=health_checks,
-            instances=instances,
-            name=name,
-            project=project,
-            region=region,
-            security_policy=security_policy,
-            self_link=self_link,
-            session_affinity=session_affinity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_pool: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             failover_ratio: Optional[pulumi.Input[float]] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_pool is None and 'backupPool' in kwargs:
-            backup_pool = kwargs['backupPool']
-        if failover_ratio is None and 'failoverRatio' in kwargs:
-            failover_ratio = kwargs['failoverRatio']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-
         if backup_pool is not None:
-            _setter("backup_pool", backup_pool)
+            pulumi.set(__self__, "backup_pool", backup_pool)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if failover_ratio is not None:
-            _setter("failover_ratio", failover_ratio)
+            pulumi.set(__self__, "failover_ratio", failover_ratio)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
 
     @property
     @pulumi.getter(name="backupPool")
@@ -614,10 +532,6 @@ class TargetPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

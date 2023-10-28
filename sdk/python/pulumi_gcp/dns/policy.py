@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,49 +45,20 @@ class PolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        PolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alternative_name_server_config=alternative_name_server_config,
-            description=description,
-            enable_inbound_forwarding=enable_inbound_forwarding,
-            enable_logging=enable_logging,
-            name=name,
-            networks=networks,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
-            alternative_name_server_config = kwargs['alternativeNameServerConfig']
-        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
-            enable_inbound_forwarding = kwargs['enableInboundForwarding']
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-
         if alternative_name_server_config is not None:
-            _setter("alternative_name_server_config", alternative_name_server_config)
+            pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_inbound_forwarding is not None:
-            _setter("enable_inbound_forwarding", enable_inbound_forwarding)
+            pulumi.set(__self__, "enable_inbound_forwarding", enable_inbound_forwarding)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="alternativeNameServerConfig")
@@ -218,49 +189,20 @@ class _PolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _PolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alternative_name_server_config=alternative_name_server_config,
-            description=description,
-            enable_inbound_forwarding=enable_inbound_forwarding,
-            enable_logging=enable_logging,
-            name=name,
-            networks=networks,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
-            alternative_name_server_config = kwargs['alternativeNameServerConfig']
-        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
-            enable_inbound_forwarding = kwargs['enableInboundForwarding']
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-
         if alternative_name_server_config is not None:
-            _setter("alternative_name_server_config", alternative_name_server_config)
+            pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_inbound_forwarding is not None:
-            _setter("enable_inbound_forwarding", enable_inbound_forwarding)
+            pulumi.set(__self__, "enable_inbound_forwarding", enable_inbound_forwarding)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="alternativeNameServerConfig")
@@ -528,10 +470,6 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -553,7 +491,6 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            alternative_name_server_config = _utilities.configure(alternative_name_server_config, PolicyAlternativeNameServerConfigArgs, True)
             __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding

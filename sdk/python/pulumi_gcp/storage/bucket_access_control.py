@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
@@ -41,29 +41,10 @@ class BucketAccessControlArgs:
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
-        BucketAccessControlArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            entity=entity,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             entity: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if entity is None:
-            raise TypeError("Missing 'entity' argument")
-
-        _setter("bucket", bucket)
-        _setter("entity", entity)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "entity", entity)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -154,35 +135,16 @@ class _BucketAccessControlState:
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
-        _BucketAccessControlState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            domain=domain,
-            email=email,
-            entity=entity,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             entity: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if entity is not None:
-            _setter("entity", entity)
+            pulumi.set(__self__, "entity", entity)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -404,10 +366,6 @@ class BucketAccessControl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BucketAccessControlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

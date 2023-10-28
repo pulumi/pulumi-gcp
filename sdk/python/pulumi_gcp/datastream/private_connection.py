@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,49 +34,14 @@ class PrivateConnectionArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        PrivateConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            location=location,
-            private_connection_id=private_connection_id,
-            vpc_peering_config=vpc_peering_config,
-            labels=labels,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             private_connection_id: Optional[pulumi.Input[str]] = None,
-             vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if private_connection_id is None and 'privateConnectionId' in kwargs:
-            private_connection_id = kwargs['privateConnectionId']
-        if private_connection_id is None:
-            raise TypeError("Missing 'private_connection_id' argument")
-        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
-            vpc_peering_config = kwargs['vpcPeeringConfig']
-        if vpc_peering_config is None:
-            raise TypeError("Missing 'vpc_peering_config' argument")
-
-        _setter("display_name", display_name)
-        _setter("location", location)
-        _setter("private_connection_id", private_connection_id)
-        _setter("vpc_peering_config", vpc_peering_config)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "private_connection_id", private_connection_id)
+        pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -182,57 +147,24 @@ class _PrivateConnectionState:
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """
-        _PrivateConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            errors=errors,
-            labels=labels,
-            location=location,
-            name=name,
-            private_connection_id=private_connection_id,
-            project=project,
-            state=state,
-            vpc_peering_config=vpc_peering_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_connection_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if private_connection_id is None and 'privateConnectionId' in kwargs:
-            private_connection_id = kwargs['privateConnectionId']
-        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
-            vpc_peering_config = kwargs['vpcPeeringConfig']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if errors is not None:
-            _setter("errors", errors)
+            pulumi.set(__self__, "errors", errors)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_connection_id is not None:
-            _setter("private_connection_id", private_connection_id)
+            pulumi.set(__self__, "private_connection_id", private_connection_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if vpc_peering_config is not None:
-            _setter("vpc_peering_config", vpc_peering_config)
+            pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -479,10 +411,6 @@ class PrivateConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PrivateConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -514,7 +442,6 @@ class PrivateConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'private_connection_id'")
             __props__.__dict__["private_connection_id"] = private_connection_id
             __props__.__dict__["project"] = project
-            vpc_peering_config = _utilities.configure(vpc_peering_config, PrivateConnectionVpcPeeringConfigArgs, True)
             if vpc_peering_config is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_peering_config'")
             __props__.__dict__["vpc_peering_config"] = vpc_peering_config

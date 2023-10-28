@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,48 +41,17 @@ class AutoscalingPolicyArgs:
         :param pulumi.Input['AutoscalingPolicyWorkerConfigArgs'] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
-        AutoscalingPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_id=policy_id,
-            basic_algorithm=basic_algorithm,
-            location=location,
-            project=project,
-            secondary_worker_config=secondary_worker_config,
-            worker_config=worker_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_id: Optional[pulumi.Input[str]] = None,
-             basic_algorithm: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
-             worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
-            basic_algorithm = kwargs['basicAlgorithm']
-        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
-            secondary_worker_config = kwargs['secondaryWorkerConfig']
-        if worker_config is None and 'workerConfig' in kwargs:
-            worker_config = kwargs['workerConfig']
-
-        _setter("policy_id", policy_id)
+        pulumi.set(__self__, "policy_id", policy_id)
         if basic_algorithm is not None:
-            _setter("basic_algorithm", basic_algorithm)
+            pulumi.set(__self__, "basic_algorithm", basic_algorithm)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if secondary_worker_config is not None:
-            _setter("secondary_worker_config", secondary_worker_config)
+            pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
         if worker_config is not None:
-            _setter("worker_config", worker_config)
+            pulumi.set(__self__, "worker_config", worker_config)
 
     @property
     @pulumi.getter(name="policyId")
@@ -197,51 +166,20 @@ class _AutoscalingPolicyState:
         :param pulumi.Input['AutoscalingPolicyWorkerConfigArgs'] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
-        _AutoscalingPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            basic_algorithm=basic_algorithm,
-            location=location,
-            name=name,
-            policy_id=policy_id,
-            project=project,
-            secondary_worker_config=secondary_worker_config,
-            worker_config=worker_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             basic_algorithm: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
-             worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
-            basic_algorithm = kwargs['basicAlgorithm']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
-            secondary_worker_config = kwargs['secondaryWorkerConfig']
-        if worker_config is None and 'workerConfig' in kwargs:
-            worker_config = kwargs['workerConfig']
-
         if basic_algorithm is not None:
-            _setter("basic_algorithm", basic_algorithm)
+            pulumi.set(__self__, "basic_algorithm", basic_algorithm)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if secondary_worker_config is not None:
-            _setter("secondary_worker_config", secondary_worker_config)
+            pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
         if worker_config is not None:
-            _setter("worker_config", worker_config)
+            pulumi.set(__self__, "worker_config", worker_config)
 
     @property
     @pulumi.getter(name="basicAlgorithm")
@@ -481,10 +419,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AutoscalingPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -505,16 +439,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
-            basic_algorithm = _utilities.configure(basic_algorithm, AutoscalingPolicyBasicAlgorithmArgs, True)
             __props__.__dict__["basic_algorithm"] = basic_algorithm
             __props__.__dict__["location"] = location
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
             __props__.__dict__["project"] = project
-            secondary_worker_config = _utilities.configure(secondary_worker_config, AutoscalingPolicySecondaryWorkerConfigArgs, True)
             __props__.__dict__["secondary_worker_config"] = secondary_worker_config
-            worker_config = _utilities.configure(worker_config, AutoscalingPolicyWorkerConfigArgs, True)
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["name"] = None
         super(AutoscalingPolicy, __self__).__init__(

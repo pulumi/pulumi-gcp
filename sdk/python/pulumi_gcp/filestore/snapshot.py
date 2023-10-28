@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -39,41 +39,16 @@ class SnapshotArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        SnapshotArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance=instance,
-            location=location,
-            description=description,
-            labels=labels,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance is None:
-            raise TypeError("Missing 'instance' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-
-        _setter("instance", instance)
-        _setter("location", location)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -192,55 +167,24 @@ class _SnapshotState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The snapshot state.
         """
-        _SnapshotState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            filesystem_used_bytes=filesystem_used_bytes,
-            instance=instance,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             filesystem_used_bytes: Optional[pulumi.Input[str]] = None,
-             instance: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if filesystem_used_bytes is None and 'filesystemUsedBytes' in kwargs:
-            filesystem_used_bytes = kwargs['filesystemUsedBytes']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if filesystem_used_bytes is not None:
-            _setter("filesystem_used_bytes", filesystem_used_bytes)
+            pulumi.set(__self__, "filesystem_used_bytes", filesystem_used_bytes)
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="createTime")
@@ -556,10 +500,6 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

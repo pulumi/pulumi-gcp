@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CustomConstraintArgs', 'CustomConstraint']
@@ -37,60 +37,17 @@ class CustomConstraintArgs:
         :param pulumi.Input[str] display_name: A human-friendly name for the constraint.
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
         """
-        CustomConstraintArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_type=action_type,
-            condition=condition,
-            method_types=method_types,
-            parent=parent,
-            resource_types=resource_types,
-            description=description,
-            display_name=display_name,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_type: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input[str]] = None,
-             method_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if action_type is None:
-            raise TypeError("Missing 'action_type' argument")
-        if condition is None:
-            raise TypeError("Missing 'condition' argument")
-        if method_types is None and 'methodTypes' in kwargs:
-            method_types = kwargs['methodTypes']
-        if method_types is None:
-            raise TypeError("Missing 'method_types' argument")
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if resource_types is None and 'resourceTypes' in kwargs:
-            resource_types = kwargs['resourceTypes']
-        if resource_types is None:
-            raise TypeError("Missing 'resource_types' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("action_type", action_type)
-        _setter("condition", condition)
-        _setter("method_types", method_types)
-        _setter("parent", parent)
-        _setter("resource_types", resource_types)
+        pulumi.set(__self__, "action_type", action_type)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "method_types", method_types)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "resource_types", resource_types)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="actionType")
@@ -221,61 +178,24 @@ class _CustomConstraintState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         :param pulumi.Input[str] update_time: Output only. The timestamp representing when the constraint was last updated.
         """
-        _CustomConstraintState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_type=action_type,
-            condition=condition,
-            description=description,
-            display_name=display_name,
-            method_types=method_types,
-            name=name,
-            parent=parent,
-            resource_types=resource_types,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_type: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             method_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if method_types is None and 'methodTypes' in kwargs:
-            method_types = kwargs['methodTypes']
-        if resource_types is None and 'resourceTypes' in kwargs:
-            resource_types = kwargs['resourceTypes']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if method_types is not None:
-            _setter("method_types", method_types)
+            pulumi.set(__self__, "method_types", method_types)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if resource_types is not None:
-            _setter("resource_types", resource_types)
+            pulumi.set(__self__, "resource_types", resource_types)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="actionType")
@@ -545,10 +465,6 @@ class CustomConstraint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomConstraintArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

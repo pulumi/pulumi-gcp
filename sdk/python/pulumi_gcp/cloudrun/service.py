@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,46 +54,19 @@ class ServiceArgs:
                and Configurations
                Structure is documented below.
         """
-        ServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            autogenerate_revision_name=autogenerate_revision_name,
-            metadata=metadata,
-            name=name,
-            project=project,
-            template=template,
-            traffics=traffics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
-             metadata: Optional[pulumi.Input['ServiceMetadataArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-             traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if autogenerate_revision_name is None and 'autogenerateRevisionName' in kwargs:
-            autogenerate_revision_name = kwargs['autogenerateRevisionName']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if autogenerate_revision_name is not None:
-            _setter("autogenerate_revision_name", autogenerate_revision_name)
+            pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if traffics is not None:
-            _setter("traffics", traffics)
+            pulumi.set(__self__, "traffics", traffics)
 
     @property
     @pulumi.getter
@@ -245,49 +218,22 @@ class _ServiceState:
                and Configurations
                Structure is documented below.
         """
-        _ServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autogenerate_revision_name=autogenerate_revision_name,
-            location=location,
-            metadata=metadata,
-            name=name,
-            project=project,
-            statuses=statuses,
-            template=template,
-            traffics=traffics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autogenerate_revision_name: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input['ServiceMetadataArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]] = None,
-             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-             traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autogenerate_revision_name is None and 'autogenerateRevisionName' in kwargs:
-            autogenerate_revision_name = kwargs['autogenerateRevisionName']
-
         if autogenerate_revision_name is not None:
-            _setter("autogenerate_revision_name", autogenerate_revision_name)
+            pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if traffics is not None:
-            _setter("traffics", traffics)
+            pulumi.set(__self__, "traffics", traffics)
 
     @property
     @pulumi.getter(name="autogenerateRevisionName")
@@ -962,10 +908,6 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -991,11 +933,9 @@ class Service(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            metadata = _utilities.configure(metadata, ServiceMetadataArgs, True)
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            template = _utilities.configure(template, ServiceTemplateArgs, True)
             __props__.__dict__["template"] = template
             __props__.__dict__["traffics"] = traffics
             __props__.__dict__["statuses"] = None

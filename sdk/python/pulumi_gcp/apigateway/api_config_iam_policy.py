@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApiConfigIamPolicyArgs', 'ApiConfigIamPolicy']
@@ -39,38 +39,11 @@ class ApiConfigIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        ApiConfigIamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api=api,
-            api_config=api_config,
-            policy_data=policy_data,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api: Optional[pulumi.Input[str]] = None,
-             api_config: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api is None:
-            raise TypeError("Missing 'api' argument")
-        if api_config is None and 'apiConfig' in kwargs:
-            api_config = kwargs['apiConfig']
-        if api_config is None:
-            raise TypeError("Missing 'api_config' argument")
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-
-        _setter("api", api)
-        _setter("api_config", api_config)
-        _setter("policy_data", policy_data)
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "api_config", api_config)
+        pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -163,39 +136,16 @@ class _ApiConfigIamPolicyState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        _ApiConfigIamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api=api,
-            api_config=api_config,
-            etag=etag,
-            policy_data=policy_data,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api: Optional[pulumi.Input[str]] = None,
-             api_config: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_config is None and 'apiConfig' in kwargs:
-            api_config = kwargs['apiConfig']
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-
         if api is not None:
-            _setter("api", api)
+            pulumi.set(__self__, "api", api)
         if api_config is not None:
-            _setter("api_config", api_config)
+            pulumi.set(__self__, "api_config", api_config)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -485,10 +435,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApiConfigIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

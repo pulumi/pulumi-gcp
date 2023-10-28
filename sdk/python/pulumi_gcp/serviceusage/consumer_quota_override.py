@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConsumerQuotaOverrideArgs', 'ConsumerQuotaOverride']
@@ -38,49 +38,16 @@ class ConsumerQuotaOverrideArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ConsumerQuotaOverrideArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            limit=limit,
-            metric=metric,
-            override_value=override_value,
-            service=service,
-            dimensions=dimensions,
-            force=force,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             limit: Optional[pulumi.Input[str]] = None,
-             metric: Optional[pulumi.Input[str]] = None,
-             override_value: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if limit is None:
-            raise TypeError("Missing 'limit' argument")
-        if metric is None:
-            raise TypeError("Missing 'metric' argument")
-        if override_value is None and 'overrideValue' in kwargs:
-            override_value = kwargs['overrideValue']
-        if override_value is None:
-            raise TypeError("Missing 'override_value' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("limit", limit)
-        _setter("metric", metric)
-        _setter("override_value", override_value)
-        _setter("service", service)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "override_value", override_value)
+        pulumi.set(__self__, "service", service)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -203,49 +170,22 @@ class _ConsumerQuotaOverrideState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
         """
-        _ConsumerQuotaOverrideState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dimensions=dimensions,
-            force=force,
-            limit=limit,
-            metric=metric,
-            name=name,
-            override_value=override_value,
-            project=project,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             limit: Optional[pulumi.Input[str]] = None,
-             metric: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             override_value: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if override_value is None and 'overrideValue' in kwargs:
-            override_value = kwargs['overrideValue']
-
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if limit is not None:
-            _setter("limit", limit)
+            pulumi.set(__self__, "limit", limit)
         if metric is not None:
-            _setter("metric", metric)
+            pulumi.set(__self__, "metric", metric)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if override_value is not None:
-            _setter("override_value", override_value)
+            pulumi.set(__self__, "override_value", override_value)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -455,10 +395,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConsumerQuotaOverrideArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

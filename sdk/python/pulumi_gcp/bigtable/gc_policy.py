@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,66 +42,21 @@ class GCPolicyArgs:
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
-        GCPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            column_family=column_family,
-            instance_name=instance_name,
-            table=table,
-            deletion_policy=deletion_policy,
-            gc_rules=gc_rules,
-            max_age=max_age,
-            max_versions=max_versions,
-            mode=mode,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             column_family: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             gc_rules: Optional[pulumi.Input[str]] = None,
-             max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
-             max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if column_family is None and 'columnFamily' in kwargs:
-            column_family = kwargs['columnFamily']
-        if column_family is None:
-            raise TypeError("Missing 'column_family' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if table is None:
-            raise TypeError("Missing 'table' argument")
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-        if gc_rules is None and 'gcRules' in kwargs:
-            gc_rules = kwargs['gcRules']
-        if max_age is None and 'maxAge' in kwargs:
-            max_age = kwargs['maxAge']
-        if max_versions is None and 'maxVersions' in kwargs:
-            max_versions = kwargs['maxVersions']
-
-        _setter("column_family", column_family)
-        _setter("instance_name", instance_name)
-        _setter("table", table)
+        pulumi.set(__self__, "column_family", column_family)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "table", table)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if gc_rules is not None:
-            _setter("gc_rules", gc_rules)
+            pulumi.set(__self__, "gc_rules", gc_rules)
         if max_age is not None:
-            _setter("max_age", max_age)
+            pulumi.set(__self__, "max_age", max_age)
         if max_versions is not None:
-            _setter("max_versions", max_versions)
+            pulumi.set(__self__, "max_versions", max_versions)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="columnFamily")
@@ -246,63 +201,24 @@ class _GCPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
-        _GCPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            column_family=column_family,
-            deletion_policy=deletion_policy,
-            gc_rules=gc_rules,
-            instance_name=instance_name,
-            max_age=max_age,
-            max_versions=max_versions,
-            mode=mode,
-            project=project,
-            table=table,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             column_family: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             gc_rules: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
-             max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if column_family is None and 'columnFamily' in kwargs:
-            column_family = kwargs['columnFamily']
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-        if gc_rules is None and 'gcRules' in kwargs:
-            gc_rules = kwargs['gcRules']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if max_age is None and 'maxAge' in kwargs:
-            max_age = kwargs['maxAge']
-        if max_versions is None and 'maxVersions' in kwargs:
-            max_versions = kwargs['maxVersions']
-
         if column_family is not None:
-            _setter("column_family", column_family)
+            pulumi.set(__self__, "column_family", column_family)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if gc_rules is not None:
-            _setter("gc_rules", gc_rules)
+            pulumi.set(__self__, "gc_rules", gc_rules)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if max_age is not None:
-            _setter("max_age", max_age)
+            pulumi.set(__self__, "max_age", max_age)
         if max_versions is not None:
-            _setter("max_versions", max_versions)
+            pulumi.set(__self__, "max_versions", max_versions)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
 
     @property
     @pulumi.getter(name="columnFamily")
@@ -710,10 +626,6 @@ class GCPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GCPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -745,7 +657,6 @@ class GCPolicy(pulumi.CustomResource):
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
-            max_age = _utilities.configure(max_age, GCPolicyMaxAgeArgs, True)
             __props__.__dict__["max_age"] = max_age
             __props__.__dict__["max_versions"] = max_versions
             __props__.__dict__["mode"] = mode

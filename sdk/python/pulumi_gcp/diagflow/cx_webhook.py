@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,64 +43,23 @@ class CxWebhookArgs:
                Structure is documented below.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
-        CxWebhookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            disabled=disabled,
-            enable_spell_correction=enable_spell_correction,
-            enable_stackdriver_logging=enable_stackdriver_logging,
-            generic_web_service=generic_web_service,
-            parent=parent,
-            security_settings=security_settings,
-            service_directory=service_directory,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
-             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-             generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input[str]] = None,
-             service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
-            enable_spell_correction = kwargs['enableSpellCorrection']
-        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
-            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if generic_web_service is None and 'genericWebService' in kwargs:
-            generic_web_service = kwargs['genericWebService']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if service_directory is None and 'serviceDirectory' in kwargs:
-            service_directory = kwargs['serviceDirectory']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if enable_spell_correction is not None:
-            _setter("enable_spell_correction", enable_spell_correction)
+            pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
-            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if generic_web_service is not None:
-            _setter("generic_web_service", generic_web_service)
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if service_directory is not None:
-            _setter("service_directory", service_directory)
+            pulumi.set(__self__, "service_directory", service_directory)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="displayName")
@@ -252,73 +211,28 @@ class _CxWebhookState:
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
-        _CxWebhookState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            display_name=display_name,
-            enable_spell_correction=enable_spell_correction,
-            enable_stackdriver_logging=enable_stackdriver_logging,
-            generic_web_service=generic_web_service,
-            name=name,
-            parent=parent,
-            security_settings=security_settings,
-            service_directory=service_directory,
-            start_flow=start_flow,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
-             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-             generic_web_service: Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input[str]] = None,
-             service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
-             start_flow: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
-            enable_spell_correction = kwargs['enableSpellCorrection']
-        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
-            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if generic_web_service is None and 'genericWebService' in kwargs:
-            generic_web_service = kwargs['genericWebService']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if service_directory is None and 'serviceDirectory' in kwargs:
-            service_directory = kwargs['serviceDirectory']
-        if start_flow is None and 'startFlow' in kwargs:
-            start_flow = kwargs['startFlow']
-
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enable_spell_correction is not None:
-            _setter("enable_spell_correction", enable_spell_correction)
+            pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
-            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if generic_web_service is not None:
-            _setter("generic_web_service", generic_web_service)
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if service_directory is not None:
-            _setter("service_directory", service_directory)
+            pulumi.set(__self__, "service_directory", service_directory)
         if start_flow is not None:
-            _setter("start_flow", start_flow)
+            pulumi.set(__self__, "start_flow", start_flow)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -615,10 +529,6 @@ class CxWebhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxWebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -648,11 +558,9 @@ class CxWebhook(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
-            generic_web_service = _utilities.configure(generic_web_service, CxWebhookGenericWebServiceArgs, True)
             __props__.__dict__["generic_web_service"] = generic_web_service
             __props__.__dict__["parent"] = parent
             __props__.__dict__["security_settings"] = security_settings
-            service_directory = _utilities.configure(service_directory, CxWebhookServiceDirectoryArgs, True)
             __props__.__dict__["service_directory"] = service_directory
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["name"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,25 +25,10 @@ class ManagementServerManagementUriArgs:
         :param pulumi.Input[str] web_ui: (Output)
                The management console webUi.
         """
-        ManagementServerManagementUriArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api=api,
-            web_ui=web_ui,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api: Optional[pulumi.Input[str]] = None,
-             web_ui: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if web_ui is None and 'webUi' in kwargs:
-            web_ui = kwargs['webUi']
-
         if api is not None:
-            _setter("api", api)
+            pulumi.set(__self__, "api", api)
         if web_ui is not None:
-            _setter("web_ui", web_ui)
+            pulumi.set(__self__, "web_ui", web_ui)
 
     @property
     @pulumi.getter
@@ -85,26 +70,9 @@ class ManagementServerNetworkArgs:
                
                - - -
         """
-        ManagementServerNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            peering_mode=peering_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[pulumi.Input[str]] = None,
-             peering_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if peering_mode is None and 'peeringMode' in kwargs:
-            peering_mode = kwargs['peeringMode']
-
-        _setter("network", network)
+        pulumi.set(__self__, "network", network)
         if peering_mode is not None:
-            _setter("peering_mode", peering_mode)
+            pulumi.set(__self__, "peering_mode", peering_mode)
 
     @property
     @pulumi.getter

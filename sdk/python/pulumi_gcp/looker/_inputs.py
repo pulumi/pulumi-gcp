@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,21 +26,8 @@ __all__ = [
 class InstanceAdminSettingsArgs:
     def __init__(__self__, *,
                  allowed_email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        InstanceAdminSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_email_domains=allowed_email_domains,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_email_domains is None and 'allowedEmailDomains' in kwargs:
-            allowed_email_domains = kwargs['allowedEmailDomains']
-
         if allowed_email_domains is not None:
-            _setter("allowed_email_domains", allowed_email_domains)
+            pulumi.set(__self__, "allowed_email_domains", allowed_email_domains)
 
     @property
     @pulumi.getter(name="allowedEmailDomains")
@@ -66,34 +53,9 @@ class InstanceDenyMaintenancePeriodArgs:
         :param pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs'] time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
-        InstanceDenyMaintenancePeriodArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_date=end_date,
-            start_date=start_date,
-            time=time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_date: Optional[pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgs']] = None,
-             start_date: Optional[pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgs']] = None,
-             time: Optional[pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if start_date is None:
-            raise TypeError("Missing 'start_date' argument")
-        if time is None:
-            raise TypeError("Missing 'time' argument")
-
-        _setter("end_date", end_date)
-        _setter("start_date", start_date)
-        _setter("time", time)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
 
     @property
     @pulumi.getter(name="endDate")
@@ -149,27 +111,12 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
                a year.
         """
-        InstanceDenyMaintenancePeriodEndDateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[pulumi.Input[int]] = None,
-             month: Optional[pulumi.Input[int]] = None,
-             year: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if day is not None:
-            _setter("day", day)
+            pulumi.set(__self__, "day", day)
         if month is not None:
-            _setter("month", month)
+            pulumi.set(__self__, "month", month)
         if year is not None:
-            _setter("year", year)
+            pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -225,27 +172,12 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
                a year.
         """
-        InstanceDenyMaintenancePeriodStartDateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[pulumi.Input[int]] = None,
-             month: Optional[pulumi.Input[int]] = None,
-             year: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if day is not None:
-            _setter("day", day)
+            pulumi.set(__self__, "day", day)
         if month is not None:
-            _setter("month", month)
+            pulumi.set(__self__, "month", month)
         if year is not None:
-            _setter("year", year)
+            pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -300,31 +232,14 @@ class InstanceDenyMaintenancePeriodTimeArgs:
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
         """
-        InstanceDenyMaintenancePeriodTimeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hours=hours,
-            minutes=minutes,
-            nanos=nanos,
-            seconds=seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hours: Optional[pulumi.Input[int]] = None,
-             minutes: Optional[pulumi.Input[int]] = None,
-             nanos: Optional[pulumi.Input[int]] = None,
-             seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if hours is not None:
-            _setter("hours", hours)
+            pulumi.set(__self__, "hours", hours)
         if minutes is not None:
-            _setter("minutes", minutes)
+            pulumi.set(__self__, "minutes", minutes)
         if nanos is not None:
-            _setter("nanos", nanos)
+            pulumi.set(__self__, "nanos", nanos)
         if seconds is not None:
-            _setter("seconds", seconds)
+            pulumi.set(__self__, "seconds", seconds)
 
     @property
     @pulumi.getter
@@ -388,33 +303,12 @@ class InstanceEncryptionConfigArgs:
         :param pulumi.Input[str] kms_key_state: (Output)
                Status of the customer managed encryption key (CMEK) in KMS.
         """
-        InstanceEncryptionConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            kms_key_name_version=kms_key_name_version,
-            kms_key_state=kms_key_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             kms_key_name_version: Optional[pulumi.Input[str]] = None,
-             kms_key_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name_version is None and 'kmsKeyNameVersion' in kwargs:
-            kms_key_name_version = kwargs['kmsKeyNameVersion']
-        if kms_key_state is None and 'kmsKeyState' in kwargs:
-            kms_key_state = kwargs['kmsKeyState']
-
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_name_version is not None:
-            _setter("kms_key_name_version", kms_key_name_version)
+            pulumi.set(__self__, "kms_key_name_version", kms_key_name_version)
         if kms_key_state is not None:
-            _setter("kms_key_state", kms_key_state)
+            pulumi.set(__self__, "kms_key_state", kms_key_state)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -473,29 +367,8 @@ class InstanceMaintenanceWindowArgs:
         :param pulumi.Input['InstanceMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
-        InstanceMaintenanceWindowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day_of_week=day_of_week,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day_of_week: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input['InstanceMaintenanceWindowStartTimeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day_of_week is None and 'dayOfWeek' in kwargs:
-            day_of_week = kwargs['dayOfWeek']
-        if day_of_week is None:
-            raise TypeError("Missing 'day_of_week' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-
-        _setter("day_of_week", day_of_week)
-        _setter("start_time", start_time)
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -544,31 +417,14 @@ class InstanceMaintenanceWindowStartTimeArgs:
         :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
         """
-        InstanceMaintenanceWindowStartTimeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hours=hours,
-            minutes=minutes,
-            nanos=nanos,
-            seconds=seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hours: Optional[pulumi.Input[int]] = None,
-             minutes: Optional[pulumi.Input[int]] = None,
-             nanos: Optional[pulumi.Input[int]] = None,
-             seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if hours is not None:
-            _setter("hours", hours)
+            pulumi.set(__self__, "hours", hours)
         if minutes is not None:
-            _setter("minutes", minutes)
+            pulumi.set(__self__, "minutes", minutes)
         if nanos is not None:
-            _setter("nanos", nanos)
+            pulumi.set(__self__, "nanos", nanos)
         if seconds is not None:
-            _setter("seconds", seconds)
+            pulumi.set(__self__, "seconds", seconds)
 
     @property
     @pulumi.getter
@@ -628,29 +484,8 @@ class InstanceOauthConfigArgs:
         :param pulumi.Input[str] client_id: The client ID for the Oauth config.
         :param pulumi.Input[str] client_secret: The client secret for the Oauth config.
         """
-        InstanceOauthConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            client_secret=client_secret,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if client_secret is None:
-            raise TypeError("Missing 'client_secret' argument")
-
-        _setter("client_id", client_id)
-        _setter("client_secret", client_secret)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
 
     @property
     @pulumi.getter(name="clientId")
@@ -688,33 +523,12 @@ class InstanceUserMetadataArgs:
         :param pulumi.Input[int] additional_standard_user_count: Number of additional Standard Users to allocate to the Looker Instance.
         :param pulumi.Input[int] additional_viewer_user_count: Number of additional Viewer Users to allocate to the Looker Instance.
         """
-        InstanceUserMetadataArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_developer_user_count=additional_developer_user_count,
-            additional_standard_user_count=additional_standard_user_count,
-            additional_viewer_user_count=additional_viewer_user_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_developer_user_count: Optional[pulumi.Input[int]] = None,
-             additional_standard_user_count: Optional[pulumi.Input[int]] = None,
-             additional_viewer_user_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_developer_user_count is None and 'additionalDeveloperUserCount' in kwargs:
-            additional_developer_user_count = kwargs['additionalDeveloperUserCount']
-        if additional_standard_user_count is None and 'additionalStandardUserCount' in kwargs:
-            additional_standard_user_count = kwargs['additionalStandardUserCount']
-        if additional_viewer_user_count is None and 'additionalViewerUserCount' in kwargs:
-            additional_viewer_user_count = kwargs['additionalViewerUserCount']
-
         if additional_developer_user_count is not None:
-            _setter("additional_developer_user_count", additional_developer_user_count)
+            pulumi.set(__self__, "additional_developer_user_count", additional_developer_user_count)
         if additional_standard_user_count is not None:
-            _setter("additional_standard_user_count", additional_standard_user_count)
+            pulumi.set(__self__, "additional_standard_user_count", additional_standard_user_count)
         if additional_viewer_user_count is not None:
-            _setter("additional_viewer_user_count", additional_viewer_user_count)
+            pulumi.set(__self__, "additional_viewer_user_count", additional_viewer_user_count)
 
     @property
     @pulumi.getter(name="additionalDeveloperUserCount")

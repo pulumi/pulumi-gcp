@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,68 +39,21 @@ class AssetArgs:
         :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         """
-        AssetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataplex_zone=dataplex_zone,
-            discovery_spec=discovery_spec,
-            lake=lake,
-            location=location,
-            resource_spec=resource_spec,
-            description=description,
-            display_name=display_name,
-            labels=labels,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataplex_zone: Optional[pulumi.Input[str]] = None,
-             discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
-             lake: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             resource_spec: Optional[pulumi.Input['AssetResourceSpecArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataplex_zone is None and 'dataplexZone' in kwargs:
-            dataplex_zone = kwargs['dataplexZone']
-        if dataplex_zone is None:
-            raise TypeError("Missing 'dataplex_zone' argument")
-        if discovery_spec is None and 'discoverySpec' in kwargs:
-            discovery_spec = kwargs['discoverySpec']
-        if discovery_spec is None:
-            raise TypeError("Missing 'discovery_spec' argument")
-        if lake is None:
-            raise TypeError("Missing 'lake' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if resource_spec is None and 'resourceSpec' in kwargs:
-            resource_spec = kwargs['resourceSpec']
-        if resource_spec is None:
-            raise TypeError("Missing 'resource_spec' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("dataplex_zone", dataplex_zone)
-        _setter("discovery_spec", discovery_spec)
-        _setter("lake", lake)
-        _setter("location", location)
-        _setter("resource_spec", resource_spec)
+        pulumi.set(__self__, "dataplex_zone", dataplex_zone)
+        pulumi.set(__self__, "discovery_spec", discovery_spec)
+        pulumi.set(__self__, "lake", lake)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "resource_spec", resource_spec)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataplexZone")
@@ -263,101 +216,40 @@ class _AssetState:
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
         """
-        _AssetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            dataplex_zone=dataplex_zone,
-            description=description,
-            discovery_spec=discovery_spec,
-            discovery_statuses=discovery_statuses,
-            display_name=display_name,
-            labels=labels,
-            lake=lake,
-            location=location,
-            name=name,
-            project=project,
-            resource_spec=resource_spec,
-            resource_statuses=resource_statuses,
-            security_statuses=security_statuses,
-            state=state,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             dataplex_zone: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
-             discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             lake: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             resource_spec: Optional[pulumi.Input['AssetResourceSpecArgs']] = None,
-             resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]] = None,
-             security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if dataplex_zone is None and 'dataplexZone' in kwargs:
-            dataplex_zone = kwargs['dataplexZone']
-        if discovery_spec is None and 'discoverySpec' in kwargs:
-            discovery_spec = kwargs['discoverySpec']
-        if discovery_statuses is None and 'discoveryStatuses' in kwargs:
-            discovery_statuses = kwargs['discoveryStatuses']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if resource_spec is None and 'resourceSpec' in kwargs:
-            resource_spec = kwargs['resourceSpec']
-        if resource_statuses is None and 'resourceStatuses' in kwargs:
-            resource_statuses = kwargs['resourceStatuses']
-        if security_statuses is None and 'securityStatuses' in kwargs:
-            security_statuses = kwargs['securityStatuses']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if dataplex_zone is not None:
-            _setter("dataplex_zone", dataplex_zone)
+            pulumi.set(__self__, "dataplex_zone", dataplex_zone)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if discovery_spec is not None:
-            _setter("discovery_spec", discovery_spec)
+            pulumi.set(__self__, "discovery_spec", discovery_spec)
         if discovery_statuses is not None:
-            _setter("discovery_statuses", discovery_statuses)
+            pulumi.set(__self__, "discovery_statuses", discovery_statuses)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if lake is not None:
-            _setter("lake", lake)
+            pulumi.set(__self__, "lake", lake)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if resource_spec is not None:
-            _setter("resource_spec", resource_spec)
+            pulumi.set(__self__, "resource_spec", resource_spec)
         if resource_statuses is not None:
-            _setter("resource_statuses", resource_statuses)
+            pulumi.set(__self__, "resource_statuses", resource_statuses)
         if security_statuses is not None:
-            _setter("security_statuses", security_statuses)
+            pulumi.set(__self__, "security_statuses", security_statuses)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -725,10 +617,6 @@ class Asset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AssetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -757,7 +645,6 @@ class Asset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataplex_zone'")
             __props__.__dict__["dataplex_zone"] = dataplex_zone
             __props__.__dict__["description"] = description
-            discovery_spec = _utilities.configure(discovery_spec, AssetDiscoverySpecArgs, True)
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
             __props__.__dict__["discovery_spec"] = discovery_spec
@@ -771,7 +658,6 @@ class Asset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            resource_spec = _utilities.configure(resource_spec, AssetResourceSpecArgs, True)
             if resource_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_spec'")
             __props__.__dict__["resource_spec"] = resource_spec

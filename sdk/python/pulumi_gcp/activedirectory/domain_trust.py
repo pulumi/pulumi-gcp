@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainTrustArgs', 'DomainTrust']
@@ -41,65 +41,16 @@ class DomainTrustArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
         """
-        DomainTrustArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            target_dns_ip_addresses=target_dns_ip_addresses,
-            target_domain_name=target_domain_name,
-            trust_direction=trust_direction,
-            trust_handshake_secret=trust_handshake_secret,
-            trust_type=trust_type,
-            project=project,
-            selective_authentication=selective_authentication,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_domain_name: Optional[pulumi.Input[str]] = None,
-             trust_direction: Optional[pulumi.Input[str]] = None,
-             trust_handshake_secret: Optional[pulumi.Input[str]] = None,
-             trust_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             selective_authentication: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if target_dns_ip_addresses is None and 'targetDnsIpAddresses' in kwargs:
-            target_dns_ip_addresses = kwargs['targetDnsIpAddresses']
-        if target_dns_ip_addresses is None:
-            raise TypeError("Missing 'target_dns_ip_addresses' argument")
-        if target_domain_name is None and 'targetDomainName' in kwargs:
-            target_domain_name = kwargs['targetDomainName']
-        if target_domain_name is None:
-            raise TypeError("Missing 'target_domain_name' argument")
-        if trust_direction is None and 'trustDirection' in kwargs:
-            trust_direction = kwargs['trustDirection']
-        if trust_direction is None:
-            raise TypeError("Missing 'trust_direction' argument")
-        if trust_handshake_secret is None and 'trustHandshakeSecret' in kwargs:
-            trust_handshake_secret = kwargs['trustHandshakeSecret']
-        if trust_handshake_secret is None:
-            raise TypeError("Missing 'trust_handshake_secret' argument")
-        if trust_type is None and 'trustType' in kwargs:
-            trust_type = kwargs['trustType']
-        if trust_type is None:
-            raise TypeError("Missing 'trust_type' argument")
-        if selective_authentication is None and 'selectiveAuthentication' in kwargs:
-            selective_authentication = kwargs['selectiveAuthentication']
-
-        _setter("domain", domain)
-        _setter("target_dns_ip_addresses", target_dns_ip_addresses)
-        _setter("target_domain_name", target_domain_name)
-        _setter("trust_direction", trust_direction)
-        _setter("trust_handshake_secret", trust_handshake_secret)
-        _setter("trust_type", trust_type)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_dns_ip_addresses", target_dns_ip_addresses)
+        pulumi.set(__self__, "target_domain_name", target_domain_name)
+        pulumi.set(__self__, "trust_direction", trust_direction)
+        pulumi.set(__self__, "trust_handshake_secret", trust_handshake_secret)
+        pulumi.set(__self__, "trust_type", trust_type)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if selective_authentication is not None:
-            _setter("selective_authentication", selective_authentication)
+            pulumi.set(__self__, "selective_authentication", selective_authentication)
 
     @property
     @pulumi.getter
@@ -236,59 +187,22 @@ class _DomainTrustState:
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
                Possible values are: `FOREST`, `EXTERNAL`.
         """
-        _DomainTrustState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            project=project,
-            selective_authentication=selective_authentication,
-            target_dns_ip_addresses=target_dns_ip_addresses,
-            target_domain_name=target_domain_name,
-            trust_direction=trust_direction,
-            trust_handshake_secret=trust_handshake_secret,
-            trust_type=trust_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             selective_authentication: Optional[pulumi.Input[bool]] = None,
-             target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_domain_name: Optional[pulumi.Input[str]] = None,
-             trust_direction: Optional[pulumi.Input[str]] = None,
-             trust_handshake_secret: Optional[pulumi.Input[str]] = None,
-             trust_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if selective_authentication is None and 'selectiveAuthentication' in kwargs:
-            selective_authentication = kwargs['selectiveAuthentication']
-        if target_dns_ip_addresses is None and 'targetDnsIpAddresses' in kwargs:
-            target_dns_ip_addresses = kwargs['targetDnsIpAddresses']
-        if target_domain_name is None and 'targetDomainName' in kwargs:
-            target_domain_name = kwargs['targetDomainName']
-        if trust_direction is None and 'trustDirection' in kwargs:
-            trust_direction = kwargs['trustDirection']
-        if trust_handshake_secret is None and 'trustHandshakeSecret' in kwargs:
-            trust_handshake_secret = kwargs['trustHandshakeSecret']
-        if trust_type is None and 'trustType' in kwargs:
-            trust_type = kwargs['trustType']
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if selective_authentication is not None:
-            _setter("selective_authentication", selective_authentication)
+            pulumi.set(__self__, "selective_authentication", selective_authentication)
         if target_dns_ip_addresses is not None:
-            _setter("target_dns_ip_addresses", target_dns_ip_addresses)
+            pulumi.set(__self__, "target_dns_ip_addresses", target_dns_ip_addresses)
         if target_domain_name is not None:
-            _setter("target_domain_name", target_domain_name)
+            pulumi.set(__self__, "target_domain_name", target_domain_name)
         if trust_direction is not None:
-            _setter("trust_direction", trust_direction)
+            pulumi.set(__self__, "trust_direction", trust_direction)
         if trust_handshake_secret is not None:
-            _setter("trust_handshake_secret", trust_handshake_secret)
+            pulumi.set(__self__, "trust_handshake_secret", trust_handshake_secret)
         if trust_type is not None:
-            _setter("trust_type", trust_type)
+            pulumi.set(__self__, "trust_type", trust_type)
 
     @property
     @pulumi.getter
@@ -534,10 +448,6 @@ class DomainTrust(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainTrustArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

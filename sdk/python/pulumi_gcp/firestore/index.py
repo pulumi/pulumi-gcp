@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,39 +38,14 @@ class IndexArgs:
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
-        IndexArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            fields=fields,
-            database=database,
-            project=project,
-            query_scope=query_scope,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             query_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collection is None:
-            raise TypeError("Missing 'collection' argument")
-        if fields is None:
-            raise TypeError("Missing 'fields' argument")
-        if query_scope is None and 'queryScope' in kwargs:
-            query_scope = kwargs['queryScope']
-
-        _setter("collection", collection)
-        _setter("fields", fields)
+        pulumi.set(__self__, "collection", collection)
+        pulumi.set(__self__, "fields", fields)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if query_scope is not None:
-            _setter("query_scope", query_scope)
+            pulumi.set(__self__, "query_scope", query_scope)
 
     @property
     @pulumi.getter
@@ -170,41 +145,18 @@ class _IndexState:
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
-        _IndexState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            database=database,
-            fields=fields,
-            name=name,
-            project=project,
-            query_scope=query_scope,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             query_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query_scope is None and 'queryScope' in kwargs:
-            query_scope = kwargs['queryScope']
-
         if collection is not None:
-            _setter("collection", collection)
+            pulumi.set(__self__, "collection", collection)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if query_scope is not None:
-            _setter("query_scope", query_scope)
+            pulumi.set(__self__, "query_scope", query_scope)
 
     @property
     @pulumi.getter
@@ -433,10 +385,6 @@ class Index(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

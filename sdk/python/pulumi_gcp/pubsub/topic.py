@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,51 +51,20 @@ class TopicArgs:
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
-        TopicArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            labels=labels,
-            message_retention_duration=message_retention_duration,
-            message_storage_policy=message_storage_policy,
-            name=name,
-            project=project,
-            schema_settings=schema_settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             message_retention_duration: Optional[pulumi.Input[str]] = None,
-             message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
-            message_retention_duration = kwargs['messageRetentionDuration']
-        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
-            message_storage_policy = kwargs['messageStoragePolicy']
-        if schema_settings is None and 'schemaSettings' in kwargs:
-            schema_settings = kwargs['schemaSettings']
-
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
-            _setter("message_retention_duration", message_retention_duration)
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if message_storage_policy is not None:
-            _setter("message_storage_policy", message_storage_policy)
+            pulumi.set(__self__, "message_storage_policy", message_storage_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if schema_settings is not None:
-            _setter("schema_settings", schema_settings)
+            pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -238,51 +207,20 @@ class _TopicState:
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
-        _TopicState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            labels=labels,
-            message_retention_duration=message_retention_duration,
-            message_storage_policy=message_storage_policy,
-            name=name,
-            project=project,
-            schema_settings=schema_settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             message_retention_duration: Optional[pulumi.Input[str]] = None,
-             message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
-            message_retention_duration = kwargs['messageRetentionDuration']
-        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
-            message_storage_policy = kwargs['messageStoragePolicy']
-        if schema_settings is None and 'schemaSettings' in kwargs:
-            schema_settings = kwargs['schemaSettings']
-
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
-            _setter("message_retention_duration", message_retention_duration)
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if message_storage_policy is not None:
-            _setter("message_storage_policy", message_storage_policy)
+            pulumi.set(__self__, "message_storage_policy", message_storage_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if schema_settings is not None:
-            _setter("schema_settings", schema_settings)
+            pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -626,10 +564,6 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -654,11 +588,9 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
-            message_storage_policy = _utilities.configure(message_storage_policy, TopicMessageStoragePolicyArgs, True)
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            schema_settings = _utilities.configure(schema_settings, TopicSchemaSettingsArgs, True)
             __props__.__dict__["schema_settings"] = schema_settings
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,40 +34,11 @@ class ProjectCustomModuleArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ProjectCustomModuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_config=custom_config,
-            display_name=display_name,
-            enablement_state=enablement_state,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enablement_state: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_config is None and 'customConfig' in kwargs:
-            custom_config = kwargs['customConfig']
-        if custom_config is None:
-            raise TypeError("Missing 'custom_config' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if enablement_state is None and 'enablementState' in kwargs:
-            enablement_state = kwargs['enablementState']
-        if enablement_state is None:
-            raise TypeError("Missing 'enablement_state' argument")
-
-        _setter("custom_config", custom_config)
-        _setter("display_name", display_name)
-        _setter("enablement_state", enablement_state)
+        pulumi.set(__self__, "custom_config", custom_config)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enablement_state", enablement_state)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="customConfig")
@@ -158,59 +129,22 @@ class _ProjectCustomModuleState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        _ProjectCustomModuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ancestor_module=ancestor_module,
-            custom_config=custom_config,
-            display_name=display_name,
-            enablement_state=enablement_state,
-            last_editor=last_editor,
-            name=name,
-            project=project,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ancestor_module: Optional[pulumi.Input[str]] = None,
-             custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enablement_state: Optional[pulumi.Input[str]] = None,
-             last_editor: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ancestor_module is None and 'ancestorModule' in kwargs:
-            ancestor_module = kwargs['ancestorModule']
-        if custom_config is None and 'customConfig' in kwargs:
-            custom_config = kwargs['customConfig']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if enablement_state is None and 'enablementState' in kwargs:
-            enablement_state = kwargs['enablementState']
-        if last_editor is None and 'lastEditor' in kwargs:
-            last_editor = kwargs['lastEditor']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if ancestor_module is not None:
-            _setter("ancestor_module", ancestor_module)
+            pulumi.set(__self__, "ancestor_module", ancestor_module)
         if custom_config is not None:
-            _setter("custom_config", custom_config)
+            pulumi.set(__self__, "custom_config", custom_config)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enablement_state is not None:
-            _setter("enablement_state", enablement_state)
+            pulumi.set(__self__, "enablement_state", enablement_state)
         if last_editor is not None:
-            _setter("last_editor", last_editor)
+            pulumi.set(__self__, "last_editor", last_editor)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="ancestorModule")
@@ -534,10 +468,6 @@ class ProjectCustomModule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectCustomModuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -556,7 +486,6 @@ class ProjectCustomModule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectCustomModuleArgs.__new__(ProjectCustomModuleArgs)
 
-            custom_config = _utilities.configure(custom_config, ProjectCustomModuleCustomConfigArgs, True)
             if custom_config is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_config'")
             __props__.__dict__["custom_config"] = custom_config

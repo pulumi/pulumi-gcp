@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetTCPProxyArgs', 'TargetTCPProxy']
@@ -43,46 +43,17 @@ class TargetTCPProxyArgs:
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
         """
-        TargetTCPProxyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_service=backend_service,
-            description=description,
-            name=name,
-            project=project,
-            proxy_bind=proxy_bind,
-            proxy_header=proxy_header,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_service: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy_bind: Optional[pulumi.Input[bool]] = None,
-             proxy_header: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_service is None and 'backendService' in kwargs:
-            backend_service = kwargs['backendService']
-        if backend_service is None:
-            raise TypeError("Missing 'backend_service' argument")
-        if proxy_bind is None and 'proxyBind' in kwargs:
-            proxy_bind = kwargs['proxyBind']
-        if proxy_header is None and 'proxyHeader' in kwargs:
-            proxy_header = kwargs['proxyHeader']
-
-        _setter("backend_service", backend_service)
+        pulumi.set(__self__, "backend_service", backend_service)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
-            _setter("proxy_bind", proxy_bind)
+            pulumi.set(__self__, "proxy_bind", proxy_bind)
         if proxy_header is not None:
-            _setter("proxy_header", proxy_header)
+            pulumi.set(__self__, "proxy_header", proxy_header)
 
     @property
     @pulumi.getter(name="backendService")
@@ -209,63 +180,24 @@ class _TargetTCPProxyState:
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
-        _TargetTCPProxyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_service=backend_service,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            name=name,
-            project=project,
-            proxy_bind=proxy_bind,
-            proxy_header=proxy_header,
-            proxy_id=proxy_id,
-            self_link=self_link,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_service: Optional[pulumi.Input[str]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy_bind: Optional[pulumi.Input[bool]] = None,
-             proxy_header: Optional[pulumi.Input[str]] = None,
-             proxy_id: Optional[pulumi.Input[int]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_service is None and 'backendService' in kwargs:
-            backend_service = kwargs['backendService']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if proxy_bind is None and 'proxyBind' in kwargs:
-            proxy_bind = kwargs['proxyBind']
-        if proxy_header is None and 'proxyHeader' in kwargs:
-            proxy_header = kwargs['proxyHeader']
-        if proxy_id is None and 'proxyId' in kwargs:
-            proxy_id = kwargs['proxyId']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if backend_service is not None:
-            _setter("backend_service", backend_service)
+            pulumi.set(__self__, "backend_service", backend_service)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
-            _setter("proxy_bind", proxy_bind)
+            pulumi.set(__self__, "proxy_bind", proxy_bind)
         if proxy_header is not None:
-            _setter("proxy_header", proxy_header)
+            pulumi.set(__self__, "proxy_header", proxy_header)
         if proxy_id is not None:
-            _setter("proxy_id", proxy_id)
+            pulumi.set(__self__, "proxy_id", proxy_id)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter(name="backendService")
@@ -499,10 +431,6 @@ class TargetTCPProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetTCPProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

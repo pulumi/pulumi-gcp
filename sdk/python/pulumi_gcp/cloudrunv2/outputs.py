@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -104,27 +104,10 @@ class JobBinaryAuthorization(dict):
         :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
-        JobBinaryAuthorization._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            breakglass_justification=breakglass_justification,
-            use_default=use_default,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             breakglass_justification: Optional[str] = None,
-             use_default: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if breakglass_justification is None and 'breakglassJustification' in kwargs:
-            breakglass_justification = kwargs['breakglassJustification']
-        if use_default is None and 'useDefault' in kwargs:
-            use_default = kwargs['useDefault']
-
         if breakglass_justification is not None:
-            _setter("breakglass_justification", breakglass_justification)
+            pulumi.set(__self__, "breakglass_justification", breakglass_justification)
         if use_default is not None:
-            _setter("use_default", use_default)
+            pulumi.set(__self__, "use_default", use_default)
 
     @property
     @pulumi.getter(name="breakglassJustification")
@@ -194,53 +177,22 @@ class JobCondition(dict):
         :param str type: (Output)
                type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
-        JobCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execution_reason=execution_reason,
-            last_transition_time=last_transition_time,
-            message=message,
-            reason=reason,
-            revision_reason=revision_reason,
-            severity=severity,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execution_reason: Optional[str] = None,
-             last_transition_time: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             revision_reason: Optional[str] = None,
-             severity: Optional[str] = None,
-             state: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_reason is None and 'executionReason' in kwargs:
-            execution_reason = kwargs['executionReason']
-        if last_transition_time is None and 'lastTransitionTime' in kwargs:
-            last_transition_time = kwargs['lastTransitionTime']
-        if revision_reason is None and 'revisionReason' in kwargs:
-            revision_reason = kwargs['revisionReason']
-
         if execution_reason is not None:
-            _setter("execution_reason", execution_reason)
+            pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
-            _setter("last_transition_time", last_transition_time)
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if revision_reason is not None:
-            _setter("revision_reason", revision_reason)
+            pulumi.set(__self__, "revision_reason", revision_reason)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="executionReason")
@@ -322,29 +274,10 @@ class JobIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        JobIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -368,29 +301,10 @@ class JobIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        JobIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -442,31 +356,12 @@ class JobLatestCreatedExecution(dict):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param str name: Name of the Job.
         """
-        JobLatestCreatedExecution._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            completion_time=completion_time,
-            create_time=create_time,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             completion_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if completion_time is None and 'completionTime' in kwargs:
-            completion_time = kwargs['completionTime']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-
         if completion_time is not None:
-            _setter("completion_time", completion_time)
+            pulumi.set(__self__, "completion_time", completion_time)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -537,38 +432,15 @@ class JobTemplate(dict):
         :param int parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
         :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         """
-        JobTemplate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template=template,
-            annotations=annotations,
-            labels=labels,
-            parallelism=parallelism,
-            task_count=task_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template: Optional['outputs.JobTemplateTemplate'] = None,
-             annotations: Optional[Mapping[str, str]] = None,
-             labels: Optional[Mapping[str, str]] = None,
-             parallelism: Optional[int] = None,
-             task_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template is None:
-            raise TypeError("Missing 'template' argument")
-        if task_count is None and 'taskCount' in kwargs:
-            task_count = kwargs['taskCount']
-
-        _setter("template", template)
+        pulumi.set(__self__, "template", template)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if parallelism is not None:
-            _setter("parallelism", parallelism)
+            pulumi.set(__self__, "parallelism", parallelism)
         if task_count is not None:
-            _setter("task_count", task_count)
+            pulumi.set(__self__, "task_count", task_count)
 
     @property
     @pulumi.getter
@@ -670,57 +542,22 @@ class JobTemplateTemplate(dict):
         :param 'JobTemplateTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
         """
-        JobTemplateTemplate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            containers=containers,
-            encryption_key=encryption_key,
-            execution_environment=execution_environment,
-            max_retries=max_retries,
-            service_account=service_account,
-            timeout=timeout,
-            volumes=volumes,
-            vpc_access=vpc_access,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             containers: Optional[Sequence['outputs.JobTemplateTemplateContainer']] = None,
-             encryption_key: Optional[str] = None,
-             execution_environment: Optional[str] = None,
-             max_retries: Optional[int] = None,
-             service_account: Optional[str] = None,
-             timeout: Optional[str] = None,
-             volumes: Optional[Sequence['outputs.JobTemplateTemplateVolume']] = None,
-             vpc_access: Optional['outputs.JobTemplateTemplateVpcAccess'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if execution_environment is None and 'executionEnvironment' in kwargs:
-            execution_environment = kwargs['executionEnvironment']
-        if max_retries is None and 'maxRetries' in kwargs:
-            max_retries = kwargs['maxRetries']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if vpc_access is None and 'vpcAccess' in kwargs:
-            vpc_access = kwargs['vpcAccess']
-
         if containers is not None:
-            _setter("containers", containers)
+            pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if execution_environment is not None:
-            _setter("execution_environment", execution_environment)
+            pulumi.set(__self__, "execution_environment", execution_environment)
         if max_retries is not None:
-            _setter("max_retries", max_retries)
+            pulumi.set(__self__, "max_retries", max_retries)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
         if vpc_access is not None:
-            _setter("vpc_access", vpc_access)
+            pulumi.set(__self__, "vpc_access", vpc_access)
 
     @property
     @pulumi.getter
@@ -857,68 +694,27 @@ class JobTemplateTemplateContainer(dict):
                Structure is documented below.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
-        JobTemplateTemplateContainer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image=image,
-            args=args,
-            commands=commands,
-            envs=envs,
-            liveness_probe=liveness_probe,
-            name=name,
-            ports=ports,
-            resources=resources,
-            startup_probe=startup_probe,
-            volume_mounts=volume_mounts,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             commands: Optional[Sequence[str]] = None,
-             envs: Optional[Sequence['outputs.JobTemplateTemplateContainerEnv']] = None,
-             liveness_probe: Optional['outputs.JobTemplateTemplateContainerLivenessProbe'] = None,
-             name: Optional[str] = None,
-             ports: Optional[Sequence['outputs.JobTemplateTemplateContainerPort']] = None,
-             resources: Optional['outputs.JobTemplateTemplateContainerResources'] = None,
-             startup_probe: Optional['outputs.JobTemplateTemplateContainerStartupProbe'] = None,
-             volume_mounts: Optional[Sequence['outputs.JobTemplateTemplateContainerVolumeMount']] = None,
-             working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image is None:
-            raise TypeError("Missing 'image' argument")
-        if liveness_probe is None and 'livenessProbe' in kwargs:
-            liveness_probe = kwargs['livenessProbe']
-        if startup_probe is None and 'startupProbe' in kwargs:
-            startup_probe = kwargs['startupProbe']
-        if volume_mounts is None and 'volumeMounts' in kwargs:
-            volume_mounts = kwargs['volumeMounts']
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-
-        _setter("image", image)
+        pulumi.set(__self__, "image", image)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
-            _setter("liveness_probe", liveness_probe)
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if startup_probe is not None:
-            _setter("startup_probe", startup_probe)
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
-            _setter("volume_mounts", volume_mounts)
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
-            _setter("working_dir", working_dir)
+            pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -1059,30 +855,11 @@ class JobTemplateTemplateContainerEnv(dict):
         :param 'JobTemplateTemplateContainerEnvValueSourceArgs' value_source: Source for the environment variable's value.
                Structure is documented below.
         """
-        JobTemplateTemplateContainerEnv._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-            value_source=value_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             value_source: Optional['outputs.JobTemplateTemplateContainerEnvValueSource'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if value_source is None and 'valueSource' in kwargs:
-            value_source = kwargs['valueSource']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if value_source is not None:
-            _setter("value_source", value_source)
+            pulumi.set(__self__, "value_source", value_source)
 
     @property
     @pulumi.getter
@@ -1135,21 +912,8 @@ class JobTemplateTemplateContainerEnvValueSource(dict):
         :param 'JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
         """
-        JobTemplateTemplateContainerEnvValueSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_key_ref=secret_key_ref,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_key_ref: Optional['outputs.JobTemplateTemplateContainerEnvValueSourceSecretKeyRef'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_key_ref is None and 'secretKeyRef' in kwargs:
-            secret_key_ref = kwargs['secretKeyRef']
-
         if secret_key_ref is not None:
-            _setter("secret_key_ref", secret_key_ref)
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -1170,25 +934,8 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRef(dict):
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
-        JobTemplateTemplateContainerEnvValueSourceSecretKeyRef._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("secret", secret)
-        _setter("version", version)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1253,51 +1000,18 @@ class JobTemplateTemplateContainerLivenessProbe(dict):
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
-        JobTemplateTemplateContainerLivenessProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             http_get: Optional['outputs.JobTemplateTemplateContainerLivenessProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.JobTemplateTemplateContainerLivenessProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -1377,25 +1091,10 @@ class JobTemplateTemplateContainerLivenessProbeHttpGet(dict):
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
         """
-        JobTemplateTemplateContainerLivenessProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_headers is None and 'httpHeaders' in kwargs:
-            http_headers = kwargs['httpHeaders']
-
         if http_headers is not None:
-            _setter("http_headers", http_headers)
+            pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -1424,24 +1123,9 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
         :param str name: The header field name
         :param str value: The header field value
         """
-        JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1467,19 +1151,8 @@ class JobTemplateTemplateContainerLivenessProbeTcpSocket(dict):
         """
         :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         """
-        JobTemplateTemplateContainerLivenessProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -1516,25 +1189,10 @@ class JobTemplateTemplateContainerPort(dict):
         :param int container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param str name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
-        JobTemplateTemplateContainerPort._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_port=container_port,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_port: Optional[int] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_port is None and 'containerPort' in kwargs:
-            container_port = kwargs['containerPort']
-
         if container_port is not None:
-            _setter("container_port", container_port)
+            pulumi.set(__self__, "container_port", container_port)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="containerPort")
@@ -1560,19 +1218,8 @@ class JobTemplateTemplateContainerResources(dict):
         """
         :param Mapping[str, str] limits: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
-        JobTemplateTemplateContainerResources._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            limits=limits,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             limits: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if limits is not None:
-            _setter("limits", limits)
+            pulumi.set(__self__, "limits", limits)
 
     @property
     @pulumi.getter
@@ -1629,51 +1276,18 @@ class JobTemplateTemplateContainerStartupProbe(dict):
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
-        JobTemplateTemplateContainerStartupProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             http_get: Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -1753,25 +1367,10 @@ class JobTemplateTemplateContainerStartupProbeHttpGet(dict):
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
         """
-        JobTemplateTemplateContainerStartupProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_headers is None and 'httpHeaders' in kwargs:
-            http_headers = kwargs['httpHeaders']
-
         if http_headers is not None:
-            _setter("http_headers", http_headers)
+            pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -1800,24 +1399,9 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader(dict):
         :param str name: The header field name
         :param str value: The header field value
         """
-        JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1843,19 +1427,8 @@ class JobTemplateTemplateContainerStartupProbeTcpSocket(dict):
         """
         :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         """
-        JobTemplateTemplateContainerStartupProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -1892,27 +1465,8 @@ class JobTemplateTemplateContainerVolumeMount(dict):
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param str name: This must match the Name of a Volume.
         """
-        JobTemplateTemplateContainerVolumeMount._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("mount_path", mount_path)
-        _setter("name", name)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -1964,36 +1518,13 @@ class JobTemplateTemplateVolume(dict):
         :param 'JobTemplateTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
-        JobTemplateTemplateVolume._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            cloud_sql_instance=cloud_sql_instance,
-            empty_dir=empty_dir,
-            secret=secret,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             cloud_sql_instance: Optional['outputs.JobTemplateTemplateVolumeCloudSqlInstance'] = None,
-             empty_dir: Optional['outputs.JobTemplateTemplateVolumeEmptyDir'] = None,
-             secret: Optional['outputs.JobTemplateTemplateVolumeSecret'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if cloud_sql_instance is None and 'cloudSqlInstance' in kwargs:
-            cloud_sql_instance = kwargs['cloudSqlInstance']
-        if empty_dir is None and 'emptyDir' in kwargs:
-            empty_dir = kwargs['emptyDir']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
-            _setter("cloud_sql_instance", cloud_sql_instance)
+            pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
-            _setter("empty_dir", empty_dir)
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -2034,19 +1565,8 @@ class JobTemplateTemplateVolumeCloudSqlInstance(dict):
         """
         :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
-        JobTemplateTemplateVolumeCloudSqlInstance._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instances=instances,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instances: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
@@ -2085,25 +1605,10 @@ class JobTemplateTemplateVolumeEmptyDir(dict):
                Possible values are: `MEMORY`.
         :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
-        JobTemplateTemplateVolumeEmptyDir._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            medium=medium,
-            size_limit=size_limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             medium: Optional[str] = None,
-             size_limit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size_limit is None and 'sizeLimit' in kwargs:
-            size_limit = kwargs['sizeLimit']
-
         if medium is not None:
-            _setter("medium", medium)
+            pulumi.set(__self__, "medium", medium)
         if size_limit is not None:
-            _setter("size_limit", size_limit)
+            pulumi.set(__self__, "size_limit", size_limit)
 
     @property
     @pulumi.getter
@@ -2153,30 +1658,11 @@ class JobTemplateTemplateVolumeSecret(dict):
         :param Sequence['JobTemplateTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
                Structure is documented below.
         """
-        JobTemplateTemplateVolumeSecret._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            default_mode=default_mode,
-            items=items,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[str] = None,
-             default_mode: Optional[int] = None,
-             items: Optional[Sequence['outputs.JobTemplateTemplateVolumeSecretItem']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if default_mode is None and 'defaultMode' in kwargs:
-            default_mode = kwargs['defaultMode']
-
-        _setter("secret", secret)
+        pulumi.set(__self__, "secret", secret)
         if default_mode is not None:
-            _setter("default_mode", default_mode)
+            pulumi.set(__self__, "default_mode", default_mode)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
 
     @property
     @pulumi.getter
@@ -2215,29 +1701,10 @@ class JobTemplateTemplateVolumeSecretItem(dict):
         :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
         :param int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         """
-        JobTemplateTemplateVolumeSecretItem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            version=version,
-            mode=mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             version: Optional[str] = None,
-             mode: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("path", path)
-        _setter("version", version)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
@@ -2294,29 +1761,12 @@ class JobTemplateTemplateVpcAccess(dict):
         :param Sequence['JobTemplateTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
                Structure is documented below.
         """
-        JobTemplateTemplateVpcAccess._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector=connector,
-            egress=egress,
-            network_interfaces=network_interfaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector: Optional[str] = None,
-             egress: Optional[str] = None,
-             network_interfaces: Optional[Sequence['outputs.JobTemplateTemplateVpcAccessNetworkInterface']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-
         if connector is not None:
-            _setter("connector", connector)
+            pulumi.set(__self__, "connector", connector)
         if egress is not None:
-            _setter("egress", egress)
+            pulumi.set(__self__, "egress", egress)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
 
     @property
     @pulumi.getter
@@ -2362,27 +1812,12 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
                
                - - -
         """
-        JobTemplateTemplateVpcAccessNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            subnetwork=subnetwork,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             subnetwork: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -2466,53 +1901,22 @@ class JobTerminalCondition(dict):
         :param str type: (Output)
                type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
-        JobTerminalCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execution_reason=execution_reason,
-            last_transition_time=last_transition_time,
-            message=message,
-            reason=reason,
-            revision_reason=revision_reason,
-            severity=severity,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execution_reason: Optional[str] = None,
-             last_transition_time: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             revision_reason: Optional[str] = None,
-             severity: Optional[str] = None,
-             state: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_reason is None and 'executionReason' in kwargs:
-            execution_reason = kwargs['executionReason']
-        if last_transition_time is None and 'lastTransitionTime' in kwargs:
-            last_transition_time = kwargs['lastTransitionTime']
-        if revision_reason is None and 'revisionReason' in kwargs:
-            revision_reason = kwargs['revisionReason']
-
         if execution_reason is not None:
-            _setter("execution_reason", execution_reason)
+            pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
-            _setter("last_transition_time", last_transition_time)
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if revision_reason is not None:
-            _setter("revision_reason", revision_reason)
+            pulumi.set(__self__, "revision_reason", revision_reason)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="executionReason")
@@ -2616,27 +2020,10 @@ class ServiceBinaryAuthorization(dict):
         :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
-        ServiceBinaryAuthorization._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            breakglass_justification=breakglass_justification,
-            use_default=use_default,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             breakglass_justification: Optional[str] = None,
-             use_default: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if breakglass_justification is None and 'breakglassJustification' in kwargs:
-            breakglass_justification = kwargs['breakglassJustification']
-        if use_default is None and 'useDefault' in kwargs:
-            use_default = kwargs['useDefault']
-
         if breakglass_justification is not None:
-            _setter("breakglass_justification", breakglass_justification)
+            pulumi.set(__self__, "breakglass_justification", breakglass_justification)
         if use_default is not None:
-            _setter("use_default", use_default)
+            pulumi.set(__self__, "use_default", use_default)
 
     @property
     @pulumi.getter(name="breakglassJustification")
@@ -2706,53 +2093,22 @@ class ServiceCondition(dict):
         :param str type: The allocation type for this traffic target.
                Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
-        ServiceCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execution_reason=execution_reason,
-            last_transition_time=last_transition_time,
-            message=message,
-            reason=reason,
-            revision_reason=revision_reason,
-            severity=severity,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execution_reason: Optional[str] = None,
-             last_transition_time: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             revision_reason: Optional[str] = None,
-             severity: Optional[str] = None,
-             state: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_reason is None and 'executionReason' in kwargs:
-            execution_reason = kwargs['executionReason']
-        if last_transition_time is None and 'lastTransitionTime' in kwargs:
-            last_transition_time = kwargs['lastTransitionTime']
-        if revision_reason is None and 'revisionReason' in kwargs:
-            revision_reason = kwargs['revisionReason']
-
         if execution_reason is not None:
-            _setter("execution_reason", execution_reason)
+            pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
-            _setter("last_transition_time", last_transition_time)
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if revision_reason is not None:
-            _setter("revision_reason", revision_reason)
+            pulumi.set(__self__, "revision_reason", revision_reason)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="executionReason")
@@ -2834,29 +2190,10 @@ class ServiceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ServiceIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -2880,29 +2217,10 @@ class ServiceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ServiceIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -2990,79 +2308,32 @@ class ServiceTemplate(dict):
         :param 'ServiceTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
         """
-        ServiceTemplate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            containers=containers,
-            encryption_key=encryption_key,
-            execution_environment=execution_environment,
-            labels=labels,
-            max_instance_request_concurrency=max_instance_request_concurrency,
-            revision=revision,
-            scaling=scaling,
-            service_account=service_account,
-            session_affinity=session_affinity,
-            timeout=timeout,
-            volumes=volumes,
-            vpc_access=vpc_access,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[Mapping[str, str]] = None,
-             containers: Optional[Sequence['outputs.ServiceTemplateContainer']] = None,
-             encryption_key: Optional[str] = None,
-             execution_environment: Optional[str] = None,
-             labels: Optional[Mapping[str, str]] = None,
-             max_instance_request_concurrency: Optional[int] = None,
-             revision: Optional[str] = None,
-             scaling: Optional['outputs.ServiceTemplateScaling'] = None,
-             service_account: Optional[str] = None,
-             session_affinity: Optional[bool] = None,
-             timeout: Optional[str] = None,
-             volumes: Optional[Sequence['outputs.ServiceTemplateVolume']] = None,
-             vpc_access: Optional['outputs.ServiceTemplateVpcAccess'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if execution_environment is None and 'executionEnvironment' in kwargs:
-            execution_environment = kwargs['executionEnvironment']
-        if max_instance_request_concurrency is None and 'maxInstanceRequestConcurrency' in kwargs:
-            max_instance_request_concurrency = kwargs['maxInstanceRequestConcurrency']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if vpc_access is None and 'vpcAccess' in kwargs:
-            vpc_access = kwargs['vpcAccess']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if containers is not None:
-            _setter("containers", containers)
+            pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if execution_environment is not None:
-            _setter("execution_environment", execution_environment)
+            pulumi.set(__self__, "execution_environment", execution_environment)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
-            _setter("max_instance_request_concurrency", max_instance_request_concurrency)
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if revision is not None:
-            _setter("revision", revision)
+            pulumi.set(__self__, "revision", revision)
         if scaling is not None:
-            _setter("scaling", scaling)
+            pulumi.set(__self__, "scaling", scaling)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
         if vpc_access is not None:
-            _setter("vpc_access", vpc_access)
+            pulumi.set(__self__, "vpc_access", vpc_access)
 
     @property
     @pulumi.getter
@@ -3241,74 +2512,29 @@ class ServiceTemplateContainer(dict):
                Structure is documented below.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
-        ServiceTemplateContainer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image=image,
-            args=args,
-            commands=commands,
-            depends_ons=depends_ons,
-            envs=envs,
-            liveness_probe=liveness_probe,
-            name=name,
-            ports=ports,
-            resources=resources,
-            startup_probe=startup_probe,
-            volume_mounts=volume_mounts,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             commands: Optional[Sequence[str]] = None,
-             depends_ons: Optional[Sequence[str]] = None,
-             envs: Optional[Sequence['outputs.ServiceTemplateContainerEnv']] = None,
-             liveness_probe: Optional['outputs.ServiceTemplateContainerLivenessProbe'] = None,
-             name: Optional[str] = None,
-             ports: Optional[Sequence['outputs.ServiceTemplateContainerPort']] = None,
-             resources: Optional['outputs.ServiceTemplateContainerResources'] = None,
-             startup_probe: Optional['outputs.ServiceTemplateContainerStartupProbe'] = None,
-             volume_mounts: Optional[Sequence['outputs.ServiceTemplateContainerVolumeMount']] = None,
-             working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image is None:
-            raise TypeError("Missing 'image' argument")
-        if depends_ons is None and 'dependsOns' in kwargs:
-            depends_ons = kwargs['dependsOns']
-        if liveness_probe is None and 'livenessProbe' in kwargs:
-            liveness_probe = kwargs['livenessProbe']
-        if startup_probe is None and 'startupProbe' in kwargs:
-            startup_probe = kwargs['startupProbe']
-        if volume_mounts is None and 'volumeMounts' in kwargs:
-            volume_mounts = kwargs['volumeMounts']
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-
-        _setter("image", image)
+        pulumi.set(__self__, "image", image)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
         if depends_ons is not None:
-            _setter("depends_ons", depends_ons)
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
-            _setter("liveness_probe", liveness_probe)
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if startup_probe is not None:
-            _setter("startup_probe", startup_probe)
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
-            _setter("volume_mounts", volume_mounts)
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
-            _setter("working_dir", working_dir)
+            pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -3440,30 +2666,11 @@ class ServiceTemplateContainerEnv(dict):
         :param 'ServiceTemplateContainerEnvValueSourceArgs' value_source: Source for the environment variable's value.
                Structure is documented below.
         """
-        ServiceTemplateContainerEnv._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-            value_source=value_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             value_source: Optional['outputs.ServiceTemplateContainerEnvValueSource'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if value_source is None and 'valueSource' in kwargs:
-            value_source = kwargs['valueSource']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if value_source is not None:
-            _setter("value_source", value_source)
+            pulumi.set(__self__, "value_source", value_source)
 
     @property
     @pulumi.getter
@@ -3516,21 +2723,8 @@ class ServiceTemplateContainerEnvValueSource(dict):
         :param 'ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
         """
-        ServiceTemplateContainerEnvValueSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_key_ref=secret_key_ref,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_key_ref: Optional['outputs.ServiceTemplateContainerEnvValueSourceSecretKeyRef'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_key_ref is None and 'secretKeyRef' in kwargs:
-            secret_key_ref = kwargs['secretKeyRef']
-
         if secret_key_ref is not None:
-            _setter("secret_key_ref", secret_key_ref)
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -3551,24 +2745,9 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRef(dict):
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
-        ServiceTemplateContainerEnvValueSourceSecretKeyRef._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-
-        _setter("secret", secret)
+        pulumi.set(__self__, "secret", secret)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -3639,55 +2818,20 @@ class ServiceTemplateContainerLivenessProbe(dict):
                > **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
-        ServiceTemplateContainerLivenessProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            grpc=grpc,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             grpc: Optional['outputs.ServiceTemplateContainerLivenessProbeGrpc'] = None,
-             http_get: Optional['outputs.ServiceTemplateContainerLivenessProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if grpc is not None:
-            _setter("grpc", grpc)
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -3767,23 +2911,10 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
         """
-        ServiceTemplateContainerLivenessProbeGrpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -3835,29 +2966,12 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
-        ServiceTemplateContainerLivenessProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.ServiceTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_headers is None and 'httpHeaders' in kwargs:
-            http_headers = kwargs['httpHeaders']
-
         if http_headers is not None:
-            _setter("http_headers", http_headers)
+            pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3895,24 +3009,9 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
         :param str name: The header field name
         :param str value: The header field value
         """
-        ServiceTemplateContainerLivenessProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -3939,19 +3038,8 @@ class ServiceTemplateContainerLivenessProbeTcpSocket(dict):
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
-        ServiceTemplateContainerLivenessProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -3989,25 +3077,10 @@ class ServiceTemplateContainerPort(dict):
         :param int container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param str name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
-        ServiceTemplateContainerPort._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_port=container_port,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_port: Optional[int] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_port is None and 'containerPort' in kwargs:
-            container_port = kwargs['containerPort']
-
         if container_port is not None:
-            _setter("container_port", container_port)
+            pulumi.set(__self__, "container_port", container_port)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="containerPort")
@@ -4056,31 +3129,12 @@ class ServiceTemplateContainerResources(dict):
         :param Mapping[str, str] limits: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         :param bool startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
-        ServiceTemplateContainerResources._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_idle=cpu_idle,
-            limits=limits,
-            startup_cpu_boost=startup_cpu_boost,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_idle: Optional[bool] = None,
-             limits: Optional[Mapping[str, str]] = None,
-             startup_cpu_boost: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_idle is None and 'cpuIdle' in kwargs:
-            cpu_idle = kwargs['cpuIdle']
-        if startup_cpu_boost is None and 'startupCpuBoost' in kwargs:
-            startup_cpu_boost = kwargs['startupCpuBoost']
-
         if cpu_idle is not None:
-            _setter("cpu_idle", cpu_idle)
+            pulumi.set(__self__, "cpu_idle", cpu_idle)
         if limits is not None:
-            _setter("limits", limits)
+            pulumi.set(__self__, "limits", limits)
         if startup_cpu_boost is not None:
-            _setter("startup_cpu_boost", startup_cpu_boost)
+            pulumi.set(__self__, "startup_cpu_boost", startup_cpu_boost)
 
     @property
     @pulumi.getter(name="cpuIdle")
@@ -4156,55 +3210,20 @@ class ServiceTemplateContainerStartupProbe(dict):
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
-        ServiceTemplateContainerStartupProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            grpc=grpc,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             grpc: Optional['outputs.ServiceTemplateContainerStartupProbeGrpc'] = None,
-             http_get: Optional['outputs.ServiceTemplateContainerStartupProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.ServiceTemplateContainerStartupProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if grpc is not None:
-            _setter("grpc", grpc)
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -4278,23 +3297,10 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
         """
-        ServiceTemplateContainerStartupProbeGrpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -4346,29 +3352,12 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
-        ServiceTemplateContainerStartupProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.ServiceTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_headers is None and 'httpHeaders' in kwargs:
-            http_headers = kwargs['httpHeaders']
-
         if http_headers is not None:
-            _setter("http_headers", http_headers)
+            pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -4406,24 +3395,9 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeader(dict):
         :param str name: The header field name
         :param str value: The header field value
         """
-        ServiceTemplateContainerStartupProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -4450,19 +3424,8 @@ class ServiceTemplateContainerStartupProbeTcpSocket(dict):
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
-        ServiceTemplateContainerStartupProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -4500,27 +3463,8 @@ class ServiceTemplateContainerVolumeMount(dict):
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param str name: This must match the Name of a Volume.
         """
-        ServiceTemplateContainerVolumeMount._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("mount_path", mount_path)
-        _setter("name", name)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -4567,27 +3511,10 @@ class ServiceTemplateScaling(dict):
         :param int max_instance_count: Maximum number of serving instances that this resource should have.
         :param int min_instance_count: Minimum number of serving instances that this resource should have.
         """
-        ServiceTemplateScaling._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_instance_count=max_instance_count,
-            min_instance_count=min_instance_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_instance_count: Optional[int] = None,
-             min_instance_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_instance_count is None and 'maxInstanceCount' in kwargs:
-            max_instance_count = kwargs['maxInstanceCount']
-        if min_instance_count is None and 'minInstanceCount' in kwargs:
-            min_instance_count = kwargs['minInstanceCount']
-
         if max_instance_count is not None:
-            _setter("max_instance_count", max_instance_count)
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
-            _setter("min_instance_count", min_instance_count)
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
@@ -4639,36 +3566,13 @@ class ServiceTemplateVolume(dict):
         :param 'ServiceTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
-        ServiceTemplateVolume._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            cloud_sql_instance=cloud_sql_instance,
-            empty_dir=empty_dir,
-            secret=secret,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             cloud_sql_instance: Optional['outputs.ServiceTemplateVolumeCloudSqlInstance'] = None,
-             empty_dir: Optional['outputs.ServiceTemplateVolumeEmptyDir'] = None,
-             secret: Optional['outputs.ServiceTemplateVolumeSecret'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if cloud_sql_instance is None and 'cloudSqlInstance' in kwargs:
-            cloud_sql_instance = kwargs['cloudSqlInstance']
-        if empty_dir is None and 'emptyDir' in kwargs:
-            empty_dir = kwargs['emptyDir']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
-            _setter("cloud_sql_instance", cloud_sql_instance)
+            pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
-            _setter("empty_dir", empty_dir)
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -4709,19 +3613,8 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
         """
         :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
-        ServiceTemplateVolumeCloudSqlInstance._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instances=instances,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instances: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
@@ -4762,25 +3655,10 @@ class ServiceTemplateVolumeEmptyDir(dict):
                
                - - -
         """
-        ServiceTemplateVolumeEmptyDir._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            medium=medium,
-            size_limit=size_limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             medium: Optional[str] = None,
-             size_limit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size_limit is None and 'sizeLimit' in kwargs:
-            size_limit = kwargs['sizeLimit']
-
         if medium is not None:
-            _setter("medium", medium)
+            pulumi.set(__self__, "medium", medium)
         if size_limit is not None:
-            _setter("size_limit", size_limit)
+            pulumi.set(__self__, "size_limit", size_limit)
 
     @property
     @pulumi.getter
@@ -4832,30 +3710,11 @@ class ServiceTemplateVolumeSecret(dict):
         :param Sequence['ServiceTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
                Structure is documented below.
         """
-        ServiceTemplateVolumeSecret._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            default_mode=default_mode,
-            items=items,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[str] = None,
-             default_mode: Optional[int] = None,
-             items: Optional[Sequence['outputs.ServiceTemplateVolumeSecretItem']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if default_mode is None and 'defaultMode' in kwargs:
-            default_mode = kwargs['defaultMode']
-
-        _setter("secret", secret)
+        pulumi.set(__self__, "secret", secret)
         if default_mode is not None:
-            _setter("default_mode", default_mode)
+            pulumi.set(__self__, "default_mode", default_mode)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
 
     @property
     @pulumi.getter
@@ -4894,28 +3753,11 @@ class ServiceTemplateVolumeSecretItem(dict):
         :param int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
         """
-        ServiceTemplateVolumeSecretItem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            mode=mode,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             mode: Optional[int] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -4972,29 +3814,12 @@ class ServiceTemplateVpcAccess(dict):
         :param Sequence['ServiceTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
                Structure is documented below.
         """
-        ServiceTemplateVpcAccess._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector=connector,
-            egress=egress,
-            network_interfaces=network_interfaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector: Optional[str] = None,
-             egress: Optional[str] = None,
-             network_interfaces: Optional[Sequence['outputs.ServiceTemplateVpcAccessNetworkInterface']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-
         if connector is not None:
-            _setter("connector", connector)
+            pulumi.set(__self__, "connector", connector)
         if egress is not None:
-            _setter("egress", egress)
+            pulumi.set(__self__, "egress", egress)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
 
     @property
     @pulumi.getter
@@ -5038,27 +3863,12 @@ class ServiceTemplateVpcAccessNetworkInterface(dict):
                subnetwork with the same name with the network will be used.
         :param Sequence[str] tags: Network tags applied to this Cloud Run service.
         """
-        ServiceTemplateVpcAccessNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            subnetwork=subnetwork,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             subnetwork: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -5140,53 +3950,22 @@ class ServiceTerminalCondition(dict):
         :param str type: The allocation type for this traffic target.
                Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
-        ServiceTerminalCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execution_reason=execution_reason,
-            last_transition_time=last_transition_time,
-            message=message,
-            reason=reason,
-            revision_reason=revision_reason,
-            severity=severity,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execution_reason: Optional[str] = None,
-             last_transition_time: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             revision_reason: Optional[str] = None,
-             severity: Optional[str] = None,
-             state: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_reason is None and 'executionReason' in kwargs:
-            execution_reason = kwargs['executionReason']
-        if last_transition_time is None and 'lastTransitionTime' in kwargs:
-            last_transition_time = kwargs['lastTransitionTime']
-        if revision_reason is None and 'revisionReason' in kwargs:
-            revision_reason = kwargs['revisionReason']
-
         if execution_reason is not None:
-            _setter("execution_reason", execution_reason)
+            pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
-            _setter("last_transition_time", last_transition_time)
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if revision_reason is not None:
-            _setter("revision_reason", revision_reason)
+            pulumi.set(__self__, "revision_reason", revision_reason)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="executionReason")
@@ -5276,31 +4055,14 @@ class ServiceTraffic(dict):
         :param str type: The allocation type for this traffic target.
                Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
-        ServiceTraffic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            percent=percent,
-            revision=revision,
-            tag=tag,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             percent: Optional[int] = None,
-             revision: Optional[str] = None,
-             tag: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if percent is not None:
-            _setter("percent", percent)
+            pulumi.set(__self__, "percent", percent)
         if revision is not None:
-            _setter("revision", revision)
+            pulumi.set(__self__, "revision", revision)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -5353,35 +4115,16 @@ class ServiceTrafficStatus(dict):
         :param str uri: (Output)
                Displays the target URI.
         """
-        ServiceTrafficStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            percent=percent,
-            revision=revision,
-            tag=tag,
-            type=type,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             percent: Optional[int] = None,
-             revision: Optional[str] = None,
-             tag: Optional[str] = None,
-             type: Optional[str] = None,
-             uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if percent is not None:
-            _setter("percent", percent)
+            pulumi.set(__self__, "percent", percent)
         if revision is not None:
-            _setter("revision", revision)
+            pulumi.set(__self__, "revision", revision)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter

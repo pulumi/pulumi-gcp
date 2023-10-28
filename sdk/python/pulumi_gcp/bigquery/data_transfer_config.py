@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -78,92 +78,31 @@ class DataTransferConfigArgs:
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
-        DataTransferConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_source_id=data_source_id,
-            display_name=display_name,
-            params=params,
-            data_refresh_window_days=data_refresh_window_days,
-            destination_dataset_id=destination_dataset_id,
-            disabled=disabled,
-            email_preferences=email_preferences,
-            location=location,
-            notification_pubsub_topic=notification_pubsub_topic,
-            project=project,
-            schedule=schedule,
-            schedule_options=schedule_options,
-            sensitive_params=sensitive_params,
-            service_account_name=service_account_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_source_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             data_refresh_window_days: Optional[pulumi.Input[int]] = None,
-             destination_dataset_id: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
-             sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
-             service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_source_id is None and 'dataSourceId' in kwargs:
-            data_source_id = kwargs['dataSourceId']
-        if data_source_id is None:
-            raise TypeError("Missing 'data_source_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if params is None:
-            raise TypeError("Missing 'params' argument")
-        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
-            data_refresh_window_days = kwargs['dataRefreshWindowDays']
-        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
-            destination_dataset_id = kwargs['destinationDatasetId']
-        if email_preferences is None and 'emailPreferences' in kwargs:
-            email_preferences = kwargs['emailPreferences']
-        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
-            notification_pubsub_topic = kwargs['notificationPubsubTopic']
-        if schedule_options is None and 'scheduleOptions' in kwargs:
-            schedule_options = kwargs['scheduleOptions']
-        if sensitive_params is None and 'sensitiveParams' in kwargs:
-            sensitive_params = kwargs['sensitiveParams']
-        if service_account_name is None and 'serviceAccountName' in kwargs:
-            service_account_name = kwargs['serviceAccountName']
-
-        _setter("data_source_id", data_source_id)
-        _setter("display_name", display_name)
-        _setter("params", params)
+        pulumi.set(__self__, "data_source_id", data_source_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "params", params)
         if data_refresh_window_days is not None:
-            _setter("data_refresh_window_days", data_refresh_window_days)
+            pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
         if destination_dataset_id is not None:
-            _setter("destination_dataset_id", destination_dataset_id)
+            pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if email_preferences is not None:
-            _setter("email_preferences", email_preferences)
+            pulumi.set(__self__, "email_preferences", email_preferences)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if notification_pubsub_topic is not None:
-            _setter("notification_pubsub_topic", notification_pubsub_topic)
+            pulumi.set(__self__, "notification_pubsub_topic", notification_pubsub_topic)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if schedule_options is not None:
-            _setter("schedule_options", schedule_options)
+            pulumi.set(__self__, "schedule_options", schedule_options)
         if sensitive_params is not None:
-            _setter("sensitive_params", sensitive_params)
+            pulumi.set(__self__, "sensitive_params", sensitive_params)
         if service_account_name is not None:
-            _setter("service_account_name", service_account_name)
+            pulumi.set(__self__, "service_account_name", service_account_name)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -436,93 +375,36 @@ class _DataTransferConfigState:
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
-        _DataTransferConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_refresh_window_days=data_refresh_window_days,
-            data_source_id=data_source_id,
-            destination_dataset_id=destination_dataset_id,
-            disabled=disabled,
-            display_name=display_name,
-            email_preferences=email_preferences,
-            location=location,
-            name=name,
-            notification_pubsub_topic=notification_pubsub_topic,
-            params=params,
-            project=project,
-            schedule=schedule,
-            schedule_options=schedule_options,
-            sensitive_params=sensitive_params,
-            service_account_name=service_account_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_refresh_window_days: Optional[pulumi.Input[int]] = None,
-             data_source_id: Optional[pulumi.Input[str]] = None,
-             destination_dataset_id: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
-             sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
-             service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
-            data_refresh_window_days = kwargs['dataRefreshWindowDays']
-        if data_source_id is None and 'dataSourceId' in kwargs:
-            data_source_id = kwargs['dataSourceId']
-        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
-            destination_dataset_id = kwargs['destinationDatasetId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if email_preferences is None and 'emailPreferences' in kwargs:
-            email_preferences = kwargs['emailPreferences']
-        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
-            notification_pubsub_topic = kwargs['notificationPubsubTopic']
-        if schedule_options is None and 'scheduleOptions' in kwargs:
-            schedule_options = kwargs['scheduleOptions']
-        if sensitive_params is None and 'sensitiveParams' in kwargs:
-            sensitive_params = kwargs['sensitiveParams']
-        if service_account_name is None and 'serviceAccountName' in kwargs:
-            service_account_name = kwargs['serviceAccountName']
-
         if data_refresh_window_days is not None:
-            _setter("data_refresh_window_days", data_refresh_window_days)
+            pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
         if data_source_id is not None:
-            _setter("data_source_id", data_source_id)
+            pulumi.set(__self__, "data_source_id", data_source_id)
         if destination_dataset_id is not None:
-            _setter("destination_dataset_id", destination_dataset_id)
+            pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if email_preferences is not None:
-            _setter("email_preferences", email_preferences)
+            pulumi.set(__self__, "email_preferences", email_preferences)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_pubsub_topic is not None:
-            _setter("notification_pubsub_topic", notification_pubsub_topic)
+            pulumi.set(__self__, "notification_pubsub_topic", notification_pubsub_topic)
         if params is not None:
-            _setter("params", params)
+            pulumi.set(__self__, "params", params)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if schedule_options is not None:
-            _setter("schedule_options", schedule_options)
+            pulumi.set(__self__, "schedule_options", schedule_options)
         if sensitive_params is not None:
-            _setter("sensitive_params", sensitive_params)
+            pulumi.set(__self__, "sensitive_params", sensitive_params)
         if service_account_name is not None:
-            _setter("service_account_name", service_account_name)
+            pulumi.set(__self__, "service_account_name", service_account_name)
 
     @property
     @pulumi.getter(name="dataRefreshWindowDays")
@@ -932,10 +814,6 @@ class DataTransferConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DataTransferConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -973,7 +851,6 @@ class DataTransferConfig(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            email_preferences = _utilities.configure(email_preferences, DataTransferConfigEmailPreferencesArgs, True)
             __props__.__dict__["email_preferences"] = email_preferences
             __props__.__dict__["location"] = location
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
@@ -982,9 +859,7 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
-            schedule_options = _utilities.configure(schedule_options, DataTransferConfigScheduleOptionsArgs, True)
             __props__.__dict__["schedule_options"] = schedule_options
-            sensitive_params = _utilities.configure(sensitive_params, DataTransferConfigSensitiveParamsArgs, True)
             __props__.__dict__["sensitive_params"] = sensitive_params
             __props__.__dict__["service_account_name"] = service_account_name
             __props__.__dict__["name"] = None

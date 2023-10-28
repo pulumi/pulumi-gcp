@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,102 +59,37 @@ class BucketObjectArgs:
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
         :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
-        BucketObjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            cache_control=cache_control,
-            content=content,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_language=content_language,
-            content_type=content_type,
-            customer_encryption=customer_encryption,
-            detect_md5hash=detect_md5hash,
-            event_based_hold=event_based_hold,
-            kms_key_name=kms_key_name,
-            metadata=metadata,
-            name=name,
-            source=source,
-            storage_class=storage_class,
-            temporary_hold=temporary_hold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_language: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
-             detect_md5hash: Optional[pulumi.Input[str]] = None,
-             event_based_hold: Optional[pulumi.Input[bool]] = None,
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-             storage_class: Optional[pulumi.Input[str]] = None,
-             temporary_hold: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_language is None and 'contentLanguage' in kwargs:
-            content_language = kwargs['contentLanguage']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if customer_encryption is None and 'customerEncryption' in kwargs:
-            customer_encryption = kwargs['customerEncryption']
-        if detect_md5hash is None and 'detectMd5hash' in kwargs:
-            detect_md5hash = kwargs['detectMd5hash']
-        if event_based_hold is None and 'eventBasedHold' in kwargs:
-            event_based_hold = kwargs['eventBasedHold']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if storage_class is None and 'storageClass' in kwargs:
-            storage_class = kwargs['storageClass']
-        if temporary_hold is None and 'temporaryHold' in kwargs:
-            temporary_hold = kwargs['temporaryHold']
-
-        _setter("bucket", bucket)
+        pulumi.set(__self__, "bucket", bucket)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_language is not None:
-            _setter("content_language", content_language)
+            pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if customer_encryption is not None:
-            _setter("customer_encryption", customer_encryption)
+            pulumi.set(__self__, "customer_encryption", customer_encryption)
         if detect_md5hash is not None:
-            _setter("detect_md5hash", detect_md5hash)
+            pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
-            _setter("event_based_hold", event_based_hold)
+            pulumi.set(__self__, "event_based_hold", event_based_hold)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if storage_class is not None:
-            _setter("storage_class", storage_class)
+            pulumi.set(__self__, "storage_class", storage_class)
         if temporary_hold is not None:
-            _setter("temporary_hold", temporary_hold)
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
 
     @property
     @pulumi.getter
@@ -412,127 +347,48 @@ class _BucketObjectState:
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
         :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
-        _BucketObjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            cache_control=cache_control,
-            content=content,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_language=content_language,
-            content_type=content_type,
-            crc32c=crc32c,
-            customer_encryption=customer_encryption,
-            detect_md5hash=detect_md5hash,
-            event_based_hold=event_based_hold,
-            kms_key_name=kms_key_name,
-            md5hash=md5hash,
-            media_link=media_link,
-            metadata=metadata,
-            name=name,
-            output_name=output_name,
-            self_link=self_link,
-            source=source,
-            storage_class=storage_class,
-            temporary_hold=temporary_hold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_language: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             crc32c: Optional[pulumi.Input[str]] = None,
-             customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
-             detect_md5hash: Optional[pulumi.Input[str]] = None,
-             event_based_hold: Optional[pulumi.Input[bool]] = None,
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             md5hash: Optional[pulumi.Input[str]] = None,
-             media_link: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             output_name: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-             storage_class: Optional[pulumi.Input[str]] = None,
-             temporary_hold: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_language is None and 'contentLanguage' in kwargs:
-            content_language = kwargs['contentLanguage']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if customer_encryption is None and 'customerEncryption' in kwargs:
-            customer_encryption = kwargs['customerEncryption']
-        if detect_md5hash is None and 'detectMd5hash' in kwargs:
-            detect_md5hash = kwargs['detectMd5hash']
-        if event_based_hold is None and 'eventBasedHold' in kwargs:
-            event_based_hold = kwargs['eventBasedHold']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if media_link is None and 'mediaLink' in kwargs:
-            media_link = kwargs['mediaLink']
-        if output_name is None and 'outputName' in kwargs:
-            output_name = kwargs['outputName']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if storage_class is None and 'storageClass' in kwargs:
-            storage_class = kwargs['storageClass']
-        if temporary_hold is None and 'temporaryHold' in kwargs:
-            temporary_hold = kwargs['temporaryHold']
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_language is not None:
-            _setter("content_language", content_language)
+            pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if crc32c is not None:
-            _setter("crc32c", crc32c)
+            pulumi.set(__self__, "crc32c", crc32c)
         if customer_encryption is not None:
-            _setter("customer_encryption", customer_encryption)
+            pulumi.set(__self__, "customer_encryption", customer_encryption)
         if detect_md5hash is not None:
-            _setter("detect_md5hash", detect_md5hash)
+            pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
-            _setter("event_based_hold", event_based_hold)
+            pulumi.set(__self__, "event_based_hold", event_based_hold)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if md5hash is not None:
-            _setter("md5hash", md5hash)
+            pulumi.set(__self__, "md5hash", md5hash)
         if media_link is not None:
-            _setter("media_link", media_link)
+            pulumi.set(__self__, "media_link", media_link)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if output_name is not None:
-            _setter("output_name", output_name)
+            pulumi.set(__self__, "output_name", output_name)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if storage_class is not None:
-            _setter("storage_class", storage_class)
+            pulumi.set(__self__, "storage_class", storage_class)
         if temporary_hold is not None:
-            _setter("temporary_hold", temporary_hold)
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
 
     @property
     @pulumi.getter
@@ -933,10 +789,6 @@ class BucketObject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BucketObjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -976,7 +828,6 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["content_encoding"] = content_encoding
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
-            customer_encryption = _utilities.configure(customer_encryption, BucketObjectCustomerEncryptionArgs, True)
             __props__.__dict__["customer_encryption"] = None if customer_encryption is None else pulumi.Output.secret(customer_encryption)
             __props__.__dict__["detect_md5hash"] = detect_md5hash
             __props__.__dict__["event_based_hold"] = event_based_hold

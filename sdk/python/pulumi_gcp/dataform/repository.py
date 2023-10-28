@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,39 +35,16 @@ class RepositoryArgs:
         :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
-        RepositoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            git_remote_settings=git_remote_settings,
-            name=name,
-            project=project,
-            region=region,
-            workspace_compilation_overrides=workspace_compilation_overrides,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
-            git_remote_settings = kwargs['gitRemoteSettings']
-        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
-            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
-
         if git_remote_settings is not None:
-            _setter("git_remote_settings", git_remote_settings)
+            pulumi.set(__self__, "git_remote_settings", git_remote_settings)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if workspace_compilation_overrides is not None:
-            _setter("workspace_compilation_overrides", workspace_compilation_overrides)
+            pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
@@ -158,39 +135,16 @@ class _RepositoryState:
         :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
-        _RepositoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            git_remote_settings=git_remote_settings,
-            name=name,
-            project=project,
-            region=region,
-            workspace_compilation_overrides=workspace_compilation_overrides,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
-            git_remote_settings = kwargs['gitRemoteSettings']
-        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
-            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
-
         if git_remote_settings is not None:
-            _setter("git_remote_settings", git_remote_settings)
+            pulumi.set(__self__, "git_remote_settings", git_remote_settings)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if workspace_compilation_overrides is not None:
-            _setter("workspace_compilation_overrides", workspace_compilation_overrides)
+            pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
@@ -406,10 +360,6 @@ class Repository(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RepositoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -429,12 +379,10 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
-            git_remote_settings = _utilities.configure(git_remote_settings, RepositoryGitRemoteSettingsArgs, True)
             __props__.__dict__["git_remote_settings"] = git_remote_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            workspace_compilation_overrides = _utilities.configure(workspace_compilation_overrides, RepositoryWorkspaceCompilationOverridesArgs, True)
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         super(Repository, __self__).__init__(
             'gcp:dataform/repository:Repository',

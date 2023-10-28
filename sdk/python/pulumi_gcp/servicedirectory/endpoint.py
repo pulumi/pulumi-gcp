@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointArgs', 'Endpoint']
@@ -37,43 +37,16 @@ class EndpointArgs:
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         """
-        EndpointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_id=endpoint_id,
-            service=service,
-            address=address,
-            metadata=metadata,
-            network=network,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             address: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("endpoint_id", endpoint_id)
-        _setter("service", service)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "service", service)
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -185,45 +158,20 @@ class _EndpointState:
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
         """
-        _EndpointState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            endpoint_id=endpoint_id,
-            metadata=metadata,
-            name=name,
-            network=network,
-            port=port,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if endpoint_id is not None:
-            _setter("endpoint_id", endpoint_id)
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -524,10 +472,6 @@ class Endpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

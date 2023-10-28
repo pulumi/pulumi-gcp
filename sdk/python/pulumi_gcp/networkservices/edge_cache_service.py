@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,78 +54,29 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
-        EdgeCacheServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            routing=routing,
-            description=description,
-            disable_http2=disable_http2,
-            disable_quic=disable_quic,
-            edge_security_policy=edge_security_policy,
-            edge_ssl_certificates=edge_ssl_certificates,
-            labels=labels,
-            log_config=log_config,
-            name=name,
-            project=project,
-            require_tls=require_tls,
-            ssl_policy=ssl_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_http2: Optional[pulumi.Input[bool]] = None,
-             disable_quic: Optional[pulumi.Input[bool]] = None,
-             edge_security_policy: Optional[pulumi.Input[str]] = None,
-             edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             require_tls: Optional[pulumi.Input[bool]] = None,
-             ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if routing is None:
-            raise TypeError("Missing 'routing' argument")
-        if disable_http2 is None and 'disableHttp2' in kwargs:
-            disable_http2 = kwargs['disableHttp2']
-        if disable_quic is None and 'disableQuic' in kwargs:
-            disable_quic = kwargs['disableQuic']
-        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
-            edge_security_policy = kwargs['edgeSecurityPolicy']
-        if edge_ssl_certificates is None and 'edgeSslCertificates' in kwargs:
-            edge_ssl_certificates = kwargs['edgeSslCertificates']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if require_tls is None and 'requireTls' in kwargs:
-            require_tls = kwargs['requireTls']
-        if ssl_policy is None and 'sslPolicy' in kwargs:
-            ssl_policy = kwargs['sslPolicy']
-
-        _setter("routing", routing)
+        pulumi.set(__self__, "routing", routing)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_http2 is not None:
-            _setter("disable_http2", disable_http2)
+            pulumi.set(__self__, "disable_http2", disable_http2)
         if disable_quic is not None:
-            _setter("disable_quic", disable_quic)
+            pulumi.set(__self__, "disable_quic", disable_quic)
         if edge_security_policy is not None:
-            _setter("edge_security_policy", edge_security_policy)
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if edge_ssl_certificates is not None:
-            _setter("edge_ssl_certificates", edge_ssl_certificates)
+            pulumi.set(__self__, "edge_ssl_certificates", edge_ssl_certificates)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if require_tls is not None:
-            _setter("require_tls", require_tls)
+            pulumi.set(__self__, "require_tls", require_tls)
         if ssl_policy is not None:
-            _setter("ssl_policy", ssl_policy)
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
 
     @property
     @pulumi.getter
@@ -328,89 +279,34 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
-        _EdgeCacheServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            disable_http2=disable_http2,
-            disable_quic=disable_quic,
-            edge_security_policy=edge_security_policy,
-            edge_ssl_certificates=edge_ssl_certificates,
-            ipv4_addresses=ipv4_addresses,
-            ipv6_addresses=ipv6_addresses,
-            labels=labels,
-            log_config=log_config,
-            name=name,
-            project=project,
-            require_tls=require_tls,
-            routing=routing,
-            ssl_policy=ssl_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             disable_http2: Optional[pulumi.Input[bool]] = None,
-             disable_quic: Optional[pulumi.Input[bool]] = None,
-             edge_security_policy: Optional[pulumi.Input[str]] = None,
-             edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             require_tls: Optional[pulumi.Input[bool]] = None,
-             routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
-             ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_http2 is None and 'disableHttp2' in kwargs:
-            disable_http2 = kwargs['disableHttp2']
-        if disable_quic is None and 'disableQuic' in kwargs:
-            disable_quic = kwargs['disableQuic']
-        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
-            edge_security_policy = kwargs['edgeSecurityPolicy']
-        if edge_ssl_certificates is None and 'edgeSslCertificates' in kwargs:
-            edge_ssl_certificates = kwargs['edgeSslCertificates']
-        if ipv4_addresses is None and 'ipv4Addresses' in kwargs:
-            ipv4_addresses = kwargs['ipv4Addresses']
-        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
-            ipv6_addresses = kwargs['ipv6Addresses']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if require_tls is None and 'requireTls' in kwargs:
-            require_tls = kwargs['requireTls']
-        if ssl_policy is None and 'sslPolicy' in kwargs:
-            ssl_policy = kwargs['sslPolicy']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_http2 is not None:
-            _setter("disable_http2", disable_http2)
+            pulumi.set(__self__, "disable_http2", disable_http2)
         if disable_quic is not None:
-            _setter("disable_quic", disable_quic)
+            pulumi.set(__self__, "disable_quic", disable_quic)
         if edge_security_policy is not None:
-            _setter("edge_security_policy", edge_security_policy)
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if edge_ssl_certificates is not None:
-            _setter("edge_ssl_certificates", edge_ssl_certificates)
+            pulumi.set(__self__, "edge_ssl_certificates", edge_ssl_certificates)
         if ipv4_addresses is not None:
-            _setter("ipv4_addresses", ipv4_addresses)
+            pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
         if ipv6_addresses is not None:
-            _setter("ipv6_addresses", ipv6_addresses)
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if require_tls is not None:
-            _setter("require_tls", require_tls)
+            pulumi.set(__self__, "require_tls", require_tls)
         if routing is not None:
-            _setter("routing", routing)
+            pulumi.set(__self__, "routing", routing)
         if ssl_policy is not None:
-            _setter("ssl_policy", ssl_policy)
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
 
     @property
     @pulumi.getter
@@ -1178,10 +1074,6 @@ class EdgeCacheService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EdgeCacheServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1214,12 +1106,10 @@ class EdgeCacheService(pulumi.CustomResource):
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["edge_ssl_certificates"] = edge_ssl_certificates
             __props__.__dict__["labels"] = labels
-            log_config = _utilities.configure(log_config, EdgeCacheServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["require_tls"] = require_tls
-            routing = _utilities.configure(routing, EdgeCacheServiceRoutingArgs, True)
             if routing is None and not opts.urn:
                 raise TypeError("Missing required property 'routing'")
             __props__.__dict__["routing"] = routing

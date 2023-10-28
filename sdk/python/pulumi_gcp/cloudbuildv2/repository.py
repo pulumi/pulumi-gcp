@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RepositoryArgs', 'Repository']
@@ -33,45 +33,16 @@ class RepositoryArgs:
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] project: The project for the resource
         """
-        RepositoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent_connection=parent_connection,
-            remote_uri=remote_uri,
-            annotations=annotations,
-            location=location,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent_connection: Optional[pulumi.Input[str]] = None,
-             remote_uri: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent_connection is None and 'parentConnection' in kwargs:
-            parent_connection = kwargs['parentConnection']
-        if parent_connection is None:
-            raise TypeError("Missing 'parent_connection' argument")
-        if remote_uri is None and 'remoteUri' in kwargs:
-            remote_uri = kwargs['remoteUri']
-        if remote_uri is None:
-            raise TypeError("Missing 'remote_uri' argument")
-
-        _setter("parent_connection", parent_connection)
-        _setter("remote_uri", remote_uri)
+        pulumi.set(__self__, "parent_connection", parent_connection)
+        pulumi.set(__self__, "remote_uri", remote_uri)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="parentConnection")
@@ -178,59 +149,24 @@ class _RepositoryState:
                - - -
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
-        _RepositoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            create_time=create_time,
-            etag=etag,
-            location=location,
-            name=name,
-            parent_connection=parent_connection,
-            project=project,
-            remote_uri=remote_uri,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent_connection: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             remote_uri: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if parent_connection is None and 'parentConnection' in kwargs:
-            parent_connection = kwargs['parentConnection']
-        if remote_uri is None and 'remoteUri' in kwargs:
-            remote_uri = kwargs['remoteUri']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent_connection is not None:
-            _setter("parent_connection", parent_connection)
+            pulumi.set(__self__, "parent_connection", parent_connection)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if remote_uri is not None:
-            _setter("remote_uri", remote_uri)
+            pulumi.set(__self__, "remote_uri", remote_uri)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -596,10 +532,6 @@ class Repository(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RepositoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

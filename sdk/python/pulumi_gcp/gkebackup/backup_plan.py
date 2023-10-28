@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,63 +51,24 @@ class BackupPlanArgs:
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         """
-        BackupPlanArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster=cluster,
-            location=location,
-            backup_config=backup_config,
-            backup_schedule=backup_schedule,
-            deactivated=deactivated,
-            description=description,
-            labels=labels,
-            name=name,
-            project=project,
-            retention_policy=retention_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-             backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
-             deactivated: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster is None:
-            raise TypeError("Missing 'cluster' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if backup_config is None and 'backupConfig' in kwargs:
-            backup_config = kwargs['backupConfig']
-        if backup_schedule is None and 'backupSchedule' in kwargs:
-            backup_schedule = kwargs['backupSchedule']
-        if retention_policy is None and 'retentionPolicy' in kwargs:
-            retention_policy = kwargs['retentionPolicy']
-
-        _setter("cluster", cluster)
-        _setter("location", location)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "location", location)
         if backup_config is not None:
-            _setter("backup_config", backup_config)
+            pulumi.set(__self__, "backup_config", backup_config)
         if backup_schedule is not None:
-            _setter("backup_schedule", backup_schedule)
+            pulumi.set(__self__, "backup_schedule", backup_schedule)
         if deactivated is not None:
-            _setter("deactivated", deactivated)
+            pulumi.set(__self__, "deactivated", deactivated)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if retention_policy is not None:
-            _setter("retention_policy", retention_policy)
+            pulumi.set(__self__, "retention_policy", retention_policy)
 
     @property
     @pulumi.getter
@@ -295,85 +256,36 @@ class _BackupPlanState:
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
-        _BackupPlanState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_config=backup_config,
-            backup_schedule=backup_schedule,
-            cluster=cluster,
-            deactivated=deactivated,
-            description=description,
-            etag=etag,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            protected_pod_count=protected_pod_count,
-            retention_policy=retention_policy,
-            state=state,
-            state_reason=state_reason,
-            uid=uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-             backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
-             cluster: Optional[pulumi.Input[str]] = None,
-             deactivated: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protected_pod_count: Optional[pulumi.Input[int]] = None,
-             retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             state_reason: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_config is None and 'backupConfig' in kwargs:
-            backup_config = kwargs['backupConfig']
-        if backup_schedule is None and 'backupSchedule' in kwargs:
-            backup_schedule = kwargs['backupSchedule']
-        if protected_pod_count is None and 'protectedPodCount' in kwargs:
-            protected_pod_count = kwargs['protectedPodCount']
-        if retention_policy is None and 'retentionPolicy' in kwargs:
-            retention_policy = kwargs['retentionPolicy']
-        if state_reason is None and 'stateReason' in kwargs:
-            state_reason = kwargs['stateReason']
-
         if backup_config is not None:
-            _setter("backup_config", backup_config)
+            pulumi.set(__self__, "backup_config", backup_config)
         if backup_schedule is not None:
-            _setter("backup_schedule", backup_schedule)
+            pulumi.set(__self__, "backup_schedule", backup_schedule)
         if cluster is not None:
-            _setter("cluster", cluster)
+            pulumi.set(__self__, "cluster", cluster)
         if deactivated is not None:
-            _setter("deactivated", deactivated)
+            pulumi.set(__self__, "deactivated", deactivated)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protected_pod_count is not None:
-            _setter("protected_pod_count", protected_pod_count)
+            pulumi.set(__self__, "protected_pod_count", protected_pod_count)
         if retention_policy is not None:
-            _setter("retention_policy", retention_policy)
+            pulumi.set(__self__, "retention_policy", retention_policy)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if state_reason is not None:
-            _setter("state_reason", state_reason)
+            pulumi.set(__self__, "state_reason", state_reason)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="backupConfig")
@@ -950,10 +862,6 @@ class BackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -978,9 +886,7 @@ class BackupPlan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupPlanArgs.__new__(BackupPlanArgs)
 
-            backup_config = _utilities.configure(backup_config, BackupPlanBackupConfigArgs, True)
             __props__.__dict__["backup_config"] = backup_config
-            backup_schedule = _utilities.configure(backup_schedule, BackupPlanBackupScheduleArgs, True)
             __props__.__dict__["backup_schedule"] = backup_schedule
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
@@ -993,7 +899,6 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            retention_policy = _utilities.configure(retention_policy, BackupPlanRetentionPolicyArgs, True)
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["etag"] = None
             __props__.__dict__["protected_pod_count"] = None

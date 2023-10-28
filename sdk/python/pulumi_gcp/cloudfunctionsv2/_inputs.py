@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -51,51 +51,20 @@ class FunctionBuildConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
-        FunctionBuildConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            build=build,
-            docker_repository=docker_repository,
-            entry_point=entry_point,
-            environment_variables=environment_variables,
-            runtime=runtime,
-            source=source,
-            worker_pool=worker_pool,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             build: Optional[pulumi.Input[str]] = None,
-             docker_repository: Optional[pulumi.Input[str]] = None,
-             entry_point: Optional[pulumi.Input[str]] = None,
-             environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             runtime: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']] = None,
-             worker_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if docker_repository is None and 'dockerRepository' in kwargs:
-            docker_repository = kwargs['dockerRepository']
-        if entry_point is None and 'entryPoint' in kwargs:
-            entry_point = kwargs['entryPoint']
-        if environment_variables is None and 'environmentVariables' in kwargs:
-            environment_variables = kwargs['environmentVariables']
-        if worker_pool is None and 'workerPool' in kwargs:
-            worker_pool = kwargs['workerPool']
-
         if build is not None:
-            _setter("build", build)
+            pulumi.set(__self__, "build", build)
         if docker_repository is not None:
-            _setter("docker_repository", docker_repository)
+            pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
-            _setter("entry_point", entry_point)
+            pulumi.set(__self__, "entry_point", entry_point)
         if environment_variables is not None:
-            _setter("environment_variables", environment_variables)
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if runtime is not None:
-            _setter("runtime", runtime)
+            pulumi.set(__self__, "runtime", runtime)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if worker_pool is not None:
-            _setter("worker_pool", worker_pool)
+            pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
     @pulumi.getter
@@ -201,27 +170,10 @@ class FunctionBuildConfigSourceArgs:
         :param pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
                Structure is documented below.
         """
-        FunctionBuildConfigSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repo_source=repo_source,
-            storage_source=storage_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repo_source: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']] = None,
-             storage_source: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repo_source is None and 'repoSource' in kwargs:
-            repo_source = kwargs['repoSource']
-        if storage_source is None and 'storageSource' in kwargs:
-            storage_source = kwargs['storageSource']
-
         if repo_source is not None:
-            _setter("repo_source", repo_source)
+            pulumi.set(__self__, "repo_source", repo_source)
         if storage_source is not None:
-            _setter("storage_source", storage_source)
+            pulumi.set(__self__, "storage_source", storage_source)
 
     @property
     @pulumi.getter(name="repoSource")
@@ -271,55 +223,20 @@ class FunctionBuildConfigSourceRepoSourceArgs:
         :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository.
         :param pulumi.Input[str] tag_name: Regex matching tags to build.
         """
-        FunctionBuildConfigSourceRepoSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branch_name=branch_name,
-            commit_sha=commit_sha,
-            dir=dir,
-            invert_regex=invert_regex,
-            project_id=project_id,
-            repo_name=repo_name,
-            tag_name=tag_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branch_name: Optional[pulumi.Input[str]] = None,
-             commit_sha: Optional[pulumi.Input[str]] = None,
-             dir: Optional[pulumi.Input[str]] = None,
-             invert_regex: Optional[pulumi.Input[bool]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             repo_name: Optional[pulumi.Input[str]] = None,
-             tag_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branch_name is None and 'branchName' in kwargs:
-            branch_name = kwargs['branchName']
-        if commit_sha is None and 'commitSha' in kwargs:
-            commit_sha = kwargs['commitSha']
-        if invert_regex is None and 'invertRegex' in kwargs:
-            invert_regex = kwargs['invertRegex']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if tag_name is None and 'tagName' in kwargs:
-            tag_name = kwargs['tagName']
-
         if branch_name is not None:
-            _setter("branch_name", branch_name)
+            pulumi.set(__self__, "branch_name", branch_name)
         if commit_sha is not None:
-            _setter("commit_sha", commit_sha)
+            pulumi.set(__self__, "commit_sha", commit_sha)
         if dir is not None:
-            _setter("dir", dir)
+            pulumi.set(__self__, "dir", dir)
         if invert_regex is not None:
-            _setter("invert_regex", invert_regex)
+            pulumi.set(__self__, "invert_regex", invert_regex)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if repo_name is not None:
-            _setter("repo_name", repo_name)
+            pulumi.set(__self__, "repo_name", repo_name)
         if tag_name is not None:
-            _setter("tag_name", tag_name)
+            pulumi.set(__self__, "tag_name", tag_name)
 
     @property
     @pulumi.getter(name="branchName")
@@ -420,27 +337,12 @@ class FunctionBuildConfigSourceStorageSourceArgs:
                is omitted, the latest generation will be used.
         :param pulumi.Input[str] object: Google Cloud Storage object containing the source.
         """
-        FunctionBuildConfigSourceStorageSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation=generation,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             generation: Optional[pulumi.Input[int]] = None,
-             object: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
         if object is not None:
-            _setter("object", object)
+            pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -507,55 +409,20 @@ class FunctionEventTriggerArgs:
                region as the function, a different region or multi-region, or the global
                region. If not provided, defaults to the same region as the function.
         """
-        FunctionEventTriggerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_filters=event_filters,
-            event_type=event_type,
-            pubsub_topic=pubsub_topic,
-            retry_policy=retry_policy,
-            service_account_email=service_account_email,
-            trigger=trigger,
-            trigger_region=trigger_region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
-             event_type: Optional[pulumi.Input[str]] = None,
-             pubsub_topic: Optional[pulumi.Input[str]] = None,
-             retry_policy: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             trigger: Optional[pulumi.Input[str]] = None,
-             trigger_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_filters is None and 'eventFilters' in kwargs:
-            event_filters = kwargs['eventFilters']
-        if event_type is None and 'eventType' in kwargs:
-            event_type = kwargs['eventType']
-        if pubsub_topic is None and 'pubsubTopic' in kwargs:
-            pubsub_topic = kwargs['pubsubTopic']
-        if retry_policy is None and 'retryPolicy' in kwargs:
-            retry_policy = kwargs['retryPolicy']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if trigger_region is None and 'triggerRegion' in kwargs:
-            trigger_region = kwargs['triggerRegion']
-
         if event_filters is not None:
-            _setter("event_filters", event_filters)
+            pulumi.set(__self__, "event_filters", event_filters)
         if event_type is not None:
-            _setter("event_type", event_type)
+            pulumi.set(__self__, "event_type", event_type)
         if pubsub_topic is not None:
-            _setter("pubsub_topic", pubsub_topic)
+            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if retry_policy is not None:
-            _setter("retry_policy", retry_policy)
+            pulumi.set(__self__, "retry_policy", retry_policy)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if trigger is not None:
-            _setter("trigger", trigger)
+            pulumi.set(__self__, "trigger", trigger)
         if trigger_region is not None:
-            _setter("trigger_region", trigger_region)
+            pulumi.set(__self__, "trigger_region", trigger_region)
 
     @property
     @pulumi.getter(name="eventFilters")
@@ -668,29 +535,10 @@ class FunctionEventTriggerEventFilterArgs:
                The only allowed value is `match-path-pattern`.
                [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
         """
-        FunctionEventTriggerEventFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attribute=attribute,
-            value=value,
-            operator=operator,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attribute: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             operator: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attribute is None:
-            raise TypeError("Missing 'attribute' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("attribute", attribute)
-        _setter("value", value)
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "value", value)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
 
     @property
     @pulumi.getter
@@ -742,29 +590,10 @@ class FunctionIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        FunctionIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -800,29 +629,10 @@ class FunctionIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        FunctionIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -904,113 +714,40 @@ class FunctionServiceConfigArgs:
         :param pulumi.Input[str] vpc_connector_egress_settings: Available egress settings.
                Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
         """
-        FunctionServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all_traffic_on_latest_revision=all_traffic_on_latest_revision,
-            available_cpu=available_cpu,
-            available_memory=available_memory,
-            environment_variables=environment_variables,
-            gcf_uri=gcf_uri,
-            ingress_settings=ingress_settings,
-            max_instance_count=max_instance_count,
-            max_instance_request_concurrency=max_instance_request_concurrency,
-            min_instance_count=min_instance_count,
-            secret_environment_variables=secret_environment_variables,
-            secret_volumes=secret_volumes,
-            service=service,
-            service_account_email=service_account_email,
-            timeout_seconds=timeout_seconds,
-            uri=uri,
-            vpc_connector=vpc_connector,
-            vpc_connector_egress_settings=vpc_connector_egress_settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
-             available_cpu: Optional[pulumi.Input[str]] = None,
-             available_memory: Optional[pulumi.Input[str]] = None,
-             environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             gcf_uri: Optional[pulumi.Input[str]] = None,
-             ingress_settings: Optional[pulumi.Input[str]] = None,
-             max_instance_count: Optional[pulumi.Input[int]] = None,
-             max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
-             min_instance_count: Optional[pulumi.Input[int]] = None,
-             secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
-             secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             uri: Optional[pulumi.Input[str]] = None,
-             vpc_connector: Optional[pulumi.Input[str]] = None,
-             vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if all_traffic_on_latest_revision is None and 'allTrafficOnLatestRevision' in kwargs:
-            all_traffic_on_latest_revision = kwargs['allTrafficOnLatestRevision']
-        if available_cpu is None and 'availableCpu' in kwargs:
-            available_cpu = kwargs['availableCpu']
-        if available_memory is None and 'availableMemory' in kwargs:
-            available_memory = kwargs['availableMemory']
-        if environment_variables is None and 'environmentVariables' in kwargs:
-            environment_variables = kwargs['environmentVariables']
-        if gcf_uri is None and 'gcfUri' in kwargs:
-            gcf_uri = kwargs['gcfUri']
-        if ingress_settings is None and 'ingressSettings' in kwargs:
-            ingress_settings = kwargs['ingressSettings']
-        if max_instance_count is None and 'maxInstanceCount' in kwargs:
-            max_instance_count = kwargs['maxInstanceCount']
-        if max_instance_request_concurrency is None and 'maxInstanceRequestConcurrency' in kwargs:
-            max_instance_request_concurrency = kwargs['maxInstanceRequestConcurrency']
-        if min_instance_count is None and 'minInstanceCount' in kwargs:
-            min_instance_count = kwargs['minInstanceCount']
-        if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
-            secret_environment_variables = kwargs['secretEnvironmentVariables']
-        if secret_volumes is None and 'secretVolumes' in kwargs:
-            secret_volumes = kwargs['secretVolumes']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-        if vpc_connector is None and 'vpcConnector' in kwargs:
-            vpc_connector = kwargs['vpcConnector']
-        if vpc_connector_egress_settings is None and 'vpcConnectorEgressSettings' in kwargs:
-            vpc_connector_egress_settings = kwargs['vpcConnectorEgressSettings']
-
         if all_traffic_on_latest_revision is not None:
-            _setter("all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+            pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
         if available_cpu is not None:
-            _setter("available_cpu", available_cpu)
+            pulumi.set(__self__, "available_cpu", available_cpu)
         if available_memory is not None:
-            _setter("available_memory", available_memory)
+            pulumi.set(__self__, "available_memory", available_memory)
         if environment_variables is not None:
-            _setter("environment_variables", environment_variables)
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if gcf_uri is not None:
-            _setter("gcf_uri", gcf_uri)
+            pulumi.set(__self__, "gcf_uri", gcf_uri)
         if ingress_settings is not None:
-            _setter("ingress_settings", ingress_settings)
+            pulumi.set(__self__, "ingress_settings", ingress_settings)
         if max_instance_count is not None:
-            _setter("max_instance_count", max_instance_count)
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
         if max_instance_request_concurrency is not None:
-            _setter("max_instance_request_concurrency", max_instance_request_concurrency)
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if min_instance_count is not None:
-            _setter("min_instance_count", min_instance_count)
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
         if secret_environment_variables is not None:
-            _setter("secret_environment_variables", secret_environment_variables)
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         if secret_volumes is not None:
-            _setter("secret_volumes", secret_volumes)
+            pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
         if vpc_connector is not None:
-            _setter("vpc_connector", vpc_connector)
+            pulumi.set(__self__, "vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
-            _setter("vpc_connector_egress_settings", vpc_connector_egress_settings)
+            pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
 
     @property
     @pulumi.getter(name="allTrafficOnLatestRevision")
@@ -1243,37 +980,10 @@ class FunctionServiceConfigSecretEnvironmentVariableArgs:
         :param pulumi.Input[str] secret: Name of the secret in secret manager (not the full resource name).
         :param pulumi.Input[str] version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
-        FunctionServiceConfigSecretEnvironmentVariableArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            project_id=project_id,
-            secret=secret,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("key", key)
-        _setter("project_id", project_id)
-        _setter("secret", secret)
-        _setter("version", version)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1338,38 +1048,11 @@ class FunctionServiceConfigSecretVolumeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
                Structure is documented below.
         """
-        FunctionServiceConfigSecretVolumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            project_id=project_id,
-            secret=secret,
-            versions=versions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-
-        _setter("mount_path", mount_path)
-        _setter("project_id", project_id)
-        _setter("secret", secret)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
         if versions is not None:
-            _setter("versions", versions)
+            pulumi.set(__self__, "versions", versions)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -1430,25 +1113,8 @@ class FunctionServiceConfigSecretVolumeVersionArgs:
         :param pulumi.Input[str] path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
         :param pulumi.Input[str] version: Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
         """
-        FunctionServiceConfigSecretVolumeVersionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("path", path)
-        _setter("version", version)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter

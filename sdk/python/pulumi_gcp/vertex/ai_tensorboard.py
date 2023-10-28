@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,44 +36,17 @@ class AiTensorboardArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the tensorboard. eg us-central1
         """
-        AiTensorboardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            description=description,
-            encryption_spec=encryption_spec,
-            labels=labels,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if encryption_spec is None and 'encryptionSpec' in kwargs:
-            encryption_spec = kwargs['encryptionSpec']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
-            _setter("encryption_spec", encryption_spec)
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -186,71 +159,28 @@ class _AiTensorboardState:
         :param pulumi.Input[str] run_count: The number of Runs stored in this Tensorboard.
         :param pulumi.Input[str] update_time: The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
-        _AiTensorboardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blob_storage_path_prefix=blob_storage_path_prefix,
-            create_time=create_time,
-            description=description,
-            display_name=display_name,
-            encryption_spec=encryption_spec,
-            labels=labels,
-            name=name,
-            project=project,
-            region=region,
-            run_count=run_count,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blob_storage_path_prefix: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             run_count: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if blob_storage_path_prefix is None and 'blobStoragePathPrefix' in kwargs:
-            blob_storage_path_prefix = kwargs['blobStoragePathPrefix']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if encryption_spec is None and 'encryptionSpec' in kwargs:
-            encryption_spec = kwargs['encryptionSpec']
-        if run_count is None and 'runCount' in kwargs:
-            run_count = kwargs['runCount']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if blob_storage_path_prefix is not None:
-            _setter("blob_storage_path_prefix", blob_storage_path_prefix)
+            pulumi.set(__self__, "blob_storage_path_prefix", blob_storage_path_prefix)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if encryption_spec is not None:
-            _setter("encryption_spec", encryption_spec)
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if run_count is not None:
-            _setter("run_count", run_count)
+            pulumi.set(__self__, "run_count", run_count)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="blobStoragePathPrefix")
@@ -572,10 +502,6 @@ class AiTensorboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AiTensorboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -600,7 +526,6 @@ class AiTensorboard(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            encryption_spec = _utilities.configure(encryption_spec, AiTensorboardEncryptionSpecArgs, True)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project

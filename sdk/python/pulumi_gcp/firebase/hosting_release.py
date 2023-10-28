@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostingReleaseArgs', 'HostingRelease']
@@ -39,42 +39,15 @@ class HostingReleaseArgs:
                The Version must belong to the same site as in the `site_id`.
                This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
         """
-        HostingReleaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            site_id=site_id,
-            channel_id=channel_id,
-            message=message,
-            type=type,
-            version_name=version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             site_id: Optional[pulumi.Input[str]] = None,
-             channel_id: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if site_id is None and 'siteId' in kwargs:
-            site_id = kwargs['siteId']
-        if site_id is None:
-            raise TypeError("Missing 'site_id' argument")
-        if channel_id is None and 'channelId' in kwargs:
-            channel_id = kwargs['channelId']
-        if version_name is None and 'versionName' in kwargs:
-            version_name = kwargs['versionName']
-
-        _setter("site_id", site_id)
+        pulumi.set(__self__, "site_id", site_id)
         if channel_id is not None:
-            _setter("channel_id", channel_id)
+            pulumi.set(__self__, "channel_id", channel_id)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if version_name is not None:
-            _setter("version_name", version_name)
+            pulumi.set(__self__, "version_name", version_name)
 
     @property
     @pulumi.getter(name="siteId")
@@ -183,51 +156,20 @@ class _HostingReleaseState:
                The Version must belong to the same site as in the `site_id`.
                This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
         """
-        _HostingReleaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channel_id=channel_id,
-            message=message,
-            name=name,
-            release_id=release_id,
-            site_id=site_id,
-            type=type,
-            version_name=version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channel_id: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             release_id: Optional[pulumi.Input[str]] = None,
-             site_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if channel_id is None and 'channelId' in kwargs:
-            channel_id = kwargs['channelId']
-        if release_id is None and 'releaseId' in kwargs:
-            release_id = kwargs['releaseId']
-        if site_id is None and 'siteId' in kwargs:
-            site_id = kwargs['siteId']
-        if version_name is None and 'versionName' in kwargs:
-            version_name = kwargs['versionName']
-
         if channel_id is not None:
-            _setter("channel_id", channel_id)
+            pulumi.set(__self__, "channel_id", channel_id)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if release_id is not None:
-            _setter("release_id", release_id)
+            pulumi.set(__self__, "release_id", release_id)
         if site_id is not None:
-            _setter("site_id", site_id)
+            pulumi.set(__self__, "site_id", site_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if version_name is not None:
-            _setter("version_name", version_name)
+            pulumi.set(__self__, "version_name", version_name)
 
     @property
     @pulumi.getter(name="channelId")
@@ -567,10 +509,6 @@ class HostingRelease(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HostingReleaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

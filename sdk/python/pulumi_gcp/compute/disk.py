@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -139,134 +139,55 @@ class DiskArgs:
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
-        DiskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            async_primary_disk=async_primary_disk,
-            description=description,
-            disk_encryption_key=disk_encryption_key,
-            enable_confidential_compute=enable_confidential_compute,
-            guest_os_features=guest_os_features,
-            image=image,
-            interface=interface,
-            labels=labels,
-            licenses=licenses,
-            multi_writer=multi_writer,
-            name=name,
-            physical_block_size_bytes=physical_block_size_bytes,
-            project=project,
-            provisioned_iops=provisioned_iops,
-            provisioned_throughput=provisioned_throughput,
-            resource_policies=resource_policies,
-            size=size,
-            snapshot=snapshot,
-            source_disk=source_disk,
-            source_image_encryption_key=source_image_encryption_key,
-            source_snapshot_encryption_key=source_snapshot_encryption_key,
-            type=type,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
-             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             interface: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             multi_writer: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             provisioned_iops: Optional[pulumi.Input[int]] = None,
-             provisioned_throughput: Optional[pulumi.Input[int]] = None,
-             resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             snapshot: Optional[pulumi.Input[str]] = None,
-             source_disk: Optional[pulumi.Input[str]] = None,
-             source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
-             source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
-            async_primary_disk = kwargs['asyncPrimaryDisk']
-        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
-            disk_encryption_key = kwargs['diskEncryptionKey']
-        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
-            enable_confidential_compute = kwargs['enableConfidentialCompute']
-        if guest_os_features is None and 'guestOsFeatures' in kwargs:
-            guest_os_features = kwargs['guestOsFeatures']
-        if multi_writer is None and 'multiWriter' in kwargs:
-            multi_writer = kwargs['multiWriter']
-        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
-            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
-        if provisioned_iops is None and 'provisionedIops' in kwargs:
-            provisioned_iops = kwargs['provisionedIops']
-        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
-            provisioned_throughput = kwargs['provisionedThroughput']
-        if resource_policies is None and 'resourcePolicies' in kwargs:
-            resource_policies = kwargs['resourcePolicies']
-        if source_disk is None and 'sourceDisk' in kwargs:
-            source_disk = kwargs['sourceDisk']
-        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
-            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
-        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
-            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
-
         if async_primary_disk is not None:
-            _setter("async_primary_disk", async_primary_disk)
+            pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
-            _setter("disk_encryption_key", disk_encryption_key)
+            pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
         if enable_confidential_compute is not None:
-            _setter("enable_confidential_compute", enable_confidential_compute)
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features is not None:
-            _setter("guest_os_features", guest_os_features)
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if interface is not None:
             warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if licenses is not None:
-            _setter("licenses", licenses)
+            pulumi.set(__self__, "licenses", licenses)
         if multi_writer is not None:
-            _setter("multi_writer", multi_writer)
+            pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if physical_block_size_bytes is not None:
-            _setter("physical_block_size_bytes", physical_block_size_bytes)
+            pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
-            _setter("provisioned_iops", provisioned_iops)
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
-            _setter("provisioned_throughput", provisioned_throughput)
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_policies is not None:
-            _setter("resource_policies", resource_policies)
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot is not None:
-            _setter("snapshot", snapshot)
+            pulumi.set(__self__, "snapshot", snapshot)
         if source_disk is not None:
-            _setter("source_disk", source_disk)
+            pulumi.set(__self__, "source_disk", source_disk)
         if source_image_encryption_key is not None:
-            _setter("source_image_encryption_key", source_image_encryption_key)
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_snapshot_encryption_key is not None:
-            _setter("source_snapshot_encryption_key", source_snapshot_encryption_key)
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -779,186 +700,73 @@ class _DiskState:
                project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
-        _DiskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            async_primary_disk=async_primary_disk,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            disk_encryption_key=disk_encryption_key,
-            enable_confidential_compute=enable_confidential_compute,
-            guest_os_features=guest_os_features,
-            image=image,
-            interface=interface,
-            label_fingerprint=label_fingerprint,
-            labels=labels,
-            last_attach_timestamp=last_attach_timestamp,
-            last_detach_timestamp=last_detach_timestamp,
-            licenses=licenses,
-            multi_writer=multi_writer,
-            name=name,
-            physical_block_size_bytes=physical_block_size_bytes,
-            project=project,
-            provisioned_iops=provisioned_iops,
-            provisioned_throughput=provisioned_throughput,
-            resource_policies=resource_policies,
-            self_link=self_link,
-            size=size,
-            snapshot=snapshot,
-            source_disk=source_disk,
-            source_disk_id=source_disk_id,
-            source_image_encryption_key=source_image_encryption_key,
-            source_image_id=source_image_id,
-            source_snapshot_encryption_key=source_snapshot_encryption_key,
-            source_snapshot_id=source_snapshot_id,
-            type=type,
-            users=users,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
-             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             interface: Optional[pulumi.Input[str]] = None,
-             label_fingerprint: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
-             last_detach_timestamp: Optional[pulumi.Input[str]] = None,
-             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             multi_writer: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             provisioned_iops: Optional[pulumi.Input[int]] = None,
-             provisioned_throughput: Optional[pulumi.Input[int]] = None,
-             resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             snapshot: Optional[pulumi.Input[str]] = None,
-             source_disk: Optional[pulumi.Input[str]] = None,
-             source_disk_id: Optional[pulumi.Input[str]] = None,
-             source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
-             source_image_id: Optional[pulumi.Input[str]] = None,
-             source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
-             source_snapshot_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if async_primary_disk is None and 'asyncPrimaryDisk' in kwargs:
-            async_primary_disk = kwargs['asyncPrimaryDisk']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if disk_encryption_key is None and 'diskEncryptionKey' in kwargs:
-            disk_encryption_key = kwargs['diskEncryptionKey']
-        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
-            enable_confidential_compute = kwargs['enableConfidentialCompute']
-        if guest_os_features is None and 'guestOsFeatures' in kwargs:
-            guest_os_features = kwargs['guestOsFeatures']
-        if label_fingerprint is None and 'labelFingerprint' in kwargs:
-            label_fingerprint = kwargs['labelFingerprint']
-        if last_attach_timestamp is None and 'lastAttachTimestamp' in kwargs:
-            last_attach_timestamp = kwargs['lastAttachTimestamp']
-        if last_detach_timestamp is None and 'lastDetachTimestamp' in kwargs:
-            last_detach_timestamp = kwargs['lastDetachTimestamp']
-        if multi_writer is None and 'multiWriter' in kwargs:
-            multi_writer = kwargs['multiWriter']
-        if physical_block_size_bytes is None and 'physicalBlockSizeBytes' in kwargs:
-            physical_block_size_bytes = kwargs['physicalBlockSizeBytes']
-        if provisioned_iops is None and 'provisionedIops' in kwargs:
-            provisioned_iops = kwargs['provisionedIops']
-        if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
-            provisioned_throughput = kwargs['provisionedThroughput']
-        if resource_policies is None and 'resourcePolicies' in kwargs:
-            resource_policies = kwargs['resourcePolicies']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if source_disk is None and 'sourceDisk' in kwargs:
-            source_disk = kwargs['sourceDisk']
-        if source_disk_id is None and 'sourceDiskId' in kwargs:
-            source_disk_id = kwargs['sourceDiskId']
-        if source_image_encryption_key is None and 'sourceImageEncryptionKey' in kwargs:
-            source_image_encryption_key = kwargs['sourceImageEncryptionKey']
-        if source_image_id is None and 'sourceImageId' in kwargs:
-            source_image_id = kwargs['sourceImageId']
-        if source_snapshot_encryption_key is None and 'sourceSnapshotEncryptionKey' in kwargs:
-            source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
-        if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
-            source_snapshot_id = kwargs['sourceSnapshotId']
-
         if async_primary_disk is not None:
-            _setter("async_primary_disk", async_primary_disk)
+            pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
-            _setter("disk_encryption_key", disk_encryption_key)
+            pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
         if enable_confidential_compute is not None:
-            _setter("enable_confidential_compute", enable_confidential_compute)
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features is not None:
-            _setter("guest_os_features", guest_os_features)
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if interface is not None:
             warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if label_fingerprint is not None:
-            _setter("label_fingerprint", label_fingerprint)
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if last_attach_timestamp is not None:
-            _setter("last_attach_timestamp", last_attach_timestamp)
+            pulumi.set(__self__, "last_attach_timestamp", last_attach_timestamp)
         if last_detach_timestamp is not None:
-            _setter("last_detach_timestamp", last_detach_timestamp)
+            pulumi.set(__self__, "last_detach_timestamp", last_detach_timestamp)
         if licenses is not None:
-            _setter("licenses", licenses)
+            pulumi.set(__self__, "licenses", licenses)
         if multi_writer is not None:
-            _setter("multi_writer", multi_writer)
+            pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if physical_block_size_bytes is not None:
-            _setter("physical_block_size_bytes", physical_block_size_bytes)
+            pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
-            _setter("provisioned_iops", provisioned_iops)
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
-            _setter("provisioned_throughput", provisioned_throughput)
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_policies is not None:
-            _setter("resource_policies", resource_policies)
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot is not None:
-            _setter("snapshot", snapshot)
+            pulumi.set(__self__, "snapshot", snapshot)
         if source_disk is not None:
-            _setter("source_disk", source_disk)
+            pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_id is not None:
-            _setter("source_disk_id", source_disk_id)
+            pulumi.set(__self__, "source_disk_id", source_disk_id)
         if source_image_encryption_key is not None:
-            _setter("source_image_encryption_key", source_image_encryption_key)
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_image_id is not None:
-            _setter("source_image_id", source_image_id)
+            pulumi.set(__self__, "source_image_id", source_image_id)
         if source_snapshot_encryption_key is not None:
-            _setter("source_snapshot_encryption_key", source_snapshot_encryption_key)
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
-            _setter("source_snapshot_id", source_snapshot_id)
+            pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -1788,10 +1596,6 @@ class Disk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DiskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1829,10 +1633,8 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskArgs.__new__(DiskArgs)
 
-            async_primary_disk = _utilities.configure(async_primary_disk, DiskAsyncPrimaryDiskArgs, True)
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
-            disk_encryption_key = _utilities.configure(disk_encryption_key, DiskDiskEncryptionKeyArgs, True)
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["guest_os_features"] = guest_os_features
@@ -1850,9 +1652,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["source_disk"] = source_disk
-            source_image_encryption_key = _utilities.configure(source_image_encryption_key, DiskSourceImageEncryptionKeyArgs, True)
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
-            source_snapshot_encryption_key = _utilities.configure(source_snapshot_encryption_key, DiskSourceSnapshotEncryptionKeyArgs, True)
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["zone"] = zone

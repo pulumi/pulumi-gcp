@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -58,84 +58,29 @@ class WorkstationConfigArgs:
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
-        WorkstationConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            workstation_cluster_id=workstation_cluster_id,
-            workstation_config_id=workstation_config_id,
-            annotations=annotations,
-            container=container,
-            display_name=display_name,
-            encryption_key=encryption_key,
-            host=host,
-            idle_timeout=idle_timeout,
-            labels=labels,
-            persistent_directories=persistent_directories,
-            project=project,
-            running_timeout=running_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
-             workstation_config_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
-             host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
-             idle_timeout: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             running_timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
-            workstation_cluster_id = kwargs['workstationClusterId']
-        if workstation_cluster_id is None:
-            raise TypeError("Missing 'workstation_cluster_id' argument")
-        if workstation_config_id is None and 'workstationConfigId' in kwargs:
-            workstation_config_id = kwargs['workstationConfigId']
-        if workstation_config_id is None:
-            raise TypeError("Missing 'workstation_config_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if idle_timeout is None and 'idleTimeout' in kwargs:
-            idle_timeout = kwargs['idleTimeout']
-        if persistent_directories is None and 'persistentDirectories' in kwargs:
-            persistent_directories = kwargs['persistentDirectories']
-        if running_timeout is None and 'runningTimeout' in kwargs:
-            running_timeout = kwargs['runningTimeout']
-
-        _setter("location", location)
-        _setter("workstation_cluster_id", workstation_cluster_id)
-        _setter("workstation_config_id", workstation_config_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+        pulumi.set(__self__, "workstation_config_id", workstation_config_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if container is not None:
-            _setter("container", container)
+            pulumi.set(__self__, "container", container)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if idle_timeout is not None:
-            _setter("idle_timeout", idle_timeout)
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if persistent_directories is not None:
-            _setter("persistent_directories", persistent_directories)
+            pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if running_timeout is not None:
-            _setter("running_timeout", running_timeout)
+            pulumi.set(__self__, "running_timeout", running_timeout)
 
     @property
     @pulumi.getter
@@ -366,107 +311,44 @@ class _WorkstationConfigState:
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
-        _WorkstationConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            conditions=conditions,
-            container=container,
-            create_time=create_time,
-            degraded=degraded,
-            display_name=display_name,
-            encryption_key=encryption_key,
-            etag=etag,
-            host=host,
-            idle_timeout=idle_timeout,
-            labels=labels,
-            location=location,
-            name=name,
-            persistent_directories=persistent_directories,
-            project=project,
-            running_timeout=running_timeout,
-            uid=uid,
-            workstation_cluster_id=workstation_cluster_id,
-            workstation_config_id=workstation_config_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]]] = None,
-             container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             degraded: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
-             idle_timeout: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             running_timeout: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
-             workstation_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if idle_timeout is None and 'idleTimeout' in kwargs:
-            idle_timeout = kwargs['idleTimeout']
-        if persistent_directories is None and 'persistentDirectories' in kwargs:
-            persistent_directories = kwargs['persistentDirectories']
-        if running_timeout is None and 'runningTimeout' in kwargs:
-            running_timeout = kwargs['runningTimeout']
-        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
-            workstation_cluster_id = kwargs['workstationClusterId']
-        if workstation_config_id is None and 'workstationConfigId' in kwargs:
-            workstation_config_id = kwargs['workstationConfigId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if container is not None:
-            _setter("container", container)
+            pulumi.set(__self__, "container", container)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if degraded is not None:
-            _setter("degraded", degraded)
+            pulumi.set(__self__, "degraded", degraded)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if idle_timeout is not None:
-            _setter("idle_timeout", idle_timeout)
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if persistent_directories is not None:
-            _setter("persistent_directories", persistent_directories)
+            pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if running_timeout is not None:
-            _setter("running_timeout", running_timeout)
+            pulumi.set(__self__, "running_timeout", running_timeout)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if workstation_cluster_id is not None:
-            _setter("workstation_cluster_id", workstation_cluster_id)
+            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
-            _setter("workstation_config_id", workstation_config_id)
+            pulumi.set(__self__, "workstation_config_id", workstation_config_id)
 
     @property
     @pulumi.getter
@@ -1446,10 +1328,6 @@ class WorkstationConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkstationConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1478,12 +1356,9 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__ = WorkstationConfigArgs.__new__(WorkstationConfigArgs)
 
             __props__.__dict__["annotations"] = annotations
-            container = _utilities.configure(container, WorkstationConfigContainerArgs, True)
             __props__.__dict__["container"] = container
             __props__.__dict__["display_name"] = display_name
-            encryption_key = _utilities.configure(encryption_key, WorkstationConfigEncryptionKeyArgs, True)
             __props__.__dict__["encryption_key"] = encryption_key
-            host = _utilities.configure(host, WorkstationConfigHostArgs, True)
             __props__.__dict__["host"] = host
             __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["labels"] = labels

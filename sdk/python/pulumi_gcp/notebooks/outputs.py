@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -46,24 +46,9 @@ class EnvironmentContainerImage(dict):
                For example: gcr.io/{project_id}/{imageName}
         :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
-        EnvironmentContainerImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repository=repository,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repository: Optional[str] = None,
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repository is None:
-            raise TypeError("Missing 'repository' argument")
-
-        _setter("repository", repository)
+        pulumi.set(__self__, "repository", repository)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -114,32 +99,11 @@ class EnvironmentVmImage(dict):
         :param str image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param str image_name: Use VM image name to find the image.
         """
-        EnvironmentVmImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            image_family=image_family,
-            image_name=image_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[str] = None,
-             image_family: Optional[str] = None,
-             image_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if image_family is None and 'imageFamily' in kwargs:
-            image_family = kwargs['imageFamily']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if image_family is not None:
-            _setter("image_family", image_family)
+            pulumi.set(__self__, "image_family", image_family)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
 
     @property
     @pulumi.getter
@@ -194,27 +158,8 @@ class InstanceAcceleratorConfig(dict):
         :param str type: Type of this accelerator.
                Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
         """
-        InstanceAcceleratorConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            core_count=core_count,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             core_count: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if core_count is None and 'coreCount' in kwargs:
-            core_count = kwargs['coreCount']
-        if core_count is None:
-            raise TypeError("Missing 'core_count' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("core_count", core_count)
-        _setter("type", type)
+        pulumi.set(__self__, "core_count", core_count)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="coreCount")
@@ -244,24 +189,9 @@ class InstanceContainerImage(dict):
                For example: gcr.io/{project_id}/{imageName}
         :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
-        InstanceContainerImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repository=repository,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repository: Optional[str] = None,
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repository is None:
-            raise TypeError("Missing 'repository' argument")
-
-        _setter("repository", repository)
+        pulumi.set(__self__, "repository", repository)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -287,29 +217,10 @@ class InstanceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        InstanceIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -333,29 +244,10 @@ class InstanceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        InstanceIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -402,30 +294,11 @@ class InstanceReservationAffinity(dict):
         :param str key: Corresponds to the label key of reservation resource.
         :param Sequence[str] values: Corresponds to the label values of reservation resource.
         """
-        InstanceReservationAffinity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            consume_reservation_type=consume_reservation_type,
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             consume_reservation_type: Optional[str] = None,
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if consume_reservation_type is None and 'consumeReservationType' in kwargs:
-            consume_reservation_type = kwargs['consumeReservationType']
-        if consume_reservation_type is None:
-            raise TypeError("Missing 'consume_reservation_type' argument")
-
-        _setter("consume_reservation_type", consume_reservation_type)
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter(name="consumeReservationType")
@@ -492,33 +365,12 @@ class InstanceShieldedInstanceConfig(dict):
         :param bool enable_vtpm: Defines whether the instance has the vTPM enabled.
                Enabled by default.
         """
-        InstanceShieldedInstanceConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_integrity_monitoring=enable_integrity_monitoring,
-            enable_secure_boot=enable_secure_boot,
-            enable_vtpm=enable_vtpm,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_integrity_monitoring: Optional[bool] = None,
-             enable_secure_boot: Optional[bool] = None,
-             enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
-            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
-        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
-            enable_secure_boot = kwargs['enableSecureBoot']
-        if enable_vtpm is None and 'enableVtpm' in kwargs:
-            enable_vtpm = kwargs['enableVtpm']
-
         if enable_integrity_monitoring is not None:
-            _setter("enable_integrity_monitoring", enable_integrity_monitoring)
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
-            _setter("enable_secure_boot", enable_secure_boot)
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
         if enable_vtpm is not None:
-            _setter("enable_vtpm", enable_vtpm)
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
 
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
@@ -583,32 +435,11 @@ class InstanceVmImage(dict):
         :param str image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param str image_name: Use VM image name to find the image.
         """
-        InstanceVmImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            image_family=image_family,
-            image_name=image_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[str] = None,
-             image_family: Optional[str] = None,
-             image_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if image_family is None and 'imageFamily' in kwargs:
-            image_family = kwargs['imageFamily']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if image_family is not None:
-            _setter("image_family", image_family)
+            pulumi.set(__self__, "image_family", image_family)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
 
     @property
     @pulumi.getter
@@ -672,33 +503,12 @@ class RuntimeAccessConfig(dict):
         :param str runtime_owner: The owner of this runtime after creation. Format: `alias@example.com`.
                Currently supports one owner only.
         """
-        RuntimeAccessConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_type=access_type,
-            proxy_uri=proxy_uri,
-            runtime_owner=runtime_owner,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_type: Optional[str] = None,
-             proxy_uri: Optional[str] = None,
-             runtime_owner: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_type is None and 'accessType' in kwargs:
-            access_type = kwargs['accessType']
-        if proxy_uri is None and 'proxyUri' in kwargs:
-            proxy_uri = kwargs['proxyUri']
-        if runtime_owner is None and 'runtimeOwner' in kwargs:
-            runtime_owner = kwargs['runtimeOwner']
-
         if access_type is not None:
-            _setter("access_type", access_type)
+            pulumi.set(__self__, "access_type", access_type)
         if proxy_uri is not None:
-            _setter("proxy_uri", proxy_uri)
+            pulumi.set(__self__, "proxy_uri", proxy_uri)
         if runtime_owner is not None:
-            _setter("runtime_owner", runtime_owner)
+            pulumi.set(__self__, "runtime_owner", runtime_owner)
 
     @property
     @pulumi.getter(name="accessType")
@@ -735,29 +545,10 @@ class RuntimeIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RuntimeIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -781,29 +572,10 @@ class RuntimeIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RuntimeIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -847,21 +619,8 @@ class RuntimeMetric(dict):
                Contains runtime daemon metrics, such as OS and kernels and
                sessions stats.
         """
-        RuntimeMetric._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            system_metrics=system_metrics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             system_metrics: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if system_metrics is None and 'systemMetrics' in kwargs:
-            system_metrics = kwargs['systemMetrics']
-
         if system_metrics is not None:
-            _setter("system_metrics", system_metrics)
+            pulumi.set(__self__, "system_metrics", system_metrics)
 
     @property
     @pulumi.getter(name="systemMetrics")
@@ -939,71 +698,26 @@ class RuntimeSoftwareConfig(dict):
         :param bool upgradeable: (Output)
                Bool indicating whether an newer image is available in an image family.
         """
-        RuntimeSoftwareConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_gpu_driver_path=custom_gpu_driver_path,
-            enable_health_monitoring=enable_health_monitoring,
-            idle_shutdown=idle_shutdown,
-            idle_shutdown_timeout=idle_shutdown_timeout,
-            install_gpu_driver=install_gpu_driver,
-            kernels=kernels,
-            notebook_upgrade_schedule=notebook_upgrade_schedule,
-            post_startup_script=post_startup_script,
-            post_startup_script_behavior=post_startup_script_behavior,
-            upgradeable=upgradeable,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_gpu_driver_path: Optional[str] = None,
-             enable_health_monitoring: Optional[bool] = None,
-             idle_shutdown: Optional[bool] = None,
-             idle_shutdown_timeout: Optional[int] = None,
-             install_gpu_driver: Optional[bool] = None,
-             kernels: Optional[Sequence['outputs.RuntimeSoftwareConfigKernel']] = None,
-             notebook_upgrade_schedule: Optional[str] = None,
-             post_startup_script: Optional[str] = None,
-             post_startup_script_behavior: Optional[str] = None,
-             upgradeable: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
-            custom_gpu_driver_path = kwargs['customGpuDriverPath']
-        if enable_health_monitoring is None and 'enableHealthMonitoring' in kwargs:
-            enable_health_monitoring = kwargs['enableHealthMonitoring']
-        if idle_shutdown is None and 'idleShutdown' in kwargs:
-            idle_shutdown = kwargs['idleShutdown']
-        if idle_shutdown_timeout is None and 'idleShutdownTimeout' in kwargs:
-            idle_shutdown_timeout = kwargs['idleShutdownTimeout']
-        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
-            install_gpu_driver = kwargs['installGpuDriver']
-        if notebook_upgrade_schedule is None and 'notebookUpgradeSchedule' in kwargs:
-            notebook_upgrade_schedule = kwargs['notebookUpgradeSchedule']
-        if post_startup_script is None and 'postStartupScript' in kwargs:
-            post_startup_script = kwargs['postStartupScript']
-        if post_startup_script_behavior is None and 'postStartupScriptBehavior' in kwargs:
-            post_startup_script_behavior = kwargs['postStartupScriptBehavior']
-
         if custom_gpu_driver_path is not None:
-            _setter("custom_gpu_driver_path", custom_gpu_driver_path)
+            pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
         if enable_health_monitoring is not None:
-            _setter("enable_health_monitoring", enable_health_monitoring)
+            pulumi.set(__self__, "enable_health_monitoring", enable_health_monitoring)
         if idle_shutdown is not None:
-            _setter("idle_shutdown", idle_shutdown)
+            pulumi.set(__self__, "idle_shutdown", idle_shutdown)
         if idle_shutdown_timeout is not None:
-            _setter("idle_shutdown_timeout", idle_shutdown_timeout)
+            pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
         if install_gpu_driver is not None:
-            _setter("install_gpu_driver", install_gpu_driver)
+            pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
         if kernels is not None:
-            _setter("kernels", kernels)
+            pulumi.set(__self__, "kernels", kernels)
         if notebook_upgrade_schedule is not None:
-            _setter("notebook_upgrade_schedule", notebook_upgrade_schedule)
+            pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         if post_startup_script is not None:
-            _setter("post_startup_script", post_startup_script)
+            pulumi.set(__self__, "post_startup_script", post_startup_script)
         if post_startup_script_behavior is not None:
-            _setter("post_startup_script_behavior", post_startup_script_behavior)
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
         if upgradeable is not None:
-            _setter("upgradeable", upgradeable)
+            pulumi.set(__self__, "upgradeable", upgradeable)
 
     @property
     @pulumi.getter(name="customGpuDriverPath")
@@ -1105,24 +819,9 @@ class RuntimeSoftwareConfigKernel(dict):
                For example: gcr.io/{project_id}/{imageName}
         :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
-        RuntimeSoftwareConfigKernel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repository=repository,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repository: Optional[str] = None,
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repository is None:
-            raise TypeError("Missing 'repository' argument")
-
-        _setter("repository", repository)
+        pulumi.set(__self__, "repository", repository)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -1177,33 +876,12 @@ class RuntimeVirtualMachine(dict):
         :param 'RuntimeVirtualMachineVirtualMachineConfigArgs' virtual_machine_config: Virtual Machine configuration settings.
                Structure is documented below.
         """
-        RuntimeVirtualMachine._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            instance_name=instance_name,
-            virtual_machine_config=virtual_machine_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             virtual_machine_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if virtual_machine_config is None and 'virtualMachineConfig' in kwargs:
-            virtual_machine_config = kwargs['virtualMachineConfig']
-
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if virtual_machine_config is not None:
-            _setter("virtual_machine_config", virtual_machine_config)
+            pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -1350,101 +1028,36 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         :param str zone: (Output)
                The zone where the virtual machine is located.
         """
-        RuntimeVirtualMachineVirtualMachineConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_disk=data_disk,
-            machine_type=machine_type,
-            accelerator_config=accelerator_config,
-            container_images=container_images,
-            encryption_config=encryption_config,
-            guest_attributes=guest_attributes,
-            internal_ip_only=internal_ip_only,
-            labels=labels,
-            metadata=metadata,
-            network=network,
-            nic_type=nic_type,
-            reserved_ip_range=reserved_ip_range,
-            shielded_instance_config=shielded_instance_config,
-            subnet=subnet,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_disk: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigDataDisk'] = None,
-             machine_type: Optional[str] = None,
-             accelerator_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig'] = None,
-             container_images: Optional[Sequence['outputs.RuntimeVirtualMachineVirtualMachineConfigContainerImage']] = None,
-             encryption_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig'] = None,
-             guest_attributes: Optional[Mapping[str, str]] = None,
-             internal_ip_only: Optional[bool] = None,
-             labels: Optional[Mapping[str, str]] = None,
-             metadata: Optional[Mapping[str, str]] = None,
-             network: Optional[str] = None,
-             nic_type: Optional[str] = None,
-             reserved_ip_range: Optional[str] = None,
-             shielded_instance_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig'] = None,
-             subnet: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_disk is None and 'dataDisk' in kwargs:
-            data_disk = kwargs['dataDisk']
-        if data_disk is None:
-            raise TypeError("Missing 'data_disk' argument")
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if machine_type is None:
-            raise TypeError("Missing 'machine_type' argument")
-        if accelerator_config is None and 'acceleratorConfig' in kwargs:
-            accelerator_config = kwargs['acceleratorConfig']
-        if container_images is None and 'containerImages' in kwargs:
-            container_images = kwargs['containerImages']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if guest_attributes is None and 'guestAttributes' in kwargs:
-            guest_attributes = kwargs['guestAttributes']
-        if internal_ip_only is None and 'internalIpOnly' in kwargs:
-            internal_ip_only = kwargs['internalIpOnly']
-        if nic_type is None and 'nicType' in kwargs:
-            nic_type = kwargs['nicType']
-        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
-            reserved_ip_range = kwargs['reservedIpRange']
-        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
-            shielded_instance_config = kwargs['shieldedInstanceConfig']
-
-        _setter("data_disk", data_disk)
-        _setter("machine_type", machine_type)
+        pulumi.set(__self__, "data_disk", data_disk)
+        pulumi.set(__self__, "machine_type", machine_type)
         if accelerator_config is not None:
-            _setter("accelerator_config", accelerator_config)
+            pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_images is not None:
-            _setter("container_images", container_images)
+            pulumi.set(__self__, "container_images", container_images)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if guest_attributes is not None:
-            _setter("guest_attributes", guest_attributes)
+            pulumi.set(__self__, "guest_attributes", guest_attributes)
         if internal_ip_only is not None:
-            _setter("internal_ip_only", internal_ip_only)
+            pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if nic_type is not None:
-            _setter("nic_type", nic_type)
+            pulumi.set(__self__, "nic_type", nic_type)
         if reserved_ip_range is not None:
-            _setter("reserved_ip_range", reserved_ip_range)
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if shielded_instance_config is not None:
-            _setter("shielded_instance_config", shielded_instance_config)
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if subnet is not None:
-            _setter("subnet", subnet)
+            pulumi.set(__self__, "subnet", subnet)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="dataDisk")
@@ -1648,25 +1261,10 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(dict):
                `https://cloud.google.com/vertex-ai/docs/workbench/reference/
                rest/v1/projects.locations.runtimes#AcceleratorType`
         """
-        RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            core_count=core_count,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             core_count: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if core_count is None and 'coreCount' in kwargs:
-            core_count = kwargs['coreCount']
-
         if core_count is not None:
-            _setter("core_count", core_count)
+            pulumi.set(__self__, "core_count", core_count)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="coreCount")
@@ -1697,24 +1295,9 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage(dict):
                For example: gcr.io/{project_id}/{imageName}
         :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
-        RuntimeVirtualMachineVirtualMachineConfigContainerImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            repository=repository,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             repository: Optional[str] = None,
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if repository is None:
-            raise TypeError("Missing 'repository' argument")
-
-        _setter("repository", repository)
+        pulumi.set(__self__, "repository", repository)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -1827,71 +1410,30 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT.
                If not specified, the default is PERSISTENT.
         """
-        RuntimeVirtualMachineVirtualMachineConfigDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_delete=auto_delete,
-            boot=boot,
-            device_name=device_name,
-            guest_os_features=guest_os_features,
-            index=index,
-            initialize_params=initialize_params,
-            interface=interface,
-            kind=kind,
-            licenses=licenses,
-            mode=mode,
-            source=source,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_delete: Optional[bool] = None,
-             boot: Optional[bool] = None,
-             device_name: Optional[str] = None,
-             guest_os_features: Optional[Sequence[str]] = None,
-             index: Optional[int] = None,
-             initialize_params: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams'] = None,
-             interface: Optional[str] = None,
-             kind: Optional[str] = None,
-             licenses: Optional[Sequence[str]] = None,
-             mode: Optional[str] = None,
-             source: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_delete is None and 'autoDelete' in kwargs:
-            auto_delete = kwargs['autoDelete']
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-        if guest_os_features is None and 'guestOsFeatures' in kwargs:
-            guest_os_features = kwargs['guestOsFeatures']
-        if initialize_params is None and 'initializeParams' in kwargs:
-            initialize_params = kwargs['initializeParams']
-
         if auto_delete is not None:
-            _setter("auto_delete", auto_delete)
+            pulumi.set(__self__, "auto_delete", auto_delete)
         if boot is not None:
-            _setter("boot", boot)
+            pulumi.set(__self__, "boot", boot)
         if device_name is not None:
-            _setter("device_name", device_name)
+            pulumi.set(__self__, "device_name", device_name)
         if guest_os_features is not None:
-            _setter("guest_os_features", guest_os_features)
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if index is not None:
-            _setter("index", index)
+            pulumi.set(__self__, "index", index)
         if initialize_params is not None:
-            _setter("initialize_params", initialize_params)
+            pulumi.set(__self__, "initialize_params", initialize_params)
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if kind is not None:
-            _setter("kind", kind)
+            pulumi.set(__self__, "kind", kind)
         if licenses is not None:
-            _setter("licenses", licenses)
+            pulumi.set(__self__, "licenses", licenses)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -2078,41 +1620,16 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(dict):
                by the disks.setLabels method. This field is only
                applicable for persistent disks.
         """
-        RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            disk_name=disk_name,
-            disk_size_gb=disk_size_gb,
-            disk_type=disk_type,
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             disk_size_gb: Optional[int] = None,
-             disk_type: Optional[str] = None,
-             labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if disk_size_gb is None and 'diskSizeGb' in kwargs:
-            disk_size_gb = kwargs['diskSizeGb']
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_name is not None:
-            _setter("disk_name", disk_name)
+            pulumi.set(__self__, "disk_name", disk_name)
         if disk_size_gb is not None:
-            _setter("disk_size_gb", disk_size_gb)
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
-            _setter("disk_type", disk_type)
+            pulumi.set(__self__, "disk_type", disk_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
@@ -2194,21 +1711,8 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(dict):
                `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
                {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
         """
-        RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key=kms_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key is None and 'kmsKey' in kwargs:
-            kms_key = kwargs['kmsKey']
-
         if kms_key is not None:
-            _setter("kms_key", kms_key)
+            pulumi.set(__self__, "kms_key", kms_key)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -2265,33 +1769,12 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(dict):
         :param bool enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by
                default.
         """
-        RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_integrity_monitoring=enable_integrity_monitoring,
-            enable_secure_boot=enable_secure_boot,
-            enable_vtpm=enable_vtpm,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_integrity_monitoring: Optional[bool] = None,
-             enable_secure_boot: Optional[bool] = None,
-             enable_vtpm: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
-            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
-        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
-            enable_secure_boot = kwargs['enableSecureBoot']
-        if enable_vtpm is None and 'enableVtpm' in kwargs:
-            enable_vtpm = kwargs['enableVtpm']
-
         if enable_integrity_monitoring is not None:
-            _setter("enable_integrity_monitoring", enable_integrity_monitoring)
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
-            _setter("enable_secure_boot", enable_secure_boot)
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
         if enable_vtpm is not None:
-            _setter("enable_vtpm", enable_vtpm)
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
 
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,32 +37,13 @@ class FolderFeedConditionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        FolderFeedConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -124,22 +105,7 @@ class FolderFeedFeedOutputConfigArgs:
         :param pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        FolderFeedFeedOutputConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pubsub_destination=pubsub_destination,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pubsub_destination: Optional[pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pubsub_destination is None and 'pubsubDestination' in kwargs:
-            pubsub_destination = kwargs['pubsubDestination']
-        if pubsub_destination is None:
-            raise TypeError("Missing 'pubsub_destination' argument")
-
-        _setter("pubsub_destination", pubsub_destination)
+        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -164,20 +130,7 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
                
                - - -
         """
-        FolderFeedFeedOutputConfigPubsubDestinationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-
-        _setter("topic", topic)
+        pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter
@@ -210,32 +163,13 @@ class OrganizationFeedConditionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        OrganizationFeedConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -297,22 +231,7 @@ class OrganizationFeedFeedOutputConfigArgs:
         :param pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        OrganizationFeedFeedOutputConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pubsub_destination=pubsub_destination,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pubsub_destination: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pubsub_destination is None and 'pubsubDestination' in kwargs:
-            pubsub_destination = kwargs['pubsubDestination']
-        if pubsub_destination is None:
-            raise TypeError("Missing 'pubsub_destination' argument")
-
-        _setter("pubsub_destination", pubsub_destination)
+        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -337,20 +256,7 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
                
                - - -
         """
-        OrganizationFeedFeedOutputConfigPubsubDestinationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-
-        _setter("topic", topic)
+        pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter
@@ -383,32 +289,13 @@ class ProjectFeedConditionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
-        ProjectFeedConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -470,22 +357,7 @@ class ProjectFeedFeedOutputConfigArgs:
         :param pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs'] pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
-        ProjectFeedFeedOutputConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pubsub_destination=pubsub_destination,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pubsub_destination: Optional[pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pubsub_destination is None and 'pubsubDestination' in kwargs:
-            pubsub_destination = kwargs['pubsubDestination']
-        if pubsub_destination is None:
-            raise TypeError("Missing 'pubsub_destination' argument")
-
-        _setter("pubsub_destination", pubsub_destination)
+        pulumi.set(__self__, "pubsub_destination", pubsub_destination)
 
     @property
     @pulumi.getter(name="pubsubDestination")
@@ -510,20 +382,7 @@ class ProjectFeedFeedOutputConfigPubsubDestinationArgs:
                
                - - -
         """
-        ProjectFeedFeedOutputConfigPubsubDestinationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-
-        _setter("topic", topic)
+        pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter

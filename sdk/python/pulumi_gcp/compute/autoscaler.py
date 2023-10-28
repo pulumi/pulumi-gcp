@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,43 +41,16 @@ class AutoscalerArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
-        AutoscalerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscaling_policy=autoscaling_policy,
-            target=target,
-            description=description,
-            name=name,
-            project=project,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscaling_policy: Optional[pulumi.Input['AutoscalerAutoscalingPolicyArgs']] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
-            autoscaling_policy = kwargs['autoscalingPolicy']
-        if autoscaling_policy is None:
-            raise TypeError("Missing 'autoscaling_policy' argument")
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-
-        _setter("autoscaling_policy", autoscaling_policy)
-        _setter("target", target)
+        pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        pulumi.set(__self__, "target", target)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -194,53 +167,22 @@ class _AutoscalerState:
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
-        _AutoscalerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscaling_policy=autoscaling_policy,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            name=name,
-            project=project,
-            self_link=self_link,
-            target=target,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscaling_policy: Optional[pulumi.Input['AutoscalerAutoscalingPolicyArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
-            autoscaling_policy = kwargs['autoscalingPolicy']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if autoscaling_policy is not None:
-            _setter("autoscaling_policy", autoscaling_policy)
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -684,10 +626,6 @@ class Autoscaler(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AutoscalerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -708,7 +646,6 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalerArgs.__new__(AutoscalerArgs)
 
-            autoscaling_policy = _utilities.configure(autoscaling_policy, AutoscalerAutoscalingPolicyArgs, True)
             if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy

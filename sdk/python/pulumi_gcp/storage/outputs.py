@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -74,20 +74,7 @@ class BucketAutoclass(dict):
         """
         :param bool enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
         """
-        BucketAutoclass._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -130,35 +117,14 @@ class BucketCor(dict):
         :param Sequence[str] origins: The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
         :param Sequence[str] response_headers: The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
         """
-        BucketCor._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_age_seconds=max_age_seconds,
-            methods=methods,
-            origins=origins,
-            response_headers=response_headers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_age_seconds: Optional[int] = None,
-             methods: Optional[Sequence[str]] = None,
-             origins: Optional[Sequence[str]] = None,
-             response_headers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
-            max_age_seconds = kwargs['maxAgeSeconds']
-        if response_headers is None and 'responseHeaders' in kwargs:
-            response_headers = kwargs['responseHeaders']
-
         if max_age_seconds is not None:
-            _setter("max_age_seconds", max_age_seconds)
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
         if methods is not None:
-            _setter("methods", methods)
+            pulumi.set(__self__, "methods", methods)
         if origins is not None:
-            _setter("origins", origins)
+            pulumi.set(__self__, "origins", origins)
         if response_headers is not None:
-            _setter("response_headers", response_headers)
+            pulumi.set(__self__, "response_headers", response_headers)
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
@@ -217,22 +183,7 @@ class BucketCustomPlacementConfig(dict):
         """
         :param Sequence[str] data_locations: The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
         """
-        BucketCustomPlacementConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_locations=data_locations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_locations: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_locations is None and 'dataLocations' in kwargs:
-            data_locations = kwargs['dataLocations']
-        if data_locations is None:
-            raise TypeError("Missing 'data_locations' argument")
-
-        _setter("data_locations", data_locations)
+        pulumi.set(__self__, "data_locations", data_locations)
 
     @property
     @pulumi.getter(name="dataLocations")
@@ -280,22 +231,7 @@ class BucketEncryption(dict):
                state of the project.
                You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
-        BucketEncryption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_kms_key_name=default_kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_kms_key_name is None and 'defaultKmsKeyName' in kwargs:
-            default_kms_key_name = kwargs['defaultKmsKeyName']
-        if default_kms_key_name is None:
-            raise TypeError("Missing 'default_kms_key_name' argument")
-
-        _setter("default_kms_key_name", default_kms_key_name)
+        pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
     @property
     @pulumi.getter(name="defaultKmsKeyName")
@@ -334,29 +270,10 @@ class BucketIAMBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        BucketIAMBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -402,29 +319,10 @@ class BucketIAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        BucketIAMMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -464,25 +362,8 @@ class BucketLifecycleRule(dict):
         :param 'BucketLifecycleRuleActionArgs' action: The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
         :param 'BucketLifecycleRuleConditionArgs' condition: The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
         """
-        BucketLifecycleRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            condition=condition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional['outputs.BucketLifecycleRuleAction'] = None,
-             condition: Optional['outputs.BucketLifecycleRuleCondition'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if condition is None:
-            raise TypeError("Missing 'condition' argument")
-
-        _setter("action", action)
-        _setter("condition", condition)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
@@ -527,26 +408,9 @@ class BucketLifecycleRuleAction(dict):
         :param str type: The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         :param str storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
-        BucketLifecycleRuleAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            storage_class=storage_class,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             storage_class: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if storage_class is None and 'storageClass' in kwargs:
-            storage_class = kwargs['storageClass']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if storage_class is not None:
-            _setter("storage_class", storage_class)
+            pulumi.set(__self__, "storage_class", storage_class)
 
     @property
     @pulumi.getter
@@ -627,79 +491,28 @@ class BucketLifecycleRuleCondition(dict):
         :param int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param str with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
-        BucketLifecycleRuleCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            age=age,
-            created_before=created_before,
-            custom_time_before=custom_time_before,
-            days_since_custom_time=days_since_custom_time,
-            days_since_noncurrent_time=days_since_noncurrent_time,
-            matches_prefixes=matches_prefixes,
-            matches_storage_classes=matches_storage_classes,
-            matches_suffixes=matches_suffixes,
-            noncurrent_time_before=noncurrent_time_before,
-            num_newer_versions=num_newer_versions,
-            with_state=with_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             age: Optional[int] = None,
-             created_before: Optional[str] = None,
-             custom_time_before: Optional[str] = None,
-             days_since_custom_time: Optional[int] = None,
-             days_since_noncurrent_time: Optional[int] = None,
-             matches_prefixes: Optional[Sequence[str]] = None,
-             matches_storage_classes: Optional[Sequence[str]] = None,
-             matches_suffixes: Optional[Sequence[str]] = None,
-             noncurrent_time_before: Optional[str] = None,
-             num_newer_versions: Optional[int] = None,
-             with_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_before is None and 'createdBefore' in kwargs:
-            created_before = kwargs['createdBefore']
-        if custom_time_before is None and 'customTimeBefore' in kwargs:
-            custom_time_before = kwargs['customTimeBefore']
-        if days_since_custom_time is None and 'daysSinceCustomTime' in kwargs:
-            days_since_custom_time = kwargs['daysSinceCustomTime']
-        if days_since_noncurrent_time is None and 'daysSinceNoncurrentTime' in kwargs:
-            days_since_noncurrent_time = kwargs['daysSinceNoncurrentTime']
-        if matches_prefixes is None and 'matchesPrefixes' in kwargs:
-            matches_prefixes = kwargs['matchesPrefixes']
-        if matches_storage_classes is None and 'matchesStorageClasses' in kwargs:
-            matches_storage_classes = kwargs['matchesStorageClasses']
-        if matches_suffixes is None and 'matchesSuffixes' in kwargs:
-            matches_suffixes = kwargs['matchesSuffixes']
-        if noncurrent_time_before is None and 'noncurrentTimeBefore' in kwargs:
-            noncurrent_time_before = kwargs['noncurrentTimeBefore']
-        if num_newer_versions is None and 'numNewerVersions' in kwargs:
-            num_newer_versions = kwargs['numNewerVersions']
-        if with_state is None and 'withState' in kwargs:
-            with_state = kwargs['withState']
-
         if age is not None:
-            _setter("age", age)
+            pulumi.set(__self__, "age", age)
         if created_before is not None:
-            _setter("created_before", created_before)
+            pulumi.set(__self__, "created_before", created_before)
         if custom_time_before is not None:
-            _setter("custom_time_before", custom_time_before)
+            pulumi.set(__self__, "custom_time_before", custom_time_before)
         if days_since_custom_time is not None:
-            _setter("days_since_custom_time", days_since_custom_time)
+            pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
         if days_since_noncurrent_time is not None:
-            _setter("days_since_noncurrent_time", days_since_noncurrent_time)
+            pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
         if matches_prefixes is not None:
-            _setter("matches_prefixes", matches_prefixes)
+            pulumi.set(__self__, "matches_prefixes", matches_prefixes)
         if matches_storage_classes is not None:
-            _setter("matches_storage_classes", matches_storage_classes)
+            pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if matches_suffixes is not None:
-            _setter("matches_suffixes", matches_suffixes)
+            pulumi.set(__self__, "matches_suffixes", matches_suffixes)
         if noncurrent_time_before is not None:
-            _setter("noncurrent_time_before", noncurrent_time_before)
+            pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
-            _setter("num_newer_versions", num_newer_versions)
+            pulumi.set(__self__, "num_newer_versions", num_newer_versions)
         if with_state is not None:
-            _setter("with_state", with_state)
+            pulumi.set(__self__, "with_state", with_state)
 
     @property
     @pulumi.getter
@@ -819,28 +632,9 @@ class BucketLogging(dict):
         :param str log_object_prefix: The object prefix for log objects. If it's not provided,
                by default GCS sets this to this bucket's name.
         """
-        BucketLogging._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            log_bucket=log_bucket,
-            log_object_prefix=log_object_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             log_bucket: Optional[str] = None,
-             log_object_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if log_bucket is None and 'logBucket' in kwargs:
-            log_bucket = kwargs['logBucket']
-        if log_bucket is None:
-            raise TypeError("Missing 'log_bucket' argument")
-        if log_object_prefix is None and 'logObjectPrefix' in kwargs:
-            log_object_prefix = kwargs['logObjectPrefix']
-
-        _setter("log_bucket", log_bucket)
+        pulumi.set(__self__, "log_bucket", log_bucket)
         if log_object_prefix is not None:
-            _setter("log_object_prefix", log_object_prefix)
+            pulumi.set(__self__, "log_object_prefix", log_object_prefix)
 
     @property
     @pulumi.getter(name="logBucket")
@@ -888,28 +682,9 @@ class BucketObjectCustomerEncryption(dict):
         :param str encryption_key: Base64 encoded Customer-Supplied Encryption Key.
         :param str encryption_algorithm: Encryption algorithm. Default: AES256
         """
-        BucketObjectCustomerEncryption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            encryption_key=encryption_key,
-            encryption_algorithm=encryption_algorithm,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             encryption_key: Optional[str] = None,
-             encryption_algorithm: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_key is None:
-            raise TypeError("Missing 'encryption_key' argument")
-        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
-            encryption_algorithm = kwargs['encryptionAlgorithm']
-
-        _setter("encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_key", encryption_key)
         if encryption_algorithm is not None:
-            _setter("encryption_algorithm", encryption_algorithm)
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
 
     @property
     @pulumi.getter(name="encryptionKey")
@@ -956,28 +731,9 @@ class BucketRetentionPolicy(dict):
         :param int retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
         :param bool is_locked: If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
         """
-        BucketRetentionPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            retention_period=retention_period,
-            is_locked=is_locked,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             retention_period: Optional[int] = None,
-             is_locked: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if retention_period is None:
-            raise TypeError("Missing 'retention_period' argument")
-        if is_locked is None and 'isLocked' in kwargs:
-            is_locked = kwargs['isLocked']
-
-        _setter("retention_period", retention_period)
+        pulumi.set(__self__, "retention_period", retention_period)
         if is_locked is not None:
-            _setter("is_locked", is_locked)
+            pulumi.set(__self__, "is_locked", is_locked)
 
     @property
     @pulumi.getter(name="retentionPeriod")
@@ -1003,20 +759,7 @@ class BucketVersioning(dict):
         """
         :param bool enabled: While set to `true`, versioning is fully enabled for this bucket.
         """
-        BucketVersioning._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -1057,27 +800,10 @@ class BucketWebsite(dict):
         :param str not_found_page: The custom object to return when a requested
                resource is not found.
         """
-        BucketWebsite._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            main_page_suffix=main_page_suffix,
-            not_found_page=not_found_page,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             main_page_suffix: Optional[str] = None,
-             not_found_page: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if main_page_suffix is None and 'mainPageSuffix' in kwargs:
-            main_page_suffix = kwargs['mainPageSuffix']
-        if not_found_page is None and 'notFoundPage' in kwargs:
-            not_found_page = kwargs['notFoundPage']
-
         if main_page_suffix is not None:
-            _setter("main_page_suffix", main_page_suffix)
+            pulumi.set(__self__, "main_page_suffix", main_page_suffix)
         if not_found_page is not None:
-            _setter("not_found_page", not_found_page)
+            pulumi.set(__self__, "not_found_page", not_found_page)
 
     @property
     @pulumi.getter(name="mainPageSuffix")
@@ -1125,25 +851,10 @@ class DefaultObjectAccessControlProjectTeam(dict):
         :param str team: The team.
                Possible values are: `editors`, `owners`, `viewers`.
         """
-        DefaultObjectAccessControlProjectTeam._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_number=project_number,
-            team=team,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_number: Optional[str] = None,
-             team: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_number is None and 'projectNumber' in kwargs:
-            project_number = kwargs['projectNumber']
-
         if project_number is not None:
-            _setter("project_number", project_number)
+            pulumi.set(__self__, "project_number", project_number)
         if team is not None:
-            _setter("team", team)
+            pulumi.set(__self__, "team", team)
 
     @property
     @pulumi.getter(name="projectNumber")
@@ -1195,31 +906,12 @@ class InsightsReportConfigCsvOptions(dict):
                - - -
         :param str record_separator: The character used to separate the records in the inventory report CSV file.
         """
-        InsightsReportConfigCsvOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delimiter=delimiter,
-            header_required=header_required,
-            record_separator=record_separator,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delimiter: Optional[str] = None,
-             header_required: Optional[bool] = None,
-             record_separator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if header_required is None and 'headerRequired' in kwargs:
-            header_required = kwargs['headerRequired']
-        if record_separator is None and 'recordSeparator' in kwargs:
-            record_separator = kwargs['recordSeparator']
-
         if delimiter is not None:
-            _setter("delimiter", delimiter)
+            pulumi.set(__self__, "delimiter", delimiter)
         if header_required is not None:
-            _setter("header_required", header_required)
+            pulumi.set(__self__, "header_required", header_required)
         if record_separator is not None:
-            _setter("record_separator", record_separator)
+            pulumi.set(__self__, "record_separator", record_separator)
 
     @property
     @pulumi.getter
@@ -1281,34 +973,9 @@ class InsightsReportConfigFrequencyOptions(dict):
         :param 'InsightsReportConfigFrequencyOptionsStartDateArgs' start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
                Structure is documented below.
         """
-        InsightsReportConfigFrequencyOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_date=end_date,
-            frequency=frequency,
-            start_date=start_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_date: Optional['outputs.InsightsReportConfigFrequencyOptionsEndDate'] = None,
-             frequency: Optional[str] = None,
-             start_date: Optional['outputs.InsightsReportConfigFrequencyOptionsStartDate'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if frequency is None:
-            raise TypeError("Missing 'frequency' argument")
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if start_date is None:
-            raise TypeError("Missing 'start_date' argument")
-
-        _setter("end_date", end_date)
-        _setter("frequency", frequency)
-        _setter("start_date", start_date)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "start_date", start_date)
 
     @property
     @pulumi.getter(name="endDate")
@@ -1349,30 +1016,9 @@ class InsightsReportConfigFrequencyOptionsEndDate(dict):
         :param int month: The month to stop generating inventory reports.
         :param int year: The year to stop generating inventory reports
         """
-        InsightsReportConfigFrequencyOptionsEndDate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[int] = None,
-             month: Optional[int] = None,
-             year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day is None:
-            raise TypeError("Missing 'day' argument")
-        if month is None:
-            raise TypeError("Missing 'month' argument")
-        if year is None:
-            raise TypeError("Missing 'year' argument")
-
-        _setter("day", day)
-        _setter("month", month)
-        _setter("year", year)
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -1410,30 +1056,9 @@ class InsightsReportConfigFrequencyOptionsStartDate(dict):
         :param int month: The month to start generating inventory reports.
         :param int year: The year to start generating inventory reports
         """
-        InsightsReportConfigFrequencyOptionsStartDate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[int] = None,
-             month: Optional[int] = None,
-             year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day is None:
-            raise TypeError("Missing 'day' argument")
-        if month is None:
-            raise TypeError("Missing 'month' argument")
-        if year is None:
-            raise TypeError("Missing 'year' argument")
-
-        _setter("day", day)
-        _setter("month", month)
-        _setter("year", year)
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -1494,35 +1119,10 @@ class InsightsReportConfigObjectMetadataReportOptions(dict):
         :param 'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs' storage_filters: A nested object resource
                Structure is documented below.
         """
-        InsightsReportConfigObjectMetadataReportOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metadata_fields=metadata_fields,
-            storage_destination_options=storage_destination_options,
-            storage_filters=storage_filters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metadata_fields: Optional[Sequence[str]] = None,
-             storage_destination_options: Optional['outputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions'] = None,
-             storage_filters: Optional['outputs.InsightsReportConfigObjectMetadataReportOptionsStorageFilters'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metadata_fields is None and 'metadataFields' in kwargs:
-            metadata_fields = kwargs['metadataFields']
-        if metadata_fields is None:
-            raise TypeError("Missing 'metadata_fields' argument")
-        if storage_destination_options is None and 'storageDestinationOptions' in kwargs:
-            storage_destination_options = kwargs['storageDestinationOptions']
-        if storage_destination_options is None:
-            raise TypeError("Missing 'storage_destination_options' argument")
-        if storage_filters is None and 'storageFilters' in kwargs:
-            storage_filters = kwargs['storageFilters']
-
-        _setter("metadata_fields", metadata_fields)
-        _setter("storage_destination_options", storage_destination_options)
+        pulumi.set(__self__, "metadata_fields", metadata_fields)
+        pulumi.set(__self__, "storage_destination_options", storage_destination_options)
         if storage_filters is not None:
-            _setter("storage_filters", storage_filters)
+            pulumi.set(__self__, "storage_filters", storage_filters)
 
     @property
     @pulumi.getter(name="metadataFields")
@@ -1577,26 +1177,9 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(d
         :param str bucket: The destination bucket that stores the generated inventory reports.
         :param str destination_path: The path within the destination bucket to store generated inventory reports.
         """
-        InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            destination_path=destination_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             destination_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if destination_path is None and 'destinationPath' in kwargs:
-            destination_path = kwargs['destinationPath']
-
-        _setter("bucket", bucket)
+        pulumi.set(__self__, "bucket", bucket)
         if destination_path is not None:
-            _setter("destination_path", destination_path)
+            pulumi.set(__self__, "destination_path", destination_path)
 
     @property
     @pulumi.getter
@@ -1622,19 +1205,8 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters(dict):
         """
         :param str bucket: The filter to use when specifying which bucket to generate inventory reports for.
         """
-        InsightsReportConfigObjectMetadataReportOptionsStorageFilters._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
 
     @property
     @pulumi.getter
@@ -1672,25 +1244,10 @@ class ObjectAccessControlProjectTeam(dict):
         :param str team: The team.
                Possible values are: `editors`, `owners`, `viewers`.
         """
-        ObjectAccessControlProjectTeam._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_number=project_number,
-            team=team,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_number: Optional[str] = None,
-             team: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_number is None and 'projectNumber' in kwargs:
-            project_number = kwargs['projectNumber']
-
         if project_number is not None:
-            _setter("project_number", project_number)
+            pulumi.set(__self__, "project_number", project_number)
         if team is not None:
-            _setter("team", team)
+            pulumi.set(__self__, "team", team)
 
     @property
     @pulumi.getter(name="projectNumber")
@@ -1734,22 +1291,7 @@ class TransferAgentPoolBandwidthLimit(dict):
         """
         :param str limit_mbps: Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
         """
-        TransferAgentPoolBandwidthLimit._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            limit_mbps=limit_mbps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             limit_mbps: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if limit_mbps is None and 'limitMbps' in kwargs:
-            limit_mbps = kwargs['limitMbps']
-        if limit_mbps is None:
-            raise TypeError("Missing 'limit_mbps' argument")
-
-        _setter("limit_mbps", limit_mbps)
+        pulumi.set(__self__, "limit_mbps", limit_mbps)
 
     @property
     @pulumi.getter(name="limitMbps")
@@ -1792,35 +1334,10 @@ class TransferJobNotificationConfig(dict):
         :param str pubsub_topic: The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
         :param Sequence[str] event_types: Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
         """
-        TransferJobNotificationConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            payload_format=payload_format,
-            pubsub_topic=pubsub_topic,
-            event_types=event_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             payload_format: Optional[str] = None,
-             pubsub_topic: Optional[str] = None,
-             event_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if payload_format is None and 'payloadFormat' in kwargs:
-            payload_format = kwargs['payloadFormat']
-        if payload_format is None:
-            raise TypeError("Missing 'payload_format' argument")
-        if pubsub_topic is None and 'pubsubTopic' in kwargs:
-            pubsub_topic = kwargs['pubsubTopic']
-        if pubsub_topic is None:
-            raise TypeError("Missing 'pubsub_topic' argument")
-        if event_types is None and 'eventTypes' in kwargs:
-            event_types = kwargs['eventTypes']
-
-        _setter("payload_format", payload_format)
-        _setter("pubsub_topic", pubsub_topic)
+        pulumi.set(__self__, "payload_format", payload_format)
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if event_types is not None:
-            _setter("event_types", event_types)
+            pulumi.set(__self__, "event_types", event_types)
 
     @property
     @pulumi.getter(name="payloadFormat")
@@ -1883,40 +1400,13 @@ class TransferJobSchedule(dict):
         :param 'TransferJobScheduleScheduleEndDateArgs' schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         :param 'TransferJobScheduleStartTimeOfDayArgs' start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
-        TransferJobSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            schedule_start_date=schedule_start_date,
-            repeat_interval=repeat_interval,
-            schedule_end_date=schedule_end_date,
-            start_time_of_day=start_time_of_day,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             schedule_start_date: Optional['outputs.TransferJobScheduleScheduleStartDate'] = None,
-             repeat_interval: Optional[str] = None,
-             schedule_end_date: Optional['outputs.TransferJobScheduleScheduleEndDate'] = None,
-             start_time_of_day: Optional['outputs.TransferJobScheduleStartTimeOfDay'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if schedule_start_date is None and 'scheduleStartDate' in kwargs:
-            schedule_start_date = kwargs['scheduleStartDate']
-        if schedule_start_date is None:
-            raise TypeError("Missing 'schedule_start_date' argument")
-        if repeat_interval is None and 'repeatInterval' in kwargs:
-            repeat_interval = kwargs['repeatInterval']
-        if schedule_end_date is None and 'scheduleEndDate' in kwargs:
-            schedule_end_date = kwargs['scheduleEndDate']
-        if start_time_of_day is None and 'startTimeOfDay' in kwargs:
-            start_time_of_day = kwargs['startTimeOfDay']
-
-        _setter("schedule_start_date", schedule_start_date)
+        pulumi.set(__self__, "schedule_start_date", schedule_start_date)
         if repeat_interval is not None:
-            _setter("repeat_interval", repeat_interval)
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
         if schedule_end_date is not None:
-            _setter("schedule_end_date", schedule_end_date)
+            pulumi.set(__self__, "schedule_end_date", schedule_end_date)
         if start_time_of_day is not None:
-            _setter("start_time_of_day", start_time_of_day)
+            pulumi.set(__self__, "start_time_of_day", start_time_of_day)
 
     @property
     @pulumi.getter(name="scheduleStartDate")
@@ -1964,30 +1454,9 @@ class TransferJobScheduleScheduleEndDate(dict):
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
-        TransferJobScheduleScheduleEndDate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[int] = None,
-             month: Optional[int] = None,
-             year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day is None:
-            raise TypeError("Missing 'day' argument")
-        if month is None:
-            raise TypeError("Missing 'month' argument")
-        if year is None:
-            raise TypeError("Missing 'year' argument")
-
-        _setter("day", day)
-        _setter("month", month)
-        _setter("year", year)
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -2029,30 +1498,9 @@ class TransferJobScheduleScheduleStartDate(dict):
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
-        TransferJobScheduleScheduleStartDate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            month=month,
-            year=year,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[int] = None,
-             month: Optional[int] = None,
-             year: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day is None:
-            raise TypeError("Missing 'day' argument")
-        if month is None:
-            raise TypeError("Missing 'month' argument")
-        if year is None:
-            raise TypeError("Missing 'year' argument")
-
-        _setter("day", day)
-        _setter("month", month)
-        _setter("year", year)
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
 
     @property
     @pulumi.getter
@@ -2094,35 +1542,10 @@ class TransferJobScheduleStartTimeOfDay(dict):
         :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
         """
-        TransferJobScheduleStartTimeOfDay._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hours=hours,
-            minutes=minutes,
-            nanos=nanos,
-            seconds=seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hours: Optional[int] = None,
-             minutes: Optional[int] = None,
-             nanos: Optional[int] = None,
-             seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hours is None:
-            raise TypeError("Missing 'hours' argument")
-        if minutes is None:
-            raise TypeError("Missing 'minutes' argument")
-        if nanos is None:
-            raise TypeError("Missing 'nanos' argument")
-        if seconds is None:
-            raise TypeError("Missing 'seconds' argument")
-
-        _setter("hours", hours)
-        _setter("minutes", minutes)
-        _setter("nanos", nanos)
-        _setter("seconds", seconds)
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
 
     @property
     @pulumi.getter
@@ -2221,81 +1644,28 @@ class TransferJobTransferSpec(dict):
         :param str source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
-        TransferJobTransferSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aws_s3_data_source=aws_s3_data_source,
-            azure_blob_storage_data_source=azure_blob_storage_data_source,
-            gcs_data_sink=gcs_data_sink,
-            gcs_data_source=gcs_data_source,
-            http_data_source=http_data_source,
-            object_conditions=object_conditions,
-            posix_data_sink=posix_data_sink,
-            posix_data_source=posix_data_source,
-            sink_agent_pool_name=sink_agent_pool_name,
-            source_agent_pool_name=source_agent_pool_name,
-            transfer_options=transfer_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aws_s3_data_source: Optional['outputs.TransferJobTransferSpecAwsS3DataSource'] = None,
-             azure_blob_storage_data_source: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSource'] = None,
-             gcs_data_sink: Optional['outputs.TransferJobTransferSpecGcsDataSink'] = None,
-             gcs_data_source: Optional['outputs.TransferJobTransferSpecGcsDataSource'] = None,
-             http_data_source: Optional['outputs.TransferJobTransferSpecHttpDataSource'] = None,
-             object_conditions: Optional['outputs.TransferJobTransferSpecObjectConditions'] = None,
-             posix_data_sink: Optional['outputs.TransferJobTransferSpecPosixDataSink'] = None,
-             posix_data_source: Optional['outputs.TransferJobTransferSpecPosixDataSource'] = None,
-             sink_agent_pool_name: Optional[str] = None,
-             source_agent_pool_name: Optional[str] = None,
-             transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aws_s3_data_source is None and 'awsS3DataSource' in kwargs:
-            aws_s3_data_source = kwargs['awsS3DataSource']
-        if azure_blob_storage_data_source is None and 'azureBlobStorageDataSource' in kwargs:
-            azure_blob_storage_data_source = kwargs['azureBlobStorageDataSource']
-        if gcs_data_sink is None and 'gcsDataSink' in kwargs:
-            gcs_data_sink = kwargs['gcsDataSink']
-        if gcs_data_source is None and 'gcsDataSource' in kwargs:
-            gcs_data_source = kwargs['gcsDataSource']
-        if http_data_source is None and 'httpDataSource' in kwargs:
-            http_data_source = kwargs['httpDataSource']
-        if object_conditions is None and 'objectConditions' in kwargs:
-            object_conditions = kwargs['objectConditions']
-        if posix_data_sink is None and 'posixDataSink' in kwargs:
-            posix_data_sink = kwargs['posixDataSink']
-        if posix_data_source is None and 'posixDataSource' in kwargs:
-            posix_data_source = kwargs['posixDataSource']
-        if sink_agent_pool_name is None and 'sinkAgentPoolName' in kwargs:
-            sink_agent_pool_name = kwargs['sinkAgentPoolName']
-        if source_agent_pool_name is None and 'sourceAgentPoolName' in kwargs:
-            source_agent_pool_name = kwargs['sourceAgentPoolName']
-        if transfer_options is None and 'transferOptions' in kwargs:
-            transfer_options = kwargs['transferOptions']
-
         if aws_s3_data_source is not None:
-            _setter("aws_s3_data_source", aws_s3_data_source)
+            pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
         if azure_blob_storage_data_source is not None:
-            _setter("azure_blob_storage_data_source", azure_blob_storage_data_source)
+            pulumi.set(__self__, "azure_blob_storage_data_source", azure_blob_storage_data_source)
         if gcs_data_sink is not None:
-            _setter("gcs_data_sink", gcs_data_sink)
+            pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
         if gcs_data_source is not None:
-            _setter("gcs_data_source", gcs_data_source)
+            pulumi.set(__self__, "gcs_data_source", gcs_data_source)
         if http_data_source is not None:
-            _setter("http_data_source", http_data_source)
+            pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
-            _setter("object_conditions", object_conditions)
+            pulumi.set(__self__, "object_conditions", object_conditions)
         if posix_data_sink is not None:
-            _setter("posix_data_sink", posix_data_sink)
+            pulumi.set(__self__, "posix_data_sink", posix_data_sink)
         if posix_data_source is not None:
-            _setter("posix_data_source", posix_data_source)
+            pulumi.set(__self__, "posix_data_source", posix_data_source)
         if sink_agent_pool_name is not None:
-            _setter("sink_agent_pool_name", sink_agent_pool_name)
+            pulumi.set(__self__, "sink_agent_pool_name", sink_agent_pool_name)
         if source_agent_pool_name is not None:
-            _setter("source_agent_pool_name", source_agent_pool_name)
+            pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
         if transfer_options is not None:
-            _setter("transfer_options", transfer_options)
+            pulumi.set(__self__, "transfer_options", transfer_options)
 
     @property
     @pulumi.getter(name="awsS3DataSource")
@@ -2420,38 +1790,13 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
-        TransferJobTransferSpecAwsS3DataSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            aws_access_key=aws_access_key,
-            path=path,
-            role_arn=role_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
-             path: Optional[str] = None,
-             role_arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-        if aws_access_key is None and 'awsAccessKey' in kwargs:
-            aws_access_key = kwargs['awsAccessKey']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-
-        _setter("bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
-            _setter("aws_access_key", aws_access_key)
+            pulumi.set(__self__, "aws_access_key", aws_access_key)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -2514,29 +1859,8 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
         :param str access_key_id: AWS Key ID.
         :param str secret_access_key: AWS Secret Access Key.
         """
-        TransferJobTransferSpecAwsS3DataSourceAwsAccessKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key_id=access_key_id,
-            secret_access_key=secret_access_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key_id: Optional[str] = None,
-             secret_access_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key_id is None and 'accessKeyId' in kwargs:
-            access_key_id = kwargs['accessKeyId']
-        if access_key_id is None:
-            raise TypeError("Missing 'access_key_id' argument")
-        if secret_access_key is None and 'secretAccessKey' in kwargs:
-            secret_access_key = kwargs['secretAccessKey']
-        if secret_access_key is None:
-            raise TypeError("Missing 'secret_access_key' argument")
-
-        _setter("access_key_id", access_key_id)
-        _setter("secret_access_key", secret_access_key)
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
 
     @property
     @pulumi.getter(name="accessKeyId")
@@ -2587,38 +1911,11 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
         :param str storage_account: The name of the Azure Storage account.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
-        TransferJobTransferSpecAzureBlobStorageDataSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            azure_credentials=azure_credentials,
-            container=container,
-            storage_account=storage_account,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             azure_credentials: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials'] = None,
-             container: Optional[str] = None,
-             storage_account: Optional[str] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if azure_credentials is None and 'azureCredentials' in kwargs:
-            azure_credentials = kwargs['azureCredentials']
-        if azure_credentials is None:
-            raise TypeError("Missing 'azure_credentials' argument")
-        if container is None:
-            raise TypeError("Missing 'container' argument")
-        if storage_account is None and 'storageAccount' in kwargs:
-            storage_account = kwargs['storageAccount']
-        if storage_account is None:
-            raise TypeError("Missing 'storage_account' argument")
-
-        _setter("azure_credentials", azure_credentials)
-        _setter("container", container)
-        _setter("storage_account", storage_account)
+        pulumi.set(__self__, "azure_credentials", azure_credentials)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "storage_account", storage_account)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="azureCredentials")
@@ -2679,22 +1976,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
                
                <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
         """
-        TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sas_token=sas_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sas_token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sas_token is None and 'sasToken' in kwargs:
-            sas_token = kwargs['sasToken']
-        if sas_token is None:
-            raise TypeError("Missing 'sas_token' argument")
-
-        _setter("sas_token", sas_token)
+        pulumi.set(__self__, "sas_token", sas_token)
 
     @property
     @pulumi.getter(name="sasToken")
@@ -2733,26 +2015,9 @@ class TransferJobTransferSpecGcsDataSink(dict):
         :param str bucket_name: Google Cloud Storage bucket name.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
-        TransferJobTransferSpecGcsDataSink._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-
-        _setter("bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -2797,26 +2062,9 @@ class TransferJobTransferSpecGcsDataSource(dict):
         :param str bucket_name: Google Cloud Storage bucket name.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
-        TransferJobTransferSpecGcsDataSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-
-        _setter("bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -2859,22 +2107,7 @@ class TransferJobTransferSpecHttpDataSource(dict):
         """
         :param str list_url: The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         """
-        TransferJobTransferSpecHttpDataSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            list_url=list_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             list_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if list_url is None and 'listUrl' in kwargs:
-            list_url = kwargs['listUrl']
-        if list_url is None:
-            raise TypeError("Missing 'list_url' argument")
-
-        _setter("list_url", list_url)
+        pulumi.set(__self__, "list_url", list_url)
 
     @property
     @pulumi.getter(name="listUrl")
@@ -2929,51 +2162,18 @@ class TransferJobTransferSpecObjectConditions(dict):
         :param str max_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param str min_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        TransferJobTransferSpecObjectConditions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exclude_prefixes=exclude_prefixes,
-            include_prefixes=include_prefixes,
-            last_modified_before=last_modified_before,
-            last_modified_since=last_modified_since,
-            max_time_elapsed_since_last_modification=max_time_elapsed_since_last_modification,
-            min_time_elapsed_since_last_modification=min_time_elapsed_since_last_modification,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exclude_prefixes: Optional[Sequence[str]] = None,
-             include_prefixes: Optional[Sequence[str]] = None,
-             last_modified_before: Optional[str] = None,
-             last_modified_since: Optional[str] = None,
-             max_time_elapsed_since_last_modification: Optional[str] = None,
-             min_time_elapsed_since_last_modification: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclude_prefixes is None and 'excludePrefixes' in kwargs:
-            exclude_prefixes = kwargs['excludePrefixes']
-        if include_prefixes is None and 'includePrefixes' in kwargs:
-            include_prefixes = kwargs['includePrefixes']
-        if last_modified_before is None and 'lastModifiedBefore' in kwargs:
-            last_modified_before = kwargs['lastModifiedBefore']
-        if last_modified_since is None and 'lastModifiedSince' in kwargs:
-            last_modified_since = kwargs['lastModifiedSince']
-        if max_time_elapsed_since_last_modification is None and 'maxTimeElapsedSinceLastModification' in kwargs:
-            max_time_elapsed_since_last_modification = kwargs['maxTimeElapsedSinceLastModification']
-        if min_time_elapsed_since_last_modification is None and 'minTimeElapsedSinceLastModification' in kwargs:
-            min_time_elapsed_since_last_modification = kwargs['minTimeElapsedSinceLastModification']
-
         if exclude_prefixes is not None:
-            _setter("exclude_prefixes", exclude_prefixes)
+            pulumi.set(__self__, "exclude_prefixes", exclude_prefixes)
         if include_prefixes is not None:
-            _setter("include_prefixes", include_prefixes)
+            pulumi.set(__self__, "include_prefixes", include_prefixes)
         if last_modified_before is not None:
-            _setter("last_modified_before", last_modified_before)
+            pulumi.set(__self__, "last_modified_before", last_modified_before)
         if last_modified_since is not None:
-            _setter("last_modified_since", last_modified_since)
+            pulumi.set(__self__, "last_modified_since", last_modified_since)
         if max_time_elapsed_since_last_modification is not None:
-            _setter("max_time_elapsed_since_last_modification", max_time_elapsed_since_last_modification)
+            pulumi.set(__self__, "max_time_elapsed_since_last_modification", max_time_elapsed_since_last_modification)
         if min_time_elapsed_since_last_modification is not None:
-            _setter("min_time_elapsed_since_last_modification", min_time_elapsed_since_last_modification)
+            pulumi.set(__self__, "min_time_elapsed_since_last_modification", min_time_elapsed_since_last_modification)
 
     @property
     @pulumi.getter(name="excludePrefixes")
@@ -3048,22 +2248,7 @@ class TransferJobTransferSpecPosixDataSink(dict):
         """
         :param str root_directory: Root directory path to the filesystem.
         """
-        TransferJobTransferSpecPosixDataSink._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            root_directory=root_directory,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             root_directory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if root_directory is None and 'rootDirectory' in kwargs:
-            root_directory = kwargs['rootDirectory']
-        if root_directory is None:
-            raise TypeError("Missing 'root_directory' argument")
-
-        _setter("root_directory", root_directory)
+        pulumi.set(__self__, "root_directory", root_directory)
 
     @property
     @pulumi.getter(name="rootDirectory")
@@ -3100,22 +2285,7 @@ class TransferJobTransferSpecPosixDataSource(dict):
                
                <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
-        TransferJobTransferSpecPosixDataSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            root_directory=root_directory,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             root_directory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if root_directory is None and 'rootDirectory' in kwargs:
-            root_directory = kwargs['rootDirectory']
-        if root_directory is None:
-            raise TypeError("Missing 'root_directory' argument")
-
-        _setter("root_directory", root_directory)
+        pulumi.set(__self__, "root_directory", root_directory)
 
     @property
     @pulumi.getter(name="rootDirectory")
@@ -3165,39 +2335,14 @@ class TransferJobTransferSpecTransferOptions(dict):
         :param bool overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
         :param str overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
-        TransferJobTransferSpecTransferOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_objects_from_source_after_transfer=delete_objects_from_source_after_transfer,
-            delete_objects_unique_in_sink=delete_objects_unique_in_sink,
-            overwrite_objects_already_existing_in_sink=overwrite_objects_already_existing_in_sink,
-            overwrite_when=overwrite_when,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_objects_from_source_after_transfer: Optional[bool] = None,
-             delete_objects_unique_in_sink: Optional[bool] = None,
-             overwrite_objects_already_existing_in_sink: Optional[bool] = None,
-             overwrite_when: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_objects_from_source_after_transfer is None and 'deleteObjectsFromSourceAfterTransfer' in kwargs:
-            delete_objects_from_source_after_transfer = kwargs['deleteObjectsFromSourceAfterTransfer']
-        if delete_objects_unique_in_sink is None and 'deleteObjectsUniqueInSink' in kwargs:
-            delete_objects_unique_in_sink = kwargs['deleteObjectsUniqueInSink']
-        if overwrite_objects_already_existing_in_sink is None and 'overwriteObjectsAlreadyExistingInSink' in kwargs:
-            overwrite_objects_already_existing_in_sink = kwargs['overwriteObjectsAlreadyExistingInSink']
-        if overwrite_when is None and 'overwriteWhen' in kwargs:
-            overwrite_when = kwargs['overwriteWhen']
-
         if delete_objects_from_source_after_transfer is not None:
-            _setter("delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
+            pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         if delete_objects_unique_in_sink is not None:
-            _setter("delete_objects_unique_in_sink", delete_objects_unique_in_sink)
+            pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
         if overwrite_objects_already_existing_in_sink is not None:
-            _setter("overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
+            pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
         if overwrite_when is not None:
-            _setter("overwrite_when", overwrite_when)
+            pulumi.set(__self__, "overwrite_when", overwrite_when)
 
     @property
     @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
@@ -3237,20 +2382,7 @@ class TransferJobTransferSpecTransferOptions(dict):
 class GetBucketAutoclassResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
-        GetBucketAutoclassResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -3265,39 +2397,10 @@ class GetBucketCorResult(dict):
                  methods: Sequence[str],
                  origins: Sequence[str],
                  response_headers: Sequence[str]):
-        GetBucketCorResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_age_seconds=max_age_seconds,
-            methods=methods,
-            origins=origins,
-            response_headers=response_headers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_age_seconds: Optional[int] = None,
-             methods: Optional[Sequence[str]] = None,
-             origins: Optional[Sequence[str]] = None,
-             response_headers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
-            max_age_seconds = kwargs['maxAgeSeconds']
-        if max_age_seconds is None:
-            raise TypeError("Missing 'max_age_seconds' argument")
-        if methods is None:
-            raise TypeError("Missing 'methods' argument")
-        if origins is None:
-            raise TypeError("Missing 'origins' argument")
-        if response_headers is None and 'responseHeaders' in kwargs:
-            response_headers = kwargs['responseHeaders']
-        if response_headers is None:
-            raise TypeError("Missing 'response_headers' argument")
-
-        _setter("max_age_seconds", max_age_seconds)
-        _setter("methods", methods)
-        _setter("origins", origins)
-        _setter("response_headers", response_headers)
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "origins", origins)
+        pulumi.set(__self__, "response_headers", response_headers)
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
@@ -3324,22 +2427,7 @@ class GetBucketCorResult(dict):
 class GetBucketCustomPlacementConfigResult(dict):
     def __init__(__self__, *,
                  data_locations: Sequence[str]):
-        GetBucketCustomPlacementConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_locations=data_locations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_locations: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_locations is None and 'dataLocations' in kwargs:
-            data_locations = kwargs['dataLocations']
-        if data_locations is None:
-            raise TypeError("Missing 'data_locations' argument")
-
-        _setter("data_locations", data_locations)
+        pulumi.set(__self__, "data_locations", data_locations)
 
     @property
     @pulumi.getter(name="dataLocations")
@@ -3351,22 +2439,7 @@ class GetBucketCustomPlacementConfigResult(dict):
 class GetBucketEncryptionResult(dict):
     def __init__(__self__, *,
                  default_kms_key_name: str):
-        GetBucketEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_kms_key_name=default_kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_kms_key_name is None and 'defaultKmsKeyName' in kwargs:
-            default_kms_key_name = kwargs['defaultKmsKeyName']
-        if default_kms_key_name is None:
-            raise TypeError("Missing 'default_kms_key_name' argument")
-
-        _setter("default_kms_key_name", default_kms_key_name)
+        pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
     @property
     @pulumi.getter(name="defaultKmsKeyName")
@@ -3379,25 +2452,8 @@ class GetBucketLifecycleRuleResult(dict):
     def __init__(__self__, *,
                  actions: Sequence['outputs.GetBucketLifecycleRuleActionResult'],
                  conditions: Sequence['outputs.GetBucketLifecycleRuleConditionResult']):
-        GetBucketLifecycleRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            conditions=conditions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[Sequence['outputs.GetBucketLifecycleRuleActionResult']] = None,
-             conditions: Optional[Sequence['outputs.GetBucketLifecycleRuleConditionResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-
-        _setter("actions", actions)
-        _setter("conditions", conditions)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "conditions", conditions)
 
     @property
     @pulumi.getter
@@ -3415,27 +2471,8 @@ class GetBucketLifecycleRuleActionResult(dict):
     def __init__(__self__, *,
                  storage_class: str,
                  type: str):
-        GetBucketLifecycleRuleActionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            storage_class=storage_class,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             storage_class: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if storage_class is None and 'storageClass' in kwargs:
-            storage_class = kwargs['storageClass']
-        if storage_class is None:
-            raise TypeError("Missing 'storage_class' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("storage_class", storage_class)
-        _setter("type", type)
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="storageClass")
@@ -3462,90 +2499,17 @@ class GetBucketLifecycleRuleConditionResult(dict):
                  noncurrent_time_before: str,
                  num_newer_versions: int,
                  with_state: str):
-        GetBucketLifecycleRuleConditionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            age=age,
-            created_before=created_before,
-            custom_time_before=custom_time_before,
-            days_since_custom_time=days_since_custom_time,
-            days_since_noncurrent_time=days_since_noncurrent_time,
-            matches_prefixes=matches_prefixes,
-            matches_storage_classes=matches_storage_classes,
-            matches_suffixes=matches_suffixes,
-            noncurrent_time_before=noncurrent_time_before,
-            num_newer_versions=num_newer_versions,
-            with_state=with_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             age: Optional[int] = None,
-             created_before: Optional[str] = None,
-             custom_time_before: Optional[str] = None,
-             days_since_custom_time: Optional[int] = None,
-             days_since_noncurrent_time: Optional[int] = None,
-             matches_prefixes: Optional[Sequence[str]] = None,
-             matches_storage_classes: Optional[Sequence[str]] = None,
-             matches_suffixes: Optional[Sequence[str]] = None,
-             noncurrent_time_before: Optional[str] = None,
-             num_newer_versions: Optional[int] = None,
-             with_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if age is None:
-            raise TypeError("Missing 'age' argument")
-        if created_before is None and 'createdBefore' in kwargs:
-            created_before = kwargs['createdBefore']
-        if created_before is None:
-            raise TypeError("Missing 'created_before' argument")
-        if custom_time_before is None and 'customTimeBefore' in kwargs:
-            custom_time_before = kwargs['customTimeBefore']
-        if custom_time_before is None:
-            raise TypeError("Missing 'custom_time_before' argument")
-        if days_since_custom_time is None and 'daysSinceCustomTime' in kwargs:
-            days_since_custom_time = kwargs['daysSinceCustomTime']
-        if days_since_custom_time is None:
-            raise TypeError("Missing 'days_since_custom_time' argument")
-        if days_since_noncurrent_time is None and 'daysSinceNoncurrentTime' in kwargs:
-            days_since_noncurrent_time = kwargs['daysSinceNoncurrentTime']
-        if days_since_noncurrent_time is None:
-            raise TypeError("Missing 'days_since_noncurrent_time' argument")
-        if matches_prefixes is None and 'matchesPrefixes' in kwargs:
-            matches_prefixes = kwargs['matchesPrefixes']
-        if matches_prefixes is None:
-            raise TypeError("Missing 'matches_prefixes' argument")
-        if matches_storage_classes is None and 'matchesStorageClasses' in kwargs:
-            matches_storage_classes = kwargs['matchesStorageClasses']
-        if matches_storage_classes is None:
-            raise TypeError("Missing 'matches_storage_classes' argument")
-        if matches_suffixes is None and 'matchesSuffixes' in kwargs:
-            matches_suffixes = kwargs['matchesSuffixes']
-        if matches_suffixes is None:
-            raise TypeError("Missing 'matches_suffixes' argument")
-        if noncurrent_time_before is None and 'noncurrentTimeBefore' in kwargs:
-            noncurrent_time_before = kwargs['noncurrentTimeBefore']
-        if noncurrent_time_before is None:
-            raise TypeError("Missing 'noncurrent_time_before' argument")
-        if num_newer_versions is None and 'numNewerVersions' in kwargs:
-            num_newer_versions = kwargs['numNewerVersions']
-        if num_newer_versions is None:
-            raise TypeError("Missing 'num_newer_versions' argument")
-        if with_state is None and 'withState' in kwargs:
-            with_state = kwargs['withState']
-        if with_state is None:
-            raise TypeError("Missing 'with_state' argument")
-
-        _setter("age", age)
-        _setter("created_before", created_before)
-        _setter("custom_time_before", custom_time_before)
-        _setter("days_since_custom_time", days_since_custom_time)
-        _setter("days_since_noncurrent_time", days_since_noncurrent_time)
-        _setter("matches_prefixes", matches_prefixes)
-        _setter("matches_storage_classes", matches_storage_classes)
-        _setter("matches_suffixes", matches_suffixes)
-        _setter("noncurrent_time_before", noncurrent_time_before)
-        _setter("num_newer_versions", num_newer_versions)
-        _setter("with_state", with_state)
+        pulumi.set(__self__, "age", age)
+        pulumi.set(__self__, "created_before", created_before)
+        pulumi.set(__self__, "custom_time_before", custom_time_before)
+        pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
+        pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
+        pulumi.set(__self__, "matches_prefixes", matches_prefixes)
+        pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
+        pulumi.set(__self__, "matches_suffixes", matches_suffixes)
+        pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
+        pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        pulumi.set(__self__, "with_state", with_state)
 
     @property
     @pulumi.getter
@@ -3608,29 +2572,8 @@ class GetBucketLoggingResult(dict):
     def __init__(__self__, *,
                  log_bucket: str,
                  log_object_prefix: str):
-        GetBucketLoggingResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            log_bucket=log_bucket,
-            log_object_prefix=log_object_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             log_bucket: Optional[str] = None,
-             log_object_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if log_bucket is None and 'logBucket' in kwargs:
-            log_bucket = kwargs['logBucket']
-        if log_bucket is None:
-            raise TypeError("Missing 'log_bucket' argument")
-        if log_object_prefix is None and 'logObjectPrefix' in kwargs:
-            log_object_prefix = kwargs['logObjectPrefix']
-        if log_object_prefix is None:
-            raise TypeError("Missing 'log_object_prefix' argument")
-
-        _setter("log_bucket", log_bucket)
-        _setter("log_object_prefix", log_object_prefix)
+        pulumi.set(__self__, "log_bucket", log_bucket)
+        pulumi.set(__self__, "log_object_prefix", log_object_prefix)
 
     @property
     @pulumi.getter(name="logBucket")
@@ -3648,29 +2591,8 @@ class GetBucketObjectContentCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
-        GetBucketObjectContentCustomerEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            encryption_algorithm=encryption_algorithm,
-            encryption_key=encryption_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             encryption_algorithm: Optional[str] = None,
-             encryption_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
-            encryption_algorithm = kwargs['encryptionAlgorithm']
-        if encryption_algorithm is None:
-            raise TypeError("Missing 'encryption_algorithm' argument")
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_key is None:
-            raise TypeError("Missing 'encryption_key' argument")
-
-        _setter("encryption_algorithm", encryption_algorithm)
-        _setter("encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "encryption_key", encryption_key)
 
     @property
     @pulumi.getter(name="encryptionAlgorithm")
@@ -3688,29 +2610,8 @@ class GetBucketObjectCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
-        GetBucketObjectCustomerEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            encryption_algorithm=encryption_algorithm,
-            encryption_key=encryption_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             encryption_algorithm: Optional[str] = None,
-             encryption_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
-            encryption_algorithm = kwargs['encryptionAlgorithm']
-        if encryption_algorithm is None:
-            raise TypeError("Missing 'encryption_algorithm' argument")
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_key is None:
-            raise TypeError("Missing 'encryption_key' argument")
-
-        _setter("encryption_algorithm", encryption_algorithm)
-        _setter("encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "encryption_key", encryption_key)
 
     @property
     @pulumi.getter(name="encryptionAlgorithm")
@@ -3728,29 +2629,8 @@ class GetBucketRetentionPolicyResult(dict):
     def __init__(__self__, *,
                  is_locked: bool,
                  retention_period: int):
-        GetBucketRetentionPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_locked=is_locked,
-            retention_period=retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_locked: Optional[bool] = None,
-             retention_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_locked is None and 'isLocked' in kwargs:
-            is_locked = kwargs['isLocked']
-        if is_locked is None:
-            raise TypeError("Missing 'is_locked' argument")
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if retention_period is None:
-            raise TypeError("Missing 'retention_period' argument")
-
-        _setter("is_locked", is_locked)
-        _setter("retention_period", retention_period)
+        pulumi.set(__self__, "is_locked", is_locked)
+        pulumi.set(__self__, "retention_period", retention_period)
 
     @property
     @pulumi.getter(name="isLocked")
@@ -3767,20 +2647,7 @@ class GetBucketRetentionPolicyResult(dict):
 class GetBucketVersioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
-        GetBucketVersioningResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -3793,29 +2660,8 @@ class GetBucketWebsiteResult(dict):
     def __init__(__self__, *,
                  main_page_suffix: str,
                  not_found_page: str):
-        GetBucketWebsiteResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            main_page_suffix=main_page_suffix,
-            not_found_page=not_found_page,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             main_page_suffix: Optional[str] = None,
-             not_found_page: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if main_page_suffix is None and 'mainPageSuffix' in kwargs:
-            main_page_suffix = kwargs['mainPageSuffix']
-        if main_page_suffix is None:
-            raise TypeError("Missing 'main_page_suffix' argument")
-        if not_found_page is None and 'notFoundPage' in kwargs:
-            not_found_page = kwargs['notFoundPage']
-        if not_found_page is None:
-            raise TypeError("Missing 'not_found_page' argument")
-
-        _setter("main_page_suffix", main_page_suffix)
-        _setter("not_found_page", not_found_page)
+        pulumi.set(__self__, "main_page_suffix", main_page_suffix)
+        pulumi.set(__self__, "not_found_page", not_found_page)
 
     @property
     @pulumi.getter(name="mainPageSuffix")

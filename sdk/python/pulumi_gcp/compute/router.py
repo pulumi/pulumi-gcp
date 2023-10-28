@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,46 +44,19 @@ class RouterArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
         """
-        RouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            bgp=bgp,
-            description=description,
-            encrypted_interconnect_router=encrypted_interconnect_router,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[pulumi.Input[str]] = None,
-             bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if encrypted_interconnect_router is None and 'encryptedInterconnectRouter' in kwargs:
-            encrypted_interconnect_router = kwargs['encryptedInterconnectRouter']
-
-        _setter("network", network)
+        pulumi.set(__self__, "network", network)
         if bgp is not None:
-            _setter("bgp", bgp)
+            pulumi.set(__self__, "bgp", bgp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted_interconnect_router is not None:
-            _setter("encrypted_interconnect_router", encrypted_interconnect_router)
+            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -216,57 +189,24 @@ class _RouterState:
         :param pulumi.Input[str] region: Region where the router resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
-        _RouterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bgp=bgp,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            encrypted_interconnect_router=encrypted_interconnect_router,
-            name=name,
-            network=network,
-            project=project,
-            region=region,
-            self_link=self_link,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if encrypted_interconnect_router is None and 'encryptedInterconnectRouter' in kwargs:
-            encrypted_interconnect_router = kwargs['encryptedInterconnectRouter']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if bgp is not None:
-            _setter("bgp", bgp)
+            pulumi.set(__self__, "bgp", bgp)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted_interconnect_router is not None:
-            _setter("encrypted_interconnect_router", encrypted_interconnect_router)
+            pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -574,10 +514,6 @@ class Router(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -599,7 +535,6 @@ class Router(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterArgs.__new__(RouterArgs)
 
-            bgp = _utilities.configure(bgp, RouterBgpArgs, True)
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router

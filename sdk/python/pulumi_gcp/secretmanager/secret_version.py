@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecretVersionArgs', 'SecretVersion']
@@ -36,43 +36,14 @@ class SecretVersionArgs:
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         """
-        SecretVersionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            secret_data=secret_data,
-            deletion_policy=deletion_policy,
-            enabled=enabled,
-            is_secret_data_base64=is_secret_data_base64,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[pulumi.Input[str]] = None,
-             secret_data: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if secret_data is None and 'secretData' in kwargs:
-            secret_data = kwargs['secretData']
-        if secret_data is None:
-            raise TypeError("Missing 'secret_data' argument")
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-        if is_secret_data_base64 is None and 'isSecretDataBase64' in kwargs:
-            is_secret_data_base64 = kwargs['isSecretDataBase64']
-
-        _setter("secret", secret)
-        _setter("secret_data", secret_data)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "secret_data", secret_data)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if is_secret_data_base64 is not None:
-            _setter("is_secret_data_base64", is_secret_data_base64)
+            pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
 
     @property
     @pulumi.getter
@@ -178,61 +149,24 @@ class _SecretVersionState:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] version: The version of the Secret.
         """
-        _SecretVersionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            deletion_policy=deletion_policy,
-            destroy_time=destroy_time,
-            enabled=enabled,
-            is_secret_data_base64=is_secret_data_base64,
-            name=name,
-            secret=secret,
-            secret_data=secret_data,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             destroy_time: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             secret_data: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-        if destroy_time is None and 'destroyTime' in kwargs:
-            destroy_time = kwargs['destroyTime']
-        if is_secret_data_base64 is None and 'isSecretDataBase64' in kwargs:
-            is_secret_data_base64 = kwargs['isSecretDataBase64']
-        if secret_data is None and 'secretData' in kwargs:
-            secret_data = kwargs['secretData']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destroy_time is not None:
-            _setter("destroy_time", destroy_time)
+            pulumi.set(__self__, "destroy_time", destroy_time)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if is_secret_data_base64 is not None:
-            _setter("is_secret_data_base64", is_secret_data_base64)
+            pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if secret_data is not None:
-            _setter("secret_data", secret_data)
+            pulumi.set(__self__, "secret_data", secret_data)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createTime")
@@ -587,10 +521,6 @@ class SecretVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecretVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

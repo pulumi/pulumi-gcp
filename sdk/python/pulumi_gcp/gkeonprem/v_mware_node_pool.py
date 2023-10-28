@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,56 +45,19 @@ class VMwareNodePoolArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        VMwareNodePoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            location=location,
-            vmware_cluster=vmware_cluster,
-            annotations=annotations,
-            display_name=display_name,
-            name=name,
-            node_pool_autoscaling=node_pool_autoscaling,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             vmware_cluster: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config is None:
-            raise TypeError("Missing 'config' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if vmware_cluster is None and 'vmwareCluster' in kwargs:
-            vmware_cluster = kwargs['vmwareCluster']
-        if vmware_cluster is None:
-            raise TypeError("Missing 'vmware_cluster' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
-            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
-
-        _setter("config", config)
-        _setter("location", location)
-        _setter("vmware_cluster", vmware_cluster)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "vmware_cluster", vmware_cluster)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_pool_autoscaling is not None:
-            _setter("node_pool_autoscaling", node_pool_autoscaling)
+            pulumi.set(__self__, "node_pool_autoscaling", node_pool_autoscaling)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -259,97 +222,40 @@ class _VMwareNodePoolState:
         :param pulumi.Input[str] update_time: The time the cluster was last updated, in RFC3339 text format.
         :param pulumi.Input[str] vmware_cluster: The cluster this node pool belongs to.
         """
-        _VMwareNodePoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            config=config,
-            create_time=create_time,
-            delete_time=delete_time,
-            display_name=display_name,
-            etag=etag,
-            location=location,
-            name=name,
-            node_pool_autoscaling=node_pool_autoscaling,
-            on_prem_version=on_prem_version,
-            project=project,
-            reconciling=reconciling,
-            state=state,
-            statuses=statuses,
-            uid=uid,
-            update_time=update_time,
-            vmware_cluster=vmware_cluster,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             delete_time: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
-             on_prem_version: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             vmware_cluster: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_time is None and 'deleteTime' in kwargs:
-            delete_time = kwargs['deleteTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
-            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
-        if on_prem_version is None and 'onPremVersion' in kwargs:
-            on_prem_version = kwargs['onPremVersion']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if vmware_cluster is None and 'vmwareCluster' in kwargs:
-            vmware_cluster = kwargs['vmwareCluster']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
-            _setter("delete_time", delete_time)
+            pulumi.set(__self__, "delete_time", delete_time)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_pool_autoscaling is not None:
-            _setter("node_pool_autoscaling", node_pool_autoscaling)
+            pulumi.set(__self__, "node_pool_autoscaling", node_pool_autoscaling)
         if on_prem_version is not None:
-            _setter("on_prem_version", on_prem_version)
+            pulumi.set(__self__, "on_prem_version", on_prem_version)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if vmware_cluster is not None:
-            _setter("vmware_cluster", vmware_cluster)
+            pulumi.set(__self__, "vmware_cluster", vmware_cluster)
 
     @property
     @pulumi.getter
@@ -919,10 +825,6 @@ class VMwareNodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VMwareNodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -946,7 +848,6 @@ class VMwareNodePool(pulumi.CustomResource):
             __props__ = VMwareNodePoolArgs.__new__(VMwareNodePoolArgs)
 
             __props__.__dict__["annotations"] = annotations
-            config = _utilities.configure(config, VMwareNodePoolConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -955,7 +856,6 @@ class VMwareNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            node_pool_autoscaling = _utilities.configure(node_pool_autoscaling, VMwareNodePoolNodePoolAutoscalingArgs, True)
             __props__.__dict__["node_pool_autoscaling"] = node_pool_autoscaling
             __props__.__dict__["project"] = project
             if vmware_cluster is None and not opts.urn:

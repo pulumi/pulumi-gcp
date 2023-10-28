@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,72 +49,27 @@ class NodeGroupArgs:
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
-        NodeGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_template=node_template,
-            autoscaling_policy=autoscaling_policy,
-            description=description,
-            initial_size=initial_size,
-            maintenance_policy=maintenance_policy,
-            maintenance_window=maintenance_window,
-            name=name,
-            project=project,
-            share_settings=share_settings,
-            size=size,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_template: Optional[pulumi.Input[str]] = None,
-             autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             initial_size: Optional[pulumi.Input[int]] = None,
-             maintenance_policy: Optional[pulumi.Input[str]] = None,
-             maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_template is None and 'nodeTemplate' in kwargs:
-            node_template = kwargs['nodeTemplate']
-        if node_template is None:
-            raise TypeError("Missing 'node_template' argument")
-        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
-            autoscaling_policy = kwargs['autoscalingPolicy']
-        if initial_size is None and 'initialSize' in kwargs:
-            initial_size = kwargs['initialSize']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if share_settings is None and 'shareSettings' in kwargs:
-            share_settings = kwargs['shareSettings']
-
-        _setter("node_template", node_template)
+        pulumi.set(__self__, "node_template", node_template)
         if autoscaling_policy is not None:
-            _setter("autoscaling_policy", autoscaling_policy)
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if initial_size is not None:
-            _setter("initial_size", initial_size)
+            pulumi.set(__self__, "initial_size", initial_size)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if share_settings is not None:
-            _setter("share_settings", share_settings)
+            pulumi.set(__self__, "share_settings", share_settings)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="nodeTemplate")
@@ -297,83 +252,32 @@ class _NodeGroupState:
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
-        _NodeGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscaling_policy=autoscaling_policy,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            initial_size=initial_size,
-            maintenance_policy=maintenance_policy,
-            maintenance_window=maintenance_window,
-            name=name,
-            node_template=node_template,
-            project=project,
-            self_link=self_link,
-            share_settings=share_settings,
-            size=size,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             initial_size: Optional[pulumi.Input[int]] = None,
-             maintenance_policy: Optional[pulumi.Input[str]] = None,
-             maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_template: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autoscaling_policy is None and 'autoscalingPolicy' in kwargs:
-            autoscaling_policy = kwargs['autoscalingPolicy']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if initial_size is None and 'initialSize' in kwargs:
-            initial_size = kwargs['initialSize']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if node_template is None and 'nodeTemplate' in kwargs:
-            node_template = kwargs['nodeTemplate']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if share_settings is None and 'shareSettings' in kwargs:
-            share_settings = kwargs['shareSettings']
-
         if autoscaling_policy is not None:
-            _setter("autoscaling_policy", autoscaling_policy)
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if initial_size is not None:
-            _setter("initial_size", initial_size)
+            pulumi.set(__self__, "initial_size", initial_size)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_template is not None:
-            _setter("node_template", node_template)
+            pulumi.set(__self__, "node_template", node_template)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if share_settings is not None:
-            _setter("share_settings", share_settings)
+            pulumi.set(__self__, "share_settings", share_settings)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -795,10 +699,6 @@ class NodeGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NodeGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -824,19 +724,16 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
-            autoscaling_policy = _utilities.configure(autoscaling_policy, NodeGroupAutoscalingPolicyArgs, True)
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["initial_size"] = initial_size
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            maintenance_window = _utilities.configure(maintenance_window, NodeGroupMaintenanceWindowArgs, True)
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             if node_template is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template'")
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
-            share_settings = _utilities.configure(share_settings, NodeGroupShareSettingsArgs, True)
             __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["size"] = size
             __props__.__dict__["zone"] = zone

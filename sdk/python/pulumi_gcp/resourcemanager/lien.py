@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LienArgs', 'Lien']
@@ -38,35 +38,10 @@ class LienArgs:
                
                - - -
         """
-        LienArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            origin=origin,
-            parent=parent,
-            reason=reason,
-            restrictions=restrictions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             origin: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if origin is None:
-            raise TypeError("Missing 'origin' argument")
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if reason is None:
-            raise TypeError("Missing 'reason' argument")
-        if restrictions is None:
-            raise TypeError("Missing 'restrictions' argument")
-
-        _setter("origin", origin)
-        _setter("parent", parent)
-        _setter("reason", reason)
-        _setter("restrictions", restrictions)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "restrictions", restrictions)
 
     @property
     @pulumi.getter
@@ -161,41 +136,18 @@ class _LienState:
                
                - - -
         """
-        _LienState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            name=name,
-            origin=origin,
-            parent=parent,
-            reason=reason,
-            restrictions=restrictions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             origin: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if origin is not None:
-            _setter("origin", origin)
+            pulumi.set(__self__, "origin", origin)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if restrictions is not None:
-            _setter("restrictions", restrictions)
+            pulumi.set(__self__, "restrictions", restrictions)
 
     @property
     @pulumi.getter(name="createTime")
@@ -381,10 +333,6 @@ class Lien(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LienArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

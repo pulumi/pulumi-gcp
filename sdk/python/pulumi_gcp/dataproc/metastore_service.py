@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -73,100 +73,37 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
-        MetastoreServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_id=service_id,
-            database_type=database_type,
-            encryption_config=encryption_config,
-            hive_metastore_config=hive_metastore_config,
-            labels=labels,
-            location=location,
-            maintenance_window=maintenance_window,
-            metadata_integration=metadata_integration,
-            network=network,
-            network_config=network_config,
-            port=port,
-            project=project,
-            release_channel=release_channel,
-            scaling_config=scaling_config,
-            telemetry_config=telemetry_config,
-            tier=tier,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_id: Optional[pulumi.Input[str]] = None,
-             database_type: Optional[pulumi.Input[str]] = None,
-             encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
-             hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-             metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             release_channel: Optional[pulumi.Input[str]] = None,
-             scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
-             telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-             tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if database_type is None and 'databaseType' in kwargs:
-            database_type = kwargs['databaseType']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
-            hive_metastore_config = kwargs['hiveMetastoreConfig']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if metadata_integration is None and 'metadataIntegration' in kwargs:
-            metadata_integration = kwargs['metadataIntegration']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if release_channel is None and 'releaseChannel' in kwargs:
-            release_channel = kwargs['releaseChannel']
-        if scaling_config is None and 'scalingConfig' in kwargs:
-            scaling_config = kwargs['scalingConfig']
-        if telemetry_config is None and 'telemetryConfig' in kwargs:
-            telemetry_config = kwargs['telemetryConfig']
-
-        _setter("service_id", service_id)
+        pulumi.set(__self__, "service_id", service_id)
         if database_type is not None:
-            _setter("database_type", database_type)
+            pulumi.set(__self__, "database_type", database_type)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if hive_metastore_config is not None:
-            _setter("hive_metastore_config", hive_metastore_config)
+            pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if metadata_integration is not None:
-            _setter("metadata_integration", metadata_integration)
+            pulumi.set(__self__, "metadata_integration", metadata_integration)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if release_channel is not None:
-            _setter("release_channel", release_channel)
+            pulumi.set(__self__, "release_channel", release_channel)
         if scaling_config is not None:
-            _setter("scaling_config", scaling_config)
+            pulumi.set(__self__, "scaling_config", scaling_config)
         if telemetry_config is not None:
-            _setter("telemetry_config", telemetry_config)
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
-            _setter("tier", tier)
+            pulumi.set(__self__, "tier", tier)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -456,129 +393,50 @@ class _MetastoreServiceState:
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
         """
-        _MetastoreServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_gcs_uri=artifact_gcs_uri,
-            database_type=database_type,
-            encryption_config=encryption_config,
-            endpoint_uri=endpoint_uri,
-            hive_metastore_config=hive_metastore_config,
-            labels=labels,
-            location=location,
-            maintenance_window=maintenance_window,
-            metadata_integration=metadata_integration,
-            name=name,
-            network=network,
-            network_config=network_config,
-            port=port,
-            project=project,
-            release_channel=release_channel,
-            scaling_config=scaling_config,
-            service_id=service_id,
-            state=state,
-            state_message=state_message,
-            telemetry_config=telemetry_config,
-            tier=tier,
-            uid=uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
-             database_type: Optional[pulumi.Input[str]] = None,
-             encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
-             endpoint_uri: Optional[pulumi.Input[str]] = None,
-             hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-             metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             release_channel: Optional[pulumi.Input[str]] = None,
-             scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             state_message: Optional[pulumi.Input[str]] = None,
-             telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-             tier: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_gcs_uri is None and 'artifactGcsUri' in kwargs:
-            artifact_gcs_uri = kwargs['artifactGcsUri']
-        if database_type is None and 'databaseType' in kwargs:
-            database_type = kwargs['databaseType']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if endpoint_uri is None and 'endpointUri' in kwargs:
-            endpoint_uri = kwargs['endpointUri']
-        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
-            hive_metastore_config = kwargs['hiveMetastoreConfig']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if metadata_integration is None and 'metadataIntegration' in kwargs:
-            metadata_integration = kwargs['metadataIntegration']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if release_channel is None and 'releaseChannel' in kwargs:
-            release_channel = kwargs['releaseChannel']
-        if scaling_config is None and 'scalingConfig' in kwargs:
-            scaling_config = kwargs['scalingConfig']
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if state_message is None and 'stateMessage' in kwargs:
-            state_message = kwargs['stateMessage']
-        if telemetry_config is None and 'telemetryConfig' in kwargs:
-            telemetry_config = kwargs['telemetryConfig']
-
         if artifact_gcs_uri is not None:
-            _setter("artifact_gcs_uri", artifact_gcs_uri)
+            pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         if database_type is not None:
-            _setter("database_type", database_type)
+            pulumi.set(__self__, "database_type", database_type)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_uri is not None:
-            _setter("endpoint_uri", endpoint_uri)
+            pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         if hive_metastore_config is not None:
-            _setter("hive_metastore_config", hive_metastore_config)
+            pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if metadata_integration is not None:
-            _setter("metadata_integration", metadata_integration)
+            pulumi.set(__self__, "metadata_integration", metadata_integration)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if release_channel is not None:
-            _setter("release_channel", release_channel)
+            pulumi.set(__self__, "release_channel", release_channel)
         if scaling_config is not None:
-            _setter("scaling_config", scaling_config)
+            pulumi.set(__self__, "scaling_config", scaling_config)
         if service_id is not None:
-            _setter("service_id", service_id)
+            pulumi.set(__self__, "service_id", service_id)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if state_message is not None:
-            _setter("state_message", state_message)
+            pulumi.set(__self__, "state_message", state_message)
         if telemetry_config is not None:
-            _setter("telemetry_config", telemetry_config)
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
-            _setter("tier", tier)
+            pulumi.set(__self__, "tier", tier)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="artifactGcsUri")
@@ -1199,10 +1057,6 @@ class MetastoreService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MetastoreServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1234,28 +1088,21 @@ class MetastoreService(pulumi.CustomResource):
             __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
 
             __props__.__dict__["database_type"] = database_type
-            encryption_config = _utilities.configure(encryption_config, MetastoreServiceEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
-            hive_metastore_config = _utilities.configure(hive_metastore_config, MetastoreServiceHiveMetastoreConfigArgs, True)
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            maintenance_window = _utilities.configure(maintenance_window, MetastoreServiceMaintenanceWindowArgs, True)
             __props__.__dict__["maintenance_window"] = maintenance_window
-            metadata_integration = _utilities.configure(metadata_integration, MetastoreServiceMetadataIntegrationArgs, True)
             __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["network"] = network
-            network_config = _utilities.configure(network_config, MetastoreServiceNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
-            scaling_config = _utilities.configure(scaling_config, MetastoreServiceScalingConfigArgs, True)
             __props__.__dict__["scaling_config"] = scaling_config
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
-            telemetry_config = _utilities.configure(telemetry_config, MetastoreServiceTelemetryConfigArgs, True)
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None

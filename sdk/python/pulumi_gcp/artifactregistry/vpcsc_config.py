@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcscConfigArgs', 'VpcscConfig']
@@ -25,29 +25,12 @@ class VpcscConfigArgs:
         :param pulumi.Input[str] vpcsc_policy: The VPC SC policy for project and location.
                Possible values are: `DENY`, `ALLOW`.
         """
-        VpcscConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            project=project,
-            vpcsc_policy=vpcsc_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             vpcsc_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpcsc_policy is None and 'vpcscPolicy' in kwargs:
-            vpcsc_policy = kwargs['vpcscPolicy']
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if vpcsc_policy is not None:
-            _setter("vpcsc_policy", vpcsc_policy)
+            pulumi.set(__self__, "vpcsc_policy", vpcsc_policy)
 
     @property
     @pulumi.getter
@@ -105,33 +88,14 @@ class _VpcscConfigState:
         :param pulumi.Input[str] vpcsc_policy: The VPC SC policy for project and location.
                Possible values are: `DENY`, `ALLOW`.
         """
-        _VpcscConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            name=name,
-            project=project,
-            vpcsc_policy=vpcsc_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             vpcsc_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpcsc_policy is None and 'vpcscPolicy' in kwargs:
-            vpcsc_policy = kwargs['vpcscPolicy']
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if vpcsc_policy is not None:
-            _setter("vpcsc_policy", vpcsc_policy)
+            pulumi.set(__self__, "vpcsc_policy", vpcsc_policy)
 
     @property
     @pulumi.getter
@@ -278,10 +242,6 @@ class VpcscConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VpcscConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

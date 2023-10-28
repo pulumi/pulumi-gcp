@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,37 +29,12 @@ class CxEnvironmentArgs:
         :param pulumi.Input[str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         """
-        CxEnvironmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            version_configs=version_configs,
-            description=description,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if version_configs is None and 'versionConfigs' in kwargs:
-            version_configs = kwargs['versionConfigs']
-        if version_configs is None:
-            raise TypeError("Missing 'version_configs' argument")
-
-        _setter("display_name", display_name)
-        _setter("version_configs", version_configs)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "version_configs", version_configs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="displayName")
@@ -132,45 +107,18 @@ class _CxEnvironmentState:
         :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
-        _CxEnvironmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            name=name,
-            parent=parent,
-            update_time=update_time,
-            version_configs=version_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if version_configs is None and 'versionConfigs' in kwargs:
-            version_configs = kwargs['versionConfigs']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if version_configs is not None:
-            _setter("version_configs", version_configs)
+            pulumi.set(__self__, "version_configs", version_configs)
 
     @property
     @pulumi.getter
@@ -402,10 +350,6 @@ class CxEnvironment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxEnvironmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

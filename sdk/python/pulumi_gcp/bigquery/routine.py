@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -64,82 +64,27 @@ class RoutineArgs:
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
-        RoutineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            definition_body=definition_body,
-            routine_id=routine_id,
-            arguments=arguments,
-            description=description,
-            determinism_level=determinism_level,
-            imported_libraries=imported_libraries,
-            language=language,
-            project=project,
-            return_table_type=return_table_type,
-            return_type=return_type,
-            routine_type=routine_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[pulumi.Input[str]] = None,
-             definition_body: Optional[pulumi.Input[str]] = None,
-             routine_id: Optional[pulumi.Input[str]] = None,
-             arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             determinism_level: Optional[pulumi.Input[str]] = None,
-             imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             return_table_type: Optional[pulumi.Input[str]] = None,
-             return_type: Optional[pulumi.Input[str]] = None,
-             routine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if definition_body is None and 'definitionBody' in kwargs:
-            definition_body = kwargs['definitionBody']
-        if definition_body is None:
-            raise TypeError("Missing 'definition_body' argument")
-        if routine_id is None and 'routineId' in kwargs:
-            routine_id = kwargs['routineId']
-        if routine_id is None:
-            raise TypeError("Missing 'routine_id' argument")
-        if determinism_level is None and 'determinismLevel' in kwargs:
-            determinism_level = kwargs['determinismLevel']
-        if imported_libraries is None and 'importedLibraries' in kwargs:
-            imported_libraries = kwargs['importedLibraries']
-        if return_table_type is None and 'returnTableType' in kwargs:
-            return_table_type = kwargs['returnTableType']
-        if return_type is None and 'returnType' in kwargs:
-            return_type = kwargs['returnType']
-        if routine_type is None and 'routineType' in kwargs:
-            routine_type = kwargs['routineType']
-
-        _setter("dataset_id", dataset_id)
-        _setter("definition_body", definition_body)
-        _setter("routine_id", routine_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "definition_body", definition_body)
+        pulumi.set(__self__, "routine_id", routine_id)
         if arguments is not None:
-            _setter("arguments", arguments)
+            pulumi.set(__self__, "arguments", arguments)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if determinism_level is not None:
-            _setter("determinism_level", determinism_level)
+            pulumi.set(__self__, "determinism_level", determinism_level)
         if imported_libraries is not None:
-            _setter("imported_libraries", imported_libraries)
+            pulumi.set(__self__, "imported_libraries", imported_libraries)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if return_table_type is not None:
-            _setter("return_table_type", return_table_type)
+            pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
-            _setter("return_type", return_type)
+            pulumi.set(__self__, "return_type", return_type)
         if routine_type is not None:
-            _setter("routine_type", routine_type)
+            pulumi.set(__self__, "routine_type", routine_type)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -364,91 +309,34 @@ class _RoutineState:
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
-        _RoutineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arguments=arguments,
-            creation_time=creation_time,
-            dataset_id=dataset_id,
-            definition_body=definition_body,
-            description=description,
-            determinism_level=determinism_level,
-            imported_libraries=imported_libraries,
-            language=language,
-            last_modified_time=last_modified_time,
-            project=project,
-            return_table_type=return_table_type,
-            return_type=return_type,
-            routine_id=routine_id,
-            routine_type=routine_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
-             creation_time: Optional[pulumi.Input[int]] = None,
-             dataset_id: Optional[pulumi.Input[str]] = None,
-             definition_body: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             determinism_level: Optional[pulumi.Input[str]] = None,
-             imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             last_modified_time: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             return_table_type: Optional[pulumi.Input[str]] = None,
-             return_type: Optional[pulumi.Input[str]] = None,
-             routine_id: Optional[pulumi.Input[str]] = None,
-             routine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if definition_body is None and 'definitionBody' in kwargs:
-            definition_body = kwargs['definitionBody']
-        if determinism_level is None and 'determinismLevel' in kwargs:
-            determinism_level = kwargs['determinismLevel']
-        if imported_libraries is None and 'importedLibraries' in kwargs:
-            imported_libraries = kwargs['importedLibraries']
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if return_table_type is None and 'returnTableType' in kwargs:
-            return_table_type = kwargs['returnTableType']
-        if return_type is None and 'returnType' in kwargs:
-            return_type = kwargs['returnType']
-        if routine_id is None and 'routineId' in kwargs:
-            routine_id = kwargs['routineId']
-        if routine_type is None and 'routineType' in kwargs:
-            routine_type = kwargs['routineType']
-
         if arguments is not None:
-            _setter("arguments", arguments)
+            pulumi.set(__self__, "arguments", arguments)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if definition_body is not None:
-            _setter("definition_body", definition_body)
+            pulumi.set(__self__, "definition_body", definition_body)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if determinism_level is not None:
-            _setter("determinism_level", determinism_level)
+            pulumi.set(__self__, "determinism_level", determinism_level)
         if imported_libraries is not None:
-            _setter("imported_libraries", imported_libraries)
+            pulumi.set(__self__, "imported_libraries", imported_libraries)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if last_modified_time is not None:
-            _setter("last_modified_time", last_modified_time)
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if return_table_type is not None:
-            _setter("return_table_type", return_table_type)
+            pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
-            _setter("return_type", return_type)
+            pulumi.set(__self__, "return_type", return_type)
         if routine_id is not None:
-            _setter("routine_id", routine_id)
+            pulumi.set(__self__, "routine_id", routine_id)
         if routine_type is not None:
-            _setter("routine_type", routine_type)
+            pulumi.set(__self__, "routine_type", routine_type)
 
     @property
     @pulumi.getter
@@ -904,10 +792,6 @@ class Routine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoutineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

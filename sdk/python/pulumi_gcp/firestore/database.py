@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -55,59 +55,20 @@ class DatabaseArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location_id=location_id,
-            type=type,
-            app_engine_integration_mode=app_engine_integration_mode,
-            concurrency_mode=concurrency_mode,
-            delete_protection_state=delete_protection_state,
-            name=name,
-            point_in_time_recovery_enablement=point_in_time_recovery_enablement,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
-             concurrency_mode: Optional[pulumi.Input[str]] = None,
-             delete_protection_state: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-        if location_id is None:
-            raise TypeError("Missing 'location_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if app_engine_integration_mode is None and 'appEngineIntegrationMode' in kwargs:
-            app_engine_integration_mode = kwargs['appEngineIntegrationMode']
-        if concurrency_mode is None and 'concurrencyMode' in kwargs:
-            concurrency_mode = kwargs['concurrencyMode']
-        if delete_protection_state is None and 'deleteProtectionState' in kwargs:
-            delete_protection_state = kwargs['deleteProtectionState']
-        if point_in_time_recovery_enablement is None and 'pointInTimeRecoveryEnablement' in kwargs:
-            point_in_time_recovery_enablement = kwargs['pointInTimeRecoveryEnablement']
-
-        _setter("location_id", location_id)
-        _setter("type", type)
+        pulumi.set(__self__, "location_id", location_id)
+        pulumi.set(__self__, "type", type)
         if app_engine_integration_mode is not None:
-            _setter("app_engine_integration_mode", app_engine_integration_mode)
+            pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode is not None:
-            _setter("concurrency_mode", concurrency_mode)
+            pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if delete_protection_state is not None:
-            _setter("delete_protection_state", delete_protection_state)
+            pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if point_in_time_recovery_enablement is not None:
-            _setter("point_in_time_recovery_enablement", point_in_time_recovery_enablement)
+            pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="locationId")
@@ -296,95 +257,36 @@ class _DatabaseState:
                If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
-        _DatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_engine_integration_mode=app_engine_integration_mode,
-            concurrency_mode=concurrency_mode,
-            create_time=create_time,
-            delete_protection_state=delete_protection_state,
-            earliest_version_time=earliest_version_time,
-            etag=etag,
-            key_prefix=key_prefix,
-            location_id=location_id,
-            name=name,
-            point_in_time_recovery_enablement=point_in_time_recovery_enablement,
-            project=project,
-            type=type,
-            uid=uid,
-            update_time=update_time,
-            version_retention_period=version_retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
-             concurrency_mode: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             delete_protection_state: Optional[pulumi.Input[str]] = None,
-             earliest_version_time: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             key_prefix: Optional[pulumi.Input[str]] = None,
-             location_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_engine_integration_mode is None and 'appEngineIntegrationMode' in kwargs:
-            app_engine_integration_mode = kwargs['appEngineIntegrationMode']
-        if concurrency_mode is None and 'concurrencyMode' in kwargs:
-            concurrency_mode = kwargs['concurrencyMode']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_protection_state is None and 'deleteProtectionState' in kwargs:
-            delete_protection_state = kwargs['deleteProtectionState']
-        if earliest_version_time is None and 'earliestVersionTime' in kwargs:
-            earliest_version_time = kwargs['earliestVersionTime']
-        if key_prefix is None and 'keyPrefix' in kwargs:
-            key_prefix = kwargs['keyPrefix']
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-        if point_in_time_recovery_enablement is None and 'pointInTimeRecoveryEnablement' in kwargs:
-            point_in_time_recovery_enablement = kwargs['pointInTimeRecoveryEnablement']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
-            version_retention_period = kwargs['versionRetentionPeriod']
-
         if app_engine_integration_mode is not None:
-            _setter("app_engine_integration_mode", app_engine_integration_mode)
+            pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode is not None:
-            _setter("concurrency_mode", concurrency_mode)
+            pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if delete_protection_state is not None:
-            _setter("delete_protection_state", delete_protection_state)
+            pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if earliest_version_time is not None:
-            _setter("earliest_version_time", earliest_version_time)
+            pulumi.set(__self__, "earliest_version_time", earliest_version_time)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if key_prefix is not None:
-            _setter("key_prefix", key_prefix)
+            pulumi.set(__self__, "key_prefix", key_prefix)
         if location_id is not None:
-            _setter("location_id", location_id)
+            pulumi.set(__self__, "location_id", location_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if point_in_time_recovery_enablement is not None:
-            _setter("point_in_time_recovery_enablement", point_in_time_recovery_enablement)
+            pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if version_retention_period is not None:
-            _setter("version_retention_period", version_retention_period)
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter(name="appEngineIntegrationMode")
@@ -750,10 +652,6 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

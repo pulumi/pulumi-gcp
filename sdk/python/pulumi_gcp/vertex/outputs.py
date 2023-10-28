@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -75,21 +75,8 @@ class AiDatasetEncryptionSpec(dict):
         :param str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
-        AiDatasetEncryptionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -179,83 +166,30 @@ class AiEndpointDeployedModel(dict):
         :param str shared_resources: (Output)
                The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
         """
-        AiEndpointDeployedModel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            automatic_resources=automatic_resources,
-            create_time=create_time,
-            dedicated_resources=dedicated_resources,
-            display_name=display_name,
-            enable_access_logging=enable_access_logging,
-            enable_container_logging=enable_container_logging,
-            id=id,
-            model=model,
-            model_version_id=model_version_id,
-            private_endpoints=private_endpoints,
-            service_account=service_account,
-            shared_resources=shared_resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             automatic_resources: Optional[Sequence['outputs.AiEndpointDeployedModelAutomaticResource']] = None,
-             create_time: Optional[str] = None,
-             dedicated_resources: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResource']] = None,
-             display_name: Optional[str] = None,
-             enable_access_logging: Optional[bool] = None,
-             enable_container_logging: Optional[bool] = None,
-             id: Optional[str] = None,
-             model: Optional[str] = None,
-             model_version_id: Optional[str] = None,
-             private_endpoints: Optional[Sequence['outputs.AiEndpointDeployedModelPrivateEndpoint']] = None,
-             service_account: Optional[str] = None,
-             shared_resources: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if automatic_resources is None and 'automaticResources' in kwargs:
-            automatic_resources = kwargs['automaticResources']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if dedicated_resources is None and 'dedicatedResources' in kwargs:
-            dedicated_resources = kwargs['dedicatedResources']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if enable_access_logging is None and 'enableAccessLogging' in kwargs:
-            enable_access_logging = kwargs['enableAccessLogging']
-        if enable_container_logging is None and 'enableContainerLogging' in kwargs:
-            enable_container_logging = kwargs['enableContainerLogging']
-        if model_version_id is None and 'modelVersionId' in kwargs:
-            model_version_id = kwargs['modelVersionId']
-        if private_endpoints is None and 'privateEndpoints' in kwargs:
-            private_endpoints = kwargs['privateEndpoints']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if shared_resources is None and 'sharedResources' in kwargs:
-            shared_resources = kwargs['sharedResources']
-
         if automatic_resources is not None:
-            _setter("automatic_resources", automatic_resources)
+            pulumi.set(__self__, "automatic_resources", automatic_resources)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if dedicated_resources is not None:
-            _setter("dedicated_resources", dedicated_resources)
+            pulumi.set(__self__, "dedicated_resources", dedicated_resources)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enable_access_logging is not None:
-            _setter("enable_access_logging", enable_access_logging)
+            pulumi.set(__self__, "enable_access_logging", enable_access_logging)
         if enable_container_logging is not None:
-            _setter("enable_container_logging", enable_container_logging)
+            pulumi.set(__self__, "enable_container_logging", enable_container_logging)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if model is not None:
-            _setter("model", model)
+            pulumi.set(__self__, "model", model)
         if model_version_id is not None:
-            _setter("model_version_id", model_version_id)
+            pulumi.set(__self__, "model_version_id", model_version_id)
         if private_endpoints is not None:
-            _setter("private_endpoints", private_endpoints)
+            pulumi.set(__self__, "private_endpoints", private_endpoints)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if shared_resources is not None:
-            _setter("shared_resources", shared_resources)
+            pulumi.set(__self__, "shared_resources", shared_resources)
 
     @property
     @pulumi.getter(name="automaticResources")
@@ -398,27 +332,10 @@ class AiEndpointDeployedModelAutomaticResource(dict):
         :param int min_replica_count: (Output)
                The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
-        AiEndpointDeployedModelAutomaticResource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_replica_count=max_replica_count,
-            min_replica_count=min_replica_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_replica_count: Optional[int] = None,
-             min_replica_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_replica_count is None and 'maxReplicaCount' in kwargs:
-            max_replica_count = kwargs['maxReplicaCount']
-        if min_replica_count is None and 'minReplicaCount' in kwargs:
-            min_replica_count = kwargs['minReplicaCount']
-
         if max_replica_count is not None:
-            _setter("max_replica_count", max_replica_count)
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
         if min_replica_count is not None:
-            _setter("min_replica_count", min_replica_count)
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
 
     @property
     @pulumi.getter(name="maxReplicaCount")
@@ -481,39 +398,14 @@ class AiEndpointDeployedModelDedicatedResource(dict):
         :param int min_replica_count: (Output)
                The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
-        AiEndpointDeployedModelDedicatedResource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscaling_metric_specs=autoscaling_metric_specs,
-            machine_specs=machine_specs,
-            max_replica_count=max_replica_count,
-            min_replica_count=min_replica_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscaling_metric_specs: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec']] = None,
-             machine_specs: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceMachineSpec']] = None,
-             max_replica_count: Optional[int] = None,
-             min_replica_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autoscaling_metric_specs is None and 'autoscalingMetricSpecs' in kwargs:
-            autoscaling_metric_specs = kwargs['autoscalingMetricSpecs']
-        if machine_specs is None and 'machineSpecs' in kwargs:
-            machine_specs = kwargs['machineSpecs']
-        if max_replica_count is None and 'maxReplicaCount' in kwargs:
-            max_replica_count = kwargs['maxReplicaCount']
-        if min_replica_count is None and 'minReplicaCount' in kwargs:
-            min_replica_count = kwargs['minReplicaCount']
-
         if autoscaling_metric_specs is not None:
-            _setter("autoscaling_metric_specs", autoscaling_metric_specs)
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
         if machine_specs is not None:
-            _setter("machine_specs", machine_specs)
+            pulumi.set(__self__, "machine_specs", machine_specs)
         if max_replica_count is not None:
-            _setter("max_replica_count", max_replica_count)
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
         if min_replica_count is not None:
-            _setter("min_replica_count", min_replica_count)
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
 
     @property
     @pulumi.getter(name="autoscalingMetricSpecs")
@@ -582,25 +474,10 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
         :param int target: (Output)
                The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
-        AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             target: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-
         if metric_name is not None:
-            _setter("metric_name", metric_name)
+            pulumi.set(__self__, "metric_name", metric_name)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -656,33 +533,12 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpec(dict):
         :param str machine_type: (Output)
                The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
         """
-        AiEndpointDeployedModelDedicatedResourceMachineSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_count=accelerator_count,
-            accelerator_type=accelerator_type,
-            machine_type=machine_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_count: Optional[int] = None,
-             accelerator_type: Optional[str] = None,
-             machine_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_count is None and 'acceleratorCount' in kwargs:
-            accelerator_count = kwargs['acceleratorCount']
-        if accelerator_type is None and 'acceleratorType' in kwargs:
-            accelerator_type = kwargs['acceleratorType']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-
         if accelerator_count is not None:
-            _setter("accelerator_count", accelerator_count)
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
         if accelerator_type is not None:
-            _setter("accelerator_type", accelerator_type)
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -752,39 +608,14 @@ class AiEndpointDeployedModelPrivateEndpoint(dict):
         :param str service_attachment: (Output)
                Output only. The name of the service attachment resource. Populated if private service connect is enabled.
         """
-        AiEndpointDeployedModelPrivateEndpoint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            explain_http_uri=explain_http_uri,
-            health_http_uri=health_http_uri,
-            predict_http_uri=predict_http_uri,
-            service_attachment=service_attachment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             explain_http_uri: Optional[str] = None,
-             health_http_uri: Optional[str] = None,
-             predict_http_uri: Optional[str] = None,
-             service_attachment: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if explain_http_uri is None and 'explainHttpUri' in kwargs:
-            explain_http_uri = kwargs['explainHttpUri']
-        if health_http_uri is None and 'healthHttpUri' in kwargs:
-            health_http_uri = kwargs['healthHttpUri']
-        if predict_http_uri is None and 'predictHttpUri' in kwargs:
-            predict_http_uri = kwargs['predictHttpUri']
-        if service_attachment is None and 'serviceAttachment' in kwargs:
-            service_attachment = kwargs['serviceAttachment']
-
         if explain_http_uri is not None:
-            _setter("explain_http_uri", explain_http_uri)
+            pulumi.set(__self__, "explain_http_uri", explain_http_uri)
         if health_http_uri is not None:
-            _setter("health_http_uri", health_http_uri)
+            pulumi.set(__self__, "health_http_uri", health_http_uri)
         if predict_http_uri is not None:
-            _setter("predict_http_uri", predict_http_uri)
+            pulumi.set(__self__, "predict_http_uri", predict_http_uri)
         if service_attachment is not None:
-            _setter("service_attachment", service_attachment)
+            pulumi.set(__self__, "service_attachment", service_attachment)
 
     @property
     @pulumi.getter(name="explainHttpUri")
@@ -847,22 +678,7 @@ class AiEndpointEncryptionSpec(dict):
         """
         :param str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
         """
-        AiEndpointEncryptionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -897,22 +713,7 @@ class AiFeatureStoreEncryptionSpec(dict):
         """
         :param str kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
         """
-        AiFeatureStoreEncryptionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -929,29 +730,10 @@ class AiFeatureStoreEntityTypeIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AiFeatureStoreEntityTypeIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -975,29 +757,10 @@ class AiFeatureStoreEntityTypeIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AiFeatureStoreEntityTypeIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1055,39 +818,14 @@ class AiFeatureStoreEntityTypeMonitoringConfig(dict):
         :param 'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs' snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
                Structure is documented below.
         """
-        AiFeatureStoreEntityTypeMonitoringConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            categorical_threshold_config=categorical_threshold_config,
-            import_features_analysis=import_features_analysis,
-            numerical_threshold_config=numerical_threshold_config,
-            snapshot_analysis=snapshot_analysis,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             categorical_threshold_config: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig'] = None,
-             import_features_analysis: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis'] = None,
-             numerical_threshold_config: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig'] = None,
-             snapshot_analysis: Optional['outputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if categorical_threshold_config is None and 'categoricalThresholdConfig' in kwargs:
-            categorical_threshold_config = kwargs['categoricalThresholdConfig']
-        if import_features_analysis is None and 'importFeaturesAnalysis' in kwargs:
-            import_features_analysis = kwargs['importFeaturesAnalysis']
-        if numerical_threshold_config is None and 'numericalThresholdConfig' in kwargs:
-            numerical_threshold_config = kwargs['numericalThresholdConfig']
-        if snapshot_analysis is None and 'snapshotAnalysis' in kwargs:
-            snapshot_analysis = kwargs['snapshotAnalysis']
-
         if categorical_threshold_config is not None:
-            _setter("categorical_threshold_config", categorical_threshold_config)
+            pulumi.set(__self__, "categorical_threshold_config", categorical_threshold_config)
         if import_features_analysis is not None:
-            _setter("import_features_analysis", import_features_analysis)
+            pulumi.set(__self__, "import_features_analysis", import_features_analysis)
         if numerical_threshold_config is not None:
-            _setter("numerical_threshold_config", numerical_threshold_config)
+            pulumi.set(__self__, "numerical_threshold_config", numerical_threshold_config)
         if snapshot_analysis is not None:
-            _setter("snapshot_analysis", snapshot_analysis)
+            pulumi.set(__self__, "snapshot_analysis", snapshot_analysis)
 
     @property
     @pulumi.getter(name="categoricalThresholdConfig")
@@ -1133,20 +871,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig(dict):
         """
         :param float value: Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
         """
-        AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("value", value)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1189,25 +914,10 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis(dict):
                * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
                * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
         """
-        AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            anomaly_detection_baseline=anomaly_detection_baseline,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             anomaly_detection_baseline: Optional[str] = None,
-             state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if anomaly_detection_baseline is None and 'anomalyDetectionBaseline' in kwargs:
-            anomaly_detection_baseline = kwargs['anomalyDetectionBaseline']
-
         if anomaly_detection_baseline is not None:
-            _setter("anomaly_detection_baseline", anomaly_detection_baseline)
+            pulumi.set(__self__, "anomaly_detection_baseline", anomaly_detection_baseline)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="anomalyDetectionBaseline")
@@ -1239,20 +949,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(dict):
         """
         :param float value: Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
         """
-        AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("value", value)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1297,37 +994,14 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
                If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
         :param int staleness_days: Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
         """
-        AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            monitoring_interval=monitoring_interval,
-            monitoring_interval_days=monitoring_interval_days,
-            staleness_days=staleness_days,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[bool] = None,
-             monitoring_interval: Optional[str] = None,
-             monitoring_interval_days: Optional[int] = None,
-             staleness_days: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if monitoring_interval is None and 'monitoringInterval' in kwargs:
-            monitoring_interval = kwargs['monitoringInterval']
-        if monitoring_interval_days is None and 'monitoringIntervalDays' in kwargs:
-            monitoring_interval_days = kwargs['monitoringIntervalDays']
-        if staleness_days is None and 'stalenessDays' in kwargs:
-            staleness_days = kwargs['stalenessDays']
-
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if monitoring_interval is not None:
-            _setter("monitoring_interval", monitoring_interval)
+            pulumi.set(__self__, "monitoring_interval", monitoring_interval)
         if monitoring_interval_days is not None:
-            _setter("monitoring_interval_days", monitoring_interval_days)
+            pulumi.set(__self__, "monitoring_interval_days", monitoring_interval_days)
         if staleness_days is not None:
-            _setter("staleness_days", staleness_days)
+            pulumi.set(__self__, "staleness_days", staleness_days)
 
     @property
     @pulumi.getter
@@ -1369,29 +1043,10 @@ class AiFeatureStoreIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AiFeatureStoreIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1415,29 +1070,10 @@ class AiFeatureStoreIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AiFeatureStoreIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1482,25 +1118,10 @@ class AiFeatureStoreOnlineServingConfig(dict):
         :param 'AiFeatureStoreOnlineServingConfigScalingArgs' scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
                Structure is documented below.
         """
-        AiFeatureStoreOnlineServingConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed_node_count=fixed_node_count,
-            scaling=scaling,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed_node_count: Optional[int] = None,
-             scaling: Optional['outputs.AiFeatureStoreOnlineServingConfigScaling'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fixed_node_count is None and 'fixedNodeCount' in kwargs:
-            fixed_node_count = kwargs['fixedNodeCount']
-
         if fixed_node_count is not None:
-            _setter("fixed_node_count", fixed_node_count)
+            pulumi.set(__self__, "fixed_node_count", fixed_node_count)
         if scaling is not None:
-            _setter("scaling", scaling)
+            pulumi.set(__self__, "scaling", scaling)
 
     @property
     @pulumi.getter(name="fixedNodeCount")
@@ -1548,29 +1169,8 @@ class AiFeatureStoreOnlineServingConfigScaling(dict):
         :param int max_node_count: The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
         :param int min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
         """
-        AiFeatureStoreOnlineServingConfigScaling._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_node_count=max_node_count,
-            min_node_count=min_node_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_node_count: Optional[int] = None,
-             min_node_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_node_count is None and 'maxNodeCount' in kwargs:
-            max_node_count = kwargs['maxNodeCount']
-        if max_node_count is None:
-            raise TypeError("Missing 'max_node_count' argument")
-        if min_node_count is None and 'minNodeCount' in kwargs:
-            min_node_count = kwargs['minNodeCount']
-        if min_node_count is None:
-            raise TypeError("Missing 'min_node_count' argument")
-
-        _setter("max_node_count", max_node_count)
-        _setter("min_node_count", min_node_count)
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
 
     @property
     @pulumi.getter(name="maxNodeCount")
@@ -1619,27 +1219,10 @@ class AiIndexDeployedIndex(dict):
         :param str index_endpoint: (Output)
                A resource name of the IndexEndpoint.
         """
-        AiIndexDeployedIndex._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deployed_index_id=deployed_index_id,
-            index_endpoint=index_endpoint,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deployed_index_id: Optional[str] = None,
-             index_endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deployed_index_id is None and 'deployedIndexId' in kwargs:
-            deployed_index_id = kwargs['deployedIndexId']
-        if index_endpoint is None and 'indexEndpoint' in kwargs:
-            index_endpoint = kwargs['indexEndpoint']
-
         if deployed_index_id is not None:
-            _setter("deployed_index_id", deployed_index_id)
+            pulumi.set(__self__, "deployed_index_id", deployed_index_id)
         if index_endpoint is not None:
-            _setter("index_endpoint", index_endpoint)
+            pulumi.set(__self__, "index_endpoint", index_endpoint)
 
     @property
     @pulumi.getter(name="deployedIndexId")
@@ -1690,27 +1273,10 @@ class AiIndexIndexStat(dict):
         :param str vectors_count: (Output)
                The number of vectors in the Index.
         """
-        AiIndexIndexStat._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            shards_count=shards_count,
-            vectors_count=vectors_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             shards_count: Optional[int] = None,
-             vectors_count: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if shards_count is None and 'shardsCount' in kwargs:
-            shards_count = kwargs['shardsCount']
-        if vectors_count is None and 'vectorsCount' in kwargs:
-            vectors_count = kwargs['vectorsCount']
-
         if shards_count is not None:
-            _setter("shards_count", shards_count)
+            pulumi.set(__self__, "shards_count", shards_count)
         if vectors_count is not None:
-            _setter("vectors_count", vectors_count)
+            pulumi.set(__self__, "vectors_count", vectors_count)
 
     @property
     @pulumi.getter(name="shardsCount")
@@ -1768,31 +1334,12 @@ class AiIndexMetadata(dict):
         :param bool is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
         """
-        AiIndexMetadata._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            contents_delta_uri=contents_delta_uri,
-            is_complete_overwrite=is_complete_overwrite,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional['outputs.AiIndexMetadataConfig'] = None,
-             contents_delta_uri: Optional[str] = None,
-             is_complete_overwrite: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contents_delta_uri is None and 'contentsDeltaUri' in kwargs:
-            contents_delta_uri = kwargs['contentsDeltaUri']
-        if is_complete_overwrite is None and 'isCompleteOverwrite' in kwargs:
-            is_complete_overwrite = kwargs['isCompleteOverwrite']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if contents_delta_uri is not None:
-            _setter("contents_delta_uri", contents_delta_uri)
+            pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
         if is_complete_overwrite is not None:
-            _setter("is_complete_overwrite", is_complete_overwrite)
+            pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
 
     @property
     @pulumi.getter
@@ -1882,50 +1429,17 @@ class AiIndexMetadataConfig(dict):
                * SHARD_SIZE_MEDIUM: Medium (20GB)
                * SHARD_SIZE_LARGE: Large (50GB)
         """
-        AiIndexMetadataConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dimensions=dimensions,
-            algorithm_config=algorithm_config,
-            approximate_neighbors_count=approximate_neighbors_count,
-            distance_measure_type=distance_measure_type,
-            feature_norm_type=feature_norm_type,
-            shard_size=shard_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dimensions: Optional[int] = None,
-             algorithm_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfig'] = None,
-             approximate_neighbors_count: Optional[int] = None,
-             distance_measure_type: Optional[str] = None,
-             feature_norm_type: Optional[str] = None,
-             shard_size: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dimensions is None:
-            raise TypeError("Missing 'dimensions' argument")
-        if algorithm_config is None and 'algorithmConfig' in kwargs:
-            algorithm_config = kwargs['algorithmConfig']
-        if approximate_neighbors_count is None and 'approximateNeighborsCount' in kwargs:
-            approximate_neighbors_count = kwargs['approximateNeighborsCount']
-        if distance_measure_type is None and 'distanceMeasureType' in kwargs:
-            distance_measure_type = kwargs['distanceMeasureType']
-        if feature_norm_type is None and 'featureNormType' in kwargs:
-            feature_norm_type = kwargs['featureNormType']
-        if shard_size is None and 'shardSize' in kwargs:
-            shard_size = kwargs['shardSize']
-
-        _setter("dimensions", dimensions)
+        pulumi.set(__self__, "dimensions", dimensions)
         if algorithm_config is not None:
-            _setter("algorithm_config", algorithm_config)
+            pulumi.set(__self__, "algorithm_config", algorithm_config)
         if approximate_neighbors_count is not None:
-            _setter("approximate_neighbors_count", approximate_neighbors_count)
+            pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
         if distance_measure_type is not None:
-            _setter("distance_measure_type", distance_measure_type)
+            pulumi.set(__self__, "distance_measure_type", distance_measure_type)
         if feature_norm_type is not None:
-            _setter("feature_norm_type", feature_norm_type)
+            pulumi.set(__self__, "feature_norm_type", feature_norm_type)
         if shard_size is not None:
-            _setter("shard_size", shard_size)
+            pulumi.set(__self__, "shard_size", shard_size)
 
     @property
     @pulumi.getter
@@ -2021,27 +1535,10 @@ class AiIndexMetadataConfigAlgorithmConfig(dict):
                Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
                Structure is documented below.
         """
-        AiIndexMetadataConfigAlgorithmConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            brute_force_config=brute_force_config,
-            tree_ah_config=tree_ah_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             brute_force_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfigBruteForceConfig'] = None,
-             tree_ah_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if brute_force_config is None and 'bruteForceConfig' in kwargs:
-            brute_force_config = kwargs['bruteForceConfig']
-        if tree_ah_config is None and 'treeAhConfig' in kwargs:
-            tree_ah_config = kwargs['treeAhConfig']
-
         if brute_force_config is not None:
-            _setter("brute_force_config", brute_force_config)
+            pulumi.set(__self__, "brute_force_config", brute_force_config)
         if tree_ah_config is not None:
-            _setter("tree_ah_config", tree_ah_config)
+            pulumi.set(__self__, "tree_ah_config", tree_ah_config)
 
     @property
     @pulumi.getter(name="bruteForceConfig")
@@ -2067,13 +1564,6 @@ class AiIndexMetadataConfigAlgorithmConfig(dict):
 class AiIndexMetadataConfigAlgorithmConfigBruteForceConfig(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -2105,27 +1595,10 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
         :param int leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
                range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
-        AiIndexMetadataConfigAlgorithmConfigTreeAhConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            leaf_node_embedding_count=leaf_node_embedding_count,
-            leaf_nodes_to_search_percent=leaf_nodes_to_search_percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             leaf_node_embedding_count: Optional[int] = None,
-             leaf_nodes_to_search_percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if leaf_node_embedding_count is None and 'leafNodeEmbeddingCount' in kwargs:
-            leaf_node_embedding_count = kwargs['leafNodeEmbeddingCount']
-        if leaf_nodes_to_search_percent is None and 'leafNodesToSearchPercent' in kwargs:
-            leaf_nodes_to_search_percent = kwargs['leafNodesToSearchPercent']
-
         if leaf_node_embedding_count is not None:
-            _setter("leaf_node_embedding_count", leaf_node_embedding_count)
+            pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
         if leaf_nodes_to_search_percent is not None:
-            _setter("leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+            pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
 
     @property
     @pulumi.getter(name="leafNodeEmbeddingCount")
@@ -2170,21 +1643,8 @@ class AiMetadataStoreEncryptionSpec(dict):
         :param str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
-        AiMetadataStoreEncryptionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2221,21 +1681,8 @@ class AiMetadataStoreState(dict):
         :param str disk_utilization_bytes: (Output)
                The disk utilization of the MetadataStore in bytes.
         """
-        AiMetadataStoreState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_utilization_bytes=disk_utilization_bytes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_utilization_bytes: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_utilization_bytes is None and 'diskUtilizationBytes' in kwargs:
-            disk_utilization_bytes = kwargs['diskUtilizationBytes']
-
         if disk_utilization_bytes is not None:
-            _setter("disk_utilization_bytes", disk_utilization_bytes)
+            pulumi.set(__self__, "disk_utilization_bytes", disk_utilization_bytes)
 
     @property
     @pulumi.getter(name="diskUtilizationBytes")
@@ -2272,22 +1719,7 @@ class AiTensorboardEncryptionSpec(dict):
         :param str kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
-        AiTensorboardEncryptionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2304,29 +1736,8 @@ class GetAiIndexDeployedIndexResult(dict):
     def __init__(__self__, *,
                  deployed_index_id: str,
                  index_endpoint: str):
-        GetAiIndexDeployedIndexResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deployed_index_id=deployed_index_id,
-            index_endpoint=index_endpoint,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deployed_index_id: Optional[str] = None,
-             index_endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deployed_index_id is None and 'deployedIndexId' in kwargs:
-            deployed_index_id = kwargs['deployedIndexId']
-        if deployed_index_id is None:
-            raise TypeError("Missing 'deployed_index_id' argument")
-        if index_endpoint is None and 'indexEndpoint' in kwargs:
-            index_endpoint = kwargs['indexEndpoint']
-        if index_endpoint is None:
-            raise TypeError("Missing 'index_endpoint' argument")
-
-        _setter("deployed_index_id", deployed_index_id)
-        _setter("index_endpoint", index_endpoint)
+        pulumi.set(__self__, "deployed_index_id", deployed_index_id)
+        pulumi.set(__self__, "index_endpoint", index_endpoint)
 
     @property
     @pulumi.getter(name="deployedIndexId")
@@ -2344,29 +1755,8 @@ class GetAiIndexIndexStatResult(dict):
     def __init__(__self__, *,
                  shards_count: int,
                  vectors_count: str):
-        GetAiIndexIndexStatResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            shards_count=shards_count,
-            vectors_count=vectors_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             shards_count: Optional[int] = None,
-             vectors_count: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if shards_count is None and 'shardsCount' in kwargs:
-            shards_count = kwargs['shardsCount']
-        if shards_count is None:
-            raise TypeError("Missing 'shards_count' argument")
-        if vectors_count is None and 'vectorsCount' in kwargs:
-            vectors_count = kwargs['vectorsCount']
-        if vectors_count is None:
-            raise TypeError("Missing 'vectors_count' argument")
-
-        _setter("shards_count", shards_count)
-        _setter("vectors_count", vectors_count)
+        pulumi.set(__self__, "shards_count", shards_count)
+        pulumi.set(__self__, "vectors_count", vectors_count)
 
     @property
     @pulumi.getter(name="shardsCount")
@@ -2385,34 +1775,9 @@ class GetAiIndexMetadataResult(dict):
                  configs: Sequence['outputs.GetAiIndexMetadataConfigResult'],
                  contents_delta_uri: str,
                  is_complete_overwrite: bool):
-        GetAiIndexMetadataResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            configs=configs,
-            contents_delta_uri=contents_delta_uri,
-            is_complete_overwrite=is_complete_overwrite,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             configs: Optional[Sequence['outputs.GetAiIndexMetadataConfigResult']] = None,
-             contents_delta_uri: Optional[str] = None,
-             is_complete_overwrite: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if configs is None:
-            raise TypeError("Missing 'configs' argument")
-        if contents_delta_uri is None and 'contentsDeltaUri' in kwargs:
-            contents_delta_uri = kwargs['contentsDeltaUri']
-        if contents_delta_uri is None:
-            raise TypeError("Missing 'contents_delta_uri' argument")
-        if is_complete_overwrite is None and 'isCompleteOverwrite' in kwargs:
-            is_complete_overwrite = kwargs['isCompleteOverwrite']
-        if is_complete_overwrite is None:
-            raise TypeError("Missing 'is_complete_overwrite' argument")
-
-        _setter("configs", configs)
-        _setter("contents_delta_uri", contents_delta_uri)
-        _setter("is_complete_overwrite", is_complete_overwrite)
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
+        pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
 
     @property
     @pulumi.getter
@@ -2439,55 +1804,12 @@ class GetAiIndexMetadataConfigResult(dict):
                  distance_measure_type: str,
                  feature_norm_type: str,
                  shard_size: str):
-        GetAiIndexMetadataConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm_configs=algorithm_configs,
-            approximate_neighbors_count=approximate_neighbors_count,
-            dimensions=dimensions,
-            distance_measure_type=distance_measure_type,
-            feature_norm_type=feature_norm_type,
-            shard_size=shard_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm_configs: Optional[Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigResult']] = None,
-             approximate_neighbors_count: Optional[int] = None,
-             dimensions: Optional[int] = None,
-             distance_measure_type: Optional[str] = None,
-             feature_norm_type: Optional[str] = None,
-             shard_size: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if algorithm_configs is None and 'algorithmConfigs' in kwargs:
-            algorithm_configs = kwargs['algorithmConfigs']
-        if algorithm_configs is None:
-            raise TypeError("Missing 'algorithm_configs' argument")
-        if approximate_neighbors_count is None and 'approximateNeighborsCount' in kwargs:
-            approximate_neighbors_count = kwargs['approximateNeighborsCount']
-        if approximate_neighbors_count is None:
-            raise TypeError("Missing 'approximate_neighbors_count' argument")
-        if dimensions is None:
-            raise TypeError("Missing 'dimensions' argument")
-        if distance_measure_type is None and 'distanceMeasureType' in kwargs:
-            distance_measure_type = kwargs['distanceMeasureType']
-        if distance_measure_type is None:
-            raise TypeError("Missing 'distance_measure_type' argument")
-        if feature_norm_type is None and 'featureNormType' in kwargs:
-            feature_norm_type = kwargs['featureNormType']
-        if feature_norm_type is None:
-            raise TypeError("Missing 'feature_norm_type' argument")
-        if shard_size is None and 'shardSize' in kwargs:
-            shard_size = kwargs['shardSize']
-        if shard_size is None:
-            raise TypeError("Missing 'shard_size' argument")
-
-        _setter("algorithm_configs", algorithm_configs)
-        _setter("approximate_neighbors_count", approximate_neighbors_count)
-        _setter("dimensions", dimensions)
-        _setter("distance_measure_type", distance_measure_type)
-        _setter("feature_norm_type", feature_norm_type)
-        _setter("shard_size", shard_size)
+        pulumi.set(__self__, "algorithm_configs", algorithm_configs)
+        pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+        pulumi.set(__self__, "shard_size", shard_size)
 
     @property
     @pulumi.getter(name="algorithmConfigs")
@@ -2525,29 +1847,8 @@ class GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
     def __init__(__self__, *,
                  brute_force_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult'],
                  tree_ah_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult']):
-        GetAiIndexMetadataConfigAlgorithmConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            brute_force_configs=brute_force_configs,
-            tree_ah_configs=tree_ah_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             brute_force_configs: Optional[Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult']] = None,
-             tree_ah_configs: Optional[Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if brute_force_configs is None and 'bruteForceConfigs' in kwargs:
-            brute_force_configs = kwargs['bruteForceConfigs']
-        if brute_force_configs is None:
-            raise TypeError("Missing 'brute_force_configs' argument")
-        if tree_ah_configs is None and 'treeAhConfigs' in kwargs:
-            tree_ah_configs = kwargs['treeAhConfigs']
-        if tree_ah_configs is None:
-            raise TypeError("Missing 'tree_ah_configs' argument")
-
-        _setter("brute_force_configs", brute_force_configs)
-        _setter("tree_ah_configs", tree_ah_configs)
+        pulumi.set(__self__, "brute_force_configs", brute_force_configs)
+        pulumi.set(__self__, "tree_ah_configs", tree_ah_configs)
 
     @property
     @pulumi.getter(name="bruteForceConfigs")
@@ -2564,13 +1865,6 @@ class GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
 class GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -2578,29 +1872,8 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
     def __init__(__self__, *,
                  leaf_node_embedding_count: int,
                  leaf_nodes_to_search_percent: int):
-        GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            leaf_node_embedding_count=leaf_node_embedding_count,
-            leaf_nodes_to_search_percent=leaf_nodes_to_search_percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             leaf_node_embedding_count: Optional[int] = None,
-             leaf_nodes_to_search_percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if leaf_node_embedding_count is None and 'leafNodeEmbeddingCount' in kwargs:
-            leaf_node_embedding_count = kwargs['leafNodeEmbeddingCount']
-        if leaf_node_embedding_count is None:
-            raise TypeError("Missing 'leaf_node_embedding_count' argument")
-        if leaf_nodes_to_search_percent is None and 'leafNodesToSearchPercent' in kwargs:
-            leaf_nodes_to_search_percent = kwargs['leafNodesToSearchPercent']
-        if leaf_nodes_to_search_percent is None:
-            raise TypeError("Missing 'leaf_nodes_to_search_percent' argument")
-
-        _setter("leaf_node_embedding_count", leaf_node_embedding_count)
-        _setter("leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+        pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+        pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
 
     @property
     @pulumi.getter(name="leafNodeEmbeddingCount")

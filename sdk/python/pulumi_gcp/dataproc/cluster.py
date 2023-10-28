@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,49 +43,20 @@ class ClusterArgs:
         :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_config=cluster_config,
-            graceful_decommission_timeout=graceful_decommission_timeout,
-            labels=labels,
-            name=name,
-            project=project,
-            region=region,
-            virtual_cluster_config=virtual_cluster_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
-             graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_config is None and 'clusterConfig' in kwargs:
-            cluster_config = kwargs['clusterConfig']
-        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
-            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
-        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
-            virtual_cluster_config = kwargs['virtualClusterConfig']
-
         if cluster_config is not None:
-            _setter("cluster_config", cluster_config)
+            pulumi.set(__self__, "cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:
-            _setter("graceful_decommission_timeout", graceful_decommission_timeout)
+            pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if virtual_cluster_config is not None:
-            _setter("virtual_cluster_config", virtual_cluster_config)
+            pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterConfig")
@@ -212,49 +183,20 @@ class _ClusterState:
         :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_config=cluster_config,
-            graceful_decommission_timeout=graceful_decommission_timeout,
-            labels=labels,
-            name=name,
-            project=project,
-            region=region,
-            virtual_cluster_config=virtual_cluster_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
-             graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_config is None and 'clusterConfig' in kwargs:
-            cluster_config = kwargs['clusterConfig']
-        if graceful_decommission_timeout is None and 'gracefulDecommissionTimeout' in kwargs:
-            graceful_decommission_timeout = kwargs['gracefulDecommissionTimeout']
-        if virtual_cluster_config is None and 'virtualClusterConfig' in kwargs:
-            virtual_cluster_config = kwargs['virtualClusterConfig']
-
         if cluster_config is not None:
-            _setter("cluster_config", cluster_config)
+            pulumi.set(__self__, "cluster_config", cluster_config)
         if graceful_decommission_timeout is not None:
-            _setter("graceful_decommission_timeout", graceful_decommission_timeout)
+            pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if virtual_cluster_config is not None:
-            _setter("virtual_cluster_config", virtual_cluster_config)
+            pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterConfig")
@@ -604,10 +546,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -629,14 +567,12 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            cluster_config = _utilities.configure(cluster_config, ClusterClusterConfigArgs, True)
             __props__.__dict__["cluster_config"] = cluster_config
             __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            virtual_cluster_config = _utilities.configure(virtual_cluster_config, ClusterVirtualClusterConfigArgs, True)
             __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,39 +30,12 @@ class SharedflowArgs:
                will trigger an update.
         :param pulumi.Input[str] name: The ID of the shared flow.
         """
-        SharedflowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_bundle=config_bundle,
-            org_id=org_id,
-            detect_md5hash=detect_md5hash,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_bundle: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             detect_md5hash: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_bundle is None and 'configBundle' in kwargs:
-            config_bundle = kwargs['configBundle']
-        if config_bundle is None:
-            raise TypeError("Missing 'config_bundle' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if detect_md5hash is None and 'detectMd5hash' in kwargs:
-            detect_md5hash = kwargs['detectMd5hash']
-
-        _setter("config_bundle", config_bundle)
-        _setter("org_id", org_id)
+        pulumi.set(__self__, "config_bundle", config_bundle)
+        pulumi.set(__self__, "org_id", org_id)
         if detect_md5hash is not None:
-            _setter("detect_md5hash", detect_md5hash)
+            pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="configBundle")
@@ -142,57 +115,22 @@ class _SharedflowState:
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] revisions: A list of revisions of this shared flow.
         """
-        _SharedflowState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_bundle=config_bundle,
-            detect_md5hash=detect_md5hash,
-            latest_revision_id=latest_revision_id,
-            md5hash=md5hash,
-            meta_datas=meta_datas,
-            name=name,
-            org_id=org_id,
-            revisions=revisions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_bundle: Optional[pulumi.Input[str]] = None,
-             detect_md5hash: Optional[pulumi.Input[str]] = None,
-             latest_revision_id: Optional[pulumi.Input[str]] = None,
-             md5hash: Optional[pulumi.Input[str]] = None,
-             meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             revisions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_bundle is None and 'configBundle' in kwargs:
-            config_bundle = kwargs['configBundle']
-        if detect_md5hash is None and 'detectMd5hash' in kwargs:
-            detect_md5hash = kwargs['detectMd5hash']
-        if latest_revision_id is None and 'latestRevisionId' in kwargs:
-            latest_revision_id = kwargs['latestRevisionId']
-        if meta_datas is None and 'metaDatas' in kwargs:
-            meta_datas = kwargs['metaDatas']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-
         if config_bundle is not None:
-            _setter("config_bundle", config_bundle)
+            pulumi.set(__self__, "config_bundle", config_bundle)
         if detect_md5hash is not None:
-            _setter("detect_md5hash", detect_md5hash)
+            pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if latest_revision_id is not None:
-            _setter("latest_revision_id", latest_revision_id)
+            pulumi.set(__self__, "latest_revision_id", latest_revision_id)
         if md5hash is not None:
-            _setter("md5hash", md5hash)
+            pulumi.set(__self__, "md5hash", md5hash)
         if meta_datas is not None:
-            _setter("meta_datas", meta_datas)
+            pulumi.set(__self__, "meta_datas", meta_datas)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if revisions is not None:
-            _setter("revisions", revisions)
+            pulumi.set(__self__, "revisions", revisions)
 
     @property
     @pulumi.getter(name="configBundle")
@@ -373,10 +311,6 @@ class Sharedflow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SharedflowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

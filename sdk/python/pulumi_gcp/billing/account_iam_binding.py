@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,36 +38,11 @@ class AccountIamBindingArgs:
                
                `billing.AccountIamPolicy` only:
         """
-        AccountIamBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account_id=billing_account_id,
-            members=members,
-            role=role,
-            condition=condition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account_id: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account_id is None and 'billingAccountId' in kwargs:
-            billing_account_id = kwargs['billingAccountId']
-        if billing_account_id is None:
-            raise TypeError("Missing 'billing_account_id' argument")
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("billing_account_id", billing_account_id)
-        _setter("members", members)
-        _setter("role", role)
+        pulumi.set(__self__, "billing_account_id", billing_account_id)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter(name="billingAccountId")
@@ -152,37 +127,16 @@ class _AccountIamBindingState:
                
                `billing.AccountIamPolicy` only:
         """
-        _AccountIamBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account_id=billing_account_id,
-            condition=condition,
-            etag=etag,
-            members=members,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account_id: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['AccountIamBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account_id is None and 'billingAccountId' in kwargs:
-            billing_account_id = kwargs['billingAccountId']
-
         if billing_account_id is not None:
-            _setter("billing_account_id", billing_account_id)
+            pulumi.set(__self__, "billing_account_id", billing_account_id)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter(name="billingAccountId")
@@ -436,10 +390,6 @@ class AccountIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -461,7 +411,6 @@ class AccountIamBinding(pulumi.CustomResource):
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")
             __props__.__dict__["billing_account_id"] = billing_account_id
-            condition = _utilities.configure(condition, AccountIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

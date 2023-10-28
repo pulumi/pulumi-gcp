@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['StorageBucketArgs', 'StorageBucket']
@@ -22,25 +22,10 @@ class StorageBucketArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        StorageBucketArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_id=bucket_id,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_id is None and 'bucketId' in kwargs:
-            bucket_id = kwargs['bucketId']
-
         if bucket_id is not None:
-            _setter("bucket_id", bucket_id)
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="bucketId")
@@ -81,29 +66,12 @@ class _StorageBucketState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _StorageBucketState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_id=bucket_id,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_id is None and 'bucketId' in kwargs:
-            bucket_id = kwargs['bucketId']
-
         if bucket_id is not None:
-            _setter("bucket_id", bucket_id)
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="bucketId")
@@ -241,10 +209,6 @@ class StorageBucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StorageBucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

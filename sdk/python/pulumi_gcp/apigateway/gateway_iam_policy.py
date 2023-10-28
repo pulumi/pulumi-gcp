@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayIamPolicyArgs', 'GatewayIamPolicy']
@@ -41,35 +41,12 @@ class GatewayIamPolicyArgs:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
-        GatewayIamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gateway=gateway,
-            policy_data=policy_data,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gateway: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway is None:
-            raise TypeError("Missing 'gateway' argument")
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-
-        _setter("gateway", gateway)
-        _setter("policy_data", policy_data)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -166,37 +143,16 @@ class _GatewayIamPolicyState:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
-        _GatewayIamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            etag=etag,
-            gateway=gateway,
-            policy_data=policy_data,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             etag: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -496,10 +452,6 @@ class GatewayIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GatewayIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

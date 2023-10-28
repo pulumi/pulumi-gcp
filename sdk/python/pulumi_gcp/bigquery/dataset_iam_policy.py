@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DatasetIamPolicyArgs', 'DatasetIamPolicy']
@@ -34,33 +34,10 @@ class DatasetIamPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DatasetIamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            policy_data=policy_data,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("policy_data", policy_data)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -135,35 +112,14 @@ class _DatasetIamPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _DatasetIamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            etag=etag,
-            policy_data=policy_data,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -449,10 +405,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatasetIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

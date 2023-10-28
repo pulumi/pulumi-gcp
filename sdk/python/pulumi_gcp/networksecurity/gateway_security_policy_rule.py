@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewaySecurityPolicyRuleArgs', 'GatewaySecurityPolicyRule']
@@ -46,75 +46,22 @@ class GatewaySecurityPolicyRuleArgs:
         :param pulumi.Input[bool] tls_inspection_enabled: Flag to enable TLS inspection of traffic matching on. Can only be true if the
                parent GatewaySecurityPolicy references a TLSInspectionConfig.
         """
-        GatewaySecurityPolicyRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            basic_profile=basic_profile,
-            enabled=enabled,
-            gateway_security_policy=gateway_security_policy,
-            location=location,
-            priority=priority,
-            session_matcher=session_matcher,
-            application_matcher=application_matcher,
-            description=description,
-            name=name,
-            project=project,
-            tls_inspection_enabled=tls_inspection_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             basic_profile: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             gateway_security_policy: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             session_matcher: Optional[pulumi.Input[str]] = None,
-             application_matcher: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             tls_inspection_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if basic_profile is None and 'basicProfile' in kwargs:
-            basic_profile = kwargs['basicProfile']
-        if basic_profile is None:
-            raise TypeError("Missing 'basic_profile' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
-            gateway_security_policy = kwargs['gatewaySecurityPolicy']
-        if gateway_security_policy is None:
-            raise TypeError("Missing 'gateway_security_policy' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if session_matcher is None and 'sessionMatcher' in kwargs:
-            session_matcher = kwargs['sessionMatcher']
-        if session_matcher is None:
-            raise TypeError("Missing 'session_matcher' argument")
-        if application_matcher is None and 'applicationMatcher' in kwargs:
-            application_matcher = kwargs['applicationMatcher']
-        if tls_inspection_enabled is None and 'tlsInspectionEnabled' in kwargs:
-            tls_inspection_enabled = kwargs['tlsInspectionEnabled']
-
-        _setter("basic_profile", basic_profile)
-        _setter("enabled", enabled)
-        _setter("gateway_security_policy", gateway_security_policy)
-        _setter("location", location)
-        _setter("priority", priority)
-        _setter("session_matcher", session_matcher)
+        pulumi.set(__self__, "basic_profile", basic_profile)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "session_matcher", session_matcher)
         if application_matcher is not None:
-            _setter("application_matcher", application_matcher)
+            pulumi.set(__self__, "application_matcher", application_matcher)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if tls_inspection_enabled is not None:
-            _setter("tls_inspection_enabled", tls_inspection_enabled)
+            pulumi.set(__self__, "tls_inspection_enabled", tls_inspection_enabled)
 
     @property
     @pulumi.getter(name="basicProfile")
@@ -301,87 +248,34 @@ class _GatewaySecurityPolicyRuleState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        _GatewaySecurityPolicyRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_matcher=application_matcher,
-            basic_profile=basic_profile,
-            create_time=create_time,
-            description=description,
-            enabled=enabled,
-            gateway_security_policy=gateway_security_policy,
-            location=location,
-            name=name,
-            priority=priority,
-            project=project,
-            self_link=self_link,
-            session_matcher=session_matcher,
-            tls_inspection_enabled=tls_inspection_enabled,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_matcher: Optional[pulumi.Input[str]] = None,
-             basic_profile: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             gateway_security_policy: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             session_matcher: Optional[pulumi.Input[str]] = None,
-             tls_inspection_enabled: Optional[pulumi.Input[bool]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_matcher is None and 'applicationMatcher' in kwargs:
-            application_matcher = kwargs['applicationMatcher']
-        if basic_profile is None and 'basicProfile' in kwargs:
-            basic_profile = kwargs['basicProfile']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
-            gateway_security_policy = kwargs['gatewaySecurityPolicy']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if session_matcher is None and 'sessionMatcher' in kwargs:
-            session_matcher = kwargs['sessionMatcher']
-        if tls_inspection_enabled is None and 'tlsInspectionEnabled' in kwargs:
-            tls_inspection_enabled = kwargs['tlsInspectionEnabled']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if application_matcher is not None:
-            _setter("application_matcher", application_matcher)
+            pulumi.set(__self__, "application_matcher", application_matcher)
         if basic_profile is not None:
-            _setter("basic_profile", basic_profile)
+            pulumi.set(__self__, "basic_profile", basic_profile)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if gateway_security_policy is not None:
-            _setter("gateway_security_policy", gateway_security_policy)
+            pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if session_matcher is not None:
-            _setter("session_matcher", session_matcher)
+            pulumi.set(__self__, "session_matcher", session_matcher)
         if tls_inspection_enabled is not None:
-            _setter("tls_inspection_enabled", tls_inspection_enabled)
+            pulumi.set(__self__, "tls_inspection_enabled", tls_inspection_enabled)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="applicationMatcher")
@@ -745,10 +639,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GatewaySecurityPolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

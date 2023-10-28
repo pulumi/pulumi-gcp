@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,44 +51,15 @@ class ConnectionIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        ConnectionIamBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_id=connection_id,
-            members=members,
-            role=role,
-            condition=condition,
-            location=location,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_id: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if connection_id is None:
-            raise TypeError("Missing 'connection_id' argument")
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("connection_id", connection_id)
-        _setter("members", members)
-        _setter("role", role)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -219,45 +190,20 @@ class _ConnectionIamBindingState:
                `bigquery.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _ConnectionIamBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            connection_id=connection_id,
-            etag=etag,
-            location=location,
-            members=members,
-            project=project,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['ConnectionIamBindingConditionArgs']] = None,
-             connection_id: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if connection_id is not None:
-            _setter("connection_id", connection_id)
+            pulumi.set(__self__, "connection_id", connection_id)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -585,10 +531,6 @@ class ConnectionIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -609,7 +551,6 @@ class ConnectionIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionIamBindingArgs.__new__(ConnectionIamBindingArgs)
 
-            condition = _utilities.configure(condition, ConnectionIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")

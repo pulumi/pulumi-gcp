@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -125,26 +125,9 @@ class AccessLevelBasic(dict):
                Default value is `AND`.
                Possible values are: `AND`, `OR`.
         """
-        AccessLevelBasic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conditions=conditions,
-            combining_function=combining_function,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conditions: Optional[Sequence['outputs.AccessLevelBasicCondition']] = None,
-             combining_function: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-        if combining_function is None and 'combiningFunction' in kwargs:
-            combining_function = kwargs['combiningFunction']
-
-        _setter("conditions", conditions)
+        pulumi.set(__self__, "conditions", conditions)
         if combining_function is not None:
-            _setter("combining_function", combining_function)
+            pulumi.set(__self__, "combining_function", combining_function)
 
     @property
     @pulumi.getter
@@ -234,45 +217,18 @@ class AccessLevelBasicCondition(dict):
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
-        AccessLevelBasicCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_policy=device_policy,
-            ip_subnetworks=ip_subnetworks,
-            members=members,
-            negate=negate,
-            regions=regions,
-            required_access_levels=required_access_levels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_policy: Optional['outputs.AccessLevelBasicConditionDevicePolicy'] = None,
-             ip_subnetworks: Optional[Sequence[str]] = None,
-             members: Optional[Sequence[str]] = None,
-             negate: Optional[bool] = None,
-             regions: Optional[Sequence[str]] = None,
-             required_access_levels: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_policy is None and 'devicePolicy' in kwargs:
-            device_policy = kwargs['devicePolicy']
-        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
-            ip_subnetworks = kwargs['ipSubnetworks']
-        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
-            required_access_levels = kwargs['requiredAccessLevels']
-
         if device_policy is not None:
-            _setter("device_policy", device_policy)
+            pulumi.set(__self__, "device_policy", device_policy)
         if ip_subnetworks is not None:
-            _setter("ip_subnetworks", ip_subnetworks)
+            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if negate is not None:
-            _setter("negate", negate)
+            pulumi.set(__self__, "negate", negate)
         if regions is not None:
-            _setter("regions", regions)
+            pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
-            _setter("required_access_levels", required_access_levels)
+            pulumi.set(__self__, "required_access_levels", required_access_levels)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -400,51 +356,18 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         :param bool require_screen_lock: Whether or not screenlock is required for the DevicePolicy
                to be true. Defaults to false.
         """
-        AccessLevelBasicConditionDevicePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_device_management_levels=allowed_device_management_levels,
-            allowed_encryption_statuses=allowed_encryption_statuses,
-            os_constraints=os_constraints,
-            require_admin_approval=require_admin_approval,
-            require_corp_owned=require_corp_owned,
-            require_screen_lock=require_screen_lock,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_device_management_levels: Optional[Sequence[str]] = None,
-             allowed_encryption_statuses: Optional[Sequence[str]] = None,
-             os_constraints: Optional[Sequence['outputs.AccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
-             require_admin_approval: Optional[bool] = None,
-             require_corp_owned: Optional[bool] = None,
-             require_screen_lock: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
-            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
-        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
-            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
-        if os_constraints is None and 'osConstraints' in kwargs:
-            os_constraints = kwargs['osConstraints']
-        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
-            require_admin_approval = kwargs['requireAdminApproval']
-        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
-            require_corp_owned = kwargs['requireCorpOwned']
-        if require_screen_lock is None and 'requireScreenLock' in kwargs:
-            require_screen_lock = kwargs['requireScreenLock']
-
         if allowed_device_management_levels is not None:
-            _setter("allowed_device_management_levels", allowed_device_management_levels)
+            pulumi.set(__self__, "allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
-            _setter("allowed_encryption_statuses", allowed_encryption_statuses)
+            pulumi.set(__self__, "allowed_encryption_statuses", allowed_encryption_statuses)
         if os_constraints is not None:
-            _setter("os_constraints", os_constraints)
+            pulumi.set(__self__, "os_constraints", os_constraints)
         if require_admin_approval is not None:
-            _setter("require_admin_approval", require_admin_approval)
+            pulumi.set(__self__, "require_admin_approval", require_admin_approval)
         if require_corp_owned is not None:
-            _setter("require_corp_owned", require_corp_owned)
+            pulumi.set(__self__, "require_corp_owned", require_corp_owned)
         if require_screen_lock is not None:
-            _setter("require_screen_lock", require_screen_lock)
+            pulumi.set(__self__, "require_screen_lock", require_screen_lock)
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
@@ -537,34 +460,11 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
         :param bool require_verified_chrome_os: If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
         """
-        AccessLevelBasicConditionDevicePolicyOsConstraint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_type=os_type,
-            minimum_version=minimum_version,
-            require_verified_chrome_os=require_verified_chrome_os,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_type: Optional[str] = None,
-             minimum_version: Optional[str] = None,
-             require_verified_chrome_os: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if os_type is None:
-            raise TypeError("Missing 'os_type' argument")
-        if minimum_version is None and 'minimumVersion' in kwargs:
-            minimum_version = kwargs['minimumVersion']
-        if require_verified_chrome_os is None and 'requireVerifiedChromeOs' in kwargs:
-            require_verified_chrome_os = kwargs['requireVerifiedChromeOs']
-
-        _setter("os_type", os_type)
+        pulumi.set(__self__, "os_type", os_type)
         if minimum_version is not None:
-            _setter("minimum_version", minimum_version)
+            pulumi.set(__self__, "minimum_version", minimum_version)
         if require_verified_chrome_os is not None:
-            _setter("require_verified_chrome_os", require_verified_chrome_os)
+            pulumi.set(__self__, "require_verified_chrome_os", require_verified_chrome_os)
 
     @property
     @pulumi.getter(name="osType")
@@ -645,51 +545,18 @@ class AccessLevelConditionDevicePolicy(dict):
         :param bool require_screen_lock: Whether or not screenlock is required for the DevicePolicy
                to be true. Defaults to false.
         """
-        AccessLevelConditionDevicePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_device_management_levels=allowed_device_management_levels,
-            allowed_encryption_statuses=allowed_encryption_statuses,
-            os_constraints=os_constraints,
-            require_admin_approval=require_admin_approval,
-            require_corp_owned=require_corp_owned,
-            require_screen_lock=require_screen_lock,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_device_management_levels: Optional[Sequence[str]] = None,
-             allowed_encryption_statuses: Optional[Sequence[str]] = None,
-             os_constraints: Optional[Sequence['outputs.AccessLevelConditionDevicePolicyOsConstraint']] = None,
-             require_admin_approval: Optional[bool] = None,
-             require_corp_owned: Optional[bool] = None,
-             require_screen_lock: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
-            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
-        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
-            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
-        if os_constraints is None and 'osConstraints' in kwargs:
-            os_constraints = kwargs['osConstraints']
-        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
-            require_admin_approval = kwargs['requireAdminApproval']
-        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
-            require_corp_owned = kwargs['requireCorpOwned']
-        if require_screen_lock is None and 'requireScreenLock' in kwargs:
-            require_screen_lock = kwargs['requireScreenLock']
-
         if allowed_device_management_levels is not None:
-            _setter("allowed_device_management_levels", allowed_device_management_levels)
+            pulumi.set(__self__, "allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
-            _setter("allowed_encryption_statuses", allowed_encryption_statuses)
+            pulumi.set(__self__, "allowed_encryption_statuses", allowed_encryption_statuses)
         if os_constraints is not None:
-            _setter("os_constraints", os_constraints)
+            pulumi.set(__self__, "os_constraints", os_constraints)
         if require_admin_approval is not None:
-            _setter("require_admin_approval", require_admin_approval)
+            pulumi.set(__self__, "require_admin_approval", require_admin_approval)
         if require_corp_owned is not None:
-            _setter("require_corp_owned", require_corp_owned)
+            pulumi.set(__self__, "require_corp_owned", require_corp_owned)
         if require_screen_lock is not None:
-            _setter("require_screen_lock", require_screen_lock)
+            pulumi.set(__self__, "require_screen_lock", require_screen_lock)
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
@@ -778,28 +645,9 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
         """
-        AccessLevelConditionDevicePolicyOsConstraint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_type=os_type,
-            minimum_version=minimum_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_type: Optional[str] = None,
-             minimum_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if os_type is None:
-            raise TypeError("Missing 'os_type' argument")
-        if minimum_version is None and 'minimumVersion' in kwargs:
-            minimum_version = kwargs['minimumVersion']
-
-        _setter("os_type", os_type)
+        pulumi.set(__self__, "os_type", os_type)
         if minimum_version is not None:
-            _setter("minimum_version", minimum_version)
+            pulumi.set(__self__, "minimum_version", minimum_version)
 
     @property
     @pulumi.getter(name="osType")
@@ -831,20 +679,7 @@ class AccessLevelCustom(dict):
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
         """
-        AccessLevelCustom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expr=expr,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expr: Optional['outputs.AccessLevelCustomExpr'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expr is None:
-            raise TypeError("Missing 'expr' argument")
-
-        _setter("expr", expr)
+        pulumi.set(__self__, "expr", expr)
 
     @property
     @pulumi.getter
@@ -871,32 +706,13 @@ class AccessLevelCustomExpr(dict):
         :param str location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         :param str title: Title for the expression, i.e. a short string describing its purpose.
         """
-        AccessLevelCustomExpr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             description: Optional[str] = None,
-             location: Optional[str] = None,
-             title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -951,37 +767,14 @@ class AccessLevelsAccessLevel(dict):
                Structure is documented below.
         :param str description: Description of the AccessLevel and its use. Does not affect behavior.
         """
-        AccessLevelsAccessLevel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            title=title,
-            basic=basic,
-            custom=custom,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             title: Optional[str] = None,
-             basic: Optional['outputs.AccessLevelsAccessLevelBasic'] = None,
-             custom: Optional['outputs.AccessLevelsAccessLevelCustom'] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("name", name)
-        _setter("title", title)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "title", title)
         if basic is not None:
-            _setter("basic", basic)
+            pulumi.set(__self__, "basic", basic)
         if custom is not None:
-            _setter("custom", custom)
+            pulumi.set(__self__, "custom", custom)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1062,26 +855,9 @@ class AccessLevelsAccessLevelBasic(dict):
                Default value is `AND`.
                Possible values are: `AND`, `OR`.
         """
-        AccessLevelsAccessLevelBasic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conditions=conditions,
-            combining_function=combining_function,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conditions: Optional[Sequence['outputs.AccessLevelsAccessLevelBasicCondition']] = None,
-             combining_function: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-        if combining_function is None and 'combiningFunction' in kwargs:
-            combining_function = kwargs['combiningFunction']
-
-        _setter("conditions", conditions)
+        pulumi.set(__self__, "conditions", conditions)
         if combining_function is not None:
-            _setter("combining_function", combining_function)
+            pulumi.set(__self__, "combining_function", combining_function)
 
     @property
     @pulumi.getter
@@ -1171,45 +947,18 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
-        AccessLevelsAccessLevelBasicCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_policy=device_policy,
-            ip_subnetworks=ip_subnetworks,
-            members=members,
-            negate=negate,
-            regions=regions,
-            required_access_levels=required_access_levels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_policy: Optional['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicy'] = None,
-             ip_subnetworks: Optional[Sequence[str]] = None,
-             members: Optional[Sequence[str]] = None,
-             negate: Optional[bool] = None,
-             regions: Optional[Sequence[str]] = None,
-             required_access_levels: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_policy is None and 'devicePolicy' in kwargs:
-            device_policy = kwargs['devicePolicy']
-        if ip_subnetworks is None and 'ipSubnetworks' in kwargs:
-            ip_subnetworks = kwargs['ipSubnetworks']
-        if required_access_levels is None and 'requiredAccessLevels' in kwargs:
-            required_access_levels = kwargs['requiredAccessLevels']
-
         if device_policy is not None:
-            _setter("device_policy", device_policy)
+            pulumi.set(__self__, "device_policy", device_policy)
         if ip_subnetworks is not None:
-            _setter("ip_subnetworks", ip_subnetworks)
+            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if negate is not None:
-            _setter("negate", negate)
+            pulumi.set(__self__, "negate", negate)
         if regions is not None:
-            _setter("regions", regions)
+            pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
-            _setter("required_access_levels", required_access_levels)
+            pulumi.set(__self__, "required_access_levels", required_access_levels)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -1337,51 +1086,18 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         :param bool require_screen_lock: Whether or not screenlock is required for the DevicePolicy
                to be true. Defaults to false.
         """
-        AccessLevelsAccessLevelBasicConditionDevicePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_device_management_levels=allowed_device_management_levels,
-            allowed_encryption_statuses=allowed_encryption_statuses,
-            os_constraints=os_constraints,
-            require_admin_approval=require_admin_approval,
-            require_corp_owned=require_corp_owned,
-            require_screen_lock=require_screen_lock,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_device_management_levels: Optional[Sequence[str]] = None,
-             allowed_encryption_statuses: Optional[Sequence[str]] = None,
-             os_constraints: Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
-             require_admin_approval: Optional[bool] = None,
-             require_corp_owned: Optional[bool] = None,
-             require_screen_lock: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_device_management_levels is None and 'allowedDeviceManagementLevels' in kwargs:
-            allowed_device_management_levels = kwargs['allowedDeviceManagementLevels']
-        if allowed_encryption_statuses is None and 'allowedEncryptionStatuses' in kwargs:
-            allowed_encryption_statuses = kwargs['allowedEncryptionStatuses']
-        if os_constraints is None and 'osConstraints' in kwargs:
-            os_constraints = kwargs['osConstraints']
-        if require_admin_approval is None and 'requireAdminApproval' in kwargs:
-            require_admin_approval = kwargs['requireAdminApproval']
-        if require_corp_owned is None and 'requireCorpOwned' in kwargs:
-            require_corp_owned = kwargs['requireCorpOwned']
-        if require_screen_lock is None and 'requireScreenLock' in kwargs:
-            require_screen_lock = kwargs['requireScreenLock']
-
         if allowed_device_management_levels is not None:
-            _setter("allowed_device_management_levels", allowed_device_management_levels)
+            pulumi.set(__self__, "allowed_device_management_levels", allowed_device_management_levels)
         if allowed_encryption_statuses is not None:
-            _setter("allowed_encryption_statuses", allowed_encryption_statuses)
+            pulumi.set(__self__, "allowed_encryption_statuses", allowed_encryption_statuses)
         if os_constraints is not None:
-            _setter("os_constraints", os_constraints)
+            pulumi.set(__self__, "os_constraints", os_constraints)
         if require_admin_approval is not None:
-            _setter("require_admin_approval", require_admin_approval)
+            pulumi.set(__self__, "require_admin_approval", require_admin_approval)
         if require_corp_owned is not None:
-            _setter("require_corp_owned", require_corp_owned)
+            pulumi.set(__self__, "require_corp_owned", require_corp_owned)
         if require_screen_lock is not None:
-            _setter("require_screen_lock", require_screen_lock)
+            pulumi.set(__self__, "require_screen_lock", require_screen_lock)
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
@@ -1470,28 +1186,9 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
         """
-        AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_type=os_type,
-            minimum_version=minimum_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_type: Optional[str] = None,
-             minimum_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if os_type is None:
-            raise TypeError("Missing 'os_type' argument")
-        if minimum_version is None and 'minimumVersion' in kwargs:
-            minimum_version = kwargs['minimumVersion']
-
-        _setter("os_type", os_type)
+        pulumi.set(__self__, "os_type", os_type)
         if minimum_version is not None:
-            _setter("minimum_version", minimum_version)
+            pulumi.set(__self__, "minimum_version", minimum_version)
 
     @property
     @pulumi.getter(name="osType")
@@ -1523,20 +1220,7 @@ class AccessLevelsAccessLevelCustom(dict):
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
         """
-        AccessLevelsAccessLevelCustom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expr=expr,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expr: Optional['outputs.AccessLevelsAccessLevelCustomExpr'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expr is None:
-            raise TypeError("Missing 'expr' argument")
-
-        _setter("expr", expr)
+        pulumi.set(__self__, "expr", expr)
 
     @property
     @pulumi.getter
@@ -1563,32 +1247,13 @@ class AccessLevelsAccessLevelCustomExpr(dict):
         :param str location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         :param str title: Title for the expression, i.e. a short string describing its purpose.
         """
-        AccessLevelsAccessLevelCustomExpr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             description: Optional[str] = None,
-             location: Optional[str] = None,
-             title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -1629,29 +1294,10 @@ class AccessPolicyIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AccessPolicyIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1675,29 +1321,10 @@ class AccessPolicyIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AccessPolicyIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1746,25 +1373,10 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
                be allowed access.
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
-        ServicePerimeterEgressPolicyEgressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
 
     @property
     @pulumi.getter
@@ -1824,29 +1436,12 @@ class ServicePerimeterEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
-        ServicePerimeterEgressPolicyEgressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_resources=external_resources,
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_resources: Optional[Sequence[str]] = None,
-             operations: Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_resources is None and 'externalResources' in kwargs:
-            external_resources = kwargs['externalResources']
-
         if external_resources is not None:
-            _setter("external_resources", external_resources)
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -1915,27 +1510,10 @@ class ServicePerimeterEgressPolicyEgressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterEgressPolicyEgressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -1972,23 +1550,10 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterEgressPolicyEgressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -2044,29 +1609,12 @@ class ServicePerimeterIngressPolicyIngressFrom(dict):
         :param Sequence['ServicePerimeterIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
-        ServicePerimeterIngressPolicyIngressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             sources: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressFromSource']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -2137,25 +1685,10 @@ class ServicePerimeterIngressPolicyIngressFromSource(dict):
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
-        ServicePerimeterIngressPolicyIngressFromSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_level=access_level,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_level: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_level is None and 'accessLevel' in kwargs:
-            access_level = kwargs['accessLevel']
-
         if access_level is not None:
-            _setter("access_level", access_level)
+            pulumi.set(__self__, "access_level", access_level)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -2204,23 +1737,10 @@ class ServicePerimeterIngressPolicyIngressTo(dict):
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
         """
-        ServicePerimeterIngressPolicyIngressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operations: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -2282,27 +1802,10 @@ class ServicePerimeterIngressPolicyIngressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterIngressPolicyIngressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -2339,23 +1842,10 @@ class ServicePerimeterIngressPolicyIngressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterIngressPolicyIngressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -2443,49 +1933,18 @@ class ServicePerimeterSpec(dict):
                Perimeter.
                Structure is documented below.
         """
-        ServicePerimeterSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_levels=access_levels,
-            egress_policies=egress_policies,
-            ingress_policies=ingress_policies,
-            resources=resources,
-            restricted_services=restricted_services,
-            vpc_accessible_services=vpc_accessible_services,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_levels: Optional[Sequence[str]] = None,
-             egress_policies: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicy']] = None,
-             ingress_policies: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicy']] = None,
-             resources: Optional[Sequence[str]] = None,
-             restricted_services: Optional[Sequence[str]] = None,
-             vpc_accessible_services: Optional['outputs.ServicePerimeterSpecVpcAccessibleServices'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-        if egress_policies is None and 'egressPolicies' in kwargs:
-            egress_policies = kwargs['egressPolicies']
-        if ingress_policies is None and 'ingressPolicies' in kwargs:
-            ingress_policies = kwargs['ingressPolicies']
-        if restricted_services is None and 'restrictedServices' in kwargs:
-            restricted_services = kwargs['restrictedServices']
-        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
-            vpc_accessible_services = kwargs['vpcAccessibleServices']
-
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
         if egress_policies is not None:
-            _setter("egress_policies", egress_policies)
+            pulumi.set(__self__, "egress_policies", egress_policies)
         if ingress_policies is not None:
-            _setter("ingress_policies", ingress_policies)
+            pulumi.set(__self__, "ingress_policies", ingress_policies)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if restricted_services is not None:
-            _setter("restricted_services", restricted_services)
+            pulumi.set(__self__, "restricted_services", restricted_services)
         if vpc_accessible_services is not None:
-            _setter("vpc_accessible_services", vpc_accessible_services)
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -2591,27 +2050,10 @@ class ServicePerimeterSpecEgressPolicy(dict):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimeterSpecEgressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_from=egress_from,
-            egress_to=egress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_from: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressFrom'] = None,
-             egress_to: Optional['outputs.ServicePerimeterSpecEgressPolicyEgressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_from is None and 'egressFrom' in kwargs:
-            egress_from = kwargs['egressFrom']
-        if egress_to is None and 'egressTo' in kwargs:
-            egress_to = kwargs['egressTo']
-
         if egress_from is not None:
-            _setter("egress_from", egress_from)
+            pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
-            _setter("egress_to", egress_to)
+            pulumi.set(__self__, "egress_to", egress_to)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -2664,25 +2106,10 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
-        ServicePerimeterSpecEgressPolicyEgressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
 
     @property
     @pulumi.getter
@@ -2742,29 +2169,12 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
-        ServicePerimeterSpecEgressPolicyEgressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_resources=external_resources,
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_resources: Optional[Sequence[str]] = None,
-             operations: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_resources is None and 'externalResources' in kwargs:
-            external_resources = kwargs['externalResources']
-
         if external_resources is not None:
-            _setter("external_resources", external_resources)
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -2833,27 +2243,10 @@ class ServicePerimeterSpecEgressPolicyEgressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterSpecEgressPolicyEgressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -2890,23 +2283,10 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -2960,27 +2340,10 @@ class ServicePerimeterSpecIngressPolicy(dict):
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimeterSpecIngressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ingress_from=ingress_from,
-            ingress_to=ingress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ingress_from: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressFrom'] = None,
-             ingress_to: Optional['outputs.ServicePerimeterSpecIngressPolicyIngressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ingress_from is None and 'ingressFrom' in kwargs:
-            ingress_from = kwargs['ingressFrom']
-        if ingress_to is None and 'ingressTo' in kwargs:
-            ingress_to = kwargs['ingressTo']
-
         if ingress_from is not None:
-            _setter("ingress_from", ingress_from)
+            pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
-            _setter("ingress_to", ingress_to)
+            pulumi.set(__self__, "ingress_to", ingress_to)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -3037,29 +2400,12 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
         :param Sequence['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
-        ServicePerimeterSpecIngressPolicyIngressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             sources: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressFromSource']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -3130,25 +2476,10 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
-        ServicePerimeterSpecIngressPolicyIngressFromSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_level=access_level,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_level: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_level is None and 'accessLevel' in kwargs:
-            access_level = kwargs['accessLevel']
-
         if access_level is not None:
-            _setter("access_level", access_level)
+            pulumi.set(__self__, "access_level", access_level)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3197,23 +2528,10 @@ class ServicePerimeterSpecIngressPolicyIngressTo(dict):
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
         """
-        ServicePerimeterSpecIngressPolicyIngressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operations: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -3275,27 +2593,10 @@ class ServicePerimeterSpecIngressPolicyIngressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterSpecIngressPolicyIngressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -3332,23 +2633,10 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -3400,27 +2688,10 @@ class ServicePerimeterSpecVpcAccessibleServices(dict):
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
         """
-        ServicePerimeterSpecVpcAccessibleServices._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_services=allowed_services,
-            enable_restriction=enable_restriction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_services: Optional[Sequence[str]] = None,
-             enable_restriction: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_services is None and 'allowedServices' in kwargs:
-            allowed_services = kwargs['allowedServices']
-        if enable_restriction is None and 'enableRestriction' in kwargs:
-            enable_restriction = kwargs['enableRestriction']
-
         if allowed_services is not None:
-            _setter("allowed_services", allowed_services)
+            pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
-            _setter("enable_restriction", enable_restriction)
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
 
     @property
     @pulumi.getter(name="allowedServices")
@@ -3507,49 +2778,18 @@ class ServicePerimeterStatus(dict):
                Perimeter.
                Structure is documented below.
         """
-        ServicePerimeterStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_levels=access_levels,
-            egress_policies=egress_policies,
-            ingress_policies=ingress_policies,
-            resources=resources,
-            restricted_services=restricted_services,
-            vpc_accessible_services=vpc_accessible_services,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_levels: Optional[Sequence[str]] = None,
-             egress_policies: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicy']] = None,
-             ingress_policies: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicy']] = None,
-             resources: Optional[Sequence[str]] = None,
-             restricted_services: Optional[Sequence[str]] = None,
-             vpc_accessible_services: Optional['outputs.ServicePerimeterStatusVpcAccessibleServices'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-        if egress_policies is None and 'egressPolicies' in kwargs:
-            egress_policies = kwargs['egressPolicies']
-        if ingress_policies is None and 'ingressPolicies' in kwargs:
-            ingress_policies = kwargs['ingressPolicies']
-        if restricted_services is None and 'restrictedServices' in kwargs:
-            restricted_services = kwargs['restrictedServices']
-        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
-            vpc_accessible_services = kwargs['vpcAccessibleServices']
-
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
         if egress_policies is not None:
-            _setter("egress_policies", egress_policies)
+            pulumi.set(__self__, "egress_policies", egress_policies)
         if ingress_policies is not None:
-            _setter("ingress_policies", ingress_policies)
+            pulumi.set(__self__, "ingress_policies", ingress_policies)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if restricted_services is not None:
-            _setter("restricted_services", restricted_services)
+            pulumi.set(__self__, "restricted_services", restricted_services)
         if vpc_accessible_services is not None:
-            _setter("vpc_accessible_services", vpc_accessible_services)
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -3655,27 +2895,10 @@ class ServicePerimeterStatusEgressPolicy(dict):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimeterStatusEgressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_from=egress_from,
-            egress_to=egress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_from: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressFrom'] = None,
-             egress_to: Optional['outputs.ServicePerimeterStatusEgressPolicyEgressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_from is None and 'egressFrom' in kwargs:
-            egress_from = kwargs['egressFrom']
-        if egress_to is None and 'egressTo' in kwargs:
-            egress_to = kwargs['egressTo']
-
         if egress_from is not None:
-            _setter("egress_from", egress_from)
+            pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
-            _setter("egress_to", egress_to)
+            pulumi.set(__self__, "egress_to", egress_to)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -3728,25 +2951,10 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
-        ServicePerimeterStatusEgressPolicyEgressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
 
     @property
     @pulumi.getter
@@ -3806,29 +3014,12 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
-        ServicePerimeterStatusEgressPolicyEgressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_resources=external_resources,
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_resources: Optional[Sequence[str]] = None,
-             operations: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_resources is None and 'externalResources' in kwargs:
-            external_resources = kwargs['externalResources']
-
         if external_resources is not None:
-            _setter("external_resources", external_resources)
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -3897,27 +3088,10 @@ class ServicePerimeterStatusEgressPolicyEgressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterStatusEgressPolicyEgressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -3954,23 +3128,10 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -4024,27 +3185,10 @@ class ServicePerimeterStatusIngressPolicy(dict):
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimeterStatusIngressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ingress_from=ingress_from,
-            ingress_to=ingress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ingress_from: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressFrom'] = None,
-             ingress_to: Optional['outputs.ServicePerimeterStatusIngressPolicyIngressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ingress_from is None and 'ingressFrom' in kwargs:
-            ingress_from = kwargs['ingressFrom']
-        if ingress_to is None and 'ingressTo' in kwargs:
-            ingress_to = kwargs['ingressTo']
-
         if ingress_from is not None:
-            _setter("ingress_from", ingress_from)
+            pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
-            _setter("ingress_to", ingress_to)
+            pulumi.set(__self__, "ingress_to", ingress_to)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -4101,29 +3245,12 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
         :param Sequence['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
-        ServicePerimeterStatusIngressPolicyIngressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             sources: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressFromSource']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -4194,25 +3321,10 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
-        ServicePerimeterStatusIngressPolicyIngressFromSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_level=access_level,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_level: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_level is None and 'accessLevel' in kwargs:
-            access_level = kwargs['accessLevel']
-
         if access_level is not None:
-            _setter("access_level", access_level)
+            pulumi.set(__self__, "access_level", access_level)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -4261,23 +3373,10 @@ class ServicePerimeterStatusIngressPolicyIngressTo(dict):
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
         """
-        ServicePerimeterStatusIngressPolicyIngressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operations: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -4339,27 +3438,10 @@ class ServicePerimeterStatusIngressPolicyIngressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimeterStatusIngressPolicyIngressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -4396,23 +3478,10 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(dict):
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -4464,27 +3533,10 @@ class ServicePerimeterStatusVpcAccessibleServices(dict):
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
         """
-        ServicePerimeterStatusVpcAccessibleServices._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_services=allowed_services,
-            enable_restriction=enable_restriction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_services: Optional[Sequence[str]] = None,
-             enable_restriction: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_services is None and 'allowedServices' in kwargs:
-            allowed_services = kwargs['allowedServices']
-        if enable_restriction is None and 'enableRestriction' in kwargs:
-            enable_restriction = kwargs['enableRestriction']
-
         if allowed_services is not None:
-            _setter("allowed_services", allowed_services)
+            pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
-            _setter("enable_restriction", enable_restriction)
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
 
     @property
     @pulumi.getter(name="allowedServices")
@@ -4586,61 +3638,22 @@ class ServicePerimetersServicePerimeter(dict):
                between currently enforced and suggested restrictions. useExplicitDryRunSpec must
                bet set to True if any of the fields in the spec are set to non-default values.
         """
-        ServicePerimetersServicePerimeter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            title=title,
-            create_time=create_time,
-            description=description,
-            perimeter_type=perimeter_type,
-            spec=spec,
-            status=status,
-            update_time=update_time,
-            use_explicit_dry_run_spec=use_explicit_dry_run_spec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             title: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             perimeter_type: Optional[str] = None,
-             spec: Optional['outputs.ServicePerimetersServicePerimeterSpec'] = None,
-             status: Optional['outputs.ServicePerimetersServicePerimeterStatus'] = None,
-             update_time: Optional[str] = None,
-             use_explicit_dry_run_spec: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if perimeter_type is None and 'perimeterType' in kwargs:
-            perimeter_type = kwargs['perimeterType']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if use_explicit_dry_run_spec is None and 'useExplicitDryRunSpec' in kwargs:
-            use_explicit_dry_run_spec = kwargs['useExplicitDryRunSpec']
-
-        _setter("name", name)
-        _setter("title", title)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "title", title)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if perimeter_type is not None:
-            _setter("perimeter_type", perimeter_type)
+            pulumi.set(__self__, "perimeter_type", perimeter_type)
         if spec is not None:
-            _setter("spec", spec)
+            pulumi.set(__self__, "spec", spec)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if use_explicit_dry_run_spec is not None:
-            _setter("use_explicit_dry_run_spec", use_explicit_dry_run_spec)
+            pulumi.set(__self__, "use_explicit_dry_run_spec", use_explicit_dry_run_spec)
 
     @property
     @pulumi.getter
@@ -4816,49 +3829,18 @@ class ServicePerimetersServicePerimeterSpec(dict):
                Perimeter.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_levels=access_levels,
-            egress_policies=egress_policies,
-            ingress_policies=ingress_policies,
-            resources=resources,
-            restricted_services=restricted_services,
-            vpc_accessible_services=vpc_accessible_services,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_levels: Optional[Sequence[str]] = None,
-             egress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicy']] = None,
-             ingress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicy']] = None,
-             resources: Optional[Sequence[str]] = None,
-             restricted_services: Optional[Sequence[str]] = None,
-             vpc_accessible_services: Optional['outputs.ServicePerimetersServicePerimeterSpecVpcAccessibleServices'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-        if egress_policies is None and 'egressPolicies' in kwargs:
-            egress_policies = kwargs['egressPolicies']
-        if ingress_policies is None and 'ingressPolicies' in kwargs:
-            ingress_policies = kwargs['ingressPolicies']
-        if restricted_services is None and 'restrictedServices' in kwargs:
-            restricted_services = kwargs['restrictedServices']
-        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
-            vpc_accessible_services = kwargs['vpcAccessibleServices']
-
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
         if egress_policies is not None:
-            _setter("egress_policies", egress_policies)
+            pulumi.set(__self__, "egress_policies", egress_policies)
         if ingress_policies is not None:
-            _setter("ingress_policies", ingress_policies)
+            pulumi.set(__self__, "ingress_policies", ingress_policies)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if restricted_services is not None:
-            _setter("restricted_services", restricted_services)
+            pulumi.set(__self__, "restricted_services", restricted_services)
         if vpc_accessible_services is not None:
-            _setter("vpc_accessible_services", vpc_accessible_services)
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -4964,27 +3946,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicy(dict):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterSpecEgressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_from=egress_from,
-            egress_to=egress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom'] = None,
-             egress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_from is None and 'egressFrom' in kwargs:
-            egress_from = kwargs['egressFrom']
-        if egress_to is None and 'egressTo' in kwargs:
-            egress_to = kwargs['egressTo']
-
         if egress_from is not None:
-            _setter("egress_from", egress_from)
+            pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
-            _setter("egress_to", egress_to)
+            pulumi.set(__self__, "egress_to", egress_to)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -5037,25 +4002,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
-        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
 
     @property
     @pulumi.getter
@@ -5115,29 +4065,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
-        ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_resources=external_resources,
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_resources: Optional[Sequence[str]] = None,
-             operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_resources is None and 'externalResources' in kwargs:
-            external_resources = kwargs['externalResources']
-
         if external_resources is not None:
-            _setter("external_resources", external_resources)
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -5206,27 +4139,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(dict):
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -5263,23 +4179,10 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -5333,27 +4236,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicy(dict):
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ingress_from=ingress_from,
-            ingress_to=ingress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ingress_from: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom'] = None,
-             ingress_to: Optional['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ingress_from is None and 'ingressFrom' in kwargs:
-            ingress_from = kwargs['ingressFrom']
-        if ingress_to is None and 'ingressTo' in kwargs:
-            ingress_to = kwargs['ingressTo']
-
         if ingress_from is not None:
-            _setter("ingress_from", ingress_from)
+            pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
-            _setter("ingress_to", ingress_to)
+            pulumi.set(__self__, "ingress_to", ingress_to)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -5410,29 +4296,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
         :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -5503,25 +4372,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_level=access_level,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_level: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_level is None and 'accessLevel' in kwargs:
-            access_level = kwargs['accessLevel']
-
         if access_level is not None:
-            _setter("access_level", access_level)
+            pulumi.set(__self__, "access_level", access_level)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -5570,23 +4424,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo(dict):
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -5648,27 +4489,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(dict)
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -5705,23 +4529,10 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -5773,27 +4584,10 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
         """
-        ServicePerimetersServicePerimeterSpecVpcAccessibleServices._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_services=allowed_services,
-            enable_restriction=enable_restriction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_services: Optional[Sequence[str]] = None,
-             enable_restriction: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_services is None and 'allowedServices' in kwargs:
-            allowed_services = kwargs['allowedServices']
-        if enable_restriction is None and 'enableRestriction' in kwargs:
-            enable_restriction = kwargs['enableRestriction']
-
         if allowed_services is not None:
-            _setter("allowed_services", allowed_services)
+            pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
-            _setter("enable_restriction", enable_restriction)
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
 
     @property
     @pulumi.getter(name="allowedServices")
@@ -5880,49 +4674,18 @@ class ServicePerimetersServicePerimeterStatus(dict):
                Perimeter.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_levels=access_levels,
-            egress_policies=egress_policies,
-            ingress_policies=ingress_policies,
-            resources=resources,
-            restricted_services=restricted_services,
-            vpc_accessible_services=vpc_accessible_services,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_levels: Optional[Sequence[str]] = None,
-             egress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicy']] = None,
-             ingress_policies: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicy']] = None,
-             resources: Optional[Sequence[str]] = None,
-             restricted_services: Optional[Sequence[str]] = None,
-             vpc_accessible_services: Optional['outputs.ServicePerimetersServicePerimeterStatusVpcAccessibleServices'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-        if egress_policies is None and 'egressPolicies' in kwargs:
-            egress_policies = kwargs['egressPolicies']
-        if ingress_policies is None and 'ingressPolicies' in kwargs:
-            ingress_policies = kwargs['ingressPolicies']
-        if restricted_services is None and 'restrictedServices' in kwargs:
-            restricted_services = kwargs['restrictedServices']
-        if vpc_accessible_services is None and 'vpcAccessibleServices' in kwargs:
-            vpc_accessible_services = kwargs['vpcAccessibleServices']
-
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
         if egress_policies is not None:
-            _setter("egress_policies", egress_policies)
+            pulumi.set(__self__, "egress_policies", egress_policies)
         if ingress_policies is not None:
-            _setter("ingress_policies", ingress_policies)
+            pulumi.set(__self__, "ingress_policies", ingress_policies)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
         if restricted_services is not None:
-            _setter("restricted_services", restricted_services)
+            pulumi.set(__self__, "restricted_services", restricted_services)
         if vpc_accessible_services is not None:
-            _setter("vpc_accessible_services", vpc_accessible_services)
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -6028,27 +4791,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicy(dict):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterStatusEgressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_from=egress_from,
-            egress_to=egress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom'] = None,
-             egress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_from is None and 'egressFrom' in kwargs:
-            egress_from = kwargs['egressFrom']
-        if egress_to is None and 'egressTo' in kwargs:
-            egress_to = kwargs['egressTo']
-
         if egress_from is not None:
-            _setter("egress_from", egress_from)
+            pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
-            _setter("egress_to", egress_to)
+            pulumi.set(__self__, "egress_to", egress_to)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -6101,25 +4847,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
-        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
 
     @property
     @pulumi.getter
@@ -6179,29 +4910,12 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
-        ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_resources=external_resources,
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_resources: Optional[Sequence[str]] = None,
-             operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_resources is None and 'externalResources' in kwargs:
-            external_resources = kwargs['externalResources']
-
         if external_resources is not None:
-            _setter("external_resources", external_resources)
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -6270,27 +4984,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation(dict)
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -6327,23 +5024,10 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -6397,27 +5081,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy(dict):
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ingress_from=ingress_from,
-            ingress_to=ingress_to,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ingress_from: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom'] = None,
-             ingress_to: Optional['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ingress_from is None and 'ingressFrom' in kwargs:
-            ingress_from = kwargs['ingressFrom']
-        if ingress_to is None and 'ingressTo' in kwargs:
-            ingress_to = kwargs['ingressTo']
-
         if ingress_from is not None:
-            _setter("ingress_from", ingress_from)
+            pulumi.set(__self__, "ingress_from", ingress_from)
         if ingress_to is not None:
-            _setter("ingress_to", ingress_to)
+            pulumi.set(__self__, "ingress_to", ingress_to)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -6474,29 +5141,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
         :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identities=identities,
-            identity_type=identity_type,
-            sources=sources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identities: Optional[Sequence[str]] = None,
-             identity_type: Optional[str] = None,
-             sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identity_type is None and 'identityType' in kwargs:
-            identity_type = kwargs['identityType']
-
         if identities is not None:
-            _setter("identities", identities)
+            pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
-            _setter("identity_type", identity_type)
+            pulumi.set(__self__, "identity_type", identity_type)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -6567,25 +5217,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
                organization that the perimeter is defined in. `*` is not allowed, the case
                of allowing all Google Cloud resources only is not supported.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_level=access_level,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_level: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_level is None and 'accessLevel' in kwargs:
-            access_level = kwargs['accessLevel']
-
         if access_level is not None:
-            _setter("access_level", access_level)
+            pulumi.set(__self__, "access_level", access_level)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -6634,23 +5269,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(dict):
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operations=operations,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -6712,27 +5334,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation(dic
                `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
                field set to `*` will allow all methods AND permissions for all services.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method_selectors=method_selectors,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method_selectors: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_selectors is None and 'methodSelectors' in kwargs:
-            method_selectors = kwargs['methodSelectors']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if method_selectors is not None:
-            _setter("method_selectors", method_selectors)
+            pulumi.set(__self__, "method_selectors", method_selectors)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="methodSelectors")
@@ -6769,23 +5374,10 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
         :param str permission: Value for permission should be a valid Cloud IAM permission for the
                corresponding `serviceName` in `ApiOperation`.
         """
-        ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            permission=permission,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[str] = None,
-             permission: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
 
     @property
     @pulumi.getter
@@ -6837,27 +5429,10 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
         """
-        ServicePerimetersServicePerimeterStatusVpcAccessibleServices._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_services=allowed_services,
-            enable_restriction=enable_restriction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_services: Optional[Sequence[str]] = None,
-             enable_restriction: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_services is None and 'allowedServices' in kwargs:
-            allowed_services = kwargs['allowedServices']
-        if enable_restriction is None and 'enableRestriction' in kwargs:
-            enable_restriction = kwargs['enableRestriction']
-
         if allowed_services is not None:
-            _setter("allowed_services", allowed_services)
+            pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
-            _setter("enable_restriction", enable_restriction)
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
 
     @property
     @pulumi.getter(name="allowedServices")

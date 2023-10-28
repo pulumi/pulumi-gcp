@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -110,138 +110,49 @@ class InstanceArgs:
                Default value is `DISABLED`.
                Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            memory_size_gb=memory_size_gb,
-            alternative_location_id=alternative_location_id,
-            auth_enabled=auth_enabled,
-            authorized_network=authorized_network,
-            connect_mode=connect_mode,
-            customer_managed_key=customer_managed_key,
-            display_name=display_name,
-            labels=labels,
-            location_id=location_id,
-            maintenance_policy=maintenance_policy,
-            name=name,
-            persistence_config=persistence_config,
-            project=project,
-            read_replicas_mode=read_replicas_mode,
-            redis_configs=redis_configs,
-            redis_version=redis_version,
-            region=region,
-            replica_count=replica_count,
-            reserved_ip_range=reserved_ip_range,
-            secondary_ip_range=secondary_ip_range,
-            tier=tier,
-            transit_encryption_mode=transit_encryption_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             memory_size_gb: Optional[pulumi.Input[int]] = None,
-             alternative_location_id: Optional[pulumi.Input[str]] = None,
-             auth_enabled: Optional[pulumi.Input[bool]] = None,
-             authorized_network: Optional[pulumi.Input[str]] = None,
-             connect_mode: Optional[pulumi.Input[str]] = None,
-             customer_managed_key: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location_id: Optional[pulumi.Input[str]] = None,
-             maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             read_replicas_mode: Optional[pulumi.Input[str]] = None,
-             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             redis_version: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             replica_count: Optional[pulumi.Input[int]] = None,
-             reserved_ip_range: Optional[pulumi.Input[str]] = None,
-             secondary_ip_range: Optional[pulumi.Input[str]] = None,
-             tier: Optional[pulumi.Input[str]] = None,
-             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if memory_size_gb is None and 'memorySizeGb' in kwargs:
-            memory_size_gb = kwargs['memorySizeGb']
-        if memory_size_gb is None:
-            raise TypeError("Missing 'memory_size_gb' argument")
-        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
-            alternative_location_id = kwargs['alternativeLocationId']
-        if auth_enabled is None and 'authEnabled' in kwargs:
-            auth_enabled = kwargs['authEnabled']
-        if authorized_network is None and 'authorizedNetwork' in kwargs:
-            authorized_network = kwargs['authorizedNetwork']
-        if connect_mode is None and 'connectMode' in kwargs:
-            connect_mode = kwargs['connectMode']
-        if customer_managed_key is None and 'customerManagedKey' in kwargs:
-            customer_managed_key = kwargs['customerManagedKey']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if persistence_config is None and 'persistenceConfig' in kwargs:
-            persistence_config = kwargs['persistenceConfig']
-        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
-            read_replicas_mode = kwargs['readReplicasMode']
-        if redis_configs is None and 'redisConfigs' in kwargs:
-            redis_configs = kwargs['redisConfigs']
-        if redis_version is None and 'redisVersion' in kwargs:
-            redis_version = kwargs['redisVersion']
-        if replica_count is None and 'replicaCount' in kwargs:
-            replica_count = kwargs['replicaCount']
-        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
-            reserved_ip_range = kwargs['reservedIpRange']
-        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
-            secondary_ip_range = kwargs['secondaryIpRange']
-        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
-            transit_encryption_mode = kwargs['transitEncryptionMode']
-
-        _setter("memory_size_gb", memory_size_gb)
+        pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if alternative_location_id is not None:
-            _setter("alternative_location_id", alternative_location_id)
+            pulumi.set(__self__, "alternative_location_id", alternative_location_id)
         if auth_enabled is not None:
-            _setter("auth_enabled", auth_enabled)
+            pulumi.set(__self__, "auth_enabled", auth_enabled)
         if authorized_network is not None:
-            _setter("authorized_network", authorized_network)
+            pulumi.set(__self__, "authorized_network", authorized_network)
         if connect_mode is not None:
-            _setter("connect_mode", connect_mode)
+            pulumi.set(__self__, "connect_mode", connect_mode)
         if customer_managed_key is not None:
-            _setter("customer_managed_key", customer_managed_key)
+            pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location_id is not None:
-            _setter("location_id", location_id)
+            pulumi.set(__self__, "location_id", location_id)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if persistence_config is not None:
-            _setter("persistence_config", persistence_config)
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if read_replicas_mode is not None:
-            _setter("read_replicas_mode", read_replicas_mode)
+            pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs is not None:
-            _setter("redis_configs", redis_configs)
+            pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
-            _setter("redis_version", redis_version)
+            pulumi.set(__self__, "redis_version", redis_version)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if replica_count is not None:
-            _setter("replica_count", replica_count)
+            pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
-            _setter("reserved_ip_range", reserved_ip_range)
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if secondary_ip_range is not None:
-            _setter("secondary_ip_range", secondary_ip_range)
+            pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if tier is not None:
-            _setter("tier", tier)
+            pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
-            _setter("transit_encryption_mode", transit_encryption_mode)
+            pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -691,197 +602,72 @@ class _InstanceState:
                Default value is `DISABLED`.
                Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alternative_location_id=alternative_location_id,
-            auth_enabled=auth_enabled,
-            auth_string=auth_string,
-            authorized_network=authorized_network,
-            connect_mode=connect_mode,
-            create_time=create_time,
-            current_location_id=current_location_id,
-            customer_managed_key=customer_managed_key,
-            display_name=display_name,
-            host=host,
-            labels=labels,
-            location_id=location_id,
-            maintenance_policy=maintenance_policy,
-            maintenance_schedule=maintenance_schedule,
-            memory_size_gb=memory_size_gb,
-            name=name,
-            nodes=nodes,
-            persistence_config=persistence_config,
-            persistence_iam_identity=persistence_iam_identity,
-            port=port,
-            project=project,
-            read_endpoint=read_endpoint,
-            read_endpoint_port=read_endpoint_port,
-            read_replicas_mode=read_replicas_mode,
-            redis_configs=redis_configs,
-            redis_version=redis_version,
-            region=region,
-            replica_count=replica_count,
-            reserved_ip_range=reserved_ip_range,
-            secondary_ip_range=secondary_ip_range,
-            server_ca_certs=server_ca_certs,
-            tier=tier,
-            transit_encryption_mode=transit_encryption_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alternative_location_id: Optional[pulumi.Input[str]] = None,
-             auth_enabled: Optional[pulumi.Input[bool]] = None,
-             auth_string: Optional[pulumi.Input[str]] = None,
-             authorized_network: Optional[pulumi.Input[str]] = None,
-             connect_mode: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             current_location_id: Optional[pulumi.Input[str]] = None,
-             customer_managed_key: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location_id: Optional[pulumi.Input[str]] = None,
-             maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-             maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
-             memory_size_gb: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
-             persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             read_endpoint: Optional[pulumi.Input[str]] = None,
-             read_endpoint_port: Optional[pulumi.Input[int]] = None,
-             read_replicas_mode: Optional[pulumi.Input[str]] = None,
-             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             redis_version: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             replica_count: Optional[pulumi.Input[int]] = None,
-             reserved_ip_range: Optional[pulumi.Input[str]] = None,
-             secondary_ip_range: Optional[pulumi.Input[str]] = None,
-             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
-             tier: Optional[pulumi.Input[str]] = None,
-             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alternative_location_id is None and 'alternativeLocationId' in kwargs:
-            alternative_location_id = kwargs['alternativeLocationId']
-        if auth_enabled is None and 'authEnabled' in kwargs:
-            auth_enabled = kwargs['authEnabled']
-        if auth_string is None and 'authString' in kwargs:
-            auth_string = kwargs['authString']
-        if authorized_network is None and 'authorizedNetwork' in kwargs:
-            authorized_network = kwargs['authorizedNetwork']
-        if connect_mode is None and 'connectMode' in kwargs:
-            connect_mode = kwargs['connectMode']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if current_location_id is None and 'currentLocationId' in kwargs:
-            current_location_id = kwargs['currentLocationId']
-        if customer_managed_key is None and 'customerManagedKey' in kwargs:
-            customer_managed_key = kwargs['customerManagedKey']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if maintenance_schedule is None and 'maintenanceSchedule' in kwargs:
-            maintenance_schedule = kwargs['maintenanceSchedule']
-        if memory_size_gb is None and 'memorySizeGb' in kwargs:
-            memory_size_gb = kwargs['memorySizeGb']
-        if persistence_config is None and 'persistenceConfig' in kwargs:
-            persistence_config = kwargs['persistenceConfig']
-        if persistence_iam_identity is None and 'persistenceIamIdentity' in kwargs:
-            persistence_iam_identity = kwargs['persistenceIamIdentity']
-        if read_endpoint is None and 'readEndpoint' in kwargs:
-            read_endpoint = kwargs['readEndpoint']
-        if read_endpoint_port is None and 'readEndpointPort' in kwargs:
-            read_endpoint_port = kwargs['readEndpointPort']
-        if read_replicas_mode is None and 'readReplicasMode' in kwargs:
-            read_replicas_mode = kwargs['readReplicasMode']
-        if redis_configs is None and 'redisConfigs' in kwargs:
-            redis_configs = kwargs['redisConfigs']
-        if redis_version is None and 'redisVersion' in kwargs:
-            redis_version = kwargs['redisVersion']
-        if replica_count is None and 'replicaCount' in kwargs:
-            replica_count = kwargs['replicaCount']
-        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
-            reserved_ip_range = kwargs['reservedIpRange']
-        if secondary_ip_range is None and 'secondaryIpRange' in kwargs:
-            secondary_ip_range = kwargs['secondaryIpRange']
-        if server_ca_certs is None and 'serverCaCerts' in kwargs:
-            server_ca_certs = kwargs['serverCaCerts']
-        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
-            transit_encryption_mode = kwargs['transitEncryptionMode']
-
         if alternative_location_id is not None:
-            _setter("alternative_location_id", alternative_location_id)
+            pulumi.set(__self__, "alternative_location_id", alternative_location_id)
         if auth_enabled is not None:
-            _setter("auth_enabled", auth_enabled)
+            pulumi.set(__self__, "auth_enabled", auth_enabled)
         if auth_string is not None:
-            _setter("auth_string", auth_string)
+            pulumi.set(__self__, "auth_string", auth_string)
         if authorized_network is not None:
-            _setter("authorized_network", authorized_network)
+            pulumi.set(__self__, "authorized_network", authorized_network)
         if connect_mode is not None:
-            _setter("connect_mode", connect_mode)
+            pulumi.set(__self__, "connect_mode", connect_mode)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if current_location_id is not None:
-            _setter("current_location_id", current_location_id)
+            pulumi.set(__self__, "current_location_id", current_location_id)
         if customer_managed_key is not None:
-            _setter("customer_managed_key", customer_managed_key)
+            pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location_id is not None:
-            _setter("location_id", location_id)
+            pulumi.set(__self__, "location_id", location_id)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedule is not None:
-            _setter("maintenance_schedule", maintenance_schedule)
+            pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if memory_size_gb is not None:
-            _setter("memory_size_gb", memory_size_gb)
+            pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if persistence_config is not None:
-            _setter("persistence_config", persistence_config)
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if persistence_iam_identity is not None:
-            _setter("persistence_iam_identity", persistence_iam_identity)
+            pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if read_endpoint is not None:
-            _setter("read_endpoint", read_endpoint)
+            pulumi.set(__self__, "read_endpoint", read_endpoint)
         if read_endpoint_port is not None:
-            _setter("read_endpoint_port", read_endpoint_port)
+            pulumi.set(__self__, "read_endpoint_port", read_endpoint_port)
         if read_replicas_mode is not None:
-            _setter("read_replicas_mode", read_replicas_mode)
+            pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs is not None:
-            _setter("redis_configs", redis_configs)
+            pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
-            _setter("redis_version", redis_version)
+            pulumi.set(__self__, "redis_version", redis_version)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if replica_count is not None:
-            _setter("replica_count", replica_count)
+            pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
-            _setter("reserved_ip_range", reserved_ip_range)
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if secondary_ip_range is not None:
-            _setter("secondary_ip_range", secondary_ip_range)
+            pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if server_ca_certs is not None:
-            _setter("server_ca_certs", server_ca_certs)
+            pulumi.set(__self__, "server_ca_certs", server_ca_certs)
         if tier is not None:
-            _setter("tier", tier)
+            pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
-            _setter("transit_encryption_mode", transit_encryption_mode)
+            pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
 
     @property
     @pulumi.getter(name="alternativeLocationId")
@@ -1782,10 +1568,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1830,13 +1612,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
-            maintenance_policy = _utilities.configure(maintenance_policy, InstanceMaintenancePolicyArgs, True)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
-            persistence_config = _utilities.configure(persistence_config, InstancePersistenceConfigArgs, True)
             __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             __props__.__dict__["read_replicas_mode"] = read_replicas_mode

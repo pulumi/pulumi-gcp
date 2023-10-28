@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,80 +63,33 @@ class ServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         """
-        ServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template=template,
-            annotations=annotations,
-            binary_authorization=binary_authorization,
-            client=client,
-            client_version=client_version,
-            custom_audiences=custom_audiences,
-            description=description,
-            ingress=ingress,
-            labels=labels,
-            launch_stage=launch_stage,
-            location=location,
-            name=name,
-            project=project,
-            traffics=traffics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ingress: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             launch_stage: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template is None:
-            raise TypeError("Missing 'template' argument")
-        if binary_authorization is None and 'binaryAuthorization' in kwargs:
-            binary_authorization = kwargs['binaryAuthorization']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if custom_audiences is None and 'customAudiences' in kwargs:
-            custom_audiences = kwargs['customAudiences']
-        if launch_stage is None and 'launchStage' in kwargs:
-            launch_stage = kwargs['launchStage']
-
-        _setter("template", template)
+        pulumi.set(__self__, "template", template)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
-            _setter("binary_authorization", binary_authorization)
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if custom_audiences is not None:
-            _setter("custom_audiences", custom_audiences)
+            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ingress is not None:
-            _setter("ingress", ingress)
+            pulumi.set(__self__, "ingress", ingress)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
-            _setter("launch_stage", launch_stage)
+            pulumi.set(__self__, "launch_stage", launch_stage)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if traffics is not None:
-            _setter("traffics", traffics)
+            pulumi.set(__self__, "traffics", traffics)
 
     @property
     @pulumi.getter
@@ -414,167 +367,68 @@ class _ServiceState:
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
         """
-        _ServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            binary_authorization=binary_authorization,
-            client=client,
-            client_version=client_version,
-            conditions=conditions,
-            create_time=create_time,
-            creator=creator,
-            custom_audiences=custom_audiences,
-            delete_time=delete_time,
-            description=description,
-            etag=etag,
-            expire_time=expire_time,
-            generation=generation,
-            ingress=ingress,
-            labels=labels,
-            last_modifier=last_modifier,
-            latest_created_revision=latest_created_revision,
-            latest_ready_revision=latest_ready_revision,
-            launch_stage=launch_stage,
-            location=location,
-            name=name,
-            observed_generation=observed_generation,
-            project=project,
-            reconciling=reconciling,
-            template=template,
-            terminal_conditions=terminal_conditions,
-            traffic_statuses=traffic_statuses,
-            traffics=traffics,
-            uid=uid,
-            update_time=update_time,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             creator: Optional[pulumi.Input[str]] = None,
-             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             delete_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             expire_time: Optional[pulumi.Input[str]] = None,
-             generation: Optional[pulumi.Input[str]] = None,
-             ingress: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             last_modifier: Optional[pulumi.Input[str]] = None,
-             latest_created_revision: Optional[pulumi.Input[str]] = None,
-             latest_ready_revision: Optional[pulumi.Input[str]] = None,
-             launch_stage: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             observed_generation: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
-             traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
-             traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binary_authorization is None and 'binaryAuthorization' in kwargs:
-            binary_authorization = kwargs['binaryAuthorization']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if custom_audiences is None and 'customAudiences' in kwargs:
-            custom_audiences = kwargs['customAudiences']
-        if delete_time is None and 'deleteTime' in kwargs:
-            delete_time = kwargs['deleteTime']
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if last_modifier is None and 'lastModifier' in kwargs:
-            last_modifier = kwargs['lastModifier']
-        if latest_created_revision is None and 'latestCreatedRevision' in kwargs:
-            latest_created_revision = kwargs['latestCreatedRevision']
-        if latest_ready_revision is None and 'latestReadyRevision' in kwargs:
-            latest_ready_revision = kwargs['latestReadyRevision']
-        if launch_stage is None and 'launchStage' in kwargs:
-            launch_stage = kwargs['launchStage']
-        if observed_generation is None and 'observedGeneration' in kwargs:
-            observed_generation = kwargs['observedGeneration']
-        if terminal_conditions is None and 'terminalConditions' in kwargs:
-            terminal_conditions = kwargs['terminalConditions']
-        if traffic_statuses is None and 'trafficStatuses' in kwargs:
-            traffic_statuses = kwargs['trafficStatuses']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
-            _setter("binary_authorization", binary_authorization)
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
-            _setter("creator", creator)
+            pulumi.set(__self__, "creator", creator)
         if custom_audiences is not None:
-            _setter("custom_audiences", custom_audiences)
+            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if delete_time is not None:
-            _setter("delete_time", delete_time)
+            pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
         if ingress is not None:
-            _setter("ingress", ingress)
+            pulumi.set(__self__, "ingress", ingress)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if last_modifier is not None:
-            _setter("last_modifier", last_modifier)
+            pulumi.set(__self__, "last_modifier", last_modifier)
         if latest_created_revision is not None:
-            _setter("latest_created_revision", latest_created_revision)
+            pulumi.set(__self__, "latest_created_revision", latest_created_revision)
         if latest_ready_revision is not None:
-            _setter("latest_ready_revision", latest_ready_revision)
+            pulumi.set(__self__, "latest_ready_revision", latest_ready_revision)
         if launch_stage is not None:
-            _setter("launch_stage", launch_stage)
+            pulumi.set(__self__, "launch_stage", launch_stage)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if observed_generation is not None:
-            _setter("observed_generation", observed_generation)
+            pulumi.set(__self__, "observed_generation", observed_generation)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
-            _setter("terminal_conditions", terminal_conditions)
+            pulumi.set(__self__, "terminal_conditions", terminal_conditions)
         if traffic_statuses is not None:
-            _setter("traffic_statuses", traffic_statuses)
+            pulumi.set(__self__, "traffic_statuses", traffic_statuses)
         if traffics is not None:
-            _setter("traffics", traffics)
+            pulumi.set(__self__, "traffics", traffics)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -1603,10 +1457,6 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1636,7 +1486,6 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["annotations"] = annotations
-            binary_authorization = _utilities.configure(binary_authorization, ServiceBinaryAuthorizationArgs, True)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
@@ -1648,7 +1497,6 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            template = _utilities.configure(template, ServiceTemplateArgs, True)
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template

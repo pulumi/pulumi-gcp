@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,53 +45,22 @@ class ServerTlsPolicyArgs:
         :param pulumi.Input['ServerTlsPolicyServerCertificateArgs'] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         """
-        ServerTlsPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_open=allow_open,
-            description=description,
-            labels=labels,
-            location=location,
-            mtls_policy=mtls_policy,
-            name=name,
-            project=project,
-            server_certificate=server_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_open: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             mtls_policy: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_open is None and 'allowOpen' in kwargs:
-            allow_open = kwargs['allowOpen']
-        if mtls_policy is None and 'mtlsPolicy' in kwargs:
-            mtls_policy = kwargs['mtlsPolicy']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-
         if allow_open is not None:
-            _setter("allow_open", allow_open)
+            pulumi.set(__self__, "allow_open", allow_open)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if mtls_policy is not None:
-            _setter("mtls_policy", mtls_policy)
+            pulumi.set(__self__, "mtls_policy", mtls_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
 
     @property
     @pulumi.getter(name="allowOpen")
@@ -236,65 +205,26 @@ class _ServerTlsPolicyState:
                Structure is documented below.
         :param pulumi.Input[str] update_time: Time the ServerTlsPolicy was updated in UTC.
         """
-        _ServerTlsPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_open=allow_open,
-            create_time=create_time,
-            description=description,
-            labels=labels,
-            location=location,
-            mtls_policy=mtls_policy,
-            name=name,
-            project=project,
-            server_certificate=server_certificate,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_open: Optional[pulumi.Input[bool]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             mtls_policy: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_open is None and 'allowOpen' in kwargs:
-            allow_open = kwargs['allowOpen']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if mtls_policy is None and 'mtlsPolicy' in kwargs:
-            mtls_policy = kwargs['mtlsPolicy']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if allow_open is not None:
-            _setter("allow_open", allow_open)
+            pulumi.set(__self__, "allow_open", allow_open)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if mtls_policy is not None:
-            _setter("mtls_policy", mtls_policy)
+            pulumi.set(__self__, "mtls_policy", mtls_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="allowOpen")
@@ -668,10 +598,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServerTlsPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -698,11 +624,9 @@ class ServerTlsPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            mtls_policy = _utilities.configure(mtls_policy, ServerTlsPolicyMtlsPolicyArgs, True)
             __props__.__dict__["mtls_policy"] = mtls_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            server_certificate = _utilities.configure(server_certificate, ServerTlsPolicyServerCertificateArgs, True)
             __props__.__dict__["server_certificate"] = server_certificate
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

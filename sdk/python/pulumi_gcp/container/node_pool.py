@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -90,98 +90,37 @@ class NodePoolArgs:
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
                `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         """
-        NodePoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster=cluster,
-            autoscaling=autoscaling,
-            initial_node_count=initial_node_count,
-            location=location,
-            management=management,
-            max_pods_per_node=max_pods_per_node,
-            name=name,
-            name_prefix=name_prefix,
-            network_config=network_config,
-            node_config=node_config,
-            node_count=node_count,
-            node_locations=node_locations,
-            placement_policy=placement_policy,
-            project=project,
-            upgrade_settings=upgrade_settings,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster: Optional[pulumi.Input[str]] = None,
-             autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
-             initial_node_count: Optional[pulumi.Input[int]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
-             max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
-             node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
-             node_count: Optional[pulumi.Input[int]] = None,
-             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster is None:
-            raise TypeError("Missing 'cluster' argument")
-        if initial_node_count is None and 'initialNodeCount' in kwargs:
-            initial_node_count = kwargs['initialNodeCount']
-        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
-            max_pods_per_node = kwargs['maxPodsPerNode']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_locations is None and 'nodeLocations' in kwargs:
-            node_locations = kwargs['nodeLocations']
-        if placement_policy is None and 'placementPolicy' in kwargs:
-            placement_policy = kwargs['placementPolicy']
-        if upgrade_settings is None and 'upgradeSettings' in kwargs:
-            upgrade_settings = kwargs['upgradeSettings']
-
-        _setter("cluster", cluster)
+        pulumi.set(__self__, "cluster", cluster)
         if autoscaling is not None:
-            _setter("autoscaling", autoscaling)
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if initial_node_count is not None:
-            _setter("initial_node_count", initial_node_count)
+            pulumi.set(__self__, "initial_node_count", initial_node_count)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if management is not None:
-            _setter("management", management)
+            pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
-            _setter("max_pods_per_node", max_pods_per_node)
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
-            _setter("node_count", node_count)
+            pulumi.set(__self__, "node_count", node_count)
         if node_locations is not None:
-            _setter("node_locations", node_locations)
+            pulumi.set(__self__, "node_locations", node_locations)
         if placement_policy is not None:
-            _setter("placement_policy", placement_policy)
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
-            _setter("upgrade_settings", upgrade_settings)
+            pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -497,113 +436,44 @@ class _NodePoolState:
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
                `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         """
-        _NodePoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscaling=autoscaling,
-            cluster=cluster,
-            initial_node_count=initial_node_count,
-            instance_group_urls=instance_group_urls,
-            location=location,
-            managed_instance_group_urls=managed_instance_group_urls,
-            management=management,
-            max_pods_per_node=max_pods_per_node,
-            name=name,
-            name_prefix=name_prefix,
-            network_config=network_config,
-            node_config=node_config,
-            node_count=node_count,
-            node_locations=node_locations,
-            operation=operation,
-            placement_policy=placement_policy,
-            project=project,
-            upgrade_settings=upgrade_settings,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
-             cluster: Optional[pulumi.Input[str]] = None,
-             initial_node_count: Optional[pulumi.Input[int]] = None,
-             instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             managed_instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
-             max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
-             node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
-             node_count: Optional[pulumi.Input[int]] = None,
-             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             operation: Optional[pulumi.Input[str]] = None,
-             placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if initial_node_count is None and 'initialNodeCount' in kwargs:
-            initial_node_count = kwargs['initialNodeCount']
-        if instance_group_urls is None and 'instanceGroupUrls' in kwargs:
-            instance_group_urls = kwargs['instanceGroupUrls']
-        if managed_instance_group_urls is None and 'managedInstanceGroupUrls' in kwargs:
-            managed_instance_group_urls = kwargs['managedInstanceGroupUrls']
-        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
-            max_pods_per_node = kwargs['maxPodsPerNode']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_locations is None and 'nodeLocations' in kwargs:
-            node_locations = kwargs['nodeLocations']
-        if placement_policy is None and 'placementPolicy' in kwargs:
-            placement_policy = kwargs['placementPolicy']
-        if upgrade_settings is None and 'upgradeSettings' in kwargs:
-            upgrade_settings = kwargs['upgradeSettings']
-
         if autoscaling is not None:
-            _setter("autoscaling", autoscaling)
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if cluster is not None:
-            _setter("cluster", cluster)
+            pulumi.set(__self__, "cluster", cluster)
         if initial_node_count is not None:
-            _setter("initial_node_count", initial_node_count)
+            pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
-            _setter("instance_group_urls", instance_group_urls)
+            pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if managed_instance_group_urls is not None:
-            _setter("managed_instance_group_urls", managed_instance_group_urls)
+            pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
-            _setter("management", management)
+            pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
-            _setter("max_pods_per_node", max_pods_per_node)
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
-            _setter("node_count", node_count)
+            pulumi.set(__self__, "node_count", node_count)
         if node_locations is not None:
-            _setter("node_locations", node_locations)
+            pulumi.set(__self__, "node_locations", node_locations)
         if operation is not None:
-            _setter("operation", operation)
+            pulumi.set(__self__, "operation", operation)
         if placement_policy is not None:
-            _setter("placement_policy", placement_policy)
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
-            _setter("upgrade_settings", upgrade_settings)
+            pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1050,10 +920,6 @@ class NodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1084,28 +950,22 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodePoolArgs.__new__(NodePoolArgs)
 
-            autoscaling = _utilities.configure(autoscaling, NodePoolAutoscalingArgs, True)
             __props__.__dict__["autoscaling"] = autoscaling
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location"] = location
-            management = _utilities.configure(management, NodePoolManagementArgs, True)
             __props__.__dict__["management"] = management
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
-            network_config = _utilities.configure(network_config, NodePoolNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
-            node_config = _utilities.configure(node_config, NodePoolNodeConfigArgs, True)
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["node_locations"] = node_locations
-            placement_policy = _utilities.configure(placement_policy, NodePoolPlacementPolicyArgs, True)
             __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
-            upgrade_settings = _utilities.configure(upgrade_settings, NodePoolUpgradeSettingsArgs, True)
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
             __props__.__dict__["instance_group_urls"] = None

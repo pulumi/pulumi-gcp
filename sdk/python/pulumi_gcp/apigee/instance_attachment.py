@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
@@ -25,27 +25,8 @@ class InstanceAttachmentArgs:
                
                - - -
         """
-        InstanceAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            environment=environment,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             environment: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("environment", environment)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -92,29 +73,12 @@ class _InstanceAttachmentState:
                - - -
         :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
-        _InstanceAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            environment=environment,
-            instance_id=instance_id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             environment: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -338,10 +302,6 @@ class InstanceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

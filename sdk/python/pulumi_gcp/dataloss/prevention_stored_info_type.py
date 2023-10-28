@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,50 +45,19 @@ class PreventionStoredInfoTypeArgs:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
                characters. Can be empty to allow the system to generate one.
         """
-        PreventionStoredInfoTypeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            description=description,
-            dictionary=dictionary,
-            display_name=display_name,
-            large_custom_dictionary=large_custom_dictionary,
-            regex=regex,
-            stored_info_type_id=stored_info_type_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
-             regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
-             stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
-            large_custom_dictionary = kwargs['largeCustomDictionary']
-        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
-            stored_info_type_id = kwargs['storedInfoTypeId']
-
-        _setter("parent", parent)
+        pulumi.set(__self__, "parent", parent)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dictionary is not None:
-            _setter("dictionary", dictionary)
+            pulumi.set(__self__, "dictionary", dictionary)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if large_custom_dictionary is not None:
-            _setter("large_custom_dictionary", large_custom_dictionary)
+            pulumi.set(__self__, "large_custom_dictionary", large_custom_dictionary)
         if regex is not None:
-            _setter("regex", regex)
+            pulumi.set(__self__, "regex", regex)
         if stored_info_type_id is not None:
-            _setter("stored_info_type_id", stored_info_type_id)
+            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
     @pulumi.getter
@@ -221,53 +190,22 @@ class _PreventionStoredInfoTypeState:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
                characters. Can be empty to allow the system to generate one.
         """
-        _PreventionStoredInfoTypeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            dictionary=dictionary,
-            display_name=display_name,
-            large_custom_dictionary=large_custom_dictionary,
-            name=name,
-            parent=parent,
-            regex=regex,
-            stored_info_type_id=stored_info_type_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
-             stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
-            large_custom_dictionary = kwargs['largeCustomDictionary']
-        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
-            stored_info_type_id = kwargs['storedInfoTypeId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dictionary is not None:
-            _setter("dictionary", dictionary)
+            pulumi.set(__self__, "dictionary", dictionary)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if large_custom_dictionary is not None:
-            _setter("large_custom_dictionary", large_custom_dictionary)
+            pulumi.set(__self__, "large_custom_dictionary", large_custom_dictionary)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if regex is not None:
-            _setter("regex", regex)
+            pulumi.set(__self__, "regex", regex)
         if stored_info_type_id is not None:
-            _setter("stored_info_type_id", stored_info_type_id)
+            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
     @pulumi.getter
@@ -625,10 +563,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PreventionStoredInfoTypeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -651,15 +585,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             __props__ = PreventionStoredInfoTypeArgs.__new__(PreventionStoredInfoTypeArgs)
 
             __props__.__dict__["description"] = description
-            dictionary = _utilities.configure(dictionary, PreventionStoredInfoTypeDictionaryArgs, True)
             __props__.__dict__["dictionary"] = dictionary
             __props__.__dict__["display_name"] = display_name
-            large_custom_dictionary = _utilities.configure(large_custom_dictionary, PreventionStoredInfoTypeLargeCustomDictionaryArgs, True)
             __props__.__dict__["large_custom_dictionary"] = large_custom_dictionary
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
-            regex = _utilities.configure(regex, PreventionStoredInfoTypeRegexArgs, True)
             __props__.__dict__["regex"] = regex
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id
             __props__.__dict__["name"] = None

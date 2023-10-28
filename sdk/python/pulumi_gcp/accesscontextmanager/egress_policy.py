@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EgressPolicyArgs', 'EgressPolicy']
@@ -24,27 +24,8 @@ class EgressPolicyArgs:
                - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
-        EgressPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_policy_name=egress_policy_name,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_policy_name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_policy_name is None and 'egressPolicyName' in kwargs:
-            egress_policy_name = kwargs['egressPolicyName']
-        if egress_policy_name is None:
-            raise TypeError("Missing 'egress_policy_name' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-
-        _setter("egress_policy_name", egress_policy_name)
-        _setter("resource", resource)
+        pulumi.set(__self__, "egress_policy_name", egress_policy_name)
+        pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="egressPolicyName")
@@ -87,25 +68,10 @@ class _EgressPolicyState:
                - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
-        _EgressPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egress_policy_name=egress_policy_name,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egress_policy_name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if egress_policy_name is None and 'egressPolicyName' in kwargs:
-            egress_policy_name = kwargs['egressPolicyName']
-
         if egress_policy_name is not None:
-            _setter("egress_policy_name", egress_policy_name)
+            pulumi.set(__self__, "egress_policy_name", egress_policy_name)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="egressPolicyName")
@@ -197,10 +163,6 @@ class EgressPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EgressPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

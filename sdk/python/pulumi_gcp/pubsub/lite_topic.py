@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,49 +40,20 @@ class LiteTopicArgs:
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
-        LiteTopicArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            partition_config=partition_config,
-            project=project,
-            region=region,
-            reservation_config=reservation_config,
-            retention_config=retention_config,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
-             retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if partition_config is None and 'partitionConfig' in kwargs:
-            partition_config = kwargs['partitionConfig']
-        if reservation_config is None and 'reservationConfig' in kwargs:
-            reservation_config = kwargs['reservationConfig']
-        if retention_config is None and 'retentionConfig' in kwargs:
-            retention_config = kwargs['retentionConfig']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if partition_config is not None:
-            _setter("partition_config", partition_config)
+            pulumi.set(__self__, "partition_config", partition_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if reservation_config is not None:
-            _setter("reservation_config", reservation_config)
+            pulumi.set(__self__, "reservation_config", reservation_config)
         if retention_config is not None:
-            _setter("retention_config", retention_config)
+            pulumi.set(__self__, "retention_config", retention_config)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -203,49 +174,20 @@ class _LiteTopicState:
                Structure is documented below.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
-        _LiteTopicState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            partition_config=partition_config,
-            project=project,
-            region=region,
-            reservation_config=reservation_config,
-            retention_config=retention_config,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             partition_config: Optional[pulumi.Input['LiteTopicPartitionConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             reservation_config: Optional[pulumi.Input['LiteTopicReservationConfigArgs']] = None,
-             retention_config: Optional[pulumi.Input['LiteTopicRetentionConfigArgs']] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if partition_config is None and 'partitionConfig' in kwargs:
-            partition_config = kwargs['partitionConfig']
-        if reservation_config is None and 'reservationConfig' in kwargs:
-            reservation_config = kwargs['reservationConfig']
-        if retention_config is None and 'retentionConfig' in kwargs:
-            retention_config = kwargs['retentionConfig']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if partition_config is not None:
-            _setter("partition_config", partition_config)
+            pulumi.set(__self__, "partition_config", partition_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if reservation_config is not None:
-            _setter("reservation_config", reservation_config)
+            pulumi.set(__self__, "reservation_config", reservation_config)
         if retention_config is not None:
-            _setter("retention_config", retention_config)
+            pulumi.set(__self__, "retention_config", retention_config)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -499,10 +441,6 @@ class LiteTopic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LiteTopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -525,13 +463,10 @@ class LiteTopic(pulumi.CustomResource):
             __props__ = LiteTopicArgs.__new__(LiteTopicArgs)
 
             __props__.__dict__["name"] = name
-            partition_config = _utilities.configure(partition_config, LiteTopicPartitionConfigArgs, True)
             __props__.__dict__["partition_config"] = partition_config
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            reservation_config = _utilities.configure(reservation_config, LiteTopicReservationConfigArgs, True)
             __props__.__dict__["reservation_config"] = reservation_config
-            retention_config = _utilities.configure(retention_config, LiteTopicRetentionConfigArgs, True)
             __props__.__dict__["retention_config"] = retention_config
             __props__.__dict__["zone"] = zone
         super(LiteTopic, __self__).__init__(

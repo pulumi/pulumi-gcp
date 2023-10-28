@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,29 +21,10 @@ class RepositoryIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        RepositoryIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -79,29 +60,10 @@ class RepositoryIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        RepositoryIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -148,33 +110,10 @@ class RepositoryPubsubConfigArgs:
                the caller needs to have iam.serviceAccounts.actAs permission on this service account.
                If unspecified, it defaults to the compute engine default service account.
         """
-        RepositoryPubsubConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            message_format=message_format,
-            topic=topic,
-            service_account_email=service_account_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             message_format: Optional[pulumi.Input[str]] = None,
-             topic: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if message_format is None and 'messageFormat' in kwargs:
-            message_format = kwargs['messageFormat']
-        if message_format is None:
-            raise TypeError("Missing 'message_format' argument")
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-
-        _setter("message_format", message_format)
-        _setter("topic", topic)
+        pulumi.set(__self__, "message_format", message_format)
+        pulumi.set(__self__, "topic", topic)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
 
     @property
     @pulumi.getter(name="messageFormat")

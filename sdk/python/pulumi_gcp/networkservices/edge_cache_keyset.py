@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,43 +47,18 @@ class EdgeCacheKeysetArgs:
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                Structure is documented below.
         """
-        EdgeCacheKeysetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            labels=labels,
-            name=name,
-            project=project,
-            public_keys=public_keys,
-            validation_shared_keys=validation_shared_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-             validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_keys is None and 'publicKeys' in kwargs:
-            public_keys = kwargs['publicKeys']
-        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
-            validation_shared_keys = kwargs['validationSharedKeys']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if public_keys is not None:
-            _setter("public_keys", public_keys)
+            pulumi.set(__self__, "public_keys", public_keys)
         if validation_shared_keys is not None:
-            _setter("validation_shared_keys", validation_shared_keys)
+            pulumi.set(__self__, "validation_shared_keys", validation_shared_keys)
 
     @property
     @pulumi.getter
@@ -208,43 +183,18 @@ class _EdgeCacheKeysetState:
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                Structure is documented below.
         """
-        _EdgeCacheKeysetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            labels=labels,
-            name=name,
-            project=project,
-            public_keys=public_keys,
-            validation_shared_keys=validation_shared_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-             validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_keys is None and 'publicKeys' in kwargs:
-            public_keys = kwargs['publicKeys']
-        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
-            validation_shared_keys = kwargs['validationSharedKeys']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if public_keys is not None:
-            _setter("public_keys", public_keys)
+            pulumi.set(__self__, "public_keys", public_keys)
         if validation_shared_keys is not None:
-            _setter("validation_shared_keys", validation_shared_keys)
+            pulumi.set(__self__, "validation_shared_keys", validation_shared_keys)
 
     @property
     @pulumi.getter
@@ -536,10 +486,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EdgeCacheKeysetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,44 +48,15 @@ class InstanceIAMBindingArgs:
                the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
                zone is specified, it is taken from the provider configuration.
         """
-        InstanceIAMBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_name=instance_name,
-            members=members,
-            role=role,
-            condition=condition,
-            project=project,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_name: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("instance_name", instance_name)
-        _setter("members", members)
-        _setter("role", role)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -212,45 +183,20 @@ class _InstanceIAMBindingState:
                the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
                zone is specified, it is taken from the provider configuration.
         """
-        _InstanceIAMBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            instance_name=instance_name,
-            members=members,
-            project=project,
-            role=role,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -694,10 +640,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceIAMBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -718,7 +660,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceIAMBindingArgs.__new__(InstanceIAMBindingArgs)
 
-            condition = _utilities.configure(condition, InstanceIAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
