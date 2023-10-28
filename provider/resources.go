@@ -1212,7 +1212,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_route":                                      {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                                     {Tok: gcpResource(gcpCompute, "Router")},
 			"google_compute_router_interface":                           {Tok: gcpResource(gcpCompute, "RouterInterface")},
-			"google_compute_router_nat":                                 {Tok: gcpResource(gcpCompute, "RouterNat")},
+			"google_compute_router_nat": {
+				Tok: gcpResource(gcpCompute, "RouterNat"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": lowercaseAutoName(),
+				},
+			},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
 				Docs: &tfbridge.DocInfo{
