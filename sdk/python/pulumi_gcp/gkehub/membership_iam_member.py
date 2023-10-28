@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,40 +41,13 @@ class MembershipIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        MembershipIamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            member=member,
-            membership_id=membership_id,
-            role=role,
-            condition=condition,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             member: Optional[pulumi.Input[str]] = None,
-             membership_id: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['MembershipIamMemberConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if membership_id is None and 'membershipId' in kwargs:
-            membership_id = kwargs['membershipId']
-        if membership_id is None:
-            raise TypeError("Missing 'membership_id' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("member", member)
-        _setter("membership_id", membership_id)
-        _setter("role", role)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "membership_id", membership_id)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -173,41 +146,18 @@ class _MembershipIamMemberState:
                `gkehub.MembershipIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _MembershipIamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            member=member,
-            membership_id=membership_id,
-            project=project,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['MembershipIamMemberConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             membership_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if membership_id is None and 'membershipId' in kwargs:
-            membership_id = kwargs['membershipId']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if membership_id is not None:
-            _setter("membership_id", membership_id)
+            pulumi.set(__self__, "membership_id", membership_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -497,10 +447,6 @@ class MembershipIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MembershipIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -520,7 +466,6 @@ class MembershipIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MembershipIamMemberArgs.__new__(MembershipIamMemberArgs)
 
-            condition = _utilities.configure(condition, MembershipIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

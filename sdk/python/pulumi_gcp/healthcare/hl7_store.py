@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,49 +51,20 @@ class Hl7StoreArgs:
         :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
                Structure is documented below.
         """
-        Hl7StoreArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset=dataset,
-            labels=labels,
-            name=name,
-            notification_config=notification_config,
-            notification_configs=notification_configs,
-            parser_config=parser_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-             parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset is None:
-            raise TypeError("Missing 'dataset' argument")
-        if notification_config is None and 'notificationConfig' in kwargs:
-            notification_config = kwargs['notificationConfig']
-        if notification_configs is None and 'notificationConfigs' in kwargs:
-            notification_configs = kwargs['notificationConfigs']
-        if parser_config is None and 'parserConfig' in kwargs:
-            parser_config = kwargs['parserConfig']
-
-        _setter("dataset", dataset)
+        pulumi.set(__self__, "dataset", dataset)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_config is not None:
             warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
             pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
-            _setter("notification_config", notification_config)
+            pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
-            _setter("notification_configs", notification_configs)
+            pulumi.set(__self__, "notification_configs", notification_configs)
         if parser_config is not None:
-            _setter("parser_config", parser_config)
+            pulumi.set(__self__, "parser_config", parser_config)
 
     @property
     @pulumi.getter
@@ -231,54 +202,23 @@ class _Hl7StoreState:
                Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         """
-        _Hl7StoreState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset=dataset,
-            labels=labels,
-            name=name,
-            notification_config=notification_config,
-            notification_configs=notification_configs,
-            parser_config=parser_config,
-            self_link=self_link,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-             parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if notification_config is None and 'notificationConfig' in kwargs:
-            notification_config = kwargs['notificationConfig']
-        if notification_configs is None and 'notificationConfigs' in kwargs:
-            notification_configs = kwargs['notificationConfigs']
-        if parser_config is None and 'parserConfig' in kwargs:
-            parser_config = kwargs['parserConfig']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if dataset is not None:
-            _setter("dataset", dataset)
+            pulumi.set(__self__, "dataset", dataset)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_config is not None:
             warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
             pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
-            _setter("notification_config", notification_config)
+            pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
-            _setter("notification_configs", notification_configs)
+            pulumi.set(__self__, "notification_configs", notification_configs)
         if parser_config is not None:
-            _setter("parser_config", parser_config)
+            pulumi.set(__self__, "parser_config", parser_config)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -751,10 +691,6 @@ class Hl7Store(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            Hl7StoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -780,10 +716,8 @@ class Hl7Store(pulumi.CustomResource):
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            notification_config = _utilities.configure(notification_config, Hl7StoreNotificationConfigArgs, True)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
-            parser_config = _utilities.configure(parser_config, Hl7StoreParserConfigArgs, True)
             __props__.__dict__["parser_config"] = parser_config
             __props__.__dict__["self_link"] = None
         super(Hl7Store, __self__).__init__(

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TagKeyIamPolicyArgs', 'TagKeyIamPolicy']
@@ -34,29 +34,8 @@ class TagKeyIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        TagKeyIamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_data=policy_data,
-            tag_key=tag_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_data: Optional[pulumi.Input[str]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-
-        _setter("policy_data", policy_data)
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "policy_data", policy_data)
+        pulumi.set(__self__, "tag_key", tag_key)
 
     @property
     @pulumi.getter(name="policyData")
@@ -121,31 +100,12 @@ class _TagKeyIamPolicyState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        _TagKeyIamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            etag=etag,
-            policy_data=policy_data,
-            tag_key=tag_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             etag: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if tag_key is not None:
-            _setter("tag_key", tag_key)
+            pulumi.set(__self__, "tag_key", tag_key)
 
     @property
     @pulumi.getter
@@ -395,10 +355,6 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TagKeyIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

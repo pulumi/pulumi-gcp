@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -76,102 +76,33 @@ class AuthorityArgs:
                Default value is `SELF_SIGNED`.
                Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
-        AuthorityArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority_id=certificate_authority_id,
-            config=config,
-            key_spec=key_spec,
-            location=location,
-            pool=pool,
-            deletion_protection=deletion_protection,
-            desired_state=desired_state,
-            gcs_bucket=gcs_bucket,
-            ignore_active_certificates_on_deletion=ignore_active_certificates_on_deletion,
-            labels=labels,
-            lifetime=lifetime,
-            pem_ca_certificate=pem_ca_certificate,
-            project=project,
-            skip_grace_period=skip_grace_period,
-            subordinate_config=subordinate_config,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
-             key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             pool: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             desired_state: Optional[pulumi.Input[str]] = None,
-             gcs_bucket: Optional[pulumi.Input[str]] = None,
-             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             lifetime: Optional[pulumi.Input[str]] = None,
-             pem_ca_certificate: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             skip_grace_period: Optional[pulumi.Input[bool]] = None,
-             subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority_id is None and 'certificateAuthorityId' in kwargs:
-            certificate_authority_id = kwargs['certificateAuthorityId']
-        if certificate_authority_id is None:
-            raise TypeError("Missing 'certificate_authority_id' argument")
-        if config is None:
-            raise TypeError("Missing 'config' argument")
-        if key_spec is None and 'keySpec' in kwargs:
-            key_spec = kwargs['keySpec']
-        if key_spec is None:
-            raise TypeError("Missing 'key_spec' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if pool is None:
-            raise TypeError("Missing 'pool' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if desired_state is None and 'desiredState' in kwargs:
-            desired_state = kwargs['desiredState']
-        if gcs_bucket is None and 'gcsBucket' in kwargs:
-            gcs_bucket = kwargs['gcsBucket']
-        if ignore_active_certificates_on_deletion is None and 'ignoreActiveCertificatesOnDeletion' in kwargs:
-            ignore_active_certificates_on_deletion = kwargs['ignoreActiveCertificatesOnDeletion']
-        if pem_ca_certificate is None and 'pemCaCertificate' in kwargs:
-            pem_ca_certificate = kwargs['pemCaCertificate']
-        if skip_grace_period is None and 'skipGracePeriod' in kwargs:
-            skip_grace_period = kwargs['skipGracePeriod']
-        if subordinate_config is None and 'subordinateConfig' in kwargs:
-            subordinate_config = kwargs['subordinateConfig']
-
-        _setter("certificate_authority_id", certificate_authority_id)
-        _setter("config", config)
-        _setter("key_spec", key_spec)
-        _setter("location", location)
-        _setter("pool", pool)
+        pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "key_spec", key_spec)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "pool", pool)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if desired_state is not None:
-            _setter("desired_state", desired_state)
+            pulumi.set(__self__, "desired_state", desired_state)
         if gcs_bucket is not None:
-            _setter("gcs_bucket", gcs_bucket)
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
-            _setter("ignore_active_certificates_on_deletion", ignore_active_certificates_on_deletion)
+            pulumi.set(__self__, "ignore_active_certificates_on_deletion", ignore_active_certificates_on_deletion)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if lifetime is not None:
-            _setter("lifetime", lifetime)
+            pulumi.set(__self__, "lifetime", lifetime)
         if pem_ca_certificate is not None:
-            _setter("pem_ca_certificate", pem_ca_certificate)
+            pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if skip_grace_period is not None:
-            _setter("skip_grace_period", skip_grace_period)
+            pulumi.set(__self__, "skip_grace_period", skip_grace_period)
         if subordinate_config is not None:
-            _setter("subordinate_config", subordinate_config)
+            pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="certificateAuthorityId")
@@ -475,129 +406,50 @@ class _AuthorityState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        _AuthorityState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_urls=access_urls,
-            certificate_authority_id=certificate_authority_id,
-            config=config,
-            create_time=create_time,
-            deletion_protection=deletion_protection,
-            desired_state=desired_state,
-            gcs_bucket=gcs_bucket,
-            ignore_active_certificates_on_deletion=ignore_active_certificates_on_deletion,
-            key_spec=key_spec,
-            labels=labels,
-            lifetime=lifetime,
-            location=location,
-            name=name,
-            pem_ca_certificate=pem_ca_certificate,
-            pem_ca_certificates=pem_ca_certificates,
-            pool=pool,
-            project=project,
-            skip_grace_period=skip_grace_period,
-            state=state,
-            subordinate_config=subordinate_config,
-            type=type,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_urls: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]] = None,
-             certificate_authority_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             desired_state: Optional[pulumi.Input[str]] = None,
-             gcs_bucket: Optional[pulumi.Input[str]] = None,
-             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
-             key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             lifetime: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pem_ca_certificate: Optional[pulumi.Input[str]] = None,
-             pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             pool: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             skip_grace_period: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_urls is None and 'accessUrls' in kwargs:
-            access_urls = kwargs['accessUrls']
-        if certificate_authority_id is None and 'certificateAuthorityId' in kwargs:
-            certificate_authority_id = kwargs['certificateAuthorityId']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if desired_state is None and 'desiredState' in kwargs:
-            desired_state = kwargs['desiredState']
-        if gcs_bucket is None and 'gcsBucket' in kwargs:
-            gcs_bucket = kwargs['gcsBucket']
-        if ignore_active_certificates_on_deletion is None and 'ignoreActiveCertificatesOnDeletion' in kwargs:
-            ignore_active_certificates_on_deletion = kwargs['ignoreActiveCertificatesOnDeletion']
-        if key_spec is None and 'keySpec' in kwargs:
-            key_spec = kwargs['keySpec']
-        if pem_ca_certificate is None and 'pemCaCertificate' in kwargs:
-            pem_ca_certificate = kwargs['pemCaCertificate']
-        if pem_ca_certificates is None and 'pemCaCertificates' in kwargs:
-            pem_ca_certificates = kwargs['pemCaCertificates']
-        if skip_grace_period is None and 'skipGracePeriod' in kwargs:
-            skip_grace_period = kwargs['skipGracePeriod']
-        if subordinate_config is None and 'subordinateConfig' in kwargs:
-            subordinate_config = kwargs['subordinateConfig']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if access_urls is not None:
-            _setter("access_urls", access_urls)
+            pulumi.set(__self__, "access_urls", access_urls)
         if certificate_authority_id is not None:
-            _setter("certificate_authority_id", certificate_authority_id)
+            pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if desired_state is not None:
-            _setter("desired_state", desired_state)
+            pulumi.set(__self__, "desired_state", desired_state)
         if gcs_bucket is not None:
-            _setter("gcs_bucket", gcs_bucket)
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
-            _setter("ignore_active_certificates_on_deletion", ignore_active_certificates_on_deletion)
+            pulumi.set(__self__, "ignore_active_certificates_on_deletion", ignore_active_certificates_on_deletion)
         if key_spec is not None:
-            _setter("key_spec", key_spec)
+            pulumi.set(__self__, "key_spec", key_spec)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if lifetime is not None:
-            _setter("lifetime", lifetime)
+            pulumi.set(__self__, "lifetime", lifetime)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pem_ca_certificate is not None:
-            _setter("pem_ca_certificate", pem_ca_certificate)
+            pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if pem_ca_certificates is not None:
-            _setter("pem_ca_certificates", pem_ca_certificates)
+            pulumi.set(__self__, "pem_ca_certificates", pem_ca_certificates)
         if pool is not None:
-            _setter("pool", pool)
+            pulumi.set(__self__, "pool", pool)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if skip_grace_period is not None:
-            _setter("skip_grace_period", skip_grace_period)
+            pulumi.set(__self__, "skip_grace_period", skip_grace_period)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if subordinate_config is not None:
-            _setter("subordinate_config", subordinate_config)
+            pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="accessUrls")
@@ -1454,10 +1306,6 @@ class Authority(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AuthorityArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1491,7 +1339,6 @@ class Authority(pulumi.CustomResource):
             if certificate_authority_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority_id'")
             __props__.__dict__["certificate_authority_id"] = certificate_authority_id
-            config = _utilities.configure(config, AuthorityConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -1499,7 +1346,6 @@ class Authority(pulumi.CustomResource):
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["gcs_bucket"] = gcs_bucket
             __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
-            key_spec = _utilities.configure(key_spec, AuthorityKeySpecArgs, True)
             if key_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'key_spec'")
             __props__.__dict__["key_spec"] = key_spec
@@ -1514,7 +1360,6 @@ class Authority(pulumi.CustomResource):
             __props__.__dict__["pool"] = pool
             __props__.__dict__["project"] = project
             __props__.__dict__["skip_grace_period"] = skip_grace_period
-            subordinate_config = _utilities.configure(subordinate_config, AuthoritySubordinateConfigArgs, True)
             __props__.__dict__["subordinate_config"] = subordinate_config
             __props__.__dict__["type"] = type
             __props__.__dict__["access_urls"] = None

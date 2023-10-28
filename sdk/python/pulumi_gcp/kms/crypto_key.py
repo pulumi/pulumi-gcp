@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,64 +50,23 @@ class CryptoKeyArgs:
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
-        CryptoKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_ring=key_ring,
-            destroy_scheduled_duration=destroy_scheduled_duration,
-            import_only=import_only,
-            labels=labels,
-            name=name,
-            purpose=purpose,
-            rotation_period=rotation_period,
-            skip_initial_version_creation=skip_initial_version_creation,
-            version_template=version_template,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_ring: Optional[pulumi.Input[str]] = None,
-             destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
-             import_only: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             purpose: Optional[pulumi.Input[str]] = None,
-             rotation_period: Optional[pulumi.Input[str]] = None,
-             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-             version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_ring is None and 'keyRing' in kwargs:
-            key_ring = kwargs['keyRing']
-        if key_ring is None:
-            raise TypeError("Missing 'key_ring' argument")
-        if destroy_scheduled_duration is None and 'destroyScheduledDuration' in kwargs:
-            destroy_scheduled_duration = kwargs['destroyScheduledDuration']
-        if import_only is None and 'importOnly' in kwargs:
-            import_only = kwargs['importOnly']
-        if rotation_period is None and 'rotationPeriod' in kwargs:
-            rotation_period = kwargs['rotationPeriod']
-        if skip_initial_version_creation is None and 'skipInitialVersionCreation' in kwargs:
-            skip_initial_version_creation = kwargs['skipInitialVersionCreation']
-        if version_template is None and 'versionTemplate' in kwargs:
-            version_template = kwargs['versionTemplate']
-
-        _setter("key_ring", key_ring)
+        pulumi.set(__self__, "key_ring", key_ring)
         if destroy_scheduled_duration is not None:
-            _setter("destroy_scheduled_duration", destroy_scheduled_duration)
+            pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
-            _setter("import_only", import_only)
+            pulumi.set(__self__, "import_only", import_only)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if purpose is not None:
-            _setter("purpose", purpose)
+            pulumi.set(__self__, "purpose", purpose)
         if rotation_period is not None:
-            _setter("rotation_period", rotation_period)
+            pulumi.set(__self__, "rotation_period", rotation_period)
         if skip_initial_version_creation is not None:
-            _setter("skip_initial_version_creation", skip_initial_version_creation)
+            pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
-            _setter("version_template", version_template)
+            pulumi.set(__self__, "version_template", version_template)
 
     @property
     @pulumi.getter(name="keyRing")
@@ -268,63 +227,24 @@ class _CryptoKeyState:
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
-        _CryptoKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destroy_scheduled_duration=destroy_scheduled_duration,
-            import_only=import_only,
-            key_ring=key_ring,
-            labels=labels,
-            name=name,
-            purpose=purpose,
-            rotation_period=rotation_period,
-            skip_initial_version_creation=skip_initial_version_creation,
-            version_template=version_template,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
-             import_only: Optional[pulumi.Input[bool]] = None,
-             key_ring: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             purpose: Optional[pulumi.Input[str]] = None,
-             rotation_period: Optional[pulumi.Input[str]] = None,
-             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-             version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destroy_scheduled_duration is None and 'destroyScheduledDuration' in kwargs:
-            destroy_scheduled_duration = kwargs['destroyScheduledDuration']
-        if import_only is None and 'importOnly' in kwargs:
-            import_only = kwargs['importOnly']
-        if key_ring is None and 'keyRing' in kwargs:
-            key_ring = kwargs['keyRing']
-        if rotation_period is None and 'rotationPeriod' in kwargs:
-            rotation_period = kwargs['rotationPeriod']
-        if skip_initial_version_creation is None and 'skipInitialVersionCreation' in kwargs:
-            skip_initial_version_creation = kwargs['skipInitialVersionCreation']
-        if version_template is None and 'versionTemplate' in kwargs:
-            version_template = kwargs['versionTemplate']
-
         if destroy_scheduled_duration is not None:
-            _setter("destroy_scheduled_duration", destroy_scheduled_duration)
+            pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
-            _setter("import_only", import_only)
+            pulumi.set(__self__, "import_only", import_only)
         if key_ring is not None:
-            _setter("key_ring", key_ring)
+            pulumi.set(__self__, "key_ring", key_ring)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if purpose is not None:
-            _setter("purpose", purpose)
+            pulumi.set(__self__, "purpose", purpose)
         if rotation_period is not None:
-            _setter("rotation_period", rotation_period)
+            pulumi.set(__self__, "rotation_period", rotation_period)
         if skip_initial_version_creation is not None:
-            _setter("skip_initial_version_creation", skip_initial_version_creation)
+            pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
-            _setter("version_template", version_template)
+            pulumi.set(__self__, "version_template", version_template)
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -616,10 +536,6 @@ class CryptoKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CryptoKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -653,7 +569,6 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["rotation_period"] = rotation_period
             __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
-            version_template = _utilities.configure(version_template, CryptoKeyVersionTemplateArgs, True)
             __props__.__dict__["version_template"] = version_template
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',

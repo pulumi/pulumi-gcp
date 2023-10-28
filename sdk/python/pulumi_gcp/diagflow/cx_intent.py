@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,60 +50,23 @@ class CxIntentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
-        CxIntentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            description=description,
-            is_fallback=is_fallback,
-            labels=labels,
-            language_code=language_code,
-            parameters=parameters,
-            parent=parent,
-            priority=priority,
-            training_phrases=training_phrases,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             is_fallback: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             language_code: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if is_fallback is None and 'isFallback' in kwargs:
-            is_fallback = kwargs['isFallback']
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if training_phrases is None and 'trainingPhrases' in kwargs:
-            training_phrases = kwargs['trainingPhrases']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if is_fallback is not None:
-            _setter("is_fallback", is_fallback)
+            pulumi.set(__self__, "is_fallback", is_fallback)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if language_code is not None:
-            _setter("language_code", language_code)
+            pulumi.set(__self__, "language_code", language_code)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if training_phrases is not None:
-            _setter("training_phrases", training_phrases)
+            pulumi.set(__self__, "training_phrases", training_phrases)
 
     @property
     @pulumi.getter(name="displayName")
@@ -267,63 +230,26 @@ class _CxIntentState:
         :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
-        _CxIntentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            is_fallback=is_fallback,
-            labels=labels,
-            language_code=language_code,
-            name=name,
-            parameters=parameters,
-            parent=parent,
-            priority=priority,
-            training_phrases=training_phrases,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             is_fallback: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             language_code: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if is_fallback is None and 'isFallback' in kwargs:
-            is_fallback = kwargs['isFallback']
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if training_phrases is None and 'trainingPhrases' in kwargs:
-            training_phrases = kwargs['trainingPhrases']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if is_fallback is not None:
-            _setter("is_fallback", is_fallback)
+            pulumi.set(__self__, "is_fallback", is_fallback)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if language_code is not None:
-            _setter("language_code", language_code)
+            pulumi.set(__self__, "language_code", language_code)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if training_phrases is not None:
-            _setter("training_phrases", training_phrases)
+            pulumi.set(__self__, "training_phrases", training_phrases)
 
     @property
     @pulumi.getter
@@ -664,10 +590,6 @@ class CxIntent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxIntentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

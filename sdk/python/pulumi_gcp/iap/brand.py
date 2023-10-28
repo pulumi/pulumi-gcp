@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BrandArgs', 'Brand']
@@ -31,33 +31,10 @@ class BrandArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        BrandArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_title=application_title,
-            support_email=support_email,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_title: Optional[pulumi.Input[str]] = None,
-             support_email: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_title is None and 'applicationTitle' in kwargs:
-            application_title = kwargs['applicationTitle']
-        if application_title is None:
-            raise TypeError("Missing 'application_title' argument")
-        if support_email is None and 'supportEmail' in kwargs:
-            support_email = kwargs['supportEmail']
-        if support_email is None:
-            raise TypeError("Missing 'support_email' argument")
-
-        _setter("application_title", application_title)
-        _setter("support_email", support_email)
+        pulumi.set(__self__, "application_title", application_title)
+        pulumi.set(__self__, "support_email", support_email)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="applicationTitle")
@@ -131,41 +108,16 @@ class _BrandState:
                specified, the caller can be either a user or a service account which
                is an owner of the specified group in Cloud Identity.
         """
-        _BrandState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_title=application_title,
-            name=name,
-            org_internal_only=org_internal_only,
-            project=project,
-            support_email=support_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_title: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             org_internal_only: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             support_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_title is None and 'applicationTitle' in kwargs:
-            application_title = kwargs['applicationTitle']
-        if org_internal_only is None and 'orgInternalOnly' in kwargs:
-            org_internal_only = kwargs['orgInternalOnly']
-        if support_email is None and 'supportEmail' in kwargs:
-            support_email = kwargs['supportEmail']
-
         if application_title is not None:
-            _setter("application_title", application_title)
+            pulumi.set(__self__, "application_title", application_title)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if org_internal_only is not None:
-            _setter("org_internal_only", org_internal_only)
+            pulumi.set(__self__, "org_internal_only", org_internal_only)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if support_email is not None:
-            _setter("support_email", support_email)
+            pulumi.set(__self__, "support_email", support_email)
 
     @property
     @pulumi.getter(name="applicationTitle")
@@ -350,10 +302,6 @@ class Brand(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BrandArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

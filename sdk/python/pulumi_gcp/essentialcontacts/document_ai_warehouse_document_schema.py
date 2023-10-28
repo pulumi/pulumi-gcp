@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,47 +30,12 @@ class DocumentAiWarehouseDocumentSchemaArgs:
                Structure is documented below.
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         """
-        DocumentAiWarehouseDocumentSchemaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            location=location,
-            project_number=project_number,
-            property_definitions=property_definitions,
-            document_is_folder=document_is_folder,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project_number: Optional[pulumi.Input[str]] = None,
-             property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None,
-             document_is_folder: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if project_number is None and 'projectNumber' in kwargs:
-            project_number = kwargs['projectNumber']
-        if project_number is None:
-            raise TypeError("Missing 'project_number' argument")
-        if property_definitions is None and 'propertyDefinitions' in kwargs:
-            property_definitions = kwargs['propertyDefinitions']
-        if property_definitions is None:
-            raise TypeError("Missing 'property_definitions' argument")
-        if document_is_folder is None and 'documentIsFolder' in kwargs:
-            document_is_folder = kwargs['documentIsFolder']
-
-        _setter("display_name", display_name)
-        _setter("location", location)
-        _setter("project_number", project_number)
-        _setter("property_definitions", property_definitions)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project_number", project_number)
+        pulumi.set(__self__, "property_definitions", property_definitions)
         if document_is_folder is not None:
-            _setter("document_is_folder", document_is_folder)
+            pulumi.set(__self__, "document_is_folder", document_is_folder)
 
     @property
     @pulumi.getter(name="displayName")
@@ -153,47 +118,18 @@ class _DocumentAiWarehouseDocumentSchemaState:
         :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
-        _DocumentAiWarehouseDocumentSchemaState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            document_is_folder=document_is_folder,
-            location=location,
-            name=name,
-            project_number=project_number,
-            property_definitions=property_definitions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             document_is_folder: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_number: Optional[pulumi.Input[str]] = None,
-             property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if document_is_folder is None and 'documentIsFolder' in kwargs:
-            document_is_folder = kwargs['documentIsFolder']
-        if project_number is None and 'projectNumber' in kwargs:
-            project_number = kwargs['projectNumber']
-        if property_definitions is None and 'propertyDefinitions' in kwargs:
-            property_definitions = kwargs['propertyDefinitions']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if document_is_folder is not None:
-            _setter("document_is_folder", document_is_folder)
+            pulumi.set(__self__, "document_is_folder", document_is_folder)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_number is not None:
-            _setter("project_number", project_number)
+            pulumi.set(__self__, "project_number", project_number)
         if property_definitions is not None:
-            _setter("property_definitions", property_definitions)
+            pulumi.set(__self__, "property_definitions", property_definitions)
 
     @property
     @pulumi.getter(name="displayName")
@@ -935,10 +871,6 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DocumentAiWarehouseDocumentSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

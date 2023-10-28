@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WebRegionBackendServiceIamPolicyArgs', 'WebRegionBackendServiceIamPolicy']
@@ -38,37 +38,12 @@ class WebRegionBackendServiceIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        WebRegionBackendServiceIamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_data=policy_data,
-            web_region_backend_service=web_region_backend_service,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_data: Optional[pulumi.Input[str]] = None,
-             web_region_backend_service: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
-            web_region_backend_service = kwargs['webRegionBackendService']
-        if web_region_backend_service is None:
-            raise TypeError("Missing 'web_region_backend_service' argument")
-
-        _setter("policy_data", policy_data)
-        _setter("web_region_backend_service", web_region_backend_service)
+        pulumi.set(__self__, "policy_data", policy_data)
+        pulumi.set(__self__, "web_region_backend_service", web_region_backend_service)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="policyData")
@@ -159,39 +134,16 @@ class _WebRegionBackendServiceIamPolicyState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         """
-        _WebRegionBackendServiceIamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            etag=etag,
-            policy_data=policy_data,
-            project=project,
-            region=region,
-            web_region_backend_service=web_region_backend_service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             etag: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             web_region_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
-            web_region_backend_service = kwargs['webRegionBackendService']
-
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if web_region_backend_service is not None:
-            _setter("web_region_backend_service", web_region_backend_service)
+            pulumi.set(__self__, "web_region_backend_service", web_region_backend_service)
 
     @property
     @pulumi.getter
@@ -599,10 +551,6 @@ class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WebRegionBackendServiceIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

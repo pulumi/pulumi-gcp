@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,59 +37,24 @@ class WorkflowTemplateArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
-        WorkflowTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            jobs=jobs,
-            location=location,
-            placement=placement,
-            dag_timeout=dag_timeout,
-            labels=labels,
-            name=name,
-            parameters=parameters,
-            project=project,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
-             dag_timeout: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if jobs is None:
-            raise TypeError("Missing 'jobs' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if placement is None:
-            raise TypeError("Missing 'placement' argument")
-        if dag_timeout is None and 'dagTimeout' in kwargs:
-            dag_timeout = kwargs['dagTimeout']
-
-        _setter("jobs", jobs)
-        _setter("location", location)
-        _setter("placement", placement)
+        pulumi.set(__self__, "jobs", jobs)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "placement", placement)
         if dag_timeout is not None:
-            _setter("dag_timeout", dag_timeout)
+            pulumi.set(__self__, "dag_timeout", dag_timeout)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if version is not None:
             warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
             pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -231,68 +196,31 @@ class _WorkflowTemplateState:
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
-        _WorkflowTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            dag_timeout=dag_timeout,
-            jobs=jobs,
-            labels=labels,
-            location=location,
-            name=name,
-            parameters=parameters,
-            placement=placement,
-            project=project,
-            update_time=update_time,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             dag_timeout: Optional[pulumi.Input[str]] = None,
-             jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
-             placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if dag_timeout is None and 'dagTimeout' in kwargs:
-            dag_timeout = kwargs['dagTimeout']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if dag_timeout is not None:
-            _setter("dag_timeout", dag_timeout)
+            pulumi.set(__self__, "dag_timeout", dag_timeout)
         if jobs is not None:
-            _setter("jobs", jobs)
+            pulumi.set(__self__, "jobs", jobs)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if placement is not None:
-            _setter("placement", placement)
+            pulumi.set(__self__, "placement", placement)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if version is not None:
             warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
             pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createTime")
@@ -633,10 +561,6 @@ class WorkflowTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkflowTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -670,7 +594,6 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
-            placement = _utilities.configure(placement, WorkflowTemplatePlacementArgs, True)
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement

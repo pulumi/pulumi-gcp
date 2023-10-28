@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,47 +33,16 @@ class TagTemplateArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Template location region.
         """
-        TagTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fields=fields,
-            tag_template_id=tag_template_id,
-            display_name=display_name,
-            force_delete=force_delete,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]] = None,
-             tag_template_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fields is None:
-            raise TypeError("Missing 'fields' argument")
-        if tag_template_id is None and 'tagTemplateId' in kwargs:
-            tag_template_id = kwargs['tagTemplateId']
-        if tag_template_id is None:
-            raise TypeError("Missing 'tag_template_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-
-        _setter("fields", fields)
-        _setter("tag_template_id", tag_template_id)
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "tag_template_id", tag_template_id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -173,49 +142,20 @@ class _TagTemplateState:
         :param pulumi.Input[str] region: Template location region.
         :param pulumi.Input[str] tag_template_id: The id of the tag template to create.
         """
-        _TagTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            fields=fields,
-            force_delete=force_delete,
-            name=name,
-            project=project,
-            region=region,
-            tag_template_id=tag_template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tag_template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if tag_template_id is None and 'tagTemplateId' in kwargs:
-            tag_template_id = kwargs['tagTemplateId']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tag_template_id is not None:
-            _setter("tag_template_id", tag_template_id)
+            pulumi.set(__self__, "tag_template_id", tag_template_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -480,10 +420,6 @@ class TagTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TagTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

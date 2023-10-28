@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BillingAccountExclusionArgs', 'BillingAccountExclusion']
@@ -30,39 +30,14 @@ class BillingAccountExclusionArgs:
                false.
         :param pulumi.Input[str] name: The name of the logging exclusion.
         """
-        BillingAccountExclusionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account=billing_account,
-            filter=filter,
-            description=description,
-            disabled=disabled,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account: Optional[pulumi.Input[str]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if billing_account is None:
-            raise TypeError("Missing 'billing_account' argument")
-        if filter is None:
-            raise TypeError("Missing 'filter' argument")
-
-        _setter("billing_account", billing_account)
-        _setter("filter", filter)
+        pulumi.set(__self__, "billing_account", billing_account)
+        pulumi.set(__self__, "filter", filter)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -147,37 +122,16 @@ class _BillingAccountExclusionState:
                write a filter.
         :param pulumi.Input[str] name: The name of the logging exclusion.
         """
-        _BillingAccountExclusionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account=billing_account,
-            description=description,
-            disabled=disabled,
-            filter=filter,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -323,10 +277,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BillingAccountExclusionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

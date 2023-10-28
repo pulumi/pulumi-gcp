@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubAccountArgs', 'SubAccount']
@@ -26,35 +26,10 @@ class SubAccountArgs:
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
                Default is "".
         """
-        SubAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            master_billing_account=master_billing_account,
-            deletion_policy=deletion_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             master_billing_account: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if master_billing_account is None and 'masterBillingAccount' in kwargs:
-            master_billing_account = kwargs['masterBillingAccount']
-        if master_billing_account is None:
-            raise TypeError("Missing 'master_billing_account' argument")
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-
-        _setter("display_name", display_name)
-        _setter("master_billing_account", master_billing_account)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "master_billing_account", master_billing_account)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @property
     @pulumi.getter(name="displayName")
@@ -117,47 +92,18 @@ class _SubAccountState:
         :param pulumi.Input[str] name: The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
         :param pulumi.Input[bool] open: `true` if the billing account is open, `false` if the billing account is closed.
         """
-        _SubAccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account_id=billing_account_id,
-            deletion_policy=deletion_policy,
-            display_name=display_name,
-            master_billing_account=master_billing_account,
-            name=name,
-            open=open,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account_id: Optional[pulumi.Input[str]] = None,
-             deletion_policy: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             master_billing_account: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             open: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account_id is None and 'billingAccountId' in kwargs:
-            billing_account_id = kwargs['billingAccountId']
-        if deletion_policy is None and 'deletionPolicy' in kwargs:
-            deletion_policy = kwargs['deletionPolicy']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if master_billing_account is None and 'masterBillingAccount' in kwargs:
-            master_billing_account = kwargs['masterBillingAccount']
-
         if billing_account_id is not None:
-            _setter("billing_account_id", billing_account_id)
+            pulumi.set(__self__, "billing_account_id", billing_account_id)
         if deletion_policy is not None:
-            _setter("deletion_policy", deletion_policy)
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if master_billing_account is not None:
-            _setter("master_billing_account", master_billing_account)
+            pulumi.set(__self__, "master_billing_account", master_billing_account)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if open is not None:
-            _setter("open", open)
+            pulumi.set(__self__, "open", open)
 
     @property
     @pulumi.getter(name="billingAccountId")
@@ -313,10 +259,6 @@ class SubAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

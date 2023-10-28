@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -26,29 +26,10 @@ class ConsumersIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConsumersIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -72,29 +53,10 @@ class ConsumersIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConsumersIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -125,31 +87,14 @@ class ServiceApi(dict):
         :param str syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         :param str version: A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
         """
-        ServiceApi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            methods=methods,
-            name=name,
-            syntax=syntax,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             methods: Optional[Sequence['outputs.ServiceApiMethod']] = None,
-             name: Optional[str] = None,
-             syntax: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if methods is not None:
-            _setter("methods", methods)
+            pulumi.set(__self__, "methods", methods)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if syntax is not None:
-            _setter("syntax", syntax)
+            pulumi.set(__self__, "syntax", syntax)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -216,35 +161,14 @@ class ServiceApiMethod(dict):
         :param str response_type: The type URL for the response from this API.
         :param str syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         """
-        ServiceApiMethod._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            request_type=request_type,
-            response_type=response_type,
-            syntax=syntax,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             request_type: Optional[str] = None,
-             response_type: Optional[str] = None,
-             syntax: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if request_type is None and 'requestType' in kwargs:
-            request_type = kwargs['requestType']
-        if response_type is None and 'responseType' in kwargs:
-            response_type = kwargs['responseType']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if request_type is not None:
-            _setter("request_type", request_type)
+            pulumi.set(__self__, "request_type", request_type)
         if response_type is not None:
-            _setter("response_type", response_type)
+            pulumi.set(__self__, "response_type", response_type)
         if syntax is not None:
-            _setter("syntax", syntax)
+            pulumi.set(__self__, "syntax", syntax)
 
     @property
     @pulumi.getter
@@ -288,23 +212,10 @@ class ServiceEndpoint(dict):
         :param str address: The FQDN of the endpoint as described in the config.
         :param str name: The simple name of the endpoint as described in the config.
         """
-        ServiceEndpoint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -329,29 +240,10 @@ class ServiceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ServiceIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -375,29 +267,10 @@ class ServiceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ServiceIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

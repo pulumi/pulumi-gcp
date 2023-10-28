@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,51 +35,14 @@ class KeystoresAliasesPkcs12Args:
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
         :param pulumi.Input[str] password: Password for the PKCS12 file if it's encrypted
         """
-        KeystoresAliasesPkcs12Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            environment=environment,
-            file=file,
-            filehash=filehash,
-            keystore=keystore,
-            org_id=org_id,
-            password=password,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             file: Optional[pulumi.Input[str]] = None,
-             filehash: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alias is None:
-            raise TypeError("Missing 'alias' argument")
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-        if file is None:
-            raise TypeError("Missing 'file' argument")
-        if filehash is None:
-            raise TypeError("Missing 'filehash' argument")
-        if keystore is None:
-            raise TypeError("Missing 'keystore' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-
-        _setter("alias", alias)
-        _setter("environment", environment)
-        _setter("file", file)
-        _setter("filehash", filehash)
-        _setter("keystore", keystore)
-        _setter("org_id", org_id)
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "file", file)
+        pulumi.set(__self__, "filehash", filehash)
+        pulumi.set(__self__, "keystore", keystore)
+        pulumi.set(__self__, "org_id", org_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
@@ -195,55 +158,24 @@ class _KeystoresAliasesPkcs12State:
         :param pulumi.Input[str] password: Password for the PKCS12 file if it's encrypted
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
-        _KeystoresAliasesPkcs12State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            certs_infos=certs_infos,
-            environment=environment,
-            file=file,
-            filehash=filehash,
-            keystore=keystore,
-            org_id=org_id,
-            password=password,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             file: Optional[pulumi.Input[str]] = None,
-             filehash: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certs_infos is None and 'certsInfos' in kwargs:
-            certs_infos = kwargs['certsInfos']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if certs_infos is not None:
-            _setter("certs_infos", certs_infos)
+            pulumi.set(__self__, "certs_infos", certs_infos)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if file is not None:
-            _setter("file", file)
+            pulumi.set(__self__, "file", file)
         if filehash is not None:
-            _setter("filehash", filehash)
+            pulumi.set(__self__, "filehash", filehash)
         if keystore is not None:
-            _setter("keystore", keystore)
+            pulumi.set(__self__, "keystore", keystore)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -440,10 +372,6 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeystoresAliasesPkcs12Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnvGroupAttachmentArgs', 'EnvGroupAttachment']
@@ -25,27 +25,8 @@ class EnvGroupAttachmentArgs:
                - - -
         :param pulumi.Input[str] environment: The resource ID of the environment.
         """
-        EnvGroupAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            envgroup_id=envgroup_id,
-            environment=environment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             envgroup_id: Optional[pulumi.Input[str]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if envgroup_id is None and 'envgroupId' in kwargs:
-            envgroup_id = kwargs['envgroupId']
-        if envgroup_id is None:
-            raise TypeError("Missing 'envgroup_id' argument")
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-
-        _setter("envgroup_id", envgroup_id)
-        _setter("environment", environment)
+        pulumi.set(__self__, "envgroup_id", envgroup_id)
+        pulumi.set(__self__, "environment", environment)
 
     @property
     @pulumi.getter(name="envgroupId")
@@ -92,29 +73,12 @@ class _EnvGroupAttachmentState:
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
-        _EnvGroupAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            envgroup_id=envgroup_id,
-            environment=environment,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             envgroup_id: Optional[pulumi.Input[str]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if envgroup_id is None and 'envgroupId' in kwargs:
-            envgroup_id = kwargs['envgroupId']
-
         if envgroup_id is not None:
-            _setter("envgroup_id", envgroup_id)
+            pulumi.set(__self__, "envgroup_id", envgroup_id)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="envgroupId")
@@ -338,10 +302,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EnvGroupAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

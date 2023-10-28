@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,43 +45,14 @@ class TableIamMemberArgs:
         :param pulumi.Input[str] project: The project in which the table belongs. If it
                is not provided, this provider will use the provider default.
         """
-        TableIamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance=instance,
-            member=member,
-            role=role,
-            table=table,
-            condition=condition,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['TableIamMemberConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance is None:
-            raise TypeError("Missing 'instance' argument")
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if table is None:
-            raise TypeError("Missing 'table' argument")
-
-        _setter("instance", instance)
-        _setter("member", member)
-        _setter("role", role)
-        _setter("table", table)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "table", table)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -200,43 +171,20 @@ class _TableIamMemberState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        _TableIamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            instance=instance,
-            member=member,
-            project=project,
-            role=role,
-            table=table,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['TableIamMemberConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             instance: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
 
     @property
     @pulumi.getter
@@ -532,10 +480,6 @@ class TableIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TableIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -556,7 +500,6 @@ class TableIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableIamMemberArgs.__new__(TableIamMemberArgs)
 
-            condition = _utilities.configure(condition, TableIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

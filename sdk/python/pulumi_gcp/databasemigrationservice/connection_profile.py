@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,56 +45,23 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ConnectionProfileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_profile_id=connection_profile_id,
-            alloydb=alloydb,
-            cloudsql=cloudsql,
-            display_name=display_name,
-            labels=labels,
-            location=location,
-            mysql=mysql,
-            postgresql=postgresql,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_profile_id: Optional[pulumi.Input[str]] = None,
-             alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-             cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
-             postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_profile_id is None and 'connectionProfileId' in kwargs:
-            connection_profile_id = kwargs['connectionProfileId']
-        if connection_profile_id is None:
-            raise TypeError("Missing 'connection_profile_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("connection_profile_id", connection_profile_id)
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if alloydb is not None:
-            _setter("alloydb", alloydb)
+            pulumi.set(__self__, "alloydb", alloydb)
         if cloudsql is not None:
-            _setter("cloudsql", cloudsql)
+            pulumi.set(__self__, "cloudsql", cloudsql)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if mysql is not None:
-            _setter("mysql", mysql)
+            pulumi.set(__self__, "mysql", mysql)
         if postgresql is not None:
-            _setter("postgresql", postgresql)
+            pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -256,77 +223,34 @@ class _ConnectionProfileState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The current connection profile state.
         """
-        _ConnectionProfileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alloydb=alloydb,
-            cloudsql=cloudsql,
-            connection_profile_id=connection_profile_id,
-            create_time=create_time,
-            dbprovider=dbprovider,
-            display_name=display_name,
-            errors=errors,
-            labels=labels,
-            location=location,
-            mysql=mysql,
-            name=name,
-            postgresql=postgresql,
-            project=project,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-             cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
-             connection_profile_id: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             dbprovider: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_profile_id is None and 'connectionProfileId' in kwargs:
-            connection_profile_id = kwargs['connectionProfileId']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if alloydb is not None:
-            _setter("alloydb", alloydb)
+            pulumi.set(__self__, "alloydb", alloydb)
         if cloudsql is not None:
-            _setter("cloudsql", cloudsql)
+            pulumi.set(__self__, "cloudsql", cloudsql)
         if connection_profile_id is not None:
-            _setter("connection_profile_id", connection_profile_id)
+            pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if dbprovider is not None:
-            _setter("dbprovider", dbprovider)
+            pulumi.set(__self__, "dbprovider", dbprovider)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if errors is not None:
-            _setter("errors", errors)
+            pulumi.set(__self__, "errors", errors)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if mysql is not None:
-            _setter("mysql", mysql)
+            pulumi.set(__self__, "mysql", mysql)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if postgresql is not None:
-            _setter("postgresql", postgresql)
+            pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -847,10 +771,6 @@ class ConnectionProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -874,9 +794,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
-            alloydb = _utilities.configure(alloydb, ConnectionProfileAlloydbArgs, True)
             __props__.__dict__["alloydb"] = alloydb
-            cloudsql = _utilities.configure(cloudsql, ConnectionProfileCloudsqlArgs, True)
             __props__.__dict__["cloudsql"] = cloudsql
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
@@ -884,9 +802,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            mysql = _utilities.configure(mysql, ConnectionProfileMysqlArgs, True)
             __props__.__dict__["mysql"] = mysql
-            postgresql = _utilities.configure(postgresql, ConnectionProfilePostgresqlArgs, True)
             __props__.__dict__["postgresql"] = postgresql
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None

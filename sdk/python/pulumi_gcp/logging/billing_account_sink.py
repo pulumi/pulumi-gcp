@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,53 +45,20 @@ class BillingAccountSinkArgs:
                write a filter.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
-        BillingAccountSinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account=billing_account,
-            destination=destination,
-            bigquery_options=bigquery_options,
-            description=description,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input[str]] = None,
-             bigquery_options: Optional[pulumi.Input['BillingAccountSinkBigqueryOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if billing_account is None:
-            raise TypeError("Missing 'billing_account' argument")
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-
-        _setter("billing_account", billing_account)
-        _setter("destination", destination)
+        pulumi.set(__self__, "billing_account", billing_account)
+        pulumi.set(__self__, "destination", destination)
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -235,57 +202,24 @@ class _BillingAccountSinkState:
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
         """
-        _BillingAccountSinkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_options=bigquery_options,
-            billing_account=billing_account,
-            description=description,
-            destination=destination,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            name=name,
-            writer_identity=writer_identity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_options: Optional[pulumi.Input['BillingAccountSinkBigqueryOptionsArgs']] = None,
-             billing_account: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if writer_identity is None and 'writerIdentity' in kwargs:
-            writer_identity = kwargs['writerIdentity']
-
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if writer_identity is not None:
-            _setter("writer_identity", writer_identity)
+            pulumi.set(__self__, "writer_identity", writer_identity)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -528,10 +462,6 @@ class BillingAccountSink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BillingAccountSinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -554,7 +484,6 @@ class BillingAccountSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingAccountSinkArgs.__new__(BillingAccountSinkArgs)
 
-            bigquery_options = _utilities.configure(bigquery_options, BillingAccountSinkBigqueryOptionsArgs, True)
             __props__.__dict__["bigquery_options"] = bigquery_options
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")

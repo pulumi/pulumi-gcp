@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AddressArgs', 'Address']
@@ -85,81 +85,34 @@ class AddressArgs:
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
         """
-        AddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_type=address_type,
-            description=description,
-            ip_version=ip_version,
-            ipv6_endpoint_type=ipv6_endpoint_type,
-            labels=labels,
-            name=name,
-            network=network,
-            network_tier=network_tier,
-            prefix_length=prefix_length,
-            project=project,
-            purpose=purpose,
-            region=region,
-            subnetwork=subnetwork,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_version: Optional[pulumi.Input[str]] = None,
-             ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             network_tier: Optional[pulumi.Input[str]] = None,
-             prefix_length: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             purpose: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if ipv6_endpoint_type is None and 'ipv6EndpointType' in kwargs:
-            ipv6_endpoint_type = kwargs['ipv6EndpointType']
-        if network_tier is None and 'networkTier' in kwargs:
-            network_tier = kwargs['networkTier']
-        if prefix_length is None and 'prefixLength' in kwargs:
-            prefix_length = kwargs['prefixLength']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_type is not None:
-            _setter("address_type", address_type)
+            pulumi.set(__self__, "address_type", address_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_endpoint_type is not None:
-            _setter("ipv6_endpoint_type", ipv6_endpoint_type)
+            pulumi.set(__self__, "ipv6_endpoint_type", ipv6_endpoint_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_tier is not None:
-            _setter("network_tier", network_tier)
+            pulumi.set(__self__, "network_tier", network_tier)
         if prefix_length is not None:
-            _setter("prefix_length", prefix_length)
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if purpose is not None:
-            _setter("purpose", purpose)
+            pulumi.set(__self__, "purpose", purpose)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -452,103 +405,42 @@ class _AddressState:
                GCE_ENDPOINT/DNS_RESOLVER purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
-        _AddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_type=address_type,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            ip_version=ip_version,
-            ipv6_endpoint_type=ipv6_endpoint_type,
-            label_fingerprint=label_fingerprint,
-            labels=labels,
-            name=name,
-            network=network,
-            network_tier=network_tier,
-            prefix_length=prefix_length,
-            project=project,
-            purpose=purpose,
-            region=region,
-            self_link=self_link,
-            subnetwork=subnetwork,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_type: Optional[pulumi.Input[str]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_version: Optional[pulumi.Input[str]] = None,
-             ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
-             label_fingerprint: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             network_tier: Optional[pulumi.Input[str]] = None,
-             prefix_length: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             purpose: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if ipv6_endpoint_type is None and 'ipv6EndpointType' in kwargs:
-            ipv6_endpoint_type = kwargs['ipv6EndpointType']
-        if label_fingerprint is None and 'labelFingerprint' in kwargs:
-            label_fingerprint = kwargs['labelFingerprint']
-        if network_tier is None and 'networkTier' in kwargs:
-            network_tier = kwargs['networkTier']
-        if prefix_length is None and 'prefixLength' in kwargs:
-            prefix_length = kwargs['prefixLength']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_type is not None:
-            _setter("address_type", address_type)
+            pulumi.set(__self__, "address_type", address_type)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_endpoint_type is not None:
-            _setter("ipv6_endpoint_type", ipv6_endpoint_type)
+            pulumi.set(__self__, "ipv6_endpoint_type", ipv6_endpoint_type)
         if label_fingerprint is not None:
-            _setter("label_fingerprint", label_fingerprint)
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_tier is not None:
-            _setter("network_tier", network_tier)
+            pulumi.set(__self__, "network_tier", network_tier)
         if prefix_length is not None:
-            _setter("prefix_length", prefix_length)
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if purpose is not None:
-            _setter("purpose", purpose)
+            pulumi.set(__self__, "purpose", purpose)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -1134,10 +1026,6 @@ class Address(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

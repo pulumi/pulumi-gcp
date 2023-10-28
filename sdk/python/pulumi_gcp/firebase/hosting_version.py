@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,26 +27,9 @@ class HostingVersionArgs:
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         """
-        HostingVersionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            site_id=site_id,
-            config=config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             site_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if site_id is None and 'siteId' in kwargs:
-            site_id = kwargs['siteId']
-        if site_id is None:
-            raise TypeError("Missing 'site_id' argument")
-
-        _setter("site_id", site_id)
+        pulumi.set(__self__, "site_id", site_id)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
 
     @property
     @pulumi.getter(name="siteId")
@@ -96,35 +79,14 @@ class _HostingVersionState:
                - - -
         :param pulumi.Input[str] version_id: The ID for the version as in sites/SITE_ID/versions/VERSION_ID
         """
-        _HostingVersionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            name=name,
-            site_id=site_id,
-            version_id=version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             site_id: Optional[pulumi.Input[str]] = None,
-             version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if site_id is None and 'siteId' in kwargs:
-            site_id = kwargs['siteId']
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if site_id is not None:
-            _setter("site_id", site_id)
+            pulumi.set(__self__, "site_id", site_id)
         if version_id is not None:
-            _setter("version_id", version_id)
+            pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
@@ -461,10 +423,6 @@ class HostingVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HostingVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -481,7 +439,6 @@ class HostingVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HostingVersionArgs.__new__(HostingVersionArgs)
 
-            config = _utilities.configure(config, HostingVersionConfigArgs, True)
             __props__.__dict__["config"] = config
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")

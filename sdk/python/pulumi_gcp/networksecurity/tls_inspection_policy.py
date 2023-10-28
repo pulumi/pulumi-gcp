@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TlsInspectionPolicyArgs', 'TlsInspectionPolicy']
@@ -33,44 +33,17 @@ class TlsInspectionPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        TlsInspectionPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_pool=ca_pool,
-            description=description,
-            exclude_public_ca_set=exclude_public_ca_set,
-            location=location,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_pool: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_pool is None and 'caPool' in kwargs:
-            ca_pool = kwargs['caPool']
-        if ca_pool is None:
-            raise TypeError("Missing 'ca_pool' argument")
-        if exclude_public_ca_set is None and 'excludePublicCaSet' in kwargs:
-            exclude_public_ca_set = kwargs['excludePublicCaSet']
-
-        _setter("ca_pool", ca_pool)
+        pulumi.set(__self__, "ca_pool", ca_pool)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if exclude_public_ca_set is not None:
-            _setter("exclude_public_ca_set", exclude_public_ca_set)
+            pulumi.set(__self__, "exclude_public_ca_set", exclude_public_ca_set)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="caPool")
@@ -175,55 +148,22 @@ class _TlsInspectionPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
-        _TlsInspectionPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_pool=ca_pool,
-            create_time=create_time,
-            description=description,
-            exclude_public_ca_set=exclude_public_ca_set,
-            location=location,
-            name=name,
-            project=project,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_pool: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_pool is None and 'caPool' in kwargs:
-            ca_pool = kwargs['caPool']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if exclude_public_ca_set is None and 'excludePublicCaSet' in kwargs:
-            exclude_public_ca_set = kwargs['excludePublicCaSet']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if ca_pool is not None:
-            _setter("ca_pool", ca_pool)
+            pulumi.set(__self__, "ca_pool", ca_pool)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if exclude_public_ca_set is not None:
-            _setter("exclude_public_ca_set", exclude_public_ca_set)
+            pulumi.set(__self__, "exclude_public_ca_set", exclude_public_ca_set)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="caPool")
@@ -567,10 +507,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TlsInspectionPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

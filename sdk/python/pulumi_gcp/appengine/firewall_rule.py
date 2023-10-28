@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallRuleArgs', 'FirewallRule']
@@ -36,39 +36,14 @@ class FirewallRuleArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        FirewallRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            source_range=source_range,
-            description=description,
-            priority=priority,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             source_range: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if source_range is None and 'sourceRange' in kwargs:
-            source_range = kwargs['sourceRange']
-        if source_range is None:
-            raise TypeError("Missing 'source_range' argument")
-
-        _setter("action", action)
-        _setter("source_range", source_range)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "source_range", source_range)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -165,37 +140,16 @@ class _FirewallRuleState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
         """
-        _FirewallRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            description=description,
-            priority=priority,
-            project=project,
-            source_range=source_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             source_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_range is None and 'sourceRange' in kwargs:
-            source_range = kwargs['sourceRange']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if source_range is not None:
-            _setter("source_range", source_range)
+            pulumi.set(__self__, "source_range", source_range)
 
     @property
     @pulumi.getter
@@ -405,10 +359,6 @@ class FirewallRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

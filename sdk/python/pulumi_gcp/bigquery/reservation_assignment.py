@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ReservationAssignmentArgs', 'ReservationAssignment']
@@ -31,40 +31,13 @@ class ReservationAssignmentArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] project: The project for the resource
         """
-        ReservationAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            assignee=assignee,
-            job_type=job_type,
-            reservation=reservation,
-            location=location,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             assignee: Optional[pulumi.Input[str]] = None,
-             job_type: Optional[pulumi.Input[str]] = None,
-             reservation: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if assignee is None:
-            raise TypeError("Missing 'assignee' argument")
-        if job_type is None and 'jobType' in kwargs:
-            job_type = kwargs['jobType']
-        if job_type is None:
-            raise TypeError("Missing 'job_type' argument")
-        if reservation is None:
-            raise TypeError("Missing 'reservation' argument")
-
-        _setter("assignee", assignee)
-        _setter("job_type", job_type)
-        _setter("reservation", reservation)
+        pulumi.set(__self__, "assignee", assignee)
+        pulumi.set(__self__, "job_type", job_type)
+        pulumi.set(__self__, "reservation", reservation)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -155,45 +128,20 @@ class _ReservationAssignmentState:
                - - -
         :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
-        _ReservationAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            assignee=assignee,
-            job_type=job_type,
-            location=location,
-            name=name,
-            project=project,
-            reservation=reservation,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             assignee: Optional[pulumi.Input[str]] = None,
-             job_type: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reservation: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_type is None and 'jobType' in kwargs:
-            job_type = kwargs['jobType']
-
         if assignee is not None:
-            _setter("assignee", assignee)
+            pulumi.set(__self__, "assignee", assignee)
         if job_type is not None:
-            _setter("job_type", job_type)
+            pulumi.set(__self__, "job_type", job_type)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reservation is not None:
-            _setter("reservation", reservation)
+            pulumi.set(__self__, "reservation", reservation)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -395,10 +343,6 @@ class ReservationAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReservationAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

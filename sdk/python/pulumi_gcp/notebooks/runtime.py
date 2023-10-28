@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,46 +38,17 @@ class RuntimeArgs:
         :param pulumi.Input['RuntimeVirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
-        RuntimeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            access_config=access_config,
-            name=name,
-            project=project,
-            software_config=software_config,
-            virtual_machine=virtual_machine,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
-             virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if access_config is None and 'accessConfig' in kwargs:
-            access_config = kwargs['accessConfig']
-        if software_config is None and 'softwareConfig' in kwargs:
-            software_config = kwargs['softwareConfig']
-        if virtual_machine is None and 'virtualMachine' in kwargs:
-            virtual_machine = kwargs['virtualMachine']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if access_config is not None:
-            _setter("access_config", access_config)
+            pulumi.set(__self__, "access_config", access_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if software_config is not None:
-            _setter("software_config", software_config)
+            pulumi.set(__self__, "software_config", software_config)
         if virtual_machine is not None:
-            _setter("virtual_machine", virtual_machine)
+            pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter
@@ -194,59 +165,24 @@ class _RuntimeState:
         :param pulumi.Input['RuntimeVirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
-        _RuntimeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_config=access_config,
-            health_state=health_state,
-            location=location,
-            metrics=metrics,
-            name=name,
-            project=project,
-            software_config=software_config,
-            state=state,
-            virtual_machine=virtual_machine,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
-             health_state: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_config is None and 'accessConfig' in kwargs:
-            access_config = kwargs['accessConfig']
-        if health_state is None and 'healthState' in kwargs:
-            health_state = kwargs['healthState']
-        if software_config is None and 'softwareConfig' in kwargs:
-            software_config = kwargs['softwareConfig']
-        if virtual_machine is None and 'virtualMachine' in kwargs:
-            virtual_machine = kwargs['virtualMachine']
-
         if access_config is not None:
-            _setter("access_config", access_config)
+            pulumi.set(__self__, "access_config", access_config)
         if health_state is not None:
-            _setter("health_state", health_state)
+            pulumi.set(__self__, "health_state", health_state)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if metrics is not None:
-            _setter("metrics", metrics)
+            pulumi.set(__self__, "metrics", metrics)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if software_config is not None:
-            _setter("software_config", software_config)
+            pulumi.set(__self__, "software_config", software_config)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if virtual_machine is not None:
-            _setter("virtual_machine", virtual_machine)
+            pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter(name="accessConfig")
@@ -766,10 +702,6 @@ class Runtime(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RuntimeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -790,16 +722,13 @@ class Runtime(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuntimeArgs.__new__(RuntimeArgs)
 
-            access_config = _utilities.configure(access_config, RuntimeAccessConfigArgs, True)
             __props__.__dict__["access_config"] = access_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            software_config = _utilities.configure(software_config, RuntimeSoftwareConfigArgs, True)
             __props__.__dict__["software_config"] = software_config
-            virtual_machine = _utilities.configure(virtual_machine, RuntimeVirtualMachineArgs, True)
             __props__.__dict__["virtual_machine"] = virtual_machine
             __props__.__dict__["health_state"] = None
             __props__.__dict__["metrics"] = None

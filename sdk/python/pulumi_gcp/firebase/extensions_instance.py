@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,31 +28,10 @@ class ExtensionsInstanceArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ExtensionsInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            instance_id=instance_id,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config is None:
-            raise TypeError("Missing 'config' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("config", config)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "instance_id", instance_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -138,83 +117,32 @@ class _ExtensionsInstanceState:
         :param pulumi.Input[str] state: The processing state of the extension instance.
         :param pulumi.Input[str] update_time: The time at which the Extension Instance was updated.
         """
-        _ExtensionsInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            create_time=create_time,
-            error_statuses=error_statuses,
-            etag=etag,
-            instance_id=instance_id,
-            last_operation_name=last_operation_name,
-            last_operation_type=last_operation_type,
-            name=name,
-            project=project,
-            runtime_datas=runtime_datas,
-            service_account_email=service_account_email,
-            state=state,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             last_operation_name: Optional[pulumi.Input[str]] = None,
-             last_operation_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if error_statuses is None and 'errorStatuses' in kwargs:
-            error_statuses = kwargs['errorStatuses']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if last_operation_name is None and 'lastOperationName' in kwargs:
-            last_operation_name = kwargs['lastOperationName']
-        if last_operation_type is None and 'lastOperationType' in kwargs:
-            last_operation_type = kwargs['lastOperationType']
-        if runtime_datas is None and 'runtimeDatas' in kwargs:
-            runtime_datas = kwargs['runtimeDatas']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if error_statuses is not None:
-            _setter("error_statuses", error_statuses)
+            pulumi.set(__self__, "error_statuses", error_statuses)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if last_operation_name is not None:
-            _setter("last_operation_name", last_operation_name)
+            pulumi.set(__self__, "last_operation_name", last_operation_name)
         if last_operation_type is not None:
-            _setter("last_operation_type", last_operation_type)
+            pulumi.set(__self__, "last_operation_type", last_operation_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if runtime_datas is not None:
-            _setter("runtime_datas", runtime_datas)
+            pulumi.set(__self__, "runtime_datas", runtime_datas)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -537,10 +465,6 @@ class ExtensionsInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExtensionsInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -558,7 +482,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExtensionsInstanceArgs.__new__(ExtensionsInstanceArgs)
 
-            config = _utilities.configure(config, ExtensionsInstanceConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

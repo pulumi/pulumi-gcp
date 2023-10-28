@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetGrpcProxyArgs', 'TargetGrpcProxy']
@@ -48,39 +48,16 @@ class TargetGrpcProxyArgs:
                must not use "xds:///" scheme in the target URI of the service
                it is connecting to
         """
-        TargetGrpcProxyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            project=project,
-            url_map=url_map,
-            validate_for_proxyless=validate_for_proxyless,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             url_map: Optional[pulumi.Input[str]] = None,
-             validate_for_proxyless: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if url_map is None and 'urlMap' in kwargs:
-            url_map = kwargs['urlMap']
-        if validate_for_proxyless is None and 'validateForProxyless' in kwargs:
-            validate_for_proxyless = kwargs['validateForProxyless']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if url_map is not None:
-            _setter("url_map", url_map)
+            pulumi.set(__self__, "url_map", url_map)
         if validate_for_proxyless is not None:
-            _setter("validate_for_proxyless", validate_for_proxyless)
+            pulumi.set(__self__, "validate_for_proxyless", validate_for_proxyless)
 
     @property
     @pulumi.getter
@@ -215,61 +192,24 @@ class _TargetGrpcProxyState:
                must not use "xds:///" scheme in the target URI of the service
                it is connecting to
         """
-        _TargetGrpcProxyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            fingerprint=fingerprint,
-            name=name,
-            project=project,
-            self_link=self_link,
-            self_link_with_id=self_link_with_id,
-            url_map=url_map,
-            validate_for_proxyless=validate_for_proxyless,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             self_link_with_id: Optional[pulumi.Input[str]] = None,
-             url_map: Optional[pulumi.Input[str]] = None,
-             validate_for_proxyless: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
-            self_link_with_id = kwargs['selfLinkWithId']
-        if url_map is None and 'urlMap' in kwargs:
-            url_map = kwargs['urlMap']
-        if validate_for_proxyless is None and 'validateForProxyless' in kwargs:
-            validate_for_proxyless = kwargs['validateForProxyless']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
-            _setter("self_link_with_id", self_link_with_id)
+            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if url_map is not None:
-            _setter("url_map", url_map)
+            pulumi.set(__self__, "url_map", url_map)
         if validate_for_proxyless is not None:
-            _setter("validate_for_proxyless", validate_for_proxyless)
+            pulumi.set(__self__, "validate_for_proxyless", validate_for_proxyless)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -523,10 +463,6 @@ class TargetGrpcProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetGrpcProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

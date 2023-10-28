@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,48 +39,19 @@ class DeviceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         """
-        DeviceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            registry=registry,
-            blocked=blocked,
-            credentials=credentials,
-            gateway_config=gateway_config,
-            log_level=log_level,
-            metadata=metadata,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             registry: Optional[pulumi.Input[str]] = None,
-             blocked: Optional[pulumi.Input[bool]] = None,
-             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
-             gateway_config: Optional[pulumi.Input['DeviceGatewayConfigArgs']] = None,
-             log_level: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if registry is None:
-            raise TypeError("Missing 'registry' argument")
-        if gateway_config is None and 'gatewayConfig' in kwargs:
-            gateway_config = kwargs['gatewayConfig']
-        if log_level is None and 'logLevel' in kwargs:
-            log_level = kwargs['logLevel']
-
-        _setter("registry", registry)
+        pulumi.set(__self__, "registry", registry)
         if blocked is not None:
-            _setter("blocked", blocked)
+            pulumi.set(__self__, "blocked", blocked)
         if credentials is not None:
-            _setter("credentials", credentials)
+            pulumi.set(__self__, "credentials", credentials)
         if gateway_config is not None:
-            _setter("gateway_config", gateway_config)
+            pulumi.set(__self__, "gateway_config", gateway_config)
         if log_level is not None:
-            _setter("log_level", log_level)
+            pulumi.set(__self__, "log_level", log_level)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -223,103 +194,40 @@ class _DeviceState:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]] states: The state most recently received from the device.
                Structure is documented below.
         """
-        _DeviceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blocked=blocked,
-            configs=configs,
-            credentials=credentials,
-            gateway_config=gateway_config,
-            last_config_ack_time=last_config_ack_time,
-            last_config_send_time=last_config_send_time,
-            last_error_statuses=last_error_statuses,
-            last_error_time=last_error_time,
-            last_event_time=last_event_time,
-            last_heartbeat_time=last_heartbeat_time,
-            last_state_time=last_state_time,
-            log_level=log_level,
-            metadata=metadata,
-            name=name,
-            num_id=num_id,
-            registry=registry,
-            states=states,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blocked: Optional[pulumi.Input[bool]] = None,
-             configs: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceConfigArgs']]]] = None,
-             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
-             gateway_config: Optional[pulumi.Input['DeviceGatewayConfigArgs']] = None,
-             last_config_ack_time: Optional[pulumi.Input[str]] = None,
-             last_config_send_time: Optional[pulumi.Input[str]] = None,
-             last_error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLastErrorStatusArgs']]]] = None,
-             last_error_time: Optional[pulumi.Input[str]] = None,
-             last_event_time: Optional[pulumi.Input[str]] = None,
-             last_heartbeat_time: Optional[pulumi.Input[str]] = None,
-             last_state_time: Optional[pulumi.Input[str]] = None,
-             log_level: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             num_id: Optional[pulumi.Input[str]] = None,
-             registry: Optional[pulumi.Input[str]] = None,
-             states: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_config is None and 'gatewayConfig' in kwargs:
-            gateway_config = kwargs['gatewayConfig']
-        if last_config_ack_time is None and 'lastConfigAckTime' in kwargs:
-            last_config_ack_time = kwargs['lastConfigAckTime']
-        if last_config_send_time is None and 'lastConfigSendTime' in kwargs:
-            last_config_send_time = kwargs['lastConfigSendTime']
-        if last_error_statuses is None and 'lastErrorStatuses' in kwargs:
-            last_error_statuses = kwargs['lastErrorStatuses']
-        if last_error_time is None and 'lastErrorTime' in kwargs:
-            last_error_time = kwargs['lastErrorTime']
-        if last_event_time is None and 'lastEventTime' in kwargs:
-            last_event_time = kwargs['lastEventTime']
-        if last_heartbeat_time is None and 'lastHeartbeatTime' in kwargs:
-            last_heartbeat_time = kwargs['lastHeartbeatTime']
-        if last_state_time is None and 'lastStateTime' in kwargs:
-            last_state_time = kwargs['lastStateTime']
-        if log_level is None and 'logLevel' in kwargs:
-            log_level = kwargs['logLevel']
-        if num_id is None and 'numId' in kwargs:
-            num_id = kwargs['numId']
-
         if blocked is not None:
-            _setter("blocked", blocked)
+            pulumi.set(__self__, "blocked", blocked)
         if configs is not None:
-            _setter("configs", configs)
+            pulumi.set(__self__, "configs", configs)
         if credentials is not None:
-            _setter("credentials", credentials)
+            pulumi.set(__self__, "credentials", credentials)
         if gateway_config is not None:
-            _setter("gateway_config", gateway_config)
+            pulumi.set(__self__, "gateway_config", gateway_config)
         if last_config_ack_time is not None:
-            _setter("last_config_ack_time", last_config_ack_time)
+            pulumi.set(__self__, "last_config_ack_time", last_config_ack_time)
         if last_config_send_time is not None:
-            _setter("last_config_send_time", last_config_send_time)
+            pulumi.set(__self__, "last_config_send_time", last_config_send_time)
         if last_error_statuses is not None:
-            _setter("last_error_statuses", last_error_statuses)
+            pulumi.set(__self__, "last_error_statuses", last_error_statuses)
         if last_error_time is not None:
-            _setter("last_error_time", last_error_time)
+            pulumi.set(__self__, "last_error_time", last_error_time)
         if last_event_time is not None:
-            _setter("last_event_time", last_event_time)
+            pulumi.set(__self__, "last_event_time", last_event_time)
         if last_heartbeat_time is not None:
-            _setter("last_heartbeat_time", last_heartbeat_time)
+            pulumi.set(__self__, "last_heartbeat_time", last_heartbeat_time)
         if last_state_time is not None:
-            _setter("last_state_time", last_state_time)
+            pulumi.set(__self__, "last_state_time", last_state_time)
         if log_level is not None:
-            _setter("log_level", log_level)
+            pulumi.set(__self__, "log_level", log_level)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if num_id is not None:
-            _setter("num_id", num_id)
+            pulumi.set(__self__, "num_id", num_id)
         if registry is not None:
-            _setter("registry", registry)
+            pulumi.set(__self__, "registry", registry)
         if states is not None:
-            _setter("states", states)
+            pulumi.set(__self__, "states", states)
 
     @property
     @pulumi.getter
@@ -689,10 +597,6 @@ class Device(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DeviceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -716,7 +620,6 @@ class Device(pulumi.CustomResource):
 
             __props__.__dict__["blocked"] = blocked
             __props__.__dict__["credentials"] = credentials
-            gateway_config = _utilities.configure(gateway_config, DeviceGatewayConfigArgs, True)
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata

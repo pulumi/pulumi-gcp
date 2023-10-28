@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,35 +29,12 @@ class EngineSplitTrafficArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        EngineSplitTrafficArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-            split=split,
-            migrate_traffic=migrate_traffic,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[pulumi.Input[str]] = None,
-             split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None,
-             migrate_traffic: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-        if split is None:
-            raise TypeError("Missing 'split' argument")
-        if migrate_traffic is None and 'migrateTraffic' in kwargs:
-            migrate_traffic = kwargs['migrateTraffic']
-
-        _setter("service", service)
-        _setter("split", split)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "split", split)
         if migrate_traffic is not None:
-            _setter("migrate_traffic", migrate_traffic)
+            pulumi.set(__self__, "migrate_traffic", migrate_traffic)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -126,33 +103,14 @@ class _EngineSplitTrafficState:
         :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
-        _EngineSplitTrafficState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            migrate_traffic=migrate_traffic,
-            project=project,
-            service=service,
-            split=split,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             migrate_traffic: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if migrate_traffic is None and 'migrateTraffic' in kwargs:
-            migrate_traffic = kwargs['migrateTraffic']
-
         if migrate_traffic is not None:
-            _setter("migrate_traffic", migrate_traffic)
+            pulumi.set(__self__, "migrate_traffic", migrate_traffic)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if split is not None:
-            _setter("split", split)
+            pulumi.set(__self__, "split", split)
 
     @property
     @pulumi.getter(name="migrateTraffic")
@@ -396,10 +354,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EngineSplitTrafficArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -423,7 +377,6 @@ class EngineSplitTraffic(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
-            split = _utilities.configure(split, EngineSplitTrafficSplitArgs, True)
             if split is None and not opts.urn:
                 raise TypeError("Missing required property 'split'")
             __props__.__dict__["split"] = split

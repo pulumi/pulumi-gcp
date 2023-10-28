@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -135,178 +135,63 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            boot_disk=boot_disk,
-            machine_type=machine_type,
-            network_interfaces=network_interfaces,
-            advanced_machine_features=advanced_machine_features,
-            allow_stopping_for_update=allow_stopping_for_update,
-            attached_disks=attached_disks,
-            can_ip_forward=can_ip_forward,
-            confidential_instance_config=confidential_instance_config,
-            deletion_protection=deletion_protection,
-            description=description,
-            desired_status=desired_status,
-            enable_display=enable_display,
-            guest_accelerators=guest_accelerators,
-            hostname=hostname,
-            labels=labels,
-            metadata=metadata,
-            metadata_startup_script=metadata_startup_script,
-            min_cpu_platform=min_cpu_platform,
-            name=name,
-            network_performance_config=network_performance_config,
-            params=params,
-            project=project,
-            reservation_affinity=reservation_affinity,
-            resource_policies=resource_policies,
-            scheduling=scheduling,
-            scratch_disks=scratch_disks,
-            service_account=service_account,
-            shielded_instance_config=shielded_instance_config,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
-             advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
-             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-             attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
-             can_ip_forward: Optional[pulumi.Input[bool]] = None,
-             confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             desired_status: Optional[pulumi.Input[str]] = None,
-             enable_display: Optional[pulumi.Input[bool]] = None,
-             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metadata_startup_script: Optional[pulumi.Input[str]] = None,
-             min_cpu_platform: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
-             params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
-             resource_policies: Optional[pulumi.Input[str]] = None,
-             scheduling: Optional[pulumi.Input['InstanceSchedulingArgs']] = None,
-             scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]] = None,
-             service_account: Optional[pulumi.Input['InstanceServiceAccountArgs']] = None,
-             shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if boot_disk is None and 'bootDisk' in kwargs:
-            boot_disk = kwargs['bootDisk']
-        if boot_disk is None:
-            raise TypeError("Missing 'boot_disk' argument")
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if machine_type is None:
-            raise TypeError("Missing 'machine_type' argument")
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if network_interfaces is None:
-            raise TypeError("Missing 'network_interfaces' argument")
-        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
-            advanced_machine_features = kwargs['advancedMachineFeatures']
-        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
-            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
-        if attached_disks is None and 'attachedDisks' in kwargs:
-            attached_disks = kwargs['attachedDisks']
-        if can_ip_forward is None and 'canIpForward' in kwargs:
-            can_ip_forward = kwargs['canIpForward']
-        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
-            confidential_instance_config = kwargs['confidentialInstanceConfig']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if desired_status is None and 'desiredStatus' in kwargs:
-            desired_status = kwargs['desiredStatus']
-        if enable_display is None and 'enableDisplay' in kwargs:
-            enable_display = kwargs['enableDisplay']
-        if guest_accelerators is None and 'guestAccelerators' in kwargs:
-            guest_accelerators = kwargs['guestAccelerators']
-        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
-            metadata_startup_script = kwargs['metadataStartupScript']
-        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
-            min_cpu_platform = kwargs['minCpuPlatform']
-        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
-            network_performance_config = kwargs['networkPerformanceConfig']
-        if reservation_affinity is None and 'reservationAffinity' in kwargs:
-            reservation_affinity = kwargs['reservationAffinity']
-        if resource_policies is None and 'resourcePolicies' in kwargs:
-            resource_policies = kwargs['resourcePolicies']
-        if scratch_disks is None and 'scratchDisks' in kwargs:
-            scratch_disks = kwargs['scratchDisks']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
-            shielded_instance_config = kwargs['shieldedInstanceConfig']
-
-        _setter("boot_disk", boot_disk)
-        _setter("machine_type", machine_type)
-        _setter("network_interfaces", network_interfaces)
+        pulumi.set(__self__, "boot_disk", boot_disk)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
         if advanced_machine_features is not None:
-            _setter("advanced_machine_features", advanced_machine_features)
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
-            _setter("allow_stopping_for_update", allow_stopping_for_update)
+            pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
-            _setter("attached_disks", attached_disks)
+            pulumi.set(__self__, "attached_disks", attached_disks)
         if can_ip_forward is not None:
-            _setter("can_ip_forward", can_ip_forward)
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
-            _setter("confidential_instance_config", confidential_instance_config)
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_status is not None:
-            _setter("desired_status", desired_status)
+            pulumi.set(__self__, "desired_status", desired_status)
         if enable_display is not None:
-            _setter("enable_display", enable_display)
+            pulumi.set(__self__, "enable_display", enable_display)
         if guest_accelerators is not None:
-            _setter("guest_accelerators", guest_accelerators)
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if metadata_startup_script is not None:
-            _setter("metadata_startup_script", metadata_startup_script)
+            pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
         if min_cpu_platform is not None:
-            _setter("min_cpu_platform", min_cpu_platform)
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_performance_config is not None:
-            _setter("network_performance_config", network_performance_config)
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
-            _setter("params", params)
+            pulumi.set(__self__, "params", params)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
-            _setter("reservation_affinity", reservation_affinity)
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_policies is not None:
-            _setter("resource_policies", resource_policies)
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
-            _setter("scheduling", scheduling)
+            pulumi.set(__self__, "scheduling", scheduling)
         if scratch_disks is not None:
-            _setter("scratch_disks", scratch_disks)
+            pulumi.set(__self__, "scratch_disks", scratch_disks)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
-            _setter("shielded_instance_config", shielded_instance_config)
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="bootDisk")
@@ -861,217 +746,80 @@ class _InstanceState:
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            advanced_machine_features=advanced_machine_features,
-            allow_stopping_for_update=allow_stopping_for_update,
-            attached_disks=attached_disks,
-            boot_disk=boot_disk,
-            can_ip_forward=can_ip_forward,
-            confidential_instance_config=confidential_instance_config,
-            cpu_platform=cpu_platform,
-            current_status=current_status,
-            deletion_protection=deletion_protection,
-            description=description,
-            desired_status=desired_status,
-            enable_display=enable_display,
-            guest_accelerators=guest_accelerators,
-            hostname=hostname,
-            instance_id=instance_id,
-            label_fingerprint=label_fingerprint,
-            labels=labels,
-            machine_type=machine_type,
-            metadata=metadata,
-            metadata_fingerprint=metadata_fingerprint,
-            metadata_startup_script=metadata_startup_script,
-            min_cpu_platform=min_cpu_platform,
-            name=name,
-            network_interfaces=network_interfaces,
-            network_performance_config=network_performance_config,
-            params=params,
-            project=project,
-            reservation_affinity=reservation_affinity,
-            resource_policies=resource_policies,
-            scheduling=scheduling,
-            scratch_disks=scratch_disks,
-            self_link=self_link,
-            service_account=service_account,
-            shielded_instance_config=shielded_instance_config,
-            tags=tags,
-            tags_fingerprint=tags_fingerprint,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
-             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-             attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
-             boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
-             can_ip_forward: Optional[pulumi.Input[bool]] = None,
-             confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
-             cpu_platform: Optional[pulumi.Input[str]] = None,
-             current_status: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             desired_status: Optional[pulumi.Input[str]] = None,
-             enable_display: Optional[pulumi.Input[bool]] = None,
-             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             label_fingerprint: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metadata_fingerprint: Optional[pulumi.Input[str]] = None,
-             metadata_startup_script: Optional[pulumi.Input[str]] = None,
-             min_cpu_platform: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
-             network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
-             params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
-             resource_policies: Optional[pulumi.Input[str]] = None,
-             scheduling: Optional[pulumi.Input['InstanceSchedulingArgs']] = None,
-             scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input['InstanceServiceAccountArgs']] = None,
-             shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags_fingerprint: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
-            advanced_machine_features = kwargs['advancedMachineFeatures']
-        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
-            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
-        if attached_disks is None and 'attachedDisks' in kwargs:
-            attached_disks = kwargs['attachedDisks']
-        if boot_disk is None and 'bootDisk' in kwargs:
-            boot_disk = kwargs['bootDisk']
-        if can_ip_forward is None and 'canIpForward' in kwargs:
-            can_ip_forward = kwargs['canIpForward']
-        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
-            confidential_instance_config = kwargs['confidentialInstanceConfig']
-        if cpu_platform is None and 'cpuPlatform' in kwargs:
-            cpu_platform = kwargs['cpuPlatform']
-        if current_status is None and 'currentStatus' in kwargs:
-            current_status = kwargs['currentStatus']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if desired_status is None and 'desiredStatus' in kwargs:
-            desired_status = kwargs['desiredStatus']
-        if enable_display is None and 'enableDisplay' in kwargs:
-            enable_display = kwargs['enableDisplay']
-        if guest_accelerators is None and 'guestAccelerators' in kwargs:
-            guest_accelerators = kwargs['guestAccelerators']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if label_fingerprint is None and 'labelFingerprint' in kwargs:
-            label_fingerprint = kwargs['labelFingerprint']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if metadata_fingerprint is None and 'metadataFingerprint' in kwargs:
-            metadata_fingerprint = kwargs['metadataFingerprint']
-        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
-            metadata_startup_script = kwargs['metadataStartupScript']
-        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
-            min_cpu_platform = kwargs['minCpuPlatform']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
-            network_performance_config = kwargs['networkPerformanceConfig']
-        if reservation_affinity is None and 'reservationAffinity' in kwargs:
-            reservation_affinity = kwargs['reservationAffinity']
-        if resource_policies is None and 'resourcePolicies' in kwargs:
-            resource_policies = kwargs['resourcePolicies']
-        if scratch_disks is None and 'scratchDisks' in kwargs:
-            scratch_disks = kwargs['scratchDisks']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
-            shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
-            tags_fingerprint = kwargs['tagsFingerprint']
-
         if advanced_machine_features is not None:
-            _setter("advanced_machine_features", advanced_machine_features)
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
-            _setter("allow_stopping_for_update", allow_stopping_for_update)
+            pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks is not None:
-            _setter("attached_disks", attached_disks)
+            pulumi.set(__self__, "attached_disks", attached_disks)
         if boot_disk is not None:
-            _setter("boot_disk", boot_disk)
+            pulumi.set(__self__, "boot_disk", boot_disk)
         if can_ip_forward is not None:
-            _setter("can_ip_forward", can_ip_forward)
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
-            _setter("confidential_instance_config", confidential_instance_config)
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if cpu_platform is not None:
-            _setter("cpu_platform", cpu_platform)
+            pulumi.set(__self__, "cpu_platform", cpu_platform)
         if current_status is not None:
-            _setter("current_status", current_status)
+            pulumi.set(__self__, "current_status", current_status)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_status is not None:
-            _setter("desired_status", desired_status)
+            pulumi.set(__self__, "desired_status", desired_status)
         if enable_display is not None:
-            _setter("enable_display", enable_display)
+            pulumi.set(__self__, "enable_display", enable_display)
         if guest_accelerators is not None:
-            _setter("guest_accelerators", guest_accelerators)
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if label_fingerprint is not None:
-            _setter("label_fingerprint", label_fingerprint)
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if metadata_fingerprint is not None:
-            _setter("metadata_fingerprint", metadata_fingerprint)
+            pulumi.set(__self__, "metadata_fingerprint", metadata_fingerprint)
         if metadata_startup_script is not None:
-            _setter("metadata_startup_script", metadata_startup_script)
+            pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
         if min_cpu_platform is not None:
-            _setter("min_cpu_platform", min_cpu_platform)
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
-            _setter("network_performance_config", network_performance_config)
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if params is not None:
-            _setter("params", params)
+            pulumi.set(__self__, "params", params)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
-            _setter("reservation_affinity", reservation_affinity)
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_policies is not None:
-            _setter("resource_policies", resource_policies)
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
-            _setter("scheduling", scheduling)
+            pulumi.set(__self__, "scheduling", scheduling)
         if scratch_disks is not None:
-            _setter("scratch_disks", scratch_disks)
+            pulumi.set(__self__, "scratch_disks", scratch_disks)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
-            _setter("shielded_instance_config", shielded_instance_config)
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
-            _setter("tags_fingerprint", tags_fingerprint)
+            pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -1845,10 +1593,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1893,16 +1637,13 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            advanced_machine_features = _utilities.configure(advanced_machine_features, InstanceAdvancedMachineFeaturesArgs, True)
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["attached_disks"] = attached_disks
-            boot_disk = _utilities.configure(boot_disk, InstanceBootDiskArgs, True)
             if boot_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'boot_disk'")
             __props__.__dict__["boot_disk"] = boot_disk
             __props__.__dict__["can_ip_forward"] = can_ip_forward
-            confidential_instance_config = _utilities.configure(confidential_instance_config, InstanceConfidentialInstanceConfigArgs, True)
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -1921,20 +1662,14 @@ class Instance(pulumi.CustomResource):
             if network_interfaces is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interfaces'")
             __props__.__dict__["network_interfaces"] = network_interfaces
-            network_performance_config = _utilities.configure(network_performance_config, InstanceNetworkPerformanceConfigArgs, True)
             __props__.__dict__["network_performance_config"] = network_performance_config
-            params = _utilities.configure(params, InstanceParamsArgs, True)
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
-            reservation_affinity = _utilities.configure(reservation_affinity, InstanceReservationAffinityArgs, True)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
-            scheduling = _utilities.configure(scheduling, InstanceSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["scratch_disks"] = scratch_disks
-            service_account = _utilities.configure(service_account, InstanceServiceAccountArgs, True)
             __props__.__dict__["service_account"] = service_account
-            shielded_instance_config = _utilities.configure(shielded_instance_config, InstanceShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone

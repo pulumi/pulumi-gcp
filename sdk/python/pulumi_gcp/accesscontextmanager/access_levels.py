@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,26 +28,9 @@ class AccessLevelsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         """
-        AccessLevelsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            access_levels=access_levels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-
-        _setter("parent", parent)
+        pulumi.set(__self__, "parent", parent)
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
 
     @property
     @pulumi.getter
@@ -94,25 +77,10 @@ class _AccessLevelsState:
                
                - - -
         """
-        _AccessLevelsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_levels=access_levels,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_levels is None and 'accessLevels' in kwargs:
-            access_levels = kwargs['accessLevels']
-
         if access_levels is not None:
-            _setter("access_levels", access_levels)
+            pulumi.set(__self__, "access_levels", access_levels)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -332,10 +300,6 @@ class AccessLevels(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessLevelsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

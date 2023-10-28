@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,67 +41,18 @@ class KeystoresAliasesSelfSignedCertArgs:
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs'] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
                Structure is documented below.
         """
-        KeystoresAliasesSelfSignedCertArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            environment=environment,
-            keystore=keystore,
-            org_id=org_id,
-            sig_alg=sig_alg,
-            subject=subject,
-            cert_validity_in_days=cert_validity_in_days,
-            key_size=key_size,
-            subject_alternative_dns_names=subject_alternative_dns_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             sig_alg: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs']] = None,
-             cert_validity_in_days: Optional[pulumi.Input[int]] = None,
-             key_size: Optional[pulumi.Input[str]] = None,
-             subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alias is None:
-            raise TypeError("Missing 'alias' argument")
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-        if keystore is None:
-            raise TypeError("Missing 'keystore' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if sig_alg is None and 'sigAlg' in kwargs:
-            sig_alg = kwargs['sigAlg']
-        if sig_alg is None:
-            raise TypeError("Missing 'sig_alg' argument")
-        if subject is None:
-            raise TypeError("Missing 'subject' argument")
-        if cert_validity_in_days is None and 'certValidityInDays' in kwargs:
-            cert_validity_in_days = kwargs['certValidityInDays']
-        if key_size is None and 'keySize' in kwargs:
-            key_size = kwargs['keySize']
-        if subject_alternative_dns_names is None and 'subjectAlternativeDnsNames' in kwargs:
-            subject_alternative_dns_names = kwargs['subjectAlternativeDnsNames']
-
-        _setter("alias", alias)
-        _setter("environment", environment)
-        _setter("keystore", keystore)
-        _setter("org_id", org_id)
-        _setter("sig_alg", sig_alg)
-        _setter("subject", subject)
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "keystore", keystore)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "sig_alg", sig_alg)
+        pulumi.set(__self__, "subject", subject)
         if cert_validity_in_days is not None:
-            _setter("cert_validity_in_days", cert_validity_in_days)
+            pulumi.set(__self__, "cert_validity_in_days", cert_validity_in_days)
         if key_size is not None:
-            _setter("key_size", key_size)
+            pulumi.set(__self__, "key_size", key_size)
         if subject_alternative_dns_names is not None:
-            _setter("subject_alternative_dns_names", subject_alternative_dns_names)
+            pulumi.set(__self__, "subject_alternative_dns_names", subject_alternative_dns_names)
 
     @property
     @pulumi.getter
@@ -249,71 +200,28 @@ class _KeystoresAliasesSelfSignedCertState:
                Structure is documented below.
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
-        _KeystoresAliasesSelfSignedCertState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            cert_validity_in_days=cert_validity_in_days,
-            certs_infos=certs_infos,
-            environment=environment,
-            key_size=key_size,
-            keystore=keystore,
-            org_id=org_id,
-            sig_alg=sig_alg,
-            subject=subject,
-            subject_alternative_dns_names=subject_alternative_dns_names,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             cert_validity_in_days: Optional[pulumi.Input[int]] = None,
-             certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoArgs']]]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             key_size: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             sig_alg: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs']] = None,
-             subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_validity_in_days is None and 'certValidityInDays' in kwargs:
-            cert_validity_in_days = kwargs['certValidityInDays']
-        if certs_infos is None and 'certsInfos' in kwargs:
-            certs_infos = kwargs['certsInfos']
-        if key_size is None and 'keySize' in kwargs:
-            key_size = kwargs['keySize']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if sig_alg is None and 'sigAlg' in kwargs:
-            sig_alg = kwargs['sigAlg']
-        if subject_alternative_dns_names is None and 'subjectAlternativeDnsNames' in kwargs:
-            subject_alternative_dns_names = kwargs['subjectAlternativeDnsNames']
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if cert_validity_in_days is not None:
-            _setter("cert_validity_in_days", cert_validity_in_days)
+            pulumi.set(__self__, "cert_validity_in_days", cert_validity_in_days)
         if certs_infos is not None:
-            _setter("certs_infos", certs_infos)
+            pulumi.set(__self__, "certs_infos", certs_infos)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if key_size is not None:
-            _setter("key_size", key_size)
+            pulumi.set(__self__, "key_size", key_size)
         if keystore is not None:
-            _setter("keystore", keystore)
+            pulumi.set(__self__, "keystore", keystore)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if sig_alg is not None:
-            _setter("sig_alg", sig_alg)
+            pulumi.set(__self__, "sig_alg", sig_alg)
         if subject is not None:
-            _setter("subject", subject)
+            pulumi.set(__self__, "subject", subject)
         if subject_alternative_dns_names is not None:
-            _setter("subject_alternative_dns_names", subject_alternative_dns_names)
+            pulumi.set(__self__, "subject_alternative_dns_names", subject_alternative_dns_names)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -672,10 +580,6 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeystoresAliasesSelfSignedCertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -716,11 +620,9 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             if sig_alg is None and not opts.urn:
                 raise TypeError("Missing required property 'sig_alg'")
             __props__.__dict__["sig_alg"] = sig_alg
-            subject = _utilities.configure(subject, KeystoresAliasesSelfSignedCertSubjectArgs, True)
             if subject is None and not opts.urn:
                 raise TypeError("Missing required property 'subject'")
             __props__.__dict__["subject"] = subject
-            subject_alternative_dns_names = _utilities.configure(subject_alternative_dns_names, KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs, True)
             __props__.__dict__["subject_alternative_dns_names"] = subject_alternative_dns_names
             __props__.__dict__["certs_infos"] = None
             __props__.__dict__["type"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,47 +41,20 @@ class AppGatewayArgs:
                Default value is `TYPE_UNSPECIFIED`.
                Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
-        AppGatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            host_type=host_type,
-            labels=labels,
-            name=name,
-            project=project,
-            region=region,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             host_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if host_type is None and 'hostType' in kwargs:
-            host_type = kwargs['hostType']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if host_type is not None:
-            _setter("host_type", host_type)
+            pulumi.set(__self__, "host_type", host_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="displayName")
@@ -211,61 +184,26 @@ class _AppGatewayState:
                Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         :param pulumi.Input[str] uri: Server-defined URI for this resource.
         """
-        _AppGatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allocated_connections=allocated_connections,
-            display_name=display_name,
-            host_type=host_type,
-            labels=labels,
-            name=name,
-            project=project,
-            region=region,
-            state=state,
-            type=type,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             host_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allocated_connections is None and 'allocatedConnections' in kwargs:
-            allocated_connections = kwargs['allocatedConnections']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if host_type is None and 'hostType' in kwargs:
-            host_type = kwargs['hostType']
-
         if allocated_connections is not None:
-            _setter("allocated_connections", allocated_connections)
+            pulumi.set(__self__, "allocated_connections", allocated_connections)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if host_type is not None:
-            _setter("host_type", host_type)
+            pulumi.set(__self__, "host_type", host_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter(name="allocatedConnections")
@@ -564,10 +502,6 @@ class AppGateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AppGatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

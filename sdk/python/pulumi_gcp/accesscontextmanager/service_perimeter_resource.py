@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServicePerimeterResourceArgs', 'ServicePerimeterResource']
@@ -26,27 +26,8 @@ class ServicePerimeterResourceArgs:
                Currently only projects are allowed.
                Format: projects/{project_number}
         """
-        ServicePerimeterResourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perimeter_name=perimeter_name,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perimeter_name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perimeter_name is None and 'perimeterName' in kwargs:
-            perimeter_name = kwargs['perimeterName']
-        if perimeter_name is None:
-            raise TypeError("Missing 'perimeter_name' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-
-        _setter("perimeter_name", perimeter_name)
-        _setter("resource", resource)
+        pulumi.set(__self__, "perimeter_name", perimeter_name)
+        pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="perimeterName")
@@ -93,25 +74,10 @@ class _ServicePerimeterResourceState:
                Currently only projects are allowed.
                Format: projects/{project_number}
         """
-        _ServicePerimeterResourceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perimeter_name=perimeter_name,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perimeter_name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perimeter_name is None and 'perimeterName' in kwargs:
-            perimeter_name = kwargs['perimeterName']
-
         if perimeter_name is not None:
-            _setter("perimeter_name", perimeter_name)
+            pulumi.set(__self__, "perimeter_name", perimeter_name)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="perimeterName")
@@ -279,10 +245,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePerimeterResourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

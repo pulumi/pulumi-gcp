@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -109,28 +109,9 @@ class AppProfileSingleClusterRouting(dict):
         :param bool allow_transactional_writes: If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
                It is unsafe to send these requests to the same table/row/column in multiple clusters.
         """
-        AppProfileSingleClusterRouting._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            allow_transactional_writes=allow_transactional_writes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             allow_transactional_writes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if allow_transactional_writes is None and 'allowTransactionalWrites' in kwargs:
-            allow_transactional_writes = kwargs['allowTransactionalWrites']
-
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if allow_transactional_writes is not None:
-            _setter("allow_transactional_writes", allow_transactional_writes)
+            pulumi.set(__self__, "allow_transactional_writes", allow_transactional_writes)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -182,33 +163,12 @@ class BiReservationPreferredTable(dict):
         :param str project_id: The assigned project ID of the project.
         :param str table_id: The ID of the table in the above dataset.
         """
-        BiReservationPreferredTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-            table_id=table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if table_id is not None:
-            _setter("table_id", table_id)
+            pulumi.set(__self__, "table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -260,22 +220,7 @@ class ConnectionAws(dict):
         :param 'ConnectionAwsAccessRoleArgs' access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
                Structure is documented below.
         """
-        ConnectionAws._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_role=access_role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_role: Optional['outputs.ConnectionAwsAccessRole'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_role is None and 'accessRole' in kwargs:
-            access_role = kwargs['accessRole']
-        if access_role is None:
-            raise TypeError("Missing 'access_role' argument")
-
-        _setter("access_role", access_role)
+        pulumi.set(__self__, "access_role", access_role)
 
     @property
     @pulumi.getter(name="accessRole")
@@ -314,26 +259,9 @@ class ConnectionAwsAccessRole(dict):
         :param str identity: (Output)
                A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         """
-        ConnectionAwsAccessRole._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            iam_role_id=iam_role_id,
-            identity=identity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             iam_role_id: Optional[str] = None,
-             identity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if iam_role_id is None and 'iamRoleId' in kwargs:
-            iam_role_id = kwargs['iamRoleId']
-        if iam_role_id is None:
-            raise TypeError("Missing 'iam_role_id' argument")
-
-        _setter("iam_role_id", iam_role_id)
+        pulumi.set(__self__, "iam_role_id", iam_role_id)
         if identity is not None:
-            _setter("identity", identity)
+            pulumi.set(__self__, "identity", identity)
 
     @property
     @pulumi.getter(name="iamRoleId")
@@ -402,54 +330,19 @@ class ConnectionAzure(dict):
         :param str redirect_uri: (Output)
                The URL user will be redirected to after granting consent during connection setup.
         """
-        ConnectionAzure._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_tenant_id=customer_tenant_id,
-            application=application,
-            client_id=client_id,
-            federated_application_client_id=federated_application_client_id,
-            identity=identity,
-            object_id=object_id,
-            redirect_uri=redirect_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_tenant_id: Optional[str] = None,
-             application: Optional[str] = None,
-             client_id: Optional[str] = None,
-             federated_application_client_id: Optional[str] = None,
-             identity: Optional[str] = None,
-             object_id: Optional[str] = None,
-             redirect_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if customer_tenant_id is None and 'customerTenantId' in kwargs:
-            customer_tenant_id = kwargs['customerTenantId']
-        if customer_tenant_id is None:
-            raise TypeError("Missing 'customer_tenant_id' argument")
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if federated_application_client_id is None and 'federatedApplicationClientId' in kwargs:
-            federated_application_client_id = kwargs['federatedApplicationClientId']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if redirect_uri is None and 'redirectUri' in kwargs:
-            redirect_uri = kwargs['redirectUri']
-
-        _setter("customer_tenant_id", customer_tenant_id)
+        pulumi.set(__self__, "customer_tenant_id", customer_tenant_id)
         if application is not None:
-            _setter("application", application)
+            pulumi.set(__self__, "application", application)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if federated_application_client_id is not None:
-            _setter("federated_application_client_id", federated_application_client_id)
+            pulumi.set(__self__, "federated_application_client_id", federated_application_client_id)
         if identity is not None:
-            _setter("identity", identity)
+            pulumi.set(__self__, "identity", identity)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if redirect_uri is not None:
-            _setter("redirect_uri", redirect_uri)
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
 
     @property
     @pulumi.getter(name="customerTenantId")
@@ -538,21 +431,8 @@ class ConnectionCloudResource(dict):
         :param str service_account_id: (Output)
                The account ID of the service created for the purpose of this connection.
         """
-        ConnectionCloudResource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_account_id=service_account_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_account_id is None and 'serviceAccountId' in kwargs:
-            service_account_id = kwargs['serviceAccountId']
-
         if service_account_id is not None:
-            _setter("service_account_id", service_account_id)
+            pulumi.set(__self__, "service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -594,32 +474,11 @@ class ConnectionCloudSpanner(dict):
         :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner
         :param bool use_serverless_analytics: If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
         """
-        ConnectionCloudSpanner._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            use_parallelism=use_parallelism,
-            use_serverless_analytics=use_serverless_analytics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[str] = None,
-             use_parallelism: Optional[bool] = None,
-             use_serverless_analytics: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database is None:
-            raise TypeError("Missing 'database' argument")
-        if use_parallelism is None and 'useParallelism' in kwargs:
-            use_parallelism = kwargs['useParallelism']
-        if use_serverless_analytics is None and 'useServerlessAnalytics' in kwargs:
-            use_serverless_analytics = kwargs['useServerlessAnalytics']
-
-        _setter("database", database)
+        pulumi.set(__self__, "database", database)
         if use_parallelism is not None:
-            _setter("use_parallelism", use_parallelism)
+            pulumi.set(__self__, "use_parallelism", use_parallelism)
         if use_serverless_analytics is not None:
-            _setter("use_serverless_analytics", use_serverless_analytics)
+            pulumi.set(__self__, "use_serverless_analytics", use_serverless_analytics)
 
     @property
     @pulumi.getter
@@ -683,43 +542,12 @@ class ConnectionCloudSql(dict):
         :param str service_account_id: (Output)
                When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         """
-        ConnectionCloudSql._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            credential=credential,
-            database=database,
-            instance_id=instance_id,
-            type=type,
-            service_account_id=service_account_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             credential: Optional['outputs.ConnectionCloudSqlCredential'] = None,
-             database: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             type: Optional[str] = None,
-             service_account_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if credential is None:
-            raise TypeError("Missing 'credential' argument")
-        if database is None:
-            raise TypeError("Missing 'database' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if service_account_id is None and 'serviceAccountId' in kwargs:
-            service_account_id = kwargs['serviceAccountId']
-
-        _setter("credential", credential)
-        _setter("database", database)
-        _setter("instance_id", instance_id)
-        _setter("type", type)
+        pulumi.set(__self__, "credential", credential)
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "type", type)
         if service_account_id is not None:
-            _setter("service_account_id", service_account_id)
+            pulumi.set(__self__, "service_account_id", service_account_id)
 
     @property
     @pulumi.getter
@@ -775,25 +603,8 @@ class ConnectionCloudSqlCredential(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str username: Username for database.
         """
-        ConnectionCloudSqlCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("password", password)
-        _setter("username", username)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -819,29 +630,10 @@ class ConnectionIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConnectionIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -865,29 +657,10 @@ class ConnectionIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ConnectionIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -929,22 +702,7 @@ class DataTransferConfigEmailPreferences(dict):
         """
         :param bool enable_failure_email: If true, email notifications will be sent on transfer run failures.
         """
-        DataTransferConfigEmailPreferences._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_failure_email=enable_failure_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_failure_email: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_failure_email is None and 'enableFailureEmail' in kwargs:
-            enable_failure_email = kwargs['enableFailureEmail']
-        if enable_failure_email is None:
-            raise TypeError("Missing 'enable_failure_email' argument")
-
-        _setter("enable_failure_email", enable_failure_email)
+        pulumi.set(__self__, "enable_failure_email", enable_failure_email)
 
     @property
     @pulumi.getter(name="enableFailureEmail")
@@ -998,33 +756,12 @@ class DataTransferConfigScheduleOptions(dict):
                moment. The time when a data transfer can be triggered manually is not
                limited by this option.
         """
-        DataTransferConfigScheduleOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_auto_scheduling=disable_auto_scheduling,
-            end_time=end_time,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_auto_scheduling: Optional[bool] = None,
-             end_time: Optional[str] = None,
-             start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_auto_scheduling is None and 'disableAutoScheduling' in kwargs:
-            disable_auto_scheduling = kwargs['disableAutoScheduling']
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if disable_auto_scheduling is not None:
-            _setter("disable_auto_scheduling", disable_auto_scheduling)
+            pulumi.set(__self__, "disable_auto_scheduling", disable_auto_scheduling)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="disableAutoScheduling")
@@ -1087,22 +824,7 @@ class DataTransferConfigSensitiveParams(dict):
         :param str secret_access_key: The Secret Access Key of the AWS account transferring data from.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        DataTransferConfigSensitiveParams._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_access_key=secret_access_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_access_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_access_key is None and 'secretAccessKey' in kwargs:
-            secret_access_key = kwargs['secretAccessKey']
-        if secret_access_key is None:
-            raise TypeError("Missing 'secret_access_key' argument")
-
-        _setter("secret_access_key", secret_access_key)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
 
     @property
     @pulumi.getter(name="secretAccessKey")
@@ -1173,53 +895,22 @@ class DatasetAccess(dict):
                needs to be granted again via an update operation.
                Structure is documented below.
         """
-        DatasetAccess._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset=dataset,
-            domain=domain,
-            group_by_email=group_by_email,
-            role=role,
-            routine=routine,
-            special_group=special_group,
-            user_by_email=user_by_email,
-            view=view,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset: Optional['outputs.DatasetAccessDataset'] = None,
-             domain: Optional[str] = None,
-             group_by_email: Optional[str] = None,
-             role: Optional[str] = None,
-             routine: Optional['outputs.DatasetAccessRoutine'] = None,
-             special_group: Optional[str] = None,
-             user_by_email: Optional[str] = None,
-             view: Optional['outputs.DatasetAccessView'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_by_email is None and 'groupByEmail' in kwargs:
-            group_by_email = kwargs['groupByEmail']
-        if special_group is None and 'specialGroup' in kwargs:
-            special_group = kwargs['specialGroup']
-        if user_by_email is None and 'userByEmail' in kwargs:
-            user_by_email = kwargs['userByEmail']
-
         if dataset is not None:
-            _setter("dataset", dataset)
+            pulumi.set(__self__, "dataset", dataset)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
-            _setter("group_by_email", group_by_email)
+            pulumi.set(__self__, "group_by_email", group_by_email)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if routine is not None:
-            _setter("routine", routine)
+            pulumi.set(__self__, "routine", routine)
         if special_group is not None:
-            _setter("special_group", special_group)
+            pulumi.set(__self__, "special_group", special_group)
         if user_by_email is not None:
-            _setter("user_by_email", user_by_email)
+            pulumi.set(__self__, "user_by_email", user_by_email)
         if view is not None:
-            _setter("view", view)
+            pulumi.set(__self__, "view", view)
 
     @property
     @pulumi.getter
@@ -1331,27 +1022,8 @@ class DatasetAccessAuthorizedDataset(dict):
         :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
         """
-        DatasetAccessAuthorizedDataset._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset=dataset,
-            target_types=target_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset: Optional['outputs.DatasetAccessAuthorizedDatasetDataset'] = None,
-             target_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset is None:
-            raise TypeError("Missing 'dataset' argument")
-        if target_types is None and 'targetTypes' in kwargs:
-            target_types = kwargs['targetTypes']
-        if target_types is None:
-            raise TypeError("Missing 'target_types' argument")
-
-        _setter("dataset", dataset)
-        _setter("target_types", target_types)
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
 
     @property
     @pulumi.getter
@@ -1400,29 +1072,8 @@ class DatasetAccessAuthorizedDatasetDataset(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        DatasetAccessAuthorizedDatasetDataset._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1469,27 +1120,8 @@ class DatasetAccessDataset(dict):
         :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
         """
-        DatasetAccessDataset._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset=dataset,
-            target_types=target_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset: Optional['outputs.DatasetAccessDatasetDataset'] = None,
-             target_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset is None:
-            raise TypeError("Missing 'dataset' argument")
-        if target_types is None and 'targetTypes' in kwargs:
-            target_types = kwargs['targetTypes']
-        if target_types is None:
-            raise TypeError("Missing 'target_types' argument")
-
-        _setter("dataset", dataset)
-        _setter("target_types", target_types)
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
 
     @property
     @pulumi.getter
@@ -1538,29 +1170,8 @@ class DatasetAccessDatasetDataset(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        DatasetAccessDatasetDataset._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1613,36 +1224,9 @@ class DatasetAccessRoutine(dict):
                A-Z), numbers (0-9), or underscores (_). The maximum length
                is 256 characters.
         """
-        DatasetAccessRoutine._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-            routine_id=routine_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             routine_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if routine_id is None and 'routineId' in kwargs:
-            routine_id = kwargs['routineId']
-        if routine_id is None:
-            raise TypeError("Missing 'routine_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("project_id", project_id)
-        _setter("routine_id", routine_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "routine_id", routine_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1705,36 +1289,9 @@ class DatasetAccessView(dict):
                A-Z), numbers (0-9), or underscores (_). The maximum length
                is 1,024 characters.
         """
-        DatasetAccessView._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-            table_id=table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("project_id", project_id)
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1789,22 +1346,7 @@ class DatasetDefaultEncryptionConfiguration(dict):
                BigQuery table. The BigQuery Service Account associated with your project requires
                access to this encryption key.
         """
-        DatasetDefaultEncryptionConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -1823,29 +1365,10 @@ class DatasetIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        DatasetIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1869,29 +1392,10 @@ class DatasetIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        DatasetIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1924,29 +1428,10 @@ class IamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        IamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1992,29 +1477,10 @@ class IamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        IamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -2100,46 +1566,15 @@ class JobCopy(dict):
                Default value is `WRITE_EMPTY`.
                Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
-        JobCopy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_tables=source_tables,
-            create_disposition=create_disposition,
-            destination_encryption_configuration=destination_encryption_configuration,
-            destination_table=destination_table,
-            write_disposition=write_disposition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_tables: Optional[Sequence['outputs.JobCopySourceTable']] = None,
-             create_disposition: Optional[str] = None,
-             destination_encryption_configuration: Optional['outputs.JobCopyDestinationEncryptionConfiguration'] = None,
-             destination_table: Optional['outputs.JobCopyDestinationTable'] = None,
-             write_disposition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_tables is None and 'sourceTables' in kwargs:
-            source_tables = kwargs['sourceTables']
-        if source_tables is None:
-            raise TypeError("Missing 'source_tables' argument")
-        if create_disposition is None and 'createDisposition' in kwargs:
-            create_disposition = kwargs['createDisposition']
-        if destination_encryption_configuration is None and 'destinationEncryptionConfiguration' in kwargs:
-            destination_encryption_configuration = kwargs['destinationEncryptionConfiguration']
-        if destination_table is None and 'destinationTable' in kwargs:
-            destination_table = kwargs['destinationTable']
-        if write_disposition is None and 'writeDisposition' in kwargs:
-            write_disposition = kwargs['writeDisposition']
-
-        _setter("source_tables", source_tables)
+        pulumi.set(__self__, "source_tables", source_tables)
         if create_disposition is not None:
-            _setter("create_disposition", create_disposition)
+            pulumi.set(__self__, "create_disposition", create_disposition)
         if destination_encryption_configuration is not None:
-            _setter("destination_encryption_configuration", destination_encryption_configuration)
+            pulumi.set(__self__, "destination_encryption_configuration", destination_encryption_configuration)
         if destination_table is not None:
-            _setter("destination_table", destination_table)
+            pulumi.set(__self__, "destination_table", destination_table)
         if write_disposition is not None:
-            _setter("write_disposition", write_disposition)
+            pulumi.set(__self__, "write_disposition", write_disposition)
 
     @property
     @pulumi.getter(name="sourceTables")
@@ -2227,28 +1662,9 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         :param str kms_key_version: (Output)
                Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
-        JobCopyDestinationEncryptionConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            kms_key_version=kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-        if kms_key_version is None and 'kmsKeyVersion' in kwargs:
-            kms_key_version = kwargs['kmsKeyVersion']
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
-            _setter("kms_key_version", kms_key_version)
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -2302,34 +1718,11 @@ class JobCopyDestinationTable(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        JobCopyDestinationTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_id=table_id,
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_id: Optional[str] = None,
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="tableId")
@@ -2390,34 +1783,11 @@ class JobCopySourceTable(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        JobCopySourceTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_id=table_id,
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_id: Optional[str] = None,
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="tableId")
@@ -2501,62 +1871,21 @@ class JobExtract(dict):
                Structure is documented below.
         :param bool use_avro_logical_types: Whether to use logical types when extracting to AVRO format.
         """
-        JobExtract._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_uris=destination_uris,
-            compression=compression,
-            destination_format=destination_format,
-            field_delimiter=field_delimiter,
-            print_header=print_header,
-            source_model=source_model,
-            source_table=source_table,
-            use_avro_logical_types=use_avro_logical_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_uris: Optional[Sequence[str]] = None,
-             compression: Optional[str] = None,
-             destination_format: Optional[str] = None,
-             field_delimiter: Optional[str] = None,
-             print_header: Optional[bool] = None,
-             source_model: Optional['outputs.JobExtractSourceModel'] = None,
-             source_table: Optional['outputs.JobExtractSourceTable'] = None,
-             use_avro_logical_types: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_uris is None and 'destinationUris' in kwargs:
-            destination_uris = kwargs['destinationUris']
-        if destination_uris is None:
-            raise TypeError("Missing 'destination_uris' argument")
-        if destination_format is None and 'destinationFormat' in kwargs:
-            destination_format = kwargs['destinationFormat']
-        if field_delimiter is None and 'fieldDelimiter' in kwargs:
-            field_delimiter = kwargs['fieldDelimiter']
-        if print_header is None and 'printHeader' in kwargs:
-            print_header = kwargs['printHeader']
-        if source_model is None and 'sourceModel' in kwargs:
-            source_model = kwargs['sourceModel']
-        if source_table is None and 'sourceTable' in kwargs:
-            source_table = kwargs['sourceTable']
-        if use_avro_logical_types is None and 'useAvroLogicalTypes' in kwargs:
-            use_avro_logical_types = kwargs['useAvroLogicalTypes']
-
-        _setter("destination_uris", destination_uris)
+        pulumi.set(__self__, "destination_uris", destination_uris)
         if compression is not None:
-            _setter("compression", compression)
+            pulumi.set(__self__, "compression", compression)
         if destination_format is not None:
-            _setter("destination_format", destination_format)
+            pulumi.set(__self__, "destination_format", destination_format)
         if field_delimiter is not None:
-            _setter("field_delimiter", field_delimiter)
+            pulumi.set(__self__, "field_delimiter", field_delimiter)
         if print_header is not None:
-            _setter("print_header", print_header)
+            pulumi.set(__self__, "print_header", print_header)
         if source_model is not None:
-            _setter("source_model", source_model)
+            pulumi.set(__self__, "source_model", source_model)
         if source_table is not None:
-            _setter("source_table", source_table)
+            pulumi.set(__self__, "source_table", source_table)
         if use_avro_logical_types is not None:
-            _setter("use_avro_logical_types", use_avro_logical_types)
+            pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
 
     @property
     @pulumi.getter(name="destinationUris")
@@ -2663,36 +1992,9 @@ class JobExtractSourceModel(dict):
                - - -
         :param str project_id: The ID of the project containing this model.
         """
-        JobExtractSourceModel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            model_id=model_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             model_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if model_id is None and 'modelId' in kwargs:
-            model_id = kwargs['modelId']
-        if model_id is None:
-            raise TypeError("Missing 'model_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("model_id", model_id)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -2754,34 +2056,11 @@ class JobExtractSourceTable(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        JobExtractSourceTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_id=table_id,
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_id: Optional[str] = None,
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="tableId")
@@ -2968,137 +2247,46 @@ class JobLoad(dict):
                Default value is `WRITE_EMPTY`.
                Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
-        JobLoad._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_table=destination_table,
-            source_uris=source_uris,
-            allow_jagged_rows=allow_jagged_rows,
-            allow_quoted_newlines=allow_quoted_newlines,
-            autodetect=autodetect,
-            create_disposition=create_disposition,
-            destination_encryption_configuration=destination_encryption_configuration,
-            encoding=encoding,
-            field_delimiter=field_delimiter,
-            ignore_unknown_values=ignore_unknown_values,
-            json_extension=json_extension,
-            max_bad_records=max_bad_records,
-            null_marker=null_marker,
-            parquet_options=parquet_options,
-            projection_fields=projection_fields,
-            quote=quote,
-            schema_update_options=schema_update_options,
-            skip_leading_rows=skip_leading_rows,
-            source_format=source_format,
-            time_partitioning=time_partitioning,
-            write_disposition=write_disposition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_table: Optional['outputs.JobLoadDestinationTable'] = None,
-             source_uris: Optional[Sequence[str]] = None,
-             allow_jagged_rows: Optional[bool] = None,
-             allow_quoted_newlines: Optional[bool] = None,
-             autodetect: Optional[bool] = None,
-             create_disposition: Optional[str] = None,
-             destination_encryption_configuration: Optional['outputs.JobLoadDestinationEncryptionConfiguration'] = None,
-             encoding: Optional[str] = None,
-             field_delimiter: Optional[str] = None,
-             ignore_unknown_values: Optional[bool] = None,
-             json_extension: Optional[str] = None,
-             max_bad_records: Optional[int] = None,
-             null_marker: Optional[str] = None,
-             parquet_options: Optional['outputs.JobLoadParquetOptions'] = None,
-             projection_fields: Optional[Sequence[str]] = None,
-             quote: Optional[str] = None,
-             schema_update_options: Optional[Sequence[str]] = None,
-             skip_leading_rows: Optional[int] = None,
-             source_format: Optional[str] = None,
-             time_partitioning: Optional['outputs.JobLoadTimePartitioning'] = None,
-             write_disposition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_table is None and 'destinationTable' in kwargs:
-            destination_table = kwargs['destinationTable']
-        if destination_table is None:
-            raise TypeError("Missing 'destination_table' argument")
-        if source_uris is None and 'sourceUris' in kwargs:
-            source_uris = kwargs['sourceUris']
-        if source_uris is None:
-            raise TypeError("Missing 'source_uris' argument")
-        if allow_jagged_rows is None and 'allowJaggedRows' in kwargs:
-            allow_jagged_rows = kwargs['allowJaggedRows']
-        if allow_quoted_newlines is None and 'allowQuotedNewlines' in kwargs:
-            allow_quoted_newlines = kwargs['allowQuotedNewlines']
-        if create_disposition is None and 'createDisposition' in kwargs:
-            create_disposition = kwargs['createDisposition']
-        if destination_encryption_configuration is None and 'destinationEncryptionConfiguration' in kwargs:
-            destination_encryption_configuration = kwargs['destinationEncryptionConfiguration']
-        if field_delimiter is None and 'fieldDelimiter' in kwargs:
-            field_delimiter = kwargs['fieldDelimiter']
-        if ignore_unknown_values is None and 'ignoreUnknownValues' in kwargs:
-            ignore_unknown_values = kwargs['ignoreUnknownValues']
-        if json_extension is None and 'jsonExtension' in kwargs:
-            json_extension = kwargs['jsonExtension']
-        if max_bad_records is None and 'maxBadRecords' in kwargs:
-            max_bad_records = kwargs['maxBadRecords']
-        if null_marker is None and 'nullMarker' in kwargs:
-            null_marker = kwargs['nullMarker']
-        if parquet_options is None and 'parquetOptions' in kwargs:
-            parquet_options = kwargs['parquetOptions']
-        if projection_fields is None and 'projectionFields' in kwargs:
-            projection_fields = kwargs['projectionFields']
-        if schema_update_options is None and 'schemaUpdateOptions' in kwargs:
-            schema_update_options = kwargs['schemaUpdateOptions']
-        if skip_leading_rows is None and 'skipLeadingRows' in kwargs:
-            skip_leading_rows = kwargs['skipLeadingRows']
-        if source_format is None and 'sourceFormat' in kwargs:
-            source_format = kwargs['sourceFormat']
-        if time_partitioning is None and 'timePartitioning' in kwargs:
-            time_partitioning = kwargs['timePartitioning']
-        if write_disposition is None and 'writeDisposition' in kwargs:
-            write_disposition = kwargs['writeDisposition']
-
-        _setter("destination_table", destination_table)
-        _setter("source_uris", source_uris)
+        pulumi.set(__self__, "destination_table", destination_table)
+        pulumi.set(__self__, "source_uris", source_uris)
         if allow_jagged_rows is not None:
-            _setter("allow_jagged_rows", allow_jagged_rows)
+            pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
         if allow_quoted_newlines is not None:
-            _setter("allow_quoted_newlines", allow_quoted_newlines)
+            pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
         if autodetect is not None:
-            _setter("autodetect", autodetect)
+            pulumi.set(__self__, "autodetect", autodetect)
         if create_disposition is not None:
-            _setter("create_disposition", create_disposition)
+            pulumi.set(__self__, "create_disposition", create_disposition)
         if destination_encryption_configuration is not None:
-            _setter("destination_encryption_configuration", destination_encryption_configuration)
+            pulumi.set(__self__, "destination_encryption_configuration", destination_encryption_configuration)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if field_delimiter is not None:
-            _setter("field_delimiter", field_delimiter)
+            pulumi.set(__self__, "field_delimiter", field_delimiter)
         if ignore_unknown_values is not None:
-            _setter("ignore_unknown_values", ignore_unknown_values)
+            pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         if json_extension is not None:
-            _setter("json_extension", json_extension)
+            pulumi.set(__self__, "json_extension", json_extension)
         if max_bad_records is not None:
-            _setter("max_bad_records", max_bad_records)
+            pulumi.set(__self__, "max_bad_records", max_bad_records)
         if null_marker is not None:
-            _setter("null_marker", null_marker)
+            pulumi.set(__self__, "null_marker", null_marker)
         if parquet_options is not None:
-            _setter("parquet_options", parquet_options)
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if projection_fields is not None:
-            _setter("projection_fields", projection_fields)
+            pulumi.set(__self__, "projection_fields", projection_fields)
         if quote is not None:
-            _setter("quote", quote)
+            pulumi.set(__self__, "quote", quote)
         if schema_update_options is not None:
-            _setter("schema_update_options", schema_update_options)
+            pulumi.set(__self__, "schema_update_options", schema_update_options)
         if skip_leading_rows is not None:
-            _setter("skip_leading_rows", skip_leading_rows)
+            pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
         if source_format is not None:
-            _setter("source_format", source_format)
+            pulumi.set(__self__, "source_format", source_format)
         if time_partitioning is not None:
-            _setter("time_partitioning", time_partitioning)
+            pulumi.set(__self__, "time_partitioning", time_partitioning)
         if write_disposition is not None:
-            _setter("write_disposition", write_disposition)
+            pulumi.set(__self__, "write_disposition", write_disposition)
 
     @property
     @pulumi.getter(name="destinationTable")
@@ -3360,28 +2548,9 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         :param str kms_key_version: (Output)
                Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
-        JobLoadDestinationEncryptionConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            kms_key_version=kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-        if kms_key_version is None and 'kmsKeyVersion' in kwargs:
-            kms_key_version = kwargs['kmsKeyVersion']
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
-            _setter("kms_key_version", kms_key_version)
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -3435,34 +2604,11 @@ class JobLoadDestinationTable(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        JobLoadDestinationTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_id=table_id,
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_id: Optional[str] = None,
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="tableId")
@@ -3518,27 +2664,10 @@ class JobLoadParquetOptions(dict):
         :param bool enable_list_inference: If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
         :param bool enum_as_string: If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
-        JobLoadParquetOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_list_inference=enable_list_inference,
-            enum_as_string=enum_as_string,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_list_inference: Optional[bool] = None,
-             enum_as_string: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_list_inference is None and 'enableListInference' in kwargs:
-            enable_list_inference = kwargs['enableListInference']
-        if enum_as_string is None and 'enumAsString' in kwargs:
-            enum_as_string = kwargs['enumAsString']
-
         if enable_list_inference is not None:
-            _setter("enable_list_inference", enable_list_inference)
+            pulumi.set(__self__, "enable_list_inference", enable_list_inference)
         if enum_as_string is not None:
-            _setter("enum_as_string", enum_as_string)
+            pulumi.set(__self__, "enum_as_string", enum_as_string)
 
     @property
     @pulumi.getter(name="enableListInference")
@@ -3588,30 +2717,11 @@ class JobLoadTimePartitioning(dict):
                The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
                A wrapper is used here because an empty string is an invalid value.
         """
-        JobLoadTimePartitioning._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            expiration_ms=expiration_ms,
-            field=field,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             expiration_ms: Optional[str] = None,
-             field: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if expiration_ms is None and 'expirationMs' in kwargs:
-            expiration_ms = kwargs['expirationMs']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if expiration_ms is not None:
-            _setter("expiration_ms", expiration_ms)
+            pulumi.set(__self__, "expiration_ms", expiration_ms)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
 
     @property
     @pulumi.getter
@@ -3762,114 +2872,39 @@ class JobQuery(dict):
                Default value is `WRITE_EMPTY`.
                Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
-        JobQuery._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            query=query,
-            allow_large_results=allow_large_results,
-            create_disposition=create_disposition,
-            default_dataset=default_dataset,
-            destination_encryption_configuration=destination_encryption_configuration,
-            destination_table=destination_table,
-            flatten_results=flatten_results,
-            maximum_billing_tier=maximum_billing_tier,
-            maximum_bytes_billed=maximum_bytes_billed,
-            parameter_mode=parameter_mode,
-            priority=priority,
-            schema_update_options=schema_update_options,
-            script_options=script_options,
-            use_legacy_sql=use_legacy_sql,
-            use_query_cache=use_query_cache,
-            user_defined_function_resources=user_defined_function_resources,
-            write_disposition=write_disposition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             query: Optional[str] = None,
-             allow_large_results: Optional[bool] = None,
-             create_disposition: Optional[str] = None,
-             default_dataset: Optional['outputs.JobQueryDefaultDataset'] = None,
-             destination_encryption_configuration: Optional['outputs.JobQueryDestinationEncryptionConfiguration'] = None,
-             destination_table: Optional['outputs.JobQueryDestinationTable'] = None,
-             flatten_results: Optional[bool] = None,
-             maximum_billing_tier: Optional[int] = None,
-             maximum_bytes_billed: Optional[str] = None,
-             parameter_mode: Optional[str] = None,
-             priority: Optional[str] = None,
-             schema_update_options: Optional[Sequence[str]] = None,
-             script_options: Optional['outputs.JobQueryScriptOptions'] = None,
-             use_legacy_sql: Optional[bool] = None,
-             use_query_cache: Optional[bool] = None,
-             user_defined_function_resources: Optional[Sequence['outputs.JobQueryUserDefinedFunctionResource']] = None,
-             write_disposition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query is None:
-            raise TypeError("Missing 'query' argument")
-        if allow_large_results is None and 'allowLargeResults' in kwargs:
-            allow_large_results = kwargs['allowLargeResults']
-        if create_disposition is None and 'createDisposition' in kwargs:
-            create_disposition = kwargs['createDisposition']
-        if default_dataset is None and 'defaultDataset' in kwargs:
-            default_dataset = kwargs['defaultDataset']
-        if destination_encryption_configuration is None and 'destinationEncryptionConfiguration' in kwargs:
-            destination_encryption_configuration = kwargs['destinationEncryptionConfiguration']
-        if destination_table is None and 'destinationTable' in kwargs:
-            destination_table = kwargs['destinationTable']
-        if flatten_results is None and 'flattenResults' in kwargs:
-            flatten_results = kwargs['flattenResults']
-        if maximum_billing_tier is None and 'maximumBillingTier' in kwargs:
-            maximum_billing_tier = kwargs['maximumBillingTier']
-        if maximum_bytes_billed is None and 'maximumBytesBilled' in kwargs:
-            maximum_bytes_billed = kwargs['maximumBytesBilled']
-        if parameter_mode is None and 'parameterMode' in kwargs:
-            parameter_mode = kwargs['parameterMode']
-        if schema_update_options is None and 'schemaUpdateOptions' in kwargs:
-            schema_update_options = kwargs['schemaUpdateOptions']
-        if script_options is None and 'scriptOptions' in kwargs:
-            script_options = kwargs['scriptOptions']
-        if use_legacy_sql is None and 'useLegacySql' in kwargs:
-            use_legacy_sql = kwargs['useLegacySql']
-        if use_query_cache is None and 'useQueryCache' in kwargs:
-            use_query_cache = kwargs['useQueryCache']
-        if user_defined_function_resources is None and 'userDefinedFunctionResources' in kwargs:
-            user_defined_function_resources = kwargs['userDefinedFunctionResources']
-        if write_disposition is None and 'writeDisposition' in kwargs:
-            write_disposition = kwargs['writeDisposition']
-
-        _setter("query", query)
+        pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
-            _setter("allow_large_results", allow_large_results)
+            pulumi.set(__self__, "allow_large_results", allow_large_results)
         if create_disposition is not None:
-            _setter("create_disposition", create_disposition)
+            pulumi.set(__self__, "create_disposition", create_disposition)
         if default_dataset is not None:
-            _setter("default_dataset", default_dataset)
+            pulumi.set(__self__, "default_dataset", default_dataset)
         if destination_encryption_configuration is not None:
-            _setter("destination_encryption_configuration", destination_encryption_configuration)
+            pulumi.set(__self__, "destination_encryption_configuration", destination_encryption_configuration)
         if destination_table is not None:
-            _setter("destination_table", destination_table)
+            pulumi.set(__self__, "destination_table", destination_table)
         if flatten_results is not None:
-            _setter("flatten_results", flatten_results)
+            pulumi.set(__self__, "flatten_results", flatten_results)
         if maximum_billing_tier is not None:
-            _setter("maximum_billing_tier", maximum_billing_tier)
+            pulumi.set(__self__, "maximum_billing_tier", maximum_billing_tier)
         if maximum_bytes_billed is not None:
-            _setter("maximum_bytes_billed", maximum_bytes_billed)
+            pulumi.set(__self__, "maximum_bytes_billed", maximum_bytes_billed)
         if parameter_mode is not None:
-            _setter("parameter_mode", parameter_mode)
+            pulumi.set(__self__, "parameter_mode", parameter_mode)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if schema_update_options is not None:
-            _setter("schema_update_options", schema_update_options)
+            pulumi.set(__self__, "schema_update_options", schema_update_options)
         if script_options is not None:
-            _setter("script_options", script_options)
+            pulumi.set(__self__, "script_options", script_options)
         if use_legacy_sql is not None:
-            _setter("use_legacy_sql", use_legacy_sql)
+            pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
         if use_query_cache is not None:
-            _setter("use_query_cache", use_query_cache)
+            pulumi.set(__self__, "use_query_cache", use_query_cache)
         if user_defined_function_resources is not None:
-            _setter("user_defined_function_resources", user_defined_function_resources)
+            pulumi.set(__self__, "user_defined_function_resources", user_defined_function_resources)
         if write_disposition is not None:
-            _setter("write_disposition", write_disposition)
+            pulumi.set(__self__, "write_disposition", write_disposition)
 
     @property
     @pulumi.getter
@@ -4074,28 +3109,9 @@ class JobQueryDefaultDataset(dict):
                or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
         :param str project_id: The ID of the project containing this table.
         """
-        JobQueryDefaultDataset._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("dataset_id", dataset_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -4145,28 +3161,9 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         :param str kms_key_version: (Output)
                Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
-        JobQueryDestinationEncryptionConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            kms_key_version=kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-        if kms_key_version is None and 'kmsKeyVersion' in kwargs:
-            kms_key_version = kwargs['kmsKeyVersion']
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
-            _setter("kms_key_version", kms_key_version)
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -4220,34 +3217,11 @@ class JobQueryDestinationTable(dict):
         :param str dataset_id: The ID of the dataset containing this table.
         :param str project_id: The ID of the project containing this table.
         """
-        JobQueryDestinationTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_id=table_id,
-            dataset_id=dataset_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_id: Optional[str] = None,
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
-            _setter("dataset_id", dataset_id)
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="tableId")
@@ -4309,33 +3283,12 @@ class JobQueryScriptOptions(dict):
         :param str statement_byte_budget: Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
         :param str statement_timeout_ms: Timeout period for each statement in a script.
         """
-        JobQueryScriptOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_result_statement=key_result_statement,
-            statement_byte_budget=statement_byte_budget,
-            statement_timeout_ms=statement_timeout_ms,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_result_statement: Optional[str] = None,
-             statement_byte_budget: Optional[str] = None,
-             statement_timeout_ms: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_result_statement is None and 'keyResultStatement' in kwargs:
-            key_result_statement = kwargs['keyResultStatement']
-        if statement_byte_budget is None and 'statementByteBudget' in kwargs:
-            statement_byte_budget = kwargs['statementByteBudget']
-        if statement_timeout_ms is None and 'statementTimeoutMs' in kwargs:
-            statement_timeout_ms = kwargs['statementTimeoutMs']
-
         if key_result_statement is not None:
-            _setter("key_result_statement", key_result_statement)
+            pulumi.set(__self__, "key_result_statement", key_result_statement)
         if statement_byte_budget is not None:
-            _setter("statement_byte_budget", statement_byte_budget)
+            pulumi.set(__self__, "statement_byte_budget", statement_byte_budget)
         if statement_timeout_ms is not None:
-            _setter("statement_timeout_ms", statement_timeout_ms)
+            pulumi.set(__self__, "statement_timeout_ms", statement_timeout_ms)
 
     @property
     @pulumi.getter(name="keyResultStatement")
@@ -4393,27 +3346,10 @@ class JobQueryUserDefinedFunctionResource(dict):
                Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
         :param str resource_uri: A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
         """
-        JobQueryUserDefinedFunctionResource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            inline_code=inline_code,
-            resource_uri=resource_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             inline_code: Optional[str] = None,
-             resource_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if inline_code is None and 'inlineCode' in kwargs:
-            inline_code = kwargs['inlineCode']
-        if resource_uri is None and 'resourceUri' in kwargs:
-            resource_uri = kwargs['resourceUri']
-
         if inline_code is not None:
-            _setter("inline_code", inline_code)
+            pulumi.set(__self__, "inline_code", inline_code)
         if resource_uri is not None:
-            _setter("resource_uri", resource_uri)
+            pulumi.set(__self__, "resource_uri", resource_uri)
 
     @property
     @pulumi.getter(name="inlineCode")
@@ -4468,29 +3404,12 @@ class JobStatus(dict):
         :param str state: (Output)
                Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
         """
-        JobStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            error_results=error_results,
-            errors=errors,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             error_results: Optional[Sequence['outputs.JobStatusErrorResult']] = None,
-             errors: Optional[Sequence['outputs.JobStatusError']] = None,
-             state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if error_results is None and 'errorResults' in kwargs:
-            error_results = kwargs['errorResults']
-
         if error_results is not None:
-            _setter("error_results", error_results)
+            pulumi.set(__self__, "error_results", error_results)
         if errors is not None:
-            _setter("errors", errors)
+            pulumi.set(__self__, "errors", errors)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="errorResults")
@@ -4535,27 +3454,12 @@ class JobStatusError(dict):
         :param str message: A human-readable description of the error.
         :param str reason: A short error code that summarizes the error.
         """
-        JobStatusError._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            message=message,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -4593,27 +3497,12 @@ class JobStatusErrorResult(dict):
         :param str message: A human-readable description of the error.
         :param str reason: A short error code that summarizes the error.
         """
-        JobStatusErrorResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            message=message,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[str] = None,
-             message: Optional[str] = None,
-             reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -4669,27 +3558,10 @@ class ReservationAutoscale(dict):
                The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
         :param int max_slots: Number of slots to be scaled when needed.
         """
-        ReservationAutoscale._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            current_slots=current_slots,
-            max_slots=max_slots,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             current_slots: Optional[int] = None,
-             max_slots: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if current_slots is None and 'currentSlots' in kwargs:
-            current_slots = kwargs['currentSlots']
-        if max_slots is None and 'maxSlots' in kwargs:
-            max_slots = kwargs['maxSlots']
-
         if current_slots is not None:
-            _setter("current_slots", current_slots)
+            pulumi.set(__self__, "current_slots", current_slots)
         if max_slots is not None:
-            _setter("max_slots", max_slots)
+            pulumi.set(__self__, "max_slots", max_slots)
 
     @property
     @pulumi.getter(name="currentSlots")
@@ -4750,35 +3622,14 @@ class RoutineArgument(dict):
                Possible values are: `IN`, `OUT`, `INOUT`.
         :param str name: The name of this argument. Can be absent for function return argument.
         """
-        RoutineArgument._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            argument_kind=argument_kind,
-            data_type=data_type,
-            mode=mode,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             argument_kind: Optional[str] = None,
-             data_type: Optional[str] = None,
-             mode: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if argument_kind is None and 'argumentKind' in kwargs:
-            argument_kind = kwargs['argumentKind']
-        if data_type is None and 'dataType' in kwargs:
-            data_type = kwargs['dataType']
-
         if argument_kind is not None:
-            _setter("argument_kind", argument_kind)
+            pulumi.set(__self__, "argument_kind", argument_kind)
         if data_type is not None:
-            _setter("data_type", data_type)
+            pulumi.set(__self__, "data_type", data_type)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="argumentKind")
@@ -4854,28 +3705,9 @@ class TableEncryptionConfiguration(dict):
                `kms.CryptoKeyIAMBinding` resource.
         :param str kms_key_version: The self link or full name of the kms key version used to encrypt this table.
         """
-        TableEncryptionConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-            kms_key_version=kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-        if kms_key_version is None and 'kmsKeyVersion' in kwargs:
-            kms_key_version = kwargs['kmsKeyVersion']
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
-            _setter("kms_key_version", kms_key_version)
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -5028,119 +3860,40 @@ class TableExternalDataConfiguration(dict):
                in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
                the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         """
-        TableExternalDataConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autodetect=autodetect,
-            source_uris=source_uris,
-            avro_options=avro_options,
-            compression=compression,
-            connection_id=connection_id,
-            csv_options=csv_options,
-            file_set_spec_type=file_set_spec_type,
-            google_sheets_options=google_sheets_options,
-            hive_partitioning_options=hive_partitioning_options,
-            ignore_unknown_values=ignore_unknown_values,
-            json_options=json_options,
-            max_bad_records=max_bad_records,
-            metadata_cache_mode=metadata_cache_mode,
-            object_metadata=object_metadata,
-            parquet_options=parquet_options,
-            reference_file_schema_uri=reference_file_schema_uri,
-            schema=schema,
-            source_format=source_format,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autodetect: Optional[bool] = None,
-             source_uris: Optional[Sequence[str]] = None,
-             avro_options: Optional['outputs.TableExternalDataConfigurationAvroOptions'] = None,
-             compression: Optional[str] = None,
-             connection_id: Optional[str] = None,
-             csv_options: Optional['outputs.TableExternalDataConfigurationCsvOptions'] = None,
-             file_set_spec_type: Optional[str] = None,
-             google_sheets_options: Optional['outputs.TableExternalDataConfigurationGoogleSheetsOptions'] = None,
-             hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
-             ignore_unknown_values: Optional[bool] = None,
-             json_options: Optional['outputs.TableExternalDataConfigurationJsonOptions'] = None,
-             max_bad_records: Optional[int] = None,
-             metadata_cache_mode: Optional[str] = None,
-             object_metadata: Optional[str] = None,
-             parquet_options: Optional['outputs.TableExternalDataConfigurationParquetOptions'] = None,
-             reference_file_schema_uri: Optional[str] = None,
-             schema: Optional[str] = None,
-             source_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if autodetect is None:
-            raise TypeError("Missing 'autodetect' argument")
-        if source_uris is None and 'sourceUris' in kwargs:
-            source_uris = kwargs['sourceUris']
-        if source_uris is None:
-            raise TypeError("Missing 'source_uris' argument")
-        if avro_options is None and 'avroOptions' in kwargs:
-            avro_options = kwargs['avroOptions']
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if csv_options is None and 'csvOptions' in kwargs:
-            csv_options = kwargs['csvOptions']
-        if file_set_spec_type is None and 'fileSetSpecType' in kwargs:
-            file_set_spec_type = kwargs['fileSetSpecType']
-        if google_sheets_options is None and 'googleSheetsOptions' in kwargs:
-            google_sheets_options = kwargs['googleSheetsOptions']
-        if hive_partitioning_options is None and 'hivePartitioningOptions' in kwargs:
-            hive_partitioning_options = kwargs['hivePartitioningOptions']
-        if ignore_unknown_values is None and 'ignoreUnknownValues' in kwargs:
-            ignore_unknown_values = kwargs['ignoreUnknownValues']
-        if json_options is None and 'jsonOptions' in kwargs:
-            json_options = kwargs['jsonOptions']
-        if max_bad_records is None and 'maxBadRecords' in kwargs:
-            max_bad_records = kwargs['maxBadRecords']
-        if metadata_cache_mode is None and 'metadataCacheMode' in kwargs:
-            metadata_cache_mode = kwargs['metadataCacheMode']
-        if object_metadata is None and 'objectMetadata' in kwargs:
-            object_metadata = kwargs['objectMetadata']
-        if parquet_options is None and 'parquetOptions' in kwargs:
-            parquet_options = kwargs['parquetOptions']
-        if reference_file_schema_uri is None and 'referenceFileSchemaUri' in kwargs:
-            reference_file_schema_uri = kwargs['referenceFileSchemaUri']
-        if source_format is None and 'sourceFormat' in kwargs:
-            source_format = kwargs['sourceFormat']
-
-        _setter("autodetect", autodetect)
-        _setter("source_uris", source_uris)
+        pulumi.set(__self__, "autodetect", autodetect)
+        pulumi.set(__self__, "source_uris", source_uris)
         if avro_options is not None:
-            _setter("avro_options", avro_options)
+            pulumi.set(__self__, "avro_options", avro_options)
         if compression is not None:
-            _setter("compression", compression)
+            pulumi.set(__self__, "compression", compression)
         if connection_id is not None:
-            _setter("connection_id", connection_id)
+            pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
-            _setter("csv_options", csv_options)
+            pulumi.set(__self__, "csv_options", csv_options)
         if file_set_spec_type is not None:
-            _setter("file_set_spec_type", file_set_spec_type)
+            pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         if google_sheets_options is not None:
-            _setter("google_sheets_options", google_sheets_options)
+            pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         if hive_partitioning_options is not None:
-            _setter("hive_partitioning_options", hive_partitioning_options)
+            pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         if ignore_unknown_values is not None:
-            _setter("ignore_unknown_values", ignore_unknown_values)
+            pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         if json_options is not None:
-            _setter("json_options", json_options)
+            pulumi.set(__self__, "json_options", json_options)
         if max_bad_records is not None:
-            _setter("max_bad_records", max_bad_records)
+            pulumi.set(__self__, "max_bad_records", max_bad_records)
         if metadata_cache_mode is not None:
-            _setter("metadata_cache_mode", metadata_cache_mode)
+            pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
         if object_metadata is not None:
-            _setter("object_metadata", object_metadata)
+            pulumi.set(__self__, "object_metadata", object_metadata)
         if parquet_options is not None:
-            _setter("parquet_options", parquet_options)
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if reference_file_schema_uri is not None:
-            _setter("reference_file_schema_uri", reference_file_schema_uri)
+            pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if source_format is not None:
-            _setter("source_format", source_format)
+            pulumi.set(__self__, "source_format", source_format)
 
     @property
     @pulumi.getter
@@ -5357,22 +4110,7 @@ class TableExternalDataConfigurationAvroOptions(dict):
                to interpret logical types as the corresponding BigQuery data type
                (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
-        TableExternalDataConfigurationAvroOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            use_avro_logical_types=use_avro_logical_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             use_avro_logical_types: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if use_avro_logical_types is None and 'useAvroLogicalTypes' in kwargs:
-            use_avro_logical_types = kwargs['useAvroLogicalTypes']
-        if use_avro_logical_types is None:
-            raise TypeError("Missing 'use_avro_logical_types' argument")
-
-        _setter("use_avro_logical_types", use_avro_logical_types)
+        pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
 
     @property
     @pulumi.getter(name="useAvroLogicalTypes")
@@ -5436,48 +4174,17 @@ class TableExternalDataConfigurationCsvOptions(dict):
         :param int skip_leading_rows: The number of rows at the top of a CSV
                file that BigQuery will skip when reading the data.
         """
-        TableExternalDataConfigurationCsvOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            quote=quote,
-            allow_jagged_rows=allow_jagged_rows,
-            allow_quoted_newlines=allow_quoted_newlines,
-            encoding=encoding,
-            field_delimiter=field_delimiter,
-            skip_leading_rows=skip_leading_rows,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             quote: Optional[str] = None,
-             allow_jagged_rows: Optional[bool] = None,
-             allow_quoted_newlines: Optional[bool] = None,
-             encoding: Optional[str] = None,
-             field_delimiter: Optional[str] = None,
-             skip_leading_rows: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if quote is None:
-            raise TypeError("Missing 'quote' argument")
-        if allow_jagged_rows is None and 'allowJaggedRows' in kwargs:
-            allow_jagged_rows = kwargs['allowJaggedRows']
-        if allow_quoted_newlines is None and 'allowQuotedNewlines' in kwargs:
-            allow_quoted_newlines = kwargs['allowQuotedNewlines']
-        if field_delimiter is None and 'fieldDelimiter' in kwargs:
-            field_delimiter = kwargs['fieldDelimiter']
-        if skip_leading_rows is None and 'skipLeadingRows' in kwargs:
-            skip_leading_rows = kwargs['skipLeadingRows']
-
-        _setter("quote", quote)
+        pulumi.set(__self__, "quote", quote)
         if allow_jagged_rows is not None:
-            _setter("allow_jagged_rows", allow_jagged_rows)
+            pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
         if allow_quoted_newlines is not None:
-            _setter("allow_quoted_newlines", allow_quoted_newlines)
+            pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if field_delimiter is not None:
-            _setter("field_delimiter", field_delimiter)
+            pulumi.set(__self__, "field_delimiter", field_delimiter)
         if skip_leading_rows is not None:
-            _setter("skip_leading_rows", skip_leading_rows)
+            pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
 
     @property
     @pulumi.getter
@@ -5570,25 +4277,10 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
                that BigQuery will skip when reading the data. At least one of `range` or
                `skip_leading_rows` must be set.
         """
-        TableExternalDataConfigurationGoogleSheetsOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            range=range,
-            skip_leading_rows=skip_leading_rows,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             range: Optional[str] = None,
-             skip_leading_rows: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if skip_leading_rows is None and 'skipLeadingRows' in kwargs:
-            skip_leading_rows = kwargs['skipLeadingRows']
-
         if range is not None:
-            _setter("range", range)
+            pulumi.set(__self__, "range", range)
         if skip_leading_rows is not None:
-            _setter("skip_leading_rows", skip_leading_rows)
+            pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
 
     @property
     @pulumi.getter
@@ -5658,31 +4350,12 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
                can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
                Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         """
-        TableExternalDataConfigurationHivePartitioningOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mode=mode,
-            require_partition_filter=require_partition_filter,
-            source_uri_prefix=source_uri_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mode: Optional[str] = None,
-             require_partition_filter: Optional[bool] = None,
-             source_uri_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if require_partition_filter is None and 'requirePartitionFilter' in kwargs:
-            require_partition_filter = kwargs['requirePartitionFilter']
-        if source_uri_prefix is None and 'sourceUriPrefix' in kwargs:
-            source_uri_prefix = kwargs['sourceUriPrefix']
-
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if require_partition_filter is not None:
-            _setter("require_partition_filter", require_partition_filter)
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if source_uri_prefix is not None:
-            _setter("source_uri_prefix", source_uri_prefix)
+            pulumi.set(__self__, "source_uri_prefix", source_uri_prefix)
 
     @property
     @pulumi.getter
@@ -5732,19 +4405,8 @@ class TableExternalDataConfigurationJsonOptions(dict):
         """
         :param str encoding: The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         """
-        TableExternalDataConfigurationJsonOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            encoding=encoding,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             encoding: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
 
     @property
     @pulumi.getter
@@ -5783,27 +4445,10 @@ class TableExternalDataConfigurationParquetOptions(dict):
         :param bool enable_list_inference: Indicates whether to use schema inference specifically for Parquet LIST logical type.
         :param bool enum_as_string: Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
-        TableExternalDataConfigurationParquetOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_list_inference=enable_list_inference,
-            enum_as_string=enum_as_string,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_list_inference: Optional[bool] = None,
-             enum_as_string: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_list_inference is None and 'enableListInference' in kwargs:
-            enable_list_inference = kwargs['enableListInference']
-        if enum_as_string is None and 'enumAsString' in kwargs:
-            enum_as_string = kwargs['enumAsString']
-
         if enable_list_inference is not None:
-            _setter("enable_list_inference", enable_list_inference)
+            pulumi.set(__self__, "enable_list_inference", enable_list_inference)
         if enum_as_string is not None:
-            _setter("enum_as_string", enum_as_string)
+            pulumi.set(__self__, "enum_as_string", enum_as_string)
 
     @property
     @pulumi.getter(name="enableListInference")
@@ -5859,38 +4504,13 @@ class TableMaterializedView(dict):
         :param int refresh_interval_ms: The maximum frequency at which this materialized view will be refreshed.
                The default value is 1800000
         """
-        TableMaterializedView._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            query=query,
-            allow_non_incremental_definition=allow_non_incremental_definition,
-            enable_refresh=enable_refresh,
-            refresh_interval_ms=refresh_interval_ms,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             query: Optional[str] = None,
-             allow_non_incremental_definition: Optional[bool] = None,
-             enable_refresh: Optional[bool] = None,
-             refresh_interval_ms: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query is None:
-            raise TypeError("Missing 'query' argument")
-        if allow_non_incremental_definition is None and 'allowNonIncrementalDefinition' in kwargs:
-            allow_non_incremental_definition = kwargs['allowNonIncrementalDefinition']
-        if enable_refresh is None and 'enableRefresh' in kwargs:
-            enable_refresh = kwargs['enableRefresh']
-        if refresh_interval_ms is None and 'refreshIntervalMs' in kwargs:
-            refresh_interval_ms = kwargs['refreshIntervalMs']
-
-        _setter("query", query)
+        pulumi.set(__self__, "query", query)
         if allow_non_incremental_definition is not None:
-            _setter("allow_non_incremental_definition", allow_non_incremental_definition)
+            pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
         if enable_refresh is not None:
-            _setter("enable_refresh", enable_refresh)
+            pulumi.set(__self__, "enable_refresh", enable_refresh)
         if refresh_interval_ms is not None:
-            _setter("refresh_interval_ms", refresh_interval_ms)
+            pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
 
     @property
     @pulumi.getter
@@ -5939,25 +4559,8 @@ class TableRangePartitioning(dict):
         :param 'TableRangePartitioningRangeArgs' range: Information required to partition based on ranges.
                Structure is documented below.
         """
-        TableRangePartitioning._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field=field,
-            range=range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field: Optional[str] = None,
-             range: Optional['outputs.TableRangePartitioningRange'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field is None:
-            raise TypeError("Missing 'field' argument")
-        if range is None:
-            raise TypeError("Missing 'range' argument")
-
-        _setter("field", field)
-        _setter("range", range)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "range", range)
 
     @property
     @pulumi.getter
@@ -5989,30 +4592,9 @@ class TableRangePartitioningRange(dict):
         :param int interval: The width of each range within the partition.
         :param int start: Start of the range partitioning, inclusive.
         """
-        TableRangePartitioningRange._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end=end,
-            interval=interval,
-            start=start,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end: Optional[int] = None,
-             interval: Optional[int] = None,
-             start: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end is None:
-            raise TypeError("Missing 'end' argument")
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if start is None:
-            raise TypeError("Missing 'start' argument")
-
-        _setter("end", end)
-        _setter("interval", interval)
-        _setter("start", start)
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "start", start)
 
     @property
     @pulumi.getter
@@ -6072,27 +4654,10 @@ class TableTableConstraints(dict):
                The primary key is not enforced.
                Structure is documented below.
         """
-        TableTableConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            foreign_keys=foreign_keys,
-            primary_key=primary_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             foreign_keys: Optional[Sequence['outputs.TableTableConstraintsForeignKey']] = None,
-             primary_key: Optional['outputs.TableTableConstraintsPrimaryKey'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if foreign_keys is None and 'foreignKeys' in kwargs:
-            foreign_keys = kwargs['foreignKeys']
-        if primary_key is None and 'primaryKey' in kwargs:
-            primary_key = kwargs['primaryKey']
-
         if foreign_keys is not None:
-            _setter("foreign_keys", foreign_keys)
+            pulumi.set(__self__, "foreign_keys", foreign_keys)
         if primary_key is not None:
-            _setter("primary_key", primary_key)
+            pulumi.set(__self__, "primary_key", primary_key)
 
     @property
     @pulumi.getter(name="foreignKeys")
@@ -6149,33 +4714,10 @@ class TableTableConstraintsForeignKey(dict):
                Structure is documented below.
         :param str name: Set only if the foreign key constraint is named.
         """
-        TableTableConstraintsForeignKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            column_references=column_references,
-            referenced_table=referenced_table,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             column_references: Optional['outputs.TableTableConstraintsForeignKeyColumnReferences'] = None,
-             referenced_table: Optional['outputs.TableTableConstraintsForeignKeyReferencedTable'] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if column_references is None and 'columnReferences' in kwargs:
-            column_references = kwargs['columnReferences']
-        if column_references is None:
-            raise TypeError("Missing 'column_references' argument")
-        if referenced_table is None and 'referencedTable' in kwargs:
-            referenced_table = kwargs['referencedTable']
-        if referenced_table is None:
-            raise TypeError("Missing 'referenced_table' argument")
-
-        _setter("column_references", column_references)
-        _setter("referenced_table", referenced_table)
+        pulumi.set(__self__, "column_references", column_references)
+        pulumi.set(__self__, "referenced_table", referenced_table)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="columnReferences")
@@ -6234,29 +4776,8 @@ class TableTableConstraintsForeignKeyColumnReferences(dict):
                referenced by the referencingColumn
         :param str referencing_column: The column that composes the foreign key.
         """
-        TableTableConstraintsForeignKeyColumnReferences._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            referenced_column=referenced_column,
-            referencing_column=referencing_column,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             referenced_column: Optional[str] = None,
-             referencing_column: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if referenced_column is None and 'referencedColumn' in kwargs:
-            referenced_column = kwargs['referencedColumn']
-        if referenced_column is None:
-            raise TypeError("Missing 'referenced_column' argument")
-        if referencing_column is None and 'referencingColumn' in kwargs:
-            referencing_column = kwargs['referencingColumn']
-        if referencing_column is None:
-            raise TypeError("Missing 'referencing_column' argument")
-
-        _setter("referenced_column", referenced_column)
-        _setter("referencing_column", referencing_column)
+        pulumi.set(__self__, "referenced_column", referenced_column)
+        pulumi.set(__self__, "referencing_column", referencing_column)
 
     @property
     @pulumi.getter(name="referencedColumn")
@@ -6312,36 +4833,9 @@ class TableTableConstraintsForeignKeyReferencedTable(dict):
                the table ID with a partition decorator, such as
                sample_table$20190123.
         """
-        TableTableConstraintsForeignKeyReferencedTable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataset_id=dataset_id,
-            project_id=project_id,
-            table_id=table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataset_id: Optional[str] = None,
-             project_id: Optional[str] = None,
-             table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataset_id is None and 'datasetId' in kwargs:
-            dataset_id = kwargs['datasetId']
-        if dataset_id is None:
-            raise TypeError("Missing 'dataset_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if table_id is None and 'tableId' in kwargs:
-            table_id = kwargs['tableId']
-        if table_id is None:
-            raise TypeError("Missing 'table_id' argument")
-
-        _setter("dataset_id", dataset_id)
-        _setter("project_id", project_id)
-        _setter("table_id", table_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -6379,20 +4873,7 @@ class TableTableConstraintsPrimaryKey(dict):
         """
         :param Sequence[str] columns: The columns that are composed of the primary key constraint.
         """
-        TableTableConstraintsPrimaryKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            columns=columns,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             columns: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if columns is None:
-            raise TypeError("Missing 'columns' argument")
-
-        _setter("columns", columns)
+        pulumi.set(__self__, "columns", columns)
 
     @property
     @pulumi.getter
@@ -6441,36 +4922,13 @@ class TableTimePartitioning(dict):
                require a partition filter that can be used for partition elimination to be
                specified.
         """
-        TableTimePartitioning._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            expiration_ms=expiration_ms,
-            field=field,
-            require_partition_filter=require_partition_filter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             expiration_ms: Optional[int] = None,
-             field: Optional[str] = None,
-             require_partition_filter: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if expiration_ms is None and 'expirationMs' in kwargs:
-            expiration_ms = kwargs['expirationMs']
-        if require_partition_filter is None and 'requirePartitionFilter' in kwargs:
-            require_partition_filter = kwargs['requirePartitionFilter']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if expiration_ms is not None:
-            _setter("expiration_ms", expiration_ms)
+            pulumi.set(__self__, "expiration_ms", expiration_ms)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
         if require_partition_filter is not None:
-            _setter("require_partition_filter", require_partition_filter)
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
 
     @property
     @pulumi.getter
@@ -6538,26 +4996,9 @@ class TableView(dict):
         :param bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
                The default value is true. If set to false, the view will use BigQuery's standard SQL.
         """
-        TableView._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            query=query,
-            use_legacy_sql=use_legacy_sql,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             query: Optional[str] = None,
-             use_legacy_sql: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query is None:
-            raise TypeError("Missing 'query' argument")
-        if use_legacy_sql is None and 'useLegacySql' in kwargs:
-            use_legacy_sql = kwargs['useLegacySql']
-
-        _setter("query", query)
+        pulumi.set(__self__, "query", query)
         if use_legacy_sql is not None:
-            _setter("use_legacy_sql", use_legacy_sql)
+            pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
 
     @property
     @pulumi.getter

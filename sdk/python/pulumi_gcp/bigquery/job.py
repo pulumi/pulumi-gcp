@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,56 +43,23 @@ class JobArgs:
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
                (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
-        JobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_id=job_id,
-            copy=copy,
-            extract=extract,
-            job_timeout_ms=job_timeout_ms,
-            labels=labels,
-            load=load,
-            location=location,
-            project=project,
-            query=query,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_id: Optional[pulumi.Input[str]] = None,
-             copy: Optional[pulumi.Input['JobCopyArgs']] = None,
-             extract: Optional[pulumi.Input['JobExtractArgs']] = None,
-             job_timeout_ms: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             load: Optional[pulumi.Input['JobLoadArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             query: Optional[pulumi.Input['JobQueryArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if job_id is None:
-            raise TypeError("Missing 'job_id' argument")
-        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
-            job_timeout_ms = kwargs['jobTimeoutMs']
-
-        _setter("job_id", job_id)
+        pulumi.set(__self__, "job_id", job_id)
         if copy is not None:
-            _setter("copy", copy)
+            pulumi.set(__self__, "copy", copy)
         if extract is not None:
-            _setter("extract", extract)
+            pulumi.set(__self__, "extract", extract)
         if job_timeout_ms is not None:
-            _setter("job_timeout_ms", job_timeout_ms)
+            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if load is not None:
-            _setter("load", load)
+            pulumi.set(__self__, "load", load)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if query is not None:
-            _setter("query", query)
+            pulumi.set(__self__, "query", query)
 
     @property
     @pulumi.getter(name="jobId")
@@ -247,71 +214,30 @@ class _JobState:
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
-        _JobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            copy=copy,
-            extract=extract,
-            job_id=job_id,
-            job_timeout_ms=job_timeout_ms,
-            job_type=job_type,
-            labels=labels,
-            load=load,
-            location=location,
-            project=project,
-            query=query,
-            statuses=statuses,
-            user_email=user_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             copy: Optional[pulumi.Input['JobCopyArgs']] = None,
-             extract: Optional[pulumi.Input['JobExtractArgs']] = None,
-             job_id: Optional[pulumi.Input[str]] = None,
-             job_timeout_ms: Optional[pulumi.Input[str]] = None,
-             job_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             load: Optional[pulumi.Input['JobLoadArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             query: Optional[pulumi.Input['JobQueryArgs']] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-             user_email: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if job_timeout_ms is None and 'jobTimeoutMs' in kwargs:
-            job_timeout_ms = kwargs['jobTimeoutMs']
-        if job_type is None and 'jobType' in kwargs:
-            job_type = kwargs['jobType']
-        if user_email is None and 'userEmail' in kwargs:
-            user_email = kwargs['userEmail']
-
         if copy is not None:
-            _setter("copy", copy)
+            pulumi.set(__self__, "copy", copy)
         if extract is not None:
-            _setter("extract", extract)
+            pulumi.set(__self__, "extract", extract)
         if job_id is not None:
-            _setter("job_id", job_id)
+            pulumi.set(__self__, "job_id", job_id)
         if job_timeout_ms is not None:
-            _setter("job_timeout_ms", job_timeout_ms)
+            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
         if job_type is not None:
-            _setter("job_type", job_type)
+            pulumi.set(__self__, "job_type", job_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if load is not None:
-            _setter("load", load)
+            pulumi.set(__self__, "load", load)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if query is not None:
-            _setter("query", query)
+            pulumi.set(__self__, "query", query)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if user_email is not None:
-            _setter("user_email", user_email)
+            pulumi.set(__self__, "user_email", user_email)
 
     @property
     @pulumi.getter
@@ -995,10 +921,6 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1022,20 +944,16 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
-            copy = _utilities.configure(copy, JobCopyArgs, True)
             __props__.__dict__["copy"] = copy
-            extract = _utilities.configure(extract, JobExtractArgs, True)
             __props__.__dict__["extract"] = extract
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_timeout_ms"] = job_timeout_ms
             __props__.__dict__["labels"] = labels
-            load = _utilities.configure(load, JobLoadArgs, True)
             __props__.__dict__["load"] = load
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            query = _utilities.configure(query, JobQueryArgs, True)
             __props__.__dict__["query"] = query
             __props__.__dict__["job_type"] = None
             __props__.__dict__["statuses"] = None

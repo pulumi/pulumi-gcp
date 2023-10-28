@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,62 +57,23 @@ class DatabaseArgs:
                If this property is used, you must avoid adding new DDL statements to `ddl` that
                update the database's version_retention_period.
         """
-        DatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance=instance,
-            database_dialect=database_dialect,
-            ddls=ddls,
-            deletion_protection=deletion_protection,
-            enable_drop_protection=enable_drop_protection,
-            encryption_config=encryption_config,
-            name=name,
-            project=project,
-            version_retention_period=version_retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance: Optional[pulumi.Input[str]] = None,
-             database_dialect: Optional[pulumi.Input[str]] = None,
-             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-             encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance is None:
-            raise TypeError("Missing 'instance' argument")
-        if database_dialect is None and 'databaseDialect' in kwargs:
-            database_dialect = kwargs['databaseDialect']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if enable_drop_protection is None and 'enableDropProtection' in kwargs:
-            enable_drop_protection = kwargs['enableDropProtection']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
-            version_retention_period = kwargs['versionRetentionPeriod']
-
-        _setter("instance", instance)
+        pulumi.set(__self__, "instance", instance)
         if database_dialect is not None:
-            _setter("database_dialect", database_dialect)
+            pulumi.set(__self__, "database_dialect", database_dialect)
         if ddls is not None:
-            _setter("ddls", ddls)
+            pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_drop_protection is not None:
-            _setter("enable_drop_protection", enable_drop_protection)
+            pulumi.set(__self__, "enable_drop_protection", enable_drop_protection)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if version_retention_period is not None:
-            _setter("version_retention_period", version_retention_period)
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter
@@ -289,65 +250,26 @@ class _DatabaseState:
                If this property is used, you must avoid adding new DDL statements to `ddl` that
                update the database's version_retention_period.
         """
-        _DatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database_dialect=database_dialect,
-            ddls=ddls,
-            deletion_protection=deletion_protection,
-            enable_drop_protection=enable_drop_protection,
-            encryption_config=encryption_config,
-            instance=instance,
-            name=name,
-            project=project,
-            state=state,
-            version_retention_period=version_retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database_dialect: Optional[pulumi.Input[str]] = None,
-             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-             encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
-             instance: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database_dialect is None and 'databaseDialect' in kwargs:
-            database_dialect = kwargs['databaseDialect']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if enable_drop_protection is None and 'enableDropProtection' in kwargs:
-            enable_drop_protection = kwargs['enableDropProtection']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
-            version_retention_period = kwargs['versionRetentionPeriod']
-
         if database_dialect is not None:
-            _setter("database_dialect", database_dialect)
+            pulumi.set(__self__, "database_dialect", database_dialect)
         if ddls is not None:
-            _setter("ddls", ddls)
+            pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_drop_protection is not None:
-            _setter("enable_drop_protection", enable_drop_protection)
+            pulumi.set(__self__, "enable_drop_protection", enable_drop_protection)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if version_retention_period is not None:
-            _setter("version_retention_period", version_retention_period)
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter(name="databaseDialect")
@@ -657,10 +579,6 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -688,7 +606,6 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["ddls"] = ddls
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_drop_protection"] = enable_drop_protection
-            encryption_config = _utilities.configure(encryption_config, DatabaseEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

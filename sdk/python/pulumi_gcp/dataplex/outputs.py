@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -140,48 +140,17 @@ class AssetDiscoverySpec(dict):
         :param 'AssetDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
         :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
-        AssetDiscoverySpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            csv_options=csv_options,
-            exclude_patterns=exclude_patterns,
-            include_patterns=include_patterns,
-            json_options=json_options,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             csv_options: Optional['outputs.AssetDiscoverySpecCsvOptions'] = None,
-             exclude_patterns: Optional[Sequence[str]] = None,
-             include_patterns: Optional[Sequence[str]] = None,
-             json_options: Optional['outputs.AssetDiscoverySpecJsonOptions'] = None,
-             schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if csv_options is None and 'csvOptions' in kwargs:
-            csv_options = kwargs['csvOptions']
-        if exclude_patterns is None and 'excludePatterns' in kwargs:
-            exclude_patterns = kwargs['excludePatterns']
-        if include_patterns is None and 'includePatterns' in kwargs:
-            include_patterns = kwargs['includePatterns']
-        if json_options is None and 'jsonOptions' in kwargs:
-            json_options = kwargs['jsonOptions']
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if csv_options is not None:
-            _setter("csv_options", csv_options)
+            pulumi.set(__self__, "csv_options", csv_options)
         if exclude_patterns is not None:
-            _setter("exclude_patterns", exclude_patterns)
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
         if include_patterns is not None:
-            _setter("include_patterns", include_patterns)
+            pulumi.set(__self__, "include_patterns", include_patterns)
         if json_options is not None:
-            _setter("json_options", json_options)
+            pulumi.set(__self__, "json_options", json_options)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter
@@ -264,35 +233,14 @@ class AssetDiscoverySpecCsvOptions(dict):
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
-        AssetDiscoverySpecCsvOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delimiter=delimiter,
-            disable_type_inference=disable_type_inference,
-            encoding=encoding,
-            header_rows=header_rows,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delimiter: Optional[str] = None,
-             disable_type_inference: Optional[bool] = None,
-             encoding: Optional[str] = None,
-             header_rows: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_type_inference is None and 'disableTypeInference' in kwargs:
-            disable_type_inference = kwargs['disableTypeInference']
-        if header_rows is None and 'headerRows' in kwargs:
-            header_rows = kwargs['headerRows']
-
         if delimiter is not None:
-            _setter("delimiter", delimiter)
+            pulumi.set(__self__, "delimiter", delimiter)
         if disable_type_inference is not None:
-            _setter("disable_type_inference", disable_type_inference)
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if header_rows is not None:
-            _setter("header_rows", header_rows)
+            pulumi.set(__self__, "header_rows", header_rows)
 
     @property
     @pulumi.getter
@@ -353,25 +301,10 @@ class AssetDiscoverySpecJsonOptions(dict):
         :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         """
-        AssetDiscoverySpecJsonOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_type_inference=disable_type_inference,
-            encoding=encoding,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_type_inference: Optional[bool] = None,
-             encoding: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_type_inference is None and 'disableTypeInference' in kwargs:
-            disable_type_inference = kwargs['disableTypeInference']
-
         if disable_type_inference is not None:
-            _setter("disable_type_inference", disable_type_inference)
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
 
     @property
     @pulumi.getter(name="disableTypeInference")
@@ -424,45 +357,18 @@ class AssetDiscoveryStatus(dict):
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the asset was last updated.
         """
-        AssetDiscoveryStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            last_run_duration=last_run_duration,
-            last_run_time=last_run_time,
-            message=message,
-            state=state,
-            stats=stats,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             last_run_duration: Optional[str] = None,
-             last_run_time: Optional[str] = None,
-             message: Optional[str] = None,
-             state: Optional[str] = None,
-             stats: Optional[Sequence['outputs.AssetDiscoveryStatusStat']] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if last_run_duration is None and 'lastRunDuration' in kwargs:
-            last_run_duration = kwargs['lastRunDuration']
-        if last_run_time is None and 'lastRunTime' in kwargs:
-            last_run_time = kwargs['lastRunTime']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if last_run_duration is not None:
-            _setter("last_run_duration", last_run_duration)
+            pulumi.set(__self__, "last_run_duration", last_run_duration)
         if last_run_time is not None:
-            _setter("last_run_time", last_run_time)
+            pulumi.set(__self__, "last_run_time", last_run_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if stats is not None:
-            _setter("stats", stats)
+            pulumi.set(__self__, "stats", stats)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="lastRunDuration")
@@ -527,35 +433,14 @@ class AssetDiscoveryStatusStat(dict):
                  data_size: Optional[int] = None,
                  filesets: Optional[int] = None,
                  tables: Optional[int] = None):
-        AssetDiscoveryStatusStat._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_items=data_items,
-            data_size=data_size,
-            filesets=filesets,
-            tables=tables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_items: Optional[int] = None,
-             data_size: Optional[int] = None,
-             filesets: Optional[int] = None,
-             tables: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_items is None and 'dataItems' in kwargs:
-            data_items = kwargs['dataItems']
-        if data_size is None and 'dataSize' in kwargs:
-            data_size = kwargs['dataSize']
-
         if data_items is not None:
-            _setter("data_items", data_items)
+            pulumi.set(__self__, "data_items", data_items)
         if data_size is not None:
-            _setter("data_size", data_size)
+            pulumi.set(__self__, "data_size", data_size)
         if filesets is not None:
-            _setter("filesets", filesets)
+            pulumi.set(__self__, "filesets", filesets)
         if tables is not None:
-            _setter("tables", tables)
+            pulumi.set(__self__, "tables", tables)
 
     @property
     @pulumi.getter(name="dataItems")
@@ -584,29 +469,10 @@ class AssetIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AssetIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -630,29 +496,10 @@ class AssetIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        AssetIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -700,30 +547,11 @@ class AssetResourceSpec(dict):
         :param str name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         :param str read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
-        AssetResourceSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            name=name,
-            read_access_mode=read_access_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             name: Optional[str] = None,
-             read_access_mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if read_access_mode is None and 'readAccessMode' in kwargs:
-            read_access_mode = kwargs['readAccessMode']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if read_access_mode is not None:
-            _setter("read_access_mode", read_access_mode)
+            pulumi.set(__self__, "read_access_mode", read_access_mode)
 
     @property
     @pulumi.getter
@@ -779,29 +607,12 @@ class AssetResourceStatus(dict):
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the asset was last updated.
         """
-        AssetResourceStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            message=message,
-            state=state,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             message: Optional[str] = None,
-             state: Optional[str] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -852,29 +663,12 @@ class AssetSecurityStatus(dict):
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the asset was last updated.
         """
-        AssetSecurityStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            message=message,
-            state=state,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             message: Optional[str] = None,
-             state: Optional[str] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -908,23 +702,10 @@ class DatascanData(dict):
         :param str resource: The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
                (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
         """
-        DatascanData._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entity=entity,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entity: Optional[str] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if entity is not None:
-            _setter("entity", entity)
+            pulumi.set(__self__, "entity", entity)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter
@@ -977,31 +758,12 @@ class DatascanDataProfileResult(dict):
                The data scanned for this result.
                Structure is documented below.
         """
-        DatascanDataProfileResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            profiles=profiles,
-            row_count=row_count,
-            scanned_datas=scanned_datas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             profiles: Optional[Sequence['outputs.DatascanDataProfileResultProfile']] = None,
-             row_count: Optional[str] = None,
-             scanned_datas: Optional[Sequence['outputs.DatascanDataProfileResultScannedData']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if row_count is None and 'rowCount' in kwargs:
-            row_count = kwargs['rowCount']
-        if scanned_datas is None and 'scannedDatas' in kwargs:
-            scanned_datas = kwargs['scannedDatas']
-
         if profiles is not None:
-            _setter("profiles", profiles)
+            pulumi.set(__self__, "profiles", profiles)
         if row_count is not None:
-            _setter("row_count", row_count)
+            pulumi.set(__self__, "row_count", row_count)
         if scanned_datas is not None:
-            _setter("scanned_datas", scanned_datas)
+            pulumi.set(__self__, "scanned_datas", scanned_datas)
 
     @property
     @pulumi.getter
@@ -1039,19 +801,8 @@ class DatascanDataProfileResultProfile(dict):
         :param Sequence['DatascanDataProfileResultProfileFieldArgs'] fields: List of fields with structural and profile information for each field.
                Structure is documented below.
         """
-        DatascanDataProfileResultProfile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fields=fields,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fields: Optional[Sequence['outputs.DatascanDataProfileResultProfileField']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
@@ -1084,31 +835,14 @@ class DatascanDataProfileResultProfileField(dict):
                Structure is documented below.
         :param str type: The field data type.
         """
-        DatascanDataProfileResultProfileField._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mode=mode,
-            name=name,
-            profile=profile,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mode: Optional[str] = None,
-             name: Optional[str] = None,
-             profile: Optional['outputs.DatascanDataProfileResultProfileFieldProfile'] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if profile is not None:
-            _setter("profile", profile)
+            pulumi.set(__self__, "profile", profile)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1203,51 +937,18 @@ class DatascanDataProfileResultProfileFieldProfile(dict):
         :param 'DatascanDataProfileResultProfileFieldProfileTopNValuesArgs' top_n_values: The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
                Structure is documented below.
         """
-        DatascanDataProfileResultProfileFieldProfile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            distinct_ratio=distinct_ratio,
-            double_profiles=double_profiles,
-            integer_profiles=integer_profiles,
-            null_ratio=null_ratio,
-            string_profiles=string_profiles,
-            top_n_values=top_n_values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             distinct_ratio: Optional[int] = None,
-             double_profiles: Optional[Sequence['outputs.DatascanDataProfileResultProfileFieldProfileDoubleProfile']] = None,
-             integer_profiles: Optional[Sequence['outputs.DatascanDataProfileResultProfileFieldProfileIntegerProfile']] = None,
-             null_ratio: Optional[int] = None,
-             string_profiles: Optional[Sequence['outputs.DatascanDataProfileResultProfileFieldProfileStringProfile']] = None,
-             top_n_values: Optional['outputs.DatascanDataProfileResultProfileFieldProfileTopNValues'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if distinct_ratio is None and 'distinctRatio' in kwargs:
-            distinct_ratio = kwargs['distinctRatio']
-        if double_profiles is None and 'doubleProfiles' in kwargs:
-            double_profiles = kwargs['doubleProfiles']
-        if integer_profiles is None and 'integerProfiles' in kwargs:
-            integer_profiles = kwargs['integerProfiles']
-        if null_ratio is None and 'nullRatio' in kwargs:
-            null_ratio = kwargs['nullRatio']
-        if string_profiles is None and 'stringProfiles' in kwargs:
-            string_profiles = kwargs['stringProfiles']
-        if top_n_values is None and 'topNValues' in kwargs:
-            top_n_values = kwargs['topNValues']
-
         if distinct_ratio is not None:
-            _setter("distinct_ratio", distinct_ratio)
+            pulumi.set(__self__, "distinct_ratio", distinct_ratio)
         if double_profiles is not None:
-            _setter("double_profiles", double_profiles)
+            pulumi.set(__self__, "double_profiles", double_profiles)
         if integer_profiles is not None:
-            _setter("integer_profiles", integer_profiles)
+            pulumi.set(__self__, "integer_profiles", integer_profiles)
         if null_ratio is not None:
-            _setter("null_ratio", null_ratio)
+            pulumi.set(__self__, "null_ratio", null_ratio)
         if string_profiles is not None:
-            _setter("string_profiles", string_profiles)
+            pulumi.set(__self__, "string_profiles", string_profiles)
         if top_n_values is not None:
-            _setter("top_n_values", top_n_values)
+            pulumi.set(__self__, "top_n_values", top_n_values)
 
     @property
     @pulumi.getter(name="distinctRatio")
@@ -1338,37 +1039,16 @@ class DatascanDataProfileResultProfileFieldProfileDoubleProfile(dict):
         :param str quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
         :param int standard_deviation: Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
         """
-        DatascanDataProfileResultProfileFieldProfileDoubleProfile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            average=average,
-            max=max,
-            min=min,
-            quartiles=quartiles,
-            standard_deviation=standard_deviation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             average: Optional[int] = None,
-             max: Optional[str] = None,
-             min: Optional[str] = None,
-             quartiles: Optional[str] = None,
-             standard_deviation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if standard_deviation is None and 'standardDeviation' in kwargs:
-            standard_deviation = kwargs['standardDeviation']
-
         if average is not None:
-            _setter("average", average)
+            pulumi.set(__self__, "average", average)
         if max is not None:
-            _setter("max", max)
+            pulumi.set(__self__, "max", max)
         if min is not None:
-            _setter("min", min)
+            pulumi.set(__self__, "min", min)
         if quartiles is not None:
-            _setter("quartiles", quartiles)
+            pulumi.set(__self__, "quartiles", quartiles)
         if standard_deviation is not None:
-            _setter("standard_deviation", standard_deviation)
+            pulumi.set(__self__, "standard_deviation", standard_deviation)
 
     @property
     @pulumi.getter
@@ -1443,37 +1123,16 @@ class DatascanDataProfileResultProfileFieldProfileIntegerProfile(dict):
         :param str quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
         :param int standard_deviation: Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
         """
-        DatascanDataProfileResultProfileFieldProfileIntegerProfile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            average=average,
-            max=max,
-            min=min,
-            quartiles=quartiles,
-            standard_deviation=standard_deviation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             average: Optional[int] = None,
-             max: Optional[str] = None,
-             min: Optional[str] = None,
-             quartiles: Optional[str] = None,
-             standard_deviation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if standard_deviation is None and 'standardDeviation' in kwargs:
-            standard_deviation = kwargs['standardDeviation']
-
         if average is not None:
-            _setter("average", average)
+            pulumi.set(__self__, "average", average)
         if max is not None:
-            _setter("max", max)
+            pulumi.set(__self__, "max", max)
         if min is not None:
-            _setter("min", min)
+            pulumi.set(__self__, "min", min)
         if quartiles is not None:
-            _setter("quartiles", quartiles)
+            pulumi.set(__self__, "quartiles", quartiles)
         if standard_deviation is not None:
-            _setter("standard_deviation", standard_deviation)
+            pulumi.set(__self__, "standard_deviation", standard_deviation)
 
     @property
     @pulumi.getter
@@ -1548,33 +1207,12 @@ class DatascanDataProfileResultProfileFieldProfileStringProfile(dict):
         :param str max_length: Maximum length of non-null values in the scanned data.
         :param str min_length: Minimum length of non-null values in the scanned data.
         """
-        DatascanDataProfileResultProfileFieldProfileStringProfile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            average_length=average_length,
-            max_length=max_length,
-            min_length=min_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             average_length: Optional[int] = None,
-             max_length: Optional[str] = None,
-             min_length: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if average_length is None and 'averageLength' in kwargs:
-            average_length = kwargs['averageLength']
-        if max_length is None and 'maxLength' in kwargs:
-            max_length = kwargs['maxLength']
-        if min_length is None and 'minLength' in kwargs:
-            min_length = kwargs['minLength']
-
         if average_length is not None:
-            _setter("average_length", average_length)
+            pulumi.set(__self__, "average_length", average_length)
         if max_length is not None:
-            _setter("max_length", max_length)
+            pulumi.set(__self__, "max_length", max_length)
         if min_length is not None:
-            _setter("min_length", min_length)
+            pulumi.set(__self__, "min_length", min_length)
 
     @property
     @pulumi.getter(name="averageLength")
@@ -1610,23 +1248,10 @@ class DatascanDataProfileResultProfileFieldProfileTopNValues(dict):
         :param str count: Count of the corresponding value in the scanned data.
         :param str value: String value of a top N non-null value.
         """
-        DatascanDataProfileResultProfileFieldProfileTopNValues._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            count=count,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             count: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if count is not None:
-            _setter("count", count)
+            pulumi.set(__self__, "count", count)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1670,21 +1295,8 @@ class DatascanDataProfileResultScannedData(dict):
         :param 'DatascanDataProfileResultScannedDataIncrementalFieldArgs' incremental_field: The range denoted by values of an incremental field
                Structure is documented below.
         """
-        DatascanDataProfileResultScannedData._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            incremental_field=incremental_field,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             incremental_field: Optional['outputs.DatascanDataProfileResultScannedDataIncrementalField'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if incremental_field is None and 'incrementalField' in kwargs:
-            incremental_field = kwargs['incrementalField']
-
         if incremental_field is not None:
-            _setter("incremental_field", incremental_field)
+            pulumi.set(__self__, "incremental_field", incremental_field)
 
     @property
     @pulumi.getter(name="incrementalField")
@@ -1707,27 +1319,12 @@ class DatascanDataProfileResultScannedDataIncrementalField(dict):
         :param str field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
         :param str start: Value that marks the start of the range.
         """
-        DatascanDataProfileResultScannedDataIncrementalField._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end=end,
-            field=field,
-            start=start,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end: Optional[str] = None,
-             field: Optional[str] = None,
-             start: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if end is not None:
-            _setter("end", end)
+            pulumi.set(__self__, "end", end)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
         if start is not None:
-            _setter("start", start)
+            pulumi.set(__self__, "start", start)
 
     @property
     @pulumi.getter
@@ -1801,45 +1398,16 @@ class DatascanDataProfileSpec(dict):
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
                Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
-        DatascanDataProfileSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exclude_fields=exclude_fields,
-            include_fields=include_fields,
-            post_scan_actions=post_scan_actions,
-            row_filter=row_filter,
-            sampling_percent=sampling_percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exclude_fields: Optional['outputs.DatascanDataProfileSpecExcludeFields'] = None,
-             include_fields: Optional['outputs.DatascanDataProfileSpecIncludeFields'] = None,
-             post_scan_actions: Optional['outputs.DatascanDataProfileSpecPostScanActions'] = None,
-             row_filter: Optional[str] = None,
-             sampling_percent: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclude_fields is None and 'excludeFields' in kwargs:
-            exclude_fields = kwargs['excludeFields']
-        if include_fields is None and 'includeFields' in kwargs:
-            include_fields = kwargs['includeFields']
-        if post_scan_actions is None and 'postScanActions' in kwargs:
-            post_scan_actions = kwargs['postScanActions']
-        if row_filter is None and 'rowFilter' in kwargs:
-            row_filter = kwargs['rowFilter']
-        if sampling_percent is None and 'samplingPercent' in kwargs:
-            sampling_percent = kwargs['samplingPercent']
-
         if exclude_fields is not None:
-            _setter("exclude_fields", exclude_fields)
+            pulumi.set(__self__, "exclude_fields", exclude_fields)
         if include_fields is not None:
-            _setter("include_fields", include_fields)
+            pulumi.set(__self__, "include_fields", include_fields)
         if post_scan_actions is not None:
-            _setter("post_scan_actions", post_scan_actions)
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
-            _setter("row_filter", row_filter)
+            pulumi.set(__self__, "row_filter", row_filter)
         if sampling_percent is not None:
-            _setter("sampling_percent", sampling_percent)
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
 
     @property
     @pulumi.getter(name="excludeFields")
@@ -1915,21 +1483,8 @@ class DatascanDataProfileSpecExcludeFields(dict):
                Only top-level field names for nested fields are supported.
                For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
         """
-        DatascanDataProfileSpecExcludeFields._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_names=field_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_names is None and 'fieldNames' in kwargs:
-            field_names = kwargs['fieldNames']
-
         if field_names is not None:
-            _setter("field_names", field_names)
+            pulumi.set(__self__, "field_names", field_names)
 
     @property
     @pulumi.getter(name="fieldNames")
@@ -1968,21 +1523,8 @@ class DatascanDataProfileSpecIncludeFields(dict):
                Only top-level field names for nested fields are supported.
                For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
         """
-        DatascanDataProfileSpecIncludeFields._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_names=field_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_names is None and 'fieldNames' in kwargs:
-            field_names = kwargs['fieldNames']
-
         if field_names is not None:
-            _setter("field_names", field_names)
+            pulumi.set(__self__, "field_names", field_names)
 
     @property
     @pulumi.getter(name="fieldNames")
@@ -2020,21 +1562,8 @@ class DatascanDataProfileSpecPostScanActions(dict):
         :param 'DatascanDataProfileSpecPostScanActionsBigqueryExportArgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
-        DatascanDataProfileSpecPostScanActions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_export=bigquery_export,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_export: Optional['outputs.DatascanDataProfileSpecPostScanActionsBigqueryExport'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_export is None and 'bigqueryExport' in kwargs:
-            bigquery_export = kwargs['bigqueryExport']
-
         if bigquery_export is not None:
-            _setter("bigquery_export", bigquery_export)
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
 
     @property
     @pulumi.getter(name="bigqueryExport")
@@ -2071,21 +1600,8 @@ class DatascanDataProfileSpecPostScanActionsBigqueryExport(dict):
         :param str results_table: The BigQuery table to export DataProfileScan results to.
                Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         """
-        DatascanDataProfileSpecPostScanActionsBigqueryExport._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            results_table=results_table,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             results_table: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if results_table is None and 'resultsTable' in kwargs:
-            results_table = kwargs['resultsTable']
-
         if results_table is not None:
-            _setter("results_table", results_table)
+            pulumi.set(__self__, "results_table", results_table)
 
     @property
     @pulumi.getter(name="resultsTable")
@@ -2136,39 +1652,16 @@ class DatascanDataQualityResult(dict):
                The data scanned for this result.
                Structure is documented below.
         """
-        DatascanDataQualityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dimensions=dimensions,
-            passed=passed,
-            row_count=row_count,
-            rules=rules,
-            scanned_datas=scanned_datas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dimensions: Optional[Sequence['outputs.DatascanDataQualityResultDimension']] = None,
-             passed: Optional[bool] = None,
-             row_count: Optional[str] = None,
-             rules: Optional[Sequence['outputs.DatascanDataQualityResultRule']] = None,
-             scanned_datas: Optional[Sequence['outputs.DatascanDataQualityResultScannedData']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if row_count is None and 'rowCount' in kwargs:
-            row_count = kwargs['rowCount']
-        if scanned_datas is None and 'scannedDatas' in kwargs:
-            scanned_datas = kwargs['scannedDatas']
-
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if passed is not None:
-            _setter("passed", passed)
+            pulumi.set(__self__, "passed", passed)
         if row_count is not None:
-            _setter("row_count", row_count)
+            pulumi.set(__self__, "row_count", row_count)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if scanned_datas is not None:
-            _setter("scanned_datas", scanned_datas)
+            pulumi.set(__self__, "scanned_datas", scanned_datas)
 
     @property
     @pulumi.getter
@@ -2224,19 +1717,8 @@ class DatascanDataQualityResultDimension(dict):
         :param bool passed: (Output)
                Whether the rule passed or failed.
         """
-        DatascanDataQualityResultDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            passed=passed,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             passed: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if passed is not None:
-            _setter("passed", passed)
+            pulumi.set(__self__, "passed", passed)
 
     @property
     @pulumi.getter
@@ -2303,53 +1785,20 @@ class DatascanDataQualityResultRule(dict):
                The rule specified in the DataQualitySpec, as is.
                Structure is documented below.
         """
-        DatascanDataQualityResultRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluated_count=evaluated_count,
-            failing_rows_query=failing_rows_query,
-            null_count=null_count,
-            pass_ratio=pass_ratio,
-            passed=passed,
-            passed_count=passed_count,
-            rules=rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluated_count: Optional[str] = None,
-             failing_rows_query: Optional[str] = None,
-             null_count: Optional[str] = None,
-             pass_ratio: Optional[int] = None,
-             passed: Optional[bool] = None,
-             passed_count: Optional[str] = None,
-             rules: Optional[Sequence['outputs.DatascanDataQualityResultRuleRule']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluated_count is None and 'evaluatedCount' in kwargs:
-            evaluated_count = kwargs['evaluatedCount']
-        if failing_rows_query is None and 'failingRowsQuery' in kwargs:
-            failing_rows_query = kwargs['failingRowsQuery']
-        if null_count is None and 'nullCount' in kwargs:
-            null_count = kwargs['nullCount']
-        if pass_ratio is None and 'passRatio' in kwargs:
-            pass_ratio = kwargs['passRatio']
-        if passed_count is None and 'passedCount' in kwargs:
-            passed_count = kwargs['passedCount']
-
         if evaluated_count is not None:
-            _setter("evaluated_count", evaluated_count)
+            pulumi.set(__self__, "evaluated_count", evaluated_count)
         if failing_rows_query is not None:
-            _setter("failing_rows_query", failing_rows_query)
+            pulumi.set(__self__, "failing_rows_query", failing_rows_query)
         if null_count is not None:
-            _setter("null_count", null_count)
+            pulumi.set(__self__, "null_count", null_count)
         if pass_ratio is not None:
-            _setter("pass_ratio", pass_ratio)
+            pulumi.set(__self__, "pass_ratio", pass_ratio)
         if passed is not None:
-            _setter("passed", passed)
+            pulumi.set(__self__, "passed", passed)
         if passed_count is not None:
-            _setter("passed_count", passed_count)
+            pulumi.set(__self__, "passed_count", passed_count)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter(name="evaluatedCount")
@@ -2487,81 +1936,30 @@ class DatascanDataQualityResultRuleRule(dict):
         :param int threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
         :param Sequence['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs'] uniqueness_expectations: Row-level rule which evaluates whether each column value is unique.
         """
-        DatascanDataQualityResultRuleRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            column=column,
-            dimension=dimension,
-            ignore_null=ignore_null,
-            non_null_expectations=non_null_expectations,
-            range_expectations=range_expectations,
-            regex_expectations=regex_expectations,
-            row_condition_expectations=row_condition_expectations,
-            set_expectations=set_expectations,
-            statistic_range_expectations=statistic_range_expectations,
-            table_condition_expectations=table_condition_expectations,
-            threshold=threshold,
-            uniqueness_expectations=uniqueness_expectations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             column: Optional[str] = None,
-             dimension: Optional[str] = None,
-             ignore_null: Optional[bool] = None,
-             non_null_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleNonNullExpectation']] = None,
-             range_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleRangeExpectation']] = None,
-             regex_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleRegexExpectation']] = None,
-             row_condition_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleRowConditionExpectation']] = None,
-             set_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleSetExpectation']] = None,
-             statistic_range_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleStatisticRangeExpectation']] = None,
-             table_condition_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleTableConditionExpectation']] = None,
-             threshold: Optional[int] = None,
-             uniqueness_expectations: Optional[Sequence['outputs.DatascanDataQualityResultRuleRuleUniquenessExpectation']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ignore_null is None and 'ignoreNull' in kwargs:
-            ignore_null = kwargs['ignoreNull']
-        if non_null_expectations is None and 'nonNullExpectations' in kwargs:
-            non_null_expectations = kwargs['nonNullExpectations']
-        if range_expectations is None and 'rangeExpectations' in kwargs:
-            range_expectations = kwargs['rangeExpectations']
-        if regex_expectations is None and 'regexExpectations' in kwargs:
-            regex_expectations = kwargs['regexExpectations']
-        if row_condition_expectations is None and 'rowConditionExpectations' in kwargs:
-            row_condition_expectations = kwargs['rowConditionExpectations']
-        if set_expectations is None and 'setExpectations' in kwargs:
-            set_expectations = kwargs['setExpectations']
-        if statistic_range_expectations is None and 'statisticRangeExpectations' in kwargs:
-            statistic_range_expectations = kwargs['statisticRangeExpectations']
-        if table_condition_expectations is None and 'tableConditionExpectations' in kwargs:
-            table_condition_expectations = kwargs['tableConditionExpectations']
-        if uniqueness_expectations is None and 'uniquenessExpectations' in kwargs:
-            uniqueness_expectations = kwargs['uniquenessExpectations']
-
         if column is not None:
-            _setter("column", column)
+            pulumi.set(__self__, "column", column)
         if dimension is not None:
-            _setter("dimension", dimension)
+            pulumi.set(__self__, "dimension", dimension)
         if ignore_null is not None:
-            _setter("ignore_null", ignore_null)
+            pulumi.set(__self__, "ignore_null", ignore_null)
         if non_null_expectations is not None:
-            _setter("non_null_expectations", non_null_expectations)
+            pulumi.set(__self__, "non_null_expectations", non_null_expectations)
         if range_expectations is not None:
-            _setter("range_expectations", range_expectations)
+            pulumi.set(__self__, "range_expectations", range_expectations)
         if regex_expectations is not None:
-            _setter("regex_expectations", regex_expectations)
+            pulumi.set(__self__, "regex_expectations", regex_expectations)
         if row_condition_expectations is not None:
-            _setter("row_condition_expectations", row_condition_expectations)
+            pulumi.set(__self__, "row_condition_expectations", row_condition_expectations)
         if set_expectations is not None:
-            _setter("set_expectations", set_expectations)
+            pulumi.set(__self__, "set_expectations", set_expectations)
         if statistic_range_expectations is not None:
-            _setter("statistic_range_expectations", statistic_range_expectations)
+            pulumi.set(__self__, "statistic_range_expectations", statistic_range_expectations)
         if table_condition_expectations is not None:
-            _setter("table_condition_expectations", table_condition_expectations)
+            pulumi.set(__self__, "table_condition_expectations", table_condition_expectations)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if uniqueness_expectations is not None:
-            _setter("uniqueness_expectations", uniqueness_expectations)
+            pulumi.set(__self__, "uniqueness_expectations", uniqueness_expectations)
 
     @property
     @pulumi.getter
@@ -2670,13 +2068,6 @@ class DatascanDataQualityResultRuleRule(dict):
 class DatascanDataQualityResultRuleRuleNonNullExpectation(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -2717,39 +2108,14 @@ class DatascanDataQualityResultRuleRuleRangeExpectation(dict):
         :param bool strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
                Only relevant if a minValue has been defined. Default = false.
         """
-        DatascanDataQualityResultRuleRuleRangeExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_value=max_value,
-            min_value=min_value,
-            strict_max_enabled=strict_max_enabled,
-            strict_min_enabled=strict_min_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_value: Optional[str] = None,
-             min_value: Optional[str] = None,
-             strict_max_enabled: Optional[bool] = None,
-             strict_min_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if strict_max_enabled is None and 'strictMaxEnabled' in kwargs:
-            strict_max_enabled = kwargs['strictMaxEnabled']
-        if strict_min_enabled is None and 'strictMinEnabled' in kwargs:
-            strict_min_enabled = kwargs['strictMinEnabled']
-
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if strict_max_enabled is not None:
-            _setter("strict_max_enabled", strict_max_enabled)
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
         if strict_min_enabled is not None:
-            _setter("strict_min_enabled", strict_min_enabled)
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
 
     @property
     @pulumi.getter(name="maxValue")
@@ -2793,19 +2159,8 @@ class DatascanDataQualityResultRuleRuleRegexExpectation(dict):
         """
         :param str regex: A regular expression the column value is expected to match.
         """
-        DatascanDataQualityResultRuleRuleRegexExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            regex=regex,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if regex is not None:
-            _setter("regex", regex)
+            pulumi.set(__self__, "regex", regex)
 
     @property
     @pulumi.getter
@@ -2840,21 +2195,8 @@ class DatascanDataQualityResultRuleRuleRowConditionExpectation(dict):
         """
         :param str sql_expression: The SQL expression.
         """
-        DatascanDataQualityResultRuleRuleRowConditionExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sql_expression=sql_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sql_expression: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sql_expression is None and 'sqlExpression' in kwargs:
-            sql_expression = kwargs['sqlExpression']
-
         if sql_expression is not None:
-            _setter("sql_expression", sql_expression)
+            pulumi.set(__self__, "sql_expression", sql_expression)
 
     @property
     @pulumi.getter(name="sqlExpression")
@@ -2872,19 +2214,8 @@ class DatascanDataQualityResultRuleRuleSetExpectation(dict):
         """
         :param Sequence[str] values: Expected values for the column value.
         """
-        DatascanDataQualityResultRuleRuleSetExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -2938,43 +2269,16 @@ class DatascanDataQualityResultRuleRuleStatisticRangeExpectation(dict):
         :param bool strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
                Only relevant if a minValue has been defined. Default = false.
         """
-        DatascanDataQualityResultRuleRuleStatisticRangeExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_value=max_value,
-            min_value=min_value,
-            statistic=statistic,
-            strict_max_enabled=strict_max_enabled,
-            strict_min_enabled=strict_min_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_value: Optional[str] = None,
-             min_value: Optional[str] = None,
-             statistic: Optional[str] = None,
-             strict_max_enabled: Optional[bool] = None,
-             strict_min_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if strict_max_enabled is None and 'strictMaxEnabled' in kwargs:
-            strict_max_enabled = kwargs['strictMaxEnabled']
-        if strict_min_enabled is None and 'strictMinEnabled' in kwargs:
-            strict_min_enabled = kwargs['strictMinEnabled']
-
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if strict_max_enabled is not None:
-            _setter("strict_max_enabled", strict_max_enabled)
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
         if strict_min_enabled is not None:
-            _setter("strict_min_enabled", strict_min_enabled)
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
 
     @property
     @pulumi.getter(name="maxValue")
@@ -3046,21 +2350,8 @@ class DatascanDataQualityResultRuleRuleTableConditionExpectation(dict):
         """
         :param str sql_expression: The SQL expression.
         """
-        DatascanDataQualityResultRuleRuleTableConditionExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sql_expression=sql_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sql_expression: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sql_expression is None and 'sqlExpression' in kwargs:
-            sql_expression = kwargs['sqlExpression']
-
         if sql_expression is not None:
-            _setter("sql_expression", sql_expression)
+            pulumi.set(__self__, "sql_expression", sql_expression)
 
     @property
     @pulumi.getter(name="sqlExpression")
@@ -3075,13 +2366,6 @@ class DatascanDataQualityResultRuleRuleTableConditionExpectation(dict):
 class DatascanDataQualityResultRuleRuleUniquenessExpectation(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -3109,21 +2393,8 @@ class DatascanDataQualityResultScannedData(dict):
         :param 'DatascanDataQualityResultScannedDataIncrementalFieldArgs' incremental_field: The range denoted by values of an incremental field
                Structure is documented below.
         """
-        DatascanDataQualityResultScannedData._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            incremental_field=incremental_field,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             incremental_field: Optional['outputs.DatascanDataQualityResultScannedDataIncrementalField'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if incremental_field is None and 'incrementalField' in kwargs:
-            incremental_field = kwargs['incrementalField']
-
         if incremental_field is not None:
-            _setter("incremental_field", incremental_field)
+            pulumi.set(__self__, "incremental_field", incremental_field)
 
     @property
     @pulumi.getter(name="incrementalField")
@@ -3146,27 +2417,12 @@ class DatascanDataQualityResultScannedDataIncrementalField(dict):
         :param str field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
         :param str start: Value that marks the start of the range.
         """
-        DatascanDataQualityResultScannedDataIncrementalField._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end=end,
-            field=field,
-            start=start,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end: Optional[str] = None,
-             field: Optional[str] = None,
-             start: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if end is not None:
-            _setter("end", end)
+            pulumi.set(__self__, "end", end)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
         if start is not None:
-            _setter("start", start)
+            pulumi.set(__self__, "start", start)
 
     @property
     @pulumi.getter
@@ -3231,37 +2487,14 @@ class DatascanDataQualitySpec(dict):
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
                Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
-        DatascanDataQualitySpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            post_scan_actions=post_scan_actions,
-            row_filter=row_filter,
-            rules=rules,
-            sampling_percent=sampling_percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             post_scan_actions: Optional['outputs.DatascanDataQualitySpecPostScanActions'] = None,
-             row_filter: Optional[str] = None,
-             rules: Optional[Sequence['outputs.DatascanDataQualitySpecRule']] = None,
-             sampling_percent: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if post_scan_actions is None and 'postScanActions' in kwargs:
-            post_scan_actions = kwargs['postScanActions']
-        if row_filter is None and 'rowFilter' in kwargs:
-            row_filter = kwargs['rowFilter']
-        if sampling_percent is None and 'samplingPercent' in kwargs:
-            sampling_percent = kwargs['samplingPercent']
-
         if post_scan_actions is not None:
-            _setter("post_scan_actions", post_scan_actions)
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
-            _setter("row_filter", row_filter)
+            pulumi.set(__self__, "row_filter", row_filter)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if sampling_percent is not None:
-            _setter("sampling_percent", sampling_percent)
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
 
     @property
     @pulumi.getter(name="postScanActions")
@@ -3325,21 +2558,8 @@ class DatascanDataQualitySpecPostScanActions(dict):
         :param 'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
-        DatascanDataQualitySpecPostScanActions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_export=bigquery_export,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_export: Optional['outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_export is None and 'bigqueryExport' in kwargs:
-            bigquery_export = kwargs['bigqueryExport']
-
         if bigquery_export is not None:
-            _setter("bigquery_export", bigquery_export)
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
 
     @property
     @pulumi.getter(name="bigqueryExport")
@@ -3376,21 +2596,8 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExport(dict):
         :param str results_table: The BigQuery table to export DataProfileScan results to.
                Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         """
-        DatascanDataQualitySpecPostScanActionsBigqueryExport._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            results_table=results_table,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             results_table: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if results_table is None and 'resultsTable' in kwargs:
-            results_table = kwargs['resultsTable']
-
         if results_table is not None:
-            _setter("results_table", results_table)
+            pulumi.set(__self__, "results_table", results_table)
 
     @property
     @pulumi.getter(name="resultsTable")
@@ -3479,90 +2686,33 @@ class DatascanDataQualitySpecRule(dict):
         :param float threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
         :param 'DatascanDataQualitySpecRuleUniquenessExpectationArgs' uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
-        DatascanDataQualitySpecRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dimension=dimension,
-            column=column,
-            description=description,
-            ignore_null=ignore_null,
-            name=name,
-            non_null_expectation=non_null_expectation,
-            range_expectation=range_expectation,
-            regex_expectation=regex_expectation,
-            row_condition_expectation=row_condition_expectation,
-            set_expectation=set_expectation,
-            statistic_range_expectation=statistic_range_expectation,
-            table_condition_expectation=table_condition_expectation,
-            threshold=threshold,
-            uniqueness_expectation=uniqueness_expectation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dimension: Optional[str] = None,
-             column: Optional[str] = None,
-             description: Optional[str] = None,
-             ignore_null: Optional[bool] = None,
-             name: Optional[str] = None,
-             non_null_expectation: Optional['outputs.DatascanDataQualitySpecRuleNonNullExpectation'] = None,
-             range_expectation: Optional['outputs.DatascanDataQualitySpecRuleRangeExpectation'] = None,
-             regex_expectation: Optional['outputs.DatascanDataQualitySpecRuleRegexExpectation'] = None,
-             row_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleRowConditionExpectation'] = None,
-             set_expectation: Optional['outputs.DatascanDataQualitySpecRuleSetExpectation'] = None,
-             statistic_range_expectation: Optional['outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation'] = None,
-             table_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleTableConditionExpectation'] = None,
-             threshold: Optional[float] = None,
-             uniqueness_expectation: Optional['outputs.DatascanDataQualitySpecRuleUniquenessExpectation'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dimension is None:
-            raise TypeError("Missing 'dimension' argument")
-        if ignore_null is None and 'ignoreNull' in kwargs:
-            ignore_null = kwargs['ignoreNull']
-        if non_null_expectation is None and 'nonNullExpectation' in kwargs:
-            non_null_expectation = kwargs['nonNullExpectation']
-        if range_expectation is None and 'rangeExpectation' in kwargs:
-            range_expectation = kwargs['rangeExpectation']
-        if regex_expectation is None and 'regexExpectation' in kwargs:
-            regex_expectation = kwargs['regexExpectation']
-        if row_condition_expectation is None and 'rowConditionExpectation' in kwargs:
-            row_condition_expectation = kwargs['rowConditionExpectation']
-        if set_expectation is None and 'setExpectation' in kwargs:
-            set_expectation = kwargs['setExpectation']
-        if statistic_range_expectation is None and 'statisticRangeExpectation' in kwargs:
-            statistic_range_expectation = kwargs['statisticRangeExpectation']
-        if table_condition_expectation is None and 'tableConditionExpectation' in kwargs:
-            table_condition_expectation = kwargs['tableConditionExpectation']
-        if uniqueness_expectation is None and 'uniquenessExpectation' in kwargs:
-            uniqueness_expectation = kwargs['uniquenessExpectation']
-
-        _setter("dimension", dimension)
+        pulumi.set(__self__, "dimension", dimension)
         if column is not None:
-            _setter("column", column)
+            pulumi.set(__self__, "column", column)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ignore_null is not None:
-            _setter("ignore_null", ignore_null)
+            pulumi.set(__self__, "ignore_null", ignore_null)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if non_null_expectation is not None:
-            _setter("non_null_expectation", non_null_expectation)
+            pulumi.set(__self__, "non_null_expectation", non_null_expectation)
         if range_expectation is not None:
-            _setter("range_expectation", range_expectation)
+            pulumi.set(__self__, "range_expectation", range_expectation)
         if regex_expectation is not None:
-            _setter("regex_expectation", regex_expectation)
+            pulumi.set(__self__, "regex_expectation", regex_expectation)
         if row_condition_expectation is not None:
-            _setter("row_condition_expectation", row_condition_expectation)
+            pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
         if set_expectation is not None:
-            _setter("set_expectation", set_expectation)
+            pulumi.set(__self__, "set_expectation", set_expectation)
         if statistic_range_expectation is not None:
-            _setter("statistic_range_expectation", statistic_range_expectation)
+            pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
         if table_condition_expectation is not None:
-            _setter("table_condition_expectation", table_condition_expectation)
+            pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if uniqueness_expectation is not None:
-            _setter("uniqueness_expectation", uniqueness_expectation)
+            pulumi.set(__self__, "uniqueness_expectation", uniqueness_expectation)
 
     @property
     @pulumi.getter
@@ -3692,13 +2842,6 @@ class DatascanDataQualitySpecRule(dict):
 class DatascanDataQualitySpecRuleNonNullExpectation(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -3739,39 +2882,14 @@ class DatascanDataQualitySpecRuleRangeExpectation(dict):
         :param bool strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
                Only relevant if a minValue has been defined. Default = false.
         """
-        DatascanDataQualitySpecRuleRangeExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_value=max_value,
-            min_value=min_value,
-            strict_max_enabled=strict_max_enabled,
-            strict_min_enabled=strict_min_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_value: Optional[str] = None,
-             min_value: Optional[str] = None,
-             strict_max_enabled: Optional[bool] = None,
-             strict_min_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if strict_max_enabled is None and 'strictMaxEnabled' in kwargs:
-            strict_max_enabled = kwargs['strictMaxEnabled']
-        if strict_min_enabled is None and 'strictMinEnabled' in kwargs:
-            strict_min_enabled = kwargs['strictMinEnabled']
-
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if strict_max_enabled is not None:
-            _setter("strict_max_enabled", strict_max_enabled)
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
         if strict_min_enabled is not None:
-            _setter("strict_min_enabled", strict_min_enabled)
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
 
     @property
     @pulumi.getter(name="maxValue")
@@ -3815,20 +2933,7 @@ class DatascanDataQualitySpecRuleRegexExpectation(dict):
         """
         :param str regex: A regular expression the column value is expected to match.
         """
-        DatascanDataQualitySpecRuleRegexExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            regex=regex,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if regex is None:
-            raise TypeError("Missing 'regex' argument")
-
-        _setter("regex", regex)
+        pulumi.set(__self__, "regex", regex)
 
     @property
     @pulumi.getter
@@ -3863,22 +2968,7 @@ class DatascanDataQualitySpecRuleRowConditionExpectation(dict):
         """
         :param str sql_expression: The SQL expression.
         """
-        DatascanDataQualitySpecRuleRowConditionExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sql_expression=sql_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sql_expression: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sql_expression is None and 'sqlExpression' in kwargs:
-            sql_expression = kwargs['sqlExpression']
-        if sql_expression is None:
-            raise TypeError("Missing 'sql_expression' argument")
-
-        _setter("sql_expression", sql_expression)
+        pulumi.set(__self__, "sql_expression", sql_expression)
 
     @property
     @pulumi.getter(name="sqlExpression")
@@ -3896,20 +2986,7 @@ class DatascanDataQualitySpecRuleSetExpectation(dict):
         """
         :param Sequence[str] values: Expected values for the column value.
         """
-        DatascanDataQualitySpecRuleSetExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("values", values)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -3963,44 +3040,15 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectation(dict):
         :param bool strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
                Only relevant if a minValue has been defined. Default = false.
         """
-        DatascanDataQualitySpecRuleStatisticRangeExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            statistic=statistic,
-            max_value=max_value,
-            min_value=min_value,
-            strict_max_enabled=strict_max_enabled,
-            strict_min_enabled=strict_min_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             statistic: Optional[str] = None,
-             max_value: Optional[str] = None,
-             min_value: Optional[str] = None,
-             strict_max_enabled: Optional[bool] = None,
-             strict_min_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if statistic is None:
-            raise TypeError("Missing 'statistic' argument")
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if strict_max_enabled is None and 'strictMaxEnabled' in kwargs:
-            strict_max_enabled = kwargs['strictMaxEnabled']
-        if strict_min_enabled is None and 'strictMinEnabled' in kwargs:
-            strict_min_enabled = kwargs['strictMinEnabled']
-
-        _setter("statistic", statistic)
+        pulumi.set(__self__, "statistic", statistic)
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if strict_max_enabled is not None:
-            _setter("strict_max_enabled", strict_max_enabled)
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
         if strict_min_enabled is not None:
-            _setter("strict_min_enabled", strict_min_enabled)
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
 
     @property
     @pulumi.getter
@@ -4072,22 +3120,7 @@ class DatascanDataQualitySpecRuleTableConditionExpectation(dict):
         """
         :param str sql_expression: The SQL expression.
         """
-        DatascanDataQualitySpecRuleTableConditionExpectation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sql_expression=sql_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sql_expression: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sql_expression is None and 'sqlExpression' in kwargs:
-            sql_expression = kwargs['sqlExpression']
-        if sql_expression is None:
-            raise TypeError("Missing 'sql_expression' argument")
-
-        _setter("sql_expression", sql_expression)
+        pulumi.set(__self__, "sql_expression", sql_expression)
 
     @property
     @pulumi.getter(name="sqlExpression")
@@ -4102,13 +3135,6 @@ class DatascanDataQualitySpecRuleTableConditionExpectation(dict):
 class DatascanDataQualitySpecRuleUniquenessExpectation(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -4121,24 +3147,9 @@ class DatascanExecutionSpec(dict):
                Structure is documented below.
         :param str field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
         """
-        DatascanExecutionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            trigger=trigger,
-            field=field,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             trigger: Optional['outputs.DatascanExecutionSpecTrigger'] = None,
-             field: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if trigger is None:
-            raise TypeError("Missing 'trigger' argument")
-
-        _setter("trigger", trigger)
+        pulumi.set(__self__, "trigger", trigger)
         if field is not None:
-            _setter("field", field)
+            pulumi.set(__self__, "field", field)
 
     @property
     @pulumi.getter
@@ -4185,25 +3196,10 @@ class DatascanExecutionSpecTrigger(dict):
         :param 'DatascanExecutionSpecTriggerScheduleArgs' schedule: The scan is scheduled to run periodically.
                Structure is documented below.
         """
-        DatascanExecutionSpecTrigger._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            on_demand=on_demand,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             on_demand: Optional['outputs.DatascanExecutionSpecTriggerOnDemand'] = None,
-             schedule: Optional['outputs.DatascanExecutionSpecTriggerSchedule'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if on_demand is None and 'onDemand' in kwargs:
-            on_demand = kwargs['onDemand']
-
         if on_demand is not None:
-            _setter("on_demand", on_demand)
+            pulumi.set(__self__, "on_demand", on_demand)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="onDemand")
@@ -4227,13 +3223,6 @@ class DatascanExecutionSpecTrigger(dict):
 class DatascanExecutionSpecTriggerOnDemand(dict):
     def __init__(__self__):
         pass
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        pass
-
 
 
 @pulumi.output_type
@@ -4245,20 +3234,7 @@ class DatascanExecutionSpecTriggerSchedule(dict):
                
                - - -
         """
-        DatascanExecutionSpecTriggerSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron=cron,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron is None:
-            raise TypeError("Missing 'cron' argument")
-
-        _setter("cron", cron)
+        pulumi.set(__self__, "cron", cron)
 
     @property
     @pulumi.getter
@@ -4301,27 +3277,10 @@ class DatascanExecutionStatus(dict):
         :param str latest_job_start_time: (Output)
                The time when the latest DataScanJob ended.
         """
-        DatascanExecutionStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            latest_job_end_time=latest_job_end_time,
-            latest_job_start_time=latest_job_start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             latest_job_end_time: Optional[str] = None,
-             latest_job_start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if latest_job_end_time is None and 'latestJobEndTime' in kwargs:
-            latest_job_end_time = kwargs['latestJobEndTime']
-        if latest_job_start_time is None and 'latestJobStartTime' in kwargs:
-            latest_job_start_time = kwargs['latestJobStartTime']
-
         if latest_job_end_time is not None:
-            _setter("latest_job_end_time", latest_job_end_time)
+            pulumi.set(__self__, "latest_job_end_time", latest_job_end_time)
         if latest_job_start_time is not None:
-            _setter("latest_job_start_time", latest_job_start_time)
+            pulumi.set(__self__, "latest_job_start_time", latest_job_start_time)
 
     @property
     @pulumi.getter(name="latestJobEndTime")
@@ -4348,29 +3307,10 @@ class DatascanIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        DatascanIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -4394,29 +3334,10 @@ class DatascanIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        DatascanIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -4464,33 +3385,12 @@ class LakeAssetStatus(dict):
         """
         :param str update_time: Output only. The time when the lake was last updated.
         """
-        LakeAssetStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_assets=active_assets,
-            security_policy_applying_assets=security_policy_applying_assets,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_assets: Optional[int] = None,
-             security_policy_applying_assets: Optional[int] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_assets is None and 'activeAssets' in kwargs:
-            active_assets = kwargs['activeAssets']
-        if security_policy_applying_assets is None and 'securityPolicyApplyingAssets' in kwargs:
-            security_policy_applying_assets = kwargs['securityPolicyApplyingAssets']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if active_assets is not None:
-            _setter("active_assets", active_assets)
+            pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
-            _setter("security_policy_applying_assets", security_policy_applying_assets)
+            pulumi.set(__self__, "security_policy_applying_assets", security_policy_applying_assets)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="activeAssets")
@@ -4517,29 +3417,10 @@ class LakeIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        LakeIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -4563,29 +3444,10 @@ class LakeIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        LakeIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -4610,19 +3472,8 @@ class LakeMetastore(dict):
         """
         :param str service: Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
         """
-        LakeMetastore._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -4661,33 +3512,14 @@ class LakeMetastoreStatus(dict):
         :param str state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the lake was last updated.
         """
-        LakeMetastoreStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint=endpoint,
-            message=message,
-            state=state,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint: Optional[str] = None,
-             message: Optional[str] = None,
-             state: Optional[str] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -4755,42 +3587,15 @@ class TaskExecutionSpec(dict):
         :param str project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        TaskExecutionSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_account=service_account,
-            args=args,
-            kms_key=kms_key,
-            max_job_execution_lifetime=max_job_execution_lifetime,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_account: Optional[str] = None,
-             args: Optional[Mapping[str, str]] = None,
-             kms_key: Optional[str] = None,
-             max_job_execution_lifetime: Optional[str] = None,
-             project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if service_account is None:
-            raise TypeError("Missing 'service_account' argument")
-        if kms_key is None and 'kmsKey' in kwargs:
-            kms_key = kwargs['kmsKey']
-        if max_job_execution_lifetime is None and 'maxJobExecutionLifetime' in kwargs:
-            max_job_execution_lifetime = kwargs['maxJobExecutionLifetime']
-
-        _setter("service_account", service_account)
+        pulumi.set(__self__, "service_account", service_account)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if kms_key is not None:
-            _setter("kms_key", kms_key)
+            pulumi.set(__self__, "kms_key", kms_key)
         if max_job_execution_lifetime is not None:
-            _setter("max_job_execution_lifetime", max_job_execution_lifetime)
+            pulumi.set(__self__, "max_job_execution_lifetime", max_job_execution_lifetime)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -4867,27 +3672,10 @@ class TaskExecutionStatus(dict):
         :param str update_time: (Output)
                Last update time of the status.
         """
-        TaskExecutionStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            latest_jobs=latest_jobs,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             latest_jobs: Optional[Sequence['outputs.TaskExecutionStatusLatestJob']] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if latest_jobs is None and 'latestJobs' in kwargs:
-            latest_jobs = kwargs['latestJobs']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if latest_jobs is not None:
-            _setter("latest_jobs", latest_jobs)
+            pulumi.set(__self__, "latest_jobs", latest_jobs)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="latestJobs")
@@ -4963,59 +3751,24 @@ class TaskExecutionStatusLatestJob(dict):
         :param str uid: (Output)
                System generated globally unique ID for the job.
         """
-        TaskExecutionStatusLatestJob._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_time=end_time,
-            message=message,
-            name=name,
-            retry_count=retry_count,
-            service=service,
-            service_job=service_job,
-            start_time=start_time,
-            state=state,
-            uid=uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_time: Optional[str] = None,
-             message: Optional[str] = None,
-             name: Optional[str] = None,
-             retry_count: Optional[int] = None,
-             service: Optional[str] = None,
-             service_job: Optional[str] = None,
-             start_time: Optional[str] = None,
-             state: Optional[str] = None,
-             uid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if retry_count is None and 'retryCount' in kwargs:
-            retry_count = kwargs['retryCount']
-        if service_job is None and 'serviceJob' in kwargs:
-            service_job = kwargs['serviceJob']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if retry_count is not None:
-            _setter("retry_count", retry_count)
+            pulumi.set(__self__, "retry_count", retry_count)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if service_job is not None:
-            _setter("service_job", service_job)
+            pulumi.set(__self__, "service_job", service_job)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="endTime")
@@ -5104,29 +3857,10 @@ class TaskIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        TaskIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -5150,29 +3884,10 @@ class TaskIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        TaskIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -5225,38 +3940,13 @@ class TaskNotebook(dict):
         :param 'TaskNotebookInfrastructureSpecArgs' infrastructure_spec: Infrastructure specification for the execution.
                Structure is documented below.
         """
-        TaskNotebook._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            notebook=notebook,
-            archive_uris=archive_uris,
-            file_uris=file_uris,
-            infrastructure_spec=infrastructure_spec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             notebook: Optional[str] = None,
-             archive_uris: Optional[Sequence[str]] = None,
-             file_uris: Optional[Sequence[str]] = None,
-             infrastructure_spec: Optional['outputs.TaskNotebookInfrastructureSpec'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if notebook is None:
-            raise TypeError("Missing 'notebook' argument")
-        if archive_uris is None and 'archiveUris' in kwargs:
-            archive_uris = kwargs['archiveUris']
-        if file_uris is None and 'fileUris' in kwargs:
-            file_uris = kwargs['fileUris']
-        if infrastructure_spec is None and 'infrastructureSpec' in kwargs:
-            infrastructure_spec = kwargs['infrastructureSpec']
-
-        _setter("notebook", notebook)
+        pulumi.set(__self__, "notebook", notebook)
         if archive_uris is not None:
-            _setter("archive_uris", archive_uris)
+            pulumi.set(__self__, "archive_uris", archive_uris)
         if file_uris is not None:
-            _setter("file_uris", file_uris)
+            pulumi.set(__self__, "file_uris", file_uris)
         if infrastructure_spec is not None:
-            _setter("infrastructure_spec", infrastructure_spec)
+            pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
 
     @property
     @pulumi.getter
@@ -5325,31 +4015,12 @@ class TaskNotebookInfrastructureSpec(dict):
         :param 'TaskNotebookInfrastructureSpecVpcNetworkArgs' vpc_network: Vpc network.
                Structure is documented below.
         """
-        TaskNotebookInfrastructureSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch=batch,
-            container_image=container_image,
-            vpc_network=vpc_network,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch: Optional['outputs.TaskNotebookInfrastructureSpecBatch'] = None,
-             container_image: Optional['outputs.TaskNotebookInfrastructureSpecContainerImage'] = None,
-             vpc_network: Optional['outputs.TaskNotebookInfrastructureSpecVpcNetwork'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_image is None and 'containerImage' in kwargs:
-            container_image = kwargs['containerImage']
-        if vpc_network is None and 'vpcNetwork' in kwargs:
-            vpc_network = kwargs['vpcNetwork']
-
         if batch is not None:
-            _setter("batch", batch)
+            pulumi.set(__self__, "batch", batch)
         if container_image is not None:
-            _setter("container_image", container_image)
+            pulumi.set(__self__, "container_image", container_image)
         if vpc_network is not None:
-            _setter("vpc_network", vpc_network)
+            pulumi.set(__self__, "vpc_network", vpc_network)
 
     @property
     @pulumi.getter
@@ -5407,27 +4078,10 @@ class TaskNotebookInfrastructureSpecBatch(dict):
         :param int executors_count: Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
         :param int max_executors_count: Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
         """
-        TaskNotebookInfrastructureSpecBatch._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            executors_count=executors_count,
-            max_executors_count=max_executors_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             executors_count: Optional[int] = None,
-             max_executors_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if executors_count is None and 'executorsCount' in kwargs:
-            executors_count = kwargs['executorsCount']
-        if max_executors_count is None and 'maxExecutorsCount' in kwargs:
-            max_executors_count = kwargs['maxExecutorsCount']
-
         if executors_count is not None:
-            _setter("executors_count", executors_count)
+            pulumi.set(__self__, "executors_count", executors_count)
         if max_executors_count is not None:
-            _setter("max_executors_count", max_executors_count)
+            pulumi.set(__self__, "max_executors_count", max_executors_count)
 
     @property
     @pulumi.getter(name="executorsCount")
@@ -5478,35 +4132,14 @@ class TaskNotebookInfrastructureSpecContainerImage(dict):
         :param Mapping[str, str] properties: Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
         :param Sequence[str] python_packages: A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
         """
-        TaskNotebookInfrastructureSpecContainerImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image=image,
-            java_jars=java_jars,
-            properties=properties,
-            python_packages=python_packages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image: Optional[str] = None,
-             java_jars: Optional[Sequence[str]] = None,
-             properties: Optional[Mapping[str, str]] = None,
-             python_packages: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if java_jars is None and 'javaJars' in kwargs:
-            java_jars = kwargs['javaJars']
-        if python_packages is None and 'pythonPackages' in kwargs:
-            python_packages = kwargs['pythonPackages']
-
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if java_jars is not None:
-            _setter("java_jars", java_jars)
+            pulumi.set(__self__, "java_jars", java_jars)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if python_packages is not None:
-            _setter("python_packages", python_packages)
+            pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -5571,31 +4204,12 @@ class TaskNotebookInfrastructureSpecVpcNetwork(dict):
         :param Sequence[str] network_tags: List of network tags to apply to the job.
         :param str sub_network: The Cloud VPC sub-network in which the job is run.
         """
-        TaskNotebookInfrastructureSpecVpcNetwork._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            network_tags=network_tags,
-            sub_network=sub_network,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             network_tags: Optional[Sequence[str]] = None,
-             sub_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_tags is None and 'networkTags' in kwargs:
-            network_tags = kwargs['networkTags']
-        if sub_network is None and 'subNetwork' in kwargs:
-            sub_network = kwargs['subNetwork']
-
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_tags is not None:
-            _setter("network_tags", network_tags)
+            pulumi.set(__self__, "network_tags", network_tags)
         if sub_network is not None:
-            _setter("sub_network", sub_network)
+            pulumi.set(__self__, "sub_network", sub_network)
 
     @property
     @pulumi.getter
@@ -5675,63 +4289,22 @@ class TaskSpark(dict):
         :param str sql_script: The query text. The execution args are used to declare a set of script variables (set key='value';).
         :param str sql_script_file: A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
         """
-        TaskSpark._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            archive_uris=archive_uris,
-            file_uris=file_uris,
-            infrastructure_spec=infrastructure_spec,
-            main_class=main_class,
-            main_jar_file_uri=main_jar_file_uri,
-            python_script_file=python_script_file,
-            sql_script=sql_script,
-            sql_script_file=sql_script_file,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             archive_uris: Optional[Sequence[str]] = None,
-             file_uris: Optional[Sequence[str]] = None,
-             infrastructure_spec: Optional['outputs.TaskSparkInfrastructureSpec'] = None,
-             main_class: Optional[str] = None,
-             main_jar_file_uri: Optional[str] = None,
-             python_script_file: Optional[str] = None,
-             sql_script: Optional[str] = None,
-             sql_script_file: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if archive_uris is None and 'archiveUris' in kwargs:
-            archive_uris = kwargs['archiveUris']
-        if file_uris is None and 'fileUris' in kwargs:
-            file_uris = kwargs['fileUris']
-        if infrastructure_spec is None and 'infrastructureSpec' in kwargs:
-            infrastructure_spec = kwargs['infrastructureSpec']
-        if main_class is None and 'mainClass' in kwargs:
-            main_class = kwargs['mainClass']
-        if main_jar_file_uri is None and 'mainJarFileUri' in kwargs:
-            main_jar_file_uri = kwargs['mainJarFileUri']
-        if python_script_file is None and 'pythonScriptFile' in kwargs:
-            python_script_file = kwargs['pythonScriptFile']
-        if sql_script is None and 'sqlScript' in kwargs:
-            sql_script = kwargs['sqlScript']
-        if sql_script_file is None and 'sqlScriptFile' in kwargs:
-            sql_script_file = kwargs['sqlScriptFile']
-
         if archive_uris is not None:
-            _setter("archive_uris", archive_uris)
+            pulumi.set(__self__, "archive_uris", archive_uris)
         if file_uris is not None:
-            _setter("file_uris", file_uris)
+            pulumi.set(__self__, "file_uris", file_uris)
         if infrastructure_spec is not None:
-            _setter("infrastructure_spec", infrastructure_spec)
+            pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
         if main_class is not None:
-            _setter("main_class", main_class)
+            pulumi.set(__self__, "main_class", main_class)
         if main_jar_file_uri is not None:
-            _setter("main_jar_file_uri", main_jar_file_uri)
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
         if python_script_file is not None:
-            _setter("python_script_file", python_script_file)
+            pulumi.set(__self__, "python_script_file", python_script_file)
         if sql_script is not None:
-            _setter("sql_script", sql_script)
+            pulumi.set(__self__, "sql_script", sql_script)
         if sql_script_file is not None:
-            _setter("sql_script_file", sql_script_file)
+            pulumi.set(__self__, "sql_script_file", sql_script_file)
 
     @property
     @pulumi.getter(name="archiveUris")
@@ -5832,31 +4405,12 @@ class TaskSparkInfrastructureSpec(dict):
         :param 'TaskSparkInfrastructureSpecVpcNetworkArgs' vpc_network: Vpc network.
                Structure is documented below.
         """
-        TaskSparkInfrastructureSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch=batch,
-            container_image=container_image,
-            vpc_network=vpc_network,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch: Optional['outputs.TaskSparkInfrastructureSpecBatch'] = None,
-             container_image: Optional['outputs.TaskSparkInfrastructureSpecContainerImage'] = None,
-             vpc_network: Optional['outputs.TaskSparkInfrastructureSpecVpcNetwork'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_image is None and 'containerImage' in kwargs:
-            container_image = kwargs['containerImage']
-        if vpc_network is None and 'vpcNetwork' in kwargs:
-            vpc_network = kwargs['vpcNetwork']
-
         if batch is not None:
-            _setter("batch", batch)
+            pulumi.set(__self__, "batch", batch)
         if container_image is not None:
-            _setter("container_image", container_image)
+            pulumi.set(__self__, "container_image", container_image)
         if vpc_network is not None:
-            _setter("vpc_network", vpc_network)
+            pulumi.set(__self__, "vpc_network", vpc_network)
 
     @property
     @pulumi.getter
@@ -5914,27 +4468,10 @@ class TaskSparkInfrastructureSpecBatch(dict):
         :param int executors_count: Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
         :param int max_executors_count: Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
         """
-        TaskSparkInfrastructureSpecBatch._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            executors_count=executors_count,
-            max_executors_count=max_executors_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             executors_count: Optional[int] = None,
-             max_executors_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if executors_count is None and 'executorsCount' in kwargs:
-            executors_count = kwargs['executorsCount']
-        if max_executors_count is None and 'maxExecutorsCount' in kwargs:
-            max_executors_count = kwargs['maxExecutorsCount']
-
         if executors_count is not None:
-            _setter("executors_count", executors_count)
+            pulumi.set(__self__, "executors_count", executors_count)
         if max_executors_count is not None:
-            _setter("max_executors_count", max_executors_count)
+            pulumi.set(__self__, "max_executors_count", max_executors_count)
 
     @property
     @pulumi.getter(name="executorsCount")
@@ -5985,35 +4522,14 @@ class TaskSparkInfrastructureSpecContainerImage(dict):
         :param Mapping[str, str] properties: Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
         :param Sequence[str] python_packages: A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
         """
-        TaskSparkInfrastructureSpecContainerImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image=image,
-            java_jars=java_jars,
-            properties=properties,
-            python_packages=python_packages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image: Optional[str] = None,
-             java_jars: Optional[Sequence[str]] = None,
-             properties: Optional[Mapping[str, str]] = None,
-             python_packages: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if java_jars is None and 'javaJars' in kwargs:
-            java_jars = kwargs['javaJars']
-        if python_packages is None and 'pythonPackages' in kwargs:
-            python_packages = kwargs['pythonPackages']
-
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if java_jars is not None:
-            _setter("java_jars", java_jars)
+            pulumi.set(__self__, "java_jars", java_jars)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if python_packages is not None:
-            _setter("python_packages", python_packages)
+            pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -6078,31 +4594,12 @@ class TaskSparkInfrastructureSpecVpcNetwork(dict):
         :param Sequence[str] network_tags: List of network tags to apply to the job.
         :param str sub_network: The Cloud VPC sub-network in which the job is run.
         """
-        TaskSparkInfrastructureSpecVpcNetwork._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            network_tags=network_tags,
-            sub_network=sub_network,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             network_tags: Optional[Sequence[str]] = None,
-             sub_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_tags is None and 'networkTags' in kwargs:
-            network_tags = kwargs['networkTags']
-        if sub_network is None and 'subNetwork' in kwargs:
-            sub_network = kwargs['subNetwork']
-
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_tags is not None:
-            _setter("network_tags", network_tags)
+            pulumi.set(__self__, "network_tags", network_tags)
         if sub_network is not None:
-            _setter("sub_network", sub_network)
+            pulumi.set(__self__, "sub_network", sub_network)
 
     @property
     @pulumi.getter
@@ -6164,40 +4661,15 @@ class TaskTriggerSpec(dict):
         :param str schedule: Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         :param str start_time: The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
         """
-        TaskTriggerSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            disabled=disabled,
-            max_retries=max_retries,
-            schedule=schedule,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             max_retries: Optional[int] = None,
-             schedule: Optional[str] = None,
-             start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if max_retries is None and 'maxRetries' in kwargs:
-            max_retries = kwargs['maxRetries']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if max_retries is not None:
-            _setter("max_retries", max_retries)
+            pulumi.set(__self__, "max_retries", max_retries)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter
@@ -6271,33 +4743,12 @@ class ZoneAssetStatus(dict):
         """
         :param str update_time: Output only. The time when the zone was last updated.
         """
-        ZoneAssetStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_assets=active_assets,
-            security_policy_applying_assets=security_policy_applying_assets,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_assets: Optional[int] = None,
-             security_policy_applying_assets: Optional[int] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_assets is None and 'activeAssets' in kwargs:
-            active_assets = kwargs['activeAssets']
-        if security_policy_applying_assets is None and 'securityPolicyApplyingAssets' in kwargs:
-            security_policy_applying_assets = kwargs['securityPolicyApplyingAssets']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if active_assets is not None:
-            _setter("active_assets", active_assets)
+            pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
-            _setter("security_policy_applying_assets", security_policy_applying_assets)
+            pulumi.set(__self__, "security_policy_applying_assets", security_policy_applying_assets)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="activeAssets")
@@ -6358,48 +4809,17 @@ class ZoneDiscoverySpec(dict):
         :param 'ZoneDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
         :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
-        ZoneDiscoverySpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            csv_options=csv_options,
-            exclude_patterns=exclude_patterns,
-            include_patterns=include_patterns,
-            json_options=json_options,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             csv_options: Optional['outputs.ZoneDiscoverySpecCsvOptions'] = None,
-             exclude_patterns: Optional[Sequence[str]] = None,
-             include_patterns: Optional[Sequence[str]] = None,
-             json_options: Optional['outputs.ZoneDiscoverySpecJsonOptions'] = None,
-             schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if csv_options is None and 'csvOptions' in kwargs:
-            csv_options = kwargs['csvOptions']
-        if exclude_patterns is None and 'excludePatterns' in kwargs:
-            exclude_patterns = kwargs['excludePatterns']
-        if include_patterns is None and 'includePatterns' in kwargs:
-            include_patterns = kwargs['includePatterns']
-        if json_options is None and 'jsonOptions' in kwargs:
-            json_options = kwargs['jsonOptions']
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if csv_options is not None:
-            _setter("csv_options", csv_options)
+            pulumi.set(__self__, "csv_options", csv_options)
         if exclude_patterns is not None:
-            _setter("exclude_patterns", exclude_patterns)
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
         if include_patterns is not None:
-            _setter("include_patterns", include_patterns)
+            pulumi.set(__self__, "include_patterns", include_patterns)
         if json_options is not None:
-            _setter("json_options", json_options)
+            pulumi.set(__self__, "json_options", json_options)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter
@@ -6482,35 +4902,14 @@ class ZoneDiscoverySpecCsvOptions(dict):
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
-        ZoneDiscoverySpecCsvOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delimiter=delimiter,
-            disable_type_inference=disable_type_inference,
-            encoding=encoding,
-            header_rows=header_rows,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delimiter: Optional[str] = None,
-             disable_type_inference: Optional[bool] = None,
-             encoding: Optional[str] = None,
-             header_rows: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_type_inference is None and 'disableTypeInference' in kwargs:
-            disable_type_inference = kwargs['disableTypeInference']
-        if header_rows is None and 'headerRows' in kwargs:
-            header_rows = kwargs['headerRows']
-
         if delimiter is not None:
-            _setter("delimiter", delimiter)
+            pulumi.set(__self__, "delimiter", delimiter)
         if disable_type_inference is not None:
-            _setter("disable_type_inference", disable_type_inference)
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if header_rows is not None:
-            _setter("header_rows", header_rows)
+            pulumi.set(__self__, "header_rows", header_rows)
 
     @property
     @pulumi.getter
@@ -6571,25 +4970,10 @@ class ZoneDiscoverySpecJsonOptions(dict):
         :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         """
-        ZoneDiscoverySpecJsonOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_type_inference=disable_type_inference,
-            encoding=encoding,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_type_inference: Optional[bool] = None,
-             encoding: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_type_inference is None and 'disableTypeInference' in kwargs:
-            disable_type_inference = kwargs['disableTypeInference']
-
         if disable_type_inference is not None:
-            _setter("disable_type_inference", disable_type_inference)
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
 
     @property
     @pulumi.getter(name="disableTypeInference")
@@ -6614,29 +4998,10 @@ class ZoneIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ZoneIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -6660,29 +5025,10 @@ class ZoneIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        ZoneIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -6726,22 +5072,7 @@ class ZoneResourceSpec(dict):
                
                - - -
         """
-        ZoneResourceSpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location_type=location_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location_type is None and 'locationType' in kwargs:
-            location_type = kwargs['locationType']
-        if location_type is None:
-            raise TypeError("Missing 'location_type' argument")
-
-        _setter("location_type", location_type)
+        pulumi.set(__self__, "location_type", location_type)
 
     @property
     @pulumi.getter(name="locationType")

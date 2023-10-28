@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -53,31 +53,12 @@ class PipelineScheduleInfo(dict):
         :param str schedule: Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
         :param str time_zone: Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
         """
-        PipelineScheduleInfo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            next_job_time=next_job_time,
-            schedule=schedule,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             next_job_time: Optional[str] = None,
-             schedule: Optional[str] = None,
-             time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if next_job_time is None and 'nextJobTime' in kwargs:
-            next_job_time = kwargs['nextJobTime']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
         if next_job_time is not None:
-            _setter("next_job_time", next_job_time)
+            pulumi.set(__self__, "next_job_time", next_job_time)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="nextJobTime")
@@ -138,27 +119,10 @@ class PipelineWorkload(dict):
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
                Structure is documented below.
         """
-        PipelineWorkload._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dataflow_flex_template_request=dataflow_flex_template_request,
-            dataflow_launch_template_request=dataflow_launch_template_request,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dataflow_flex_template_request: Optional['outputs.PipelineWorkloadDataflowFlexTemplateRequest'] = None,
-             dataflow_launch_template_request: Optional['outputs.PipelineWorkloadDataflowLaunchTemplateRequest'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataflow_flex_template_request is None and 'dataflowFlexTemplateRequest' in kwargs:
-            dataflow_flex_template_request = kwargs['dataflowFlexTemplateRequest']
-        if dataflow_launch_template_request is None and 'dataflowLaunchTemplateRequest' in kwargs:
-            dataflow_launch_template_request = kwargs['dataflowLaunchTemplateRequest']
-
         if dataflow_flex_template_request is not None:
-            _setter("dataflow_flex_template_request", dataflow_flex_template_request)
+            pulumi.set(__self__, "dataflow_flex_template_request", dataflow_flex_template_request)
         if dataflow_launch_template_request is not None:
-            _setter("dataflow_launch_template_request", dataflow_launch_template_request)
+            pulumi.set(__self__, "dataflow_launch_template_request", dataflow_launch_template_request)
 
     @property
     @pulumi.getter(name="dataflowFlexTemplateRequest")
@@ -217,40 +181,11 @@ class PipelineWorkloadDataflowFlexTemplateRequest(dict):
         :param str project_id: The ID of the Cloud Platform project that the job belongs to.
         :param bool validate_only: If true, the request is validated but not actually executed. Defaults to false.
         """
-        PipelineWorkloadDataflowFlexTemplateRequest._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            launch_parameter=launch_parameter,
-            location=location,
-            project_id=project_id,
-            validate_only=validate_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             launch_parameter: Optional['outputs.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter'] = None,
-             location: Optional[str] = None,
-             project_id: Optional[str] = None,
-             validate_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if launch_parameter is None and 'launchParameter' in kwargs:
-            launch_parameter = kwargs['launchParameter']
-        if launch_parameter is None:
-            raise TypeError("Missing 'launch_parameter' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if validate_only is None and 'validateOnly' in kwargs:
-            validate_only = kwargs['validateOnly']
-
-        _setter("launch_parameter", launch_parameter)
-        _setter("location", location)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "launch_parameter", launch_parameter)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project_id", project_id)
         if validate_only is not None:
-            _setter("validate_only", validate_only)
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="launchParameter")
@@ -334,52 +269,19 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(dict):
                'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
         :param bool update: Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
         """
-        PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_name=job_name,
-            container_spec_gcs_path=container_spec_gcs_path,
-            environment=environment,
-            launch_options=launch_options,
-            parameters=parameters,
-            transform_name_mappings=transform_name_mappings,
-            update=update,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_name: Optional[str] = None,
-             container_spec_gcs_path: Optional[str] = None,
-             environment: Optional['outputs.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment'] = None,
-             launch_options: Optional[Mapping[str, str]] = None,
-             parameters: Optional[Mapping[str, str]] = None,
-             transform_name_mappings: Optional[Mapping[str, str]] = None,
-             update: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_name is None and 'jobName' in kwargs:
-            job_name = kwargs['jobName']
-        if job_name is None:
-            raise TypeError("Missing 'job_name' argument")
-        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
-            container_spec_gcs_path = kwargs['containerSpecGcsPath']
-        if launch_options is None and 'launchOptions' in kwargs:
-            launch_options = kwargs['launchOptions']
-        if transform_name_mappings is None and 'transformNameMappings' in kwargs:
-            transform_name_mappings = kwargs['transformNameMappings']
-
-        _setter("job_name", job_name)
+        pulumi.set(__self__, "job_name", job_name)
         if container_spec_gcs_path is not None:
-            _setter("container_spec_gcs_path", container_spec_gcs_path)
+            pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if launch_options is not None:
-            _setter("launch_options", launch_options)
+            pulumi.set(__self__, "launch_options", launch_options)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if transform_name_mappings is not None:
-            _setter("transform_name_mappings", transform_name_mappings)
+            pulumi.set(__self__, "transform_name_mappings", transform_name_mappings)
         if update is not None:
-            _setter("update", update)
+            pulumi.set(__self__, "update", update)
 
     @property
     @pulumi.getter(name="jobName")
@@ -527,105 +429,38 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment(dict
         :param str worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         :param str zone: The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
         """
-        PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_experiments=additional_experiments,
-            additional_user_labels=additional_user_labels,
-            enable_streaming_engine=enable_streaming_engine,
-            flexrs_goal=flexrs_goal,
-            ip_configuration=ip_configuration,
-            kms_key_name=kms_key_name,
-            machine_type=machine_type,
-            max_workers=max_workers,
-            network=network,
-            num_workers=num_workers,
-            service_account_email=service_account_email,
-            subnetwork=subnetwork,
-            temp_location=temp_location,
-            worker_region=worker_region,
-            worker_zone=worker_zone,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_experiments: Optional[Sequence[str]] = None,
-             additional_user_labels: Optional[Mapping[str, str]] = None,
-             enable_streaming_engine: Optional[bool] = None,
-             flexrs_goal: Optional[str] = None,
-             ip_configuration: Optional[str] = None,
-             kms_key_name: Optional[str] = None,
-             machine_type: Optional[str] = None,
-             max_workers: Optional[int] = None,
-             network: Optional[str] = None,
-             num_workers: Optional[int] = None,
-             service_account_email: Optional[str] = None,
-             subnetwork: Optional[str] = None,
-             temp_location: Optional[str] = None,
-             worker_region: Optional[str] = None,
-             worker_zone: Optional[str] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_experiments is None and 'additionalExperiments' in kwargs:
-            additional_experiments = kwargs['additionalExperiments']
-        if additional_user_labels is None and 'additionalUserLabels' in kwargs:
-            additional_user_labels = kwargs['additionalUserLabels']
-        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
-            enable_streaming_engine = kwargs['enableStreamingEngine']
-        if flexrs_goal is None and 'flexrsGoal' in kwargs:
-            flexrs_goal = kwargs['flexrsGoal']
-        if ip_configuration is None and 'ipConfiguration' in kwargs:
-            ip_configuration = kwargs['ipConfiguration']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_workers is None and 'maxWorkers' in kwargs:
-            max_workers = kwargs['maxWorkers']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if temp_location is None and 'tempLocation' in kwargs:
-            temp_location = kwargs['tempLocation']
-        if worker_region is None and 'workerRegion' in kwargs:
-            worker_region = kwargs['workerRegion']
-        if worker_zone is None and 'workerZone' in kwargs:
-            worker_zone = kwargs['workerZone']
-
         if additional_experiments is not None:
-            _setter("additional_experiments", additional_experiments)
+            pulumi.set(__self__, "additional_experiments", additional_experiments)
         if additional_user_labels is not None:
-            _setter("additional_user_labels", additional_user_labels)
+            pulumi.set(__self__, "additional_user_labels", additional_user_labels)
         if enable_streaming_engine is not None:
-            _setter("enable_streaming_engine", enable_streaming_engine)
+            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if flexrs_goal is not None:
-            _setter("flexrs_goal", flexrs_goal)
+            pulumi.set(__self__, "flexrs_goal", flexrs_goal)
         if ip_configuration is not None:
-            _setter("ip_configuration", ip_configuration)
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_workers is not None:
-            _setter("max_workers", max_workers)
+            pulumi.set(__self__, "max_workers", max_workers)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if temp_location is not None:
-            _setter("temp_location", temp_location)
+            pulumi.set(__self__, "temp_location", temp_location)
         if worker_region is not None:
-            _setter("worker_region", worker_region)
+            pulumi.set(__self__, "worker_region", worker_region)
         if worker_zone is not None:
-            _setter("worker_zone", worker_zone)
+            pulumi.set(__self__, "worker_zone", worker_zone)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="additionalExperiments")
@@ -802,44 +637,15 @@ class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
         :param str location: The regional endpoint to which to direct the request.
         :param bool validate_only: (Optional)
         """
-        PipelineWorkloadDataflowLaunchTemplateRequest._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            gcs_path=gcs_path,
-            launch_parameters=launch_parameters,
-            location=location,
-            validate_only=validate_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[str] = None,
-             gcs_path: Optional[str] = None,
-             launch_parameters: Optional['outputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters'] = None,
-             location: Optional[str] = None,
-             validate_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if gcs_path is None and 'gcsPath' in kwargs:
-            gcs_path = kwargs['gcsPath']
-        if launch_parameters is None and 'launchParameters' in kwargs:
-            launch_parameters = kwargs['launchParameters']
-        if validate_only is None and 'validateOnly' in kwargs:
-            validate_only = kwargs['validateOnly']
-
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "project_id", project_id)
         if gcs_path is not None:
-            _setter("gcs_path", gcs_path)
+            pulumi.set(__self__, "gcs_path", gcs_path)
         if launch_parameters is not None:
-            _setter("launch_parameters", launch_parameters)
+            pulumi.set(__self__, "launch_parameters", launch_parameters)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if validate_only is not None:
-            _setter("validate_only", validate_only)
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="projectId")
@@ -922,40 +728,15 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters(dict):
                'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
         :param bool update: If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
         """
-        PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_name=job_name,
-            environment=environment,
-            parameters=parameters,
-            transform_name_mapping=transform_name_mapping,
-            update=update,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_name: Optional[str] = None,
-             environment: Optional['outputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment'] = None,
-             parameters: Optional[Mapping[str, str]] = None,
-             transform_name_mapping: Optional[Mapping[str, str]] = None,
-             update: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_name is None and 'jobName' in kwargs:
-            job_name = kwargs['jobName']
-        if job_name is None:
-            raise TypeError("Missing 'job_name' argument")
-        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
-            transform_name_mapping = kwargs['transformNameMapping']
-
-        _setter("job_name", job_name)
+        pulumi.set(__self__, "job_name", job_name)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if transform_name_mapping is not None:
-            _setter("transform_name_mapping", transform_name_mapping)
+            pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
         if update is not None:
-            _setter("update", update)
+            pulumi.set(__self__, "update", update)
 
     @property
     @pulumi.getter(name="jobName")
@@ -1084,105 +865,38 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment(d
         :param str worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         :param str zone: The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
         """
-        PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_experiments=additional_experiments,
-            additional_user_labels=additional_user_labels,
-            bypass_temp_dir_validation=bypass_temp_dir_validation,
-            enable_streaming_engine=enable_streaming_engine,
-            ip_configuration=ip_configuration,
-            kms_key_name=kms_key_name,
-            machine_type=machine_type,
-            max_workers=max_workers,
-            network=network,
-            num_workers=num_workers,
-            service_account_email=service_account_email,
-            subnetwork=subnetwork,
-            temp_location=temp_location,
-            worker_region=worker_region,
-            worker_zone=worker_zone,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_experiments: Optional[Sequence[str]] = None,
-             additional_user_labels: Optional[Mapping[str, str]] = None,
-             bypass_temp_dir_validation: Optional[bool] = None,
-             enable_streaming_engine: Optional[bool] = None,
-             ip_configuration: Optional[str] = None,
-             kms_key_name: Optional[str] = None,
-             machine_type: Optional[str] = None,
-             max_workers: Optional[int] = None,
-             network: Optional[str] = None,
-             num_workers: Optional[int] = None,
-             service_account_email: Optional[str] = None,
-             subnetwork: Optional[str] = None,
-             temp_location: Optional[str] = None,
-             worker_region: Optional[str] = None,
-             worker_zone: Optional[str] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_experiments is None and 'additionalExperiments' in kwargs:
-            additional_experiments = kwargs['additionalExperiments']
-        if additional_user_labels is None and 'additionalUserLabels' in kwargs:
-            additional_user_labels = kwargs['additionalUserLabels']
-        if bypass_temp_dir_validation is None and 'bypassTempDirValidation' in kwargs:
-            bypass_temp_dir_validation = kwargs['bypassTempDirValidation']
-        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
-            enable_streaming_engine = kwargs['enableStreamingEngine']
-        if ip_configuration is None and 'ipConfiguration' in kwargs:
-            ip_configuration = kwargs['ipConfiguration']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_workers is None and 'maxWorkers' in kwargs:
-            max_workers = kwargs['maxWorkers']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if temp_location is None and 'tempLocation' in kwargs:
-            temp_location = kwargs['tempLocation']
-        if worker_region is None and 'workerRegion' in kwargs:
-            worker_region = kwargs['workerRegion']
-        if worker_zone is None and 'workerZone' in kwargs:
-            worker_zone = kwargs['workerZone']
-
         if additional_experiments is not None:
-            _setter("additional_experiments", additional_experiments)
+            pulumi.set(__self__, "additional_experiments", additional_experiments)
         if additional_user_labels is not None:
-            _setter("additional_user_labels", additional_user_labels)
+            pulumi.set(__self__, "additional_user_labels", additional_user_labels)
         if bypass_temp_dir_validation is not None:
-            _setter("bypass_temp_dir_validation", bypass_temp_dir_validation)
+            pulumi.set(__self__, "bypass_temp_dir_validation", bypass_temp_dir_validation)
         if enable_streaming_engine is not None:
-            _setter("enable_streaming_engine", enable_streaming_engine)
+            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
-            _setter("ip_configuration", ip_configuration)
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_workers is not None:
-            _setter("max_workers", max_workers)
+            pulumi.set(__self__, "max_workers", max_workers)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if temp_location is not None:
-            _setter("temp_location", temp_location)
+            pulumi.set(__self__, "temp_location", temp_location)
         if worker_region is not None:
-            _setter("worker_region", worker_region)
+            pulumi.set(__self__, "worker_region", worker_region)
         if worker_zone is not None:
-            _setter("worker_zone", worker_zone)
+            pulumi.set(__self__, "worker_zone", worker_zone)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="additionalExperiments")

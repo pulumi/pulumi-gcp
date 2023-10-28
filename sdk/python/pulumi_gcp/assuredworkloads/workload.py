@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,68 +41,19 @@ class WorkloadArgs:
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
-        WorkloadArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account=billing_account,
-            compliance_regime=compliance_regime,
-            display_name=display_name,
-            location=location,
-            organization=organization,
-            kms_settings=kms_settings,
-            labels=labels,
-            provisioned_resources_parent=provisioned_resources_parent,
-            resource_settings=resource_settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account: Optional[pulumi.Input[str]] = None,
-             compliance_regime: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             organization: Optional[pulumi.Input[str]] = None,
-             kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if billing_account is None:
-            raise TypeError("Missing 'billing_account' argument")
-        if compliance_regime is None and 'complianceRegime' in kwargs:
-            compliance_regime = kwargs['complianceRegime']
-        if compliance_regime is None:
-            raise TypeError("Missing 'compliance_regime' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if organization is None:
-            raise TypeError("Missing 'organization' argument")
-        if kms_settings is None and 'kmsSettings' in kwargs:
-            kms_settings = kwargs['kmsSettings']
-        if provisioned_resources_parent is None and 'provisionedResourcesParent' in kwargs:
-            provisioned_resources_parent = kwargs['provisionedResourcesParent']
-        if resource_settings is None and 'resourceSettings' in kwargs:
-            resource_settings = kwargs['resourceSettings']
-
-        _setter("billing_account", billing_account)
-        _setter("compliance_regime", compliance_regime)
-        _setter("display_name", display_name)
-        _setter("location", location)
-        _setter("organization", organization)
+        pulumi.set(__self__, "billing_account", billing_account)
+        pulumi.set(__self__, "compliance_regime", compliance_regime)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "organization", organization)
         if kms_settings is not None:
-            _setter("kms_settings", kms_settings)
+            pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if provisioned_resources_parent is not None:
-            _setter("provisioned_resources_parent", provisioned_resources_parent)
+            pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
         if resource_settings is not None:
-            _setter("resource_settings", resource_settings)
+            pulumi.set(__self__, "resource_settings", resource_settings)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -251,77 +202,30 @@ class _WorkloadState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
-        _WorkloadState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_account=billing_account,
-            compliance_regime=compliance_regime,
-            create_time=create_time,
-            display_name=display_name,
-            kms_settings=kms_settings,
-            labels=labels,
-            location=location,
-            name=name,
-            organization=organization,
-            provisioned_resources_parent=provisioned_resources_parent,
-            resource_settings=resource_settings,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_account: Optional[pulumi.Input[str]] = None,
-             compliance_regime: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             organization: Optional[pulumi.Input[str]] = None,
-             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-             resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if compliance_regime is None and 'complianceRegime' in kwargs:
-            compliance_regime = kwargs['complianceRegime']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if kms_settings is None and 'kmsSettings' in kwargs:
-            kms_settings = kwargs['kmsSettings']
-        if provisioned_resources_parent is None and 'provisionedResourcesParent' in kwargs:
-            provisioned_resources_parent = kwargs['provisionedResourcesParent']
-        if resource_settings is None and 'resourceSettings' in kwargs:
-            resource_settings = kwargs['resourceSettings']
-
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if compliance_regime is not None:
-            _setter("compliance_regime", compliance_regime)
+            pulumi.set(__self__, "compliance_regime", compliance_regime)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if kms_settings is not None:
-            _setter("kms_settings", kms_settings)
+            pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if organization is not None:
-            _setter("organization", organization)
+            pulumi.set(__self__, "organization", organization)
         if provisioned_resources_parent is not None:
-            _setter("provisioned_resources_parent", provisioned_resources_parent)
+            pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
         if resource_settings is not None:
-            _setter("resource_settings", resource_settings)
+            pulumi.set(__self__, "resource_settings", resource_settings)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -619,10 +523,6 @@ class Workload(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkloadArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -655,7 +555,6 @@ class Workload(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            kms_settings = _utilities.configure(kms_settings, WorkloadKmsSettingsArgs, True)
             __props__.__dict__["kms_settings"] = kms_settings
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

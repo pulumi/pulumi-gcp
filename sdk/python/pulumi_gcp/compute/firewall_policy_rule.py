@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,68 +39,21 @@ class FirewallPolicyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
-        FirewallPolicyRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            direction=direction,
-            firewall_policy=firewall_policy,
-            match=match,
-            priority=priority,
-            description=description,
-            disabled=disabled,
-            enable_logging=enable_logging,
-            target_resources=target_resources,
-            target_service_accounts=target_service_accounts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             firewall_policy: Optional[pulumi.Input[str]] = None,
-             match: Optional[pulumi.Input['FirewallPolicyRuleMatchArgs']] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if direction is None:
-            raise TypeError("Missing 'direction' argument")
-        if firewall_policy is None and 'firewallPolicy' in kwargs:
-            firewall_policy = kwargs['firewallPolicy']
-        if firewall_policy is None:
-            raise TypeError("Missing 'firewall_policy' argument")
-        if match is None:
-            raise TypeError("Missing 'match' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-        if target_resources is None and 'targetResources' in kwargs:
-            target_resources = kwargs['targetResources']
-        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
-            target_service_accounts = kwargs['targetServiceAccounts']
-
-        _setter("action", action)
-        _setter("direction", direction)
-        _setter("firewall_policy", firewall_policy)
-        _setter("match", match)
-        _setter("priority", priority)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "firewall_policy", firewall_policy)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "priority", priority)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if target_resources is not None:
-            _setter("target_resources", target_resources)
+            pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
-            _setter("target_service_accounts", target_service_accounts)
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -253,73 +206,30 @@ class _FirewallPolicyRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
-        _FirewallPolicyRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            description=description,
-            direction=direction,
-            disabled=disabled,
-            enable_logging=enable_logging,
-            firewall_policy=firewall_policy,
-            kind=kind,
-            match=match,
-            priority=priority,
-            rule_tuple_count=rule_tuple_count,
-            target_resources=target_resources,
-            target_service_accounts=target_service_accounts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             firewall_policy: Optional[pulumi.Input[str]] = None,
-             kind: Optional[pulumi.Input[str]] = None,
-             match: Optional[pulumi.Input['FirewallPolicyRuleMatchArgs']] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rule_tuple_count: Optional[pulumi.Input[int]] = None,
-             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-        if firewall_policy is None and 'firewallPolicy' in kwargs:
-            firewall_policy = kwargs['firewallPolicy']
-        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
-            rule_tuple_count = kwargs['ruleTupleCount']
-        if target_resources is None and 'targetResources' in kwargs:
-            target_resources = kwargs['targetResources']
-        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
-            target_service_accounts = kwargs['targetServiceAccounts']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if firewall_policy is not None:
-            _setter("firewall_policy", firewall_policy)
+            pulumi.set(__self__, "firewall_policy", firewall_policy)
         if kind is not None:
-            _setter("kind", kind)
+            pulumi.set(__self__, "kind", kind)
         if match is not None:
-            _setter("match", match)
+            pulumi.set(__self__, "match", match)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if rule_tuple_count is not None:
-            _setter("rule_tuple_count", rule_tuple_count)
+            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if target_resources is not None:
-            _setter("target_resources", target_resources)
+            pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
-            _setter("target_service_accounts", target_service_accounts)
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -639,10 +549,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallPolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -679,7 +585,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
             if firewall_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_policy'")
             __props__.__dict__["firewall_policy"] = firewall_policy
-            match = _utilities.configure(match, FirewallPolicyRuleMatchArgs, True)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

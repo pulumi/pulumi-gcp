@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,51 +37,14 @@ class DataPolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DataPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_policy_id=data_policy_id,
-            data_policy_type=data_policy_type,
-            location=location,
-            policy_tag=policy_tag,
-            data_masking_policy=data_masking_policy,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_policy_id: Optional[pulumi.Input[str]] = None,
-             data_policy_type: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             policy_tag: Optional[pulumi.Input[str]] = None,
-             data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_policy_id is None and 'dataPolicyId' in kwargs:
-            data_policy_id = kwargs['dataPolicyId']
-        if data_policy_id is None:
-            raise TypeError("Missing 'data_policy_id' argument")
-        if data_policy_type is None and 'dataPolicyType' in kwargs:
-            data_policy_type = kwargs['dataPolicyType']
-        if data_policy_type is None:
-            raise TypeError("Missing 'data_policy_type' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if policy_tag is None and 'policyTag' in kwargs:
-            policy_tag = kwargs['policyTag']
-        if policy_tag is None:
-            raise TypeError("Missing 'policy_tag' argument")
-        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
-            data_masking_policy = kwargs['dataMaskingPolicy']
-
-        _setter("data_policy_id", data_policy_id)
-        _setter("data_policy_type", data_policy_type)
-        _setter("location", location)
-        _setter("policy_tag", policy_tag)
+        pulumi.set(__self__, "data_policy_id", data_policy_id)
+        pulumi.set(__self__, "data_policy_type", data_policy_type)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "policy_tag", policy_tag)
         if data_masking_policy is not None:
-            _setter("data_masking_policy", data_masking_policy)
+            pulumi.set(__self__, "data_masking_policy", data_masking_policy)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataPolicyId")
@@ -188,51 +151,20 @@ class _DataPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _DataPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_masking_policy=data_masking_policy,
-            data_policy_id=data_policy_id,
-            data_policy_type=data_policy_type,
-            location=location,
-            name=name,
-            policy_tag=policy_tag,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
-             data_policy_id: Optional[pulumi.Input[str]] = None,
-             data_policy_type: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             policy_tag: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
-            data_masking_policy = kwargs['dataMaskingPolicy']
-        if data_policy_id is None and 'dataPolicyId' in kwargs:
-            data_policy_id = kwargs['dataPolicyId']
-        if data_policy_type is None and 'dataPolicyType' in kwargs:
-            data_policy_type = kwargs['dataPolicyType']
-        if policy_tag is None and 'policyTag' in kwargs:
-            policy_tag = kwargs['policyTag']
-
         if data_masking_policy is not None:
-            _setter("data_masking_policy", data_masking_policy)
+            pulumi.set(__self__, "data_masking_policy", data_masking_policy)
         if data_policy_id is not None:
-            _setter("data_policy_id", data_policy_id)
+            pulumi.set(__self__, "data_policy_id", data_policy_id)
         if data_policy_type is not None:
-            _setter("data_policy_type", data_policy_type)
+            pulumi.set(__self__, "data_policy_type", data_policy_type)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if policy_tag is not None:
-            _setter("policy_tag", policy_tag)
+            pulumi.set(__self__, "policy_tag", policy_tag)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataMaskingPolicy")
@@ -464,10 +396,6 @@ class DataPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DataPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -488,7 +416,6 @@ class DataPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataPolicyArgs.__new__(DataPolicyArgs)
 
-            data_masking_policy = _utilities.configure(data_masking_policy, DataPolicyDataMaskingPolicyArgs, True)
             __props__.__dict__["data_masking_policy"] = data_masking_policy
             if data_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_policy_id'")

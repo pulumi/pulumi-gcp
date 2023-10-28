@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -60,39 +60,16 @@ class ConnectivityTestDestination(dict):
                
                - - -
         """
-        ConnectivityTestDestination._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance=instance,
-            ip_address=ip_address,
-            network=network,
-            port=port,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             network: Optional[str] = None,
-             port: Optional[int] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -197,45 +174,18 @@ class ConnectivityTestSource(dict):
                the network that the IP address resides in is defined in the
                host project.
         """
-        ConnectivityTestSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance=instance,
-            ip_address=ip_address,
-            network=network,
-            network_type=network_type,
-            port=port,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             network: Optional[str] = None,
-             network_type: Optional[str] = None,
-             port: Optional[int] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter

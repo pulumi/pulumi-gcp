@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,46 +34,15 @@ class PrivateCloudArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        PrivateCloudArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            management_cluster=management_cluster,
-            network_config=network_config,
-            description=description,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
-             network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if management_cluster is None and 'managementCluster' in kwargs:
-            management_cluster = kwargs['managementCluster']
-        if management_cluster is None:
-            raise TypeError("Missing 'management_cluster' argument")
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if network_config is None:
-            raise TypeError("Missing 'network_config' argument")
-
-        _setter("location", location)
-        _setter("management_cluster", management_cluster)
-        _setter("network_config", network_config)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "management_cluster", management_cluster)
+        pulumi.set(__self__, "network_config", network_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -186,63 +155,28 @@ class _PrivateCloudState:
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
-        _PrivateCloudState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            hcxes=hcxes,
-            location=location,
-            management_cluster=management_cluster,
-            name=name,
-            network_config=network_config,
-            nsxes=nsxes,
-            project=project,
-            state=state,
-            uid=uid,
-            vcenters=vcenters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             hcxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
-             nsxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if management_cluster is None and 'managementCluster' in kwargs:
-            management_cluster = kwargs['managementCluster']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if hcxes is not None:
-            _setter("hcxes", hcxes)
+            pulumi.set(__self__, "hcxes", hcxes)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if management_cluster is not None:
-            _setter("management_cluster", management_cluster)
+            pulumi.set(__self__, "management_cluster", management_cluster)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if nsxes is not None:
-            _setter("nsxes", nsxes)
+            pulumi.set(__self__, "nsxes", nsxes)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if vcenters is not None:
-            _setter("vcenters", vcenters)
+            pulumi.set(__self__, "vcenters", vcenters)
 
     @property
     @pulumi.getter
@@ -572,10 +506,6 @@ class PrivateCloud(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PrivateCloudArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -600,12 +530,10 @@ class PrivateCloud(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            management_cluster = _utilities.configure(management_cluster, PrivateCloudManagementClusterArgs, True)
             if management_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'management_cluster'")
             __props__.__dict__["management_cluster"] = management_cluster
             __props__.__dict__["name"] = name
-            network_config = _utilities.configure(network_config, PrivateCloudNetworkConfigArgs, True)
             if network_config is None and not opts.urn:
                 raise TypeError("Missing required property 'network_config'")
             __props__.__dict__["network_config"] = network_config

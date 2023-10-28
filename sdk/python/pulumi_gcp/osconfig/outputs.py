@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -162,41 +162,16 @@ class GuestPoliciesAssignment(dict):
         :param Sequence[str] zones: Targets instances in any of these zones. Leave empty to target instances in any zone.
                Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
         """
-        GuestPoliciesAssignment._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_labels=group_labels,
-            instance_name_prefixes=instance_name_prefixes,
-            instances=instances,
-            os_types=os_types,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_labels: Optional[Sequence['outputs.GuestPoliciesAssignmentGroupLabel']] = None,
-             instance_name_prefixes: Optional[Sequence[str]] = None,
-             instances: Optional[Sequence[str]] = None,
-             os_types: Optional[Sequence['outputs.GuestPoliciesAssignmentOsType']] = None,
-             zones: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_labels is None and 'groupLabels' in kwargs:
-            group_labels = kwargs['groupLabels']
-        if instance_name_prefixes is None and 'instanceNamePrefixes' in kwargs:
-            instance_name_prefixes = kwargs['instanceNamePrefixes']
-        if os_types is None and 'osTypes' in kwargs:
-            os_types = kwargs['osTypes']
-
         if group_labels is not None:
-            _setter("group_labels", group_labels)
+            pulumi.set(__self__, "group_labels", group_labels)
         if instance_name_prefixes is not None:
-            _setter("instance_name_prefixes", instance_name_prefixes)
+            pulumi.set(__self__, "instance_name_prefixes", instance_name_prefixes)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if os_types is not None:
-            _setter("os_types", os_types)
+            pulumi.set(__self__, "os_types", os_types)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="groupLabels")
@@ -258,20 +233,7 @@ class GuestPoliciesAssignmentGroupLabel(dict):
         """
         :param Mapping[str, str] labels: Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
         """
-        GuestPoliciesAssignmentGroupLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if labels is None:
-            raise TypeError("Missing 'labels' argument")
-
-        _setter("labels", labels)
+        pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
@@ -316,33 +278,12 @@ class GuestPoliciesAssignmentOsType(dict):
         :param str os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param str os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
-        GuestPoliciesAssignmentOsType._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_architecture=os_architecture,
-            os_short_name=os_short_name,
-            os_version=os_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_architecture: Optional[str] = None,
-             os_short_name: Optional[str] = None,
-             os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_architecture is None and 'osArchitecture' in kwargs:
-            os_architecture = kwargs['osArchitecture']
-        if os_short_name is None and 'osShortName' in kwargs:
-            os_short_name = kwargs['osShortName']
-        if os_version is None and 'osVersion' in kwargs:
-            os_version = kwargs['osVersion']
-
         if os_architecture is not None:
-            _setter("os_architecture", os_architecture)
+            pulumi.set(__self__, "os_architecture", os_architecture)
         if os_short_name is not None:
-            _setter("os_short_name", os_short_name)
+            pulumi.set(__self__, "os_short_name", os_short_name)
         if os_version is not None:
-            _setter("os_version", os_version)
+            pulumi.set(__self__, "os_version", os_version)
 
     @property
     @pulumi.getter(name="osArchitecture")
@@ -407,30 +348,11 @@ class GuestPoliciesPackage(dict):
                Default value is `ANY`.
                Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
         """
-        GuestPoliciesPackage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            desired_state=desired_state,
-            manager=manager,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             desired_state: Optional[str] = None,
-             manager: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if desired_state is None and 'desiredState' in kwargs:
-            desired_state = kwargs['desiredState']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if desired_state is not None:
-            _setter("desired_state", desired_state)
+            pulumi.set(__self__, "desired_state", desired_state)
         if manager is not None:
-            _setter("manager", manager)
+            pulumi.set(__self__, "manager", manager)
 
     @property
     @pulumi.getter
@@ -482,31 +404,14 @@ class GuestPoliciesPackageRepository(dict):
         :param 'GuestPoliciesPackageRepositoryZypperArgs' zypper: A Zypper Repository.
                Structure is documented below.
         """
-        GuestPoliciesPackageRepository._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            apt=apt,
-            goo=goo,
-            yum=yum,
-            zypper=zypper,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             apt: Optional['outputs.GuestPoliciesPackageRepositoryApt'] = None,
-             goo: Optional['outputs.GuestPoliciesPackageRepositoryGoo'] = None,
-             yum: Optional['outputs.GuestPoliciesPackageRepositoryYum'] = None,
-             zypper: Optional['outputs.GuestPoliciesPackageRepositoryZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if apt is not None:
-            _setter("apt", apt)
+            pulumi.set(__self__, "apt", apt)
         if goo is not None:
-            _setter("goo", goo)
+            pulumi.set(__self__, "goo", goo)
         if yum is not None:
-            _setter("yum", yum)
+            pulumi.set(__self__, "yum", yum)
         if zypper is not None:
-            _setter("zypper", zypper)
+            pulumi.set(__self__, "zypper", zypper)
 
     @property
     @pulumi.getter
@@ -582,42 +487,13 @@ class GuestPoliciesPackageRepositoryApt(dict):
         :param str gpg_key: URI of the key file for this repository. The agent maintains a keyring at
                /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
         """
-        GuestPoliciesPackageRepositoryApt._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            components=components,
-            distribution=distribution,
-            uri=uri,
-            archive_type=archive_type,
-            gpg_key=gpg_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             components: Optional[Sequence[str]] = None,
-             distribution: Optional[str] = None,
-             uri: Optional[str] = None,
-             archive_type: Optional[str] = None,
-             gpg_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if components is None:
-            raise TypeError("Missing 'components' argument")
-        if distribution is None:
-            raise TypeError("Missing 'distribution' argument")
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if archive_type is None and 'archiveType' in kwargs:
-            archive_type = kwargs['archiveType']
-        if gpg_key is None and 'gpgKey' in kwargs:
-            gpg_key = kwargs['gpgKey']
-
-        _setter("components", components)
-        _setter("distribution", distribution)
-        _setter("uri", uri)
+        pulumi.set(__self__, "components", components)
+        pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "uri", uri)
         if archive_type is not None:
-            _setter("archive_type", archive_type)
+            pulumi.set(__self__, "archive_type", archive_type)
         if gpg_key is not None:
-            _setter("gpg_key", gpg_key)
+            pulumi.set(__self__, "gpg_key", gpg_key)
 
     @property
     @pulumi.getter
@@ -672,25 +548,8 @@ class GuestPoliciesPackageRepositoryGoo(dict):
         :param str name: The name of the repository.
         :param str url: The url of the repository.
         """
-        GuestPoliciesPackageRepositoryGoo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-
-        _setter("name", name)
-        _setter("url", url)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -744,39 +603,12 @@ class GuestPoliciesPackageRepositoryYum(dict):
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
-        GuestPoliciesPackageRepositoryYum._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_url=base_url,
-            id=id,
-            display_name=display_name,
-            gpg_keys=gpg_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_url: Optional[str] = None,
-             id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_url is None and 'baseUrl' in kwargs:
-            base_url = kwargs['baseUrl']
-        if base_url is None:
-            raise TypeError("Missing 'base_url' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if gpg_keys is None and 'gpgKeys' in kwargs:
-            gpg_keys = kwargs['gpgKeys']
-
-        _setter("base_url", base_url)
-        _setter("id", id)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
-            _setter("gpg_keys", gpg_keys)
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -847,39 +679,12 @@ class GuestPoliciesPackageRepositoryZypper(dict):
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
-        GuestPoliciesPackageRepositoryZypper._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_url=base_url,
-            id=id,
-            display_name=display_name,
-            gpg_keys=gpg_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_url: Optional[str] = None,
-             id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_url is None and 'baseUrl' in kwargs:
-            base_url = kwargs['baseUrl']
-        if base_url is None:
-            raise TypeError("Missing 'base_url' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if gpg_keys is None and 'gpgKeys' in kwargs:
-            gpg_keys = kwargs['gpgKeys']
-
-        _setter("base_url", base_url)
-        _setter("id", id)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
-            _setter("gpg_keys", gpg_keys)
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -967,46 +772,17 @@ class GuestPoliciesRecipe(dict):
                Structure is documented below.
         :param str version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
-        GuestPoliciesRecipe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            artifacts=artifacts,
-            desired_state=desired_state,
-            install_steps=install_steps,
-            update_steps=update_steps,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             artifacts: Optional[Sequence['outputs.GuestPoliciesRecipeArtifact']] = None,
-             desired_state: Optional[str] = None,
-             install_steps: Optional[Sequence['outputs.GuestPoliciesRecipeInstallStep']] = None,
-             update_steps: Optional[Sequence['outputs.GuestPoliciesRecipeUpdateStep']] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if desired_state is None and 'desiredState' in kwargs:
-            desired_state = kwargs['desiredState']
-        if install_steps is None and 'installSteps' in kwargs:
-            install_steps = kwargs['installSteps']
-        if update_steps is None and 'updateSteps' in kwargs:
-            update_steps = kwargs['updateSteps']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if artifacts is not None:
-            _setter("artifacts", artifacts)
+            pulumi.set(__self__, "artifacts", artifacts)
         if desired_state is not None:
-            _setter("desired_state", desired_state)
+            pulumi.set(__self__, "desired_state", desired_state)
         if install_steps is not None:
-            _setter("install_steps", install_steps)
+            pulumi.set(__self__, "install_steps", install_steps)
         if update_steps is not None:
-            _setter("update_steps", update_steps)
+            pulumi.set(__self__, "update_steps", update_steps)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1106,34 +882,13 @@ class GuestPoliciesRecipeArtifact(dict):
         :param 'GuestPoliciesRecipeArtifactRemoteArgs' remote: A generic remote artifact.
                Structure is documented below.
         """
-        GuestPoliciesRecipeArtifact._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.GuestPoliciesRecipeArtifactGcs'] = None,
-             remote: Optional['outputs.GuestPoliciesRecipeArtifactRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter
@@ -1187,27 +942,12 @@ class GuestPoliciesRecipeArtifactGcs(dict):
         :param str object: Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
                this value would be foo/bar.
         """
-        GuestPoliciesRecipeArtifactGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation=generation,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             generation: Optional[int] = None,
-             object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
         if object is not None:
-            _setter("object", object)
+            pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -1265,25 +1005,10 @@ class GuestPoliciesRecipeArtifactRemote(dict):
                of the steps.
         :param str uri: URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
         """
-        GuestPoliciesRecipeArtifactRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_sum=check_sum,
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_sum: Optional[str] = None,
-             uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_sum is None and 'checkSum' in kwargs:
-            check_sum = kwargs['checkSum']
-
         if check_sum is not None:
-            _setter("check_sum", check_sum)
+            pulumi.set(__self__, "check_sum", check_sum)
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter(name="checkSum")
@@ -1359,57 +1084,20 @@ class GuestPoliciesRecipeInstallStep(dict):
         :param 'GuestPoliciesRecipeInstallStepScriptRunArgs' script_run: Runs commands in a shell.
                Structure is documented below.
         """
-        GuestPoliciesRecipeInstallStep._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            archive_extraction=archive_extraction,
-            dpkg_installation=dpkg_installation,
-            file_copy=file_copy,
-            file_exec=file_exec,
-            msi_installation=msi_installation,
-            rpm_installation=rpm_installation,
-            script_run=script_run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             archive_extraction: Optional['outputs.GuestPoliciesRecipeInstallStepArchiveExtraction'] = None,
-             dpkg_installation: Optional['outputs.GuestPoliciesRecipeInstallStepDpkgInstallation'] = None,
-             file_copy: Optional['outputs.GuestPoliciesRecipeInstallStepFileCopy'] = None,
-             file_exec: Optional['outputs.GuestPoliciesRecipeInstallStepFileExec'] = None,
-             msi_installation: Optional['outputs.GuestPoliciesRecipeInstallStepMsiInstallation'] = None,
-             rpm_installation: Optional['outputs.GuestPoliciesRecipeInstallStepRpmInstallation'] = None,
-             script_run: Optional['outputs.GuestPoliciesRecipeInstallStepScriptRun'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if archive_extraction is None and 'archiveExtraction' in kwargs:
-            archive_extraction = kwargs['archiveExtraction']
-        if dpkg_installation is None and 'dpkgInstallation' in kwargs:
-            dpkg_installation = kwargs['dpkgInstallation']
-        if file_copy is None and 'fileCopy' in kwargs:
-            file_copy = kwargs['fileCopy']
-        if file_exec is None and 'fileExec' in kwargs:
-            file_exec = kwargs['fileExec']
-        if msi_installation is None and 'msiInstallation' in kwargs:
-            msi_installation = kwargs['msiInstallation']
-        if rpm_installation is None and 'rpmInstallation' in kwargs:
-            rpm_installation = kwargs['rpmInstallation']
-        if script_run is None and 'scriptRun' in kwargs:
-            script_run = kwargs['scriptRun']
-
         if archive_extraction is not None:
-            _setter("archive_extraction", archive_extraction)
+            pulumi.set(__self__, "archive_extraction", archive_extraction)
         if dpkg_installation is not None:
-            _setter("dpkg_installation", dpkg_installation)
+            pulumi.set(__self__, "dpkg_installation", dpkg_installation)
         if file_copy is not None:
-            _setter("file_copy", file_copy)
+            pulumi.set(__self__, "file_copy", file_copy)
         if file_exec is not None:
-            _setter("file_exec", file_exec)
+            pulumi.set(__self__, "file_exec", file_exec)
         if msi_installation is not None:
-            _setter("msi_installation", msi_installation)
+            pulumi.set(__self__, "msi_installation", msi_installation)
         if rpm_installation is not None:
-            _setter("rpm_installation", rpm_installation)
+            pulumi.set(__self__, "rpm_installation", rpm_installation)
         if script_run is not None:
-            _setter("script_run", script_run)
+            pulumi.set(__self__, "script_run", script_run)
 
     @property
     @pulumi.getter(name="archiveExtraction")
@@ -1504,31 +1192,10 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
                Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         :param str destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
-        GuestPoliciesRecipeInstallStepArchiveExtraction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            type=type,
-            destination=destination,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             type: Optional[str] = None,
-             destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("artifact_id", artifact_id)
-        _setter("type", type)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "type", type)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -1580,22 +1247,7 @@ class GuestPoliciesRecipeInstallStepDpkgInstallation(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         """
-        GuestPoliciesRecipeInstallStepDpkgInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -1642,35 +1294,12 @@ class GuestPoliciesRecipeInstallStepFileCopy(dict):
                Below are some examples of permissions and their associated values:
                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
-        GuestPoliciesRecipeInstallStepFileCopy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            destination=destination,
-            overwrite=overwrite,
-            permissions=permissions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             destination: Optional[str] = None,
-             overwrite: Optional[bool] = None,
-             permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-
-        _setter("artifact_id", artifact_id)
-        _setter("destination", destination)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "destination", destination)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -1745,37 +1374,14 @@ class GuestPoliciesRecipeInstallStepFileExec(dict):
         :param str artifact_id: The id of the relevant artifact in the recipe.
         :param str local_path: The absolute path of the file on the local filesystem.
         """
-        GuestPoliciesRecipeInstallStepFileExec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_exit_codes=allowed_exit_codes,
-            args=args,
-            artifact_id=artifact_id,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_exit_codes: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             artifact_id: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if artifact_id is not None:
-            _setter("artifact_id", artifact_id)
+            pulumi.set(__self__, "artifact_id", artifact_id)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedExitCodes")
@@ -1840,32 +1446,11 @@ class GuestPoliciesRecipeInstallStepMsiInstallation(dict):
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param Sequence[str] flags: The flags to use when installing the MSI. Defaults to the install flag.
         """
-        GuestPoliciesRecipeInstallStepMsiInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            allowed_exit_codes=allowed_exit_codes,
-            flags=flags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             allowed_exit_codes: Optional[Sequence[int]] = None,
-             flags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -1916,22 +1501,7 @@ class GuestPoliciesRecipeInstallStepRpmInstallation(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         """
-        GuestPoliciesRecipeInstallStepRpmInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -1972,30 +1542,11 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
                which likely only succeed for scripts with shebang lines.
                Possible values are: `SHELL`, `POWERSHELL`.
         """
-        GuestPoliciesRecipeInstallStepScriptRun._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            script=script,
-            allowed_exit_codes=allowed_exit_codes,
-            interpreter=interpreter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             script: Optional[str] = None,
-             allowed_exit_codes: Optional[Sequence[int]] = None,
-             interpreter: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if script is None:
-            raise TypeError("Missing 'script' argument")
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-
-        _setter("script", script)
+        pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
 
     @property
     @pulumi.getter
@@ -2079,57 +1630,20 @@ class GuestPoliciesRecipeUpdateStep(dict):
         :param 'GuestPoliciesRecipeUpdateStepScriptRunArgs' script_run: Runs commands in a shell.
                Structure is documented below.
         """
-        GuestPoliciesRecipeUpdateStep._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            archive_extraction=archive_extraction,
-            dpkg_installation=dpkg_installation,
-            file_copy=file_copy,
-            file_exec=file_exec,
-            msi_installation=msi_installation,
-            rpm_installation=rpm_installation,
-            script_run=script_run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             archive_extraction: Optional['outputs.GuestPoliciesRecipeUpdateStepArchiveExtraction'] = None,
-             dpkg_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepDpkgInstallation'] = None,
-             file_copy: Optional['outputs.GuestPoliciesRecipeUpdateStepFileCopy'] = None,
-             file_exec: Optional['outputs.GuestPoliciesRecipeUpdateStepFileExec'] = None,
-             msi_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepMsiInstallation'] = None,
-             rpm_installation: Optional['outputs.GuestPoliciesRecipeUpdateStepRpmInstallation'] = None,
-             script_run: Optional['outputs.GuestPoliciesRecipeUpdateStepScriptRun'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if archive_extraction is None and 'archiveExtraction' in kwargs:
-            archive_extraction = kwargs['archiveExtraction']
-        if dpkg_installation is None and 'dpkgInstallation' in kwargs:
-            dpkg_installation = kwargs['dpkgInstallation']
-        if file_copy is None and 'fileCopy' in kwargs:
-            file_copy = kwargs['fileCopy']
-        if file_exec is None and 'fileExec' in kwargs:
-            file_exec = kwargs['fileExec']
-        if msi_installation is None and 'msiInstallation' in kwargs:
-            msi_installation = kwargs['msiInstallation']
-        if rpm_installation is None and 'rpmInstallation' in kwargs:
-            rpm_installation = kwargs['rpmInstallation']
-        if script_run is None and 'scriptRun' in kwargs:
-            script_run = kwargs['scriptRun']
-
         if archive_extraction is not None:
-            _setter("archive_extraction", archive_extraction)
+            pulumi.set(__self__, "archive_extraction", archive_extraction)
         if dpkg_installation is not None:
-            _setter("dpkg_installation", dpkg_installation)
+            pulumi.set(__self__, "dpkg_installation", dpkg_installation)
         if file_copy is not None:
-            _setter("file_copy", file_copy)
+            pulumi.set(__self__, "file_copy", file_copy)
         if file_exec is not None:
-            _setter("file_exec", file_exec)
+            pulumi.set(__self__, "file_exec", file_exec)
         if msi_installation is not None:
-            _setter("msi_installation", msi_installation)
+            pulumi.set(__self__, "msi_installation", msi_installation)
         if rpm_installation is not None:
-            _setter("rpm_installation", rpm_installation)
+            pulumi.set(__self__, "rpm_installation", rpm_installation)
         if script_run is not None:
-            _setter("script_run", script_run)
+            pulumi.set(__self__, "script_run", script_run)
 
     @property
     @pulumi.getter(name="archiveExtraction")
@@ -2224,31 +1738,10 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
                Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         :param str destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
-        GuestPoliciesRecipeUpdateStepArchiveExtraction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            type=type,
-            destination=destination,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             type: Optional[str] = None,
-             destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("artifact_id", artifact_id)
-        _setter("type", type)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "type", type)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -2300,22 +1793,7 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallation(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         """
-        GuestPoliciesRecipeUpdateStepDpkgInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -2362,35 +1840,12 @@ class GuestPoliciesRecipeUpdateStepFileCopy(dict):
                Below are some examples of permissions and their associated values:
                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
-        GuestPoliciesRecipeUpdateStepFileCopy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            destination=destination,
-            overwrite=overwrite,
-            permissions=permissions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             destination: Optional[str] = None,
-             overwrite: Optional[bool] = None,
-             permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-
-        _setter("artifact_id", artifact_id)
-        _setter("destination", destination)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "destination", destination)
         if overwrite is not None:
-            _setter("overwrite", overwrite)
+            pulumi.set(__self__, "overwrite", overwrite)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -2465,37 +1920,14 @@ class GuestPoliciesRecipeUpdateStepFileExec(dict):
         :param str artifact_id: The id of the relevant artifact in the recipe.
         :param str local_path: The absolute path of the file on the local filesystem.
         """
-        GuestPoliciesRecipeUpdateStepFileExec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_exit_codes=allowed_exit_codes,
-            args=args,
-            artifact_id=artifact_id,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_exit_codes: Optional[Sequence[int]] = None,
-             args: Optional[Sequence[str]] = None,
-             artifact_id: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if artifact_id is not None:
-            _setter("artifact_id", artifact_id)
+            pulumi.set(__self__, "artifact_id", artifact_id)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedExitCodes")
@@ -2560,32 +1992,11 @@ class GuestPoliciesRecipeUpdateStepMsiInstallation(dict):
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param Sequence[str] flags: The flags to use when installing the MSI. Defaults to the install flag.
         """
-        GuestPoliciesRecipeUpdateStepMsiInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-            allowed_exit_codes=allowed_exit_codes,
-            flags=flags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             allowed_exit_codes: Optional[Sequence[int]] = None,
-             flags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -2636,22 +2047,7 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         """
-        GuestPoliciesRecipeUpdateStepRpmInstallation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            artifact_id=artifact_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             artifact_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if artifact_id is None and 'artifactId' in kwargs:
-            artifact_id = kwargs['artifactId']
-        if artifact_id is None:
-            raise TypeError("Missing 'artifact_id' argument")
-
-        _setter("artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
@@ -2692,30 +2088,11 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
                which likely only succeed for scripts with shebang lines.
                Possible values are: `SHELL`, `POWERSHELL`.
         """
-        GuestPoliciesRecipeUpdateStepScriptRun._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            script=script,
-            allowed_exit_codes=allowed_exit_codes,
-            interpreter=interpreter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             script: Optional[str] = None,
-             allowed_exit_codes: Optional[Sequence[int]] = None,
-             interpreter: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if script is None:
-            raise TypeError("Missing 'script' argument")
-        if allowed_exit_codes is None and 'allowedExitCodes' in kwargs:
-            allowed_exit_codes = kwargs['allowedExitCodes']
-
-        _setter("script", script)
+        pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
-            _setter("allowed_exit_codes", allowed_exit_codes)
+            pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
 
     @property
     @pulumi.getter
@@ -2785,35 +2162,14 @@ class OsPolicyAssignmentInstanceFilter(dict):
                selected if its inventory data matches at least one of the following
                inventories. Structure is documented below.
         """
-        OsPolicyAssignmentInstanceFilter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all=all,
-            exclusion_labels=exclusion_labels,
-            inclusion_labels=inclusion_labels,
-            inventories=inventories,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all: Optional[bool] = None,
-             exclusion_labels: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterExclusionLabel']] = None,
-             inclusion_labels: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterInclusionLabel']] = None,
-             inventories: Optional[Sequence['outputs.OsPolicyAssignmentInstanceFilterInventory']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclusion_labels is None and 'exclusionLabels' in kwargs:
-            exclusion_labels = kwargs['exclusionLabels']
-        if inclusion_labels is None and 'inclusionLabels' in kwargs:
-            inclusion_labels = kwargs['inclusionLabels']
-
         if all is not None:
-            _setter("all", all)
+            pulumi.set(__self__, "all", all)
         if exclusion_labels is not None:
-            _setter("exclusion_labels", exclusion_labels)
+            pulumi.set(__self__, "exclusion_labels", exclusion_labels)
         if inclusion_labels is not None:
-            _setter("inclusion_labels", inclusion_labels)
+            pulumi.set(__self__, "inclusion_labels", inclusion_labels)
         if inventories is not None:
-            _setter("inventories", inventories)
+            pulumi.set(__self__, "inventories", inventories)
 
     @property
     @pulumi.getter
@@ -2866,19 +2222,8 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel(dict):
                A VM should contain all the key/value pairs specified in this map to be
                selected.
         """
-        OsPolicyAssignmentInstanceFilterExclusionLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
@@ -2900,19 +2245,8 @@ class OsPolicyAssignmentInstanceFilterInclusionLabel(dict):
                A VM should contain all the key/value pairs specified in this map to be
                selected.
         """
-        OsPolicyAssignmentInstanceFilterInclusionLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
@@ -2956,28 +2290,9 @@ class OsPolicyAssignmentInstanceFilterInventory(dict):
                versions with a major version of `7`, specify the following value for this
                field `7.*` An empty string matches all OS versions.
         """
-        OsPolicyAssignmentInstanceFilterInventory._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_short_name=os_short_name,
-            os_version=os_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_short_name: Optional[str] = None,
-             os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_short_name is None and 'osShortName' in kwargs:
-            os_short_name = kwargs['osShortName']
-        if os_short_name is None:
-            raise TypeError("Missing 'os_short_name' argument")
-        if os_version is None and 'osVersion' in kwargs:
-            os_version = kwargs['osVersion']
-
-        _setter("os_short_name", os_short_name)
+        pulumi.set(__self__, "os_short_name", os_short_name)
         if os_version is not None:
-            _setter("os_version", os_version)
+            pulumi.set(__self__, "os_version", os_version)
 
     @property
     @pulumi.getter(name="osShortName")
@@ -3050,42 +2365,13 @@ class OsPolicyAssignmentOsPolicy(dict):
         :param str description: Policy description. Length of the description is
                limited to 1024 characters.
         """
-        OsPolicyAssignmentOsPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            mode=mode,
-            resource_groups=resource_groups,
-            allow_no_resource_group_match=allow_no_resource_group_match,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             mode: Optional[str] = None,
-             resource_groups: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroup']] = None,
-             allow_no_resource_group_match: Optional[bool] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if resource_groups is None and 'resourceGroups' in kwargs:
-            resource_groups = kwargs['resourceGroups']
-        if resource_groups is None:
-            raise TypeError("Missing 'resource_groups' argument")
-        if allow_no_resource_group_match is None and 'allowNoResourceGroupMatch' in kwargs:
-            allow_no_resource_group_match = kwargs['allowNoResourceGroupMatch']
-
-        _setter("id", id)
-        _setter("mode", mode)
-        _setter("resource_groups", resource_groups)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "resource_groups", resource_groups)
         if allow_no_resource_group_match is not None:
-            _setter("allow_no_resource_group_match", allow_no_resource_group_match)
+            pulumi.set(__self__, "allow_no_resource_group_match", allow_no_resource_group_match)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -3181,26 +2467,9 @@ class OsPolicyAssignmentOsPolicyResourceGroup(dict):
                resource group will be applied to the target VM unconditionally. Structure
                is documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resources=resources,
-            inventory_filters=inventory_filters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resources: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupResource']] = None,
-             inventory_filters: Optional[Sequence['outputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resources is None:
-            raise TypeError("Missing 'resources' argument")
-        if inventory_filters is None and 'inventoryFilters' in kwargs:
-            inventory_filters = kwargs['inventoryFilters']
-
-        _setter("resources", resources)
+        pulumi.set(__self__, "resources", resources)
         if inventory_filters is not None:
-            _setter("inventory_filters", inventory_filters)
+            pulumi.set(__self__, "inventory_filters", inventory_filters)
 
     @property
     @pulumi.getter
@@ -3260,28 +2529,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(dict):
                versions with a major version of `7`, specify the following value for this
                field `7.*` An empty string matches all OS versions.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            os_short_name=os_short_name,
-            os_version=os_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             os_short_name: Optional[str] = None,
-             os_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if os_short_name is None and 'osShortName' in kwargs:
-            os_short_name = kwargs['osShortName']
-        if os_short_name is None:
-            raise TypeError("Missing 'os_short_name' argument")
-        if os_version is None and 'osVersion' in kwargs:
-            os_version = kwargs['osVersion']
-
-        _setter("os_short_name", os_short_name)
+        pulumi.set(__self__, "os_short_name", os_short_name)
         if os_version is not None:
-            _setter("os_version", os_version)
+            pulumi.set(__self__, "os_version", os_version)
 
     @property
     @pulumi.getter(name="osShortName")
@@ -3345,38 +2595,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs' repository: Package repository resource Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            exec_=exec_,
-            file=file,
-            pkg=pkg,
-            repository=repository,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             exec_: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec'] = None,
-             file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile'] = None,
-             pkg: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg'] = None,
-             repository: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if exec_ is None and 'exec' in kwargs:
-            exec_ = kwargs['exec']
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
         if exec_ is not None:
-            _setter("exec_", exec_)
+            pulumi.set(__self__, "exec_", exec_)
         if file is not None:
-            _setter("file", file)
+            pulumi.set(__self__, "file", file)
         if pkg is not None:
-            _setter("pkg", pkg)
+            pulumi.set(__self__, "pkg", pkg)
         if repository is not None:
-            _setter("repository", repository)
+            pulumi.set(__self__, "repository", repository)
 
     @property
     @pulumi.getter
@@ -3445,24 +2672,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec(dict):
                indicates a failure running enforce. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            validate=validate,
-            enforce=enforce,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             validate: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate'] = None,
-             enforce: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if validate is None:
-            raise TypeError("Missing 'validate' argument")
-
-        _setter("validate", validate)
+        pulumi.set(__self__, "validate", validate)
         if enforce is not None:
-            _setter("enforce", enforce)
+            pulumi.set(__self__, "enforce", enforce)
 
     @property
     @pulumi.getter
@@ -3528,38 +2740,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(dict):
         :param str script: An inline script. The size of the script is limited to
                1024 characters.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            interpreter=interpreter,
-            args=args,
-            file=file,
-            output_file_path=output_file_path,
-            script=script,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             interpreter: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile'] = None,
-             output_file_path: Optional[str] = None,
-             script: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if interpreter is None:
-            raise TypeError("Missing 'interpreter' argument")
-        if output_file_path is None and 'outputFilePath' in kwargs:
-            output_file_path = kwargs['outputFilePath']
-
-        _setter("interpreter", interpreter)
+        pulumi.set(__self__, "interpreter", interpreter)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if file is not None:
-            _setter("file", file)
+            pulumi.set(__self__, "file", file)
         if output_file_path is not None:
-            _setter("output_file_path", output_file_path)
+            pulumi.set(__self__, "output_file_path", output_file_path)
         if script is not None:
-            _setter("script", script)
+            pulumi.set(__self__, "script", script)
 
     @property
     @pulumi.getter
@@ -3646,35 +2835,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -3724,29 +2892,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -3800,26 +2949,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote(dict)
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -3879,38 +3011,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(dict):
         :param str script: An inline script. The size of the script is limited to
                1024 characters.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            interpreter=interpreter,
-            args=args,
-            file=file,
-            output_file_path=output_file_path,
-            script=script,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             interpreter: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile'] = None,
-             output_file_path: Optional[str] = None,
-             script: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if interpreter is None:
-            raise TypeError("Missing 'interpreter' argument")
-        if output_file_path is None and 'outputFilePath' in kwargs:
-            output_file_path = kwargs['outputFilePath']
-
-        _setter("interpreter", interpreter)
+        pulumi.set(__self__, "interpreter", interpreter)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if file is not None:
-            _setter("file", file)
+            pulumi.set(__self__, "file", file)
         if output_file_path is not None:
-            _setter("output_file_path", output_file_path)
+            pulumi.set(__self__, "output_file_path", output_file_path)
         if script is not None:
-            _setter("script", script)
+            pulumi.set(__self__, "script", script)
 
     @property
     @pulumi.getter
@@ -3997,35 +3106,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -4075,29 +3163,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -4151,26 +3220,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote(dict
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -4215,37 +3267,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
                some examples of permissions and their associated values: read, write, and
                execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            state=state,
-            content=content,
-            file=file,
-            permissions=permissions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             state: Optional[str] = None,
-             content: Optional[str] = None,
-             file: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile'] = None,
-             permissions: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-
-        _setter("path", path)
-        _setter("state", state)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "state", state)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if file is not None:
-            _setter("file", file)
+            pulumi.set(__self__, "file", file)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
@@ -4334,35 +3363,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -4412,29 +3420,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -4488,26 +3477,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(dict):
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -4574,50 +3546,21 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs' zypper: A package managed by Zypper. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkg._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            desired_state=desired_state,
-            apt=apt,
-            deb=deb,
-            googet=googet,
-            msi=msi,
-            rpm=rpm,
-            yum=yum,
-            zypper=zypper,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             desired_state: Optional[str] = None,
-             apt: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt'] = None,
-             deb: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb'] = None,
-             googet: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget'] = None,
-             msi: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi'] = None,
-             rpm: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm'] = None,
-             yum: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum'] = None,
-             zypper: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desired_state is None and 'desiredState' in kwargs:
-            desired_state = kwargs['desiredState']
-        if desired_state is None:
-            raise TypeError("Missing 'desired_state' argument")
-
-        _setter("desired_state", desired_state)
+        pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
-            _setter("apt", apt)
+            pulumi.set(__self__, "apt", apt)
         if deb is not None:
-            _setter("deb", deb)
+            pulumi.set(__self__, "deb", deb)
         if googet is not None:
-            _setter("googet", googet)
+            pulumi.set(__self__, "googet", googet)
         if msi is not None:
-            _setter("msi", msi)
+            pulumi.set(__self__, "msi", msi)
         if rpm is not None:
-            _setter("rpm", rpm)
+            pulumi.set(__self__, "rpm", rpm)
         if yum is not None:
-            _setter("yum", yum)
+            pulumi.set(__self__, "yum", yum)
         if zypper is not None:
-            _setter("zypper", zypper)
+            pulumi.set(__self__, "zypper", zypper)
 
     @property
     @pulumi.getter(name="desiredState")
@@ -4700,20 +3643,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt(dict):
         """
         :param str name: Package name.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -4753,26 +3683,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb(dict):
                install when false: `dpkg -i package` - install when true: `apt-get update
                && apt-get -y install package.deb`
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source=source,
-            pull_deps=pull_deps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource'] = None,
-             pull_deps: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if pull_deps is None and 'pullDeps' in kwargs:
-            pull_deps = kwargs['pullDeps']
-
-        _setter("source", source)
+        pulumi.set(__self__, "source", source)
         if pull_deps is not None:
-            _setter("pull_deps", pull_deps)
+            pulumi.set(__self__, "pull_deps", pull_deps)
 
     @property
     @pulumi.getter
@@ -4830,35 +3743,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -4908,29 +3800,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -4984,26 +3857,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote(dict):
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -5030,20 +3886,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(dict):
         """
         :param str name: Package name.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -5066,24 +3909,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(dict):
                This should be in the format of Property=Setting. Appended to the defaults
                of `ACTION=INSTALL REBOOT=ReallySuppress`.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source=source,
-            properties=properties,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource'] = None,
-             properties: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-
-        _setter("source", source)
+        pulumi.set(__self__, "source", source)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
@@ -5141,35 +3969,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -5219,29 +4026,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -5295,26 +4083,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(dict):
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -5363,26 +4134,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(dict):
                install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
                true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source=source,
-            pull_deps=pull_deps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource'] = None,
-             pull_deps: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if pull_deps is None and 'pullDeps' in kwargs:
-            pull_deps = kwargs['pullDeps']
-
-        _setter("source", source)
+        pulumi.set(__self__, "source", source)
         if pull_deps is not None:
-            _setter("pull_deps", pull_deps)
+            pulumi.set(__self__, "pull_deps", pull_deps)
 
     @property
     @pulumi.getter
@@ -5440,35 +4194,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs' remote: A generic remote file. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_insecure=allow_insecure,
-            gcs=gcs,
-            local_path=local_path,
-            remote=remote,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_insecure: Optional[bool] = None,
-             gcs: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs'] = None,
-             local_path: Optional[str] = None,
-             remote: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_insecure is None and 'allowInsecure' in kwargs:
-            allow_insecure = kwargs['allowInsecure']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allow_insecure is not None:
-            _setter("allow_insecure", allow_insecure)
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
-            _setter("gcs", gcs)
+            pulumi.set(__self__, "gcs", gcs)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
         if remote is not None:
-            _setter("remote", remote)
+            pulumi.set(__self__, "remote", remote)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -5518,29 +4251,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(dict):
         :param str object: Name of the Cloud Storage object.
         :param int generation: Generation number of the Cloud Storage object.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            object=object,
-            generation=generation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             object: Optional[str] = None,
-             generation: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
         if generation is not None:
-            _setter("generation", generation)
+            pulumi.set(__self__, "generation", generation)
 
     @property
     @pulumi.getter
@@ -5594,26 +4308,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote(dict):
                both the protocol and path following the format `{protocol}://{location}`.
         :param str sha256_checksum: SHA256 checksum of the remote file.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            sha256_checksum=sha256_checksum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[str] = None,
-             sha256_checksum: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if sha256_checksum is None and 'sha256Checksum' in kwargs:
-            sha256_checksum = kwargs['sha256Checksum']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if sha256_checksum is not None:
-            _setter("sha256_checksum", sha256_checksum)
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
 
     @property
     @pulumi.getter
@@ -5640,20 +4337,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(dict):
         """
         :param str name: Package name.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -5671,20 +4355,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(dict):
         """
         :param str name: Package name.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -5712,31 +4383,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(dict):
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs' zypper: A Zypper Repository. Structure is
                documented below.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceRepository._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            apt=apt,
-            goo=goo,
-            yum=yum,
-            zypper=zypper,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             apt: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt'] = None,
-             goo: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo'] = None,
-             yum: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum'] = None,
-             zypper: Optional['outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if apt is not None:
-            _setter("apt", apt)
+            pulumi.set(__self__, "apt", apt)
         if goo is not None:
-            _setter("goo", goo)
+            pulumi.set(__self__, "goo", goo)
         if yum is not None:
-            _setter("yum", yum)
+            pulumi.set(__self__, "yum", yum)
         if zypper is not None:
-            _setter("zypper", zypper)
+            pulumi.set(__self__, "zypper", zypper)
 
     @property
     @pulumi.getter
@@ -5812,43 +4466,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(dict):
         :param str gpg_key: URI of the key file for this repository. The agent
                maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            archive_type=archive_type,
-            components=components,
-            distribution=distribution,
-            uri=uri,
-            gpg_key=gpg_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             archive_type: Optional[str] = None,
-             components: Optional[Sequence[str]] = None,
-             distribution: Optional[str] = None,
-             uri: Optional[str] = None,
-             gpg_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if archive_type is None and 'archiveType' in kwargs:
-            archive_type = kwargs['archiveType']
-        if archive_type is None:
-            raise TypeError("Missing 'archive_type' argument")
-        if components is None:
-            raise TypeError("Missing 'components' argument")
-        if distribution is None:
-            raise TypeError("Missing 'distribution' argument")
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if gpg_key is None and 'gpgKey' in kwargs:
-            gpg_key = kwargs['gpgKey']
-
-        _setter("archive_type", archive_type)
-        _setter("components", components)
-        _setter("distribution", distribution)
-        _setter("uri", uri)
+        pulumi.set(__self__, "archive_type", archive_type)
+        pulumi.set(__self__, "components", components)
+        pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "uri", uri)
         if gpg_key is not None:
-            _setter("gpg_key", gpg_key)
+            pulumi.set(__self__, "gpg_key", gpg_key)
 
     @property
     @pulumi.getter(name="archiveType")
@@ -5903,25 +4526,8 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(dict):
         :param str name: The name of the repository.
         :param str url: The url of the repository.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-
-        _setter("name", name)
-        _setter("url", url)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -5977,39 +4583,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(dict):
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_url=base_url,
-            id=id,
-            display_name=display_name,
-            gpg_keys=gpg_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_url: Optional[str] = None,
-             id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_url is None and 'baseUrl' in kwargs:
-            base_url = kwargs['baseUrl']
-        if base_url is None:
-            raise TypeError("Missing 'base_url' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if gpg_keys is None and 'gpgKeys' in kwargs:
-            gpg_keys = kwargs['gpgKeys']
-
-        _setter("base_url", base_url)
-        _setter("id", id)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
-            _setter("gpg_keys", gpg_keys)
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -6084,39 +4663,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(dict):
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
-        OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_url=base_url,
-            id=id,
-            display_name=display_name,
-            gpg_keys=gpg_keys,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_url: Optional[str] = None,
-             id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             gpg_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_url is None and 'baseUrl' in kwargs:
-            base_url = kwargs['baseUrl']
-        if base_url is None:
-            raise TypeError("Missing 'base_url' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if gpg_keys is None and 'gpgKeys' in kwargs:
-            gpg_keys = kwargs['gpgKeys']
-
-        _setter("base_url", base_url)
-        _setter("id", id)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
-            _setter("gpg_keys", gpg_keys)
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -6188,29 +4740,8 @@ class OsPolicyAssignmentRollout(dict):
                until this duration of time has passed after configuration changes are
                applied.
         """
-        OsPolicyAssignmentRollout._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disruption_budget=disruption_budget,
-            min_wait_duration=min_wait_duration,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disruption_budget: Optional['outputs.OsPolicyAssignmentRolloutDisruptionBudget'] = None,
-             min_wait_duration: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disruption_budget is None and 'disruptionBudget' in kwargs:
-            disruption_budget = kwargs['disruptionBudget']
-        if disruption_budget is None:
-            raise TypeError("Missing 'disruption_budget' argument")
-        if min_wait_duration is None and 'minWaitDuration' in kwargs:
-            min_wait_duration = kwargs['minWaitDuration']
-        if min_wait_duration is None:
-            raise TypeError("Missing 'min_wait_duration' argument")
-
-        _setter("disruption_budget", disruption_budget)
-        _setter("min_wait_duration", min_wait_duration)
+        pulumi.set(__self__, "disruption_budget", disruption_budget)
+        pulumi.set(__self__, "min_wait_duration", min_wait_duration)
 
     @property
     @pulumi.getter(name="disruptionBudget")
@@ -6247,23 +4778,10 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
                
                --------------------------------------------------------------------------------
         """
-        OsPolicyAssignmentRolloutDisruptionBudget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed=fixed,
-            percent=percent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed: Optional[int] = None,
-             percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if fixed is not None:
-            _setter("fixed", fixed)
+            pulumi.set(__self__, "fixed", fixed)
         if percent is not None:
-            _setter("percent", percent)
+            pulumi.set(__self__, "percent", percent)
 
     @property
     @pulumi.getter
@@ -6323,39 +4841,16 @@ class PatchDeploymentInstanceFilter(dict):
                `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
         :param Sequence[str] zones: Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
         """
-        PatchDeploymentInstanceFilter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all=all,
-            group_labels=group_labels,
-            instance_name_prefixes=instance_name_prefixes,
-            instances=instances,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all: Optional[bool] = None,
-             group_labels: Optional[Sequence['outputs.PatchDeploymentInstanceFilterGroupLabel']] = None,
-             instance_name_prefixes: Optional[Sequence[str]] = None,
-             instances: Optional[Sequence[str]] = None,
-             zones: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_labels is None and 'groupLabels' in kwargs:
-            group_labels = kwargs['groupLabels']
-        if instance_name_prefixes is None and 'instanceNamePrefixes' in kwargs:
-            instance_name_prefixes = kwargs['instanceNamePrefixes']
-
         if all is not None:
-            _setter("all", all)
+            pulumi.set(__self__, "all", all)
         if group_labels is not None:
-            _setter("group_labels", group_labels)
+            pulumi.set(__self__, "group_labels", group_labels)
         if instance_name_prefixes is not None:
-            _setter("instance_name_prefixes", instance_name_prefixes)
+            pulumi.set(__self__, "instance_name_prefixes", instance_name_prefixes)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter
@@ -6411,20 +4906,7 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
                
                - - -
         """
-        PatchDeploymentInstanceFilterGroupLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if labels is None:
-            raise TypeError("Missing 'labels' argument")
-
-        _setter("labels", labels)
+        pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
@@ -6462,22 +4944,7 @@ class PatchDeploymentOneTimeSchedule(dict):
         :param str execute_time: The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
-        PatchDeploymentOneTimeSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execute_time=execute_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execute_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execute_time is None and 'executeTime' in kwargs:
-            execute_time = kwargs['executeTime']
-        if execute_time is None:
-            raise TypeError("Missing 'execute_time' argument")
-
-        _setter("execute_time", execute_time)
+        pulumi.set(__self__, "execute_time", execute_time)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -6545,61 +5012,24 @@ class PatchDeploymentPatchConfig(dict):
         :param 'PatchDeploymentPatchConfigZypperArgs' zypper: zypper update settings. Use this setting to override the default zypper patch rules.
                Structure is documented below.
         """
-        PatchDeploymentPatchConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            apt=apt,
-            goo=goo,
-            mig_instances_allowed=mig_instances_allowed,
-            post_step=post_step,
-            pre_step=pre_step,
-            reboot_config=reboot_config,
-            windows_update=windows_update,
-            yum=yum,
-            zypper=zypper,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             apt: Optional['outputs.PatchDeploymentPatchConfigApt'] = None,
-             goo: Optional['outputs.PatchDeploymentPatchConfigGoo'] = None,
-             mig_instances_allowed: Optional[bool] = None,
-             post_step: Optional['outputs.PatchDeploymentPatchConfigPostStep'] = None,
-             pre_step: Optional['outputs.PatchDeploymentPatchConfigPreStep'] = None,
-             reboot_config: Optional[str] = None,
-             windows_update: Optional['outputs.PatchDeploymentPatchConfigWindowsUpdate'] = None,
-             yum: Optional['outputs.PatchDeploymentPatchConfigYum'] = None,
-             zypper: Optional['outputs.PatchDeploymentPatchConfigZypper'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mig_instances_allowed is None and 'migInstancesAllowed' in kwargs:
-            mig_instances_allowed = kwargs['migInstancesAllowed']
-        if post_step is None and 'postStep' in kwargs:
-            post_step = kwargs['postStep']
-        if pre_step is None and 'preStep' in kwargs:
-            pre_step = kwargs['preStep']
-        if reboot_config is None and 'rebootConfig' in kwargs:
-            reboot_config = kwargs['rebootConfig']
-        if windows_update is None and 'windowsUpdate' in kwargs:
-            windows_update = kwargs['windowsUpdate']
-
         if apt is not None:
-            _setter("apt", apt)
+            pulumi.set(__self__, "apt", apt)
         if goo is not None:
-            _setter("goo", goo)
+            pulumi.set(__self__, "goo", goo)
         if mig_instances_allowed is not None:
-            _setter("mig_instances_allowed", mig_instances_allowed)
+            pulumi.set(__self__, "mig_instances_allowed", mig_instances_allowed)
         if post_step is not None:
-            _setter("post_step", post_step)
+            pulumi.set(__self__, "post_step", post_step)
         if pre_step is not None:
-            _setter("pre_step", pre_step)
+            pulumi.set(__self__, "pre_step", pre_step)
         if reboot_config is not None:
-            _setter("reboot_config", reboot_config)
+            pulumi.set(__self__, "reboot_config", reboot_config)
         if windows_update is not None:
-            _setter("windows_update", windows_update)
+            pulumi.set(__self__, "windows_update", windows_update)
         if yum is not None:
-            _setter("yum", yum)
+            pulumi.set(__self__, "yum", yum)
         if zypper is not None:
-            _setter("zypper", zypper)
+            pulumi.set(__self__, "zypper", zypper)
 
     @property
     @pulumi.getter
@@ -6713,29 +5143,12 @@ class PatchDeploymentPatchConfigApt(dict):
         :param str type: By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
                Possible values are: `DIST`, `UPGRADE`.
         """
-        PatchDeploymentPatchConfigApt._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            excludes=excludes,
-            exclusive_packages=exclusive_packages,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             excludes: Optional[Sequence[str]] = None,
-             exclusive_packages: Optional[Sequence[str]] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclusive_packages is None and 'exclusivePackages' in kwargs:
-            exclusive_packages = kwargs['exclusivePackages']
-
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if exclusive_packages is not None:
-            _setter("exclusive_packages", exclusive_packages)
+            pulumi.set(__self__, "exclusive_packages", exclusive_packages)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -6772,20 +5185,7 @@ class PatchDeploymentPatchConfigGoo(dict):
         """
         :param bool enabled: goo update settings. Use this setting to override the default goo patch rules.
         """
-        PatchDeploymentPatchConfigGoo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -6826,27 +5226,10 @@ class PatchDeploymentPatchConfigPostStep(dict):
         :param 'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
                Structure is documented below.
         """
-        PatchDeploymentPatchConfigPostStep._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            linux_exec_step_config=linux_exec_step_config,
-            windows_exec_step_config=windows_exec_step_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig'] = None,
-             windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if linux_exec_step_config is None and 'linuxExecStepConfig' in kwargs:
-            linux_exec_step_config = kwargs['linuxExecStepConfig']
-        if windows_exec_step_config is None and 'windowsExecStepConfig' in kwargs:
-            windows_exec_step_config = kwargs['windowsExecStepConfig']
-
         if linux_exec_step_config is not None:
-            _setter("linux_exec_step_config", linux_exec_step_config)
+            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
         if windows_exec_step_config is not None:
-            _setter("windows_exec_step_config", windows_exec_step_config)
+            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
 
     @property
     @pulumi.getter(name="linuxExecStepConfig")
@@ -6904,37 +5287,14 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
                Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
-        PatchDeploymentPatchConfigPostStepLinuxExecStepConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_success_codes=allowed_success_codes,
-            gcs_object=gcs_object,
-            interpreter=interpreter,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_success_codes: Optional[Sequence[int]] = None,
-             gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject'] = None,
-             interpreter: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
-            allowed_success_codes = kwargs['allowedSuccessCodes']
-        if gcs_object is None and 'gcsObject' in kwargs:
-            gcs_object = kwargs['gcsObject']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_success_codes is not None:
-            _setter("allowed_success_codes", allowed_success_codes)
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
-            _setter("gcs_object", gcs_object)
+            pulumi.set(__self__, "gcs_object", gcs_object)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
@@ -7000,32 +5360,9 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(dict):
         :param str generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         :param str object: Name of the Cloud Storage object.
         """
-        PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation_number=generation_number,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             generation_number: Optional[str] = None,
-             object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if generation_number is None and 'generationNumber' in kwargs:
-            generation_number = kwargs['generationNumber']
-        if generation_number is None:
-            raise TypeError("Missing 'generation_number' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("generation_number", generation_number)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -7089,37 +5426,14 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
                Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
-        PatchDeploymentPatchConfigPostStepWindowsExecStepConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_success_codes=allowed_success_codes,
-            gcs_object=gcs_object,
-            interpreter=interpreter,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_success_codes: Optional[Sequence[int]] = None,
-             gcs_object: Optional['outputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject'] = None,
-             interpreter: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
-            allowed_success_codes = kwargs['allowedSuccessCodes']
-        if gcs_object is None and 'gcsObject' in kwargs:
-            gcs_object = kwargs['gcsObject']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_success_codes is not None:
-            _setter("allowed_success_codes", allowed_success_codes)
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
-            _setter("gcs_object", gcs_object)
+            pulumi.set(__self__, "gcs_object", gcs_object)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
@@ -7185,32 +5499,9 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject(dict):
         :param str generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         :param str object: Name of the Cloud Storage object.
         """
-        PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation_number=generation_number,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             generation_number: Optional[str] = None,
-             object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if generation_number is None and 'generationNumber' in kwargs:
-            generation_number = kwargs['generationNumber']
-        if generation_number is None:
-            raise TypeError("Missing 'generation_number' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("generation_number", generation_number)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -7267,27 +5558,10 @@ class PatchDeploymentPatchConfigPreStep(dict):
         :param 'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs' windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
                Structure is documented below.
         """
-        PatchDeploymentPatchConfigPreStep._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            linux_exec_step_config=linux_exec_step_config,
-            windows_exec_step_config=windows_exec_step_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             linux_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig'] = None,
-             windows_exec_step_config: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if linux_exec_step_config is None and 'linuxExecStepConfig' in kwargs:
-            linux_exec_step_config = kwargs['linuxExecStepConfig']
-        if windows_exec_step_config is None and 'windowsExecStepConfig' in kwargs:
-            windows_exec_step_config = kwargs['windowsExecStepConfig']
-
         if linux_exec_step_config is not None:
-            _setter("linux_exec_step_config", linux_exec_step_config)
+            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
         if windows_exec_step_config is not None:
-            _setter("windows_exec_step_config", windows_exec_step_config)
+            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
 
     @property
     @pulumi.getter(name="linuxExecStepConfig")
@@ -7345,37 +5619,14 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
                Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
-        PatchDeploymentPatchConfigPreStepLinuxExecStepConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_success_codes=allowed_success_codes,
-            gcs_object=gcs_object,
-            interpreter=interpreter,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_success_codes: Optional[Sequence[int]] = None,
-             gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject'] = None,
-             interpreter: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
-            allowed_success_codes = kwargs['allowedSuccessCodes']
-        if gcs_object is None and 'gcsObject' in kwargs:
-            gcs_object = kwargs['gcsObject']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_success_codes is not None:
-            _setter("allowed_success_codes", allowed_success_codes)
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
-            _setter("gcs_object", gcs_object)
+            pulumi.set(__self__, "gcs_object", gcs_object)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
@@ -7441,32 +5692,9 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject(dict):
         :param str generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         :param str object: Name of the Cloud Storage object.
         """
-        PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation_number=generation_number,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             generation_number: Optional[str] = None,
-             object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if generation_number is None and 'generationNumber' in kwargs:
-            generation_number = kwargs['generationNumber']
-        if generation_number is None:
-            raise TypeError("Missing 'generation_number' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("generation_number", generation_number)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -7530,37 +5758,14 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
                Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
-        PatchDeploymentPatchConfigPreStepWindowsExecStepConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_success_codes=allowed_success_codes,
-            gcs_object=gcs_object,
-            interpreter=interpreter,
-            local_path=local_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_success_codes: Optional[Sequence[int]] = None,
-             gcs_object: Optional['outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject'] = None,
-             interpreter: Optional[str] = None,
-             local_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_success_codes is None and 'allowedSuccessCodes' in kwargs:
-            allowed_success_codes = kwargs['allowedSuccessCodes']
-        if gcs_object is None and 'gcsObject' in kwargs:
-            gcs_object = kwargs['gcsObject']
-        if local_path is None and 'localPath' in kwargs:
-            local_path = kwargs['localPath']
-
         if allowed_success_codes is not None:
-            _setter("allowed_success_codes", allowed_success_codes)
+            pulumi.set(__self__, "allowed_success_codes", allowed_success_codes)
         if gcs_object is not None:
-            _setter("gcs_object", gcs_object)
+            pulumi.set(__self__, "gcs_object", gcs_object)
         if interpreter is not None:
-            _setter("interpreter", interpreter)
+            pulumi.set(__self__, "interpreter", interpreter)
         if local_path is not None:
-            _setter("local_path", local_path)
+            pulumi.set(__self__, "local_path", local_path)
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
@@ -7626,32 +5831,9 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(dict):
         :param str generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         :param str object: Name of the Cloud Storage object.
         """
-        PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            generation_number=generation_number,
-            object=object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             generation_number: Optional[str] = None,
-             object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if generation_number is None and 'generationNumber' in kwargs:
-            generation_number = kwargs['generationNumber']
-        if generation_number is None:
-            raise TypeError("Missing 'generation_number' argument")
-        if object is None:
-            raise TypeError("Missing 'object' argument")
-
-        _setter("bucket", bucket)
-        _setter("generation_number", generation_number)
-        _setter("object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
@@ -7708,29 +5890,12 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
         :param Sequence[str] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
                This field must not be used with other patch configurations.
         """
-        PatchDeploymentPatchConfigWindowsUpdate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            classifications=classifications,
-            excludes=excludes,
-            exclusive_patches=exclusive_patches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             classifications: Optional[Sequence[str]] = None,
-             excludes: Optional[Sequence[str]] = None,
-             exclusive_patches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclusive_patches is None and 'exclusivePatches' in kwargs:
-            exclusive_patches = kwargs['exclusivePatches']
-
         if classifications is not None:
-            _setter("classifications", classifications)
+            pulumi.set(__self__, "classifications", classifications)
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if exclusive_patches is not None:
-            _setter("exclusive_patches", exclusive_patches)
+            pulumi.set(__self__, "exclusive_patches", exclusive_patches)
 
     @property
     @pulumi.getter
@@ -7791,33 +5956,14 @@ class PatchDeploymentPatchConfigYum(dict):
         :param bool minimal: Will cause patch to run yum update-minimal instead.
         :param bool security: Adds the --security flag to yum update. Not supported on all platforms.
         """
-        PatchDeploymentPatchConfigYum._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            excludes=excludes,
-            exclusive_packages=exclusive_packages,
-            minimal=minimal,
-            security=security,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             excludes: Optional[Sequence[str]] = None,
-             exclusive_packages: Optional[Sequence[str]] = None,
-             minimal: Optional[bool] = None,
-             security: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclusive_packages is None and 'exclusivePackages' in kwargs:
-            exclusive_packages = kwargs['exclusivePackages']
-
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if exclusive_packages is not None:
-            _setter("exclusive_packages", exclusive_packages)
+            pulumi.set(__self__, "exclusive_packages", exclusive_packages)
         if minimal is not None:
-            _setter("minimal", minimal)
+            pulumi.set(__self__, "minimal", minimal)
         if security is not None:
-            _setter("security", security)
+            pulumi.set(__self__, "security", security)
 
     @property
     @pulumi.getter
@@ -7893,45 +6039,18 @@ class PatchDeploymentPatchConfigZypper(dict):
         :param bool with_optional: Adds the --with-optional flag to zypper patch.
         :param bool with_update: Adds the --with-update flag, to zypper patch.
         """
-        PatchDeploymentPatchConfigZypper._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            categories=categories,
-            excludes=excludes,
-            exclusive_patches=exclusive_patches,
-            severities=severities,
-            with_optional=with_optional,
-            with_update=with_update,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             categories: Optional[Sequence[str]] = None,
-             excludes: Optional[Sequence[str]] = None,
-             exclusive_patches: Optional[Sequence[str]] = None,
-             severities: Optional[Sequence[str]] = None,
-             with_optional: Optional[bool] = None,
-             with_update: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exclusive_patches is None and 'exclusivePatches' in kwargs:
-            exclusive_patches = kwargs['exclusivePatches']
-        if with_optional is None and 'withOptional' in kwargs:
-            with_optional = kwargs['withOptional']
-        if with_update is None and 'withUpdate' in kwargs:
-            with_update = kwargs['withUpdate']
-
         if categories is not None:
-            _setter("categories", categories)
+            pulumi.set(__self__, "categories", categories)
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if exclusive_patches is not None:
-            _setter("exclusive_patches", exclusive_patches)
+            pulumi.set(__self__, "exclusive_patches", exclusive_patches)
         if severities is not None:
-            _setter("severities", severities)
+            pulumi.set(__self__, "severities", severities)
         if with_optional is not None:
-            _setter("with_optional", with_optional)
+            pulumi.set(__self__, "with_optional", with_optional)
         if with_update is not None:
-            _setter("with_update", with_update)
+            pulumi.set(__self__, "with_update", with_update)
 
     @property
     @pulumi.getter
@@ -8042,61 +6161,20 @@ class PatchDeploymentRecurringSchedule(dict):
         :param 'PatchDeploymentRecurringScheduleWeeklyArgs' weekly: Schedule with weekly executions.
                Structure is documented below.
         """
-        PatchDeploymentRecurringSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            time_of_day=time_of_day,
-            time_zone=time_zone,
-            end_time=end_time,
-            last_execute_time=last_execute_time,
-            monthly=monthly,
-            next_execute_time=next_execute_time,
-            start_time=start_time,
-            weekly=weekly,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             time_of_day: Optional['outputs.PatchDeploymentRecurringScheduleTimeOfDay'] = None,
-             time_zone: Optional['outputs.PatchDeploymentRecurringScheduleTimeZone'] = None,
-             end_time: Optional[str] = None,
-             last_execute_time: Optional[str] = None,
-             monthly: Optional['outputs.PatchDeploymentRecurringScheduleMonthly'] = None,
-             next_execute_time: Optional[str] = None,
-             start_time: Optional[str] = None,
-             weekly: Optional['outputs.PatchDeploymentRecurringScheduleWeekly'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if time_of_day is None and 'timeOfDay' in kwargs:
-            time_of_day = kwargs['timeOfDay']
-        if time_of_day is None:
-            raise TypeError("Missing 'time_of_day' argument")
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-        if time_zone is None:
-            raise TypeError("Missing 'time_zone' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if last_execute_time is None and 'lastExecuteTime' in kwargs:
-            last_execute_time = kwargs['lastExecuteTime']
-        if next_execute_time is None and 'nextExecuteTime' in kwargs:
-            next_execute_time = kwargs['nextExecuteTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
-        _setter("time_of_day", time_of_day)
-        _setter("time_zone", time_zone)
+        pulumi.set(__self__, "time_of_day", time_of_day)
+        pulumi.set(__self__, "time_zone", time_zone)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if last_execute_time is not None:
-            _setter("last_execute_time", last_execute_time)
+            pulumi.set(__self__, "last_execute_time", last_execute_time)
         if monthly is not None:
-            _setter("monthly", monthly)
+            pulumi.set(__self__, "monthly", monthly)
         if next_execute_time is not None:
-            _setter("next_execute_time", next_execute_time)
+            pulumi.set(__self__, "next_execute_time", next_execute_time)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if weekly is not None:
-            _setter("weekly", weekly)
+            pulumi.set(__self__, "weekly", weekly)
 
     @property
     @pulumi.getter(name="timeOfDay")
@@ -8205,27 +6283,10 @@ class PatchDeploymentRecurringScheduleMonthly(dict):
         :param 'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs' week_day_of_month: Week day in a month.
                Structure is documented below.
         """
-        PatchDeploymentRecurringScheduleMonthly._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            month_day=month_day,
-            week_day_of_month=week_day_of_month,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             month_day: Optional[int] = None,
-             week_day_of_month: Optional['outputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if month_day is None and 'monthDay' in kwargs:
-            month_day = kwargs['monthDay']
-        if week_day_of_month is None and 'weekDayOfMonth' in kwargs:
-            week_day_of_month = kwargs['weekDayOfMonth']
-
         if month_day is not None:
-            _setter("month_day", month_day)
+            pulumi.set(__self__, "month_day", month_day)
         if week_day_of_month is not None:
-            _setter("week_day_of_month", week_day_of_month)
+            pulumi.set(__self__, "week_day_of_month", week_day_of_month)
 
     @property
     @pulumi.getter(name="monthDay")
@@ -8276,29 +6337,8 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param int week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
-        PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day_of_week=day_of_week,
-            week_ordinal=week_ordinal,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day_of_week: Optional[str] = None,
-             week_ordinal: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day_of_week is None and 'dayOfWeek' in kwargs:
-            day_of_week = kwargs['dayOfWeek']
-        if day_of_week is None:
-            raise TypeError("Missing 'day_of_week' argument")
-        if week_ordinal is None and 'weekOrdinal' in kwargs:
-            week_ordinal = kwargs['weekOrdinal']
-        if week_ordinal is None:
-            raise TypeError("Missing 'week_ordinal' argument")
-
-        _setter("day_of_week", day_of_week)
-        _setter("week_ordinal", week_ordinal)
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "week_ordinal", week_ordinal)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -8332,31 +6372,14 @@ class PatchDeploymentRecurringScheduleTimeOfDay(dict):
         :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
-        PatchDeploymentRecurringScheduleTimeOfDay._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hours=hours,
-            minutes=minutes,
-            nanos=nanos,
-            seconds=seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hours: Optional[int] = None,
-             minutes: Optional[int] = None,
-             nanos: Optional[int] = None,
-             seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if hours is not None:
-            _setter("hours", hours)
+            pulumi.set(__self__, "hours", hours)
         if minutes is not None:
-            _setter("minutes", minutes)
+            pulumi.set(__self__, "minutes", minutes)
         if nanos is not None:
-            _setter("nanos", nanos)
+            pulumi.set(__self__, "nanos", nanos)
         if seconds is not None:
-            _setter("seconds", seconds)
+            pulumi.set(__self__, "seconds", seconds)
 
     @property
     @pulumi.getter
@@ -8401,24 +6424,9 @@ class PatchDeploymentRecurringScheduleTimeZone(dict):
         :param str id: IANA Time Zone Database time zone, e.g. "America/New_York".
         :param str version: IANA Time Zone Database version number, e.g. "2019a".
         """
-        PatchDeploymentRecurringScheduleTimeZone._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -8462,22 +6470,7 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
         :param str day_of_week: IANA Time Zone Database time zone, e.g. "America/New_York".
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
-        PatchDeploymentRecurringScheduleWeekly._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day_of_week=day_of_week,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day_of_week: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day_of_week is None and 'dayOfWeek' in kwargs:
-            day_of_week = kwargs['dayOfWeek']
-        if day_of_week is None:
-            raise TypeError("Missing 'day_of_week' argument")
-
-        _setter("day_of_week", day_of_week)
+        pulumi.set(__self__, "day_of_week", day_of_week)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -8521,27 +6514,8 @@ class PatchDeploymentRollout(dict):
         :param str mode: Mode of the patch rollout.
                Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
         """
-        PatchDeploymentRollout._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disruption_budget=disruption_budget,
-            mode=mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disruption_budget: Optional['outputs.PatchDeploymentRolloutDisruptionBudget'] = None,
-             mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disruption_budget is None and 'disruptionBudget' in kwargs:
-            disruption_budget = kwargs['disruptionBudget']
-        if disruption_budget is None:
-            raise TypeError("Missing 'disruption_budget' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-
-        _setter("disruption_budget", disruption_budget)
-        _setter("mode", mode)
+        pulumi.set(__self__, "disruption_budget", disruption_budget)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter(name="disruptionBudget")
@@ -8575,23 +6549,10 @@ class PatchDeploymentRolloutDisruptionBudget(dict):
         :param int fixed: Specifies a fixed value.
         :param int percentage: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
         """
-        PatchDeploymentRolloutDisruptionBudget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed=fixed,
-            percentage=percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed: Optional[int] = None,
-             percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if fixed is not None:
-            _setter("fixed", fixed)
+            pulumi.set(__self__, "fixed", fixed)
         if percentage is not None:
-            _setter("percentage", percentage)
+            pulumi.set(__self__, "percentage", percentage)
 
     @property
     @pulumi.getter

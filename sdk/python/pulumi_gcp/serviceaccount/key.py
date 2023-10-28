@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyArgs', 'Key']
@@ -37,50 +37,17 @@ class KeyArgs:
         :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         """
-        KeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_account_id=service_account_id,
-            keepers=keepers,
-            key_algorithm=key_algorithm,
-            private_key_type=private_key_type,
-            public_key_data=public_key_data,
-            public_key_type=public_key_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_account_id: Optional[pulumi.Input[str]] = None,
-             keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             key_algorithm: Optional[pulumi.Input[str]] = None,
-             private_key_type: Optional[pulumi.Input[str]] = None,
-             public_key_data: Optional[pulumi.Input[str]] = None,
-             public_key_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_account_id is None and 'serviceAccountId' in kwargs:
-            service_account_id = kwargs['serviceAccountId']
-        if service_account_id is None:
-            raise TypeError("Missing 'service_account_id' argument")
-        if key_algorithm is None and 'keyAlgorithm' in kwargs:
-            key_algorithm = kwargs['keyAlgorithm']
-        if private_key_type is None and 'privateKeyType' in kwargs:
-            private_key_type = kwargs['privateKeyType']
-        if public_key_data is None and 'publicKeyData' in kwargs:
-            public_key_data = kwargs['publicKeyData']
-        if public_key_type is None and 'publicKeyType' in kwargs:
-            public_key_type = kwargs['publicKeyType']
-
-        _setter("service_account_id", service_account_id)
+        pulumi.set(__self__, "service_account_id", service_account_id)
         if keepers is not None:
-            _setter("keepers", keepers)
+            pulumi.set(__self__, "keepers", keepers)
         if key_algorithm is not None:
-            _setter("key_algorithm", key_algorithm)
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
         if private_key_type is not None:
-            _setter("private_key_type", private_key_type)
+            pulumi.set(__self__, "private_key_type", private_key_type)
         if public_key_data is not None:
-            _setter("public_key_data", public_key_data)
+            pulumi.set(__self__, "public_key_data", public_key_data)
         if public_key_type is not None:
-            _setter("public_key_type", public_key_type)
+            pulumi.set(__self__, "public_key_type", public_key_type)
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -201,77 +168,28 @@ class _KeyState:
         :param pulumi.Input[str] valid_before: The key can be used before this timestamp.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
-        _KeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            keepers=keepers,
-            key_algorithm=key_algorithm,
-            name=name,
-            private_key=private_key,
-            private_key_type=private_key_type,
-            public_key=public_key,
-            public_key_data=public_key_data,
-            public_key_type=public_key_type,
-            service_account_id=service_account_id,
-            valid_after=valid_after,
-            valid_before=valid_before,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             key_algorithm: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             private_key_type: Optional[pulumi.Input[str]] = None,
-             public_key: Optional[pulumi.Input[str]] = None,
-             public_key_data: Optional[pulumi.Input[str]] = None,
-             public_key_type: Optional[pulumi.Input[str]] = None,
-             service_account_id: Optional[pulumi.Input[str]] = None,
-             valid_after: Optional[pulumi.Input[str]] = None,
-             valid_before: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_algorithm is None and 'keyAlgorithm' in kwargs:
-            key_algorithm = kwargs['keyAlgorithm']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if private_key_type is None and 'privateKeyType' in kwargs:
-            private_key_type = kwargs['privateKeyType']
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if public_key_data is None and 'publicKeyData' in kwargs:
-            public_key_data = kwargs['publicKeyData']
-        if public_key_type is None and 'publicKeyType' in kwargs:
-            public_key_type = kwargs['publicKeyType']
-        if service_account_id is None and 'serviceAccountId' in kwargs:
-            service_account_id = kwargs['serviceAccountId']
-        if valid_after is None and 'validAfter' in kwargs:
-            valid_after = kwargs['validAfter']
-        if valid_before is None and 'validBefore' in kwargs:
-            valid_before = kwargs['validBefore']
-
         if keepers is not None:
-            _setter("keepers", keepers)
+            pulumi.set(__self__, "keepers", keepers)
         if key_algorithm is not None:
-            _setter("key_algorithm", key_algorithm)
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if private_key_type is not None:
-            _setter("private_key_type", private_key_type)
+            pulumi.set(__self__, "private_key_type", private_key_type)
         if public_key is not None:
-            _setter("public_key", public_key)
+            pulumi.set(__self__, "public_key", public_key)
         if public_key_data is not None:
-            _setter("public_key_data", public_key_data)
+            pulumi.set(__self__, "public_key_data", public_key_data)
         if public_key_type is not None:
-            _setter("public_key_type", public_key_type)
+            pulumi.set(__self__, "public_key_type", public_key_type)
         if service_account_id is not None:
-            _setter("service_account_id", service_account_id)
+            pulumi.set(__self__, "service_account_id", service_account_id)
         if valid_after is not None:
-            _setter("valid_after", valid_after)
+            pulumi.set(__self__, "valid_after", valid_after)
         if valid_before is not None:
-            _setter("valid_before", valid_before)
+            pulumi.set(__self__, "valid_before", valid_before)
 
     @property
     @pulumi.getter
@@ -537,10 +455,6 @@ class Key(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

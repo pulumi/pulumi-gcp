@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DashboardArgs', 'Dashboard']
@@ -25,26 +25,9 @@ class DashboardArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DashboardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dashboard_json=dashboard_json,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dashboard_json: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dashboard_json is None and 'dashboardJson' in kwargs:
-            dashboard_json = kwargs['dashboardJson']
-        if dashboard_json is None:
-            raise TypeError("Missing 'dashboard_json' argument")
-
-        _setter("dashboard_json", dashboard_json)
+        pulumi.set(__self__, "dashboard_json", dashboard_json)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dashboardJson")
@@ -89,25 +72,10 @@ class _DashboardState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _DashboardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dashboard_json=dashboard_json,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dashboard_json: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dashboard_json is None and 'dashboardJson' in kwargs:
-            dashboard_json = kwargs['dashboardJson']
-
         if dashboard_json is not None:
-            _setter("dashboard_json", dashboard_json)
+            pulumi.set(__self__, "dashboard_json", dashboard_json)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dashboardJson")
@@ -393,10 +361,6 @@ class Dashboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DashboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

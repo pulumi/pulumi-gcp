@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
@@ -49,60 +49,21 @@ class ProjectArgs:
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            auto_create_network=auto_create_network,
-            billing_account=billing_account,
-            folder_id=folder_id,
-            labels=labels,
-            name=name,
-            org_id=org_id,
-            skip_delete=skip_delete,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             auto_create_network: Optional[pulumi.Input[bool]] = None,
-             billing_account: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             skip_delete: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if auto_create_network is None and 'autoCreateNetwork' in kwargs:
-            auto_create_network = kwargs['autoCreateNetwork']
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if skip_delete is None and 'skipDelete' in kwargs:
-            skip_delete = kwargs['skipDelete']
-
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "project_id", project_id)
         if auto_create_network is not None:
-            _setter("auto_create_network", auto_create_network)
+            pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if skip_delete is not None:
-            _setter("skip_delete", skip_delete)
+            pulumi.set(__self__, "skip_delete", skip_delete)
 
     @property
     @pulumi.getter(name="projectId")
@@ -257,63 +218,24 @@ class _ProjectState:
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_create_network=auto_create_network,
-            billing_account=billing_account,
-            folder_id=folder_id,
-            labels=labels,
-            name=name,
-            number=number,
-            org_id=org_id,
-            project_id=project_id,
-            skip_delete=skip_delete,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_create_network: Optional[pulumi.Input[bool]] = None,
-             billing_account: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             number: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             skip_delete: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_create_network is None and 'autoCreateNetwork' in kwargs:
-            auto_create_network = kwargs['autoCreateNetwork']
-        if billing_account is None and 'billingAccount' in kwargs:
-            billing_account = kwargs['billingAccount']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if skip_delete is None and 'skipDelete' in kwargs:
-            skip_delete = kwargs['skipDelete']
-
         if auto_create_network is not None:
-            _setter("auto_create_network", auto_create_network)
+            pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
-            _setter("billing_account", billing_account)
+            pulumi.set(__self__, "billing_account", billing_account)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if number is not None:
-            _setter("number", number)
+            pulumi.set(__self__, "number", number)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if skip_delete is not None:
-            _setter("skip_delete", skip_delete)
+            pulumi.set(__self__, "skip_delete", skip_delete)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -601,10 +523,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

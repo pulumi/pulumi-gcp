@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -71,51 +71,20 @@ class ConnectivityTestArgs:
                This is applicable to scenarios where a test can cross project
                boundaries.
         """
-        ConnectivityTestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination=destination,
-            source=source,
-            description=description,
-            labels=labels,
-            name=name,
-            project=project,
-            protocol=protocol,
-            related_projects=related_projects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
-             source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if related_projects is None and 'relatedProjects' in kwargs:
-            related_projects = kwargs['relatedProjects']
-
-        _setter("destination", destination)
-        _setter("source", source)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "source", source)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if related_projects is not None:
-            _setter("related_projects", related_projects)
+            pulumi.set(__self__, "related_projects", related_projects)
 
     @property
     @pulumi.getter
@@ -308,49 +277,22 @@ class _ConnectivityTestState:
                you don't intend to test.
                Structure is documented below.
         """
-        _ConnectivityTestState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            destination=destination,
-            labels=labels,
-            name=name,
-            project=project,
-            protocol=protocol,
-            related_projects=related_projects,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if related_projects is None and 'relatedProjects' in kwargs:
-            related_projects = kwargs['relatedProjects']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if related_projects is not None:
-            _setter("related_projects", related_projects)
+            pulumi.set(__self__, "related_projects", related_projects)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -770,10 +712,6 @@ class ConnectivityTest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectivityTestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -797,7 +735,6 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
             __props__.__dict__["description"] = description
-            destination = _utilities.configure(destination, ConnectivityTestDestinationArgs, True)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -806,7 +743,6 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["related_projects"] = related_projects
-            source = _utilities.configure(source, ConnectivityTestSourceArgs, True)
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source

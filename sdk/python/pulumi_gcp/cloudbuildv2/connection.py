@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,54 +35,21 @@ class ConnectionArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
         :param pulumi.Input[str] project: The project for the resource
         """
-        ConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            annotations=annotations,
-            disabled=disabled,
-            github_config=github_config,
-            github_enterprise_config=github_enterprise_config,
-            gitlab_config=gitlab_config,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
-             github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
-             gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if github_config is None and 'githubConfig' in kwargs:
-            github_config = kwargs['githubConfig']
-        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
-            github_enterprise_config = kwargs['githubEnterpriseConfig']
-        if gitlab_config is None and 'gitlabConfig' in kwargs:
-            gitlab_config = kwargs['gitlabConfig']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if github_config is not None:
-            _setter("github_config", github_config)
+            pulumi.set(__self__, "github_config", github_config)
         if github_enterprise_config is not None:
-            _setter("github_enterprise_config", github_enterprise_config)
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if gitlab_config is not None:
-            _setter("gitlab_config", gitlab_config)
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -213,79 +180,32 @@ class _ConnectionState:
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
-        _ConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            create_time=create_time,
-            disabled=disabled,
-            etag=etag,
-            github_config=github_config,
-            github_enterprise_config=github_enterprise_config,
-            gitlab_config=gitlab_config,
-            installation_states=installation_states,
-            location=location,
-            name=name,
-            project=project,
-            reconciling=reconciling,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
-             github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
-             gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
-             installation_states: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if github_config is None and 'githubConfig' in kwargs:
-            github_config = kwargs['githubConfig']
-        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
-            github_enterprise_config = kwargs['githubEnterpriseConfig']
-        if gitlab_config is None and 'gitlabConfig' in kwargs:
-            gitlab_config = kwargs['gitlabConfig']
-        if installation_states is None and 'installationStates' in kwargs:
-            installation_states = kwargs['installationStates']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if github_config is not None:
-            _setter("github_config", github_config)
+            pulumi.set(__self__, "github_config", github_config)
         if github_enterprise_config is not None:
-            _setter("github_enterprise_config", github_enterprise_config)
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if gitlab_config is not None:
-            _setter("gitlab_config", gitlab_config)
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
         if installation_states is not None:
-            _setter("installation_states", installation_states)
+            pulumi.set(__self__, "installation_states", installation_states)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -679,10 +599,6 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -707,11 +623,8 @@ class Connection(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["disabled"] = disabled
-            github_config = _utilities.configure(github_config, ConnectionGithubConfigArgs, True)
             __props__.__dict__["github_config"] = github_config
-            github_enterprise_config = _utilities.configure(github_enterprise_config, ConnectionGithubEnterpriseConfigArgs, True)
             __props__.__dict__["github_enterprise_config"] = github_enterprise_config
-            gitlab_config = _utilities.configure(gitlab_config, ConnectionGitlabConfigArgs, True)
             __props__.__dict__["gitlab_config"] = gitlab_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

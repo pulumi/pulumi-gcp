@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VPNTunnelArgs', 'VPNTunnel']
@@ -77,106 +77,39 @@ class VPNTunnelArgs:
                This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
-        VPNTunnelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            shared_secret=shared_secret,
-            description=description,
-            ike_version=ike_version,
-            labels=labels,
-            local_traffic_selectors=local_traffic_selectors,
-            name=name,
-            peer_external_gateway=peer_external_gateway,
-            peer_external_gateway_interface=peer_external_gateway_interface,
-            peer_gcp_gateway=peer_gcp_gateway,
-            peer_ip=peer_ip,
-            project=project,
-            region=region,
-            remote_traffic_selectors=remote_traffic_selectors,
-            router=router,
-            target_vpn_gateway=target_vpn_gateway,
-            vpn_gateway=vpn_gateway,
-            vpn_gateway_interface=vpn_gateway_interface,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             shared_secret: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ike_version: Optional[pulumi.Input[int]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peer_external_gateway: Optional[pulumi.Input[str]] = None,
-             peer_external_gateway_interface: Optional[pulumi.Input[int]] = None,
-             peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
-             peer_ip: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             router: Optional[pulumi.Input[str]] = None,
-             target_vpn_gateway: Optional[pulumi.Input[str]] = None,
-             vpn_gateway: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if shared_secret is None and 'sharedSecret' in kwargs:
-            shared_secret = kwargs['sharedSecret']
-        if shared_secret is None:
-            raise TypeError("Missing 'shared_secret' argument")
-        if ike_version is None and 'ikeVersion' in kwargs:
-            ike_version = kwargs['ikeVersion']
-        if local_traffic_selectors is None and 'localTrafficSelectors' in kwargs:
-            local_traffic_selectors = kwargs['localTrafficSelectors']
-        if peer_external_gateway is None and 'peerExternalGateway' in kwargs:
-            peer_external_gateway = kwargs['peerExternalGateway']
-        if peer_external_gateway_interface is None and 'peerExternalGatewayInterface' in kwargs:
-            peer_external_gateway_interface = kwargs['peerExternalGatewayInterface']
-        if peer_gcp_gateway is None and 'peerGcpGateway' in kwargs:
-            peer_gcp_gateway = kwargs['peerGcpGateway']
-        if peer_ip is None and 'peerIp' in kwargs:
-            peer_ip = kwargs['peerIp']
-        if remote_traffic_selectors is None and 'remoteTrafficSelectors' in kwargs:
-            remote_traffic_selectors = kwargs['remoteTrafficSelectors']
-        if target_vpn_gateway is None and 'targetVpnGateway' in kwargs:
-            target_vpn_gateway = kwargs['targetVpnGateway']
-        if vpn_gateway is None and 'vpnGateway' in kwargs:
-            vpn_gateway = kwargs['vpnGateway']
-        if vpn_gateway_interface is None and 'vpnGatewayInterface' in kwargs:
-            vpn_gateway_interface = kwargs['vpnGatewayInterface']
-
-        _setter("shared_secret", shared_secret)
+        pulumi.set(__self__, "shared_secret", shared_secret)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ike_version is not None:
-            _setter("ike_version", ike_version)
+            pulumi.set(__self__, "ike_version", ike_version)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if local_traffic_selectors is not None:
-            _setter("local_traffic_selectors", local_traffic_selectors)
+            pulumi.set(__self__, "local_traffic_selectors", local_traffic_selectors)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peer_external_gateway is not None:
-            _setter("peer_external_gateway", peer_external_gateway)
+            pulumi.set(__self__, "peer_external_gateway", peer_external_gateway)
         if peer_external_gateway_interface is not None:
-            _setter("peer_external_gateway_interface", peer_external_gateway_interface)
+            pulumi.set(__self__, "peer_external_gateway_interface", peer_external_gateway_interface)
         if peer_gcp_gateway is not None:
-            _setter("peer_gcp_gateway", peer_gcp_gateway)
+            pulumi.set(__self__, "peer_gcp_gateway", peer_gcp_gateway)
         if peer_ip is not None:
-            _setter("peer_ip", peer_ip)
+            pulumi.set(__self__, "peer_ip", peer_ip)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if remote_traffic_selectors is not None:
-            _setter("remote_traffic_selectors", remote_traffic_selectors)
+            pulumi.set(__self__, "remote_traffic_selectors", remote_traffic_selectors)
         if router is not None:
-            _setter("router", router)
+            pulumi.set(__self__, "router", router)
         if target_vpn_gateway is not None:
-            _setter("target_vpn_gateway", target_vpn_gateway)
+            pulumi.set(__self__, "target_vpn_gateway", target_vpn_gateway)
         if vpn_gateway is not None:
-            _setter("vpn_gateway", vpn_gateway)
+            pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         if vpn_gateway_interface is not None:
-            _setter("vpn_gateway_interface", vpn_gateway_interface)
+            pulumi.set(__self__, "vpn_gateway_interface", vpn_gateway_interface)
 
     @property
     @pulumi.getter(name="sharedSecret")
@@ -487,141 +420,52 @@ class _VPNTunnelState:
                This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
-        _VPNTunnelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            detailed_status=detailed_status,
-            ike_version=ike_version,
-            label_fingerprint=label_fingerprint,
-            labels=labels,
-            local_traffic_selectors=local_traffic_selectors,
-            name=name,
-            peer_external_gateway=peer_external_gateway,
-            peer_external_gateway_interface=peer_external_gateway_interface,
-            peer_gcp_gateway=peer_gcp_gateway,
-            peer_ip=peer_ip,
-            project=project,
-            region=region,
-            remote_traffic_selectors=remote_traffic_selectors,
-            router=router,
-            self_link=self_link,
-            shared_secret=shared_secret,
-            shared_secret_hash=shared_secret_hash,
-            target_vpn_gateway=target_vpn_gateway,
-            tunnel_id=tunnel_id,
-            vpn_gateway=vpn_gateway,
-            vpn_gateway_interface=vpn_gateway_interface,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             detailed_status: Optional[pulumi.Input[str]] = None,
-             ike_version: Optional[pulumi.Input[int]] = None,
-             label_fingerprint: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peer_external_gateway: Optional[pulumi.Input[str]] = None,
-             peer_external_gateway_interface: Optional[pulumi.Input[int]] = None,
-             peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
-             peer_ip: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             router: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             shared_secret: Optional[pulumi.Input[str]] = None,
-             shared_secret_hash: Optional[pulumi.Input[str]] = None,
-             target_vpn_gateway: Optional[pulumi.Input[str]] = None,
-             tunnel_id: Optional[pulumi.Input[str]] = None,
-             vpn_gateway: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if detailed_status is None and 'detailedStatus' in kwargs:
-            detailed_status = kwargs['detailedStatus']
-        if ike_version is None and 'ikeVersion' in kwargs:
-            ike_version = kwargs['ikeVersion']
-        if label_fingerprint is None and 'labelFingerprint' in kwargs:
-            label_fingerprint = kwargs['labelFingerprint']
-        if local_traffic_selectors is None and 'localTrafficSelectors' in kwargs:
-            local_traffic_selectors = kwargs['localTrafficSelectors']
-        if peer_external_gateway is None and 'peerExternalGateway' in kwargs:
-            peer_external_gateway = kwargs['peerExternalGateway']
-        if peer_external_gateway_interface is None and 'peerExternalGatewayInterface' in kwargs:
-            peer_external_gateway_interface = kwargs['peerExternalGatewayInterface']
-        if peer_gcp_gateway is None and 'peerGcpGateway' in kwargs:
-            peer_gcp_gateway = kwargs['peerGcpGateway']
-        if peer_ip is None and 'peerIp' in kwargs:
-            peer_ip = kwargs['peerIp']
-        if remote_traffic_selectors is None and 'remoteTrafficSelectors' in kwargs:
-            remote_traffic_selectors = kwargs['remoteTrafficSelectors']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if shared_secret is None and 'sharedSecret' in kwargs:
-            shared_secret = kwargs['sharedSecret']
-        if shared_secret_hash is None and 'sharedSecretHash' in kwargs:
-            shared_secret_hash = kwargs['sharedSecretHash']
-        if target_vpn_gateway is None and 'targetVpnGateway' in kwargs:
-            target_vpn_gateway = kwargs['targetVpnGateway']
-        if tunnel_id is None and 'tunnelId' in kwargs:
-            tunnel_id = kwargs['tunnelId']
-        if vpn_gateway is None and 'vpnGateway' in kwargs:
-            vpn_gateway = kwargs['vpnGateway']
-        if vpn_gateway_interface is None and 'vpnGatewayInterface' in kwargs:
-            vpn_gateway_interface = kwargs['vpnGatewayInterface']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if detailed_status is not None:
-            _setter("detailed_status", detailed_status)
+            pulumi.set(__self__, "detailed_status", detailed_status)
         if ike_version is not None:
-            _setter("ike_version", ike_version)
+            pulumi.set(__self__, "ike_version", ike_version)
         if label_fingerprint is not None:
-            _setter("label_fingerprint", label_fingerprint)
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if local_traffic_selectors is not None:
-            _setter("local_traffic_selectors", local_traffic_selectors)
+            pulumi.set(__self__, "local_traffic_selectors", local_traffic_selectors)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peer_external_gateway is not None:
-            _setter("peer_external_gateway", peer_external_gateway)
+            pulumi.set(__self__, "peer_external_gateway", peer_external_gateway)
         if peer_external_gateway_interface is not None:
-            _setter("peer_external_gateway_interface", peer_external_gateway_interface)
+            pulumi.set(__self__, "peer_external_gateway_interface", peer_external_gateway_interface)
         if peer_gcp_gateway is not None:
-            _setter("peer_gcp_gateway", peer_gcp_gateway)
+            pulumi.set(__self__, "peer_gcp_gateway", peer_gcp_gateway)
         if peer_ip is not None:
-            _setter("peer_ip", peer_ip)
+            pulumi.set(__self__, "peer_ip", peer_ip)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if remote_traffic_selectors is not None:
-            _setter("remote_traffic_selectors", remote_traffic_selectors)
+            pulumi.set(__self__, "remote_traffic_selectors", remote_traffic_selectors)
         if router is not None:
-            _setter("router", router)
+            pulumi.set(__self__, "router", router)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if shared_secret is not None:
-            _setter("shared_secret", shared_secret)
+            pulumi.set(__self__, "shared_secret", shared_secret)
         if shared_secret_hash is not None:
-            _setter("shared_secret_hash", shared_secret_hash)
+            pulumi.set(__self__, "shared_secret_hash", shared_secret_hash)
         if target_vpn_gateway is not None:
-            _setter("target_vpn_gateway", target_vpn_gateway)
+            pulumi.set(__self__, "target_vpn_gateway", target_vpn_gateway)
         if tunnel_id is not None:
-            _setter("tunnel_id", tunnel_id)
+            pulumi.set(__self__, "tunnel_id", tunnel_id)
         if vpn_gateway is not None:
-            _setter("vpn_gateway", vpn_gateway)
+            pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         if vpn_gateway_interface is not None:
-            _setter("vpn_gateway_interface", vpn_gateway_interface)
+            pulumi.set(__self__, "vpn_gateway_interface", vpn_gateway_interface)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -1251,10 +1095,6 @@ class VPNTunnel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VPNTunnelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

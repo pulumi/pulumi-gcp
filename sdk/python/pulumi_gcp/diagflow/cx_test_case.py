@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,46 +38,17 @@ class CxTestCaseArgs:
         :param pulumi.Input['CxTestCaseTestConfigArgs'] test_config: Config for the test case.
                Structure is documented below.
         """
-        CxTestCaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            notes=notes,
-            parent=parent,
-            tags=tags,
-            test_case_conversation_turns=test_case_conversation_turns,
-            test_config=test_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             notes: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
-             test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
-            test_case_conversation_turns = kwargs['testCaseConversationTurns']
-        if test_config is None and 'testConfig' in kwargs:
-            test_config = kwargs['testConfig']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if notes is not None:
-            _setter("notes", notes)
+            pulumi.set(__self__, "notes", notes)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if test_case_conversation_turns is not None:
-            _setter("test_case_conversation_turns", test_case_conversation_turns)
+            pulumi.set(__self__, "test_case_conversation_turns", test_case_conversation_turns)
         if test_config is not None:
-            _setter("test_config", test_config)
+            pulumi.set(__self__, "test_config", test_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -192,61 +163,24 @@ class _CxTestCaseState:
         :param pulumi.Input['CxTestCaseTestConfigArgs'] test_config: Config for the test case.
                Structure is documented below.
         """
-        _CxTestCaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_time=creation_time,
-            display_name=display_name,
-            last_test_results=last_test_results,
-            name=name,
-            notes=notes,
-            parent=parent,
-            tags=tags,
-            test_case_conversation_turns=test_case_conversation_turns,
-            test_config=test_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_time: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             last_test_results: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notes: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
-             test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if last_test_results is None and 'lastTestResults' in kwargs:
-            last_test_results = kwargs['lastTestResults']
-        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
-            test_case_conversation_turns = kwargs['testCaseConversationTurns']
-        if test_config is None and 'testConfig' in kwargs:
-            test_config = kwargs['testConfig']
-
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if last_test_results is not None:
-            _setter("last_test_results", last_test_results)
+            pulumi.set(__self__, "last_test_results", last_test_results)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notes is not None:
-            _setter("notes", notes)
+            pulumi.set(__self__, "notes", notes)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if test_case_conversation_turns is not None:
-            _setter("test_case_conversation_turns", test_case_conversation_turns)
+            pulumi.set(__self__, "test_case_conversation_turns", test_case_conversation_turns)
         if test_config is not None:
-            _setter("test_config", test_config)
+            pulumi.set(__self__, "test_config", test_config)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -708,10 +642,6 @@ class CxTestCase(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxTestCaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -739,7 +669,6 @@ class CxTestCase(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns
-            test_config = _utilities.configure(test_config, CxTestCaseTestConfigArgs, True)
             __props__.__dict__["test_config"] = test_config
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["last_test_results"] = None

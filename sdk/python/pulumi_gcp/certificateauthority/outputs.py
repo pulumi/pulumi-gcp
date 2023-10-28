@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -159,27 +159,10 @@ class AuthorityAccessUrl(dict):
                The URL where this CertificateAuthority's CRLs are published. This will only be set for
                CAs that have been activated.
         """
-        AuthorityAccessUrl._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_certificate_access_url=ca_certificate_access_url,
-            crl_access_urls=crl_access_urls,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_certificate_access_url: Optional[str] = None,
-             crl_access_urls: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_certificate_access_url is None and 'caCertificateAccessUrl' in kwargs:
-            ca_certificate_access_url = kwargs['caCertificateAccessUrl']
-        if crl_access_urls is None and 'crlAccessUrls' in kwargs:
-            crl_access_urls = kwargs['crlAccessUrls']
-
         if ca_certificate_access_url is not None:
-            _setter("ca_certificate_access_url", ca_certificate_access_url)
+            pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
         if crl_access_urls is not None:
-            _setter("crl_access_urls", crl_access_urls)
+            pulumi.set(__self__, "crl_access_urls", crl_access_urls)
 
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
@@ -235,29 +218,8 @@ class AuthorityConfig(dict):
         :param 'AuthorityConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
-        AuthorityConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_config=subject_config,
-            x509_config=x509_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_config: Optional['outputs.AuthorityConfigSubjectConfig'] = None,
-             x509_config: Optional['outputs.AuthorityConfigX509Config'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_config is None and 'subjectConfig' in kwargs:
-            subject_config = kwargs['subjectConfig']
-        if subject_config is None:
-            raise TypeError("Missing 'subject_config' argument")
-        if x509_config is None and 'x509Config' in kwargs:
-            x509_config = kwargs['x509Config']
-        if x509_config is None:
-            raise TypeError("Missing 'x509_config' argument")
-
-        _setter("subject_config", subject_config)
-        _setter("x509_config", x509_config)
+        pulumi.set(__self__, "subject_config", subject_config)
+        pulumi.set(__self__, "x509_config", x509_config)
 
     @property
     @pulumi.getter(name="subjectConfig")
@@ -309,26 +271,9 @@ class AuthorityConfigSubjectConfig(dict):
         :param 'AuthorityConfigSubjectConfigSubjectAltNameArgs' subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
-        AuthorityConfigSubjectConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject=subject,
-            subject_alt_name=subject_alt_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject: Optional['outputs.AuthorityConfigSubjectConfigSubject'] = None,
-             subject_alt_name: Optional['outputs.AuthorityConfigSubjectConfigSubjectAltName'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject is None:
-            raise TypeError("Missing 'subject' argument")
-        if subject_alt_name is None and 'subjectAltName' in kwargs:
-            subject_alt_name = kwargs['subjectAltName']
-
-        _setter("subject", subject)
+        pulumi.set(__self__, "subject", subject)
         if subject_alt_name is not None:
-            _setter("subject_alt_name", subject_alt_name)
+            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
 
     @property
     @pulumi.getter
@@ -395,59 +340,20 @@ class AuthorityConfigSubjectConfigSubject(dict):
         :param str province: The province, territory, or regional state of the subject.
         :param str street_address: The street address of the subject.
         """
-        AuthorityConfigSubjectConfigSubject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            common_name=common_name,
-            organization=organization,
-            country_code=country_code,
-            locality=locality,
-            organizational_unit=organizational_unit,
-            postal_code=postal_code,
-            province=province,
-            street_address=street_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             common_name: Optional[str] = None,
-             organization: Optional[str] = None,
-             country_code: Optional[str] = None,
-             locality: Optional[str] = None,
-             organizational_unit: Optional[str] = None,
-             postal_code: Optional[str] = None,
-             province: Optional[str] = None,
-             street_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if common_name is None:
-            raise TypeError("Missing 'common_name' argument")
-        if organization is None:
-            raise TypeError("Missing 'organization' argument")
-        if country_code is None and 'countryCode' in kwargs:
-            country_code = kwargs['countryCode']
-        if organizational_unit is None and 'organizationalUnit' in kwargs:
-            organizational_unit = kwargs['organizationalUnit']
-        if postal_code is None and 'postalCode' in kwargs:
-            postal_code = kwargs['postalCode']
-        if street_address is None and 'streetAddress' in kwargs:
-            street_address = kwargs['streetAddress']
-
-        _setter("common_name", common_name)
-        _setter("organization", organization)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "organization", organization)
         if country_code is not None:
-            _setter("country_code", country_code)
+            pulumi.set(__self__, "country_code", country_code)
         if locality is not None:
-            _setter("locality", locality)
+            pulumi.set(__self__, "locality", locality)
         if organizational_unit is not None:
-            _setter("organizational_unit", organizational_unit)
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
         if postal_code is not None:
-            _setter("postal_code", postal_code)
+            pulumi.set(__self__, "postal_code", postal_code)
         if province is not None:
-            _setter("province", province)
+            pulumi.set(__self__, "province", province)
         if street_address is not None:
-            _setter("street_address", street_address)
+            pulumi.set(__self__, "street_address", street_address)
 
     @property
     @pulumi.getter(name="commonName")
@@ -548,37 +454,14 @@ class AuthorityConfigSubjectConfigSubjectAltName(dict):
         :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
         :param Sequence[str] uris: Contains only valid RFC 3986 URIs.
         """
-        AuthorityConfigSubjectConfigSubjectAltName._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_names=dns_names,
-            email_addresses=email_addresses,
-            ip_addresses=ip_addresses,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_names: Optional[Sequence[str]] = None,
-             email_addresses: Optional[Sequence[str]] = None,
-             ip_addresses: Optional[Sequence[str]] = None,
-             uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_names is None and 'dnsNames' in kwargs:
-            dns_names = kwargs['dnsNames']
-        if email_addresses is None and 'emailAddresses' in kwargs:
-            email_addresses = kwargs['emailAddresses']
-        if ip_addresses is None and 'ipAddresses' in kwargs:
-            ip_addresses = kwargs['ipAddresses']
-
         if dns_names is not None:
-            _setter("dns_names", dns_names)
+            pulumi.set(__self__, "dns_names", dns_names)
         if email_addresses is not None:
-            _setter("email_addresses", email_addresses)
+            pulumi.set(__self__, "email_addresses", email_addresses)
         if ip_addresses is not None:
-            _setter("ip_addresses", ip_addresses)
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if uris is not None:
-            _setter("uris", uris)
+            pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="dnsNames")
@@ -663,53 +546,16 @@ class AuthorityConfigX509Config(dict):
         :param Sequence['AuthorityConfigX509ConfigPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
-        AuthorityConfigX509Config._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_options=ca_options,
-            key_usage=key_usage,
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            name_constraints=name_constraints,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_options: Optional['outputs.AuthorityConfigX509ConfigCaOptions'] = None,
-             key_usage: Optional['outputs.AuthorityConfigX509ConfigKeyUsage'] = None,
-             additional_extensions: Optional[Sequence['outputs.AuthorityConfigX509ConfigAdditionalExtension']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             name_constraints: Optional['outputs.AuthorityConfigX509ConfigNameConstraints'] = None,
-             policy_ids: Optional[Sequence['outputs.AuthorityConfigX509ConfigPolicyId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if ca_options is None:
-            raise TypeError("Missing 'ca_options' argument")
-        if key_usage is None and 'keyUsage' in kwargs:
-            key_usage = kwargs['keyUsage']
-        if key_usage is None:
-            raise TypeError("Missing 'key_usage' argument")
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if name_constraints is None and 'nameConstraints' in kwargs:
-            name_constraints = kwargs['nameConstraints']
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-
-        _setter("ca_options", ca_options)
-        _setter("key_usage", key_usage)
+        pulumi.set(__self__, "ca_options", ca_options)
+        pulumi.set(__self__, "key_usage", key_usage)
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
-            _setter("aia_ocsp_servers", aia_ocsp_servers)
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if name_constraints is not None:
-            _setter("name_constraints", name_constraints)
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
-            _setter("policy_ids", policy_ids)
+            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="caOptions")
@@ -796,32 +642,9 @@ class AuthorityConfigX509ConfigAdditionalExtension(dict):
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
-        AuthorityConfigX509ConfigAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            object_id=object_id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             object_id: Optional['outputs.AuthorityConfigX509ConfigAdditionalExtensionObjectId'] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("critical", critical)
-        _setter("object_id", object_id)
-        _setter("value", value)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -874,22 +697,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        AuthorityConfigX509ConfigAdditionalExtensionObjectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -941,40 +749,13 @@ class AuthorityConfigX509ConfigCaOptions(dict):
                If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
                the max path length will be omitted from the CA certificate.
         """
-        AuthorityConfigX509ConfigCaOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-            non_ca=non_ca,
-            zero_max_issuer_path_length=zero_max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             non_ca: Optional[bool] = None,
-             zero_max_issuer_path_length: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if is_ca is None:
-            raise TypeError("Missing 'is_ca' argument")
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-        if non_ca is None and 'nonCa' in kwargs:
-            non_ca = kwargs['nonCa']
-        if zero_max_issuer_path_length is None and 'zeroMaxIssuerPathLength' in kwargs:
-            zero_max_issuer_path_length = kwargs['zeroMaxIssuerPathLength']
-
-        _setter("is_ca", is_ca)
+        pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
-            _setter("max_issuer_path_length", max_issuer_path_length)
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
         if non_ca is not None:
-            _setter("non_ca", non_ca)
+            pulumi.set(__self__, "non_ca", non_ca)
         if zero_max_issuer_path_length is not None:
-            _setter("zero_max_issuer_path_length", zero_max_issuer_path_length)
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -1049,35 +830,10 @@ class AuthorityConfigX509ConfigKeyUsage(dict):
         :param Sequence['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
-        AuthorityConfigX509ConfigKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usage=base_key_usage,
-            extended_key_usage=extended_key_usage,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usage: Optional['outputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsage'] = None,
-             extended_key_usage: Optional['outputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage'] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usage is None and 'baseKeyUsage' in kwargs:
-            base_key_usage = kwargs['baseKeyUsage']
-        if base_key_usage is None:
-            raise TypeError("Missing 'base_key_usage' argument")
-        if extended_key_usage is None and 'extendedKeyUsage' in kwargs:
-            extended_key_usage = kwargs['extendedKeyUsage']
-        if extended_key_usage is None:
-            raise TypeError("Missing 'extended_key_usage' argument")
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
-        _setter("base_key_usage", base_key_usage)
-        _setter("extended_key_usage", extended_key_usage)
+        pulumi.set(__self__, "base_key_usage", base_key_usage)
+        pulumi.set(__self__, "extended_key_usage", extended_key_usage)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsage")
@@ -1163,69 +919,24 @@ class AuthorityConfigX509ConfigKeyUsageBaseKeyUsage(dict):
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        AuthorityConfigX509ConfigKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -1344,51 +1055,18 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -1463,22 +1141,7 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -1567,68 +1230,23 @@ class AuthorityConfigX509ConfigNameConstraints(dict):
                The value can be a hostname or a domain with a
                leading period (like `.example.com`)
         """
-        AuthorityConfigX509ConfigNameConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            excluded_dns_names=excluded_dns_names,
-            excluded_email_addresses=excluded_email_addresses,
-            excluded_ip_ranges=excluded_ip_ranges,
-            excluded_uris=excluded_uris,
-            permitted_dns_names=permitted_dns_names,
-            permitted_email_addresses=permitted_email_addresses,
-            permitted_ip_ranges=permitted_ip_ranges,
-            permitted_uris=permitted_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             excluded_dns_names: Optional[Sequence[str]] = None,
-             excluded_email_addresses: Optional[Sequence[str]] = None,
-             excluded_ip_ranges: Optional[Sequence[str]] = None,
-             excluded_uris: Optional[Sequence[str]] = None,
-             permitted_dns_names: Optional[Sequence[str]] = None,
-             permitted_email_addresses: Optional[Sequence[str]] = None,
-             permitted_ip_ranges: Optional[Sequence[str]] = None,
-             permitted_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if excluded_dns_names is None and 'excludedDnsNames' in kwargs:
-            excluded_dns_names = kwargs['excludedDnsNames']
-        if excluded_email_addresses is None and 'excludedEmailAddresses' in kwargs:
-            excluded_email_addresses = kwargs['excludedEmailAddresses']
-        if excluded_ip_ranges is None and 'excludedIpRanges' in kwargs:
-            excluded_ip_ranges = kwargs['excludedIpRanges']
-        if excluded_uris is None and 'excludedUris' in kwargs:
-            excluded_uris = kwargs['excludedUris']
-        if permitted_dns_names is None and 'permittedDnsNames' in kwargs:
-            permitted_dns_names = kwargs['permittedDnsNames']
-        if permitted_email_addresses is None and 'permittedEmailAddresses' in kwargs:
-            permitted_email_addresses = kwargs['permittedEmailAddresses']
-        if permitted_ip_ranges is None and 'permittedIpRanges' in kwargs:
-            permitted_ip_ranges = kwargs['permittedIpRanges']
-        if permitted_uris is None and 'permittedUris' in kwargs:
-            permitted_uris = kwargs['permittedUris']
-
-        _setter("critical", critical)
+        pulumi.set(__self__, "critical", critical)
         if excluded_dns_names is not None:
-            _setter("excluded_dns_names", excluded_dns_names)
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
         if excluded_email_addresses is not None:
-            _setter("excluded_email_addresses", excluded_email_addresses)
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
         if excluded_ip_ranges is not None:
-            _setter("excluded_ip_ranges", excluded_ip_ranges)
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
         if excluded_uris is not None:
-            _setter("excluded_uris", excluded_uris)
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
         if permitted_dns_names is not None:
-            _setter("permitted_dns_names", permitted_dns_names)
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
         if permitted_email_addresses is not None:
-            _setter("permitted_email_addresses", permitted_email_addresses)
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
         if permitted_ip_ranges is not None:
-            _setter("permitted_ip_ranges", permitted_ip_ranges)
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
         if permitted_uris is not None:
-            _setter("permitted_uris", permitted_uris)
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
 
     @property
     @pulumi.getter
@@ -1751,22 +1369,7 @@ class AuthorityConfigX509ConfigPolicyId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        AuthorityConfigX509ConfigPolicyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -1808,25 +1411,10 @@ class AuthorityKeySpec(dict):
         :param str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
-        AuthorityKeySpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            cloud_kms_key_version=cloud_kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[str] = None,
-             cloud_kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_kms_key_version is None and 'cloudKmsKeyVersion' in kwargs:
-            cloud_kms_key_version = kwargs['cloudKmsKeyVersion']
-
         if algorithm is not None:
-            _setter("algorithm", algorithm)
+            pulumi.set(__self__, "algorithm", algorithm)
         if cloud_kms_key_version is not None:
-            _setter("cloud_kms_key_version", cloud_kms_key_version)
+            pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
 
     @property
     @pulumi.getter
@@ -1883,27 +1471,10 @@ class AuthoritySubordinateConfig(dict):
                but not pem certificate for this CA itself.
                Structure is documented below.
         """
-        AuthoritySubordinateConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority=certificate_authority,
-            pem_issuer_chain=pem_issuer_chain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority: Optional[str] = None,
-             pem_issuer_chain: Optional['outputs.AuthoritySubordinateConfigPemIssuerChain'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority is None and 'certificateAuthority' in kwargs:
-            certificate_authority = kwargs['certificateAuthority']
-        if pem_issuer_chain is None and 'pemIssuerChain' in kwargs:
-            pem_issuer_chain = kwargs['pemIssuerChain']
-
         if certificate_authority is not None:
-            _setter("certificate_authority", certificate_authority)
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
         if pem_issuer_chain is not None:
-            _setter("pem_issuer_chain", pem_issuer_chain)
+            pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -1951,21 +1522,8 @@ class AuthoritySubordinateConfigPemIssuerChain(dict):
         """
         :param Sequence[str] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
         """
-        AuthoritySubordinateConfigPemIssuerChain._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pem_certificates=pem_certificates,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pem_certificates: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pem_certificates is None and 'pemCertificates' in kwargs:
-            pem_certificates = kwargs['pemCertificates']
-
         if pem_certificates is not None:
-            _setter("pem_certificates", pem_certificates)
+            pulumi.set(__self__, "pem_certificates", pem_certificates)
 
     @property
     @pulumi.getter(name="pemCertificates")
@@ -1986,29 +1544,10 @@ class CaPoolIamBindingCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        CaPoolIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -2042,29 +1581,10 @@ class CaPoolIamMemberCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        CaPoolIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -2138,45 +1658,16 @@ class CaPoolIssuancePolicy(dict):
         :param str maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
                expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
         """
-        CaPoolIssuancePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_issuance_modes=allowed_issuance_modes,
-            allowed_key_types=allowed_key_types,
-            baseline_values=baseline_values,
-            identity_constraints=identity_constraints,
-            maximum_lifetime=maximum_lifetime,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_issuance_modes: Optional['outputs.CaPoolIssuancePolicyAllowedIssuanceModes'] = None,
-             allowed_key_types: Optional[Sequence['outputs.CaPoolIssuancePolicyAllowedKeyType']] = None,
-             baseline_values: Optional['outputs.CaPoolIssuancePolicyBaselineValues'] = None,
-             identity_constraints: Optional['outputs.CaPoolIssuancePolicyIdentityConstraints'] = None,
-             maximum_lifetime: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_issuance_modes is None and 'allowedIssuanceModes' in kwargs:
-            allowed_issuance_modes = kwargs['allowedIssuanceModes']
-        if allowed_key_types is None and 'allowedKeyTypes' in kwargs:
-            allowed_key_types = kwargs['allowedKeyTypes']
-        if baseline_values is None and 'baselineValues' in kwargs:
-            baseline_values = kwargs['baselineValues']
-        if identity_constraints is None and 'identityConstraints' in kwargs:
-            identity_constraints = kwargs['identityConstraints']
-        if maximum_lifetime is None and 'maximumLifetime' in kwargs:
-            maximum_lifetime = kwargs['maximumLifetime']
-
         if allowed_issuance_modes is not None:
-            _setter("allowed_issuance_modes", allowed_issuance_modes)
+            pulumi.set(__self__, "allowed_issuance_modes", allowed_issuance_modes)
         if allowed_key_types is not None:
-            _setter("allowed_key_types", allowed_key_types)
+            pulumi.set(__self__, "allowed_key_types", allowed_key_types)
         if baseline_values is not None:
-            _setter("baseline_values", baseline_values)
+            pulumi.set(__self__, "baseline_values", baseline_values)
         if identity_constraints is not None:
-            _setter("identity_constraints", identity_constraints)
+            pulumi.set(__self__, "identity_constraints", identity_constraints)
         if maximum_lifetime is not None:
-            _setter("maximum_lifetime", maximum_lifetime)
+            pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
 
     @property
     @pulumi.getter(name="allowedIssuanceModes")
@@ -2257,29 +1748,8 @@ class CaPoolIssuancePolicyAllowedIssuanceModes(dict):
         :param bool allow_config_based_issuance: When true, allows callers to create Certificates by specifying a CertificateConfig.
         :param bool allow_csr_based_issuance: When true, allows callers to create Certificates by specifying a CSR.
         """
-        CaPoolIssuancePolicyAllowedIssuanceModes._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_config_based_issuance=allow_config_based_issuance,
-            allow_csr_based_issuance=allow_csr_based_issuance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_config_based_issuance: Optional[bool] = None,
-             allow_csr_based_issuance: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_config_based_issuance is None and 'allowConfigBasedIssuance' in kwargs:
-            allow_config_based_issuance = kwargs['allowConfigBasedIssuance']
-        if allow_config_based_issuance is None:
-            raise TypeError("Missing 'allow_config_based_issuance' argument")
-        if allow_csr_based_issuance is None and 'allowCsrBasedIssuance' in kwargs:
-            allow_csr_based_issuance = kwargs['allowCsrBasedIssuance']
-        if allow_csr_based_issuance is None:
-            raise TypeError("Missing 'allow_csr_based_issuance' argument")
-
-        _setter("allow_config_based_issuance", allow_config_based_issuance)
-        _setter("allow_csr_based_issuance", allow_csr_based_issuance)
+        pulumi.set(__self__, "allow_config_based_issuance", allow_config_based_issuance)
+        pulumi.set(__self__, "allow_csr_based_issuance", allow_csr_based_issuance)
 
     @property
     @pulumi.getter(name="allowConfigBasedIssuance")
@@ -2326,25 +1796,10 @@ class CaPoolIssuancePolicyAllowedKeyType(dict):
         :param 'CaPoolIssuancePolicyAllowedKeyTypeRsaArgs' rsa: Describes an RSA key that may be used in a Certificate issued from a CaPool.
                Structure is documented below.
         """
-        CaPoolIssuancePolicyAllowedKeyType._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            elliptic_curve=elliptic_curve,
-            rsa=rsa,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             elliptic_curve: Optional['outputs.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve'] = None,
-             rsa: Optional['outputs.CaPoolIssuancePolicyAllowedKeyTypeRsa'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if elliptic_curve is None and 'ellipticCurve' in kwargs:
-            elliptic_curve = kwargs['ellipticCurve']
-
         if elliptic_curve is not None:
-            _setter("elliptic_curve", elliptic_curve)
+            pulumi.set(__self__, "elliptic_curve", elliptic_curve)
         if rsa is not None:
-            _setter("rsa", rsa)
+            pulumi.set(__self__, "rsa", rsa)
 
     @property
     @pulumi.getter(name="ellipticCurve")
@@ -2390,22 +1845,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(dict):
         :param str signature_algorithm: The algorithm used.
                Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
         """
-        CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            signature_algorithm=signature_algorithm,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             signature_algorithm: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
-            signature_algorithm = kwargs['signatureAlgorithm']
-        if signature_algorithm is None:
-            raise TypeError("Missing 'signature_algorithm' argument")
-
-        _setter("signature_algorithm", signature_algorithm)
+        pulumi.set(__self__, "signature_algorithm", signature_algorithm)
 
     @property
     @pulumi.getter(name="signatureAlgorithm")
@@ -2447,27 +1887,10 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsa(dict):
         :param str min_modulus_size: The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
                service-level min RSA modulus size will continue to apply.
         """
-        CaPoolIssuancePolicyAllowedKeyTypeRsa._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_modulus_size=max_modulus_size,
-            min_modulus_size=min_modulus_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_modulus_size: Optional[str] = None,
-             min_modulus_size: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_modulus_size is None and 'maxModulusSize' in kwargs:
-            max_modulus_size = kwargs['maxModulusSize']
-        if min_modulus_size is None and 'minModulusSize' in kwargs:
-            min_modulus_size = kwargs['minModulusSize']
-
         if max_modulus_size is not None:
-            _setter("max_modulus_size", max_modulus_size)
+            pulumi.set(__self__, "max_modulus_size", max_modulus_size)
         if min_modulus_size is not None:
-            _setter("min_modulus_size", min_modulus_size)
+            pulumi.set(__self__, "min_modulus_size", min_modulus_size)
 
     @property
     @pulumi.getter(name="maxModulusSize")
@@ -2538,53 +1961,16 @@ class CaPoolIssuancePolicyBaselineValues(dict):
         :param Sequence['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
-        CaPoolIssuancePolicyBaselineValues._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_options=ca_options,
-            key_usage=key_usage,
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            name_constraints=name_constraints,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_options: Optional['outputs.CaPoolIssuancePolicyBaselineValuesCaOptions'] = None,
-             key_usage: Optional['outputs.CaPoolIssuancePolicyBaselineValuesKeyUsage'] = None,
-             additional_extensions: Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtension']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             name_constraints: Optional['outputs.CaPoolIssuancePolicyBaselineValuesNameConstraints'] = None,
-             policy_ids: Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesPolicyId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if ca_options is None:
-            raise TypeError("Missing 'ca_options' argument")
-        if key_usage is None and 'keyUsage' in kwargs:
-            key_usage = kwargs['keyUsage']
-        if key_usage is None:
-            raise TypeError("Missing 'key_usage' argument")
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if name_constraints is None and 'nameConstraints' in kwargs:
-            name_constraints = kwargs['nameConstraints']
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-
-        _setter("ca_options", ca_options)
-        _setter("key_usage", key_usage)
+        pulumi.set(__self__, "ca_options", ca_options)
+        pulumi.set(__self__, "key_usage", key_usage)
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
-            _setter("aia_ocsp_servers", aia_ocsp_servers)
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if name_constraints is not None:
-            _setter("name_constraints", name_constraints)
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
-            _setter("policy_ids", policy_ids)
+            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="caOptions")
@@ -2671,32 +2057,9 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtension(dict):
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
-        CaPoolIssuancePolicyBaselineValuesAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            object_id=object_id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             object_id: Optional['outputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId'] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("critical", critical)
-        _setter("object_id", object_id)
-        _setter("value", value)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2749,22 +2112,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -2815,39 +2163,14 @@ class CaPoolIssuancePolicyBaselineValuesCaOptions(dict):
                if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
                the max path length will be omitted from the CA certificate.
         """
-        CaPoolIssuancePolicyBaselineValuesCaOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-            non_ca=non_ca,
-            zero_max_issuer_path_length=zero_max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             non_ca: Optional[bool] = None,
-             zero_max_issuer_path_length: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-        if non_ca is None and 'nonCa' in kwargs:
-            non_ca = kwargs['nonCa']
-        if zero_max_issuer_path_length is None and 'zeroMaxIssuerPathLength' in kwargs:
-            zero_max_issuer_path_length = kwargs['zeroMaxIssuerPathLength']
-
         if is_ca is not None:
-            _setter("is_ca", is_ca)
+            pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
-            _setter("max_issuer_path_length", max_issuer_path_length)
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
         if non_ca is not None:
-            _setter("non_ca", non_ca)
+            pulumi.set(__self__, "non_ca", non_ca)
         if zero_max_issuer_path_length is not None:
-            _setter("zero_max_issuer_path_length", zero_max_issuer_path_length)
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -2921,35 +2244,10 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage(dict):
         :param Sequence['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
-        CaPoolIssuancePolicyBaselineValuesKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usage=base_key_usage,
-            extended_key_usage=extended_key_usage,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usage: Optional['outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage'] = None,
-             extended_key_usage: Optional['outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage'] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usage is None and 'baseKeyUsage' in kwargs:
-            base_key_usage = kwargs['baseKeyUsage']
-        if base_key_usage is None:
-            raise TypeError("Missing 'base_key_usage' argument")
-        if extended_key_usage is None and 'extendedKeyUsage' in kwargs:
-            extended_key_usage = kwargs['extendedKeyUsage']
-        if extended_key_usage is None:
-            raise TypeError("Missing 'extended_key_usage' argument")
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
-        _setter("base_key_usage", base_key_usage)
-        _setter("extended_key_usage", extended_key_usage)
+        pulumi.set(__self__, "base_key_usage", base_key_usage)
+        pulumi.set(__self__, "extended_key_usage", extended_key_usage)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsage")
@@ -3035,69 +2333,24 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage(dict):
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -3216,51 +2469,18 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage(dict):
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -3335,22 +2555,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -3439,68 +2644,23 @@ class CaPoolIssuancePolicyBaselineValuesNameConstraints(dict):
                The value can be a hostname or a domain with a
                leading period (like `.example.com`)
         """
-        CaPoolIssuancePolicyBaselineValuesNameConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            excluded_dns_names=excluded_dns_names,
-            excluded_email_addresses=excluded_email_addresses,
-            excluded_ip_ranges=excluded_ip_ranges,
-            excluded_uris=excluded_uris,
-            permitted_dns_names=permitted_dns_names,
-            permitted_email_addresses=permitted_email_addresses,
-            permitted_ip_ranges=permitted_ip_ranges,
-            permitted_uris=permitted_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             excluded_dns_names: Optional[Sequence[str]] = None,
-             excluded_email_addresses: Optional[Sequence[str]] = None,
-             excluded_ip_ranges: Optional[Sequence[str]] = None,
-             excluded_uris: Optional[Sequence[str]] = None,
-             permitted_dns_names: Optional[Sequence[str]] = None,
-             permitted_email_addresses: Optional[Sequence[str]] = None,
-             permitted_ip_ranges: Optional[Sequence[str]] = None,
-             permitted_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if excluded_dns_names is None and 'excludedDnsNames' in kwargs:
-            excluded_dns_names = kwargs['excludedDnsNames']
-        if excluded_email_addresses is None and 'excludedEmailAddresses' in kwargs:
-            excluded_email_addresses = kwargs['excludedEmailAddresses']
-        if excluded_ip_ranges is None and 'excludedIpRanges' in kwargs:
-            excluded_ip_ranges = kwargs['excludedIpRanges']
-        if excluded_uris is None and 'excludedUris' in kwargs:
-            excluded_uris = kwargs['excludedUris']
-        if permitted_dns_names is None and 'permittedDnsNames' in kwargs:
-            permitted_dns_names = kwargs['permittedDnsNames']
-        if permitted_email_addresses is None and 'permittedEmailAddresses' in kwargs:
-            permitted_email_addresses = kwargs['permittedEmailAddresses']
-        if permitted_ip_ranges is None and 'permittedIpRanges' in kwargs:
-            permitted_ip_ranges = kwargs['permittedIpRanges']
-        if permitted_uris is None and 'permittedUris' in kwargs:
-            permitted_uris = kwargs['permittedUris']
-
-        _setter("critical", critical)
+        pulumi.set(__self__, "critical", critical)
         if excluded_dns_names is not None:
-            _setter("excluded_dns_names", excluded_dns_names)
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
         if excluded_email_addresses is not None:
-            _setter("excluded_email_addresses", excluded_email_addresses)
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
         if excluded_ip_ranges is not None:
-            _setter("excluded_ip_ranges", excluded_ip_ranges)
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
         if excluded_uris is not None:
-            _setter("excluded_uris", excluded_uris)
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
         if permitted_dns_names is not None:
-            _setter("permitted_dns_names", permitted_dns_names)
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
         if permitted_email_addresses is not None:
-            _setter("permitted_email_addresses", permitted_email_addresses)
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
         if permitted_ip_ranges is not None:
-            _setter("permitted_ip_ranges", permitted_ip_ranges)
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
         if permitted_uris is not None:
-            _setter("permitted_uris", permitted_uris)
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
 
     @property
     @pulumi.getter
@@ -3623,22 +2783,7 @@ class CaPoolIssuancePolicyBaselineValuesPolicyId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CaPoolIssuancePolicyBaselineValuesPolicyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -3686,35 +2831,10 @@ class CaPoolIssuancePolicyIdentityConstraints(dict):
                see https://cloud.google.com/certificate-authority-service/docs/cel-guide
                Structure is documented below.
         """
-        CaPoolIssuancePolicyIdentityConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_subject_alt_names_passthrough=allow_subject_alt_names_passthrough,
-            allow_subject_passthrough=allow_subject_passthrough,
-            cel_expression=cel_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_subject_alt_names_passthrough: Optional[bool] = None,
-             allow_subject_passthrough: Optional[bool] = None,
-             cel_expression: Optional['outputs.CaPoolIssuancePolicyIdentityConstraintsCelExpression'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_subject_alt_names_passthrough is None and 'allowSubjectAltNamesPassthrough' in kwargs:
-            allow_subject_alt_names_passthrough = kwargs['allowSubjectAltNamesPassthrough']
-        if allow_subject_alt_names_passthrough is None:
-            raise TypeError("Missing 'allow_subject_alt_names_passthrough' argument")
-        if allow_subject_passthrough is None and 'allowSubjectPassthrough' in kwargs:
-            allow_subject_passthrough = kwargs['allowSubjectPassthrough']
-        if allow_subject_passthrough is None:
-            raise TypeError("Missing 'allow_subject_passthrough' argument")
-        if cel_expression is None and 'celExpression' in kwargs:
-            cel_expression = kwargs['celExpression']
-
-        _setter("allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
-        _setter("allow_subject_passthrough", allow_subject_passthrough)
+        pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
+        pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
         if cel_expression is not None:
-            _setter("cel_expression", cel_expression)
+            pulumi.set(__self__, "cel_expression", cel_expression)
 
     @property
     @pulumi.getter(name="allowSubjectAltNamesPassthrough")
@@ -3759,32 +2879,13 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpression(dict):
         :param str location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         :param str title: Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
-        CaPoolIssuancePolicyIdentityConstraintsCelExpression._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             description: Optional[str] = None,
-             location: Optional[str] = None,
-             title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -3859,35 +2960,10 @@ class CaPoolPublishingOptions(dict):
                will be published in PEM.
                Possible values are: `PEM`, `DER`.
         """
-        CaPoolPublishingOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            publish_ca_cert=publish_ca_cert,
-            publish_crl=publish_crl,
-            encoding_format=encoding_format,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             publish_ca_cert: Optional[bool] = None,
-             publish_crl: Optional[bool] = None,
-             encoding_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if publish_ca_cert is None and 'publishCaCert' in kwargs:
-            publish_ca_cert = kwargs['publishCaCert']
-        if publish_ca_cert is None:
-            raise TypeError("Missing 'publish_ca_cert' argument")
-        if publish_crl is None and 'publishCrl' in kwargs:
-            publish_crl = kwargs['publishCrl']
-        if publish_crl is None:
-            raise TypeError("Missing 'publish_crl' argument")
-        if encoding_format is None and 'encodingFormat' in kwargs:
-            encoding_format = kwargs['encodingFormat']
-
-        _setter("publish_ca_cert", publish_ca_cert)
-        _setter("publish_crl", publish_crl)
+        pulumi.set(__self__, "publish_ca_cert", publish_ca_cert)
+        pulumi.set(__self__, "publish_crl", publish_crl)
         if encoding_format is not None:
-            _setter("encoding_format", encoding_format)
+            pulumi.set(__self__, "encoding_format", encoding_format)
 
     @property
     @pulumi.getter(name="publishCaCert")
@@ -3996,69 +3072,24 @@ class CertificateCertificateDescription(dict):
                A structured description of the issued X.509 certificate.
                Structure is documented below.
         """
-        CertificateCertificateDescription._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aia_issuing_certificate_urls=aia_issuing_certificate_urls,
-            authority_key_ids=authority_key_ids,
-            cert_fingerprints=cert_fingerprints,
-            config_values=config_values,
-            crl_distribution_points=crl_distribution_points,
-            public_keys=public_keys,
-            subject_descriptions=subject_descriptions,
-            subject_key_ids=subject_key_ids,
-            x509_descriptions=x509_descriptions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aia_issuing_certificate_urls: Optional[Sequence[str]] = None,
-             authority_key_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionAuthorityKeyId']] = None,
-             cert_fingerprints: Optional[Sequence['outputs.CertificateCertificateDescriptionCertFingerprint']] = None,
-             config_values: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValue']] = None,
-             crl_distribution_points: Optional[Sequence[str]] = None,
-             public_keys: Optional[Sequence['outputs.CertificateCertificateDescriptionPublicKey']] = None,
-             subject_descriptions: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescription']] = None,
-             subject_key_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectKeyId']] = None,
-             x509_descriptions: Optional[Sequence['outputs.CertificateCertificateDescriptionX509Description']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aia_issuing_certificate_urls is None and 'aiaIssuingCertificateUrls' in kwargs:
-            aia_issuing_certificate_urls = kwargs['aiaIssuingCertificateUrls']
-        if authority_key_ids is None and 'authorityKeyIds' in kwargs:
-            authority_key_ids = kwargs['authorityKeyIds']
-        if cert_fingerprints is None and 'certFingerprints' in kwargs:
-            cert_fingerprints = kwargs['certFingerprints']
-        if config_values is None and 'configValues' in kwargs:
-            config_values = kwargs['configValues']
-        if crl_distribution_points is None and 'crlDistributionPoints' in kwargs:
-            crl_distribution_points = kwargs['crlDistributionPoints']
-        if public_keys is None and 'publicKeys' in kwargs:
-            public_keys = kwargs['publicKeys']
-        if subject_descriptions is None and 'subjectDescriptions' in kwargs:
-            subject_descriptions = kwargs['subjectDescriptions']
-        if subject_key_ids is None and 'subjectKeyIds' in kwargs:
-            subject_key_ids = kwargs['subjectKeyIds']
-        if x509_descriptions is None and 'x509Descriptions' in kwargs:
-            x509_descriptions = kwargs['x509Descriptions']
-
         if aia_issuing_certificate_urls is not None:
-            _setter("aia_issuing_certificate_urls", aia_issuing_certificate_urls)
+            pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
         if authority_key_ids is not None:
-            _setter("authority_key_ids", authority_key_ids)
+            pulumi.set(__self__, "authority_key_ids", authority_key_ids)
         if cert_fingerprints is not None:
-            _setter("cert_fingerprints", cert_fingerprints)
+            pulumi.set(__self__, "cert_fingerprints", cert_fingerprints)
         if config_values is not None:
-            _setter("config_values", config_values)
+            pulumi.set(__self__, "config_values", config_values)
         if crl_distribution_points is not None:
-            _setter("crl_distribution_points", crl_distribution_points)
+            pulumi.set(__self__, "crl_distribution_points", crl_distribution_points)
         if public_keys is not None:
-            _setter("public_keys", public_keys)
+            pulumi.set(__self__, "public_keys", public_keys)
         if subject_descriptions is not None:
-            _setter("subject_descriptions", subject_descriptions)
+            pulumi.set(__self__, "subject_descriptions", subject_descriptions)
         if subject_key_ids is not None:
-            _setter("subject_key_ids", subject_key_ids)
+            pulumi.set(__self__, "subject_key_ids", subject_key_ids)
         if x509_descriptions is not None:
-            _setter("x509_descriptions", x509_descriptions)
+            pulumi.set(__self__, "x509_descriptions", x509_descriptions)
 
     @property
     @pulumi.getter(name="aiaIssuingCertificateUrls")
@@ -4179,21 +3210,8 @@ class CertificateCertificateDescriptionAuthorityKeyId(dict):
         :param str key_id: (Output)
                Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
-        CertificateCertificateDescriptionAuthorityKeyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_id=key_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-
         if key_id is not None:
-            _setter("key_id", key_id)
+            pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -4230,21 +3248,8 @@ class CertificateCertificateDescriptionCertFingerprint(dict):
         :param str sha256_hash: (Output)
                The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         """
-        CertificateCertificateDescriptionCertFingerprint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sha256_hash=sha256_hash,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sha256_hash: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sha256_hash is None and 'sha256Hash' in kwargs:
-            sha256_hash = kwargs['sha256Hash']
-
         if sha256_hash is not None:
-            _setter("sha256_hash", sha256_hash)
+            pulumi.set(__self__, "sha256_hash", sha256_hash)
 
     @property
     @pulumi.getter(name="sha256Hash")
@@ -4281,21 +3286,8 @@ class CertificateCertificateDescriptionConfigValue(dict):
         :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageArgs'] key_usages: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionConfigValue._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_usages=key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_usages is None and 'keyUsages' in kwargs:
-            key_usages = kwargs['keyUsages']
-
         if key_usages is not None:
-            _setter("key_usages", key_usages)
+            pulumi.set(__self__, "key_usages", key_usages)
 
     @property
     @pulumi.getter(name="keyUsages")
@@ -4342,33 +3334,12 @@ class CertificateCertificateDescriptionConfigValueKeyUsage(dict):
         :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionConfigValueKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usages=base_key_usages,
-            extended_key_usages=extended_key_usages,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage']] = None,
-             extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage']] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usages is None and 'baseKeyUsages' in kwargs:
-            base_key_usages = kwargs['baseKeyUsages']
-        if extended_key_usages is None and 'extendedKeyUsages' in kwargs:
-            extended_key_usages = kwargs['extendedKeyUsages']
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
         if base_key_usages is not None:
-            _setter("base_key_usages", base_key_usages)
+            pulumi.set(__self__, "base_key_usages", base_key_usages)
         if extended_key_usages is not None:
-            _setter("extended_key_usages", extended_key_usages)
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsages")
@@ -4424,21 +3395,8 @@ class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage(dict):
                Describes high-level ways in which a key may be used.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_usage_options=key_usage_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_usage_options: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_usage_options is None and 'keyUsageOptions' in kwargs:
-            key_usage_options = kwargs['keyUsageOptions']
-
         if key_usage_options is not None:
-            _setter("key_usage_options", key_usage_options)
+            pulumi.set(__self__, "key_usage_options", key_usage_options)
 
     @property
     @pulumi.getter(name="keyUsageOptions")
@@ -4507,69 +3465,24 @@ class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOp
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -4688,51 +3601,18 @@ class CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage(dict)
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -4809,21 +3689,8 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
                Required. Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            obect_ids=obect_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             obect_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if obect_ids is None and 'obectIds' in kwargs:
-            obect_ids = kwargs['obectIds']
-
         if obect_ids is not None:
-            _setter("obect_ids", obect_ids)
+            pulumi.set(__self__, "obect_ids", obect_ids)
 
     @property
     @pulumi.getter(name="obectIds")
@@ -4860,21 +3727,8 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
         if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -4895,23 +3749,10 @@ class CertificateCertificateDescriptionPublicKey(dict):
                Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
         :param str key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
         """
-        CertificateCertificateDescriptionPublicKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            format=format,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             format: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -4978,47 +3819,18 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
         :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs'] subjects: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionSubjectDescription._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hex_serial_number=hex_serial_number,
-            lifetime=lifetime,
-            not_after_time=not_after_time,
-            not_before_time=not_before_time,
-            subject_alt_names=subject_alt_names,
-            subjects=subjects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hex_serial_number: Optional[str] = None,
-             lifetime: Optional[str] = None,
-             not_after_time: Optional[str] = None,
-             not_before_time: Optional[str] = None,
-             subject_alt_names: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName']] = None,
-             subjects: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubject']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hex_serial_number is None and 'hexSerialNumber' in kwargs:
-            hex_serial_number = kwargs['hexSerialNumber']
-        if not_after_time is None and 'notAfterTime' in kwargs:
-            not_after_time = kwargs['notAfterTime']
-        if not_before_time is None and 'notBeforeTime' in kwargs:
-            not_before_time = kwargs['notBeforeTime']
-        if subject_alt_names is None and 'subjectAltNames' in kwargs:
-            subject_alt_names = kwargs['subjectAltNames']
-
         if hex_serial_number is not None:
-            _setter("hex_serial_number", hex_serial_number)
+            pulumi.set(__self__, "hex_serial_number", hex_serial_number)
         if lifetime is not None:
-            _setter("lifetime", lifetime)
+            pulumi.set(__self__, "lifetime", lifetime)
         if not_after_time is not None:
-            _setter("not_after_time", not_after_time)
+            pulumi.set(__self__, "not_after_time", not_after_time)
         if not_before_time is not None:
-            _setter("not_before_time", not_before_time)
+            pulumi.set(__self__, "not_before_time", not_before_time)
         if subject_alt_names is not None:
-            _setter("subject_alt_names", subject_alt_names)
+            pulumi.set(__self__, "subject_alt_names", subject_alt_names)
         if subjects is not None:
-            _setter("subjects", subjects)
+            pulumi.set(__self__, "subjects", subjects)
 
     @property
     @pulumi.getter(name="hexSerialNumber")
@@ -5122,57 +3934,22 @@ class CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
         :param str province: The province, territory, or regional state of the subject.
         :param str street_address: The street address of the subject.
         """
-        CertificateCertificateDescriptionSubjectDescriptionSubject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            common_name=common_name,
-            country_code=country_code,
-            locality=locality,
-            organization=organization,
-            organizational_unit=organizational_unit,
-            postal_code=postal_code,
-            province=province,
-            street_address=street_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             common_name: Optional[str] = None,
-             country_code: Optional[str] = None,
-             locality: Optional[str] = None,
-             organization: Optional[str] = None,
-             organizational_unit: Optional[str] = None,
-             postal_code: Optional[str] = None,
-             province: Optional[str] = None,
-             street_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if country_code is None and 'countryCode' in kwargs:
-            country_code = kwargs['countryCode']
-        if organizational_unit is None and 'organizationalUnit' in kwargs:
-            organizational_unit = kwargs['organizationalUnit']
-        if postal_code is None and 'postalCode' in kwargs:
-            postal_code = kwargs['postalCode']
-        if street_address is None and 'streetAddress' in kwargs:
-            street_address = kwargs['streetAddress']
-
         if common_name is not None:
-            _setter("common_name", common_name)
+            pulumi.set(__self__, "common_name", common_name)
         if country_code is not None:
-            _setter("country_code", country_code)
+            pulumi.set(__self__, "country_code", country_code)
         if locality is not None:
-            _setter("locality", locality)
+            pulumi.set(__self__, "locality", locality)
         if organization is not None:
-            _setter("organization", organization)
+            pulumi.set(__self__, "organization", organization)
         if organizational_unit is not None:
-            _setter("organizational_unit", organizational_unit)
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
         if postal_code is not None:
-            _setter("postal_code", postal_code)
+            pulumi.set(__self__, "postal_code", postal_code)
         if province is not None:
-            _setter("province", province)
+            pulumi.set(__self__, "province", province)
         if street_address is not None:
-            _setter("street_address", street_address)
+            pulumi.set(__self__, "street_address", street_address)
 
     @property
     @pulumi.getter(name="commonName")
@@ -5279,43 +4056,16 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
         :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
         :param Sequence[str] uris: Contains only valid RFC 3986 URIs.
         """
-        CertificateCertificateDescriptionSubjectDescriptionSubjectAltName._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_sans=custom_sans,
-            dns_names=dns_names,
-            email_addresses=email_addresses,
-            ip_addresses=ip_addresses,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_sans: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan']] = None,
-             dns_names: Optional[Sequence[str]] = None,
-             email_addresses: Optional[Sequence[str]] = None,
-             ip_addresses: Optional[Sequence[str]] = None,
-             uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_sans is None and 'customSans' in kwargs:
-            custom_sans = kwargs['customSans']
-        if dns_names is None and 'dnsNames' in kwargs:
-            dns_names = kwargs['dnsNames']
-        if email_addresses is None and 'emailAddresses' in kwargs:
-            email_addresses = kwargs['emailAddresses']
-        if ip_addresses is None and 'ipAddresses' in kwargs:
-            ip_addresses = kwargs['ipAddresses']
-
         if custom_sans is not None:
-            _setter("custom_sans", custom_sans)
+            pulumi.set(__self__, "custom_sans", custom_sans)
         if dns_names is not None:
-            _setter("dns_names", dns_names)
+            pulumi.set(__self__, "dns_names", dns_names)
         if email_addresses is not None:
-            _setter("email_addresses", email_addresses)
+            pulumi.set(__self__, "email_addresses", email_addresses)
         if ip_addresses is not None:
-            _setter("ip_addresses", ip_addresses)
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if uris is not None:
-            _setter("uris", uris)
+            pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="customSans")
@@ -5391,29 +4141,12 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
-        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            obect_ids=obect_ids,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             obect_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId']] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if obect_ids is None and 'obectIds' in kwargs:
-            obect_ids = kwargs['obectIds']
-
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
         if obect_ids is not None:
-            _setter("obect_ids", obect_ids)
+            pulumi.set(__self__, "obect_ids", obect_ids)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -5467,21 +4200,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
         if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -5517,21 +4237,8 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
         :param str key_id: (Output)
                Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
-        CertificateCertificateDescriptionSubjectKeyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_id=key_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-
         if key_id is not None:
-            _setter("key_id", key_id)
+            pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -5593,51 +4300,18 @@ class CertificateCertificateDescriptionX509Description(dict):
         :param Sequence['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionX509Description._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            ca_options=ca_options,
-            key_usages=key_usages,
-            name_constraints=name_constraints,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_extensions: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtension']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             ca_options: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionCaOption']] = None,
-             key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsage']] = None,
-             name_constraints: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionNameConstraint']] = None,
-             policy_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionPolicyId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if key_usages is None and 'keyUsages' in kwargs:
-            key_usages = kwargs['keyUsages']
-        if name_constraints is None and 'nameConstraints' in kwargs:
-            name_constraints = kwargs['nameConstraints']
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
-            _setter("aia_ocsp_servers", aia_ocsp_servers)
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if ca_options is not None:
-            _setter("ca_options", ca_options)
+            pulumi.set(__self__, "ca_options", ca_options)
         if key_usages is not None:
-            _setter("key_usages", key_usages)
+            pulumi.set(__self__, "key_usages", key_usages)
         if name_constraints is not None:
-            _setter("name_constraints", name_constraints)
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
-            _setter("policy_ids", policy_ids)
+            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="additionalExtensions")
@@ -5724,29 +4398,12 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension(dict):
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
-        CertificateCertificateDescriptionX509DescriptionAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            object_ids=object_ids,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             object_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId']] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_ids is None and 'objectIds' in kwargs:
-            object_ids = kwargs['objectIds']
-
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
         if object_ids is not None:
-            _setter("object_ids", object_ids)
+            pulumi.set(__self__, "object_ids", object_ids)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -5799,21 +4456,8 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectI
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
         if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -5853,27 +4497,10 @@ class CertificateCertificateDescriptionX509DescriptionCaOption(dict):
         :param int max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
                subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         """
-        CertificateCertificateDescriptionX509DescriptionCaOption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-
         if is_ca is not None:
-            _setter("is_ca", is_ca)
+            pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
-            _setter("max_issuer_path_length", max_issuer_path_length)
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -5928,33 +4555,12 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage(dict):
         :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
-        CertificateCertificateDescriptionX509DescriptionKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usages=base_key_usages,
-            extended_key_usages=extended_key_usages,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage']] = None,
-             extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage']] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usages is None and 'baseKeyUsages' in kwargs:
-            base_key_usages = kwargs['baseKeyUsages']
-        if extended_key_usages is None and 'extendedKeyUsages' in kwargs:
-            extended_key_usages = kwargs['extendedKeyUsages']
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
         if base_key_usages is not None:
-            _setter("base_key_usages", base_key_usages)
+            pulumi.set(__self__, "base_key_usages", base_key_usages)
         if extended_key_usages is not None:
-            _setter("extended_key_usages", extended_key_usages)
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsages")
@@ -6040,69 +4646,24 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage(dict)
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -6221,51 +4782,18 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage(d
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -6340,21 +4868,8 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
         if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -6443,67 +4958,24 @@ class CertificateCertificateDescriptionX509DescriptionNameConstraint(dict):
                The value can be a hostname or a domain with a
                leading period (like `.example.com`)
         """
-        CertificateCertificateDescriptionX509DescriptionNameConstraint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            excluded_dns_names=excluded_dns_names,
-            excluded_email_addresses=excluded_email_addresses,
-            excluded_ip_ranges=excluded_ip_ranges,
-            excluded_uris=excluded_uris,
-            permitted_dns_names=permitted_dns_names,
-            permitted_email_addresses=permitted_email_addresses,
-            permitted_ip_ranges=permitted_ip_ranges,
-            permitted_uris=permitted_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             excluded_dns_names: Optional[Sequence[str]] = None,
-             excluded_email_addresses: Optional[Sequence[str]] = None,
-             excluded_ip_ranges: Optional[Sequence[str]] = None,
-             excluded_uris: Optional[Sequence[str]] = None,
-             permitted_dns_names: Optional[Sequence[str]] = None,
-             permitted_email_addresses: Optional[Sequence[str]] = None,
-             permitted_ip_ranges: Optional[Sequence[str]] = None,
-             permitted_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if excluded_dns_names is None and 'excludedDnsNames' in kwargs:
-            excluded_dns_names = kwargs['excludedDnsNames']
-        if excluded_email_addresses is None and 'excludedEmailAddresses' in kwargs:
-            excluded_email_addresses = kwargs['excludedEmailAddresses']
-        if excluded_ip_ranges is None and 'excludedIpRanges' in kwargs:
-            excluded_ip_ranges = kwargs['excludedIpRanges']
-        if excluded_uris is None and 'excludedUris' in kwargs:
-            excluded_uris = kwargs['excludedUris']
-        if permitted_dns_names is None and 'permittedDnsNames' in kwargs:
-            permitted_dns_names = kwargs['permittedDnsNames']
-        if permitted_email_addresses is None and 'permittedEmailAddresses' in kwargs:
-            permitted_email_addresses = kwargs['permittedEmailAddresses']
-        if permitted_ip_ranges is None and 'permittedIpRanges' in kwargs:
-            permitted_ip_ranges = kwargs['permittedIpRanges']
-        if permitted_uris is None and 'permittedUris' in kwargs:
-            permitted_uris = kwargs['permittedUris']
-
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
         if excluded_dns_names is not None:
-            _setter("excluded_dns_names", excluded_dns_names)
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
         if excluded_email_addresses is not None:
-            _setter("excluded_email_addresses", excluded_email_addresses)
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
         if excluded_ip_ranges is not None:
-            _setter("excluded_ip_ranges", excluded_ip_ranges)
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
         if excluded_uris is not None:
-            _setter("excluded_uris", excluded_uris)
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
         if permitted_dns_names is not None:
-            _setter("permitted_dns_names", permitted_dns_names)
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
         if permitted_email_addresses is not None:
-            _setter("permitted_email_addresses", permitted_email_addresses)
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
         if permitted_ip_ranges is not None:
-            _setter("permitted_ip_ranges", permitted_ip_ranges)
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
         if permitted_uris is not None:
-            _setter("permitted_uris", permitted_uris)
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
 
     @property
     @pulumi.getter
@@ -6626,21 +5098,8 @@ class CertificateCertificateDescriptionX509DescriptionPolicyId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateCertificateDescriptionX509DescriptionPolicyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-
         if object_id_paths is not None:
-            _setter("object_id_paths", object_id_paths)
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -6689,36 +5148,9 @@ class CertificateConfig(dict):
         :param 'CertificateConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
-        CertificateConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_key=public_key,
-            subject_config=subject_config,
-            x509_config=x509_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_key: Optional['outputs.CertificateConfigPublicKey'] = None,
-             subject_config: Optional['outputs.CertificateConfigSubjectConfig'] = None,
-             x509_config: Optional['outputs.CertificateConfigX509Config'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if public_key is None:
-            raise TypeError("Missing 'public_key' argument")
-        if subject_config is None and 'subjectConfig' in kwargs:
-            subject_config = kwargs['subjectConfig']
-        if subject_config is None:
-            raise TypeError("Missing 'subject_config' argument")
-        if x509_config is None and 'x509Config' in kwargs:
-            x509_config = kwargs['x509Config']
-        if x509_config is None:
-            raise TypeError("Missing 'x509_config' argument")
-
-        _setter("public_key", public_key)
-        _setter("subject_config", subject_config)
-        _setter("x509_config", x509_config)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "subject_config", subject_config)
+        pulumi.set(__self__, "x509_config", x509_config)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -6761,24 +5193,9 @@ class CertificateConfigPublicKey(dict):
                Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
         :param str key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
         """
-        CertificateConfigPublicKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            format=format,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             format: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if format is None:
-            raise TypeError("Missing 'format' argument")
-
-        _setter("format", format)
+        pulumi.set(__self__, "format", format)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -6826,26 +5243,9 @@ class CertificateConfigSubjectConfig(dict):
         :param 'CertificateConfigSubjectConfigSubjectAltNameArgs' subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
-        CertificateConfigSubjectConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject=subject,
-            subject_alt_name=subject_alt_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject: Optional['outputs.CertificateConfigSubjectConfigSubject'] = None,
-             subject_alt_name: Optional['outputs.CertificateConfigSubjectConfigSubjectAltName'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject is None:
-            raise TypeError("Missing 'subject' argument")
-        if subject_alt_name is None and 'subjectAltName' in kwargs:
-            subject_alt_name = kwargs['subjectAltName']
-
-        _setter("subject", subject)
+        pulumi.set(__self__, "subject", subject)
         if subject_alt_name is not None:
-            _setter("subject_alt_name", subject_alt_name)
+            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
 
     @property
     @pulumi.getter
@@ -6912,59 +5312,20 @@ class CertificateConfigSubjectConfigSubject(dict):
         :param str province: The province, territory, or regional state of the subject.
         :param str street_address: The street address of the subject.
         """
-        CertificateConfigSubjectConfigSubject._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            common_name=common_name,
-            organization=organization,
-            country_code=country_code,
-            locality=locality,
-            organizational_unit=organizational_unit,
-            postal_code=postal_code,
-            province=province,
-            street_address=street_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             common_name: Optional[str] = None,
-             organization: Optional[str] = None,
-             country_code: Optional[str] = None,
-             locality: Optional[str] = None,
-             organizational_unit: Optional[str] = None,
-             postal_code: Optional[str] = None,
-             province: Optional[str] = None,
-             street_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if common_name is None:
-            raise TypeError("Missing 'common_name' argument")
-        if organization is None:
-            raise TypeError("Missing 'organization' argument")
-        if country_code is None and 'countryCode' in kwargs:
-            country_code = kwargs['countryCode']
-        if organizational_unit is None and 'organizationalUnit' in kwargs:
-            organizational_unit = kwargs['organizationalUnit']
-        if postal_code is None and 'postalCode' in kwargs:
-            postal_code = kwargs['postalCode']
-        if street_address is None and 'streetAddress' in kwargs:
-            street_address = kwargs['streetAddress']
-
-        _setter("common_name", common_name)
-        _setter("organization", organization)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "organization", organization)
         if country_code is not None:
-            _setter("country_code", country_code)
+            pulumi.set(__self__, "country_code", country_code)
         if locality is not None:
-            _setter("locality", locality)
+            pulumi.set(__self__, "locality", locality)
         if organizational_unit is not None:
-            _setter("organizational_unit", organizational_unit)
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
         if postal_code is not None:
-            _setter("postal_code", postal_code)
+            pulumi.set(__self__, "postal_code", postal_code)
         if province is not None:
-            _setter("province", province)
+            pulumi.set(__self__, "province", province)
         if street_address is not None:
-            _setter("street_address", street_address)
+            pulumi.set(__self__, "street_address", street_address)
 
     @property
     @pulumi.getter(name="commonName")
@@ -7065,37 +5426,14 @@ class CertificateConfigSubjectConfigSubjectAltName(dict):
         :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
         :param Sequence[str] uris: Contains only valid RFC 3986 URIs.
         """
-        CertificateConfigSubjectConfigSubjectAltName._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_names=dns_names,
-            email_addresses=email_addresses,
-            ip_addresses=ip_addresses,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_names: Optional[Sequence[str]] = None,
-             email_addresses: Optional[Sequence[str]] = None,
-             ip_addresses: Optional[Sequence[str]] = None,
-             uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_names is None and 'dnsNames' in kwargs:
-            dns_names = kwargs['dnsNames']
-        if email_addresses is None and 'emailAddresses' in kwargs:
-            email_addresses = kwargs['emailAddresses']
-        if ip_addresses is None and 'ipAddresses' in kwargs:
-            ip_addresses = kwargs['ipAddresses']
-
         if dns_names is not None:
-            _setter("dns_names", dns_names)
+            pulumi.set(__self__, "dns_names", dns_names)
         if email_addresses is not None:
-            _setter("email_addresses", email_addresses)
+            pulumi.set(__self__, "email_addresses", email_addresses)
         if ip_addresses is not None:
-            _setter("ip_addresses", ip_addresses)
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if uris is not None:
-            _setter("uris", uris)
+            pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="dnsNames")
@@ -7180,52 +5518,17 @@ class CertificateConfigX509Config(dict):
         :param Sequence['CertificateConfigX509ConfigPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
-        CertificateConfigX509Config._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_usage=key_usage,
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            ca_options=ca_options,
-            name_constraints=name_constraints,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_usage: Optional['outputs.CertificateConfigX509ConfigKeyUsage'] = None,
-             additional_extensions: Optional[Sequence['outputs.CertificateConfigX509ConfigAdditionalExtension']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             ca_options: Optional['outputs.CertificateConfigX509ConfigCaOptions'] = None,
-             name_constraints: Optional['outputs.CertificateConfigX509ConfigNameConstraints'] = None,
-             policy_ids: Optional[Sequence['outputs.CertificateConfigX509ConfigPolicyId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_usage is None and 'keyUsage' in kwargs:
-            key_usage = kwargs['keyUsage']
-        if key_usage is None:
-            raise TypeError("Missing 'key_usage' argument")
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if name_constraints is None and 'nameConstraints' in kwargs:
-            name_constraints = kwargs['nameConstraints']
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-
-        _setter("key_usage", key_usage)
+        pulumi.set(__self__, "key_usage", key_usage)
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
-            _setter("aia_ocsp_servers", aia_ocsp_servers)
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if ca_options is not None:
-            _setter("ca_options", ca_options)
+            pulumi.set(__self__, "ca_options", ca_options)
         if name_constraints is not None:
-            _setter("name_constraints", name_constraints)
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
-            _setter("policy_ids", policy_ids)
+            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="keyUsage")
@@ -7312,32 +5615,9 @@ class CertificateConfigX509ConfigAdditionalExtension(dict):
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
-        CertificateConfigX509ConfigAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            object_id=object_id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             object_id: Optional['outputs.CertificateConfigX509ConfigAdditionalExtensionObjectId'] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("critical", critical)
-        _setter("object_id", object_id)
-        _setter("value", value)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7390,22 +5670,7 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateConfigX509ConfigAdditionalExtensionObjectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -7456,39 +5721,14 @@ class CertificateConfigX509ConfigCaOptions(dict):
                if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
                the max path length will be omitted from the CA certificate.
         """
-        CertificateConfigX509ConfigCaOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-            non_ca=non_ca,
-            zero_max_issuer_path_length=zero_max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             non_ca: Optional[bool] = None,
-             zero_max_issuer_path_length: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-        if non_ca is None and 'nonCa' in kwargs:
-            non_ca = kwargs['nonCa']
-        if zero_max_issuer_path_length is None and 'zeroMaxIssuerPathLength' in kwargs:
-            zero_max_issuer_path_length = kwargs['zeroMaxIssuerPathLength']
-
         if is_ca is not None:
-            _setter("is_ca", is_ca)
+            pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
-            _setter("max_issuer_path_length", max_issuer_path_length)
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
         if non_ca is not None:
-            _setter("non_ca", non_ca)
+            pulumi.set(__self__, "non_ca", non_ca)
         if zero_max_issuer_path_length is not None:
-            _setter("zero_max_issuer_path_length", zero_max_issuer_path_length)
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -7562,35 +5802,10 @@ class CertificateConfigX509ConfigKeyUsage(dict):
         :param Sequence['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
-        CertificateConfigX509ConfigKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usage=base_key_usage,
-            extended_key_usage=extended_key_usage,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usage: Optional['outputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsage'] = None,
-             extended_key_usage: Optional['outputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsage'] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usage is None and 'baseKeyUsage' in kwargs:
-            base_key_usage = kwargs['baseKeyUsage']
-        if base_key_usage is None:
-            raise TypeError("Missing 'base_key_usage' argument")
-        if extended_key_usage is None and 'extendedKeyUsage' in kwargs:
-            extended_key_usage = kwargs['extendedKeyUsage']
-        if extended_key_usage is None:
-            raise TypeError("Missing 'extended_key_usage' argument")
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
-        _setter("base_key_usage", base_key_usage)
-        _setter("extended_key_usage", extended_key_usage)
+        pulumi.set(__self__, "base_key_usage", base_key_usage)
+        pulumi.set(__self__, "extended_key_usage", extended_key_usage)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsage")
@@ -7676,69 +5891,24 @@ class CertificateConfigX509ConfigKeyUsageBaseKeyUsage(dict):
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        CertificateConfigX509ConfigKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -7857,51 +6027,18 @@ class CertificateConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        CertificateConfigX509ConfigKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -7976,22 +6113,7 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -8080,68 +6202,23 @@ class CertificateConfigX509ConfigNameConstraints(dict):
                The value can be a hostname or a domain with a
                leading period (like `.example.com`)
         """
-        CertificateConfigX509ConfigNameConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            excluded_dns_names=excluded_dns_names,
-            excluded_email_addresses=excluded_email_addresses,
-            excluded_ip_ranges=excluded_ip_ranges,
-            excluded_uris=excluded_uris,
-            permitted_dns_names=permitted_dns_names,
-            permitted_email_addresses=permitted_email_addresses,
-            permitted_ip_ranges=permitted_ip_ranges,
-            permitted_uris=permitted_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             excluded_dns_names: Optional[Sequence[str]] = None,
-             excluded_email_addresses: Optional[Sequence[str]] = None,
-             excluded_ip_ranges: Optional[Sequence[str]] = None,
-             excluded_uris: Optional[Sequence[str]] = None,
-             permitted_dns_names: Optional[Sequence[str]] = None,
-             permitted_email_addresses: Optional[Sequence[str]] = None,
-             permitted_ip_ranges: Optional[Sequence[str]] = None,
-             permitted_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if excluded_dns_names is None and 'excludedDnsNames' in kwargs:
-            excluded_dns_names = kwargs['excludedDnsNames']
-        if excluded_email_addresses is None and 'excludedEmailAddresses' in kwargs:
-            excluded_email_addresses = kwargs['excludedEmailAddresses']
-        if excluded_ip_ranges is None and 'excludedIpRanges' in kwargs:
-            excluded_ip_ranges = kwargs['excludedIpRanges']
-        if excluded_uris is None and 'excludedUris' in kwargs:
-            excluded_uris = kwargs['excludedUris']
-        if permitted_dns_names is None and 'permittedDnsNames' in kwargs:
-            permitted_dns_names = kwargs['permittedDnsNames']
-        if permitted_email_addresses is None and 'permittedEmailAddresses' in kwargs:
-            permitted_email_addresses = kwargs['permittedEmailAddresses']
-        if permitted_ip_ranges is None and 'permittedIpRanges' in kwargs:
-            permitted_ip_ranges = kwargs['permittedIpRanges']
-        if permitted_uris is None and 'permittedUris' in kwargs:
-            permitted_uris = kwargs['permittedUris']
-
-        _setter("critical", critical)
+        pulumi.set(__self__, "critical", critical)
         if excluded_dns_names is not None:
-            _setter("excluded_dns_names", excluded_dns_names)
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
         if excluded_email_addresses is not None:
-            _setter("excluded_email_addresses", excluded_email_addresses)
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
         if excluded_ip_ranges is not None:
-            _setter("excluded_ip_ranges", excluded_ip_ranges)
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
         if excluded_uris is not None:
-            _setter("excluded_uris", excluded_uris)
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
         if permitted_dns_names is not None:
-            _setter("permitted_dns_names", permitted_dns_names)
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
         if permitted_email_addresses is not None:
-            _setter("permitted_email_addresses", permitted_email_addresses)
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
         if permitted_ip_ranges is not None:
-            _setter("permitted_ip_ranges", permitted_ip_ranges)
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
         if permitted_uris is not None:
-            _setter("permitted_uris", permitted_uris)
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
 
     @property
     @pulumi.getter
@@ -8264,22 +6341,7 @@ class CertificateConfigX509ConfigPolicyId(dict):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
-        CertificateConfigX509ConfigPolicyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -8320,27 +6382,10 @@ class CertificateRevocationDetail(dict):
         :param str revocation_time: (Output)
                The time at which this Certificate was revoked.
         """
-        CertificateRevocationDetail._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            revocation_state=revocation_state,
-            revocation_time=revocation_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             revocation_state: Optional[str] = None,
-             revocation_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if revocation_state is None and 'revocationState' in kwargs:
-            revocation_state = kwargs['revocationState']
-        if revocation_time is None and 'revocationTime' in kwargs:
-            revocation_time = kwargs['revocationTime']
-
         if revocation_state is not None:
-            _setter("revocation_state", revocation_state)
+            pulumi.set(__self__, "revocation_state", revocation_state)
         if revocation_time is not None:
-            _setter("revocation_time", revocation_time)
+            pulumi.set(__self__, "revocation_time", revocation_time)
 
     @property
     @pulumi.getter(name="revocationState")
@@ -8371,29 +6416,10 @@ class CertificateTemplateIamBindingCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        CertificateTemplateIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -8427,29 +6453,10 @@ class CertificateTemplateIamMemberCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        CertificateTemplateIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -8505,35 +6512,10 @@ class CertificateTemplateIdentityConstraints(dict):
         :param bool allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
         :param 'CertificateTemplateIdentityConstraintsCelExpressionArgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
         """
-        CertificateTemplateIdentityConstraints._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_subject_alt_names_passthrough=allow_subject_alt_names_passthrough,
-            allow_subject_passthrough=allow_subject_passthrough,
-            cel_expression=cel_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_subject_alt_names_passthrough: Optional[bool] = None,
-             allow_subject_passthrough: Optional[bool] = None,
-             cel_expression: Optional['outputs.CertificateTemplateIdentityConstraintsCelExpression'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_subject_alt_names_passthrough is None and 'allowSubjectAltNamesPassthrough' in kwargs:
-            allow_subject_alt_names_passthrough = kwargs['allowSubjectAltNamesPassthrough']
-        if allow_subject_alt_names_passthrough is None:
-            raise TypeError("Missing 'allow_subject_alt_names_passthrough' argument")
-        if allow_subject_passthrough is None and 'allowSubjectPassthrough' in kwargs:
-            allow_subject_passthrough = kwargs['allowSubjectPassthrough']
-        if allow_subject_passthrough is None:
-            raise TypeError("Missing 'allow_subject_passthrough' argument")
-        if cel_expression is None and 'celExpression' in kwargs:
-            cel_expression = kwargs['celExpression']
-
-        _setter("allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
-        _setter("allow_subject_passthrough", allow_subject_passthrough)
+        pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
+        pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
         if cel_expression is not None:
-            _setter("cel_expression", cel_expression)
+            pulumi.set(__self__, "cel_expression", cel_expression)
 
     @property
     @pulumi.getter(name="allowSubjectAltNamesPassthrough")
@@ -8573,31 +6555,14 @@ class CertificateTemplateIdentityConstraintsCelExpression(dict):
         :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
-        CertificateTemplateIdentityConstraintsCelExpression._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            expression=expression,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             expression: Optional[str] = None,
-             location: Optional[str] = None,
-             title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expression is not None:
-            _setter("expression", expression)
+            pulumi.set(__self__, "expression", expression)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -8660,27 +6625,10 @@ class CertificateTemplatePassthroughExtensions(dict):
         :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         :param Sequence[str] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
         """
-        CertificateTemplatePassthroughExtensions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_extensions=additional_extensions,
-            known_extensions=known_extensions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_extensions: Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']] = None,
-             known_extensions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if known_extensions is None and 'knownExtensions' in kwargs:
-            known_extensions = kwargs['knownExtensions']
-
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if known_extensions is not None:
-            _setter("known_extensions", known_extensions)
+            pulumi.set(__self__, "known_extensions", known_extensions)
 
     @property
     @pulumi.getter(name="additionalExtensions")
@@ -8723,22 +6671,7 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtension(dict):
         """
         :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
         """
-        CertificateTemplatePassthroughExtensionsAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -8789,45 +6722,16 @@ class CertificateTemplatePredefinedValues(dict):
         :param 'CertificateTemplatePredefinedValuesKeyUsageArgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
         :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         """
-        CertificateTemplatePredefinedValues._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            ca_options=ca_options,
-            key_usage=key_usage,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_extensions: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesAdditionalExtension']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             ca_options: Optional['outputs.CertificateTemplatePredefinedValuesCaOptions'] = None,
-             key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsage'] = None,
-             policy_ids: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if key_usage is None and 'keyUsage' in kwargs:
-            key_usage = kwargs['keyUsage']
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-
         if additional_extensions is not None:
-            _setter("additional_extensions", additional_extensions)
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
-            _setter("aia_ocsp_servers", aia_ocsp_servers)
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if ca_options is not None:
-            _setter("ca_options", ca_options)
+            pulumi.set(__self__, "ca_options", ca_options)
         if key_usage is not None:
-            _setter("key_usage", key_usage)
+            pulumi.set(__self__, "key_usage", key_usage)
         if policy_ids is not None:
-            _setter("policy_ids", policy_ids)
+            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="additionalExtensions")
@@ -8898,31 +6802,10 @@ class CertificateTemplatePredefinedValuesAdditionalExtension(dict):
         :param str value: Required. The value of this X.509 extension.
         :param bool critical: Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
-        CertificateTemplatePredefinedValuesAdditionalExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id=object_id,
-            value=value,
-            critical=critical,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id: Optional['outputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectId'] = None,
-             value: Optional[str] = None,
-             critical: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("object_id", object_id)
-        _setter("value", value)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
 
     @property
     @pulumi.getter(name="objectId")
@@ -8975,22 +6858,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
                
                - - -
         """
-        CertificateTemplatePredefinedValuesAdditionalExtensionObjectId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -9031,27 +6899,10 @@ class CertificateTemplatePredefinedValuesCaOptions(dict):
         :param bool is_ca: Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
         :param int max_issuer_path_length: Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this value is missing, the max path length will be omitted from the CA certificate.
         """
-        CertificateTemplatePredefinedValuesCaOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-
         if is_ca is not None:
-            _setter("is_ca", is_ca)
+            pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
-            _setter("max_issuer_path_length", max_issuer_path_length)
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -9102,33 +6953,12 @@ class CertificateTemplatePredefinedValuesKeyUsage(dict):
         :param 'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs' extended_key_usage: Detailed scenarios in which a key may be used.
         :param Sequence['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
         """
-        CertificateTemplatePredefinedValuesKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usage=base_key_usage,
-            extended_key_usage=extended_key_usage,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage'] = None,
-             extended_key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage'] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usage is None and 'baseKeyUsage' in kwargs:
-            base_key_usage = kwargs['baseKeyUsage']
-        if extended_key_usage is None and 'extendedKeyUsage' in kwargs:
-            extended_key_usage = kwargs['extendedKeyUsage']
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-
         if base_key_usage is not None:
-            _setter("base_key_usage", base_key_usage)
+            pulumi.set(__self__, "base_key_usage", base_key_usage)
         if extended_key_usage is not None:
-            _setter("extended_key_usage", extended_key_usage)
+            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
         if unknown_extended_key_usages is not None:
-            _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsage")
@@ -9211,69 +7041,24 @@ class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage(dict):
         :param bool key_agreement: The key may be used in a key agreement protocol.
         :param bool key_encipherment: The key may be used to encipher other keys.
         """
-        CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-
         if cert_sign is not None:
-            _setter("cert_sign", cert_sign)
+            pulumi.set(__self__, "cert_sign", cert_sign)
         if content_commitment is not None:
-            _setter("content_commitment", content_commitment)
+            pulumi.set(__self__, "content_commitment", content_commitment)
         if crl_sign is not None:
-            _setter("crl_sign", crl_sign)
+            pulumi.set(__self__, "crl_sign", crl_sign)
         if data_encipherment is not None:
-            _setter("data_encipherment", data_encipherment)
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
         if decipher_only is not None:
-            _setter("decipher_only", decipher_only)
+            pulumi.set(__self__, "decipher_only", decipher_only)
         if digital_signature is not None:
-            _setter("digital_signature", digital_signature)
+            pulumi.set(__self__, "digital_signature", digital_signature)
         if encipher_only is not None:
-            _setter("encipher_only", encipher_only)
+            pulumi.set(__self__, "encipher_only", encipher_only)
         if key_agreement is not None:
-            _setter("key_agreement", key_agreement)
+            pulumi.set(__self__, "key_agreement", key_agreement)
         if key_encipherment is not None:
-            _setter("key_encipherment", key_encipherment)
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -9392,51 +7177,18 @@ class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage(dict):
         :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
         :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
         """
-        CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-
         if client_auth is not None:
-            _setter("client_auth", client_auth)
+            pulumi.set(__self__, "client_auth", client_auth)
         if code_signing is not None:
-            _setter("code_signing", code_signing)
+            pulumi.set(__self__, "code_signing", code_signing)
         if email_protection is not None:
-            _setter("email_protection", email_protection)
+            pulumi.set(__self__, "email_protection", email_protection)
         if ocsp_signing is not None:
-            _setter("ocsp_signing", ocsp_signing)
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
         if server_auth is not None:
-            _setter("server_auth", server_auth)
+            pulumi.set(__self__, "server_auth", server_auth)
         if time_stamping is not None:
-            _setter("time_stamping", time_stamping)
+            pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -9511,22 +7263,7 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
         """
         :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
         """
-        CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -9561,22 +7298,7 @@ class CertificateTemplatePredefinedValuesPolicyId(dict):
         """
         :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
         """
-        CertificateTemplatePredefinedValuesPolicyId._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -9592,29 +7314,8 @@ class GetAuthorityAccessUrlResult(dict):
     def __init__(__self__, *,
                  ca_certificate_access_url: str,
                  crl_access_urls: Sequence[str]):
-        GetAuthorityAccessUrlResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_certificate_access_url=ca_certificate_access_url,
-            crl_access_urls=crl_access_urls,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_certificate_access_url: Optional[str] = None,
-             crl_access_urls: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_certificate_access_url is None and 'caCertificateAccessUrl' in kwargs:
-            ca_certificate_access_url = kwargs['caCertificateAccessUrl']
-        if ca_certificate_access_url is None:
-            raise TypeError("Missing 'ca_certificate_access_url' argument")
-        if crl_access_urls is None and 'crlAccessUrls' in kwargs:
-            crl_access_urls = kwargs['crlAccessUrls']
-        if crl_access_urls is None:
-            raise TypeError("Missing 'crl_access_urls' argument")
-
-        _setter("ca_certificate_access_url", ca_certificate_access_url)
-        _setter("crl_access_urls", crl_access_urls)
+        pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
+        pulumi.set(__self__, "crl_access_urls", crl_access_urls)
 
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
@@ -9632,29 +7333,8 @@ class GetAuthorityConfigResult(dict):
     def __init__(__self__, *,
                  subject_configs: Sequence['outputs.GetAuthorityConfigSubjectConfigResult'],
                  x509_configs: Sequence['outputs.GetAuthorityConfigX509ConfigResult']):
-        GetAuthorityConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_configs=subject_configs,
-            x509_configs=x509_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_configs: Optional[Sequence['outputs.GetAuthorityConfigSubjectConfigResult']] = None,
-             x509_configs: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_configs is None and 'subjectConfigs' in kwargs:
-            subject_configs = kwargs['subjectConfigs']
-        if subject_configs is None:
-            raise TypeError("Missing 'subject_configs' argument")
-        if x509_configs is None and 'x509Configs' in kwargs:
-            x509_configs = kwargs['x509Configs']
-        if x509_configs is None:
-            raise TypeError("Missing 'x509_configs' argument")
-
-        _setter("subject_configs", subject_configs)
-        _setter("x509_configs", x509_configs)
+        pulumi.set(__self__, "subject_configs", subject_configs)
+        pulumi.set(__self__, "x509_configs", x509_configs)
 
     @property
     @pulumi.getter(name="subjectConfigs")
@@ -9672,27 +7352,8 @@ class GetAuthorityConfigSubjectConfigResult(dict):
     def __init__(__self__, *,
                  subject_alt_names: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult'],
                  subjects: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']):
-        GetAuthorityConfigSubjectConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_alt_names=subject_alt_names,
-            subjects=subjects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_alt_names: Optional[Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult']] = None,
-             subjects: Optional[Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_alt_names is None and 'subjectAltNames' in kwargs:
-            subject_alt_names = kwargs['subjectAltNames']
-        if subject_alt_names is None:
-            raise TypeError("Missing 'subject_alt_names' argument")
-        if subjects is None:
-            raise TypeError("Missing 'subjects' argument")
-
-        _setter("subject_alt_names", subject_alt_names)
-        _setter("subjects", subjects)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+        pulumi.set(__self__, "subjects", subjects)
 
     @property
     @pulumi.getter(name="subjectAltNames")
@@ -9716,65 +7377,14 @@ class GetAuthorityConfigSubjectConfigSubjectResult(dict):
                  postal_code: str,
                  province: str,
                  street_address: str):
-        GetAuthorityConfigSubjectConfigSubjectResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            common_name=common_name,
-            country_code=country_code,
-            locality=locality,
-            organization=organization,
-            organizational_unit=organizational_unit,
-            postal_code=postal_code,
-            province=province,
-            street_address=street_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             common_name: Optional[str] = None,
-             country_code: Optional[str] = None,
-             locality: Optional[str] = None,
-             organization: Optional[str] = None,
-             organizational_unit: Optional[str] = None,
-             postal_code: Optional[str] = None,
-             province: Optional[str] = None,
-             street_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if common_name is None:
-            raise TypeError("Missing 'common_name' argument")
-        if country_code is None and 'countryCode' in kwargs:
-            country_code = kwargs['countryCode']
-        if country_code is None:
-            raise TypeError("Missing 'country_code' argument")
-        if locality is None:
-            raise TypeError("Missing 'locality' argument")
-        if organization is None:
-            raise TypeError("Missing 'organization' argument")
-        if organizational_unit is None and 'organizationalUnit' in kwargs:
-            organizational_unit = kwargs['organizationalUnit']
-        if organizational_unit is None:
-            raise TypeError("Missing 'organizational_unit' argument")
-        if postal_code is None and 'postalCode' in kwargs:
-            postal_code = kwargs['postalCode']
-        if postal_code is None:
-            raise TypeError("Missing 'postal_code' argument")
-        if province is None:
-            raise TypeError("Missing 'province' argument")
-        if street_address is None and 'streetAddress' in kwargs:
-            street_address = kwargs['streetAddress']
-        if street_address is None:
-            raise TypeError("Missing 'street_address' argument")
-
-        _setter("common_name", common_name)
-        _setter("country_code", country_code)
-        _setter("locality", locality)
-        _setter("organization", organization)
-        _setter("organizational_unit", organizational_unit)
-        _setter("postal_code", postal_code)
-        _setter("province", province)
-        _setter("street_address", street_address)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "country_code", country_code)
+        pulumi.set(__self__, "locality", locality)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "organizational_unit", organizational_unit)
+        pulumi.set(__self__, "postal_code", postal_code)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "street_address", street_address)
 
     @property
     @pulumi.getter(name="commonName")
@@ -9824,41 +7434,10 @@ class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
                  email_addresses: Sequence[str],
                  ip_addresses: Sequence[str],
                  uris: Sequence[str]):
-        GetAuthorityConfigSubjectConfigSubjectAltNameResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_names=dns_names,
-            email_addresses=email_addresses,
-            ip_addresses=ip_addresses,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_names: Optional[Sequence[str]] = None,
-             email_addresses: Optional[Sequence[str]] = None,
-             ip_addresses: Optional[Sequence[str]] = None,
-             uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_names is None and 'dnsNames' in kwargs:
-            dns_names = kwargs['dnsNames']
-        if dns_names is None:
-            raise TypeError("Missing 'dns_names' argument")
-        if email_addresses is None and 'emailAddresses' in kwargs:
-            email_addresses = kwargs['emailAddresses']
-        if email_addresses is None:
-            raise TypeError("Missing 'email_addresses' argument")
-        if ip_addresses is None and 'ipAddresses' in kwargs:
-            ip_addresses = kwargs['ipAddresses']
-        if ip_addresses is None:
-            raise TypeError("Missing 'ip_addresses' argument")
-        if uris is None:
-            raise TypeError("Missing 'uris' argument")
-
-        _setter("dns_names", dns_names)
-        _setter("email_addresses", email_addresses)
-        _setter("ip_addresses", ip_addresses)
-        _setter("uris", uris)
+        pulumi.set(__self__, "dns_names", dns_names)
+        pulumi.set(__self__, "email_addresses", email_addresses)
+        pulumi.set(__self__, "ip_addresses", ip_addresses)
+        pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="dnsNames")
@@ -9890,57 +7469,12 @@ class GetAuthorityConfigX509ConfigResult(dict):
                  key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult'],
                  name_constraints: Sequence['outputs.GetAuthorityConfigX509ConfigNameConstraintResult'],
                  policy_ids: Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']):
-        GetAuthorityConfigX509ConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_extensions=additional_extensions,
-            aia_ocsp_servers=aia_ocsp_servers,
-            ca_options=ca_options,
-            key_usages=key_usages,
-            name_constraints=name_constraints,
-            policy_ids=policy_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_extensions: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionResult']] = None,
-             aia_ocsp_servers: Optional[Sequence[str]] = None,
-             ca_options: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigCaOptionResult']] = None,
-             key_usages: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult']] = None,
-             name_constraints: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigNameConstraintResult']] = None,
-             policy_ids: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_extensions is None and 'additionalExtensions' in kwargs:
-            additional_extensions = kwargs['additionalExtensions']
-        if additional_extensions is None:
-            raise TypeError("Missing 'additional_extensions' argument")
-        if aia_ocsp_servers is None and 'aiaOcspServers' in kwargs:
-            aia_ocsp_servers = kwargs['aiaOcspServers']
-        if aia_ocsp_servers is None:
-            raise TypeError("Missing 'aia_ocsp_servers' argument")
-        if ca_options is None and 'caOptions' in kwargs:
-            ca_options = kwargs['caOptions']
-        if ca_options is None:
-            raise TypeError("Missing 'ca_options' argument")
-        if key_usages is None and 'keyUsages' in kwargs:
-            key_usages = kwargs['keyUsages']
-        if key_usages is None:
-            raise TypeError("Missing 'key_usages' argument")
-        if name_constraints is None and 'nameConstraints' in kwargs:
-            name_constraints = kwargs['nameConstraints']
-        if name_constraints is None:
-            raise TypeError("Missing 'name_constraints' argument")
-        if policy_ids is None and 'policyIds' in kwargs:
-            policy_ids = kwargs['policyIds']
-        if policy_ids is None:
-            raise TypeError("Missing 'policy_ids' argument")
-
-        _setter("additional_extensions", additional_extensions)
-        _setter("aia_ocsp_servers", aia_ocsp_servers)
-        _setter("ca_options", ca_options)
-        _setter("key_usages", key_usages)
-        _setter("name_constraints", name_constraints)
-        _setter("policy_ids", policy_ids)
+        pulumi.set(__self__, "additional_extensions", additional_extensions)
+        pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        pulumi.set(__self__, "ca_options", ca_options)
+        pulumi.set(__self__, "key_usages", key_usages)
+        pulumi.set(__self__, "name_constraints", name_constraints)
+        pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="additionalExtensions")
@@ -9979,32 +7513,9 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
                  critical: bool,
                  object_ids: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult'],
                  value: str):
-        GetAuthorityConfigX509ConfigAdditionalExtensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            object_ids=object_ids,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             object_ids: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult']] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if object_ids is None and 'objectIds' in kwargs:
-            object_ids = kwargs['objectIds']
-        if object_ids is None:
-            raise TypeError("Missing 'object_ids' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("critical", critical)
-        _setter("object_ids", object_ids)
-        _setter("value", value)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_ids", object_ids)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10026,22 +7537,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
 class GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
-        GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -10056,43 +7552,10 @@ class GetAuthorityConfigX509ConfigCaOptionResult(dict):
                  max_issuer_path_length: int,
                  non_ca: bool,
                  zero_max_issuer_path_length: bool):
-        GetAuthorityConfigX509ConfigCaOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ca=is_ca,
-            max_issuer_path_length=max_issuer_path_length,
-            non_ca=non_ca,
-            zero_max_issuer_path_length=zero_max_issuer_path_length,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ca: Optional[bool] = None,
-             max_issuer_path_length: Optional[int] = None,
-             non_ca: Optional[bool] = None,
-             zero_max_issuer_path_length: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ca is None and 'isCa' in kwargs:
-            is_ca = kwargs['isCa']
-        if is_ca is None:
-            raise TypeError("Missing 'is_ca' argument")
-        if max_issuer_path_length is None and 'maxIssuerPathLength' in kwargs:
-            max_issuer_path_length = kwargs['maxIssuerPathLength']
-        if max_issuer_path_length is None:
-            raise TypeError("Missing 'max_issuer_path_length' argument")
-        if non_ca is None and 'nonCa' in kwargs:
-            non_ca = kwargs['nonCa']
-        if non_ca is None:
-            raise TypeError("Missing 'non_ca' argument")
-        if zero_max_issuer_path_length is None and 'zeroMaxIssuerPathLength' in kwargs:
-            zero_max_issuer_path_length = kwargs['zeroMaxIssuerPathLength']
-        if zero_max_issuer_path_length is None:
-            raise TypeError("Missing 'zero_max_issuer_path_length' argument")
-
-        _setter("is_ca", is_ca)
-        _setter("max_issuer_path_length", max_issuer_path_length)
-        _setter("non_ca", non_ca)
-        _setter("zero_max_issuer_path_length", zero_max_issuer_path_length)
+        pulumi.set(__self__, "is_ca", is_ca)
+        pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        pulumi.set(__self__, "non_ca", non_ca)
+        pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
@@ -10121,36 +7584,9 @@ class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
                  base_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult'],
                  extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult'],
                  unknown_extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']):
-        GetAuthorityConfigX509ConfigKeyUsageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_key_usages=base_key_usages,
-            extended_key_usages=extended_key_usages,
-            unknown_extended_key_usages=unknown_extended_key_usages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_key_usages: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult']] = None,
-             extended_key_usages: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult']] = None,
-             unknown_extended_key_usages: Optional[Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_key_usages is None and 'baseKeyUsages' in kwargs:
-            base_key_usages = kwargs['baseKeyUsages']
-        if base_key_usages is None:
-            raise TypeError("Missing 'base_key_usages' argument")
-        if extended_key_usages is None and 'extendedKeyUsages' in kwargs:
-            extended_key_usages = kwargs['extendedKeyUsages']
-        if extended_key_usages is None:
-            raise TypeError("Missing 'extended_key_usages' argument")
-        if unknown_extended_key_usages is None and 'unknownExtendedKeyUsages' in kwargs:
-            unknown_extended_key_usages = kwargs['unknownExtendedKeyUsages']
-        if unknown_extended_key_usages is None:
-            raise TypeError("Missing 'unknown_extended_key_usages' argument")
-
-        _setter("base_key_usages", base_key_usages)
-        _setter("extended_key_usages", extended_key_usages)
-        _setter("unknown_extended_key_usages", unknown_extended_key_usages)
+        pulumi.set(__self__, "base_key_usages", base_key_usages)
+        pulumi.set(__self__, "extended_key_usages", extended_key_usages)
+        pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
 
     @property
     @pulumi.getter(name="baseKeyUsages")
@@ -10180,78 +7616,15 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
                  encipher_only: bool,
                  key_agreement: bool,
                  key_encipherment: bool):
-        GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_sign=cert_sign,
-            content_commitment=content_commitment,
-            crl_sign=crl_sign,
-            data_encipherment=data_encipherment,
-            decipher_only=decipher_only,
-            digital_signature=digital_signature,
-            encipher_only=encipher_only,
-            key_agreement=key_agreement,
-            key_encipherment=key_encipherment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_sign: Optional[bool] = None,
-             content_commitment: Optional[bool] = None,
-             crl_sign: Optional[bool] = None,
-             data_encipherment: Optional[bool] = None,
-             decipher_only: Optional[bool] = None,
-             digital_signature: Optional[bool] = None,
-             encipher_only: Optional[bool] = None,
-             key_agreement: Optional[bool] = None,
-             key_encipherment: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_sign is None and 'certSign' in kwargs:
-            cert_sign = kwargs['certSign']
-        if cert_sign is None:
-            raise TypeError("Missing 'cert_sign' argument")
-        if content_commitment is None and 'contentCommitment' in kwargs:
-            content_commitment = kwargs['contentCommitment']
-        if content_commitment is None:
-            raise TypeError("Missing 'content_commitment' argument")
-        if crl_sign is None and 'crlSign' in kwargs:
-            crl_sign = kwargs['crlSign']
-        if crl_sign is None:
-            raise TypeError("Missing 'crl_sign' argument")
-        if data_encipherment is None and 'dataEncipherment' in kwargs:
-            data_encipherment = kwargs['dataEncipherment']
-        if data_encipherment is None:
-            raise TypeError("Missing 'data_encipherment' argument")
-        if decipher_only is None and 'decipherOnly' in kwargs:
-            decipher_only = kwargs['decipherOnly']
-        if decipher_only is None:
-            raise TypeError("Missing 'decipher_only' argument")
-        if digital_signature is None and 'digitalSignature' in kwargs:
-            digital_signature = kwargs['digitalSignature']
-        if digital_signature is None:
-            raise TypeError("Missing 'digital_signature' argument")
-        if encipher_only is None and 'encipherOnly' in kwargs:
-            encipher_only = kwargs['encipherOnly']
-        if encipher_only is None:
-            raise TypeError("Missing 'encipher_only' argument")
-        if key_agreement is None and 'keyAgreement' in kwargs:
-            key_agreement = kwargs['keyAgreement']
-        if key_agreement is None:
-            raise TypeError("Missing 'key_agreement' argument")
-        if key_encipherment is None and 'keyEncipherment' in kwargs:
-            key_encipherment = kwargs['keyEncipherment']
-        if key_encipherment is None:
-            raise TypeError("Missing 'key_encipherment' argument")
-
-        _setter("cert_sign", cert_sign)
-        _setter("content_commitment", content_commitment)
-        _setter("crl_sign", crl_sign)
-        _setter("data_encipherment", data_encipherment)
-        _setter("decipher_only", decipher_only)
-        _setter("digital_signature", digital_signature)
-        _setter("encipher_only", encipher_only)
-        _setter("key_agreement", key_agreement)
-        _setter("key_encipherment", key_encipherment)
+        pulumi.set(__self__, "cert_sign", cert_sign)
+        pulumi.set(__self__, "content_commitment", content_commitment)
+        pulumi.set(__self__, "crl_sign", crl_sign)
+        pulumi.set(__self__, "data_encipherment", data_encipherment)
+        pulumi.set(__self__, "decipher_only", decipher_only)
+        pulumi.set(__self__, "digital_signature", digital_signature)
+        pulumi.set(__self__, "encipher_only", encipher_only)
+        pulumi.set(__self__, "key_agreement", key_agreement)
+        pulumi.set(__self__, "key_encipherment", key_encipherment)
 
     @property
     @pulumi.getter(name="certSign")
@@ -10308,57 +7681,12 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
                  ocsp_signing: bool,
                  server_auth: bool,
                  time_stamping: bool):
-        GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_auth=client_auth,
-            code_signing=code_signing,
-            email_protection=email_protection,
-            ocsp_signing=ocsp_signing,
-            server_auth=server_auth,
-            time_stamping=time_stamping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_auth: Optional[bool] = None,
-             code_signing: Optional[bool] = None,
-             email_protection: Optional[bool] = None,
-             ocsp_signing: Optional[bool] = None,
-             server_auth: Optional[bool] = None,
-             time_stamping: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_auth is None and 'clientAuth' in kwargs:
-            client_auth = kwargs['clientAuth']
-        if client_auth is None:
-            raise TypeError("Missing 'client_auth' argument")
-        if code_signing is None and 'codeSigning' in kwargs:
-            code_signing = kwargs['codeSigning']
-        if code_signing is None:
-            raise TypeError("Missing 'code_signing' argument")
-        if email_protection is None and 'emailProtection' in kwargs:
-            email_protection = kwargs['emailProtection']
-        if email_protection is None:
-            raise TypeError("Missing 'email_protection' argument")
-        if ocsp_signing is None and 'ocspSigning' in kwargs:
-            ocsp_signing = kwargs['ocspSigning']
-        if ocsp_signing is None:
-            raise TypeError("Missing 'ocsp_signing' argument")
-        if server_auth is None and 'serverAuth' in kwargs:
-            server_auth = kwargs['serverAuth']
-        if server_auth is None:
-            raise TypeError("Missing 'server_auth' argument")
-        if time_stamping is None and 'timeStamping' in kwargs:
-            time_stamping = kwargs['timeStamping']
-        if time_stamping is None:
-            raise TypeError("Missing 'time_stamping' argument")
-
-        _setter("client_auth", client_auth)
-        _setter("code_signing", code_signing)
-        _setter("email_protection", email_protection)
-        _setter("ocsp_signing", ocsp_signing)
-        _setter("server_auth", server_auth)
-        _setter("time_stamping", time_stamping)
+        pulumi.set(__self__, "client_auth", client_auth)
+        pulumi.set(__self__, "code_signing", code_signing)
+        pulumi.set(__self__, "email_protection", email_protection)
+        pulumi.set(__self__, "ocsp_signing", ocsp_signing)
+        pulumi.set(__self__, "server_auth", server_auth)
+        pulumi.set(__self__, "time_stamping", time_stamping)
 
     @property
     @pulumi.getter(name="clientAuth")
@@ -10395,22 +7723,7 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
 class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
-        GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -10430,76 +7743,15 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
                  permitted_email_addresses: Sequence[str],
                  permitted_ip_ranges: Sequence[str],
                  permitted_uris: Sequence[str]):
-        GetAuthorityConfigX509ConfigNameConstraintResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            excluded_dns_names=excluded_dns_names,
-            excluded_email_addresses=excluded_email_addresses,
-            excluded_ip_ranges=excluded_ip_ranges,
-            excluded_uris=excluded_uris,
-            permitted_dns_names=permitted_dns_names,
-            permitted_email_addresses=permitted_email_addresses,
-            permitted_ip_ranges=permitted_ip_ranges,
-            permitted_uris=permitted_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[bool] = None,
-             excluded_dns_names: Optional[Sequence[str]] = None,
-             excluded_email_addresses: Optional[Sequence[str]] = None,
-             excluded_ip_ranges: Optional[Sequence[str]] = None,
-             excluded_uris: Optional[Sequence[str]] = None,
-             permitted_dns_names: Optional[Sequence[str]] = None,
-             permitted_email_addresses: Optional[Sequence[str]] = None,
-             permitted_ip_ranges: Optional[Sequence[str]] = None,
-             permitted_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if critical is None:
-            raise TypeError("Missing 'critical' argument")
-        if excluded_dns_names is None and 'excludedDnsNames' in kwargs:
-            excluded_dns_names = kwargs['excludedDnsNames']
-        if excluded_dns_names is None:
-            raise TypeError("Missing 'excluded_dns_names' argument")
-        if excluded_email_addresses is None and 'excludedEmailAddresses' in kwargs:
-            excluded_email_addresses = kwargs['excludedEmailAddresses']
-        if excluded_email_addresses is None:
-            raise TypeError("Missing 'excluded_email_addresses' argument")
-        if excluded_ip_ranges is None and 'excludedIpRanges' in kwargs:
-            excluded_ip_ranges = kwargs['excludedIpRanges']
-        if excluded_ip_ranges is None:
-            raise TypeError("Missing 'excluded_ip_ranges' argument")
-        if excluded_uris is None and 'excludedUris' in kwargs:
-            excluded_uris = kwargs['excludedUris']
-        if excluded_uris is None:
-            raise TypeError("Missing 'excluded_uris' argument")
-        if permitted_dns_names is None and 'permittedDnsNames' in kwargs:
-            permitted_dns_names = kwargs['permittedDnsNames']
-        if permitted_dns_names is None:
-            raise TypeError("Missing 'permitted_dns_names' argument")
-        if permitted_email_addresses is None and 'permittedEmailAddresses' in kwargs:
-            permitted_email_addresses = kwargs['permittedEmailAddresses']
-        if permitted_email_addresses is None:
-            raise TypeError("Missing 'permitted_email_addresses' argument")
-        if permitted_ip_ranges is None and 'permittedIpRanges' in kwargs:
-            permitted_ip_ranges = kwargs['permittedIpRanges']
-        if permitted_ip_ranges is None:
-            raise TypeError("Missing 'permitted_ip_ranges' argument")
-        if permitted_uris is None and 'permittedUris' in kwargs:
-            permitted_uris = kwargs['permittedUris']
-        if permitted_uris is None:
-            raise TypeError("Missing 'permitted_uris' argument")
-
-        _setter("critical", critical)
-        _setter("excluded_dns_names", excluded_dns_names)
-        _setter("excluded_email_addresses", excluded_email_addresses)
-        _setter("excluded_ip_ranges", excluded_ip_ranges)
-        _setter("excluded_uris", excluded_uris)
-        _setter("permitted_dns_names", permitted_dns_names)
-        _setter("permitted_email_addresses", permitted_email_addresses)
-        _setter("permitted_ip_ranges", permitted_ip_ranges)
-        _setter("permitted_uris", permitted_uris)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        pulumi.set(__self__, "excluded_uris", excluded_uris)
+        pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        pulumi.set(__self__, "permitted_uris", permitted_uris)
 
     @property
     @pulumi.getter
@@ -10551,22 +7803,7 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
 class GetAuthorityConfigX509ConfigPolicyIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
-        GetAuthorityConfigX509ConfigPolicyIdResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            object_id_paths=object_id_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             object_id_paths: Optional[Sequence[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_id_paths is None and 'objectIdPaths' in kwargs:
-            object_id_paths = kwargs['objectIdPaths']
-        if object_id_paths is None:
-            raise TypeError("Missing 'object_id_paths' argument")
-
-        _setter("object_id_paths", object_id_paths)
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
@@ -10579,27 +7816,8 @@ class GetAuthorityKeySpecResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  cloud_kms_key_version: str):
-        GetAuthorityKeySpecResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            cloud_kms_key_version=cloud_kms_key_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[str] = None,
-             cloud_kms_key_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if algorithm is None:
-            raise TypeError("Missing 'algorithm' argument")
-        if cloud_kms_key_version is None and 'cloudKmsKeyVersion' in kwargs:
-            cloud_kms_key_version = kwargs['cloudKmsKeyVersion']
-        if cloud_kms_key_version is None:
-            raise TypeError("Missing 'cloud_kms_key_version' argument")
-
-        _setter("algorithm", algorithm)
-        _setter("cloud_kms_key_version", cloud_kms_key_version)
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
 
     @property
     @pulumi.getter
@@ -10617,29 +7835,8 @@ class GetAuthoritySubordinateConfigResult(dict):
     def __init__(__self__, *,
                  certificate_authority: str,
                  pem_issuer_chains: Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']):
-        GetAuthoritySubordinateConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority=certificate_authority,
-            pem_issuer_chains=pem_issuer_chains,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority: Optional[str] = None,
-             pem_issuer_chains: Optional[Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority is None and 'certificateAuthority' in kwargs:
-            certificate_authority = kwargs['certificateAuthority']
-        if certificate_authority is None:
-            raise TypeError("Missing 'certificate_authority' argument")
-        if pem_issuer_chains is None and 'pemIssuerChains' in kwargs:
-            pem_issuer_chains = kwargs['pemIssuerChains']
-        if pem_issuer_chains is None:
-            raise TypeError("Missing 'pem_issuer_chains' argument")
-
-        _setter("certificate_authority", certificate_authority)
-        _setter("pem_issuer_chains", pem_issuer_chains)
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "pem_issuer_chains", pem_issuer_chains)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -10656,22 +7853,7 @@ class GetAuthoritySubordinateConfigResult(dict):
 class GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
     def __init__(__self__, *,
                  pem_certificates: Sequence[str]):
-        GetAuthoritySubordinateConfigPemIssuerChainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pem_certificates=pem_certificates,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pem_certificates: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pem_certificates is None and 'pemCertificates' in kwargs:
-            pem_certificates = kwargs['pemCertificates']
-        if pem_certificates is None:
-            raise TypeError("Missing 'pem_certificates' argument")
-
-        _setter("pem_certificates", pem_certificates)
+        pulumi.set(__self__, "pem_certificates", pem_certificates)
 
     @property
     @pulumi.getter(name="pemCertificates")

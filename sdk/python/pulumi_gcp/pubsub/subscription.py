@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -115,102 +115,37 @@ class SubscriptionArgs:
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         """
-        SubscriptionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic=topic,
-            ack_deadline_seconds=ack_deadline_seconds,
-            bigquery_config=bigquery_config,
-            cloud_storage_config=cloud_storage_config,
-            dead_letter_policy=dead_letter_policy,
-            enable_exactly_once_delivery=enable_exactly_once_delivery,
-            enable_message_ordering=enable_message_ordering,
-            expiration_policy=expiration_policy,
-            filter=filter,
-            labels=labels,
-            message_retention_duration=message_retention_duration,
-            name=name,
-            project=project,
-            push_config=push_config,
-            retain_acked_messages=retain_acked_messages,
-            retry_policy=retry_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic: Optional[pulumi.Input[str]] = None,
-             ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-             bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-             cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-             dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
-             enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
-             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-             expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             message_retention_duration: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
-             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-             retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if ack_deadline_seconds is None and 'ackDeadlineSeconds' in kwargs:
-            ack_deadline_seconds = kwargs['ackDeadlineSeconds']
-        if bigquery_config is None and 'bigqueryConfig' in kwargs:
-            bigquery_config = kwargs['bigqueryConfig']
-        if cloud_storage_config is None and 'cloudStorageConfig' in kwargs:
-            cloud_storage_config = kwargs['cloudStorageConfig']
-        if dead_letter_policy is None and 'deadLetterPolicy' in kwargs:
-            dead_letter_policy = kwargs['deadLetterPolicy']
-        if enable_exactly_once_delivery is None and 'enableExactlyOnceDelivery' in kwargs:
-            enable_exactly_once_delivery = kwargs['enableExactlyOnceDelivery']
-        if enable_message_ordering is None and 'enableMessageOrdering' in kwargs:
-            enable_message_ordering = kwargs['enableMessageOrdering']
-        if expiration_policy is None and 'expirationPolicy' in kwargs:
-            expiration_policy = kwargs['expirationPolicy']
-        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
-            message_retention_duration = kwargs['messageRetentionDuration']
-        if push_config is None and 'pushConfig' in kwargs:
-            push_config = kwargs['pushConfig']
-        if retain_acked_messages is None and 'retainAckedMessages' in kwargs:
-            retain_acked_messages = kwargs['retainAckedMessages']
-        if retry_policy is None and 'retryPolicy' in kwargs:
-            retry_policy = kwargs['retryPolicy']
-
-        _setter("topic", topic)
+        pulumi.set(__self__, "topic", topic)
         if ack_deadline_seconds is not None:
-            _setter("ack_deadline_seconds", ack_deadline_seconds)
+            pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config is not None:
-            _setter("bigquery_config", bigquery_config)
+            pulumi.set(__self__, "bigquery_config", bigquery_config)
         if cloud_storage_config is not None:
-            _setter("cloud_storage_config", cloud_storage_config)
+            pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
-            _setter("dead_letter_policy", dead_letter_policy)
+            pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
         if enable_exactly_once_delivery is not None:
-            _setter("enable_exactly_once_delivery", enable_exactly_once_delivery)
+            pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
-            _setter("enable_message_ordering", enable_message_ordering)
+            pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
         if expiration_policy is not None:
-            _setter("expiration_policy", expiration_policy)
+            pulumi.set(__self__, "expiration_policy", expiration_policy)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
-            _setter("message_retention_duration", message_retention_duration)
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if push_config is not None:
-            _setter("push_config", push_config)
+            pulumi.set(__self__, "push_config", push_config)
         if retain_acked_messages is not None:
-            _setter("retain_acked_messages", retain_acked_messages)
+            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
-            _setter("retry_policy", retry_policy)
+            pulumi.set(__self__, "retry_policy", retry_policy)
 
     @property
     @pulumi.getter
@@ -571,101 +506,38 @@ class _SubscriptionState:
                
                - - -
         """
-        _SubscriptionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ack_deadline_seconds=ack_deadline_seconds,
-            bigquery_config=bigquery_config,
-            cloud_storage_config=cloud_storage_config,
-            dead_letter_policy=dead_letter_policy,
-            enable_exactly_once_delivery=enable_exactly_once_delivery,
-            enable_message_ordering=enable_message_ordering,
-            expiration_policy=expiration_policy,
-            filter=filter,
-            labels=labels,
-            message_retention_duration=message_retention_duration,
-            name=name,
-            project=project,
-            push_config=push_config,
-            retain_acked_messages=retain_acked_messages,
-            retry_policy=retry_policy,
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-             bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-             cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-             dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
-             enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
-             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-             expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             message_retention_duration: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
-             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-             retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ack_deadline_seconds is None and 'ackDeadlineSeconds' in kwargs:
-            ack_deadline_seconds = kwargs['ackDeadlineSeconds']
-        if bigquery_config is None and 'bigqueryConfig' in kwargs:
-            bigquery_config = kwargs['bigqueryConfig']
-        if cloud_storage_config is None and 'cloudStorageConfig' in kwargs:
-            cloud_storage_config = kwargs['cloudStorageConfig']
-        if dead_letter_policy is None and 'deadLetterPolicy' in kwargs:
-            dead_letter_policy = kwargs['deadLetterPolicy']
-        if enable_exactly_once_delivery is None and 'enableExactlyOnceDelivery' in kwargs:
-            enable_exactly_once_delivery = kwargs['enableExactlyOnceDelivery']
-        if enable_message_ordering is None and 'enableMessageOrdering' in kwargs:
-            enable_message_ordering = kwargs['enableMessageOrdering']
-        if expiration_policy is None and 'expirationPolicy' in kwargs:
-            expiration_policy = kwargs['expirationPolicy']
-        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
-            message_retention_duration = kwargs['messageRetentionDuration']
-        if push_config is None and 'pushConfig' in kwargs:
-            push_config = kwargs['pushConfig']
-        if retain_acked_messages is None and 'retainAckedMessages' in kwargs:
-            retain_acked_messages = kwargs['retainAckedMessages']
-        if retry_policy is None and 'retryPolicy' in kwargs:
-            retry_policy = kwargs['retryPolicy']
-
         if ack_deadline_seconds is not None:
-            _setter("ack_deadline_seconds", ack_deadline_seconds)
+            pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config is not None:
-            _setter("bigquery_config", bigquery_config)
+            pulumi.set(__self__, "bigquery_config", bigquery_config)
         if cloud_storage_config is not None:
-            _setter("cloud_storage_config", cloud_storage_config)
+            pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
-            _setter("dead_letter_policy", dead_letter_policy)
+            pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
         if enable_exactly_once_delivery is not None:
-            _setter("enable_exactly_once_delivery", enable_exactly_once_delivery)
+            pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
-            _setter("enable_message_ordering", enable_message_ordering)
+            pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
         if expiration_policy is not None:
-            _setter("expiration_policy", expiration_policy)
+            pulumi.set(__self__, "expiration_policy", expiration_policy)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
-            _setter("message_retention_duration", message_retention_duration)
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if push_config is not None:
-            _setter("push_config", push_config)
+            pulumi.set(__self__, "push_config", push_config)
         if retain_acked_messages is not None:
-            _setter("retain_acked_messages", retain_acked_messages)
+            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
-            _setter("retry_policy", retry_policy)
+            pulumi.set(__self__, "retry_policy", retry_policy)
         if topic is not None:
-            _setter("topic", topic)
+            pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
@@ -1325,10 +1197,6 @@ class Subscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1360,25 +1228,19 @@ class Subscription(pulumi.CustomResource):
             __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
-            bigquery_config = _utilities.configure(bigquery_config, SubscriptionBigqueryConfigArgs, True)
             __props__.__dict__["bigquery_config"] = bigquery_config
-            cloud_storage_config = _utilities.configure(cloud_storage_config, SubscriptionCloudStorageConfigArgs, True)
             __props__.__dict__["cloud_storage_config"] = cloud_storage_config
-            dead_letter_policy = _utilities.configure(dead_letter_policy, SubscriptionDeadLetterPolicyArgs, True)
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
             __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
             __props__.__dict__["enable_message_ordering"] = enable_message_ordering
-            expiration_policy = _utilities.configure(expiration_policy, SubscriptionExpirationPolicyArgs, True)
             __props__.__dict__["expiration_policy"] = expiration_policy
             __props__.__dict__["filter"] = filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            push_config = _utilities.configure(push_config, SubscriptionPushConfigArgs, True)
             __props__.__dict__["push_config"] = push_config
             __props__.__dict__["retain_acked_messages"] = retain_acked_messages
-            retry_policy = _utilities.configure(retry_policy, SubscriptionRetryPolicyArgs, True)
             __props__.__dict__["retry_policy"] = retry_policy
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")

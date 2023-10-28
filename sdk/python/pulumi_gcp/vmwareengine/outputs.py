@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -64,35 +64,10 @@ class ClusterNodeTypeConfig(dict):
                If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
                Once the customer is created then corecount cannot be changed.
         """
-        ClusterNodeTypeConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_count=node_count,
-            node_type_id=node_type_id,
-            custom_core_count=custom_core_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_count: Optional[int] = None,
-             node_type_id: Optional[str] = None,
-             custom_core_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if node_type_id is None:
-            raise TypeError("Missing 'node_type_id' argument")
-        if custom_core_count is None and 'customCoreCount' in kwargs:
-            custom_core_count = kwargs['customCoreCount']
-
-        _setter("node_count", node_count)
-        _setter("node_type_id", node_type_id)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
         if custom_core_count is not None:
-            _setter("custom_core_count", custom_core_count)
+            pulumi.set(__self__, "custom_core_count", custom_core_count)
 
     @property
     @pulumi.getter(name="nodeCount")
@@ -134,23 +109,10 @@ class NetworkVpcNetwork(dict):
         :param str type: VMware Engine network type.
                Possible values are: `LEGACY`.
         """
-        NetworkVpcNetwork._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -203,33 +165,14 @@ class PrivateCloudHcx(dict):
                Possible values are: `ACTIVE`, `CREATING`.
         :param str version: Version of the appliance.
         """
-        PrivateCloudHcx._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-
         if fqdn is not None:
-            _setter("fqdn", fqdn)
+            pulumi.set(__self__, "fqdn", fqdn)
         if internal_ip is not None:
-            _setter("internal_ip", internal_ip)
+            pulumi.set(__self__, "internal_ip", internal_ip)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -300,28 +243,9 @@ class PrivateCloudManagementCluster(dict):
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         """
-        PrivateCloudManagementCluster._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            node_type_configs=node_type_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             node_type_configs: Optional[Sequence['outputs.PrivateCloudManagementClusterNodeTypeConfig']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
-            node_type_configs = kwargs['nodeTypeConfigs']
-
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if node_type_configs is not None:
-            _setter("node_type_configs", node_type_configs)
+            pulumi.set(__self__, "node_type_configs", node_type_configs)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -384,35 +308,10 @@ class PrivateCloudManagementClusterNodeTypeConfig(dict):
                
                - - -
         """
-        PrivateCloudManagementClusterNodeTypeConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_count=node_count,
-            node_type_id=node_type_id,
-            custom_core_count=custom_core_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_count: Optional[int] = None,
-             node_type_id: Optional[str] = None,
-             custom_core_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if node_type_id is None:
-            raise TypeError("Missing 'node_type_id' argument")
-        if custom_core_count is None and 'customCoreCount' in kwargs:
-            custom_core_count = kwargs['customCoreCount']
-
-        _setter("node_count", node_count)
-        _setter("node_type_id", node_type_id)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
         if custom_core_count is not None:
-            _setter("custom_core_count", custom_core_count)
+            pulumi.set(__self__, "custom_core_count", custom_core_count)
 
     @property
     @pulumi.getter(name="nodeCount")
@@ -490,40 +389,13 @@ class PrivateCloudNetworkConfig(dict):
                The canonical name of the VMware Engine network in
                the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
         """
-        PrivateCloudNetworkConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            management_cidr=management_cidr,
-            management_ip_address_layout_version=management_ip_address_layout_version,
-            vmware_engine_network=vmware_engine_network,
-            vmware_engine_network_canonical=vmware_engine_network_canonical,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             management_cidr: Optional[str] = None,
-             management_ip_address_layout_version: Optional[int] = None,
-             vmware_engine_network: Optional[str] = None,
-             vmware_engine_network_canonical: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if management_cidr is None and 'managementCidr' in kwargs:
-            management_cidr = kwargs['managementCidr']
-        if management_cidr is None:
-            raise TypeError("Missing 'management_cidr' argument")
-        if management_ip_address_layout_version is None and 'managementIpAddressLayoutVersion' in kwargs:
-            management_ip_address_layout_version = kwargs['managementIpAddressLayoutVersion']
-        if vmware_engine_network is None and 'vmwareEngineNetwork' in kwargs:
-            vmware_engine_network = kwargs['vmwareEngineNetwork']
-        if vmware_engine_network_canonical is None and 'vmwareEngineNetworkCanonical' in kwargs:
-            vmware_engine_network_canonical = kwargs['vmwareEngineNetworkCanonical']
-
-        _setter("management_cidr", management_cidr)
+        pulumi.set(__self__, "management_cidr", management_cidr)
         if management_ip_address_layout_version is not None:
-            _setter("management_ip_address_layout_version", management_ip_address_layout_version)
+            pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
         if vmware_engine_network is not None:
-            _setter("vmware_engine_network", vmware_engine_network)
+            pulumi.set(__self__, "vmware_engine_network", vmware_engine_network)
         if vmware_engine_network_canonical is not None:
-            _setter("vmware_engine_network_canonical", vmware_engine_network_canonical)
+            pulumi.set(__self__, "vmware_engine_network_canonical", vmware_engine_network_canonical)
 
     @property
     @pulumi.getter(name="managementCidr")
@@ -599,33 +471,14 @@ class PrivateCloudNsx(dict):
                Possible values are: `ACTIVE`, `CREATING`.
         :param str version: Version of the appliance.
         """
-        PrivateCloudNsx._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-
         if fqdn is not None:
-            _setter("fqdn", fqdn)
+            pulumi.set(__self__, "fqdn", fqdn)
         if internal_ip is not None:
-            _setter("internal_ip", internal_ip)
+            pulumi.set(__self__, "internal_ip", internal_ip)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -692,33 +545,14 @@ class PrivateCloudVcenter(dict):
                Possible values are: `ACTIVE`, `CREATING`.
         :param str version: Version of the appliance.
         """
-        PrivateCloudVcenter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-
         if fqdn is not None:
-            _setter("fqdn", fqdn)
+            pulumi.set(__self__, "fqdn", fqdn)
         if internal_ip is not None:
-            _setter("internal_ip", internal_ip)
+            pulumi.set(__self__, "internal_ip", internal_ip)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -760,36 +594,9 @@ class GetClusterNodeTypeConfigResult(dict):
                  custom_core_count: int,
                  node_count: int,
                  node_type_id: str):
-        GetClusterNodeTypeConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_core_count=custom_core_count,
-            node_count=node_count,
-            node_type_id=node_type_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_core_count: Optional[int] = None,
-             node_count: Optional[int] = None,
-             node_type_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_core_count is None and 'customCoreCount' in kwargs:
-            custom_core_count = kwargs['customCoreCount']
-        if custom_core_count is None:
-            raise TypeError("Missing 'custom_core_count' argument")
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if node_type_id is None:
-            raise TypeError("Missing 'node_type_id' argument")
-
-        _setter("custom_core_count", custom_core_count)
-        _setter("node_count", node_count)
-        _setter("node_type_id", node_type_id)
+        pulumi.set(__self__, "custom_core_count", custom_core_count)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
 
     @property
     @pulumi.getter(name="customCoreCount")
@@ -812,25 +619,8 @@ class GetNetworkVpcNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
                  type: str):
-        GetNetworkVpcNetworkResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("network", network)
-        _setter("type", type)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -850,37 +640,10 @@ class GetPrivateCloudHcxResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
-        GetPrivateCloudHcxResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fqdn is None:
-            raise TypeError("Missing 'fqdn' argument")
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-        if internal_ip is None:
-            raise TypeError("Missing 'internal_ip' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("fqdn", fqdn)
-        _setter("internal_ip", internal_ip)
-        _setter("state", state)
-        _setter("version", version)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -908,29 +671,8 @@ class GetPrivateCloudManagementClusterResult(dict):
     def __init__(__self__, *,
                  cluster_id: str,
                  node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']):
-        GetPrivateCloudManagementClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            node_type_configs=node_type_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             node_type_configs: Optional[Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
-            node_type_configs = kwargs['nodeTypeConfigs']
-        if node_type_configs is None:
-            raise TypeError("Missing 'node_type_configs' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("node_type_configs", node_type_configs)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "node_type_configs", node_type_configs)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -949,36 +691,9 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
                  custom_core_count: int,
                  node_count: int,
                  node_type_id: str):
-        GetPrivateCloudManagementClusterNodeTypeConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_core_count=custom_core_count,
-            node_count=node_count,
-            node_type_id=node_type_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_core_count: Optional[int] = None,
-             node_count: Optional[int] = None,
-             node_type_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_core_count is None and 'customCoreCount' in kwargs:
-            custom_core_count = kwargs['customCoreCount']
-        if custom_core_count is None:
-            raise TypeError("Missing 'custom_core_count' argument")
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if node_type_id is None:
-            raise TypeError("Missing 'node_type_id' argument")
-
-        _setter("custom_core_count", custom_core_count)
-        _setter("node_count", node_count)
-        _setter("node_type_id", node_type_id)
+        pulumi.set(__self__, "custom_core_count", custom_core_count)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
 
     @property
     @pulumi.getter(name="customCoreCount")
@@ -1003,43 +718,10 @@ class GetPrivateCloudNetworkConfigResult(dict):
                  management_ip_address_layout_version: int,
                  vmware_engine_network: str,
                  vmware_engine_network_canonical: str):
-        GetPrivateCloudNetworkConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            management_cidr=management_cidr,
-            management_ip_address_layout_version=management_ip_address_layout_version,
-            vmware_engine_network=vmware_engine_network,
-            vmware_engine_network_canonical=vmware_engine_network_canonical,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             management_cidr: Optional[str] = None,
-             management_ip_address_layout_version: Optional[int] = None,
-             vmware_engine_network: Optional[str] = None,
-             vmware_engine_network_canonical: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if management_cidr is None and 'managementCidr' in kwargs:
-            management_cidr = kwargs['managementCidr']
-        if management_cidr is None:
-            raise TypeError("Missing 'management_cidr' argument")
-        if management_ip_address_layout_version is None and 'managementIpAddressLayoutVersion' in kwargs:
-            management_ip_address_layout_version = kwargs['managementIpAddressLayoutVersion']
-        if management_ip_address_layout_version is None:
-            raise TypeError("Missing 'management_ip_address_layout_version' argument")
-        if vmware_engine_network is None and 'vmwareEngineNetwork' in kwargs:
-            vmware_engine_network = kwargs['vmwareEngineNetwork']
-        if vmware_engine_network is None:
-            raise TypeError("Missing 'vmware_engine_network' argument")
-        if vmware_engine_network_canonical is None and 'vmwareEngineNetworkCanonical' in kwargs:
-            vmware_engine_network_canonical = kwargs['vmwareEngineNetworkCanonical']
-        if vmware_engine_network_canonical is None:
-            raise TypeError("Missing 'vmware_engine_network_canonical' argument")
-
-        _setter("management_cidr", management_cidr)
-        _setter("management_ip_address_layout_version", management_ip_address_layout_version)
-        _setter("vmware_engine_network", vmware_engine_network)
-        _setter("vmware_engine_network_canonical", vmware_engine_network_canonical)
+        pulumi.set(__self__, "management_cidr", management_cidr)
+        pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
+        pulumi.set(__self__, "vmware_engine_network", vmware_engine_network)
+        pulumi.set(__self__, "vmware_engine_network_canonical", vmware_engine_network_canonical)
 
     @property
     @pulumi.getter(name="managementCidr")
@@ -1069,37 +751,10 @@ class GetPrivateCloudNsxResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
-        GetPrivateCloudNsxResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fqdn is None:
-            raise TypeError("Missing 'fqdn' argument")
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-        if internal_ip is None:
-            raise TypeError("Missing 'internal_ip' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("fqdn", fqdn)
-        _setter("internal_ip", internal_ip)
-        _setter("state", state)
-        _setter("version", version)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1129,37 +784,10 @@ class GetPrivateCloudVcenterResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
-        GetPrivateCloudVcenterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fqdn=fqdn,
-            internal_ip=internal_ip,
-            state=state,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fqdn: Optional[str] = None,
-             internal_ip: Optional[str] = None,
-             state: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fqdn is None:
-            raise TypeError("Missing 'fqdn' argument")
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-        if internal_ip is None:
-            raise TypeError("Missing 'internal_ip' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("fqdn", fqdn)
-        _setter("internal_ip", internal_ip)
-        _setter("state", state)
-        _setter("version", version)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter

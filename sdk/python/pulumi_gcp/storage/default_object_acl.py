@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DefaultObjectACLArgs', 'DefaultObjectACL']
@@ -23,26 +23,9 @@ class DefaultObjectACLArgs:
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
         """
-        DefaultObjectACLArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            role_entities=role_entities,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if role_entities is None and 'roleEntities' in kwargs:
-            role_entities = kwargs['roleEntities']
-
-        _setter("bucket", bucket)
+        pulumi.set(__self__, "bucket", bucket)
         if role_entities is not None:
-            _setter("role_entities", role_entities)
+            pulumi.set(__self__, "role_entities", role_entities)
 
     @property
     @pulumi.getter
@@ -83,25 +66,10 @@ class _DefaultObjectACLState:
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
         """
-        _DefaultObjectACLState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            role_entities=role_entities,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if role_entities is None and 'roleEntities' in kwargs:
-            role_entities = kwargs['roleEntities']
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if role_entities is not None:
-            _setter("role_entities", role_entities)
+            pulumi.set(__self__, "role_entities", role_entities)
 
     @property
     @pulumi.getter
@@ -233,10 +201,6 @@ class DefaultObjectACL(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DefaultObjectACLArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

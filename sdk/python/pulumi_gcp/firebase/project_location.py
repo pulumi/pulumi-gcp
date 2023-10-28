@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectLocationArgs', 'ProjectLocation']
@@ -26,26 +26,9 @@ class ProjectLocationArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ProjectLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location_id=location_id,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-        if location_id is None:
-            raise TypeError("Missing 'location_id' argument")
-
-        _setter("location_id", location_id)
+        pulumi.set(__self__, "location_id", location_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="locationId")
@@ -92,25 +75,10 @@ class _ProjectLocationState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _ProjectLocationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location_id=location_id,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location_id is None and 'locationId' in kwargs:
-            location_id = kwargs['locationId']
-
         if location_id is not None:
-            _setter("location_id", location_id)
+            pulumi.set(__self__, "location_id", location_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="locationId")
@@ -280,10 +248,6 @@ class ProjectLocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectLocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

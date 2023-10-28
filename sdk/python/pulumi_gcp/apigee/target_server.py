@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,56 +41,19 @@ class TargetServerArgs:
         :param pulumi.Input['TargetServerSSlInfoArgs'] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
                Structure is documented below.
         """
-        TargetServerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            env_id=env_id,
-            host=host,
-            port=port,
-            description=description,
-            is_enabled=is_enabled,
-            name=name,
-            protocol=protocol,
-            s_sl_info=s_sl_info,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             env_id: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             is_enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if env_id is None and 'envId' in kwargs:
-            env_id = kwargs['envId']
-        if env_id is None:
-            raise TypeError("Missing 'env_id' argument")
-        if host is None:
-            raise TypeError("Missing 'host' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if s_sl_info is None and 'sSlInfo' in kwargs:
-            s_sl_info = kwargs['sSlInfo']
-
-        _setter("env_id", env_id)
-        _setter("host", host)
-        _setter("port", port)
+        pulumi.set(__self__, "env_id", env_id)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if s_sl_info is not None:
-            _setter("s_sl_info", s_sl_info)
+            pulumi.set(__self__, "s_sl_info", s_sl_info)
 
     @property
     @pulumi.getter(name="envId")
@@ -223,53 +186,22 @@ class _TargetServerState:
         :param pulumi.Input['TargetServerSSlInfoArgs'] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
                Structure is documented below.
         """
-        _TargetServerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            env_id=env_id,
-            host=host,
-            is_enabled=is_enabled,
-            name=name,
-            port=port,
-            protocol=protocol,
-            s_sl_info=s_sl_info,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             env_id: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             is_enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if env_id is None and 'envId' in kwargs:
-            env_id = kwargs['envId']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if s_sl_info is None and 'sSlInfo' in kwargs:
-            s_sl_info = kwargs['sSlInfo']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if env_id is not None:
-            _setter("env_id", env_id)
+            pulumi.set(__self__, "env_id", env_id)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if s_sl_info is not None:
-            _setter("s_sl_info", s_sl_info)
+            pulumi.set(__self__, "s_sl_info", s_sl_info)
 
     @property
     @pulumi.getter
@@ -573,10 +505,6 @@ class TargetServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -612,7 +540,6 @@ class TargetServer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             __props__.__dict__["protocol"] = protocol
-            s_sl_info = _utilities.configure(s_sl_info, TargetServerSSlInfoArgs, True)
             __props__.__dict__["s_sl_info"] = s_sl_info
         super(TargetServer, __self__).__init__(
             'gcp:apigee/targetServer:TargetServer',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,41 +35,12 @@ class AccessApprovalSettingsArgs:
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         """
-        AccessApprovalSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enrolled_services=enrolled_services,
-            folder_id=folder_id,
-            active_key_version=active_key_version,
-            notification_emails=notification_emails,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             active_key_version: Optional[pulumi.Input[str]] = None,
-             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enrolled_services is None and 'enrolledServices' in kwargs:
-            enrolled_services = kwargs['enrolledServices']
-        if enrolled_services is None:
-            raise TypeError("Missing 'enrolled_services' argument")
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if folder_id is None:
-            raise TypeError("Missing 'folder_id' argument")
-        if active_key_version is None and 'activeKeyVersion' in kwargs:
-            active_key_version = kwargs['activeKeyVersion']
-        if notification_emails is None and 'notificationEmails' in kwargs:
-            notification_emails = kwargs['notificationEmails']
-
-        _setter("enrolled_services", enrolled_services)
-        _setter("folder_id", folder_id)
+        pulumi.set(__self__, "enrolled_services", enrolled_services)
+        pulumi.set(__self__, "folder_id", folder_id)
         if active_key_version is not None:
-            _setter("active_key_version", active_key_version)
+            pulumi.set(__self__, "active_key_version", active_key_version)
         if notification_emails is not None:
-            _setter("notification_emails", notification_emails)
+            pulumi.set(__self__, "notification_emails", notification_emails)
 
     @property
     @pulumi.getter(name="enrolledServices")
@@ -161,61 +132,22 @@ class _AccessApprovalSettingsState:
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         """
-        _AccessApprovalSettingsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_key_version=active_key_version,
-            ancestor_has_active_key_version=ancestor_has_active_key_version,
-            enrolled_ancestor=enrolled_ancestor,
-            enrolled_services=enrolled_services,
-            folder_id=folder_id,
-            invalid_key_version=invalid_key_version,
-            name=name,
-            notification_emails=notification_emails,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_key_version: Optional[pulumi.Input[str]] = None,
-             ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
-             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
-             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             invalid_key_version: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_key_version is None and 'activeKeyVersion' in kwargs:
-            active_key_version = kwargs['activeKeyVersion']
-        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
-            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
-        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
-            enrolled_ancestor = kwargs['enrolledAncestor']
-        if enrolled_services is None and 'enrolledServices' in kwargs:
-            enrolled_services = kwargs['enrolledServices']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
-            invalid_key_version = kwargs['invalidKeyVersion']
-        if notification_emails is None and 'notificationEmails' in kwargs:
-            notification_emails = kwargs['notificationEmails']
-
         if active_key_version is not None:
-            _setter("active_key_version", active_key_version)
+            pulumi.set(__self__, "active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:
-            _setter("ancestor_has_active_key_version", ancestor_has_active_key_version)
+            pulumi.set(__self__, "ancestor_has_active_key_version", ancestor_has_active_key_version)
         if enrolled_ancestor is not None:
-            _setter("enrolled_ancestor", enrolled_ancestor)
+            pulumi.set(__self__, "enrolled_ancestor", enrolled_ancestor)
         if enrolled_services is not None:
-            _setter("enrolled_services", enrolled_services)
+            pulumi.set(__self__, "enrolled_services", enrolled_services)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if invalid_key_version is not None:
-            _setter("invalid_key_version", invalid_key_version)
+            pulumi.set(__self__, "invalid_key_version", invalid_key_version)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_emails is not None:
-            _setter("notification_emails", notification_emails)
+            pulumi.set(__self__, "notification_emails", notification_emails)
 
     @property
     @pulumi.getter(name="activeKeyVersion")
@@ -516,10 +448,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessApprovalSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

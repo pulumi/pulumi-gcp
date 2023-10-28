@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ContactArgs', 'Contact']
@@ -28,39 +28,10 @@ class ContactArgs:
                
                - - -
         """
-        ContactArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            language_tag=language_tag,
-            notification_category_subscriptions=notification_category_subscriptions,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: Optional[pulumi.Input[str]] = None,
-             language_tag: Optional[pulumi.Input[str]] = None,
-             notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if email is None:
-            raise TypeError("Missing 'email' argument")
-        if language_tag is None and 'languageTag' in kwargs:
-            language_tag = kwargs['languageTag']
-        if language_tag is None:
-            raise TypeError("Missing 'language_tag' argument")
-        if notification_category_subscriptions is None and 'notificationCategorySubscriptions' in kwargs:
-            notification_category_subscriptions = kwargs['notificationCategorySubscriptions']
-        if notification_category_subscriptions is None:
-            raise TypeError("Missing 'notification_category_subscriptions' argument")
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-
-        _setter("email", email)
-        _setter("language_tag", language_tag)
-        _setter("notification_category_subscriptions", notification_category_subscriptions)
-        _setter("parent", parent)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "language_tag", language_tag)
+        pulumi.set(__self__, "notification_category_subscriptions", notification_category_subscriptions)
+        pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter
@@ -133,39 +104,16 @@ class _ContactState:
                
                - - -
         """
-        _ContactState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            language_tag=language_tag,
-            name=name,
-            notification_category_subscriptions=notification_category_subscriptions,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: Optional[pulumi.Input[str]] = None,
-             language_tag: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if language_tag is None and 'languageTag' in kwargs:
-            language_tag = kwargs['languageTag']
-        if notification_category_subscriptions is None and 'notificationCategorySubscriptions' in kwargs:
-            notification_category_subscriptions = kwargs['notificationCategorySubscriptions']
-
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if language_tag is not None:
-            _setter("language_tag", language_tag)
+            pulumi.set(__self__, "language_tag", language_tag)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_category_subscriptions is not None:
-            _setter("notification_category_subscriptions", notification_category_subscriptions)
+            pulumi.set(__self__, "notification_category_subscriptions", notification_category_subscriptions)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter
@@ -343,10 +291,6 @@ class Contact(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ContactArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

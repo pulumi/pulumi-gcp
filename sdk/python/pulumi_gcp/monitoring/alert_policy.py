@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,62 +63,21 @@ class AlertPolicyArgs:
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
         """
-        AlertPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            combiner=combiner,
-            conditions=conditions,
-            display_name=display_name,
-            alert_strategy=alert_strategy,
-            documentation=documentation,
-            enabled=enabled,
-            notification_channels=notification_channels,
-            project=project,
-            user_labels=user_labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             combiner: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
-             documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if combiner is None:
-            raise TypeError("Missing 'combiner' argument")
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if alert_strategy is None and 'alertStrategy' in kwargs:
-            alert_strategy = kwargs['alertStrategy']
-        if notification_channels is None and 'notificationChannels' in kwargs:
-            notification_channels = kwargs['notificationChannels']
-        if user_labels is None and 'userLabels' in kwargs:
-            user_labels = kwargs['userLabels']
-
-        _setter("combiner", combiner)
-        _setter("conditions", conditions)
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "combiner", combiner)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "display_name", display_name)
         if alert_strategy is not None:
-            _setter("alert_strategy", alert_strategy)
+            pulumi.set(__self__, "alert_strategy", alert_strategy)
         if documentation is not None:
-            _setter("documentation", documentation)
+            pulumi.set(__self__, "documentation", documentation)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if notification_channels is not None:
-            _setter("notification_channels", notification_channels)
+            pulumi.set(__self__, "notification_channels", notification_channels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if user_labels is not None:
-            _setter("user_labels", user_labels)
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter
@@ -318,69 +277,28 @@ class _AlertPolicyState:
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
         """
-        _AlertPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_strategy=alert_strategy,
-            combiner=combiner,
-            conditions=conditions,
-            creation_records=creation_records,
-            display_name=display_name,
-            documentation=documentation,
-            enabled=enabled,
-            name=name,
-            notification_channels=notification_channels,
-            project=project,
-            user_labels=user_labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
-             combiner: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
-             creation_records: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_strategy is None and 'alertStrategy' in kwargs:
-            alert_strategy = kwargs['alertStrategy']
-        if creation_records is None and 'creationRecords' in kwargs:
-            creation_records = kwargs['creationRecords']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if notification_channels is None and 'notificationChannels' in kwargs:
-            notification_channels = kwargs['notificationChannels']
-        if user_labels is None and 'userLabels' in kwargs:
-            user_labels = kwargs['userLabels']
-
         if alert_strategy is not None:
-            _setter("alert_strategy", alert_strategy)
+            pulumi.set(__self__, "alert_strategy", alert_strategy)
         if combiner is not None:
-            _setter("combiner", combiner)
+            pulumi.set(__self__, "combiner", combiner)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if creation_records is not None:
-            _setter("creation_records", creation_records)
+            pulumi.set(__self__, "creation_records", creation_records)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
-            _setter("documentation", documentation)
+            pulumi.set(__self__, "documentation", documentation)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_channels is not None:
-            _setter("notification_channels", notification_channels)
+            pulumi.set(__self__, "notification_channels", notification_channels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if user_labels is not None:
-            _setter("user_labels", user_labels)
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="alertStrategy")
@@ -819,10 +737,6 @@ class AlertPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AlertPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -846,7 +760,6 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlertPolicyArgs.__new__(AlertPolicyArgs)
 
-            alert_strategy = _utilities.configure(alert_strategy, AlertPolicyAlertStrategyArgs, True)
             __props__.__dict__["alert_strategy"] = alert_strategy
             if combiner is None and not opts.urn:
                 raise TypeError("Missing required property 'combiner'")
@@ -857,7 +770,6 @@ class AlertPolicy(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            documentation = _utilities.configure(documentation, AlertPolicyDocumentationArgs, True)
             __props__.__dict__["documentation"] = documentation
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["notification_channels"] = notification_channels

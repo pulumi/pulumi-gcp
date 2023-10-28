@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -68,75 +68,30 @@ class JobArgs:
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
         """
-        JobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_engine_http_target=app_engine_http_target,
-            attempt_deadline=attempt_deadline,
-            description=description,
-            http_target=http_target,
-            name=name,
-            paused=paused,
-            project=project,
-            pubsub_target=pubsub_target,
-            region=region,
-            retry_config=retry_config,
-            schedule=schedule,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_engine_http_target: Optional[pulumi.Input['JobAppEngineHttpTargetArgs']] = None,
-             attempt_deadline: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             http_target: Optional[pulumi.Input['JobHttpTargetArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             pubsub_target: Optional[pulumi.Input['JobPubsubTargetArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             retry_config: Optional[pulumi.Input['JobRetryConfigArgs']] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
-            app_engine_http_target = kwargs['appEngineHttpTarget']
-        if attempt_deadline is None and 'attemptDeadline' in kwargs:
-            attempt_deadline = kwargs['attemptDeadline']
-        if http_target is None and 'httpTarget' in kwargs:
-            http_target = kwargs['httpTarget']
-        if pubsub_target is None and 'pubsubTarget' in kwargs:
-            pubsub_target = kwargs['pubsubTarget']
-        if retry_config is None and 'retryConfig' in kwargs:
-            retry_config = kwargs['retryConfig']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
         if app_engine_http_target is not None:
-            _setter("app_engine_http_target", app_engine_http_target)
+            pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
-            _setter("attempt_deadline", attempt_deadline)
+            pulumi.set(__self__, "attempt_deadline", attempt_deadline)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if http_target is not None:
-            _setter("http_target", http_target)
+            pulumi.set(__self__, "http_target", http_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if pubsub_target is not None:
-            _setter("pubsub_target", pubsub_target)
+            pulumi.set(__self__, "pubsub_target", pubsub_target)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if retry_config is not None:
-            _setter("retry_config", retry_config)
+            pulumi.set(__self__, "retry_config", retry_config)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -365,79 +320,32 @@ class _JobState:
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
         """
-        _JobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_engine_http_target=app_engine_http_target,
-            attempt_deadline=attempt_deadline,
-            description=description,
-            http_target=http_target,
-            name=name,
-            paused=paused,
-            project=project,
-            pubsub_target=pubsub_target,
-            region=region,
-            retry_config=retry_config,
-            schedule=schedule,
-            state=state,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_engine_http_target: Optional[pulumi.Input['JobAppEngineHttpTargetArgs']] = None,
-             attempt_deadline: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             http_target: Optional[pulumi.Input['JobHttpTargetArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             pubsub_target: Optional[pulumi.Input['JobPubsubTargetArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             retry_config: Optional[pulumi.Input['JobRetryConfigArgs']] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
-            app_engine_http_target = kwargs['appEngineHttpTarget']
-        if attempt_deadline is None and 'attemptDeadline' in kwargs:
-            attempt_deadline = kwargs['attemptDeadline']
-        if http_target is None and 'httpTarget' in kwargs:
-            http_target = kwargs['httpTarget']
-        if pubsub_target is None and 'pubsubTarget' in kwargs:
-            pubsub_target = kwargs['pubsubTarget']
-        if retry_config is None and 'retryConfig' in kwargs:
-            retry_config = kwargs['retryConfig']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
         if app_engine_http_target is not None:
-            _setter("app_engine_http_target", app_engine_http_target)
+            pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
-            _setter("attempt_deadline", attempt_deadline)
+            pulumi.set(__self__, "attempt_deadline", attempt_deadline)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if http_target is not None:
-            _setter("http_target", http_target)
+            pulumi.set(__self__, "http_target", http_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if pubsub_target is not None:
-            _setter("pubsub_target", pubsub_target)
+            pulumi.set(__self__, "pubsub_target", pubsub_target)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if retry_config is not None:
-            _setter("retry_config", retry_config)
+            pulumi.set(__self__, "retry_config", retry_config)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -893,10 +801,6 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -923,19 +827,15 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
-            app_engine_http_target = _utilities.configure(app_engine_http_target, JobAppEngineHttpTargetArgs, True)
             __props__.__dict__["app_engine_http_target"] = app_engine_http_target
             __props__.__dict__["attempt_deadline"] = attempt_deadline
             __props__.__dict__["description"] = description
-            http_target = _utilities.configure(http_target, JobHttpTargetArgs, True)
             __props__.__dict__["http_target"] = http_target
             __props__.__dict__["name"] = name
             __props__.__dict__["paused"] = paused
             __props__.__dict__["project"] = project
-            pubsub_target = _utilities.configure(pubsub_target, JobPubsubTargetArgs, True)
             __props__.__dict__["pubsub_target"] = pubsub_target
             __props__.__dict__["region"] = region
-            retry_config = _utilities.configure(retry_config, JobRetryConfigArgs, True)
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["time_zone"] = time_zone

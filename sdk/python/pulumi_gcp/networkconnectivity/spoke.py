@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,65 +39,24 @@ class SpokeArgs:
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
         """
-        SpokeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hub=hub,
-            location=location,
-            description=description,
-            labels=labels,
-            linked_interconnect_attachments=linked_interconnect_attachments,
-            linked_router_appliance_instances=linked_router_appliance_instances,
-            linked_vpc_network=linked_vpc_network,
-            linked_vpn_tunnels=linked_vpn_tunnels,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hub: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
-             linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
-             linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
-             linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hub is None:
-            raise TypeError("Missing 'hub' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
-            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
-        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
-            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
-        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
-            linked_vpc_network = kwargs['linkedVpcNetwork']
-        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
-            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
-
-        _setter("hub", hub)
-        _setter("location", location)
+        pulumi.set(__self__, "hub", hub)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if linked_interconnect_attachments is not None:
-            _setter("linked_interconnect_attachments", linked_interconnect_attachments)
+            pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
         if linked_router_appliance_instances is not None:
-            _setter("linked_router_appliance_instances", linked_router_appliance_instances)
+            pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
         if linked_vpc_network is not None:
-            _setter("linked_vpc_network", linked_vpc_network)
+            pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels is not None:
-            _setter("linked_vpn_tunnels", linked_vpn_tunnels)
+            pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -254,85 +213,34 @@ class _SpokeState:
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
-        _SpokeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            hub=hub,
-            labels=labels,
-            linked_interconnect_attachments=linked_interconnect_attachments,
-            linked_router_appliance_instances=linked_router_appliance_instances,
-            linked_vpc_network=linked_vpc_network,
-            linked_vpn_tunnels=linked_vpn_tunnels,
-            location=location,
-            name=name,
-            project=project,
-            state=state,
-            unique_id=unique_id,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             hub: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
-             linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
-             linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
-             linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             unique_id: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
-            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
-        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
-            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
-        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
-            linked_vpc_network = kwargs['linkedVpcNetwork']
-        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
-            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
-        if unique_id is None and 'uniqueId' in kwargs:
-            unique_id = kwargs['uniqueId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if hub is not None:
-            _setter("hub", hub)
+            pulumi.set(__self__, "hub", hub)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if linked_interconnect_attachments is not None:
-            _setter("linked_interconnect_attachments", linked_interconnect_attachments)
+            pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
         if linked_router_appliance_instances is not None:
-            _setter("linked_router_appliance_instances", linked_router_appliance_instances)
+            pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
         if linked_vpc_network is not None:
-            _setter("linked_vpc_network", linked_vpc_network)
+            pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels is not None:
-            _setter("linked_vpn_tunnels", linked_vpn_tunnels)
+            pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if unique_id is not None:
-            _setter("unique_id", unique_id)
+            pulumi.set(__self__, "unique_id", unique_id)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -734,10 +642,6 @@ class Spoke(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SpokeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -767,13 +671,9 @@ class Spoke(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hub'")
             __props__.__dict__["hub"] = hub
             __props__.__dict__["labels"] = labels
-            linked_interconnect_attachments = _utilities.configure(linked_interconnect_attachments, SpokeLinkedInterconnectAttachmentsArgs, True)
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
-            linked_router_appliance_instances = _utilities.configure(linked_router_appliance_instances, SpokeLinkedRouterApplianceInstancesArgs, True)
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
-            linked_vpc_network = _utilities.configure(linked_vpc_network, SpokeLinkedVpcNetworkArgs, True)
             __props__.__dict__["linked_vpc_network"] = linked_vpc_network
-            linked_vpn_tunnels = _utilities.configure(linked_vpn_tunnels, SpokeLinkedVpnTunnelsArgs, True)
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

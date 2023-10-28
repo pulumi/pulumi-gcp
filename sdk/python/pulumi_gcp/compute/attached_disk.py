@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AttachedDiskArgs', 'AttachedDisk']
@@ -51,43 +51,16 @@ class AttachedDiskArgs:
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
                `self_link` the zone defined in the link will take precedence.
         """
-        AttachedDiskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk=disk,
-            instance=instance,
-            device_name=device_name,
-            mode=mode,
-            project=project,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk: Optional[pulumi.Input[str]] = None,
-             instance: Optional[pulumi.Input[str]] = None,
-             device_name: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk is None:
-            raise TypeError("Missing 'disk' argument")
-        if instance is None:
-            raise TypeError("Missing 'instance' argument")
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-
-        _setter("disk", disk)
-        _setter("instance", instance)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "instance", instance)
         if device_name is not None:
-            _setter("device_name", device_name)
+            pulumi.set(__self__, "device_name", device_name)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -224,41 +197,18 @@ class _AttachedDiskState:
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
                `self_link` the zone defined in the link will take precedence.
         """
-        _AttachedDiskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            disk=disk,
-            instance=instance,
-            mode=mode,
-            project=project,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[pulumi.Input[str]] = None,
-             disk: Optional[pulumi.Input[str]] = None,
-             instance: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-
         if device_name is not None:
-            _setter("device_name", device_name)
+            pulumi.set(__self__, "device_name", device_name)
         if disk is not None:
-            _setter("disk", disk)
+            pulumi.set(__self__, "disk", disk)
         if instance is not None:
-            _setter("instance", instance)
+            pulumi.set(__self__, "instance", instance)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -512,10 +462,6 @@ class AttachedDisk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AttachedDiskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

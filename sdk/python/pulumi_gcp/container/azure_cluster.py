@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,88 +47,27 @@ class AzureClusterArgs:
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
-        AzureClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorization=authorization,
-            azure_region=azure_region,
-            control_plane=control_plane,
-            fleet=fleet,
-            location=location,
-            networking=networking,
-            resource_group_id=resource_group_id,
-            annotations=annotations,
-            azure_services_authentication=azure_services_authentication,
-            client=client,
-            description=description,
-            logging_config=logging_config,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorization: Optional[pulumi.Input['AzureClusterAuthorizationArgs']] = None,
-             azure_region: Optional[pulumi.Input[str]] = None,
-             control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArgs']] = None,
-             fleet: Optional[pulumi.Input['AzureClusterFleetArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             networking: Optional[pulumi.Input['AzureClusterNetworkingArgs']] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorization is None:
-            raise TypeError("Missing 'authorization' argument")
-        if azure_region is None and 'azureRegion' in kwargs:
-            azure_region = kwargs['azureRegion']
-        if azure_region is None:
-            raise TypeError("Missing 'azure_region' argument")
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if control_plane is None:
-            raise TypeError("Missing 'control_plane' argument")
-        if fleet is None:
-            raise TypeError("Missing 'fleet' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if networking is None:
-            raise TypeError("Missing 'networking' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if azure_services_authentication is None and 'azureServicesAuthentication' in kwargs:
-            azure_services_authentication = kwargs['azureServicesAuthentication']
-        if logging_config is None and 'loggingConfig' in kwargs:
-            logging_config = kwargs['loggingConfig']
-
-        _setter("authorization", authorization)
-        _setter("azure_region", azure_region)
-        _setter("control_plane", control_plane)
-        _setter("fleet", fleet)
-        _setter("location", location)
-        _setter("networking", networking)
-        _setter("resource_group_id", resource_group_id)
+        pulumi.set(__self__, "authorization", authorization)
+        pulumi.set(__self__, "azure_region", azure_region)
+        pulumi.set(__self__, "control_plane", control_plane)
+        pulumi.set(__self__, "fleet", fleet)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "networking", networking)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if azure_services_authentication is not None:
-            _setter("azure_services_authentication", azure_services_authentication)
+            pulumi.set(__self__, "azure_services_authentication", azure_services_authentication)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if logging_config is not None:
-            _setter("logging_config", logging_config)
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -349,119 +288,50 @@ class _AzureClusterState:
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Output only. Workload Identity settings.
         """
-        _AzureClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            authorization=authorization,
-            azure_region=azure_region,
-            azure_services_authentication=azure_services_authentication,
-            client=client,
-            control_plane=control_plane,
-            create_time=create_time,
-            description=description,
-            endpoint=endpoint,
-            etag=etag,
-            fleet=fleet,
-            location=location,
-            logging_config=logging_config,
-            name=name,
-            networking=networking,
-            project=project,
-            reconciling=reconciling,
-            resource_group_id=resource_group_id,
-            state=state,
-            uid=uid,
-            update_time=update_time,
-            workload_identity_configs=workload_identity_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             authorization: Optional[pulumi.Input['AzureClusterAuthorizationArgs']] = None,
-             azure_region: Optional[pulumi.Input[str]] = None,
-             azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
-             client: Optional[pulumi.Input[str]] = None,
-             control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             endpoint: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             fleet: Optional[pulumi.Input['AzureClusterFleetArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networking: Optional[pulumi.Input['AzureClusterNetworkingArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if azure_region is None and 'azureRegion' in kwargs:
-            azure_region = kwargs['azureRegion']
-        if azure_services_authentication is None and 'azureServicesAuthentication' in kwargs:
-            azure_services_authentication = kwargs['azureServicesAuthentication']
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if logging_config is None and 'loggingConfig' in kwargs:
-            logging_config = kwargs['loggingConfig']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
-            workload_identity_configs = kwargs['workloadIdentityConfigs']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if authorization is not None:
-            _setter("authorization", authorization)
+            pulumi.set(__self__, "authorization", authorization)
         if azure_region is not None:
-            _setter("azure_region", azure_region)
+            pulumi.set(__self__, "azure_region", azure_region)
         if azure_services_authentication is not None:
-            _setter("azure_services_authentication", azure_services_authentication)
+            pulumi.set(__self__, "azure_services_authentication", azure_services_authentication)
         if client is not None:
-            _setter("client", client)
+            pulumi.set(__self__, "client", client)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if fleet is not None:
-            _setter("fleet", fleet)
+            pulumi.set(__self__, "fleet", fleet)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if logging_config is not None:
-            _setter("logging_config", logging_config)
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networking is not None:
-            _setter("networking", networking)
+            pulumi.set(__self__, "networking", networking)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if workload_identity_configs is not None:
-            _setter("workload_identity_configs", workload_identity_configs)
+            pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
 
     @property
     @pulumi.getter
@@ -1007,10 +877,6 @@ class AzureCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AzureClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1040,32 +906,26 @@ class AzureCluster(pulumi.CustomResource):
             __props__ = AzureClusterArgs.__new__(AzureClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
-            authorization = _utilities.configure(authorization, AzureClusterAuthorizationArgs, True)
             if authorization is None and not opts.urn:
                 raise TypeError("Missing required property 'authorization'")
             __props__.__dict__["authorization"] = authorization
             if azure_region is None and not opts.urn:
                 raise TypeError("Missing required property 'azure_region'")
             __props__.__dict__["azure_region"] = azure_region
-            azure_services_authentication = _utilities.configure(azure_services_authentication, AzureClusterAzureServicesAuthenticationArgs, True)
             __props__.__dict__["azure_services_authentication"] = azure_services_authentication
             __props__.__dict__["client"] = client
-            control_plane = _utilities.configure(control_plane, AzureClusterControlPlaneArgs, True)
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
-            fleet = _utilities.configure(fleet, AzureClusterFleetArgs, True)
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
             __props__.__dict__["fleet"] = fleet
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            logging_config = _utilities.configure(logging_config, AzureClusterLoggingConfigArgs, True)
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
-            networking = _utilities.configure(networking, AzureClusterNetworkingArgs, True)
             if networking is None and not opts.urn:
                 raise TypeError("Missing required property 'networking'")
             __props__.__dict__["networking"] = networking

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
@@ -74,76 +74,27 @@ class TargetHttpsProxyArgs:
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
         """
-        TargetHttpsProxyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            url_map=url_map,
-            certificate_map=certificate_map,
-            description=description,
-            http_keep_alive_timeout_sec=http_keep_alive_timeout_sec,
-            name=name,
-            project=project,
-            proxy_bind=proxy_bind,
-            quic_override=quic_override,
-            server_tls_policy=server_tls_policy,
-            ssl_certificates=ssl_certificates,
-            ssl_policy=ssl_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             url_map: Optional[pulumi.Input[str]] = None,
-             certificate_map: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy_bind: Optional[pulumi.Input[bool]] = None,
-             quic_override: Optional[pulumi.Input[str]] = None,
-             server_tls_policy: Optional[pulumi.Input[str]] = None,
-             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if url_map is None and 'urlMap' in kwargs:
-            url_map = kwargs['urlMap']
-        if url_map is None:
-            raise TypeError("Missing 'url_map' argument")
-        if certificate_map is None and 'certificateMap' in kwargs:
-            certificate_map = kwargs['certificateMap']
-        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
-            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
-        if proxy_bind is None and 'proxyBind' in kwargs:
-            proxy_bind = kwargs['proxyBind']
-        if quic_override is None and 'quicOverride' in kwargs:
-            quic_override = kwargs['quicOverride']
-        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
-            server_tls_policy = kwargs['serverTlsPolicy']
-        if ssl_certificates is None and 'sslCertificates' in kwargs:
-            ssl_certificates = kwargs['sslCertificates']
-        if ssl_policy is None and 'sslPolicy' in kwargs:
-            ssl_policy = kwargs['sslPolicy']
-
-        _setter("url_map", url_map)
+        pulumi.set(__self__, "url_map", url_map)
         if certificate_map is not None:
-            _setter("certificate_map", certificate_map)
+            pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if http_keep_alive_timeout_sec is not None:
-            _setter("http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
-            _setter("proxy_bind", proxy_bind)
+            pulumi.set(__self__, "proxy_bind", proxy_bind)
         if quic_override is not None:
-            _setter("quic_override", quic_override)
+            pulumi.set(__self__, "quic_override", quic_override)
         if server_tls_policy is not None:
-            _setter("server_tls_policy", server_tls_policy)
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
-            _setter("ssl_certificates", ssl_certificates)
+            pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
-            _setter("ssl_policy", ssl_policy)
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
 
     @property
     @pulumi.getter(name="urlMap")
@@ -382,93 +333,34 @@ class _TargetHttpsProxyState:
                
                - - -
         """
-        _TargetHttpsProxyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_map=certificate_map,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            http_keep_alive_timeout_sec=http_keep_alive_timeout_sec,
-            name=name,
-            project=project,
-            proxy_bind=proxy_bind,
-            proxy_id=proxy_id,
-            quic_override=quic_override,
-            self_link=self_link,
-            server_tls_policy=server_tls_policy,
-            ssl_certificates=ssl_certificates,
-            ssl_policy=ssl_policy,
-            url_map=url_map,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_map: Optional[pulumi.Input[str]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy_bind: Optional[pulumi.Input[bool]] = None,
-             proxy_id: Optional[pulumi.Input[int]] = None,
-             quic_override: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             server_tls_policy: Optional[pulumi.Input[str]] = None,
-             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ssl_policy: Optional[pulumi.Input[str]] = None,
-             url_map: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_map is None and 'certificateMap' in kwargs:
-            certificate_map = kwargs['certificateMap']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
-            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
-        if proxy_bind is None and 'proxyBind' in kwargs:
-            proxy_bind = kwargs['proxyBind']
-        if proxy_id is None and 'proxyId' in kwargs:
-            proxy_id = kwargs['proxyId']
-        if quic_override is None and 'quicOverride' in kwargs:
-            quic_override = kwargs['quicOverride']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
-            server_tls_policy = kwargs['serverTlsPolicy']
-        if ssl_certificates is None and 'sslCertificates' in kwargs:
-            ssl_certificates = kwargs['sslCertificates']
-        if ssl_policy is None and 'sslPolicy' in kwargs:
-            ssl_policy = kwargs['sslPolicy']
-        if url_map is None and 'urlMap' in kwargs:
-            url_map = kwargs['urlMap']
-
         if certificate_map is not None:
-            _setter("certificate_map", certificate_map)
+            pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if http_keep_alive_timeout_sec is not None:
-            _setter("http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
-            _setter("proxy_bind", proxy_bind)
+            pulumi.set(__self__, "proxy_bind", proxy_bind)
         if proxy_id is not None:
-            _setter("proxy_id", proxy_id)
+            pulumi.set(__self__, "proxy_id", proxy_id)
         if quic_override is not None:
-            _setter("quic_override", quic_override)
+            pulumi.set(__self__, "quic_override", quic_override)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if server_tls_policy is not None:
-            _setter("server_tls_policy", server_tls_policy)
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
-            _setter("ssl_certificates", ssl_certificates)
+            pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
-            _setter("ssl_policy", ssl_policy)
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
         if url_map is not None:
-            _setter("url_map", url_map)
+            pulumi.set(__self__, "url_map", url_map)
 
     @property
     @pulumi.getter(name="certificateMap")
@@ -812,10 +704,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetHttpsProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

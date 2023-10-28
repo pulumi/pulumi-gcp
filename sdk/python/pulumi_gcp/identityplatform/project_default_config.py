@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,25 +25,10 @@ class ProjectDefaultConfigArgs:
         :param pulumi.Input['ProjectDefaultConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
-        ProjectDefaultConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            sign_in=sign_in,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sign_in is None and 'signIn' in kwargs:
-            sign_in = kwargs['signIn']
-
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if sign_in is not None:
-            _setter("sign_in", sign_in)
+            pulumi.set(__self__, "sign_in", sign_in)
 
     @property
     @pulumi.getter
@@ -86,29 +71,12 @@ class _ProjectDefaultConfigState:
         :param pulumi.Input['ProjectDefaultConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
-        _ProjectDefaultConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            project=project,
-            sign_in=sign_in,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sign_in is None and 'signIn' in kwargs:
-            sign_in = kwargs['signIn']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if sign_in is not None:
-            _setter("sign_in", sign_in)
+            pulumi.set(__self__, "sign_in", sign_in)
 
     @property
     @pulumi.getter
@@ -280,10 +248,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectDefaultConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -301,7 +265,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
             __props__ = ProjectDefaultConfigArgs.__new__(ProjectDefaultConfigArgs)
 
             __props__.__dict__["project"] = project
-            sign_in = _utilities.configure(sign_in, ProjectDefaultConfigSignInArgs, True)
             __props__.__dict__["sign_in"] = sign_in
             __props__.__dict__["name"] = None
         super(ProjectDefaultConfig, __self__).__init__(
