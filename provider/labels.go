@@ -1,4 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.  All rights reserved.
+// Copyright 2016-2023, Pulumi Corporation.  All rights reserved.
 
 package gcp
 
@@ -7,8 +7,14 @@ import (
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 )
 
-func fixTagNames(prov *tfbridge.ProviderInfo) {
-	// Recursively applies the tag fix
+// GCP has many resources with labels called "terraform_labels". We want to change those
+// to "pulumiLabels".
+//
+// fixLabelNames traverses the TF schema of resources and data sources to find fields
+// called "terraform_labels", overriding these with "pulumiLabels" via
+// tfbridge.SchemaInfo.
+func fixLabelNames(prov *tfbridge.ProviderInfo) {
+	// Recursively applies the label fix
 	var apply func(string, shim.Schema, *tfbridge.SchemaInfo)
 	apply = func(key string, m shim.Schema, info *tfbridge.SchemaInfo) {
 		if key == "terraform_labels" {
