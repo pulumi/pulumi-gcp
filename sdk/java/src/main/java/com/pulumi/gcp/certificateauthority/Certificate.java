@@ -528,6 +528,22 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
@@ -544,12 +560,18 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * Labels with user-defined metadata to apply to this resource.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Labels with user-defined metadata to apply to this resource.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -636,26 +658,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.pemCertificateChains;
     }
     /**
-     * (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     * 
-     * @deprecated
-     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-     * 
-     */
-    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-    @Export(name="pemCertificates", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> pemCertificates;
-
-    /**
-     * @return (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     * 
-     */
-    public Output<List<String>> pemCertificates() {
-        return this.pemCertificates;
-    }
-    /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      * 
      */
@@ -698,6 +700,22 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is

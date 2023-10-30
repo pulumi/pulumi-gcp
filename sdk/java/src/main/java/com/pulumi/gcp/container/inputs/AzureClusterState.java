@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.AzureClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterNetworkingArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +29,18 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -143,6 +150,23 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -366,6 +390,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         this.controlPlane = $.controlPlane;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.endpoint = $.endpoint;
         this.etag = $.etag;
         this.fleet = $.fleet;
@@ -403,6 +428,9 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -413,6 +441,9 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -566,6 +597,29 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**

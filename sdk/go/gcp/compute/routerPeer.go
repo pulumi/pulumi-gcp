@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,7 +61,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,7 +92,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,8 +128,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

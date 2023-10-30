@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -110,9 +110,6 @@ func GetCloudIdentityCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudIdsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIdsCustomEndpoint")
 }
-func GetCloudIotCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:cloudIotCustomEndpoint")
-}
 func GetCloudResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudResourceManagerCustomEndpoint")
 }
@@ -200,6 +197,9 @@ func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetDatastreamCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:datastreamCustomEndpoint")
 }
+func GetDefaultLabels(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:defaultLabels")
+}
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }
@@ -253,9 +253,6 @@ func GetFirebaserulesCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
-}
-func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:gameServicesCustomEndpoint")
 }
 func GetGkeBackupCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeBackupCustomEndpoint")

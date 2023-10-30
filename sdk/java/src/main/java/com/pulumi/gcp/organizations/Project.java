@@ -156,6 +156,22 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.billingAccount);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `org_id` or `folder_id` may be
      * specified. If the `folder_id` is specified, then the project is
@@ -179,6 +195,8 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -186,6 +204,8 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -256,6 +276,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * If true, the resource can be deleted

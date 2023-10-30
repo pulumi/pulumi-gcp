@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string AllocatedIpRange;
         public readonly ImmutableArray<string> DatabaseNames;
         public readonly string PointInTime;
+        public readonly string PreferredZone;
         public readonly string SourceInstanceName;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string pointInTime,
 
+            string preferredZone,
+
             string sourceInstanceName)
         {
             AllocatedIpRange = allocatedIpRange;
             DatabaseNames = databaseNames;
             PointInTime = pointInTime;
+            PreferredZone = preferredZone;
             SourceInstanceName = sourceInstanceName;
         }
     }

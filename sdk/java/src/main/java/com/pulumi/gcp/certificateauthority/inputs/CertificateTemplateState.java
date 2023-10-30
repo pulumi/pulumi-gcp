@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -50,6 +51,23 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
      * 
      */
@@ -67,12 +85,18 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     /**
      * Optional. Labels with user-defined metadata.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Optional. Labels with user-defined metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -155,6 +179,21 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Output only. The time at which this CertificateTemplate was updated.
      * 
      */
@@ -174,6 +213,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     private CertificateTemplateState(CertificateTemplateState $) {
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.identityConstraints = $.identityConstraints;
         this.labels = $.labels;
         this.location = $.location;
@@ -181,6 +221,7 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         this.passthroughExtensions = $.passthroughExtensions;
         this.predefinedValues = $.predefinedValues;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.updateTime = $.updateTime;
     }
 
@@ -245,6 +286,29 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param identityConstraints Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
          * 
          * @return builder
@@ -268,6 +332,9 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         /**
          * @param labels Optional. Labels with user-defined metadata.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -278,6 +345,9 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
 
         /**
          * @param labels Optional. Labels with user-defined metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -389,6 +459,27 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

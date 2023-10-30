@@ -115,6 +115,8 @@ namespace Pulumi.Gcp.SecretManager
     {
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string CreateTime;
+        public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExpireTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -123,6 +125,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetSecretReplicationResult> Replications;
         public readonly ImmutableArray<Outputs.GetSecretRotationResult> Rotations;
         public readonly string SecretId;
@@ -136,6 +139,10 @@ namespace Pulumi.Gcp.SecretManager
 
             string createTime,
 
+            ImmutableDictionary<string, string> effectiveAnnotations,
+
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string expireTime,
 
             string id,
@@ -145,6 +152,8 @@ namespace Pulumi.Gcp.SecretManager
             string name,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             ImmutableArray<Outputs.GetSecretReplicationResult> replications,
 
@@ -160,11 +169,14 @@ namespace Pulumi.Gcp.SecretManager
         {
             Annotations = annotations;
             CreateTime = createTime;
+            EffectiveAnnotations = effectiveAnnotations;
+            EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;
             Id = id;
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Replications = replications;
             Rotations = rotations;
             SecretId = secretId;

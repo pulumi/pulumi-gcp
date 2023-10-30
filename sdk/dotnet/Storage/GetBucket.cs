@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketCorResult> Cors;
         public readonly ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> CustomPlacementConfigs;
         public readonly bool DefaultEventBasedHold;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
         public readonly bool ForceDestroy;
         /// <summary>
@@ -126,6 +127,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string Name;
         public readonly string Project;
         public readonly string PublicAccessPrevention;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool RequesterPays;
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
         public readonly string SelfLink;
@@ -144,6 +146,8 @@ namespace Pulumi.Gcp.Storage
             ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> customPlacementConfigs,
 
             bool defaultEventBasedHold,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             ImmutableArray<Outputs.GetBucketEncryptionResult> encryptions,
 
@@ -165,6 +169,8 @@ namespace Pulumi.Gcp.Storage
 
             string publicAccessPrevention,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             bool requesterPays,
 
             ImmutableArray<Outputs.GetBucketRetentionPolicyResult> retentionPolicies,
@@ -185,6 +191,7 @@ namespace Pulumi.Gcp.Storage
             Cors = cors;
             CustomPlacementConfigs = customPlacementConfigs;
             DefaultEventBasedHold = defaultEventBasedHold;
+            EffectiveLabels = effectiveLabels;
             Encryptions = encryptions;
             ForceDestroy = forceDestroy;
             Id = id;
@@ -195,6 +202,7 @@ namespace Pulumi.Gcp.Storage
             Name = name;
             Project = project;
             PublicAccessPrevention = publicAccessPrevention;
+            PulumiLabels = pulumiLabels;
             RequesterPays = requesterPays;
             RetentionPolicies = retentionPolicies;
             SelfLink = selfLink;

@@ -30,6 +30,9 @@ class AiFeatureStoreArgs:
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
@@ -88,6 +91,9 @@ class AiFeatureStoreArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Featurestore.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -165,6 +171,7 @@ class AiFeatureStoreArgs:
 class _AiFeatureStoreState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -173,16 +180,22 @@ class _AiFeatureStoreState:
                  online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
                  online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStore resources.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['AiFeatureStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
@@ -192,11 +205,15 @@ class _AiFeatureStoreState:
                featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
         if etag is not None:
@@ -213,6 +230,8 @@ class _AiFeatureStoreState:
             pulumi.set(__self__, "online_storage_ttl_days", online_storage_ttl_days)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if update_time is not None:
@@ -229,6 +248,19 @@ class _AiFeatureStoreState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="encryptionSpec")
@@ -272,6 +304,9 @@ class _AiFeatureStoreState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Featurestore.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -331,6 +366,19 @@ class _AiFeatureStoreState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -470,6 +518,9 @@ class AiFeatureStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
                Structure is documented below.
@@ -621,7 +672,9 @@ class AiFeatureStore(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiFeatureStore, __self__).__init__(
             'gcp:vertex/aiFeatureStore:AiFeatureStore',
@@ -634,6 +687,7 @@ class AiFeatureStore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -642,6 +696,7 @@ class AiFeatureStore(pulumi.CustomResource):
             online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
             online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStore':
         """
@@ -652,11 +707,16 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
                Structure is documented below.
@@ -666,6 +726,8 @@ class AiFeatureStore(pulumi.CustomResource):
                featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
@@ -674,6 +736,7 @@ class AiFeatureStore(pulumi.CustomResource):
         __props__ = _AiFeatureStoreState.__new__(_AiFeatureStoreState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_destroy"] = force_destroy
@@ -682,6 +745,7 @@ class AiFeatureStore(pulumi.CustomResource):
         __props__.__dict__["online_serving_config"] = online_serving_config
         __props__.__dict__["online_storage_ttl_days"] = online_storage_ttl_days
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         return AiFeatureStore(resource_name, opts=opts, __props__=__props__)
@@ -693,6 +757,15 @@ class AiFeatureStore(pulumi.CustomResource):
         The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="encryptionSpec")
@@ -724,6 +797,9 @@ class AiFeatureStore(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Featurestore.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -763,6 +839,15 @@ class AiFeatureStore(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

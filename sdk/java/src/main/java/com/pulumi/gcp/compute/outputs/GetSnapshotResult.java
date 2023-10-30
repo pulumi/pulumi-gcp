@@ -21,6 +21,7 @@ public final class GetSnapshotResult {
     private String creationTimestamp;
     private String description;
     private Integer diskSizeGb;
+    private Map<String,String> effectiveLabels;
     private @Nullable String filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -33,6 +34,7 @@ public final class GetSnapshotResult {
     private @Nullable Boolean mostRecent;
     private @Nullable String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String selfLink;
     private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
     private Integer snapshotId;
@@ -54,6 +56,9 @@ public final class GetSnapshotResult {
     }
     public Integer diskSizeGb() {
         return this.diskSizeGb;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
@@ -82,6 +87,9 @@ public final class GetSnapshotResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public String selfLink() {
         return this.selfLink;
@@ -121,6 +129,7 @@ public final class GetSnapshotResult {
         private String creationTimestamp;
         private String description;
         private Integer diskSizeGb;
+        private Map<String,String> effectiveLabels;
         private @Nullable String filter;
         private String id;
         private String labelFingerprint;
@@ -129,6 +138,7 @@ public final class GetSnapshotResult {
         private @Nullable Boolean mostRecent;
         private @Nullable String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String selfLink;
         private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
         private Integer snapshotId;
@@ -144,6 +154,7 @@ public final class GetSnapshotResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskSizeGb = defaults.diskSizeGb;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -152,6 +163,7 @@ public final class GetSnapshotResult {
     	      this.mostRecent = defaults.mostRecent;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
     	      this.snapshotEncryptionKeys = defaults.snapshotEncryptionKeys;
     	      this.snapshotId = defaults.snapshotId;
@@ -180,6 +192,11 @@ public final class GetSnapshotResult {
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -223,6 +240,11 @@ public final class GetSnapshotResult {
         @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
@@ -280,6 +302,7 @@ public final class GetSnapshotResult {
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskSizeGb = diskSizeGb;
+            o.effectiveLabels = effectiveLabels;
             o.filter = filter;
             o.id = id;
             o.labelFingerprint = labelFingerprint;
@@ -288,6 +311,7 @@ public final class GetSnapshotResult {
             o.mostRecent = mostRecent;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.selfLink = selfLink;
             o.snapshotEncryptionKeys = snapshotEncryptionKeys;
             o.snapshotId = snapshotId;

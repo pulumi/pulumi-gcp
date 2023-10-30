@@ -289,6 +289,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredStatus);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
@@ -368,6 +384,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -375,6 +393,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -597,6 +617,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Specifies the reservations that this instance can consume from.

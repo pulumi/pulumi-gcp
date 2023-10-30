@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -53,6 +53,9 @@ type Task struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpecOutput `pulumi:"executionSpec"`
@@ -60,6 +63,9 @@ type Task struct {
 	// Structure is documented below.
 	ExecutionStatuses TaskExecutionStatusArrayOutput `pulumi:"executionStatuses"`
 	// User-defined labels for the task.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrOutput `pulumi:"lake"`
@@ -74,6 +80,9 @@ type Task struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	Spark TaskSparkPtrOutput `pulumi:"spark"`
@@ -135,6 +144,9 @@ type taskState struct {
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionSpec *TaskExecutionSpec `pulumi:"executionSpec"`
@@ -142,6 +154,9 @@ type taskState struct {
 	// Structure is documented below.
 	ExecutionStatuses []TaskExecutionStatus `pulumi:"executionStatuses"`
 	// User-defined labels for the task.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake *string `pulumi:"lake"`
@@ -156,6 +171,9 @@ type taskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	Spark *TaskSpark `pulumi:"spark"`
@@ -182,6 +200,9 @@ type TaskState struct {
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Configuration for the cluster
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpecPtrInput
@@ -189,6 +210,9 @@ type TaskState struct {
 	// Structure is documented below.
 	ExecutionStatuses TaskExecutionStatusArrayInput
 	// User-defined labels for the task.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrInput
@@ -203,6 +227,9 @@ type TaskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	Spark TaskSparkPtrInput
@@ -235,6 +262,9 @@ type taskArgs struct {
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpec `pulumi:"executionSpec"`
 	// User-defined labels for the task.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake in which the task will be created in.
 	Lake *string `pulumi:"lake"`
@@ -266,6 +296,9 @@ type TaskArgs struct {
 	// Structure is documented below.
 	ExecutionSpec TaskExecutionSpecInput
 	// User-defined labels for the task.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake in which the task will be created in.
 	Lake pulumi.StringPtrInput
@@ -413,6 +446,12 @@ func (o TaskOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TaskOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Configuration for the cluster
 // Structure is documented below.
 func (o TaskOutput) ExecutionSpec() TaskExecutionSpecOutput {
@@ -426,6 +465,9 @@ func (o TaskOutput) ExecutionStatuses() TaskExecutionStatusArrayOutput {
 }
 
 // User-defined labels for the task.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TaskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -456,6 +498,12 @@ func (o TaskOutput) Notebook() TaskNotebookPtrOutput {
 // If it is not provided, the provider project is used.
 func (o TaskOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o TaskOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.

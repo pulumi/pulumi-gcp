@@ -154,7 +154,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
      * 
      */
     @Import(name="clusterIpv4Cidr")
@@ -164,7 +164,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * @return The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
      * 
      */
     public Optional<Output<String>> clusterIpv4Cidr() {
@@ -291,6 +291,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
      * Description of the cluster.
      * 
      */
@@ -339,33 +356,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableAutopilot() {
         return Optional.ofNullable(this.enableAutopilot);
-    }
-
-    /**
-     * Enable Binary Authorization for this cluster.
-     * If enabled, all container images will be validated by Google Binary Authorization.
-     * Deprecated in favor of `binary_authorization`.
-     * 
-     * @deprecated
-     * Deprecated in favor of binary_authorization.
-     * 
-     */
-    @Deprecated /* Deprecated in favor of binary_authorization. */
-    @Import(name="enableBinaryAuthorization")
-    private @Nullable Output<Boolean> enableBinaryAuthorization;
-
-    /**
-     * @return Enable Binary Authorization for this cluster.
-     * If enabled, all container images will be validated by Google Binary Authorization.
-     * Deprecated in favor of `binary_authorization`.
-     * 
-     * @deprecated
-     * Deprecated in favor of binary_authorization.
-     * 
-     */
-    @Deprecated /* Deprecated in favor of binary_authorization. */
-    public Optional<Output<Boolean>> enableBinaryAuthorization() {
-        return Optional.ofNullable(this.enableBinaryAuthorization);
     }
 
     /**
@@ -578,9 +568,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration of cluster IP allocation for
-     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * making the cluster VPC-native instead of routes-based. Structure is documented
-     * below.
+     * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+     * Structure is documented below.
      * 
      */
     @Import(name="ipAllocationPolicy")
@@ -588,9 +577,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration of cluster IP allocation for
-     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * making the cluster VPC-native instead of routes-based. Structure is documented
-     * below.
+     * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterIpAllocationPolicyArgs>> ipAllocationPolicy() {
@@ -882,8 +870,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
      * 
      */
     @Import(name="networkingMode")
@@ -891,8 +878,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
      * 
      */
     public Optional<Output<String>> networkingMode() {
@@ -1349,10 +1335,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.datapathProvider = $.datapathProvider;
         this.defaultMaxPodsPerNode = $.defaultMaxPodsPerNode;
         this.defaultSnatStatus = $.defaultSnatStatus;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dnsConfig = $.dnsConfig;
         this.enableAutopilot = $.enableAutopilot;
-        this.enableBinaryAuthorization = $.enableBinaryAuthorization;
         this.enableFqdnNetworkPolicy = $.enableFqdnNetworkPolicy;
         this.enableIntranodeVisibility = $.enableIntranodeVisibility;
         this.enableK8sBetaApis = $.enableK8sBetaApis;
@@ -1551,7 +1537,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param clusterIpv4Cidr The IP address range of the Kubernetes pods
          * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
          * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-         * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+         * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
          * 
          * @return builder
          * 
@@ -1565,7 +1551,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param clusterIpv4Cidr The IP address range of the Kubernetes pods
          * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
          * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-         * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+         * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
          * 
          * @return builder
          * 
@@ -1736,6 +1722,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deletionProtection Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+         * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+         * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
          * @param description Description of the cluster.
          * 
          * @return builder
@@ -1802,39 +1811,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableAutopilot(Boolean enableAutopilot) {
             return enableAutopilot(Output.of(enableAutopilot));
-        }
-
-        /**
-         * @param enableBinaryAuthorization Enable Binary Authorization for this cluster.
-         * If enabled, all container images will be validated by Google Binary Authorization.
-         * Deprecated in favor of `binary_authorization`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Deprecated in favor of binary_authorization.
-         * 
-         */
-        @Deprecated /* Deprecated in favor of binary_authorization. */
-        public Builder enableBinaryAuthorization(@Nullable Output<Boolean> enableBinaryAuthorization) {
-            $.enableBinaryAuthorization = enableBinaryAuthorization;
-            return this;
-        }
-
-        /**
-         * @param enableBinaryAuthorization Enable Binary Authorization for this cluster.
-         * If enabled, all container images will be validated by Google Binary Authorization.
-         * Deprecated in favor of `binary_authorization`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Deprecated in favor of binary_authorization.
-         * 
-         */
-        @Deprecated /* Deprecated in favor of binary_authorization. */
-        public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
-            return enableBinaryAuthorization(Output.of(enableBinaryAuthorization));
         }
 
         /**
@@ -2119,9 +2095,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipAllocationPolicy Configuration of cluster IP allocation for
-         * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-         * making the cluster VPC-native instead of routes-based. Structure is documented
-         * below.
+         * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -2133,9 +2108,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipAllocationPolicy Configuration of cluster IP allocation for
-         * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-         * making the cluster VPC-native instead of routes-based. Structure is documented
-         * below.
+         * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -2507,8 +2481,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkingMode Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-         * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-         * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+         * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
          * 
          * @return builder
          * 
@@ -2520,8 +2493,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkingMode Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-         * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-         * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+         * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
          * 
          * @return builder
          * 

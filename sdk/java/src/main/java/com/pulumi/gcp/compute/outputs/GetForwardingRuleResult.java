@@ -22,6 +22,7 @@ public final class GetForwardingRuleResult {
     private String baseForwardingRule;
     private String creationTimestamp;
     private String description;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,6 +44,7 @@ public final class GetForwardingRuleResult {
     private @Nullable String project;
     private String pscConnectionId;
     private String pscConnectionStatus;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private String selfLink;
     private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -73,6 +75,9 @@ public final class GetForwardingRuleResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -129,6 +134,9 @@ public final class GetForwardingRuleResult {
     public String pscConnectionStatus() {
         return this.pscConnectionStatus;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -170,6 +178,7 @@ public final class GetForwardingRuleResult {
         private String baseForwardingRule;
         private String creationTimestamp;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String id;
         private String ipAddress;
         private String ipProtocol;
@@ -187,6 +196,7 @@ public final class GetForwardingRuleResult {
         private @Nullable String project;
         private String pscConnectionId;
         private String pscConnectionStatus;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String selfLink;
         private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -205,6 +215,7 @@ public final class GetForwardingRuleResult {
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
@@ -222,6 +233,7 @@ public final class GetForwardingRuleResult {
     	      this.project = defaults.project;
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceDirectoryRegistrations = defaults.serviceDirectoryRegistrations;
@@ -265,6 +277,11 @@ public final class GetForwardingRuleResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -356,6 +373,11 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -410,6 +432,7 @@ public final class GetForwardingRuleResult {
             o.baseForwardingRule = baseForwardingRule;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.ipAddress = ipAddress;
             o.ipProtocol = ipProtocol;
@@ -427,6 +450,7 @@ public final class GetForwardingRuleResult {
             o.project = project;
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.selfLink = selfLink;
             o.serviceDirectoryRegistrations = serviceDirectoryRegistrations;

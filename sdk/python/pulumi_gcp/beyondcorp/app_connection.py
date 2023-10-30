@@ -34,6 +34,9 @@ class AppConnectionArgs:
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -115,6 +118,9 @@ class AppConnectionArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -180,10 +186,12 @@ class _AppConnectionState:
                  application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -192,12 +200,19 @@ class _AppConnectionState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the AppConnection.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
@@ -209,6 +224,8 @@ class _AppConnectionState:
             pulumi.set(__self__, "connectors", connectors)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
         if labels is not None:
@@ -217,6 +234,8 @@ class _AppConnectionState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if type is not None:
@@ -260,6 +279,19 @@ class _AppConnectionState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArgs']]:
         """
@@ -277,6 +309,9 @@ class _AppConnectionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -308,6 +343,19 @@ class _AppConnectionState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -448,6 +496,9 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -594,6 +645,8 @@ class AppConnection(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["type"] = type
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(AppConnection, __self__).__init__(
             'gcp:beyondcorp/appConnection:AppConnection',
             resource_name,
@@ -607,10 +660,12 @@ class AppConnection(pulumi.CustomResource):
             application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
             connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'AppConnection':
         """
@@ -624,12 +679,19 @@ class AppConnection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the AppConnection.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
@@ -642,10 +704,12 @@ class AppConnection(pulumi.CustomResource):
         __props__.__dict__["application_endpoint"] = application_endpoint
         __props__.__dict__["connectors"] = connectors
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateway"] = gateway
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["type"] = type
         return AppConnection(resource_name, opts=opts, __props__=__props__)
@@ -676,6 +740,15 @@ class AppConnection(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def gateway(self) -> pulumi.Output['outputs.AppConnectionGateway']:
         """
@@ -689,6 +762,9 @@ class AppConnection(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -708,6 +784,15 @@ class AppConnection(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

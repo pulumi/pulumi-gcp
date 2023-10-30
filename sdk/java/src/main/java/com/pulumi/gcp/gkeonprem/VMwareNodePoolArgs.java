@@ -28,6 +28,9 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
@@ -41,6 +44,9 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -199,6 +205,9 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
          * Name must be 63 characters or less, begin and end with alphanumerics,
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -216,6 +225,9 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
          * Prefix must be a DNS subdomain.
          * Name must be 63 characters or less, begin and end with alphanumerics,
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

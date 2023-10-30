@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         /// </summary>
         public readonly string? DiskType;
+        public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigEffectiveTaint> EffectiveTaints;
         /// <summary>
         /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
@@ -282,6 +283,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? diskType,
 
+            ImmutableArray<Outputs.ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints,
+
             Outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig? ephemeralStorageConfig,
 
             Outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig? ephemeralStorageLocalSsdConfig,
@@ -347,6 +350,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EffectiveTaints = effectiveTaints;
             EphemeralStorageConfig = ephemeralStorageConfig;
             EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             FastSocket = fastSocket;

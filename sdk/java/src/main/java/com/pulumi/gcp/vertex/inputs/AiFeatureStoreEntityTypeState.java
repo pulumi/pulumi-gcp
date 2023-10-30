@@ -49,6 +49,23 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Used to perform consistent read-modify-write updates.
      * 
      */
@@ -85,12 +102,18 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     /**
      * A set of key/value label pairs to assign to this EntityType.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to this EntityType.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -151,6 +174,23 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The region of the EntityType.
      * 
      */
@@ -185,12 +225,14 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     private AiFeatureStoreEntityTypeState(AiFeatureStoreEntityTypeState $) {
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.featurestore = $.featurestore;
         this.labels = $.labels;
         this.monitoringConfig = $.monitoringConfig;
         this.name = $.name;
         this.offlineStorageTtlDays = $.offlineStorageTtlDays;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.updateTime = $.updateTime;
     }
@@ -256,6 +298,29 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param etag Used to perform consistent read-modify-write updates.
          * 
          * @return builder
@@ -304,6 +369,9 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         /**
          * @param labels A set of key/value label pairs to assign to this EntityType.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -314,6 +382,9 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
 
         /**
          * @param labels A set of key/value label pairs to assign to this EntityType.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -391,6 +462,29 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
          */
         public Builder offlineStorageTtlDays(Integer offlineStorageTtlDays) {
             return offlineStorageTtlDays(Output.of(offlineStorageTtlDays));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

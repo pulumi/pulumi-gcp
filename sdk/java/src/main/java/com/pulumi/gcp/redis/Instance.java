@@ -164,8 +164,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -186,9 +185,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;redis-test-network&#34;)
- *             .build());
+ *         var redis_network = new Network(&#34;redis-network&#34;);
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
  *             .purpose(&#34;VPC_PEERING&#34;)
@@ -511,6 +508,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      * 
@@ -528,6 +541,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -535,6 +550,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -583,16 +600,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceSchedule", refs={InstanceMaintenanceSchedule.class}, tree="[0]")
-    private Output<InstanceMaintenanceSchedule> maintenanceSchedule;
+    @Export(name="maintenanceSchedules", refs={List.class,InstanceMaintenanceSchedule.class}, tree="[0,1]")
+    private Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
 
     /**
      * @return Upcoming maintenance schedule.
      * Structure is documented below.
      * 
      */
-    public Output<InstanceMaintenanceSchedule> maintenanceSchedule() {
-        return this.maintenanceSchedule;
+    public Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules() {
+        return this.maintenanceSchedules;
     }
     /**
      * Redis memory size in GiB.
@@ -707,6 +724,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.

@@ -210,7 +210,7 @@ export class Routine extends pulumi.CustomResource {
      * The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
-    public readonly routineType!: pulumi.Output<string | undefined>;
+    public readonly routineType!: pulumi.Output<string>;
 
     /**
      * Create a Routine resource with the given unique name, arguments, and options.
@@ -249,6 +249,9 @@ export class Routine extends pulumi.CustomResource {
             }
             if ((!args || args.routineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routineId'");
+            }
+            if ((!args || args.routineType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'routineType'");
             }
             resourceInputs["arguments"] = args ? args.arguments : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
@@ -427,5 +430,5 @@ export interface RoutineArgs {
      * The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
-    routineType?: pulumi.Input<string>;
+    routineType: pulumi.Input<string>;
 }

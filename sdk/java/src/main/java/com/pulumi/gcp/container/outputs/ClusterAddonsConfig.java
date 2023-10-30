@@ -86,7 +86,9 @@ public final class ClusterAddonsConfig {
     /**
      * @return The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
-     * It is disabled by default; set `enabled = true` to enable.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+     * See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
      * 
      */
     private @Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig;
@@ -210,7 +212,9 @@ public final class ClusterAddonsConfig {
     /**
      * @return The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
-     * It is disabled by default; set `enabled = true` to enable.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+     * See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
      * 
      */
     public Optional<ClusterAddonsConfigGcsFuseCsiDriverConfig> gcsFuseCsiDriverConfig() {

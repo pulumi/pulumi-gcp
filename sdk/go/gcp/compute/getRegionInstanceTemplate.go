@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,7 +90,8 @@ type LookupRegionInstanceTemplateResult struct {
 	// Disks to attach to instances created from this template.
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
-	Disks []GetRegionInstanceTemplateDisk `pulumi:"disks"`
+	Disks           []GetRegionInstanceTemplateDisk `pulumi:"disks"`
+	EffectiveLabels map[string]string               `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay bool    `pulumi:"enableDisplay"`
@@ -135,6 +136,7 @@ type LookupRegionInstanceTemplateResult struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project               *string                                        `pulumi:"project"`
+	PulumiLabels          map[string]string                              `pulumi:"pulumiLabels"`
 	Region                *string                                        `pulumi:"region"`
 	ReservationAffinities []GetRegionInstanceTemplateReservationAffinity `pulumi:"reservationAffinities"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -242,6 +244,10 @@ func (o LookupRegionInstanceTemplateResultOutput) Disks() GetRegionInstanceTempl
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) []GetRegionInstanceTemplateDisk { return v.Disks }).(GetRegionInstanceTemplateDiskArrayOutput)
 }
 
+func (o LookupRegionInstanceTemplateResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (o LookupRegionInstanceTemplateResultOutput) EnableDisplay() pulumi.BoolOutput {
@@ -341,6 +347,10 @@ func (o LookupRegionInstanceTemplateResultOutput) NetworkPerformanceConfigs() Ge
 // is not provided, the provider project is used.
 func (o LookupRegionInstanceTemplateResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRegionInstanceTemplateResultOutput) Region() pulumi.StringPtrOutput {

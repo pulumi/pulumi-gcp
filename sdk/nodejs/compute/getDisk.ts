@@ -73,6 +73,7 @@ export interface GetDiskResult {
      */
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetDiskDiskEncryptionKey[];
+    readonly effectiveLabels: {[key: string]: string};
     readonly enableConfidentialCompute: boolean;
     readonly guestOsFeatures: outputs.compute.GetDiskGuestOsFeature[];
     /**
@@ -89,9 +90,6 @@ export interface GetDiskResult {
      * internally during updates.
      */
     readonly labelFingerprint: string;
-    /**
-     * A map of labels applied to this disk.
-     */
     readonly labels: {[key: string]: string};
     /**
      * Last attach timestamp in RFC3339 text format.
@@ -111,6 +109,7 @@ export interface GetDiskResult {
     readonly project?: string;
     readonly provisionedIops: number;
     readonly provisionedThroughput: number;
+    readonly pulumiLabels: {[key: string]: string};
     readonly resourcePolicies: string[];
     /**
      * The URI of the created resource.

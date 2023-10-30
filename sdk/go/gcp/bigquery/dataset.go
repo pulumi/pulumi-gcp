@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,8 +70,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -115,8 +115,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -200,7 +200,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -364,6 +364,9 @@ type Dataset struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A descriptive name for the dataset
@@ -373,7 +376,10 @@ type Dataset struct {
 	// case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive pulumi.BoolOutput `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
-	// organize and group your datasets
+	// organize and group your datasets.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The date when this dataset or any of its tables was last modified, in
 	// milliseconds since the epoch.
@@ -394,6 +400,9 @@ type Dataset struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Specifies the storage billing model for the dataset.
@@ -497,6 +506,9 @@ type datasetState struct {
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
 	// A descriptive name for the dataset
@@ -506,7 +518,10 @@ type datasetState struct {
 	// case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive *bool `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
-	// organize and group your datasets
+	// organize and group your datasets.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The date when this dataset or any of its tables was last modified, in
 	// milliseconds since the epoch.
@@ -527,6 +542,9 @@ type datasetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Specifies the storage billing model for the dataset.
@@ -598,6 +616,9 @@ type DatasetState struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
 	// A descriptive name for the dataset
@@ -607,7 +628,10 @@ type DatasetState struct {
 	// case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive pulumi.BoolPtrInput
 	// The labels associated with this dataset. You can use these to
-	// organize and group your datasets
+	// organize and group your datasets.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The date when this dataset or any of its tables was last modified, in
 	// milliseconds since the epoch.
@@ -628,6 +652,9 @@ type DatasetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Specifies the storage billing model for the dataset.
@@ -707,7 +734,10 @@ type datasetArgs struct {
 	// case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive *bool `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
-	// organize and group your datasets
+	// organize and group your datasets.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -799,7 +829,10 @@ type DatasetArgs struct {
 	// case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive pulumi.BoolPtrInput
 	// The labels associated with this dataset. You can use these to
-	// organize and group your datasets
+	// organize and group your datasets.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -1025,6 +1058,12 @@ func (o DatasetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DatasetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A hash of the resource.
 func (o DatasetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -1043,7 +1082,10 @@ func (o DatasetOutput) IsCaseInsensitive() pulumi.BoolOutput {
 }
 
 // The labels associated with this dataset. You can use these to
-// organize and group your datasets
+// organize and group your datasets.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DatasetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1077,6 +1119,12 @@ func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o DatasetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DatasetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The URI of the created resource.

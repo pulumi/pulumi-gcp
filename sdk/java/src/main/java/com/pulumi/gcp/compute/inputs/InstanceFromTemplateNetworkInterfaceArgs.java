@@ -86,6 +86,13 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         return Optional.ofNullable(this.network);
     }
 
+    @Import(name="networkAttachment")
+    private @Nullable Output<String> networkAttachment;
+
+    public Optional<Output<String>> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
+
     @Import(name="networkIp")
     private @Nullable Output<String> networkIp;
 
@@ -105,6 +112,13 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
 
     public Optional<Output<Integer>> queueCount() {
         return Optional.ofNullable(this.queueCount);
+    }
+
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
     }
 
     @Import(name="stackType")
@@ -139,9 +153,11 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         this.ipv6Address = $.ipv6Address;
         this.name = $.name;
         this.network = $.network;
+        this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
         this.queueCount = $.queueCount;
+        this.securityPolicy = $.securityPolicy;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
@@ -263,6 +279,15 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
             return network(Output.of(network));
         }
 
+        public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
+            $.networkAttachment = networkAttachment;
+            return this;
+        }
+
+        public Builder networkAttachment(String networkAttachment) {
+            return networkAttachment(Output.of(networkAttachment));
+        }
+
         public Builder networkIp(@Nullable Output<String> networkIp) {
             $.networkIp = networkIp;
             return this;
@@ -288,6 +313,15 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
 
         public Builder queueCount(Integer queueCount) {
             return queueCount(Output.of(queueCount));
+        }
+
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         public Builder stackType(@Nullable Output<String> stackType) {

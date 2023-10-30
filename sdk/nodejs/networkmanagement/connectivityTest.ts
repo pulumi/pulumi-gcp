@@ -61,6 +61,9 @@ import * as utilities from "../utilities";
  *         instance: destination.id,
  *     },
  *     protocol: "TCP",
+ *     labels: {
+ *         env: "test",
+ *     },
  * });
  * ```
  * ### Network Management Connectivity Test Addresses
@@ -171,7 +174,15 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -187,6 +198,11 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
@@ -231,10 +247,12 @@ export class ConnectivityTest extends pulumi.CustomResource {
             const state = argsOrState as ConnectivityTestState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["relatedProjects"] = state ? state.relatedProjects : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
         } else {
@@ -253,6 +271,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectivityTest.__pulumiType, name, resourceInputs, opts);
@@ -287,7 +307,15 @@ export interface ConnectivityTestState {
      */
     destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -303,6 +331,11 @@ export interface ConnectivityTestState {
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
     protocol?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
@@ -362,6 +395,9 @@ export interface ConnectivityTestArgs {
     destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -22,7 +22,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -35,6 +35,9 @@ class GetSnapshotResult:
         if disk_size_gb and not isinstance(disk_size_gb, int):
             raise TypeError("Expected argument 'disk_size_gb' to be a int")
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
@@ -59,6 +62,9 @@ class GetSnapshotResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -105,6 +111,11 @@ class GetSnapshotResult:
         return pulumi.get(self, "disk_size_gb")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
         return pulumi.get(self, "filter")
@@ -146,6 +157,11 @@ class GetSnapshotResult:
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -198,6 +214,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
+            effective_labels=self.effective_labels,
             filter=self.filter,
             id=self.id,
             label_fingerprint=self.label_fingerprint,
@@ -206,6 +223,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             most_recent=self.most_recent,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             self_link=self.self_link,
             snapshot_encryption_keys=self.snapshot_encryption_keys,
             snapshot_id=self.snapshot_id,
@@ -263,6 +281,7 @@ def get_snapshot(filter: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -271,6 +290,7 @@ def get_snapshot(filter: Optional[str] = None,
         most_recent=pulumi.get(__ret__, 'most_recent'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_encryption_keys=pulumi.get(__ret__, 'snapshot_encryption_keys'),
         snapshot_id=pulumi.get(__ret__, 'snapshot_id'),

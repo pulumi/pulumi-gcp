@@ -63,6 +63,10 @@ public final class DatabaseInstanceReplicaConfiguration {
      * 
      */
     private @Nullable String password;
+    /**
+     * @return Permissible ciphers for use in SSL encryption.
+     * 
+     */
     private @Nullable String sslCipher;
     /**
      * @return Username for replication connection.
@@ -143,6 +147,10 @@ public final class DatabaseInstanceReplicaConfiguration {
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return Permissible ciphers for use in SSL encryption.
+     * 
+     */
     public Optional<String> sslCipher() {
         return Optional.ofNullable(this.sslCipher);
     }

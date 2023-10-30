@@ -194,6 +194,22 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
         return this.dataset;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
      * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -202,6 +218,9 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -216,6 +235,9 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -252,6 +274,22 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DicomStoreNotificationConfig>> notificationConfig() {
         return Codegen.optional(this.notificationConfig);
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The fully qualified name of this dataset

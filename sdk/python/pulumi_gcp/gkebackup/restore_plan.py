@@ -36,6 +36,9 @@ class RestorePlanArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -122,6 +125,9 @@ class RestorePlanArgs:
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -161,10 +167,12 @@ class _RestorePlanState:
                  backup_plan: Optional[pulumi.Input[str]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_reason: Optional[pulumi.Input[str]] = None,
@@ -175,13 +183,20 @@ class _RestorePlanState:
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['RestorePlanRestoreConfigArgs'] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the RestorePlan.
@@ -194,6 +209,8 @@ class _RestorePlanState:
             pulumi.set(__self__, "cluster", cluster)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -202,6 +219,8 @@ class _RestorePlanState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if restore_config is not None:
             pulumi.set(__self__, "restore_config", restore_config)
         if state is not None:
@@ -249,12 +268,28 @@ class _RestorePlanState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -298,6 +333,19 @@ class _RestorePlanState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="restoreConfig")
@@ -389,7 +437,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -428,7 +477,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -478,7 +528,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -521,7 +572,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -559,7 +611,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -626,7 +679,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -699,6 +753,9 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -738,7 +795,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -777,7 +835,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -827,7 +886,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -870,7 +930,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -908,7 +969,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -975,7 +1037,8 @@ class RestorePlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -1087,6 +1150,8 @@ class RestorePlan(pulumi.CustomResource):
             if restore_config is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_config'")
             __props__.__dict__["restore_config"] = restore_config
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_reason"] = None
             __props__.__dict__["uid"] = None
@@ -1103,10 +1168,12 @@ class RestorePlan(pulumi.CustomResource):
             backup_plan: Optional[pulumi.Input[str]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             restore_config: Optional[pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
@@ -1122,13 +1189,20 @@ class RestorePlan(pulumi.CustomResource):
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the RestorePlan.
@@ -1142,10 +1216,12 @@ class RestorePlan(pulumi.CustomResource):
         __props__.__dict__["backup_plan"] = backup_plan
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["restore_config"] = restore_config
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
@@ -1178,12 +1254,24 @@ class RestorePlan(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1211,6 +1299,15 @@ class RestorePlan(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="restoreConfig")

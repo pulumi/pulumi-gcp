@@ -12,6 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHostingChannelResult {
     private String channelId;
+    private Map<String,String> effectiveLabels;
     private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +25,7 @@ public final class GetHostingChannelResult {
      * 
      */
     private String name;
+    private Map<String,String> pulumiLabels;
     private Integer retainedReleaseCount;
     private String siteId;
     private String ttl;
@@ -31,6 +33,9 @@ public final class GetHostingChannelResult {
     private GetHostingChannelResult() {}
     public String channelId() {
         return this.channelId;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String expireTime() {
         return this.expireTime;
@@ -52,6 +57,9 @@ public final class GetHostingChannelResult {
     public String name() {
         return this.name;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Integer retainedReleaseCount() {
         return this.retainedReleaseCount;
     }
@@ -72,10 +80,12 @@ public final class GetHostingChannelResult {
     @CustomType.Builder
     public static final class Builder {
         private String channelId;
+        private Map<String,String> effectiveLabels;
         private String expireTime;
         private String id;
         private Map<String,String> labels;
         private String name;
+        private Map<String,String> pulumiLabels;
         private Integer retainedReleaseCount;
         private String siteId;
         private String ttl;
@@ -83,10 +93,12 @@ public final class GetHostingChannelResult {
         public Builder(GetHostingChannelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channelId = defaults.channelId;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.retainedReleaseCount = defaults.retainedReleaseCount;
     	      this.siteId = defaults.siteId;
     	      this.ttl = defaults.ttl;
@@ -95,6 +107,11 @@ public final class GetHostingChannelResult {
         @CustomType.Setter
         public Builder channelId(String channelId) {
             this.channelId = Objects.requireNonNull(channelId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -118,6 +135,11 @@ public final class GetHostingChannelResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder retainedReleaseCount(Integer retainedReleaseCount) {
             this.retainedReleaseCount = Objects.requireNonNull(retainedReleaseCount);
             return this;
@@ -135,10 +157,12 @@ public final class GetHostingChannelResult {
         public GetHostingChannelResult build() {
             final var o = new GetHostingChannelResult();
             o.channelId = channelId;
+            o.effectiveLabels = effectiveLabels;
             o.expireTime = expireTime;
             o.id = id;
             o.labels = labels;
             o.name = name;
+            o.pulumiLabels = pulumiLabels;
             o.retainedReleaseCount = retainedReleaseCount;
             o.siteId = siteId;
             o.ttl = ttl;

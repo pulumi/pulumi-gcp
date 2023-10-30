@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetFunctionResult {
     private List<GetFunctionBuildConfig> buildConfigs;
     private String description;
+    private Map<String,String> effectiveLabels;
     private String environment;
     private List<GetFunctionEventTrigger> eventTriggers;
     /**
@@ -30,6 +31,7 @@ public final class GetFunctionResult {
     private String location;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetFunctionServiceConfig> serviceConfigs;
     private String state;
     private String updateTime;
@@ -41,6 +43,9 @@ public final class GetFunctionResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String environment() {
         return this.environment;
@@ -70,6 +75,9 @@ public final class GetFunctionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetFunctionServiceConfig> serviceConfigs() {
         return this.serviceConfigs;
     }
@@ -94,6 +102,7 @@ public final class GetFunctionResult {
     public static final class Builder {
         private List<GetFunctionBuildConfig> buildConfigs;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String environment;
         private List<GetFunctionEventTrigger> eventTriggers;
         private String id;
@@ -102,6 +111,7 @@ public final class GetFunctionResult {
         private String location;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetFunctionServiceConfig> serviceConfigs;
         private String state;
         private String updateTime;
@@ -111,6 +121,7 @@ public final class GetFunctionResult {
     	      Objects.requireNonNull(defaults);
     	      this.buildConfigs = defaults.buildConfigs;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.environment = defaults.environment;
     	      this.eventTriggers = defaults.eventTriggers;
     	      this.id = defaults.id;
@@ -119,6 +130,7 @@ public final class GetFunctionResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.serviceConfigs = defaults.serviceConfigs;
     	      this.state = defaults.state;
     	      this.updateTime = defaults.updateTime;
@@ -136,6 +148,11 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -182,6 +199,11 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceConfigs(List<GetFunctionServiceConfig> serviceConfigs) {
             this.serviceConfigs = Objects.requireNonNull(serviceConfigs);
             return this;
@@ -208,6 +230,7 @@ public final class GetFunctionResult {
             final var o = new GetFunctionResult();
             o.buildConfigs = buildConfigs;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.environment = environment;
             o.eventTriggers = eventTriggers;
             o.id = id;
@@ -216,6 +239,7 @@ public final class GetFunctionResult {
             o.location = location;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.serviceConfigs = serviceConfigs;
             o.state = state;
             o.updateTime = updateTime;

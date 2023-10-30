@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Vertex
         public readonly ImmutableArray<Outputs.GetAiIndexDeployedIndexResult> DeployedIndexes;
         public readonly string Description;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -101,6 +102,7 @@ namespace Pulumi.Gcp.Vertex
         public readonly ImmutableArray<Outputs.GetAiIndexMetadataResult> Metadatas;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string Region;
         public readonly string UpdateTime;
 
@@ -113,6 +115,8 @@ namespace Pulumi.Gcp.Vertex
             string description,
 
             string displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string etag,
 
@@ -132,6 +136,8 @@ namespace Pulumi.Gcp.Vertex
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string region,
 
             string updateTime)
@@ -140,6 +146,7 @@ namespace Pulumi.Gcp.Vertex
             DeployedIndexes = deployedIndexes;
             Description = description;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Etag = etag;
             Id = id;
             IndexStats = indexStats;
@@ -149,6 +156,7 @@ namespace Pulumi.Gcp.Vertex
             Metadatas = metadatas;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             UpdateTime = updateTime;
         }

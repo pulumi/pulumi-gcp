@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,8 +54,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -110,7 +110,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,18 +142,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "redis-test-network",
-//			}, nil)
+//			_, err := compute.NewNetwork(ctx, "redis-network", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -161,13 +159,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(redis_network.Id),
+//				Network:      redis_network.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(redis_network.Id),
+//				Network: redis_network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -181,7 +179,7 @@ import (
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
+//				AuthorizedNetwork:     redis_network.ID(),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_4_0"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -203,8 +201,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -248,9 +246,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -364,10 +362,15 @@ type Instance struct {
 	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The zone where the instance will be provisioned. If not provided,
 	// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -380,7 +383,7 @@ type Instance struct {
 	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceScheduleOutput `pulumi:"maintenanceSchedule"`
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -403,6 +406,9 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -532,10 +538,15 @@ type instanceState struct {
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host *string `pulumi:"host"`
 	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The zone where the instance will be provisioned. If not provided,
 	// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -548,7 +559,7 @@ type instanceState struct {
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
+	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -571,6 +582,9 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -664,10 +678,15 @@ type InstanceState struct {
 	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Hostname or IP address of the exposed Redis endpoint used by clients
 	// to connect to the service.
 	Host pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The zone where the instance will be provisioned. If not provided,
 	// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -680,7 +699,7 @@ type InstanceState struct {
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -703,6 +722,9 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -788,6 +810,8 @@ type instanceArgs struct {
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The zone where the instance will be provisioned. If not provided,
 	// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -882,6 +906,8 @@ type InstanceArgs struct {
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The zone where the instance will be provisioned. If not provided,
 	// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -1124,6 +1150,12 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Hostname or IP address of the exposed Redis endpoint used by clients
 // to connect to the service.
 func (o InstanceOutput) Host() pulumi.StringOutput {
@@ -1131,6 +1163,8 @@ func (o InstanceOutput) Host() pulumi.StringOutput {
 }
 
 // Resource labels to represent user provided metadata.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1152,8 +1186,8 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 
 // Upcoming maintenance schedule.
 // Structure is documented below.
-func (o InstanceOutput) MaintenanceSchedule() InstanceMaintenanceScheduleOutput {
-	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleOutput { return v.MaintenanceSchedule }).(InstanceMaintenanceScheduleOutput)
+func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
 }
 
 // Redis memory size in GiB.
@@ -1197,6 +1231,12 @@ func (o InstanceOutput) Port() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.

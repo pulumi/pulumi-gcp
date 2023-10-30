@@ -21,8 +21,6 @@ __all__ = [
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
-    'RegistryCredential',
-    'RegistryEventNotificationConfigItem',
     'GetKMSCryptoKeyVersionPublicKeyResult',
     'GetKMSCryptoKeyVersionTemplateResult',
 ]
@@ -526,98 +524,6 @@ class KeyRingImportJobPublicKey(dict):
         for General Considerations and Textual Encoding of Subject Public Key Info.
         """
         return pulumi.get(self, "pem")
-
-
-@pulumi.output_type
-class RegistryCredential(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeyCertificate":
-            suggest = "public_key_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RegistryCredential. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RegistryCredential.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RegistryCredential.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 public_key_certificate: Mapping[str, Any]):
-        """
-        :param Mapping[str, Any] public_key_certificate: A public key certificate format and data.
-        """
-        pulumi.set(__self__, "public_key_certificate", public_key_certificate)
-
-    @property
-    @pulumi.getter(name="publicKeyCertificate")
-    def public_key_certificate(self) -> Mapping[str, Any]:
-        """
-        A public key certificate format and data.
-        """
-        return pulumi.get(self, "public_key_certificate")
-
-
-@pulumi.output_type
-class RegistryEventNotificationConfigItem(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pubsubTopicName":
-            suggest = "pubsub_topic_name"
-        elif key == "subfolderMatches":
-            suggest = "subfolder_matches"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RegistryEventNotificationConfigItem. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RegistryEventNotificationConfigItem.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RegistryEventNotificationConfigItem.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 pubsub_topic_name: str,
-                 subfolder_matches: Optional[str] = None):
-        """
-        :param str pubsub_topic_name: PubSub topic name to publish device events.
-        :param str subfolder_matches: If the subfolder name matches this string exactly, this
-               configuration will be used. The string must not include the
-               leading '/' character. If empty, all strings are matched. Empty
-               value can only be used for the last `event_notification_configs`
-               item.
-        """
-        pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
-        if subfolder_matches is not None:
-            pulumi.set(__self__, "subfolder_matches", subfolder_matches)
-
-    @property
-    @pulumi.getter(name="pubsubTopicName")
-    def pubsub_topic_name(self) -> str:
-        """
-        PubSub topic name to publish device events.
-        """
-        return pulumi.get(self, "pubsub_topic_name")
-
-    @property
-    @pulumi.getter(name="subfolderMatches")
-    def subfolder_matches(self) -> Optional[str]:
-        """
-        If the subfolder name matches this string exactly, this
-        configuration will be used. The string must not include the
-        leading '/' character. If empty, all strings are matched. Empty
-        value can only be used for the last `event_notification_configs`
-        item.
-        """
-        return pulumi.get(self, "subfolder_matches")
 
 
 @pulumi.output_type

@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly config?: string;
     readonly displayName?: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly forceDestroy: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -64,6 +65,7 @@ export interface GetInstanceResult {
     readonly numNodes: number;
     readonly processingUnits: number;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly state: string;
 }
 /**

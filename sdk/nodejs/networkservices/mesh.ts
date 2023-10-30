@@ -91,6 +91,11 @@ export class Mesh extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
      * specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
      * be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -100,6 +105,8 @@ export class Mesh extends pulumi.CustomResource {
     public readonly interceptionPort!: pulumi.Output<number | undefined>;
     /**
      * Set of label tags associated with the Mesh resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -114,6 +121,11 @@ export class Mesh extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Server-defined URL of this resource.
      */
@@ -138,10 +150,12 @@ export class Mesh extends pulumi.CustomResource {
             const state = argsOrState as MeshState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["interceptionPort"] = state ? state.interceptionPort : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -152,6 +166,8 @@ export class Mesh extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -173,6 +189,11 @@ export interface MeshState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
      * specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
      * be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -182,6 +203,8 @@ export interface MeshState {
     interceptionPort?: pulumi.Input<number>;
     /**
      * Set of label tags associated with the Mesh resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -196,6 +219,11 @@ export interface MeshState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Server-defined URL of this resource.
      */
@@ -224,6 +252,8 @@ export interface MeshArgs {
     interceptionPort?: pulumi.Input<number>;
     /**
      * Set of label tags associated with the Mesh resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

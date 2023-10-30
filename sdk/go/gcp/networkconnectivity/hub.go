@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,7 +73,13 @@ type Hub struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the hub.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	//
@@ -81,6 +87,8 @@ type Hub struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs HubRoutingVpcArrayOutput `pulumi:"routingVpcs"`
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -125,7 +133,13 @@ type hubState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of the hub.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	//
@@ -133,6 +147,8 @@ type hubState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs []HubRoutingVpc `pulumi:"routingVpcs"`
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -148,7 +164,13 @@ type HubState struct {
 	CreateTime pulumi.StringPtrInput
 	// An optional description of the hub.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	//
@@ -156,6 +178,8 @@ type HubState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs HubRoutingVpcArrayInput
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -174,6 +198,9 @@ type hubArgs struct {
 	// An optional description of the hub.
 	Description *string `pulumi:"description"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	//
@@ -188,6 +215,9 @@ type HubArgs struct {
 	// An optional description of the hub.
 	Description pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	//
@@ -318,7 +348,16 @@ func (o HubOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o HubOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o HubOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -333,6 +372,11 @@ func (o HubOutput) Name() pulumi.StringOutput {
 // The project for the resource
 func (o HubOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o HubOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.

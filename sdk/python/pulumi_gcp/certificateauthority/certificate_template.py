@@ -30,6 +30,9 @@ class CertificateTemplateArgs:
         :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
@@ -92,6 +95,9 @@ class CertificateTemplateArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels with user-defined metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -153,6 +159,7 @@ class _CertificateTemplateState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -160,24 +167,33 @@ class _CertificateTemplateState:
                  passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if identity_constraints is not None:
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if labels is not None:
@@ -192,6 +208,8 @@ class _CertificateTemplateState:
             pulumi.set(__self__, "predefined_values", predefined_values)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -220,6 +238,19 @@ class _CertificateTemplateState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="identityConstraints")
     def identity_constraints(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]:
         """
@@ -236,6 +267,9 @@ class _CertificateTemplateState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels with user-defined metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -304,6 +338,18 @@ class _CertificateTemplateState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -359,6 +405,9 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
@@ -438,6 +487,8 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__.__dict__["predefined_values"] = predefined_values
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(CertificateTemplate, __self__).__init__(
             'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
@@ -451,6 +502,7 @@ class CertificateTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -458,6 +510,7 @@ class CertificateTemplate(pulumi.CustomResource):
             passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
             predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'CertificateTemplate':
         """
         Get an existing CertificateTemplate resource's state with the given name, id, and optional extra
@@ -468,13 +521,19 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -483,6 +542,7 @@ class CertificateTemplate(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["identity_constraints"] = identity_constraints
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -490,6 +550,7 @@ class CertificateTemplate(pulumi.CustomResource):
         __props__.__dict__["passthrough_extensions"] = passthrough_extensions
         __props__.__dict__["predefined_values"] = predefined_values
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["update_time"] = update_time
         return CertificateTemplate(resource_name, opts=opts, __props__=__props__)
 
@@ -510,6 +571,15 @@ class CertificateTemplate(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="identityConstraints")
     def identity_constraints(self) -> pulumi.Output[Optional['outputs.CertificateTemplateIdentityConstraints']]:
         """
@@ -522,6 +592,9 @@ class CertificateTemplate(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Labels with user-defined metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -564,6 +637,14 @@ class CertificateTemplate(pulumi.CustomResource):
         The project for the resource
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="updateTime")

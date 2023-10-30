@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -50,6 +50,9 @@ class GetInstanceResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
@@ -89,6 +92,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if read_endpoint and not isinstance(read_endpoint, str):
             raise TypeError("Expected argument 'read_endpoint' to be a str")
         pulumi.set(__self__, "read_endpoint", read_endpoint)
@@ -172,6 +178,11 @@ class GetInstanceResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def host(self) -> str:
         return pulumi.get(self, "host")
@@ -238,6 +249,11 @@ class GetInstanceResult:
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="readEndpoint")
@@ -315,6 +331,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             current_location_id=self.current_location_id,
             customer_managed_key=self.customer_managed_key,
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             host=self.host,
             id=self.id,
             labels=self.labels,
@@ -328,6 +345,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             read_endpoint=self.read_endpoint,
             read_endpoint_port=self.read_endpoint_port,
             read_replicas_mode=self.read_replicas_mode,
@@ -387,6 +405,7 @@ def get_instance(name: Optional[str] = None,
         current_location_id=pulumi.get(__ret__, 'current_location_id'),
         customer_managed_key=pulumi.get(__ret__, 'customer_managed_key'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -400,6 +419,7 @@ def get_instance(name: Optional[str] = None,
         persistence_iam_identity=pulumi.get(__ret__, 'persistence_iam_identity'),
         port=pulumi.get(__ret__, 'port'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         read_endpoint=pulumi.get(__ret__, 'read_endpoint'),
         read_endpoint_port=pulumi.get(__ret__, 'read_endpoint_port'),
         read_replicas_mode=pulumi.get(__ret__, 'read_replicas_mode'),

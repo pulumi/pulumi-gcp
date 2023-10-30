@@ -273,14 +273,6 @@ Object.defineProperty(exports, "cloudIdsCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const cloudIotCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "cloudIotCustomEndpoint", {
-    get() {
-        return __config.get("cloudIotCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const cloudResourceManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudResourceManagerCustomEndpoint", {
     get() {
@@ -513,6 +505,14 @@ Object.defineProperty(exports, "datastreamCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const defaultLabels: {[key: string]: string} | undefined;
+Object.defineProperty(exports, "defaultLabels", {
+    get() {
+        return __config.getObject<{[key: string]: string}>("defaultLabels");
+    },
+    enumerable: true,
+});
+
 export declare const deploymentManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "deploymentManagerCustomEndpoint", {
     get() {
@@ -653,14 +653,6 @@ export declare const firestoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firestoreCustomEndpoint", {
     get() {
         return __config.get("firestoreCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const gameServicesCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "gameServicesCustomEndpoint", {
-    get() {
-        return __config.get("gameServicesCustomEndpoint");
     },
     enumerable: true,
 });

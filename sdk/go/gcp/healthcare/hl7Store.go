@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,8 +30,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,7 +74,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -190,7 +190,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -243,6 +243,9 @@ type Hl7Store struct {
 	//
 	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -251,6 +254,9 @@ type Hl7Store struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -271,6 +277,9 @@ type Hl7Store struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigOutput `pulumi:"parserConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -313,6 +322,9 @@ type hl7StoreState struct {
 	//
 	// ***
 	Dataset *string `pulumi:"dataset"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -321,6 +333,9 @@ type hl7StoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -341,6 +356,9 @@ type hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -351,6 +369,9 @@ type Hl7StoreState struct {
 	//
 	// ***
 	Dataset pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -359,6 +380,9 @@ type Hl7StoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -379,6 +403,9 @@ type Hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 }
@@ -401,6 +428,9 @@ type hl7StoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -438,6 +468,9 @@ type Hl7StoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -579,6 +612,12 @@ func (o Hl7StoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o Hl7StoreOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // User-supplied key-value pairs used to organize HL7v2 stores.
 // Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 // conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -587,6 +626,9 @@ func (o Hl7StoreOutput) Dataset() pulumi.StringOutput {
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o Hl7StoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -620,6 +662,12 @@ func (o Hl7StoreOutput) NotificationConfigs() Hl7StoreNotificationConfigsArrayOu
 // Structure is documented below.
 func (o Hl7StoreOutput) ParserConfig() Hl7StoreParserConfigOutput {
 	return o.ApplyT(func(v *Hl7Store) Hl7StoreParserConfigOutput { return v.ParserConfig }).(Hl7StoreParserConfigOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o Hl7StoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The fully qualified name of this dataset

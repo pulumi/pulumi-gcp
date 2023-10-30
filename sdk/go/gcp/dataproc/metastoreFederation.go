@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,8 +67,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,6 +144,9 @@ type MetastoreFederation struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -151,6 +154,8 @@ type MetastoreFederation struct {
 	// 3 and 63 characters.
 	FederationId pulumi.StringOutput `pulumi:"federationId"`
 	// User-defined labels for the metastore federation.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -159,6 +164,9 @@ type MetastoreFederation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
@@ -211,6 +219,9 @@ type metastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -218,6 +229,8 @@ type metastoreFederationState struct {
 	// 3 and 63 characters.
 	FederationId *string `pulumi:"federationId"`
 	// User-defined labels for the metastore federation.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location *string `pulumi:"location"`
@@ -226,6 +239,9 @@ type metastoreFederationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State *string `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
@@ -240,6 +256,9 @@ type MetastoreFederationState struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The URI of the endpoint used to access the metastore federation.
 	EndpointUri pulumi.StringPtrInput
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -247,6 +266,8 @@ type MetastoreFederationState struct {
 	// 3 and 63 characters.
 	FederationId pulumi.StringPtrInput
 	// User-defined labels for the metastore federation.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrInput
@@ -255,6 +276,9 @@ type MetastoreFederationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The current state of the metastore federation.
 	State pulumi.StringPtrInput
 	// Additional information about the current state of the metastore federation, if available.
@@ -278,6 +302,8 @@ type metastoreFederationArgs struct {
 	// 3 and 63 characters.
 	FederationId string `pulumi:"federationId"`
 	// User-defined labels for the metastore federation.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location *string `pulumi:"location"`
@@ -298,6 +324,8 @@ type MetastoreFederationArgs struct {
 	// 3 and 63 characters.
 	FederationId pulumi.StringInput
 	// User-defined labels for the metastore federation.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrInput
@@ -427,6 +455,12 @@ func (o MetastoreFederationOutput) BackendMetastores() MetastoreFederationBacken
 	}).(MetastoreFederationBackendMetastoreArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o MetastoreFederationOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The URI of the endpoint used to access the metastore federation.
 func (o MetastoreFederationOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.EndpointUri }).(pulumi.StringOutput)
@@ -440,6 +474,8 @@ func (o MetastoreFederationOutput) FederationId() pulumi.StringOutput {
 }
 
 // User-defined labels for the metastore federation.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MetastoreFederationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -458,6 +494,12 @@ func (o MetastoreFederationOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o MetastoreFederationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MetastoreFederationOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The current state of the metastore federation.

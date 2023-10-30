@@ -49,6 +49,8 @@ class MetastoreServiceArgs:
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
         :param pulumi.Input['MetastoreServiceMaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service.
@@ -168,6 +170,8 @@ class MetastoreServiceArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the metastore service.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -325,6 +329,7 @@ class _MetastoreServiceState:
     def __init__(__self__, *,
                  artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
                  hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
@@ -337,6 +342,7 @@ class _MetastoreServiceState:
                  network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -351,6 +357,8 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -359,6 +367,8 @@ class _MetastoreServiceState:
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
         :param pulumi.Input['MetastoreServiceMaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service.
@@ -374,6 +384,8 @@ class _MetastoreServiceState:
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -397,6 +409,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_uri is not None:
@@ -421,6 +435,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if scaling_config is not None:
@@ -463,6 +479,19 @@ class _MetastoreServiceState:
     @database_type.setter
     def database_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_type", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -509,6 +538,8 @@ class _MetastoreServiceState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the metastore service.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -618,6 +649,19 @@ class _MetastoreServiceState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="releaseChannel")
@@ -768,6 +812,9 @@ class MetastoreService(pulumi.CustomResource):
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="2.3.6",
             ),
+            labels={
+                "env": "test",
+            },
             location="us-central1",
             maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
                 day_of_week="SUNDAY",
@@ -885,6 +932,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service.
@@ -941,6 +990,9 @@ class MetastoreService(pulumi.CustomResource):
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="2.3.6",
             ),
+            labels={
+                "env": "test",
+            },
             location="us-central1",
             maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
                 day_of_week="SUNDAY",
@@ -1106,8 +1158,10 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoint_uri"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["uid"] = None
@@ -1123,6 +1177,7 @@ class MetastoreService(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
             database_type: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
@@ -1135,6 +1190,7 @@ class MetastoreService(pulumi.CustomResource):
             network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
@@ -1154,6 +1210,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -1162,6 +1220,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service.
@@ -1177,6 +1237,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -1202,6 +1264,7 @@ class MetastoreService(pulumi.CustomResource):
 
         __props__.__dict__["artifact_gcs_uri"] = artifact_gcs_uri
         __props__.__dict__["database_type"] = database_type
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["endpoint_uri"] = endpoint_uri
         __props__.__dict__["hive_metastore_config"] = hive_metastore_config
@@ -1214,6 +1277,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["scaling_config"] = scaling_config
         __props__.__dict__["service_id"] = service_id
@@ -1241,6 +1305,15 @@ class MetastoreService(pulumi.CustomResource):
         Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -1275,6 +1348,8 @@ class MetastoreService(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for the metastore service.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1348,6 +1423,15 @@ class MetastoreService(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="releaseChannel")

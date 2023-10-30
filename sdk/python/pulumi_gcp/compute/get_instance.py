@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, project=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -56,6 +56,9 @@ class GetInstanceResult:
         if desired_status and not isinstance(desired_status, str):
             raise TypeError("Expected argument 'desired_status' to be a str")
         pulumi.set(__self__, "desired_status", desired_status)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_display and not isinstance(enable_display, bool):
             raise TypeError("Expected argument 'enable_display' to be a bool")
         pulumi.set(__self__, "enable_display", enable_display)
@@ -107,6 +110,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reservation_affinities and not isinstance(reservation_affinities, list):
             raise TypeError("Expected argument 'reservation_affinities' to be a list")
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
@@ -213,6 +219,11 @@ class GetInstanceResult:
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> str:
         return pulumi.get(self, "desired_status")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableDisplay")
@@ -336,6 +347,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reservationAffinities")
     def reservation_affinities(self) -> Sequence['outputs.GetInstanceReservationAffinityResult']:
         return pulumi.get(self, "reservation_affinities")
@@ -424,6 +440,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             deletion_protection=self.deletion_protection,
             description=self.description,
             desired_status=self.desired_status,
+            effective_labels=self.effective_labels,
             enable_display=self.enable_display,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
@@ -441,6 +458,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             network_performance_configs=self.network_performance_configs,
             params=self.params,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
             schedulings=self.schedulings,
@@ -504,6 +522,7 @@ def get_instance(name: Optional[str] = None,
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         desired_status=pulumi.get(__ret__, 'desired_status'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_display=pulumi.get(__ret__, 'enable_display'),
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
         hostname=pulumi.get(__ret__, 'hostname'),
@@ -521,6 +540,7 @@ def get_instance(name: Optional[str] = None,
         network_performance_configs=pulumi.get(__ret__, 'network_performance_configs'),
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reservation_affinities=pulumi.get(__ret__, 'reservation_affinities'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         schedulings=pulumi.get(__ret__, 'schedulings'),

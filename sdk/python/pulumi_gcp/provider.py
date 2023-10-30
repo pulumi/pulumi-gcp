@@ -48,7 +48,6 @@ class ProviderArgs:
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -78,6 +77,7 @@ class ProviderArgs:
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -96,7 +96,6 @@ class ProviderArgs:
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -235,8 +234,6 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
         if cloud_ids_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_ids_custom_endpoint", cloud_ids_custom_endpoint)
-        if cloud_iot_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
         if cloud_resource_manager_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
         if cloud_run_custom_endpoint is not None:
@@ -295,6 +292,8 @@ class ProviderArgs:
             pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
         if datastream_custom_endpoint is not None:
             pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
+        if default_labels is not None:
+            pulumi.set(__self__, "default_labels", default_labels)
         if deployment_manager_custom_endpoint is not None:
             pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
         if dialogflow_custom_endpoint is not None:
@@ -331,8 +330,6 @@ class ProviderArgs:
             pulumi.set(__self__, "firebaserules_custom_endpoint", firebaserules_custom_endpoint)
         if firestore_custom_endpoint is not None:
             pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
-        if game_services_custom_endpoint is not None:
-            pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
         if gke_backup_custom_endpoint is not None:
             pulumi.set(__self__, "gke_backup_custom_endpoint", gke_backup_custom_endpoint)
         if gke_hub2_custom_endpoint is not None:
@@ -776,15 +773,6 @@ class ProviderArgs:
         pulumi.set(self, "cloud_ids_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="cloudIotCustomEndpoint")
-    def cloud_iot_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "cloud_iot_custom_endpoint")
-
-    @cloud_iot_custom_endpoint.setter
-    def cloud_iot_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cloud_iot_custom_endpoint", value)
-
-    @property
     @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
     def cloud_resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloud_resource_manager_custom_endpoint")
@@ -1046,6 +1034,15 @@ class ProviderArgs:
         pulumi.set(self, "datastream_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="defaultLabels")
+    def default_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "default_labels")
+
+    @default_labels.setter
+    def default_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "default_labels", value)
+
+    @property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")
     def deployment_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "deployment_manager_custom_endpoint")
@@ -1206,15 +1203,6 @@ class ProviderArgs:
     @firestore_custom_endpoint.setter
     def firestore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "firestore_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="gameServicesCustomEndpoint")
-    def game_services_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "game_services_custom_endpoint")
-
-    @game_services_custom_endpoint.setter
-    def game_services_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "game_services_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="gkeBackupCustomEndpoint")
@@ -1876,7 +1864,6 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1906,6 +1893,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1924,7 +1912,6 @@ class Provider(pulumi.ProviderResource):
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2064,7 +2051,6 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2094,6 +2080,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2112,7 +2099,6 @@ class Provider(pulumi.ProviderResource):
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2224,7 +2210,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
             __props__.__dict__["cloud_ids_custom_endpoint"] = cloud_ids_custom_endpoint
-            __props__.__dict__["cloud_iot_custom_endpoint"] = cloud_iot_custom_endpoint
             __props__.__dict__["cloud_resource_manager_custom_endpoint"] = cloud_resource_manager_custom_endpoint
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
             __props__.__dict__["cloud_run_v2_custom_endpoint"] = cloud_run_v2_custom_endpoint
@@ -2254,6 +2239,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
+            __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
@@ -2272,7 +2258,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["firebase_storage_custom_endpoint"] = firebase_storage_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
-            __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub2_custom_endpoint"] = gke_hub2_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
@@ -2515,11 +2500,6 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "cloud_ids_custom_endpoint")
 
     @property
-    @pulumi.getter(name="cloudIotCustomEndpoint")
-    def cloud_iot_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "cloud_iot_custom_endpoint")
-
-    @property
     @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
     def cloud_resource_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_resource_manager_custom_endpoint")
@@ -2748,11 +2728,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firestoreCustomEndpoint")
     def firestore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firestore_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="gameServicesCustomEndpoint")
-    def game_services_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "game_services_custom_endpoint")
 
     @property
     @pulumi.getter(name="gkeBackupCustomEndpoint")

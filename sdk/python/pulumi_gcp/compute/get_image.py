@@ -168,9 +168,6 @@ class GetImageResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
-        """
-        A map of labels applied to this image.
-        """
         return pulumi.get(self, "labels")
 
     @property

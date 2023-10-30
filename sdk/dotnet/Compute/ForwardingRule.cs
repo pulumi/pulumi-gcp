@@ -178,6 +178,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
         /// to the referenced `target` or `backendService`.
@@ -261,6 +268,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -392,6 +402,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PscConnectionStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the region where the regional forwarding rule resides.
         /// This field is not applicable to global forwarding rules.
         /// </summary>
@@ -410,7 +427,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("serviceDirectoryRegistrations")]
-        public Output<ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistration>> ServiceDirectoryRegistrations { get; private set; } = null!;
+        public Output<Outputs.ForwardingRuleServiceDirectoryRegistrations> ServiceDirectoryRegistrations { get; private set; } = null!;
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -643,6 +660,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -777,19 +797,13 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("serviceDirectoryRegistrations")]
-        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>? _serviceDirectoryRegistrations;
-
         /// <summary>
         /// Service Directory resources to register this forwarding rule with.
         /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs> ServiceDirectoryRegistrations
-        {
-            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>());
-            set => _serviceDirectoryRegistrations = value;
-        }
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsArgs>? ServiceDirectoryRegistrations { get; set; }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -915,6 +929,19 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
@@ -1002,6 +1029,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1141,6 +1171,19 @@ namespace Pulumi.Gcp.Compute
         [Input("pscConnectionStatus")]
         public Input<string>? PscConnectionStatus { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// A reference to the region where the regional forwarding rule resides.
         /// This field is not applicable to global forwarding rules.
@@ -1154,19 +1197,13 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("serviceDirectoryRegistrations")]
-        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>? _serviceDirectoryRegistrations;
-
         /// <summary>
         /// Service Directory resources to register this forwarding rule with.
         /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs> ServiceDirectoryRegistrations
-        {
-            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>());
-            set => _serviceDirectoryRegistrations = value;
-        }
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsGetArgs>? ServiceDirectoryRegistrations { get; set; }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.

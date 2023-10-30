@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-west1&#34;)
  *             .description(&#34;test description&#34;)
  *             .bareMetalVersion(&#34;1.13.4&#34;)
- *             .annotations()
+ *             .annotations(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .networkConfig(BareMetalAdminClusterNetworkConfigArgs.builder()
  *                 .islandModeCidr(BareMetalAdminClusterNetworkConfigIslandModeCidrArgs.builder()
  *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
@@ -303,6 +303,9 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
@@ -316,6 +319,9 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -408,6 +414,22 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * The IP address name of Bare Metal Admin Cluster&#39;s API server.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,11 +31,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -279,7 +279,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -403,7 +403,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -527,9 +527,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -659,11 +659,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -835,7 +835,12 @@ type Stream struct {
 	DestinationConfig StreamDestinationConfigOutput `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -844,6 +849,9 @@ type Stream struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigOutput `pulumi:"sourceConfig"`
@@ -913,7 +921,12 @@ type streamState struct {
 	DestinationConfig *StreamDestinationConfig `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location *string `pulumi:"location"`
@@ -922,6 +935,9 @@ type streamState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig *StreamSourceConfig `pulumi:"sourceConfig"`
@@ -947,7 +963,12 @@ type StreamState struct {
 	DestinationConfig StreamDestinationConfigPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringPtrInput
@@ -956,6 +977,9 @@ type StreamState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigPtrInput
@@ -986,6 +1010,8 @@ type streamArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location string `pulumi:"location"`
@@ -1017,6 +1043,8 @@ type StreamArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringInput
@@ -1174,7 +1202,15 @@ func (o StreamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o StreamOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1193,6 +1229,12 @@ func (o StreamOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o StreamOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o StreamOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Source connection profile configuration.

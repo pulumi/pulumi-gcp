@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly string Description;
         public readonly int DiskSizeGb;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -182,6 +183,7 @@ namespace Pulumi.Gcp.Compute
         public readonly bool? MostRecent;
         public readonly string? Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetSnapshotSnapshotEncryptionKeyResult> SnapshotEncryptionKeys;
         public readonly int SnapshotId;
@@ -201,6 +203,8 @@ namespace Pulumi.Gcp.Compute
 
             int diskSizeGb,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string? filter,
 
             string id,
@@ -216,6 +220,8 @@ namespace Pulumi.Gcp.Compute
             string? name,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string selfLink,
 
@@ -237,6 +243,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;
+            EffectiveLabels = effectiveLabels;
             Filter = filter;
             Id = id;
             LabelFingerprint = labelFingerprint;
@@ -245,6 +252,7 @@ namespace Pulumi.Gcp.Compute
             MostRecent = mostRecent;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SelfLink = selfLink;
             SnapshotEncryptionKeys = snapshotEncryptionKeys;
             SnapshotId = snapshotId;

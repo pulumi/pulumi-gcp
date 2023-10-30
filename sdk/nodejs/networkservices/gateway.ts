@@ -239,6 +239,11 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
      * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -246,6 +251,8 @@ export class Gateway extends pulumi.CustomResource {
     public readonly gatewaySecurityPolicy!: pulumi.Output<string | undefined>;
     /**
      * Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -277,6 +284,11 @@ export class Gateway extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
@@ -327,6 +339,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state ? state.deleteSwgAutogenRouterOnDestroy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gatewaySecurityPolicy"] = state ? state.gatewaySecurityPolicy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -334,6 +347,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["ports"] = state ? state.ports : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
@@ -364,6 +378,8 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -401,6 +417,11 @@ export interface GatewayState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
      * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -408,6 +429,8 @@ export interface GatewayState {
     gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -439,6 +462,11 @@ export interface GatewayState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
@@ -504,6 +532,8 @@ export interface GatewayArgs {
     gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

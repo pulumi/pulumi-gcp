@@ -24,6 +24,9 @@ import * as utilities from "../utilities";
  *
  * const dataset = new gcp.vertex.AiDataset("dataset", {
  *     displayName: "terraform",
+ *     labels: {
+ *         env: "test",
+ *     },
  *     metadataSchemaUri: "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
  *     region: "us-central1",
  * });
@@ -70,14 +73,22 @@ export class AiDataset extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
      * Structure is documented below.
      */
     public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiDatasetEncryptionSpec | undefined>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
      *
@@ -94,6 +105,11 @@ export class AiDataset extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the dataset. eg us-central1
      */
@@ -118,11 +134,13 @@ export class AiDataset extends pulumi.CustomResource {
             const state = argsOrState as AiDatasetState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["metadataSchemaUri"] = state ? state.metadataSchemaUri : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -140,7 +158,9 @@ export class AiDataset extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -161,12 +181,20 @@ export interface AiDatasetState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiDatasetEncryptionSpec>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -185,6 +213,11 @@ export interface AiDatasetState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the dataset. eg us-central1
      */
@@ -210,6 +243,9 @@ export interface AiDatasetArgs {
     encryptionSpec?: pulumi.Input<inputs.vertex.AiDatasetEncryptionSpec>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

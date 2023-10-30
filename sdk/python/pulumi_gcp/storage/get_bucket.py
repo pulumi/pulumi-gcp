@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -35,6 +35,9 @@ class GetBucketResult:
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if encryptions and not isinstance(encryptions, list):
             raise TypeError("Expected argument 'encryptions' to be a list")
         pulumi.set(__self__, "encryptions", encryptions)
@@ -65,6 +68,9 @@ class GetBucketResult:
         if public_access_prevention and not isinstance(public_access_prevention, str):
             raise TypeError("Expected argument 'public_access_prevention' to be a str")
         pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if requester_pays and not isinstance(requester_pays, bool):
             raise TypeError("Expected argument 'requester_pays' to be a bool")
         pulumi.set(__self__, "requester_pays", requester_pays)
@@ -109,6 +115,11 @@ class GetBucketResult:
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> bool:
         return pulumi.get(self, "default_event_based_hold")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -164,6 +175,11 @@ class GetBucketResult:
         return pulumi.get(self, "public_access_prevention")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> bool:
         return pulumi.get(self, "requester_pays")
@@ -214,6 +230,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             cors=self.cors,
             custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
+            effective_labels=self.effective_labels,
             encryptions=self.encryptions,
             force_destroy=self.force_destroy,
             id=self.id,
@@ -224,6 +241,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             name=self.name,
             project=self.project,
             public_access_prevention=self.public_access_prevention,
+            pulumi_labels=self.pulumi_labels,
             requester_pays=self.requester_pays,
             retention_policies=self.retention_policies,
             self_link=self.self_link,
@@ -264,6 +282,7 @@ def get_bucket(name: Optional[str] = None,
         cors=pulumi.get(__ret__, 'cors'),
         custom_placement_configs=pulumi.get(__ret__, 'custom_placement_configs'),
         default_event_based_hold=pulumi.get(__ret__, 'default_event_based_hold'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         encryptions=pulumi.get(__ret__, 'encryptions'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         id=pulumi.get(__ret__, 'id'),
@@ -274,6 +293,7 @@ def get_bucket(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         public_access_prevention=pulumi.get(__ret__, 'public_access_prevention'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         requester_pays=pulumi.get(__ret__, 'requester_pays'),
         retention_policies=pulumi.get(__ret__, 'retention_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),

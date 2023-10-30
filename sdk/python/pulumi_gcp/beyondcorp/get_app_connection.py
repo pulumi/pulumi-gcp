@@ -22,7 +22,7 @@ class GetAppConnectionResult:
     """
     A collection of values returned by getAppConnection.
     """
-    def __init__(__self__, application_endpoints=None, connectors=None, display_name=None, gateways=None, id=None, labels=None, name=None, project=None, region=None, type=None):
+    def __init__(__self__, application_endpoints=None, connectors=None, display_name=None, effective_labels=None, gateways=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, type=None):
         if application_endpoints and not isinstance(application_endpoints, list):
             raise TypeError("Expected argument 'application_endpoints' to be a list")
         pulumi.set(__self__, "application_endpoints", application_endpoints)
@@ -32,6 +32,9 @@ class GetAppConnectionResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
@@ -47,6 +50,9 @@ class GetAppConnectionResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -68,6 +74,11 @@ class GetAppConnectionResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -98,6 +109,11 @@ class GetAppConnectionResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -117,11 +133,13 @@ class AwaitableGetAppConnectionResult(GetAppConnectionResult):
             application_endpoints=self.application_endpoints,
             connectors=self.connectors,
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             gateways=self.gateways,
             id=self.id,
             labels=self.labels,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             type=self.type)
 
@@ -162,11 +180,13 @@ def get_app_connection(name: Optional[str] = None,
         application_endpoints=pulumi.get(__ret__, 'application_endpoints'),
         connectors=pulumi.get(__ret__, 'connectors'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gateways=pulumi.get(__ret__, 'gateways'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'))
 

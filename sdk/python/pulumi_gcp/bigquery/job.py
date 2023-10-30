@@ -34,6 +34,9 @@ class JobArgs:
                Structure is documented below.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
@@ -116,6 +119,9 @@ class JobArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -180,6 +186,7 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  copy: Optional[pulumi.Input['JobCopyArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extract: Optional[pulumi.Input['JobExtractArgs']] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  job_timeout_ms: Optional[pulumi.Input[str]] = None,
@@ -188,6 +195,7 @@ class _JobState:
                  load: Optional[pulumi.Input['JobLoadArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query: Optional[pulumi.Input['JobQueryArgs']] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
@@ -195,6 +203,8 @@ class _JobState:
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
                Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -202,11 +212,17 @@ class _JobState:
         :param pulumi.Input[str] job_type: (Output)
                The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
                (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
@@ -216,6 +232,8 @@ class _JobState:
         """
         if copy is not None:
             pulumi.set(__self__, "copy", copy)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if extract is not None:
             pulumi.set(__self__, "extract", extract)
         if job_id is not None:
@@ -232,6 +250,8 @@ class _JobState:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if statuses is not None:
@@ -251,6 +271,19 @@ class _JobState:
     @copy.setter
     def copy(self, value: Optional[pulumi.Input['JobCopyArgs']]):
         pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -307,6 +340,9 @@ class _JobState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -351,6 +387,20 @@ class _JobState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -656,6 +706,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
@@ -955,7 +1008,9 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["query"] = query
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_type"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["statuses"] = None
             __props__.__dict__["user_email"] = None
         super(Job, __self__).__init__(
@@ -969,6 +1024,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             job_timeout_ms: Optional[pulumi.Input[str]] = None,
@@ -977,6 +1033,7 @@ class Job(pulumi.CustomResource):
             load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
             user_email: Optional[pulumi.Input[str]] = None) -> 'Job':
@@ -989,6 +1046,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
                Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -996,11 +1055,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] job_type: (Output)
                The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
                (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
@@ -1013,6 +1078,7 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["copy"] = copy
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["extract"] = extract
         __props__.__dict__["job_id"] = job_id
         __props__.__dict__["job_timeout_ms"] = job_timeout_ms
@@ -1021,6 +1087,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["load"] = load
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["query"] = query
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["user_email"] = user_email
@@ -1034,6 +1101,15 @@ class Job(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "copy")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -1074,6 +1150,9 @@ class Job(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1102,6 +1181,16 @@ class Job(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

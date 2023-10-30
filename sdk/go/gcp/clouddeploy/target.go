@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,11 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:         pulumi.String("us-west1"),
 //				DeployParameters: nil,
 //				Description:      pulumi.String("multi-target description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
@@ -47,10 +43,6 @@ import (
 //						ExecutionTimeout: pulumi.String("3600s"),
 //					},
 //				},
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
 //				MultiTarget: &clouddeploy.TargetMultiTargetArgs{
 //					TargetIds: pulumi.StringArray{
 //						pulumi.String("1"),
@@ -59,6 +51,14 @@ import (
 //				},
 //				Project:         pulumi.String("my-project-name"),
 //				RequireApproval: pulumi.Bool(false),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,11 +83,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:         pulumi.String("us-west1"),
 //				DeployParameters: nil,
 //				Description:      pulumi.String("basic description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
@@ -99,14 +95,18 @@ import (
 //						ExecutionTimeout: pulumi.String("3600s"),
 //					},
 //				},
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
 //				Project:         pulumi.String("my-project-name"),
 //				RequireApproval: pulumi.Bool(false),
 //				Run: &clouddeploy.TargetRunArgs{
 //					Location: pulumi.String("projects/my-project-name/locations/us-west1"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -124,7 +124,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -185,6 +185,9 @@ type Target struct {
 	pulumi.CustomResourceState
 
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrOutput `pulumi:"anthosCluster"`
@@ -194,6 +197,12 @@ type Target struct {
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -201,6 +210,9 @@ type Target struct {
 	// Information specifying a GKE Cluster.
 	Gke TargetGkePtrOutput `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -212,6 +224,8 @@ type Target struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrOutput `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
@@ -258,6 +272,9 @@ func GetTarget(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Target resources.
 type targetState struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
@@ -267,6 +284,12 @@ type targetState struct {
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -274,6 +297,9 @@ type targetState struct {
 	// Information specifying a GKE Cluster.
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -285,6 +311,8 @@ type targetState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
@@ -299,6 +327,9 @@ type targetState struct {
 
 type TargetState struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
@@ -308,6 +339,12 @@ type TargetState struct {
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -315,6 +352,9 @@ type TargetState struct {
 	// Information specifying a GKE Cluster.
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -326,6 +366,8 @@ type TargetState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
 	// Information specifying a Cloud Run deployment target.
@@ -344,6 +386,9 @@ func (TargetState) ElementType() reflect.Type {
 
 type targetArgs struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
@@ -356,6 +401,9 @@ type targetArgs struct {
 	// Information specifying a GKE Cluster.
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -376,6 +424,9 @@ type targetArgs struct {
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
 	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
@@ -388,6 +439,9 @@ type TargetArgs struct {
 	// Information specifying a GKE Cluster.
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -517,6 +571,9 @@ func (o TargetOutput) ToOutput(ctx context.Context) pulumix.Output[*Target] {
 }
 
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o TargetOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -541,6 +598,18 @@ func (o TargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o TargetOutput) EffectiveAnnotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TargetOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o TargetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -557,6 +626,9 @@ func (o TargetOutput) Gke() TargetGkePtrOutput {
 }
 
 // Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TargetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -581,6 +653,11 @@ func (o TargetOutput) Name() pulumi.StringOutput {
 // The project for the resource
 func (o TargetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o TargetOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Optional. Whether or not the `Target` requires approval.

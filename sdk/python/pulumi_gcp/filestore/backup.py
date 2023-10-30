@@ -31,6 +31,9 @@ class BackupArgs:
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the backup. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -109,6 +112,9 @@ class BackupArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -155,11 +161,13 @@ class _BackupState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  download_bytes: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_tier: Optional[pulumi.Input[str]] = None,
@@ -171,8 +179,13 @@ class _BackupState:
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[str] download_bytes: Amount of bytes that will be downloaded if the backup is restored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -186,6 +199,8 @@ class _BackupState:
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
@@ -200,6 +215,8 @@ class _BackupState:
             pulumi.set(__self__, "description", description)
         if download_bytes is not None:
             pulumi.set(__self__, "download_bytes", download_bytes)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -210,6 +227,8 @@ class _BackupState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if source_file_share is not None:
             pulumi.set(__self__, "source_file_share", source_file_share)
         if source_instance is not None:
@@ -270,6 +289,19 @@ class _BackupState:
         pulumi.set(self, "download_bytes", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -286,6 +318,9 @@ class _BackupState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -338,6 +373,19 @@ class _BackupState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="sourceFileShare")
@@ -473,6 +521,9 @@ class Backup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -598,7 +649,9 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["capacity_gb"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["download_bytes"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["kms_key_name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["source_instance_tier"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["storage_bytes"] = None
@@ -616,11 +669,13 @@ class Backup(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             download_bytes: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             source_file_share: Optional[pulumi.Input[str]] = None,
             source_instance: Optional[pulumi.Input[str]] = None,
             source_instance_tier: Optional[pulumi.Input[str]] = None,
@@ -637,8 +692,13 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[str] download_bytes: Amount of bytes that will be downloaded if the backup is restored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -652,6 +712,8 @@ class Backup(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
@@ -666,11 +728,13 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["download_bytes"] = download_bytes
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["source_file_share"] = source_file_share
         __props__.__dict__["source_instance"] = source_instance
         __props__.__dict__["source_instance_tier"] = source_instance_tier
@@ -711,6 +775,15 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "download_bytes")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
@@ -723,6 +796,9 @@ class Backup(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -759,6 +835,15 @@ class Backup(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="sourceFileShare")

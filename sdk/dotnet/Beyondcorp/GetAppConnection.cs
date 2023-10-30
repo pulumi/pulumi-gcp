@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly ImmutableArray<Outputs.GetAppConnectionApplicationEndpointResult> ApplicationEndpoints;
         public readonly ImmutableArray<string> Connectors;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetAppConnectionGatewayResult> Gateways;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -144,6 +145,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string Type;
 
@@ -155,6 +157,8 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string displayName,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             ImmutableArray<Outputs.GetAppConnectionGatewayResult> gateways,
 
             string id,
@@ -165,6 +169,8 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             string type)
@@ -172,11 +178,13 @@ namespace Pulumi.Gcp.Beyondcorp
             ApplicationEndpoints = applicationEndpoints;
             Connectors = connectors;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Gateways = gateways;
             Id = id;
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             Type = type;
         }

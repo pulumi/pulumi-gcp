@@ -139,6 +139,9 @@ export class AzureNodePool extends pulumi.CustomResource {
 
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -161,6 +164,11 @@ export class AzureNodePool extends pulumi.CustomResource {
      * Output only. The time at which this node pool was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -229,6 +237,7 @@ export class AzureNodePool extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
@@ -277,6 +286,7 @@ export class AzureNodePool extends pulumi.CustomResource {
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -294,6 +304,9 @@ export class AzureNodePool extends pulumi.CustomResource {
 export interface AzureNodePoolState {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -316,6 +329,11 @@ export interface AzureNodePoolState {
      * Output only. The time at which this node pool was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -372,6 +390,9 @@ export interface AzureNodePoolState {
 export interface AzureNodePoolArgs {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

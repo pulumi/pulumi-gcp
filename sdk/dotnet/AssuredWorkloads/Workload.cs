@@ -101,6 +101,13 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>
         [Output("kmsSettings")]
@@ -108,6 +115,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -139,6 +149,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Output("provisionedResourcesParent")]
         public Output<string?> ProvisionedResourcesParent { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -227,6 +243,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -300,6 +319,19 @@ namespace Pulumi.Gcp.AssuredWorkloads
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>
@@ -311,6 +343,9 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// Optional. Labels applied to the workload.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -345,6 +380,18 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Input("provisionedResourcesParent")]
         public Input<string>? ProvisionedResourcesParent { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
 
         [Input("resourceSettings")]
         private InputList<Inputs.WorkloadResourceSettingGetArgs>? _resourceSettings;

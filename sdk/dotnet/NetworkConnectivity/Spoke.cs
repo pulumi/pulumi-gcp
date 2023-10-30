@@ -175,6 +175,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.
         /// </summary>
         [Output("hub")]
@@ -182,6 +189,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -227,6 +237,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -309,6 +325,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -378,6 +397,19 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.
         /// </summary>
@@ -389,6 +421,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -437,6 +472,18 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING

@@ -25,6 +25,7 @@ public final class GetSubscriptionResult {
     private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
     private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
     private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+    private Map<String,String> effectiveLabels;
     private Boolean enableExactlyOnceDelivery;
     private Boolean enableMessageOrdering;
     private List<GetSubscriptionExpirationPolicy> expirationPolicies;
@@ -38,6 +39,7 @@ public final class GetSubscriptionResult {
     private String messageRetentionDuration;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetSubscriptionPushConfig> pushConfigs;
     private Boolean retainAckedMessages;
     private List<GetSubscriptionRetryPolicy> retryPolicies;
@@ -55,6 +57,9 @@ public final class GetSubscriptionResult {
     }
     public List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies() {
         return this.deadLetterPolicies;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Boolean enableExactlyOnceDelivery() {
         return this.enableExactlyOnceDelivery;
@@ -87,6 +92,9 @@ public final class GetSubscriptionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetSubscriptionPushConfig> pushConfigs() {
         return this.pushConfigs;
     }
@@ -113,6 +121,7 @@ public final class GetSubscriptionResult {
         private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
         private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
         private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+        private Map<String,String> effectiveLabels;
         private Boolean enableExactlyOnceDelivery;
         private Boolean enableMessageOrdering;
         private List<GetSubscriptionExpirationPolicy> expirationPolicies;
@@ -122,6 +131,7 @@ public final class GetSubscriptionResult {
         private String messageRetentionDuration;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetSubscriptionPushConfig> pushConfigs;
         private Boolean retainAckedMessages;
         private List<GetSubscriptionRetryPolicy> retryPolicies;
@@ -133,6 +143,7 @@ public final class GetSubscriptionResult {
     	      this.bigqueryConfigs = defaults.bigqueryConfigs;
     	      this.cloudStorageConfigs = defaults.cloudStorageConfigs;
     	      this.deadLetterPolicies = defaults.deadLetterPolicies;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableExactlyOnceDelivery = defaults.enableExactlyOnceDelivery;
     	      this.enableMessageOrdering = defaults.enableMessageOrdering;
     	      this.expirationPolicies = defaults.expirationPolicies;
@@ -142,6 +153,7 @@ public final class GetSubscriptionResult {
     	      this.messageRetentionDuration = defaults.messageRetentionDuration;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.pushConfigs = defaults.pushConfigs;
     	      this.retainAckedMessages = defaults.retainAckedMessages;
     	      this.retryPolicies = defaults.retryPolicies;
@@ -176,6 +188,11 @@ public final class GetSubscriptionResult {
         }
         public Builder deadLetterPolicies(GetSubscriptionDeadLetterPolicy... deadLetterPolicies) {
             return deadLetterPolicies(List.of(deadLetterPolicies));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableExactlyOnceDelivery(Boolean enableExactlyOnceDelivery) {
@@ -226,6 +243,11 @@ public final class GetSubscriptionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder pushConfigs(List<GetSubscriptionPushConfig> pushConfigs) {
             this.pushConfigs = Objects.requireNonNull(pushConfigs);
             return this;
@@ -257,6 +279,7 @@ public final class GetSubscriptionResult {
             o.bigqueryConfigs = bigqueryConfigs;
             o.cloudStorageConfigs = cloudStorageConfigs;
             o.deadLetterPolicies = deadLetterPolicies;
+            o.effectiveLabels = effectiveLabels;
             o.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
             o.enableMessageOrdering = enableMessageOrdering;
             o.expirationPolicies = expirationPolicies;
@@ -266,6 +289,7 @@ public final class GetSubscriptionResult {
             o.messageRetentionDuration = messageRetentionDuration;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.pushConfigs = pushConfigs;
             o.retainAckedMessages = retainAckedMessages;
             o.retryPolicies = retryPolicies;

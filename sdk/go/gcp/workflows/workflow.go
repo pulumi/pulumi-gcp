@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,8 +30,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workflows"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workflows"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,6 +49,9 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Description:    pulumi.String("Magic"),
 //				ServiceAccount: testAccount.ID(),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
 //				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow. You can replace it with your source code.
 //
 // #
@@ -102,7 +105,13 @@ type Workflow struct {
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the Workflow.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -112,6 +121,9 @@ type Workflow struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -169,7 +181,13 @@ type workflowState struct {
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Workflow.
 	Name *string `pulumi:"name"`
@@ -179,6 +197,9 @@ type workflowState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region *string `pulumi:"region"`
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -207,7 +228,13 @@ type WorkflowState struct {
 	CryptoKeyName pulumi.StringPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the Workflow.
 	Name pulumi.StringPtrInput
@@ -217,6 +244,9 @@ type WorkflowState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the workflow.
 	Region pulumi.StringPtrInput
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -248,6 +278,9 @@ type workflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Workflow.
 	Name *string `pulumi:"name"`
@@ -279,6 +312,9 @@ type WorkflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the Workflow.
 	Name pulumi.StringPtrInput
@@ -429,7 +465,16 @@ func (o WorkflowOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o WorkflowOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A set of key/value label pairs to assign to this Workflow.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkflowOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -449,6 +494,12 @@ func (o WorkflowOutput) NamePrefix() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o WorkflowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o WorkflowOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the workflow.

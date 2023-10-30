@@ -209,6 +209,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
@@ -293,6 +310,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -300,6 +319,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -535,6 +556,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      * 
@@ -712,6 +748,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.desiredStatus = $.desiredStatus;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
@@ -728,6 +765,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.params = $.params;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.reservationAffinity = $.reservationAffinity;
         this.resourcePolicies = $.resourcePolicies;
         this.scheduling = $.scheduling;
@@ -1012,6 +1050,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
@@ -1137,6 +1198,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A map of key/value label pairs to assign to the instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1148,6 +1211,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A map of key/value label pairs to assign to the instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1455,6 +1520,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

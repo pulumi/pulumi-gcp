@@ -50,6 +50,23 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
@@ -82,12 +99,18 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
     /**
      * User-defined labels.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return User-defined labels.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -195,6 +218,23 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
      * 
@@ -231,6 +271,7 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
     private ServiceConnectionPolicyState(ServiceConnectionPolicyState $) {
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.infrastructure = $.infrastructure;
         this.labels = $.labels;
@@ -240,6 +281,7 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
         this.project = $.project;
         this.pscConfig = $.pscConfig;
         this.pscConnections = $.pscConnections;
+        this.pulumiLabels = $.pulumiLabels;
         this.serviceClass = $.serviceClass;
         this.updateTime = $.updateTime;
     }
@@ -305,6 +347,29 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param etag The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -349,6 +414,9 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
         /**
          * @param labels User-defined labels.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -359,6 +427,9 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
 
         /**
          * @param labels User-defined labels.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -512,6 +583,29 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
          */
         public Builder pscConnections(ServiceConnectionPolicyPscConnectionArgs... pscConnections) {
             return pscConnections(List.of(pscConnections));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

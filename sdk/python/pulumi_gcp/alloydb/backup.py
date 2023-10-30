@@ -19,10 +19,13 @@ class BackupArgs:
                  backup_id: pulumi.Input[str],
                  cluster_name: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
@@ -31,24 +34,41 @@ class BackupArgs:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] description: User-provided description of the backup.
+        :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
         :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
+               Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "location", location)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="backupId")
@@ -91,6 +111,22 @@ class BackupArgs:
 
     @property
     @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided description of the backup.
@@ -100,6 +136,18 @@ class BackupArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-settable and human-readable display name for the Backup.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -118,7 +166,10 @@ class BackupArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the alloydb backup.
+        User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -139,37 +190,83 @@ class BackupArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup type, which suggests the trigger for the backup.
+        Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _BackupState:
     def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 cluster_uid: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
                  encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]] = None,
+                 expiry_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
+                 size_bytes: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
-        :param pulumi.Input[str] create_time: Time the Backup was created in UTC.
+        :param pulumi.Input[str] cluster_uid: Output only. The system-generated UID of the cluster which was used to create this resource.
+        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] delete_time: Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: User-provided description of the backup.
+        :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+               Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+               Structure is documented below.
+        :param pulumi.Input[str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.
+               It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
                
                
@@ -177,25 +274,48 @@ class _BackupState:
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input[str] state: The current state of the backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+               This can happen due to user-triggered updates or system actions like failover or maintenance.
+        :param pulumi.Input[str] size_bytes: Output only. The size of the backup in bytes.
+        :param pulumi.Input[str] state: Output only. The current state of the backup.
+        :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
+               Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
         :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
-        :param pulumi.Input[str] update_time: Time the Backup was updated in UTC.
+        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_uid is not None:
+            pulumi.set(__self__, "cluster_uid", cluster_uid)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if encryption_infos is not None:
             pulumi.set(__self__, "encryption_infos", encryption_infos)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if expiry_quantities is not None:
+            pulumi.set(__self__, "expiry_quantities", expiry_quantities)
+        if expiry_time is not None:
+            pulumi.set(__self__, "expiry_time", expiry_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -204,14 +324,36 @@ class _BackupState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if size_bytes is not None:
+            pulumi.set(__self__, "size_bytes", size_bytes)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="backupId")
@@ -238,16 +380,42 @@ class _BackupState:
         pulumi.set(self, "cluster_name", value)
 
     @property
+    @pulumi.getter(name="clusterUid")
+    def cluster_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The system-generated UID of the cluster which was used to create this resource.
+        """
+        return pulumi.get(self, "cluster_uid")
+
+    @cluster_uid.setter
+    def cluster_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_uid", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the Backup was created in UTC.
+        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_time", value)
 
     @property
     @pulumi.getter
@@ -260,6 +428,44 @@ class _BackupState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-settable and human-readable display name for the Backup.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -291,7 +497,7 @@ class _BackupState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        A hash of the resource.
+        For Resource freshness validation (https://google.aip.dev/154)
         """
         return pulumi.get(self, "etag")
 
@@ -300,10 +506,40 @@ class _BackupState:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="expiryQuantities")
+    def expiry_quantities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]]:
+        """
+        Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiry_quantities")
+
+    @expiry_quantities.setter
+    def expiry_quantities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]]]):
+        pulumi.set(self, "expiry_quantities", value)
+
+    @property
+    @pulumi.getter(name="expiryTime")
+    def expiry_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time at which after the backup is eligible to be garbage collected.
+        It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        """
+        return pulumi.get(self, "expiry_time")
+
+    @expiry_time.setter
+    def expiry_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry_time", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for the alloydb backup.
+        User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -352,10 +588,24 @@ class _BackupState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+        Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
 
@@ -364,16 +614,41 @@ class _BackupState:
         pulumi.set(self, "reconciling", value)
 
     @property
+    @pulumi.getter(name="sizeBytes")
+    def size_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The size of the backup in bytes.
+        """
+        return pulumi.get(self, "size_bytes")
+
+    @size_bytes.setter
+    def size_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size_bytes", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the backup.
+        Output only. The current state of the backup.
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup type, which suggests the trigger for the backup.
+        Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -391,7 +666,8 @@ class _BackupState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the Backup was updated in UTC.
+        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -405,13 +681,16 @@ class Backup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         An AlloyDB Backup.
@@ -429,7 +708,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -460,7 +739,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -484,6 +763,7 @@ class Backup(pulumi.CustomResource):
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
             description="example description",
+            type="ON_DEMAND",
             labels={
                 "label": "key",
             },
@@ -508,18 +788,29 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[str] description: User-provided description of the backup.
+        :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
         :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
                
                
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
+               Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
         """
         ...
     @overload
@@ -543,7 +834,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -574,7 +865,7 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -598,6 +889,7 @@ class Backup(pulumi.CustomResource):
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
             description="example description",
+            type="ON_DEMAND",
             labels={
                 "label": "key",
             },
@@ -635,13 +927,16 @@ class Backup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -651,6 +946,7 @@ class Backup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupArgs.__new__(BackupArgs)
 
+            __props__.__dict__["annotations"] = annotations
             if backup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_id'")
             __props__.__dict__["backup_id"] = backup_id
@@ -658,17 +954,27 @@ class Backup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["type"] = type
+            __props__.__dict__["cluster_uid"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_infos"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["expiry_quantities"] = None
+            __props__.__dict__["expiry_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["size_bytes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -682,19 +988,30 @@ class Backup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             backup_id: Optional[pulumi.Input[str]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
+            cluster_uid: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
             encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]]] = None,
+            expiry_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
+            size_bytes: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Backup':
         """
@@ -704,16 +1021,38 @@ class Backup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
-        :param pulumi.Input[str] create_time: Time the Backup was created in UTC.
+        :param pulumi.Input[str] cluster_uid: Output only. The system-generated UID of the cluster which was used to create this resource.
+        :param pulumi.Input[str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] delete_time: Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: User-provided description of the backup.
+        :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup.
+        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+               Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+               Structure is documented below.
+        :param pulumi.Input[str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.
+               It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
                
                
@@ -721,31 +1060,61 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input[str] state: The current state of the backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+               This can happen due to user-triggered updates or system actions like failover or maintenance.
+        :param pulumi.Input[str] size_bytes: Output only. The size of the backup in bytes.
+        :param pulumi.Input[str] state: Output only. The current state of the backup.
+        :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
+               Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
         :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
-        :param pulumi.Input[str] update_time: Time the Backup was updated in UTC.
+        :param pulumi.Input[str] update_time: Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _BackupState.__new__(_BackupState)
 
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["backup_id"] = backup_id
         __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["cluster_uid"] = cluster_uid
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["encryption_infos"] = encryption_infos
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["expiry_quantities"] = expiry_quantities
+        __props__.__dict__["expiry_time"] = expiry_time
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
+        __props__.__dict__["size_bytes"] = size_bytes
         __props__.__dict__["state"] = state
+        __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="backupId")
@@ -764,12 +1133,30 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "cluster_name")
 
     @property
+    @pulumi.getter(name="clusterUid")
+    def cluster_uid(self) -> pulumi.Output[str]:
+        """
+        Output only. The system-generated UID of the cluster which was used to create this resource.
+        """
+        return pulumi.get(self, "cluster_uid")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time the Backup was created in UTC.
+        Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "delete_time")
 
     @property
     @pulumi.getter
@@ -778,6 +1165,32 @@ class Backup(pulumi.CustomResource):
         User-provided description of the backup.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-settable and human-readable display name for the Backup.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -801,15 +1214,37 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        A hash of the resource.
+        For Resource freshness validation (https://google.aip.dev/154)
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="expiryQuantities")
+    def expiry_quantities(self) -> pulumi.Output[Sequence['outputs.BackupExpiryQuantity']]:
+        """
+        Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiry_quantities")
+
+    @property
+    @pulumi.getter(name="expiryTime")
+    def expiry_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The time at which after the backup is eligible to be garbage collected.
+        It is the duration specified by the backup's retention policy, added to the backup's createTime.
+        """
+        return pulumi.get(self, "expiry_time")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined labels for the alloydb backup.
+        User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -842,20 +1277,47 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+        Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="sizeBytes")
+    def size_bytes(self) -> pulumi.Output[str]:
+        """
+        Output only. The size of the backup in bytes.
+        """
+        return pulumi.get(self, "size_bytes")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the backup.
+        Output only. The current state of the backup.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The backup type, which suggests the trigger for the backup.
+        Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
@@ -869,7 +1331,8 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time the Backup was updated in UTC.
+        Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

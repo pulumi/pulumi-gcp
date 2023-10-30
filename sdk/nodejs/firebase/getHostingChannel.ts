@@ -32,6 +32,7 @@ export interface GetHostingChannelArgs {
  */
 export interface GetHostingChannelResult {
     readonly channelId: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -42,6 +43,7 @@ export interface GetHostingChannelResult {
      * The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
      */
     readonly name: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly retainedReleaseCount: number;
     readonly siteId: string;
     readonly ttl: string;

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FolderCustomModuleArgs, FolderCustomModuleState } from "./folderCustomModule";
+export type FolderCustomModule = import("./folderCustomModule").FolderCustomModule;
+export const FolderCustomModule: typeof import("./folderCustomModule").FolderCustomModule = null as any;
+utilities.lazyLoad(exports, ["FolderCustomModule"], () => require("./folderCustomModule"));
+
 export { GetSourceIamPolicyArgs, GetSourceIamPolicyResult, GetSourceIamPolicyOutputArgs } from "./getSourceIamPolicy";
 export const getSourceIamPolicy: typeof import("./getSourceIamPolicy").getSourceIamPolicy = null as any;
 export const getSourceIamPolicyOutput: typeof import("./getSourceIamPolicy").getSourceIamPolicyOutput = null as any;
@@ -34,6 +39,11 @@ export { NotificationConfigArgs, NotificationConfigState } from "./notificationC
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
 utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
+
+export { OrganizationCustomModuleArgs, OrganizationCustomModuleState } from "./organizationCustomModule";
+export type OrganizationCustomModule = import("./organizationCustomModule").OrganizationCustomModule;
+export const OrganizationCustomModule: typeof import("./organizationCustomModule").OrganizationCustomModule = null as any;
+utilities.lazyLoad(exports, ["OrganizationCustomModule"], () => require("./organizationCustomModule"));
 
 export { ProjectCustomModuleArgs, ProjectCustomModuleState } from "./projectCustomModule";
 export type ProjectCustomModule = import("./projectCustomModule").ProjectCustomModule;
@@ -65,6 +75,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
+                return new FolderCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
                 return new InstanceIamBinding(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -75,6 +87,8 @@ const _module = {
                 return new MuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
                 return new NotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
+                return new OrganizationCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/projectCustomModule:ProjectCustomModule":
                 return new ProjectCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
@@ -90,11 +104,13 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)

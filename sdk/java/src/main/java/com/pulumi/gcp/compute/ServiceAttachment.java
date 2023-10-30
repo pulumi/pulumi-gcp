@@ -557,21 +557,19 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-     * For newly created service attachment, this boolean defaults to true.
      * 
      */
     @Export(name="reconcileConnections", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> reconcileConnections;
+    private Output<Boolean> reconcileConnections;
 
     /**
      * @return This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-     * For newly created service attachment, this boolean defaults to true.
      * 
      */
-    public Output<Optional<Boolean>> reconcileConnections() {
-        return Codegen.optional(this.reconcileConnections);
+    public Output<Boolean> reconcileConnections() {
+        return this.reconcileConnections;
     }
     /**
      * URL of the region where the resource resides.

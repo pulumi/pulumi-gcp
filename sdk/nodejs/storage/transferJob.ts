@@ -152,11 +152,15 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+     */
+    public readonly eventStream!: pulumi.Output<outputs.storage.TransferJobEventStream | undefined>;
+    /**
      * When the Transfer Job was last modified.
      */
     public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
     /**
-     * The name of the Transfer Job.
+     * Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -169,9 +173,7 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     *
-     * - - -
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
     /**
@@ -180,6 +182,8 @@ export class TransferJob extends pulumi.CustomResource {
     public readonly status!: pulumi.Output<string | undefined>;
     /**
      * Transfer specification. Structure documented below.
+     *
+     * - - -
      */
     public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec>;
 
@@ -199,6 +203,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["deletionTime"] = state ? state.deletionTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["eventStream"] = state ? state.eventStream : undefined;
             resourceInputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
@@ -215,6 +220,7 @@ export class TransferJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'transferSpec'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eventStream"] = args ? args.eventStream : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
@@ -247,11 +253,15 @@ export interface TransferJobState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+     */
+    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream>;
+    /**
      * When the Transfer Job was last modified.
      */
     lastModificationTime?: pulumi.Input<string>;
     /**
-     * The name of the Transfer Job.
+     * Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
      */
     name?: pulumi.Input<string>;
     /**
@@ -264,9 +274,7 @@ export interface TransferJobState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     *
-     * - - -
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
@@ -275,6 +283,8 @@ export interface TransferJobState {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
+     *
+     * - - -
      */
     transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
@@ -288,6 +298,10 @@ export interface TransferJobArgs {
      */
     description: pulumi.Input<string>;
     /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+     */
+    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream>;
+    /**
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      */
     notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig>;
@@ -297,9 +311,7 @@ export interface TransferJobArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     *
-     * - - -
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
@@ -308,6 +320,8 @@ export interface TransferJobArgs {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
+     *
+     * - - -
      */
     transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

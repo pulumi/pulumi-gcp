@@ -106,6 +106,11 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      *
      *
@@ -114,6 +119,9 @@ export class Gateway extends pulumi.CustomResource {
     public readonly gatewayId!: pulumi.Output<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -125,6 +133,11 @@ export class Gateway extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the gateway for the API.
      */
@@ -146,10 +159,12 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["apiConfig"] = state ? state.apiConfig : undefined;
             resourceInputs["defaultHostname"] = state ? state.defaultHostname : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
@@ -166,7 +181,9 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Gateway.__pulumiType, name, resourceInputs, opts);
@@ -191,6 +208,11 @@ export interface GatewayState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      *
      *
@@ -199,6 +221,9 @@ export interface GatewayState {
     gatewayId?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -210,6 +235,11 @@ export interface GatewayState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the gateway for the API.
      */
@@ -238,6 +268,9 @@ export interface GatewayArgs {
     gatewayId: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

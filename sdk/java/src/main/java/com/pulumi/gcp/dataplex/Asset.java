@@ -15,6 +15,7 @@ import com.pulumi.gcp.dataplex.outputs.AssetDiscoveryStatus;
 import com.pulumi.gcp.dataplex.outputs.AssetResourceSpec;
 import com.pulumi.gcp.dataplex.outputs.AssetResourceStatus;
 import com.pulumi.gcp.dataplex.outputs.AssetSecurityStatus;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,10 @@ import javax.annotation.Nullable;
  *                 .name(&#34;projects/my-project-name/buckets/bucket&#34;)
  *                 .type(&#34;STORAGE_BUCKET&#34;)
  *                 .build())
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;env&#34;, &#34;foo&#34;),
+ *                 Map.entry(&#34;my-asset&#34;, &#34;exists&#34;)
+ *             ))
  *             .project(&#34;my-project-name&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(basicBucket)
@@ -206,7 +211,26 @@ public class Asset extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Optional. User defined labels for the asset.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -214,6 +238,9 @@ public class Asset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. User defined labels for the asset.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -274,6 +301,20 @@ public class Asset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.

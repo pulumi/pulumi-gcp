@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,10 +67,11 @@ type LookupFunctionArgs struct {
 
 // A collection of values returned by getFunction.
 type LookupFunctionResult struct {
-	BuildConfigs  []GetFunctionBuildConfig  `pulumi:"buildConfigs"`
-	Description   string                    `pulumi:"description"`
-	Environment   string                    `pulumi:"environment"`
-	EventTriggers []GetFunctionEventTrigger `pulumi:"eventTriggers"`
+	BuildConfigs    []GetFunctionBuildConfig  `pulumi:"buildConfigs"`
+	Description     string                    `pulumi:"description"`
+	EffectiveLabels map[string]string         `pulumi:"effectiveLabels"`
+	Environment     string                    `pulumi:"environment"`
+	EventTriggers   []GetFunctionEventTrigger `pulumi:"eventTriggers"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                     `pulumi:"id"`
 	KmsKeyName     string                     `pulumi:"kmsKeyName"`
@@ -78,6 +79,7 @@ type LookupFunctionResult struct {
 	Location       string                     `pulumi:"location"`
 	Name           string                     `pulumi:"name"`
 	Project        *string                    `pulumi:"project"`
+	PulumiLabels   map[string]string          `pulumi:"pulumiLabels"`
 	ServiceConfigs []GetFunctionServiceConfig `pulumi:"serviceConfigs"`
 	State          string                     `pulumi:"state"`
 	UpdateTime     string                     `pulumi:"updateTime"`
@@ -143,6 +145,10 @@ func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupFunctionResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupFunctionResultOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Environment }).(pulumi.StringOutput)
 }
@@ -174,6 +180,10 @@ func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupFunctionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupFunctionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupFunctionResultOutput) ServiceConfigs() GetFunctionServiceConfigArrayOutput {

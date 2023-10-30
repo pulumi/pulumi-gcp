@@ -22,6 +22,7 @@ __all__ = [
     'AttachedClusterWorkloadIdentityConfigArgs',
     'AwsClusterAuthorizationArgs',
     'AwsClusterAuthorizationAdminUserArgs',
+    'AwsClusterBinaryAuthorizationArgs',
     'AwsClusterControlPlaneArgs',
     'AwsClusterControlPlaneAwsServicesAuthenticationArgs',
     'AwsClusterControlPlaneConfigEncryptionArgs',
@@ -48,6 +49,8 @@ __all__ = [
     'AwsNodePoolConfigTaintArgs',
     'AwsNodePoolManagementArgs',
     'AwsNodePoolMaxPodsConstraintArgs',
+    'AwsNodePoolUpdateSettingsArgs',
+    'AwsNodePoolUpdateSettingsSurgeSettingsArgs',
     'AzureClusterAuthorizationArgs',
     'AzureClusterAuthorizationAdminUserArgs',
     'AzureClusterAzureServicesAuthenticationArgs',
@@ -124,6 +127,7 @@ __all__ = [
     'ClusterNodeConfigArgs',
     'ClusterNodeConfigAdvancedMachineFeaturesArgs',
     'ClusterNodeConfigConfidentialNodesArgs',
+    'ClusterNodeConfigEffectiveTaintArgs',
     'ClusterNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodeConfigFastSocketArgs',
@@ -158,6 +162,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigArgs',
     'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs',
     'ClusterNodePoolNodeConfigConfidentialNodesArgs',
+    'ClusterNodePoolNodeConfigEffectiveTaintArgs',
     'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodePoolNodeConfigFastSocketArgs',
@@ -206,6 +211,7 @@ __all__ = [
     'NodePoolNodeConfigArgs',
     'NodePoolNodeConfigAdvancedMachineFeaturesArgs',
     'NodePoolNodeConfigConfidentialNodesArgs',
+    'NodePoolNodeConfigEffectiveTaintArgs',
     'NodePoolNodeConfigEphemeralStorageConfigArgs',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'NodePoolNodeConfigFastSocketArgs',
@@ -591,6 +597,29 @@ class AwsClusterAuthorizationAdminUserArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class AwsClusterBinaryAuthorizationArgs:
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_mode", value)
 
 
 @pulumi.input_type
@@ -1973,6 +2002,68 @@ class AwsNodePoolMaxPodsConstraintArgs:
 
 
 @pulumi.input_type
+class AwsNodePoolUpdateSettingsArgs:
+    def __init__(__self__, *,
+                 surge_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']] = None):
+        """
+        :param pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs'] surge_settings: Optional. Settings for surge update.
+        """
+        if surge_settings is not None:
+            pulumi.set(__self__, "surge_settings", surge_settings)
+
+    @property
+    @pulumi.getter(name="surgeSettings")
+    def surge_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']]:
+        """
+        Optional. Settings for surge update.
+        """
+        return pulumi.get(self, "surge_settings")
+
+    @surge_settings.setter
+    def surge_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']]):
+        pulumi.set(self, "surge_settings", value)
+
+
+@pulumi.input_type
+class AwsNodePoolUpdateSettingsSurgeSettingsArgs:
+    def __init__(__self__, *,
+                 max_surge: Optional[pulumi.Input[int]] = None,
+                 max_unavailable: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_surge: Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+        :param pulumi.Input[int] max_unavailable: Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+        """
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+        """
+        return pulumi.get(self, "max_surge")
+
+    @max_surge.setter
+    def max_surge(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_surge", value)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_unavailable", value)
+
+
+@pulumi.input_type
 class AzureClusterAuthorizationArgs:
     def __init__(__self__, *,
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
@@ -2875,7 +2966,9 @@ class ClusterAddonsConfigArgs:
                It is disabled by default; set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
                which allows the usage of a gcs bucket as volumes.
-               It is disabled by default; set `enabled = true` to enable.
+               It is disabled by default for Standard clusters; set `enabled = true` to enable.
+               It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+               See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
@@ -3007,7 +3100,9 @@ class ClusterAddonsConfigArgs:
         """
         The status of the GCSFuse CSI driver addon,
         which allows the usage of a gcs bucket as volumes.
-        It is disabled by default; set `enabled = true` to enable.
+        It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+        See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         """
         return pulumi.get(self, "gcs_fuse_csi_driver_config")
 
@@ -3444,8 +3539,7 @@ class ClusterBinaryAuthorizationArgs:
         """
         :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         :param pulumi.Input[str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-               and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-               deprecated `enable_binary_authorization` parameter being set to `true`.
+               and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         if enabled is not None:
             warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
@@ -3475,8 +3569,7 @@ class ClusterBinaryAuthorizationArgs:
     def evaluation_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-        deprecated `enable_binary_authorization` parameter being set to `true`.
+        and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -5205,6 +5298,7 @@ class ClusterNodeConfigArgs:
                  confidential_nodes: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['ClusterNodeConfigFastSocketArgs']] = None,
@@ -5360,6 +5454,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if effective_taints is not None:
+            pulumi.set(__self__, "effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -5483,6 +5579,15 @@ class ClusterNodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]:
+        return pulumi.get(self, "effective_taints")
+
+    @effective_taints.setter
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]):
+        pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -5960,6 +6065,61 @@ class ClusterNodeConfigConfidentialNodesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigEffectiveTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] value: Value for taint.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for taint.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -7427,6 +7587,7 @@ class ClusterNodePoolNodeConfigArgs:
                  confidential_nodes: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs']] = None,
@@ -7582,6 +7743,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if effective_taints is not None:
+            pulumi.set(__self__, "effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -7705,6 +7868,15 @@ class ClusterNodePoolNodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]:
+        return pulumi.get(self, "effective_taints")
+
+    @effective_taints.setter
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]):
+        pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -8182,6 +8354,61 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigEffectiveTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] value: Value for taint.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for taint.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -9896,8 +10123,8 @@ class NodePoolManagementArgs:
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired.
-        :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded.
+        :param pulumi.Input[bool] auto_repair: Whether the nodes will be automatically repaired. Enabled by default.
+        :param pulumi.Input[bool] auto_upgrade: Whether the nodes will be automatically upgraded. Enabled by default.
         """
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
@@ -9908,7 +10135,7 @@ class NodePoolManagementArgs:
     @pulumi.getter(name="autoRepair")
     def auto_repair(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the nodes will be automatically repaired.
+        Whether the nodes will be automatically repaired. Enabled by default.
         """
         return pulumi.get(self, "auto_repair")
 
@@ -9920,7 +10147,7 @@ class NodePoolManagementArgs:
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the nodes will be automatically upgraded.
+        Whether the nodes will be automatically upgraded. Enabled by default.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -10166,6 +10393,7 @@ class NodePoolNodeConfigArgs:
                  confidential_nodes: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArgs']] = None,
@@ -10209,6 +10437,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if effective_taints is not None:
+            pulumi.set(__self__, "effective_taints", effective_taints)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -10317,6 +10547,15 @@ class NodePoolNodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="effectiveTaints")
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]:
+        return pulumi.get(self, "effective_taints")
+
+    @effective_taints.setter
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]):
+        pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -10627,6 +10866,47 @@ class NodePoolNodeConfigConfidentialNodesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigEffectiveTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

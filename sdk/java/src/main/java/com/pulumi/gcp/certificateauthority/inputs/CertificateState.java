@@ -116,6 +116,23 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
@@ -133,12 +150,18 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels with user-defined metadata to apply to this resource.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels with user-defined metadata to apply to this resource.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -231,31 +254,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     * 
-     * @deprecated
-     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-     * 
-     */
-    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-    @Import(name="pemCertificates")
-    private @Nullable Output<List<String>> pemCertificates;
-
-    /**
-     * @return (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     * 
-     * @deprecated
-     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-     * 
-     */
-    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-    public Optional<Output<List<String>>> pemCertificates() {
-        return Optional.ofNullable(this.pemCertificates);
-    }
-
-    /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      * 
      */
@@ -303,6 +301,23 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
@@ -346,6 +361,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         this.certificateTemplate = $.certificateTemplate;
         this.config = $.config;
         this.createTime = $.createTime;
+        this.effectiveLabels = $.effectiveLabels;
         this.issuerCertificateAuthority = $.issuerCertificateAuthority;
         this.labels = $.labels;
         this.lifetime = $.lifetime;
@@ -353,10 +369,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.pemCertificate = $.pemCertificate;
         this.pemCertificateChains = $.pemCertificateChains;
-        this.pemCertificates = $.pemCertificates;
         this.pemCsr = $.pemCsr;
         this.pool = $.pool;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.revocationDetails = $.revocationDetails;
         this.updateTime = $.updateTime;
     }
@@ -516,6 +532,29 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
          * 
          * @return builder
@@ -539,6 +578,9 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels with user-defined metadata to apply to this resource.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -549,6 +591,9 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels with user-defined metadata to apply to this resource.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -683,52 +728,6 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificates (Deprecated)
-         * Required. Expected to be in leaf-to-root order according to RFC 5246.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-         * 
-         */
-        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-        public Builder pemCertificates(@Nullable Output<List<String>> pemCertificates) {
-            $.pemCertificates = pemCertificates;
-            return this;
-        }
-
-        /**
-         * @param pemCertificates (Deprecated)
-         * Required. Expected to be in leaf-to-root order according to RFC 5246.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-         * 
-         */
-        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-        public Builder pemCertificates(List<String> pemCertificates) {
-            return pemCertificates(Output.of(pemCertificates));
-        }
-
-        /**
-         * @param pemCertificates (Deprecated)
-         * Required. Expected to be in leaf-to-root order according to RFC 5246.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-         * 
-         */
-        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-        public Builder pemCertificates(String... pemCertificates) {
-            return pemCertificates(List.of(pemCertificates));
-        }
-
-        /**
          * @param pemCsr Immutable. A pem-encoded X.509 certificate signing request (CSR).
          * 
          * @return builder
@@ -791,6 +790,29 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

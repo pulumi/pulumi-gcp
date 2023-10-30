@@ -114,9 +114,6 @@ namespace Pulumi.Gcp
         [Output("cloudIdsCustomEndpoint")]
         public Output<string?> CloudIdsCustomEndpoint { get; private set; } = null!;
 
-        [Output("cloudIotCustomEndpoint")]
-        public Output<string?> CloudIotCustomEndpoint { get; private set; } = null!;
-
         [Output("cloudResourceManagerCustomEndpoint")]
         public Output<string?> CloudResourceManagerCustomEndpoint { get; private set; } = null!;
 
@@ -254,9 +251,6 @@ namespace Pulumi.Gcp
 
         [Output("firestoreCustomEndpoint")]
         public Output<string?> FirestoreCustomEndpoint { get; private set; } = null!;
-
-        [Output("gameServicesCustomEndpoint")]
-        public Output<string?> GameServicesCustomEndpoint { get; private set; } = null!;
 
         [Output("gkeBackupCustomEndpoint")]
         public Output<string?> GkeBackupCustomEndpoint { get; private set; } = null!;
@@ -583,9 +577,6 @@ namespace Pulumi.Gcp
         [Input("cloudIdsCustomEndpoint")]
         public Input<string>? CloudIdsCustomEndpoint { get; set; }
 
-        [Input("cloudIotCustomEndpoint")]
-        public Input<string>? CloudIotCustomEndpoint { get; set; }
-
         [Input("cloudResourceManagerCustomEndpoint")]
         public Input<string>? CloudResourceManagerCustomEndpoint { get; set; }
 
@@ -673,6 +664,14 @@ namespace Pulumi.Gcp
         [Input("datastreamCustomEndpoint")]
         public Input<string>? DatastreamCustomEndpoint { get; set; }
 
+        [Input("defaultLabels", json: true)]
+        private InputMap<string>? _defaultLabels;
+        public InputMap<string> DefaultLabels
+        {
+            get => _defaultLabels ?? (_defaultLabels = new InputMap<string>());
+            set => _defaultLabels = value;
+        }
+
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
 
@@ -726,9 +725,6 @@ namespace Pulumi.Gcp
 
         [Input("firestoreCustomEndpoint")]
         public Input<string>? FirestoreCustomEndpoint { get; set; }
-
-        [Input("gameServicesCustomEndpoint")]
-        public Input<string>? GameServicesCustomEndpoint { get; set; }
 
         [Input("gkeBackupCustomEndpoint")]
         public Input<string>? GkeBackupCustomEndpoint { get; set; }

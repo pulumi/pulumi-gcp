@@ -148,12 +148,19 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSizeGb!: pulumi.Output<number>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this Snapshot.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -178,6 +185,11 @@ export class Snapshot extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The URI of the created resource.
      */
@@ -246,11 +258,13 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
@@ -276,8 +290,10 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotId"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
@@ -313,12 +329,19 @@ export interface SnapshotState {
      */
     diskSizeGb?: pulumi.Input<number>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this Snapshot.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -343,6 +366,11 @@ export interface SnapshotState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The URI of the created resource.
      */
@@ -414,6 +442,8 @@ export interface SnapshotArgs {
     description?: pulumi.Input<string>;
     /**
      * Labels to apply to this Snapshot.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

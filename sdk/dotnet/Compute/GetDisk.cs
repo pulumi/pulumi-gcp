@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableConfidentialCompute;
         public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
@@ -183,9 +184,6 @@ namespace Pulumi.Gcp.Compute
         /// internally during updates.
         /// </summary>
         public readonly string LabelFingerprint;
-        /// <summary>
-        /// A map of labels applied to this disk.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Last attach timestamp in RFC3339 text format.
@@ -205,6 +203,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly int ProvisionedIops;
         public readonly int ProvisionedThroughput;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The URI of the created resource.
@@ -270,6 +269,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             bool enableConfidentialCompute,
 
             ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> guestOsFeatures,
@@ -302,6 +303,8 @@ namespace Pulumi.Gcp.Compute
 
             int provisionedThroughput,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<string> resourcePolicies,
 
             string selfLink,
@@ -332,6 +335,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
+            EffectiveLabels = effectiveLabels;
             EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
@@ -348,6 +352,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            PulumiLabels = pulumiLabels;
             ResourcePolicies = resourcePolicies;
             SelfLink = selfLink;
             Size = size;

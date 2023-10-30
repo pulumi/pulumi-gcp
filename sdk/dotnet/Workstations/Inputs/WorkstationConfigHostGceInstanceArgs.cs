@@ -69,6 +69,18 @@ namespace Pulumi.Gcp.Workstations.Inputs
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("serviceAccountScopes")]
+        private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        /// </summary>
+        public InputList<string> ServiceAccountScopes
+        {
+            get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
+            set => _serviceAccountScopes = value;
+        }
+
         /// <summary>
         /// A set of Compute Engine Shielded instance options.
         /// Structure is documented below.

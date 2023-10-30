@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 public final class GetSecretResult {
     private Map<String,String> annotations;
     private String createTime;
+    private Map<String,String> effectiveAnnotations;
+    private Map<String,String> effectiveLabels;
     private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +29,7 @@ public final class GetSecretResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetSecretReplication> replications;
     private List<GetSecretRotation> rotations;
     private String secretId;
@@ -40,6 +43,12 @@ public final class GetSecretResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String expireTime() {
         return this.expireTime;
@@ -59,6 +68,9 @@ public final class GetSecretResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public List<GetSecretReplication> replications() {
         return this.replications;
@@ -90,11 +102,14 @@ public final class GetSecretResult {
     public static final class Builder {
         private Map<String,String> annotations;
         private String createTime;
+        private Map<String,String> effectiveAnnotations;
+        private Map<String,String> effectiveLabels;
         private String expireTime;
         private String id;
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetSecretReplication> replications;
         private List<GetSecretRotation> rotations;
         private String secretId;
@@ -106,11 +121,14 @@ public final class GetSecretResult {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
@@ -127,6 +145,16 @@ public final class GetSecretResult {
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -152,6 +180,11 @@ public final class GetSecretResult {
         @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
@@ -197,11 +230,14 @@ public final class GetSecretResult {
             final var o = new GetSecretResult();
             o.annotations = annotations;
             o.createTime = createTime;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.expireTime = expireTime;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.replications = replications;
             o.rotations = rotations;
             o.secretId = secretId;

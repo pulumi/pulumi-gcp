@@ -22,7 +22,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, pulumi_labels=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -41,6 +41,9 @@ class GetAuthorityResult:
         if desired_state and not isinstance(desired_state, str):
             raise TypeError("Expected argument 'desired_state' to be a str")
         pulumi.set(__self__, "desired_state", desired_state)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if gcs_bucket and not isinstance(gcs_bucket, str):
             raise TypeError("Expected argument 'gcs_bucket' to be a str")
         pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -80,6 +83,9 @@ class GetAuthorityResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if skip_grace_period and not isinstance(skip_grace_period, bool):
             raise TypeError("Expected argument 'skip_grace_period' to be a bool")
         pulumi.set(__self__, "skip_grace_period", skip_grace_period)
@@ -125,6 +131,11 @@ class GetAuthorityResult:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> str:
         return pulumi.get(self, "desired_state")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -198,6 +209,11 @@ class GetAuthorityResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> bool:
         return pulumi.get(self, "skip_grace_period")
@@ -235,6 +251,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             create_time=self.create_time,
             deletion_protection=self.deletion_protection,
             desired_state=self.desired_state,
+            effective_labels=self.effective_labels,
             gcs_bucket=self.gcs_bucket,
             id=self.id,
             ignore_active_certificates_on_deletion=self.ignore_active_certificates_on_deletion,
@@ -248,6 +265,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             pem_csr=self.pem_csr,
             pool=self.pool,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             skip_grace_period=self.skip_grace_period,
             state=self.state,
             subordinate_configs=self.subordinate_configs,
@@ -299,6 +317,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         desired_state=pulumi.get(__ret__, 'desired_state'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gcs_bucket=pulumi.get(__ret__, 'gcs_bucket'),
         id=pulumi.get(__ret__, 'id'),
         ignore_active_certificates_on_deletion=pulumi.get(__ret__, 'ignore_active_certificates_on_deletion'),
@@ -312,6 +331,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         pem_csr=pulumi.get(__ret__, 'pem_csr'),
         pool=pulumi.get(__ret__, 'pool'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         skip_grace_period=pulumi.get(__ret__, 'skip_grace_period'),
         state=pulumi.get(__ret__, 'state'),
         subordinate_configs=pulumi.get(__ret__, 'subordinate_configs'),

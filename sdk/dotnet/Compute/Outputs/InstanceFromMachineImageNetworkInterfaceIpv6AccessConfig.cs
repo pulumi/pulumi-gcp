@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Name;
         public readonly string NetworkTier;
         public readonly string? PublicPtrDomainName;
+        public readonly string? SecurityPolicy;
 
         [OutputConstructor]
         private InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(
@@ -33,13 +34,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkTier,
 
-            string? publicPtrDomainName)
+            string? publicPtrDomainName,
+
+            string? securityPolicy)
         {
             ExternalIpv6 = externalIpv6;
             ExternalIpv6PrefixLength = externalIpv6PrefixLength;
             Name = name;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
         }
     }
 }

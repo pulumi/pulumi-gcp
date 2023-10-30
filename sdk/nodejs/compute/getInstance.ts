@@ -98,6 +98,7 @@ export interface GetInstanceResult {
      */
     readonly description: string;
     readonly desiredStatus: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Whether the instance has virtual displays enabled.
      */
@@ -151,6 +152,7 @@ export interface GetInstanceResult {
     readonly networkPerformanceConfigs: outputs.compute.GetInstanceNetworkPerformanceConfig[];
     readonly params: outputs.compute.GetInstanceParam[];
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
     readonly resourcePolicies: string[];
     /**

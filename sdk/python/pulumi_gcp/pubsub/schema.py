@@ -22,7 +22,11 @@ class SchemaArgs:
         The set of arguments for constructing a Schema resource.
         :param pulumi.Input[str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
-               that is a valid schema definition of the type specified in type.
+               that is a valid schema definition of the type specified in type. Changes
+               to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+               A schema can only have up to 20 revisions, so updates that fail with an
+               error indicating that the limit has been reached require manually
+               [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
                
                
@@ -48,7 +52,11 @@ class SchemaArgs:
         """
         The definition of the schema.
         This should contain a string representing the full definition of the schema
-        that is a valid schema definition of the type specified in type.
+        that is a valid schema definition of the type specified in type. Changes
+        to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+        A schema can only have up to 20 revisions, so updates that fail with an
+        error indicating that the limit has been reached require manually
+        [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         """
         return pulumi.get(self, "definition")
 
@@ -110,7 +118,11 @@ class _SchemaState:
         Input properties used for looking up and filtering Schema resources.
         :param pulumi.Input[str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
-               that is a valid schema definition of the type specified in type.
+               that is a valid schema definition of the type specified in type. Changes
+               to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+               A schema can only have up to 20 revisions, so updates that fail with an
+               error indicating that the limit has been reached require manually
+               [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
                
                
@@ -136,7 +148,11 @@ class _SchemaState:
         """
         The definition of the schema.
         This should contain a string representing the full definition of the schema
-        that is a valid schema definition of the type specified in type.
+        that is a valid schema definition of the type specified in type. Changes
+        to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+        A schema can only have up to 20 revisions, so updates that fail with an
+        error indicating that the limit has been reached require manually
+        [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         """
         return pulumi.get(self, "definition")
 
@@ -275,7 +291,11 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
-               that is a valid schema definition of the type specified in type.
+               that is a valid schema definition of the type specified in type. Changes
+               to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+               A schema can only have up to 20 revisions, so updates that fail with an
+               error indicating that the limit has been reached require manually
+               [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
                
                
@@ -421,7 +441,11 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema.
                This should contain a string representing the full definition of the schema
-               that is a valid schema definition of the type specified in type.
+               that is a valid schema definition of the type specified in type. Changes
+               to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+               A schema can only have up to 20 revisions, so updates that fail with an
+               error indicating that the limit has been reached require manually
+               [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
                
                
@@ -448,7 +472,11 @@ class Schema(pulumi.CustomResource):
         """
         The definition of the schema.
         This should contain a string representing the full definition of the schema
-        that is a valid schema definition of the type specified in type.
+        that is a valid schema definition of the type specified in type. Changes
+        to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+        A schema can only have up to 20 revisions, so updates that fail with an
+        error indicating that the limit has been reached require manually
+        [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         """
         return pulumi.get(self, "definition")
 

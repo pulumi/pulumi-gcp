@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.Organizations
     {
         public readonly bool AutoCreateNetwork;
         public readonly string BillingAccount;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string FolderId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -122,6 +123,7 @@ namespace Pulumi.Gcp.Organizations
         public readonly string Number;
         public readonly string OrgId;
         public readonly string? ProjectId;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool SkipDelete;
 
         [OutputConstructor]
@@ -129,6 +131,8 @@ namespace Pulumi.Gcp.Organizations
             bool autoCreateNetwork,
 
             string billingAccount,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string folderId,
 
@@ -144,10 +148,13 @@ namespace Pulumi.Gcp.Organizations
 
             string? projectId,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             bool skipDelete)
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
+            EffectiveLabels = effectiveLabels;
             FolderId = folderId;
             Id = id;
             Labels = labels;
@@ -155,6 +162,7 @@ namespace Pulumi.Gcp.Organizations
             Number = number;
             OrgId = orgId;
             ProjectId = projectId;
+            PulumiLabels = pulumiLabels;
             SkipDelete = skipDelete;
         }
     }

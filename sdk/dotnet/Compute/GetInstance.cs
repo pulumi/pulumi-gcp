@@ -185,6 +185,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly string DesiredStatus;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Whether the instance has virtual displays enabled.
         /// </summary>
@@ -238,6 +239,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
         public readonly ImmutableArray<Outputs.GetInstanceParamResult> Params;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
@@ -294,6 +296,8 @@ namespace Pulumi.Gcp.Compute
 
             string desiredStatus,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             bool enableDisplay,
 
             ImmutableArray<Outputs.GetInstanceGuestAcceleratorResult> guestAccelerators,
@@ -328,6 +332,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetInstanceReservationAffinityResult> reservationAffinities,
 
             ImmutableArray<string> resourcePolicies,
@@ -359,6 +365,7 @@ namespace Pulumi.Gcp.Compute
             DeletionProtection = deletionProtection;
             Description = description;
             DesiredStatus = desiredStatus;
+            EffectiveLabels = effectiveLabels;
             EnableDisplay = enableDisplay;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
@@ -376,6 +383,7 @@ namespace Pulumi.Gcp.Compute
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Params = @params;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;
             Schedulings = schedulings;

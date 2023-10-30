@@ -220,6 +220,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
@@ -243,6 +250,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -290,6 +300,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The purpose of this resource, which can be one of the following values.
@@ -428,6 +444,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -551,6 +570,19 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// Possible values are: `IPV4`, `IPV6`.
@@ -578,6 +610,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -628,6 +663,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The purpose of this resource, which can be one of the following values.

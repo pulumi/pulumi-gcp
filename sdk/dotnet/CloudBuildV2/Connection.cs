@@ -187,6 +187,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     {
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -202,6 +205,13 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -314,6 +324,9 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -376,6 +389,9 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -394,6 +410,19 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<object>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            set => _effectiveAnnotations = value;
+        }
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

@@ -186,6 +186,11 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * IKE protocol version to use when establishing the VPN tunnel with
      * peer VPN gateway.
      * Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -197,6 +202,8 @@ export class VPNTunnel extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this VpnTunnel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -240,6 +247,10 @@ export class VPNTunnel extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
@@ -308,6 +319,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["detailedStatus"] = state ? state.detailedStatus : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["ikeVersion"] = state ? state.ikeVersion : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -318,6 +330,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["peerGcpGateway"] = state ? state.peerGcpGateway : undefined;
             resourceInputs["peerIp"] = state ? state.peerIp : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["remoteTrafficSelectors"] = state ? state.remoteTrafficSelectors : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
@@ -352,7 +365,9 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sharedSecretHash"] = undefined /*out*/;
             resourceInputs["tunnelId"] = undefined /*out*/;
@@ -381,6 +396,11 @@ export interface VPNTunnelState {
      */
     detailedStatus?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * IKE protocol version to use when establishing the VPN tunnel with
      * peer VPN gateway.
      * Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -392,6 +412,8 @@ export interface VPNTunnelState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this VpnTunnel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -435,6 +457,10 @@ export interface VPNTunnelState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
@@ -504,6 +530,8 @@ export interface VPNTunnelArgs {
     ikeVersion?: pulumi.Input<number>;
     /**
      * Labels to apply to this VpnTunnel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

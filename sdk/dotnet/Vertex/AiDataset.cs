@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Vertex
     ///     var dataset = new Gcp.Vertex.AiDataset("dataset", new()
     ///     {
     ///         DisplayName = "terraform",
+    ///         Labels = 
+    ///         {
+    ///             { "env", "test" },
+    ///         },
     ///         MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
     ///         Region = "us-central1",
     ///     });
@@ -59,6 +63,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
         /// Structure is documented below.
         /// </summary>
@@ -67,9 +78,12 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// A set of key/value label pairs to assign to this Workflow.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
@@ -92,6 +106,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The region of the dataset. eg us-central1
@@ -169,6 +190,9 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// A set of key/value label pairs to assign to this Workflow.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -218,6 +242,19 @@ namespace Pulumi.Gcp.Vertex
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
         /// Structure is documented below.
@@ -230,6 +267,9 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// A set of key/value label pairs to assign to this Workflow.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -258,6 +298,19 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The region of the dataset. eg us-central1

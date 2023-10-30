@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -95,7 +95,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,7 +126,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -165,7 +165,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -229,14 +229,22 @@ type EnterpriseKey struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrOutput `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrOutput `pulumi:"testingOptions"`
 	// Settings for keys that can be used by websites.
@@ -284,14 +292,22 @@ type enterpriseKeyState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
 	// Settings for keys that can be used by websites.
@@ -307,14 +323,22 @@ type EnterpriseKeyState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
 	// Settings for keys that can be used by websites.
@@ -335,6 +359,9 @@ type enterpriseKeyArgs struct {
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -355,6 +382,9 @@ type EnterpriseKeyArgs struct {
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -492,12 +522,21 @@ func (o EnterpriseKeyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EnterpriseKeyOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Settings for keys that can be used by iOS apps.
 func (o EnterpriseKeyOutput) IosSettings() EnterpriseKeyIosSettingsPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyIosSettingsPtrOutput { return v.IosSettings }).(EnterpriseKeyIosSettingsPtrOutput)
 }
 
 // See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EnterpriseKeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -510,6 +549,11 @@ func (o EnterpriseKeyOutput) Name() pulumi.StringOutput {
 // The project for the resource
 func (o EnterpriseKeyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o EnterpriseKeyOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Options for user acceptance testing.

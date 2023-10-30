@@ -74,6 +74,11 @@ export class Task extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Configuration for the cluster
      * Structure is documented below.
      */
@@ -85,6 +90,9 @@ export class Task extends pulumi.CustomResource {
     public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.TaskExecutionStatus[]>;
     /**
      * User-defined labels for the task.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -110,6 +118,11 @@ export class Task extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
@@ -156,6 +169,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["executionSpec"] = state ? state.executionSpec : undefined;
             resourceInputs["executionStatuses"] = state ? state.executionStatuses : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -164,6 +178,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notebook"] = state ? state.notebook : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["spark"] = state ? state.spark : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["taskId"] = state ? state.taskId : undefined;
@@ -190,8 +205,10 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["taskId"] = args ? args.taskId : undefined;
             resourceInputs["triggerSpec"] = args ? args.triggerSpec : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["executionStatuses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -218,6 +235,11 @@ export interface TaskState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Configuration for the cluster
      * Structure is documented below.
      */
@@ -229,6 +251,9 @@ export interface TaskState {
     executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.TaskExecutionStatus>[]>;
     /**
      * User-defined labels for the task.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -254,6 +279,11 @@ export interface TaskState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
@@ -304,6 +334,9 @@ export interface TaskArgs {
     executionSpec: pulumi.Input<inputs.dataplex.TaskExecutionSpec>;
     /**
      * User-defined labels for the task.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

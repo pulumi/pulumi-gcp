@@ -63,6 +63,9 @@ class RegionInstanceTemplateArgs:
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -269,6 +272,9 @@ class RegionInstanceTemplateArgs:
         """
         A set of key/value label pairs to assign to instances
         created from this template.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -483,6 +489,7 @@ class _RegionInstanceTemplateState:
                  confidential_instance_config: Optional[pulumi.Input['RegionInstanceTemplateConfidentialInstanceConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateDiskArgs']]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateGuestAcceleratorArgs']]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
@@ -497,6 +504,7 @@ class _RegionInstanceTemplateState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['RegionInstanceTemplateNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -516,6 +524,8 @@ class _RegionInstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -523,6 +533,9 @@ class _RegionInstanceTemplateState:
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
@@ -551,6 +564,7 @@ class _RegionInstanceTemplateState:
                in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The Region in which the resource belongs.
                If region is not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -575,6 +589,8 @@ class _RegionInstanceTemplateState:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_display is not None:
             pulumi.set(__self__, "enable_display", enable_display)
         if guest_accelerators is not None:
@@ -603,6 +619,8 @@ class _RegionInstanceTemplateState:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if reservation_affinity is not None:
@@ -686,6 +704,19 @@ class _RegionInstanceTemplateState:
         pulumi.set(self, "disks", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -729,6 +760,9 @@ class _RegionInstanceTemplateState:
         """
         A set of key/value label pairs to assign to instances
         created from this template.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -873,6 +907,18 @@ class _RegionInstanceTemplateState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -1054,6 +1100,9 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
@@ -1196,7 +1245,9 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["metadata_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["tags_fingerprint"] = None
         super(RegionInstanceTemplate, __self__).__init__(
@@ -1214,6 +1265,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateConfidentialInstanceConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateDiskArgs']]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateGuestAcceleratorArgs']]]]] = None,
             instance_description: Optional[pulumi.Input[str]] = None,
@@ -1228,6 +1280,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateNetworkPerformanceConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1252,6 +1305,8 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -1259,6 +1314,9 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
@@ -1287,6 +1345,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The Region in which the resource belongs.
                If region is not provided, the provider region is used.
         :param pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1310,6 +1369,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["confidential_instance_config"] = confidential_instance_config
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_display"] = enable_display
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["instance_description"] = instance_description
@@ -1324,6 +1384,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["resource_policies"] = resource_policies
@@ -1379,6 +1440,15 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         return pulumi.get(self, "disks")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1410,6 +1480,9 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         """
         A set of key/value label pairs to assign to instances
         created from this template.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1510,6 +1583,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

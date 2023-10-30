@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private @Nullable String config;
     private @Nullable String displayName;
+    private Map<String,String> effectiveLabels;
     private Boolean forceDestroy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,7 @@ public final class GetInstanceResult {
     private Integer numNodes;
     private Integer processingUnits;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String state;
 
     private GetInstanceResult() {}
@@ -35,6 +37,9 @@ public final class GetInstanceResult {
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Boolean forceDestroy() {
         return this.forceDestroy;
@@ -61,6 +66,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String state() {
         return this.state;
     }
@@ -76,6 +84,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private @Nullable String config;
         private @Nullable String displayName;
+        private Map<String,String> effectiveLabels;
         private Boolean forceDestroy;
         private String id;
         private Map<String,String> labels;
@@ -83,12 +92,14 @@ public final class GetInstanceResult {
         private Integer numNodes;
         private Integer processingUnits;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String state;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -96,6 +107,7 @@ public final class GetInstanceResult {
     	      this.numNodes = defaults.numNodes;
     	      this.processingUnits = defaults.processingUnits;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
         }
 
@@ -107,6 +119,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -145,6 +162,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
@@ -153,6 +175,7 @@ public final class GetInstanceResult {
             final var o = new GetInstanceResult();
             o.config = config;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.forceDestroy = forceDestroy;
             o.id = id;
             o.labels = labels;
@@ -160,6 +183,7 @@ public final class GetInstanceResult {
             o.numNodes = numNodes;
             o.processingUnits = processingUnits;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.state = state;
             return o;
         }

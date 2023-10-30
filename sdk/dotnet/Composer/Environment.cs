@@ -36,11 +36,20 @@ namespace Pulumi.Gcp.Composer
         public Output<Outputs.EnvironmentConfig> Config { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
         /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -56,6 +65,12 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The location or Compute Engine region for the environment.
@@ -123,7 +138,9 @@ namespace Pulumi.Gcp.Composer
         /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -163,6 +180,19 @@ namespace Pulumi.Gcp.Composer
         [Input("config")]
         public Input<Inputs.EnvironmentConfigGetArgs>? Config { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -171,7 +201,9 @@ namespace Pulumi.Gcp.Composer
         /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
         /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -190,6 +222,18 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The location or Compute Engine region for the environment.

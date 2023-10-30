@@ -22,7 +22,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -38,6 +38,9 @@ class GetInstanceTemplateResult:
         if disks and not isinstance(disks, list):
             raise TypeError("Expected argument 'disks' to be a list")
         pulumi.set(__self__, "disks", disks)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_display and not isinstance(enable_display, bool):
             raise TypeError("Expected argument 'enable_display' to be a bool")
         pulumi.set(__self__, "enable_display", enable_display)
@@ -89,6 +92,9 @@ class GetInstanceTemplateResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -159,6 +165,11 @@ class GetInstanceTemplateResult:
         documented below.
         """
         return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableDisplay")
@@ -300,6 +311,11 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -396,6 +412,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             confidential_instance_configs=self.confidential_instance_configs,
             description=self.description,
             disks=self.disks,
+            effective_labels=self.effective_labels,
             enable_display=self.enable_display,
             filter=self.filter,
             guest_accelerators=self.guest_accelerators,
@@ -413,6 +430,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             network_interfaces=self.network_interfaces,
             network_performance_configs=self.network_performance_configs,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
@@ -432,6 +450,8 @@ def get_instance_template(filter: Optional[str] = None,
                           self_link_unique: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTemplateResult:
     """
+    > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+
     Get information about a VM instance template resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
     and
@@ -474,6 +494,7 @@ def get_instance_template(filter: Optional[str] = None,
         confidential_instance_configs=pulumi.get(__ret__, 'confidential_instance_configs'),
         description=pulumi.get(__ret__, 'description'),
         disks=pulumi.get(__ret__, 'disks'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_display=pulumi.get(__ret__, 'enable_display'),
         filter=pulumi.get(__ret__, 'filter'),
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
@@ -491,6 +512,7 @@ def get_instance_template(filter: Optional[str] = None,
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
         network_performance_configs=pulumi.get(__ret__, 'network_performance_configs'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         reservation_affinities=pulumi.get(__ret__, 'reservation_affinities'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
@@ -511,6 +533,8 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
                                  self_link_unique: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
+    > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+
     Get information about a VM instance template resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
     and

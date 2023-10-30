@@ -44,6 +44,16 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     idleTimeout: "600s",
  *     runningTimeout: "21600s",
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-b",
+ *     ],
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     labels: {
+ *         label: "key",
+ *     },
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -428,6 +438,8 @@ export class WorkstationConfig extends pulumi.CustomResource {
 
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -453,6 +465,20 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     */
+    public readonly enableAuditAgent!: pulumi.Output<boolean | undefined>;
+    /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
      * If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -477,6 +503,8 @@ export class WorkstationConfig extends pulumi.CustomResource {
     public readonly idleTimeout!: pulumi.Output<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -500,6 +528,16 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     */
+    public readonly replicaZones!: pulumi.Output<string[]>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -537,6 +575,9 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["degraded"] = state ? state.degraded : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["enableAuditAgent"] = state ? state.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
@@ -546,6 +587,8 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["replicaZones"] = state ? state.replicaZones : undefined;
             resourceInputs["runningTimeout"] = state ? state.runningTimeout : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
@@ -564,6 +607,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["container"] = args ? args.container : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableAuditAgent"] = args ? args.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
@@ -571,14 +615,18 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
             resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -592,6 +640,8 @@ export class WorkstationConfig extends pulumi.CustomResource {
 export interface WorkstationConfigState {
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -617,6 +667,20 @@ export interface WorkstationConfigState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     */
+    enableAuditAgent?: pulumi.Input<boolean>;
+    /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
      * If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -641,6 +705,8 @@ export interface WorkstationConfigState {
     idleTimeout?: pulumi.Input<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -664,6 +730,16 @@ export interface WorkstationConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     */
+    replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -689,6 +765,8 @@ export interface WorkstationConfigState {
 export interface WorkstationConfigArgs {
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -700,6 +778,10 @@ export interface WorkstationConfigArgs {
      * Human-readable name for this resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     */
+    enableAuditAgent?: pulumi.Input<boolean>;
     /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -720,6 +802,8 @@ export interface WorkstationConfigArgs {
     idleTimeout?: pulumi.Input<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -739,6 +823,11 @@ export interface WorkstationConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     */
+    replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".

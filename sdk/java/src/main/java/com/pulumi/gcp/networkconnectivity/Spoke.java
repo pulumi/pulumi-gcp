@@ -14,6 +14,7 @@ import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedInterconnectAttachm
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -208,6 +209,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Immutable. The URI of the hub that this spoke is attached to.
      * 
      */
@@ -224,12 +241,18 @@ public class Spoke extends com.pulumi.resources.CustomResource {
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -332,6 +355,20 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING

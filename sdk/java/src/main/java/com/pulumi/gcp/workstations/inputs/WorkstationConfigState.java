@@ -25,6 +25,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -32,6 +34,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -118,6 +122,55 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    @Import(name="enableAuditAgent")
+    private @Nullable Output<Boolean> enableAuditAgent;
+
+    /**
+     * @return Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAuditAgent() {
+        return Optional.ofNullable(this.enableAuditAgent);
+    }
+
+    /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
      * If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -193,6 +246,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -200,6 +255,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -275,6 +332,40 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    @Import(name="replicaZones")
+    private @Nullable Output<List<String>> replicaZones;
+
+    /**
+     * @return Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaZones() {
+        return Optional.ofNullable(this.replicaZones);
+    }
+
+    /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -345,6 +436,9 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.createTime = $.createTime;
         this.degraded = $.degraded;
         this.displayName = $.displayName;
+        this.effectiveAnnotations = $.effectiveAnnotations;
+        this.effectiveLabels = $.effectiveLabels;
+        this.enableAuditAgent = $.enableAuditAgent;
         this.encryptionKey = $.encryptionKey;
         this.etag = $.etag;
         this.host = $.host;
@@ -354,6 +448,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
+        this.replicaZones = $.replicaZones;
         this.runningTimeout = $.runningTimeout;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
@@ -380,6 +476,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -391,6 +489,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -520,6 +620,73 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param enableAuditAgent Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuditAgent(@Nullable Output<Boolean> enableAuditAgent) {
+            $.enableAuditAgent = enableAuditAgent;
+            return this;
+        }
+
+        /**
+         * @param enableAuditAgent Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuditAgent(Boolean enableAuditAgent) {
+            return enableAuditAgent(Output.of(enableAuditAgent));
+        }
+
+        /**
          * @param encryptionKey Encrypts resources of this workstation configuration using a customer-managed encryption key.
          * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
          * If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -619,6 +786,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -630,6 +799,8 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -739,6 +910,63 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(@Nullable Output<List<String>> replicaZones) {
+            $.replicaZones = replicaZones;
+            return this;
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(List<String> replicaZones) {
+            return replicaZones(Output.of(replicaZones));
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
 
         /**

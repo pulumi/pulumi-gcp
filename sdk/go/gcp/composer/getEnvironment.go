@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -37,13 +37,15 @@ type LookupEnvironmentArgs struct {
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
 	// Configuration parameters for the environment.
-	Configs []GetEnvironmentConfig `pulumi:"configs"`
+	Configs         []GetEnvironmentConfig `pulumi:"configs"`
+	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string            `pulumi:"id"`
-	Labels  map[string]string `pulumi:"labels"`
-	Name    string            `pulumi:"name"`
-	Project *string           `pulumi:"project"`
-	Region  *string           `pulumi:"region"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -100,6 +102,10 @@ func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
 }
 
+func (o LookupEnvironmentResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -115,6 +121,10 @@ func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupEnvironmentResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEnvironmentResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupEnvironmentResultOutput) Region() pulumi.StringPtrOutput {

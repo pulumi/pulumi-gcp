@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -127,6 +127,9 @@ type CertificateMapEntry struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
 	// selecting a proper certificate.
@@ -134,6 +137,9 @@ type CertificateMapEntry struct {
 	// Set of labels associated with a Certificate Map Entry.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
 	//
@@ -148,6 +154,9 @@ type CertificateMapEntry struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
@@ -202,6 +211,9 @@ type certificateMapEntryState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
 	// selecting a proper certificate.
@@ -209,6 +221,9 @@ type certificateMapEntryState struct {
 	// Set of labels associated with a Certificate Map Entry.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
 	//
@@ -223,6 +238,9 @@ type certificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A serving state of this Certificate Map Entry.
 	State *string `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
@@ -242,6 +260,9 @@ type CertificateMapEntryState struct {
 	CreateTime pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
 	// selecting a proper certificate.
@@ -249,6 +270,9 @@ type CertificateMapEntryState struct {
 	// Set of labels associated with a Certificate Map Entry.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A map entry that is inputted into the cetrificate map
 	//
@@ -263,6 +287,9 @@ type CertificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringPtrInput
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
@@ -289,6 +316,9 @@ type certificateMapEntryArgs struct {
 	// Set of labels associated with a Certificate Map Entry.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
 	//
@@ -320,6 +350,9 @@ type CertificateMapEntryArgs struct {
 	// Set of labels associated with a Certificate Map Entry.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A map entry that is inputted into the cetrificate map
 	//
@@ -466,6 +499,12 @@ func (o CertificateMapEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateMapEntryOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 // for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
 // selecting a proper certificate.
@@ -476,6 +515,9 @@ func (o CertificateMapEntryOutput) Hostname() pulumi.StringPtrOutput {
 // Set of labels associated with a Certificate Map Entry.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateMapEntryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -503,6 +545,12 @@ func (o CertificateMapEntryOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o CertificateMapEntryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateMapEntryOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // A serving state of this Certificate Map Entry.

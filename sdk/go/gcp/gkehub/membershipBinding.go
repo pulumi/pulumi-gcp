@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -51,7 +51,13 @@ type MembershipBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels for this Membership binding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the membership
 	//
@@ -66,6 +72,9 @@ type MembershipBinding struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringOutput `pulumi:"scope"`
@@ -124,7 +133,13 @@ type membershipBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels for this Membership binding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
 	//
@@ -139,6 +154,9 @@ type membershipBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope *string `pulumi:"scope"`
@@ -156,7 +174,13 @@ type MembershipBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels for this Membership binding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Location of the membership
 	//
@@ -171,6 +195,9 @@ type MembershipBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringPtrInput
@@ -189,6 +216,9 @@ func (MembershipBindingState) ElementType() reflect.Type {
 
 type membershipBindingArgs struct {
 	// Labels for this Membership binding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
 	//
@@ -209,6 +239,9 @@ type membershipBindingArgs struct {
 // The set of arguments for constructing a MembershipBinding resource.
 type MembershipBindingArgs struct {
 	// Labels for this Membership binding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Location of the membership
 	//
@@ -347,7 +380,16 @@ func (o MembershipBindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o MembershipBindingOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels for this Membership binding.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MembershipBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -378,6 +420,12 @@ func (o MembershipBindingOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o MembershipBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MembershipBindingOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // A Workspace resource name in the format

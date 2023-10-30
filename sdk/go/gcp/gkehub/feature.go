@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,8 +31,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,7 +83,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,7 +111,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,7 +136,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -170,7 +170,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -204,7 +204,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -263,7 +263,12 @@ type Feature struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -274,6 +279,9 @@ type Feature struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayOutput `pulumi:"resourceStates"`
@@ -326,7 +334,12 @@ type featureState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. When the Feature resource was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -337,6 +350,9 @@ type featureState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates []FeatureResourceState `pulumi:"resourceStates"`
@@ -357,7 +373,12 @@ type FeatureState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	//
@@ -368,6 +389,9 @@ type FeatureState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayInput
@@ -389,6 +413,8 @@ func (FeatureState) ElementType() reflect.Type {
 
 type featureArgs struct {
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -407,6 +433,8 @@ type featureArgs struct {
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	//
@@ -543,7 +571,15 @@ func (o FeatureOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o FeatureOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // GCP labels for this Feature.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FeatureOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -564,6 +600,12 @@ func (o FeatureOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o FeatureOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FeatureOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // State of the Feature resource itself.

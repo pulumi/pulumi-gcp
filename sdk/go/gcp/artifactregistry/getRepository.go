@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,6 +72,7 @@ type LookupRepositoryResult struct {
 	CreateTime          string                       `pulumi:"createTime"`
 	Description         string                       `pulumi:"description"`
 	DockerConfigs       []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
+	EffectiveLabels     map[string]string            `pulumi:"effectiveLabels"`
 	Format              string                       `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                 `pulumi:"id"`
@@ -82,6 +83,7 @@ type LookupRepositoryResult struct {
 	Mode                     string                                 `pulumi:"mode"`
 	Name                     string                                 `pulumi:"name"`
 	Project                  *string                                `pulumi:"project"`
+	PulumiLabels             map[string]string                      `pulumi:"pulumiLabels"`
 	RemoteRepositoryConfigs  []GetRepositoryRemoteRepositoryConfig  `pulumi:"remoteRepositoryConfigs"`
 	RepositoryId             string                                 `pulumi:"repositoryId"`
 	UpdateTime               string                                 `pulumi:"updateTime"`
@@ -159,6 +161,10 @@ func (o LookupRepositoryResultOutput) DockerConfigs() GetRepositoryDockerConfigA
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryDockerConfig { return v.DockerConfigs }).(GetRepositoryDockerConfigArrayOutput)
 }
 
+func (o LookupRepositoryResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupRepositoryResultOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -194,6 +200,10 @@ func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupRepositoryResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRepositoryResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRepositoryResultOutput) RemoteRepositoryConfigs() GetRepositoryRemoteRepositoryConfigArrayOutput {

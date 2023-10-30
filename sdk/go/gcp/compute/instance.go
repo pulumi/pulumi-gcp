@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,8 +25,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,6 +142,9 @@ type Instance struct {
 	// Desired status of the instance. Either
 	// `"RUNNING"` or `"TERMINATED"`.
 	DesiredStatus pulumi.StringPtrOutput `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
@@ -157,6 +160,8 @@ type Instance struct {
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// A map of key/value label pairs to assign to the instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -217,6 +222,8 @@ type Instance struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityOutput `pulumi:"reservationAffinity"`
@@ -313,6 +320,9 @@ type instanceState struct {
 	// Desired status of the instance. Either
 	// `"RUNNING"` or `"TERMINATED"`.
 	DesiredStatus *string `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
@@ -328,6 +338,8 @@ type instanceState struct {
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// A map of key/value label pairs to assign to the instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -388,6 +400,8 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
@@ -446,6 +460,9 @@ type InstanceState struct {
 	// Desired status of the instance. Either
 	// `"RUNNING"` or `"TERMINATED"`.
 	DesiredStatus pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
@@ -461,6 +478,8 @@ type InstanceState struct {
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
@@ -521,6 +540,8 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
@@ -590,6 +611,8 @@ type instanceArgs struct {
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// A map of key/value label pairs to assign to the instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -710,6 +733,8 @@ type InstanceArgs struct {
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
@@ -965,6 +990,12 @@ func (o InstanceOutput) DesiredStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredStatus }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceOutput) EnableDisplay() pulumi.BoolPtrOutput {
@@ -995,6 +1026,8 @@ func (o InstanceOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // A map of key/value label pairs to assign to the instance.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1086,6 +1119,11 @@ func (o InstanceOutput) Params() InstanceParamsPtrOutput {
 // is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Specifies the reservations that this instance can consume from.

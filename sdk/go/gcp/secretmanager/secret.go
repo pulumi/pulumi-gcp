@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,7 +67,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -107,9 +107,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -183,9 +183,18 @@ type Secret struct {
 	// The total size of annotation keys and values must be less than 16KiB.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -197,6 +206,9 @@ type Secret struct {
 	// No more than 64 labels can be assigned to a given resource.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
 	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
@@ -204,6 +216,9 @@ type Secret struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -275,9 +290,18 @@ type secretState struct {
 	// The total size of annotation keys and values must be less than 16KiB.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime *string `pulumi:"expireTime"`
@@ -289,6 +313,9 @@ type secretState struct {
 	// No more than 64 labels can be assigned to a given resource.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
 	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
@@ -296,6 +323,9 @@ type secretState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -332,9 +362,18 @@ type SecretState struct {
 	// The total size of annotation keys and values must be less than 16KiB.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime pulumi.StringPtrInput
@@ -346,6 +385,9 @@ type SecretState struct {
 	// No more than 64 labels can be assigned to a given resource.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
 	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
@@ -353,6 +395,9 @@ type SecretState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -393,6 +438,9 @@ type secretArgs struct {
 	// The total size of annotation keys and values must be less than 16KiB.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -405,6 +453,9 @@ type secretArgs struct {
 	// No more than 64 labels can be assigned to a given resource.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -446,6 +497,9 @@ type SecretArgs struct {
 	// The total size of annotation keys and values must be less than 16KiB.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -458,6 +512,9 @@ type SecretArgs struct {
 	// No more than 64 labels can be assigned to a given resource.
 	// An object containing a list of "key": value pairs. Example:
 	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -608,6 +665,9 @@ func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
 // The total size of annotation keys and values must be less than 16KiB.
 // An object containing a list of "key": value pairs. Example:
 // { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o SecretOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -615,6 +675,18 @@ func (o SecretOutput) Annotations() pulumi.StringMapOutput {
 // The time at which the Secret was created.
 func (o SecretOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o SecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o SecretOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
@@ -631,6 +703,9 @@ func (o SecretOutput) ExpireTime() pulumi.StringOutput {
 // No more than 64 labels can be assigned to a given resource.
 // An object containing a list of "key": value pairs. Example:
 // { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SecretOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -645,6 +720,12 @@ func (o SecretOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o SecretOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SecretOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The replication policy of the secret data attached to the Secret. It cannot be changed

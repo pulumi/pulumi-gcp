@@ -37,7 +37,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     /**
      * (Output)
-     * Required. Describes how some of the technical fields in a certificate should be populated.
+     * Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
@@ -46,7 +46,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     /**
      * @return (Output)
-     * Required. Describes how some of the technical fields in a certificate should be populated.
+     * Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
@@ -120,7 +120,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param obectIds (Output)
-         * Required. Describes how some of the technical fields in a certificate should be populated.
+         * Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -133,7 +133,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param obectIds (Output)
-         * Required. Describes how some of the technical fields in a certificate should be populated.
+         * Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -145,7 +145,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param obectIds (Output)
-         * Required. Describes how some of the technical fields in a certificate should be populated.
+         * Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder

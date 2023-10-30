@@ -35,12 +35,18 @@ public final class AppConnectorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource labels to represent user provided metadata.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Resource labels to represent user provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -164,6 +170,9 @@ public final class AppConnectorArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user provided metadata.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -174,6 +183,9 @@ public final class AppConnectorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels to represent user provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, effective_labels=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -44,6 +44,9 @@ class GetForwardingRuleResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -95,6 +98,9 @@ class GetForwardingRuleResult:
         if psc_connection_status and not isinstance(psc_connection_status, str):
             raise TypeError("Expected argument 'psc_connection_status' to be a str")
         pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -154,6 +160,11 @@ class GetForwardingRuleResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -244,6 +255,11 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "psc_connection_status")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -297,6 +313,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             base_forwarding_rule=self.base_forwarding_rule,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            effective_labels=self.effective_labels,
             id=self.id,
             ip_address=self.ip_address,
             ip_protocol=self.ip_protocol,
@@ -314,6 +331,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             project=self.project,
             psc_connection_id=self.psc_connection_id,
             psc_connection_status=self.psc_connection_status,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             self_link=self.self_link,
             service_directory_registrations=self.service_directory_registrations,
@@ -365,6 +383,7 @@ def get_forwarding_rule(name: Optional[str] = None,
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
@@ -382,6 +401,7 @@ def get_forwarding_rule(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         psc_connection_id=pulumi.get(__ret__, 'psc_connection_id'),
         psc_connection_status=pulumi.get(__ret__, 'psc_connection_status'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         service_directory_registrations=pulumi.get(__ret__, 'service_directory_registrations'),

@@ -42,6 +42,9 @@ class DatascanArgs:
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -168,6 +171,9 @@ class DatascanArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the scan. A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -194,19 +200,19 @@ class _DatascanState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['DatascanDataArgs']] = None,
-                 data_profile_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]] = None,
                  data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
-                 data_quality_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]] = None,
                  data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
                  execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -216,13 +222,7 @@ class _DatascanState:
         :param pulumi.Input[str] create_time: The time when the scan was created.
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]] data_profile_results: (Deprecated)
-               The result of the data profile scan.
-               Structure is documented below.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]] data_quality_results: (Deprecated)
-               The result of the data quality scan.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
@@ -230,11 +230,16 @@ class _DatascanState:
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
         :param pulumi.Input[str] name: A mutable name for the rule.
                The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
@@ -243,8 +248,10 @@ class _DatascanState:
                Must end with a number or a letter.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: Current state of the DataScan.
-        :param pulumi.Input[str] type: The field data type.
+        :param pulumi.Input[str] type: The type of DataScan.
         :param pulumi.Input[str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: The time when the scan was last updated.
         """
@@ -252,18 +259,8 @@ class _DatascanState:
             pulumi.set(__self__, "create_time", create_time)
         if data is not None:
             pulumi.set(__self__, "data", data)
-        if data_profile_results is not None:
-            warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
-        if data_profile_results is not None:
-            pulumi.set(__self__, "data_profile_results", data_profile_results)
         if data_profile_spec is not None:
             pulumi.set(__self__, "data_profile_spec", data_profile_spec)
-        if data_quality_results is not None:
-            warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
-        if data_quality_results is not None:
-            pulumi.set(__self__, "data_quality_results", data_quality_results)
         if data_quality_spec is not None:
             pulumi.set(__self__, "data_quality_spec", data_quality_spec)
         if data_scan_id is not None:
@@ -272,6 +269,8 @@ class _DatascanState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if execution_spec is not None:
             pulumi.set(__self__, "execution_spec", execution_spec)
         if execution_statuses is not None:
@@ -284,6 +283,8 @@ class _DatascanState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -319,23 +320,6 @@ class _DatascanState:
         pulumi.set(self, "data", value)
 
     @property
-    @pulumi.getter(name="dataProfileResults")
-    def data_profile_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]]:
-        """
-        (Deprecated)
-        The result of the data profile scan.
-        Structure is documented below.
-        """
-        warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
-
-        return pulumi.get(self, "data_profile_results")
-
-    @data_profile_results.setter
-    def data_profile_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]]):
-        pulumi.set(self, "data_profile_results", value)
-
-    @property
     @pulumi.getter(name="dataProfileSpec")
     def data_profile_spec(self) -> Optional[pulumi.Input['DatascanDataProfileSpecArgs']]:
         """
@@ -347,23 +331,6 @@ class _DatascanState:
     @data_profile_spec.setter
     def data_profile_spec(self, value: Optional[pulumi.Input['DatascanDataProfileSpecArgs']]):
         pulumi.set(self, "data_profile_spec", value)
-
-    @property
-    @pulumi.getter(name="dataQualityResults")
-    def data_quality_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]]:
-        """
-        (Deprecated)
-        The result of the data quality scan.
-        Structure is documented below.
-        """
-        warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
-
-        return pulumi.get(self, "data_quality_results")
-
-    @data_quality_results.setter
-    def data_quality_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]]):
-        pulumi.set(self, "data_quality_results", value)
 
     @property
     @pulumi.getter(name="dataQualitySpec")
@@ -416,6 +383,19 @@ class _DatascanState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="executionSpec")
     def execution_spec(self) -> Optional[pulumi.Input['DatascanExecutionSpecArgs']]:
         """
@@ -446,6 +426,9 @@ class _DatascanState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the scan. A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -495,6 +478,19 @@ class _DatascanState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -510,7 +506,7 @@ class _DatascanState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The field data type.
+        The type of DataScan.
         """
         return pulumi.get(self, "type")
 
@@ -801,6 +797,9 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1091,10 +1090,10 @@ class Datascan(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["data_profile_results"] = None
-            __props__.__dict__["data_quality_results"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["execution_statuses"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["uid"] = None
@@ -1111,19 +1110,19 @@ class Datascan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[pulumi.InputType['DatascanDataArgs']]] = None,
-            data_profile_results: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataProfileResultArgs']]]]] = None,
             data_profile_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']]] = None,
-            data_quality_results: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataQualityResultArgs']]]]] = None,
             data_quality_spec: Optional[pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']]] = None,
             data_scan_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             execution_spec: Optional[pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']]] = None,
             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1138,13 +1137,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the scan was created.
         :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataProfileResultArgs']]]] data_profile_results: (Deprecated)
-               The result of the data profile scan.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataQualityResultArgs']]]] data_quality_results: (Deprecated)
-               The result of the data quality scan.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
@@ -1152,11 +1145,16 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the data scan should reside.
         :param pulumi.Input[str] name: A mutable name for the rule.
                The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
@@ -1165,8 +1163,10 @@ class Datascan(pulumi.CustomResource):
                Must end with a number or a letter.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: Current state of the DataScan.
-        :param pulumi.Input[str] type: The field data type.
+        :param pulumi.Input[str] type: The type of DataScan.
         :param pulumi.Input[str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: The time when the scan was last updated.
         """
@@ -1176,19 +1176,19 @@ class Datascan(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data"] = data
-        __props__.__dict__["data_profile_results"] = data_profile_results
         __props__.__dict__["data_profile_spec"] = data_profile_spec
-        __props__.__dict__["data_quality_results"] = data_quality_results
         __props__.__dict__["data_quality_spec"] = data_quality_spec
         __props__.__dict__["data_scan_id"] = data_scan_id
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["execution_spec"] = execution_spec
         __props__.__dict__["execution_statuses"] = execution_statuses
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
@@ -1213,19 +1213,6 @@ class Datascan(pulumi.CustomResource):
         return pulumi.get(self, "data")
 
     @property
-    @pulumi.getter(name="dataProfileResults")
-    def data_profile_results(self) -> pulumi.Output[Sequence['outputs.DatascanDataProfileResult']]:
-        """
-        (Deprecated)
-        The result of the data profile scan.
-        Structure is documented below.
-        """
-        warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
-
-        return pulumi.get(self, "data_profile_results")
-
-    @property
     @pulumi.getter(name="dataProfileSpec")
     def data_profile_spec(self) -> pulumi.Output[Optional['outputs.DatascanDataProfileSpec']]:
         """
@@ -1233,19 +1220,6 @@ class Datascan(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data_profile_spec")
-
-    @property
-    @pulumi.getter(name="dataQualityResults")
-    def data_quality_results(self) -> pulumi.Output[Sequence['outputs.DatascanDataQualityResult']]:
-        """
-        (Deprecated)
-        The result of the data quality scan.
-        Structure is documented below.
-        """
-        warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
-
-        return pulumi.get(self, "data_quality_results")
 
     @property
     @pulumi.getter(name="dataQualitySpec")
@@ -1282,6 +1256,15 @@ class Datascan(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="executionSpec")
     def execution_spec(self) -> pulumi.Output['outputs.DatascanExecutionSpec']:
         """
@@ -1304,6 +1287,9 @@ class Datascan(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for the scan. A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1337,6 +1323,15 @@ class Datascan(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
@@ -1348,7 +1343,7 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The field data type.
+        The type of DataScan.
         """
         return pulumi.get(self, "type")
 

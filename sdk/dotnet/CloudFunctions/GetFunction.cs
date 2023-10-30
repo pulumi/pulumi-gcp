@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public readonly string Description;
         public readonly string DockerRegistry;
         public readonly string DockerRepository;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
@@ -172,9 +173,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly string IngressSettings;
         public readonly string KmsKeyName;
-        /// <summary>
-        /// A map of labels applied to this function.
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
@@ -186,6 +184,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         /// <summary>
         /// The runtime in which the function is running.
@@ -241,6 +240,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string dockerRepository,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string entryPoint,
 
             ImmutableDictionary<string, object> environmentVariables,
@@ -266,6 +267,8 @@ namespace Pulumi.Gcp.CloudFunctions
             string name,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string? region,
 
@@ -299,6 +302,7 @@ namespace Pulumi.Gcp.CloudFunctions
             Description = description;
             DockerRegistry = dockerRegistry;
             DockerRepository = dockerRepository;
+            EffectiveLabels = effectiveLabels;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
             EventTriggers = eventTriggers;
@@ -312,6 +316,7 @@ namespace Pulumi.Gcp.CloudFunctions
             MinInstances = minInstances;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             Runtime = runtime;
             SecretEnvironmentVariables = secretEnvironmentVariables;

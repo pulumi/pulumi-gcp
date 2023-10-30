@@ -102,11 +102,19 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */
     public readonly kmsSettings!: pulumi.Output<outputs.assuredworkloads.WorkloadKmsSettings | undefined>;
     /**
      * Optional. Labels applied to the workload.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -129,6 +137,10 @@ export class Workload extends pulumi.CustomResource {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
@@ -155,12 +167,14 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["complianceRegime"] = state ? state.complianceRegime : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["kmsSettings"] = state ? state.kmsSettings : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organization"] = state ? state.organization : undefined;
             resourceInputs["provisionedResourcesParent"] = state ? state.provisionedResourcesParent : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSettings"] = state ? state.resourceSettings : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
         } else {
@@ -190,7 +204,9 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -219,11 +235,19 @@ export interface WorkloadState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */
     kmsSettings?: pulumi.Input<inputs.assuredworkloads.WorkloadKmsSettings>;
     /**
      * Optional. Labels applied to the workload.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -246,6 +270,10 @@ export interface WorkloadState {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
      */
     provisionedResourcesParent?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
@@ -278,6 +306,9 @@ export interface WorkloadArgs {
     kmsSettings?: pulumi.Input<inputs.assuredworkloads.WorkloadKmsSettings>;
     /**
      * Optional. Labels applied to the workload.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

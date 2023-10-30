@@ -18,17 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vertexNetwork = gcp.compute.getNetwork({
- *     name: "network-name",
- * });
+ * const vertexNetwork = new gcp.compute.Network("vertexNetwork", {});
  * const vertexRange = new gcp.compute.GlobalAddress("vertexRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 24,
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
+ *     network: vertexNetwork.id,
  * });
  * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertexVpcConnection", {
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
+ *     network: vertexNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [vertexRange.name],
  * });
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "label-one": "value-one",
  *     },
- *     network: Promise.all([project, vertexNetwork]).then(([project, vertexNetwork]) => `projects/${project.number}/global/networks/${vertexNetwork.name}`),
+ *     network: pulumi.all([project, vertexNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
  * }, {
  *     dependsOn: [vertexVpcConnection],
  * });
@@ -126,11 +124,18 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -158,6 +163,11 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
      */
     public readonly publicEndpointEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region of the index endpoint. eg us-central1
      */
     public readonly region!: pulumi.Output<string | undefined>;
@@ -182,6 +192,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -189,6 +200,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicEndpointDomainName"] = state ? state.publicEndpointDomainName : undefined;
             resourceInputs["publicEndpointEnabled"] = state ? state.publicEndpointEnabled : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -204,9 +216,11 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["publicEndpointEnabled"] = args ? args.publicEndpointEnabled : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["publicEndpointDomainName"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -234,11 +248,18 @@ export interface AiIndexEndpointState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     etag?: pulumi.Input<string>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -266,6 +287,11 @@ export interface AiIndexEndpointState {
      */
     publicEndpointEnabled?: pulumi.Input<boolean>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region of the index endpoint. eg us-central1
      */
     region?: pulumi.Input<string>;
@@ -292,6 +318,8 @@ export interface AiIndexEndpointArgs {
     displayName: pulumi.Input<string>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -46,6 +46,7 @@ export interface GetEnvironmentResult {
      * Configuration parameters for the environment.
      */
     readonly configs: outputs.composer.GetEnvironmentConfig[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -53,6 +54,7 @@ export interface GetEnvironmentResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
 }
 /**

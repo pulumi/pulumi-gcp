@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -57,7 +57,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,9 +90,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -135,7 +135,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -182,7 +182,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -210,6 +210,82 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Remote Apt
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Description: pulumi.String("example remote apt repository"),
+//				Format:      pulumi.String("APT"),
+//				Location:    pulumi.String("us-central1"),
+//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
+//				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+//					AptRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs{
+//						PublicRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{
+//							RepositoryBase: pulumi.String("DEBIAN"),
+//							RepositoryPath: pulumi.String("debian/dists/buster"),
+//						},
+//					},
+//					Description: pulumi.String("Debian buster remote repository"),
+//				},
+//				RepositoryId: pulumi.String("debian-buster"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Artifact Registry Repository Remote Yum
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Description: pulumi.String("example remote yum repository"),
+//				Format:      pulumi.String("YUM"),
+//				Location:    pulumi.String("us-central1"),
+//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
+//				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+//					Description: pulumi.String("Centos 8 remote repository"),
+//					YumRepository: &artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs{
+//						PublicRepository: &artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{
+//							RepositoryBase: pulumi.String("CENTOS"),
+//							RepositoryPath: pulumi.String("8-stream/BaseOs/x86_64/os"),
+//						},
+//					},
+//				},
+//				RepositoryId: pulumi.String("centos-8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Artifact Registry Repository Cleanup
 //
 // ```go
@@ -217,7 +293,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -323,6 +399,9 @@ type Repository struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrOutput `pulumi:"dockerConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -340,6 +419,9 @@ type Repository struct {
 	// longer than 63 characters. Label keys must begin with a lowercase letter
 	// and may only contain lowercase letters, numeric characters, underscores,
 	// and dashes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -358,6 +440,9 @@ type Repository struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
@@ -420,6 +505,9 @@ type repositoryState struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -437,6 +525,9 @@ type repositoryState struct {
 	// longer than 63 characters. Label keys must begin with a lowercase letter
 	// and may only contain lowercase letters, numeric characters, underscores,
 	// and dashes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location *string `pulumi:"location"`
@@ -455,6 +546,9 @@ type repositoryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
@@ -482,6 +576,9 @@ type RepositoryState struct {
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -499,6 +596,9 @@ type RepositoryState struct {
 	// longer than 63 characters. Label keys must begin with a lowercase letter
 	// and may only contain lowercase letters, numeric characters, underscores,
 	// and dashes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this repository is located in.
 	Location pulumi.StringPtrInput
@@ -517,6 +617,9 @@ type RepositoryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
@@ -563,6 +666,9 @@ type repositoryArgs struct {
 	// longer than 63 characters. Label keys must begin with a lowercase letter
 	// and may only contain lowercase letters, numeric characters, underscores,
 	// and dashes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location *string `pulumi:"location"`
@@ -619,6 +725,9 @@ type RepositoryArgs struct {
 	// longer than 63 characters. Label keys must begin with a lowercase letter
 	// and may only contain lowercase letters, numeric characters, underscores,
 	// and dashes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this repository is located in.
 	Location pulumi.StringPtrInput
@@ -784,6 +893,12 @@ func (o RepositoryOutput) DockerConfig() RepositoryDockerConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryDockerConfigPtrOutput { return v.DockerConfig }).(RepositoryDockerConfigPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The format of packages that are stored in the repository. Supported formats
 // can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 // You can only create alpha formats if you are a member of the
@@ -807,6 +922,9 @@ func (o RepositoryOutput) KmsKeyName() pulumi.StringPtrOutput {
 // longer than 63 characters. Label keys must begin with a lowercase letter
 // and may only contain lowercase letters, numeric characters, underscores,
 // and dashes.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -841,6 +959,12 @@ func (o RepositoryOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Configuration specific for a Remote Repository.

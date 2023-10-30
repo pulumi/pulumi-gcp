@@ -14,6 +14,7 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
     private @Nullable String natIp;
     private @Nullable String networkTier;
     private @Nullable String publicPtrDomainName;
+    private @Nullable String securityPolicy;
 
     private InstanceFromMachineImageNetworkInterfaceAccessConfig() {}
     public Optional<String> natIp() {
@@ -24,6 +25,9 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
     }
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
+    }
+    public Optional<String> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
     }
 
     public static Builder builder() {
@@ -38,12 +42,14 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
         private @Nullable String natIp;
         private @Nullable String networkTier;
         private @Nullable String publicPtrDomainName;
+        private @Nullable String securityPolicy;
         public Builder() {}
         public Builder(InstanceFromMachineImageNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
+    	      this.securityPolicy = defaults.securityPolicy;
         }
 
         @CustomType.Setter
@@ -61,11 +67,17 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
+        @CustomType.Setter
+        public Builder securityPolicy(@Nullable String securityPolicy) {
+            this.securityPolicy = securityPolicy;
+            return this;
+        }
         public InstanceFromMachineImageNetworkInterfaceAccessConfig build() {
             final var o = new InstanceFromMachineImageNetworkInterfaceAccessConfig();
             o.natIp = natIp;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
+            o.securityPolicy = securityPolicy;
             return o;
         }
     }

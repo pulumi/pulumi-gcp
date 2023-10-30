@@ -46,7 +46,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         DisplayName = "Test web app for Firebase Hosting",
-    ///         DeletionPolicy = "DELETE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

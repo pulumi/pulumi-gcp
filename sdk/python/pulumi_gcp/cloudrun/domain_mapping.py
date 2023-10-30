@@ -17,24 +17,25 @@ __all__ = ['DomainMappingArgs', 'DomainMapping']
 class DomainMappingArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 metadata: pulumi.Input['DomainMappingMetadataArgs'],
                  spec: pulumi.Input['DomainMappingSpecArgs'],
+                 metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
-               Structure is documented below.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
+               Structure is documented below.
+        :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "spec", spec)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -54,19 +55,6 @@ class DomainMappingArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Input['DomainMappingMetadataArgs']:
-        """
-        Metadata associated with this DomainMapping.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "metadata")
-
-    @metadata.setter
-    def metadata(self, value: pulumi.Input['DomainMappingMetadataArgs']):
-        pulumi.set(self, "metadata", value)
-
-    @property
-    @pulumi.getter
     def spec(self) -> pulumi.Input['DomainMappingSpecArgs']:
         """
         The spec for this DomainMapping.
@@ -77,6 +65,19 @@ class DomainMappingArgs:
     @spec.setter
     def spec(self, value: pulumi.Input['DomainMappingSpecArgs']):
         pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
+        """
+        Metadata associated with this DomainMapping.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['DomainMappingMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
@@ -384,8 +385,6 @@ class DomainMapping(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if metadata is None and not opts.urn:
-                raise TypeError("Missing required property 'metadata'")
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

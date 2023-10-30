@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -204,7 +204,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -292,7 +292,7 @@ import (
 //	"encoding/base64"
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -448,9 +448,15 @@ type Certificate struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringOutput `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -467,11 +473,6 @@ type Certificate struct {
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
 	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains pulumi.StringArrayOutput `pulumi:"pemCertificateChains"`
-	// (Deprecated)
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
-	//
-	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-	PemCertificates pulumi.StringArrayOutput `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrOutput `pulumi:"pemCsr"`
 	// The name of the CaPool this Certificate belongs to.
@@ -479,6 +480,9 @@ type Certificate struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -544,9 +548,15 @@ type certificateState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority *string `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -563,11 +573,6 @@ type certificateState struct {
 	PemCertificate *string `pulumi:"pemCertificate"`
 	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains []string `pulumi:"pemCertificateChains"`
-	// (Deprecated)
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
-	//
-	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-	PemCertificates []string `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr *string `pulumi:"pemCsr"`
 	// The name of the CaPool this Certificate belongs to.
@@ -575,6 +580,9 @@ type certificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -605,9 +613,15 @@ type CertificateState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -624,11 +638,6 @@ type CertificateState struct {
 	PemCertificate pulumi.StringPtrInput
 	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains pulumi.StringArrayInput
-	// (Deprecated)
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
-	//
-	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-	PemCertificates pulumi.StringArrayInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrInput
 	// The name of the CaPool this Certificate belongs to.
@@ -636,6 +645,9 @@ type CertificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -665,6 +677,9 @@ type certificateArgs struct {
 	// Structure is documented below.
 	Config *CertificateConfig `pulumi:"config"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -703,6 +718,9 @@ type CertificateArgs struct {
 	// Structure is documented below.
 	Config CertificateConfigPtrInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -870,12 +888,21 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 func (o CertificateOutput) IssuerCertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.IssuerCertificateAuthority }).(pulumi.StringOutput)
 }
 
 // Labels with user-defined metadata to apply to this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -910,14 +937,6 @@ func (o CertificateOutput) PemCertificateChains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.PemCertificateChains }).(pulumi.StringArrayOutput)
 }
 
-// (Deprecated)
-// Required. Expected to be in leaf-to-root order according to RFC 5246.
-//
-// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-func (o CertificateOutput) PemCertificates() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.PemCertificates }).(pulumi.StringArrayOutput)
-}
-
 // Immutable. A pem-encoded X.509 certificate signing request (CSR).
 func (o CertificateOutput) PemCsr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PemCsr }).(pulumi.StringPtrOutput)
@@ -932,6 +951,12 @@ func (o CertificateOutput) Pool() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o CertificateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. Details regarding the revocation of this Certificate. This Certificate is

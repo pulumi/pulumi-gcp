@@ -72,6 +72,23 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Indicates if the job should use the streaming engine feature.
      * 
      */
@@ -306,6 +323,21 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The region in which the created job should run.
      * 
      */
@@ -469,6 +501,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.additionalExperiments = $.additionalExperiments;
         this.autoscalingAlgorithm = $.autoscalingAlgorithm;
         this.containerSpecGcsPath = $.containerSpecGcsPath;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableStreamingEngine = $.enableStreamingEngine;
         this.ipConfiguration = $.ipConfiguration;
         this.jobId = $.jobId;
@@ -483,6 +516,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.onDelete = $.onDelete;
         this.parameters = $.parameters;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.sdkContainerImage = $.sdkContainerImage;
         this.serviceAccountEmail = $.serviceAccountEmail;
@@ -590,6 +624,29 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder containerSpecGcsPath(String containerSpecGcsPath) {
             return containerSpecGcsPath(Output.of(containerSpecGcsPath));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -908,6 +965,27 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

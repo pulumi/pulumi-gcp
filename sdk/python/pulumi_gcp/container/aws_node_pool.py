@@ -26,7 +26,8 @@ class AwsNodePoolArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']] = None):
         """
         The set of arguments for constructing a AwsNodePool resource.
         :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
@@ -37,9 +38,13 @@ class AwsNodePoolArgs:
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         """
         pulumi.set(__self__, "autoscaling", autoscaling)
         pulumi.set(__self__, "cluster", cluster)
@@ -56,6 +61,8 @@ class AwsNodePoolArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if update_settings is not None:
+            pulumi.set(__self__, "update_settings", update_settings)
 
     @property
     @pulumi.getter
@@ -146,6 +153,9 @@ class AwsNodePoolArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -189,6 +199,18 @@ class AwsNodePoolArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="updateSettings")
+    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
+        """
+        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        """
+        return pulumi.get(self, "update_settings")
+
+    @update_settings.setter
+    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]):
+        pulumi.set(self, "update_settings", value)
+
 
 @pulumi.input_type
 class _AwsNodePoolState:
@@ -198,6 +220,7 @@ class _AwsNodePoolState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
@@ -208,15 +231,21 @@ class _AwsNodePoolState:
                  state: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
+                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AwsNodePool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
@@ -227,6 +256,7 @@ class _AwsNodePoolState:
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
@@ -240,6 +270,8 @@ class _AwsNodePoolState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if location is not None:
@@ -260,6 +292,8 @@ class _AwsNodePoolState:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_settings is not None:
+            pulumi.set(__self__, "update_settings", update_settings)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if version is not None:
@@ -270,6 +304,9 @@ class _AwsNodePoolState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -324,6 +361,19 @@ class _AwsNodePoolState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -446,6 +496,18 @@ class _AwsNodePoolState:
         pulumi.set(self, "uid", value)
 
     @property
+    @pulumi.getter(name="updateSettings")
+    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
+        """
+        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        """
+        return pulumi.get(self, "update_settings")
+
+    @update_settings.setter
+    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]):
+        pulumi.set(self, "update_settings", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -485,6 +547,7 @@ class AwsNodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -873,6 +936,9 @@ class AwsNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
@@ -882,6 +948,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
@@ -1298,6 +1365,7 @@ class AwsNodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1330,10 +1398,12 @@ class AwsNodePool(pulumi.CustomResource):
             if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__.__dict__["subnet_id"] = subnet_id
+            __props__.__dict__["update_settings"] = update_settings
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
@@ -1354,6 +1424,7 @@ class AwsNodePool(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
@@ -1364,6 +1435,7 @@ class AwsNodePool(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
+            update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'AwsNodePool':
         """
@@ -1374,10 +1446,15 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
@@ -1388,6 +1465,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
@@ -1400,6 +1478,7 @@ class AwsNodePool(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
         __props__.__dict__["management"] = management
@@ -1410,6 +1489,7 @@ class AwsNodePool(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_settings"] = update_settings
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
         return AwsNodePool(resource_name, opts=opts, __props__=__props__)
@@ -1419,6 +1499,9 @@ class AwsNodePool(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1453,6 +1536,15 @@ class AwsNodePool(pulumi.CustomResource):
         Output only. The time at which this node pool was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter
@@ -1533,6 +1625,14 @@ class AwsNodePool(pulumi.CustomResource):
         Output only. A globally unique identifier for the node pool.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateSettings")
+    def update_settings(self) -> pulumi.Output['outputs.AwsNodePoolUpdateSettings']:
+        """
+        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        """
+        return pulumi.get(self, "update_settings")
 
     @property
     @pulumi.getter(name="updateTime")

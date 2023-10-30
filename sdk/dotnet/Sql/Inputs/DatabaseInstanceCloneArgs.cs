@@ -39,6 +39,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? PointInTime { get; set; }
 
         /// <summary>
+        /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        /// </summary>
+        [Input("preferredZone")]
+        public Input<string>? PreferredZone { get; set; }
+
+        /// <summary>
         /// Name of the source instance which will be cloned.
         /// </summary>
         [Input("sourceInstanceName", required: true)]

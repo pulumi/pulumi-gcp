@@ -191,6 +191,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The instance type to create. One of `&#34;DEVELOPMENT&#34;` or `&#34;PRODUCTION&#34;`. Defaults to `&#34;PRODUCTION&#34;`.
      * It is recommended to leave this field unspecified since the distinction between `&#34;DEVELOPMENT&#34;` and `&#34;PRODUCTION&#34;` instances is going away,
      * and all instances will become `&#34;PRODUCTION&#34;` instances. This means that new and existing `&#34;DEVELOPMENT&#34;` instances will be converted to
@@ -219,7 +235,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -228,7 +245,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -263,6 +281,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
 
     /**
