@@ -18,7 +18,6 @@ import (
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
-	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
@@ -26,6 +25,8 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -3888,7 +3889,7 @@ func Provider() tfbridge.ProviderInfo {
 	err = x.AutoAliasing(&prov, prov.GetMetadata())
 	contract.AssertNoErrorf(err, "Failed to apply automatic aliases")
 
-	fixTagNames(&prov)
+	fixLabelNames(&prov)
 
 	return prov
 }
