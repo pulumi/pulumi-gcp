@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Beyondcorp
     public sealed class GetAppConnectorResult
     {
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,12 +143,15 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetAppConnectorPrincipalInfoResult> PrincipalInfos;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string State;
 
         [OutputConstructor]
         private GetAppConnectorResult(
             string displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -159,16 +163,20 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             string state)
         {
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             Labels = labels;
             Name = name;
             PrincipalInfos = principalInfos;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             State = state;
         }

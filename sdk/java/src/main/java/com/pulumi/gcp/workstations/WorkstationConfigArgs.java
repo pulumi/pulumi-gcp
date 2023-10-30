@@ -9,6 +9,7 @@ import com.pulumi.gcp.workstations.inputs.WorkstationConfigContainerArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigEncryptionKeyArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -30,6 +33,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -66,6 +71,21 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    @Import(name="enableAuditAgent")
+    private @Nullable Output<Boolean> enableAuditAgent;
+
+    /**
+     * @return Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAuditAgent() {
+        return Optional.ofNullable(this.enableAuditAgent);
     }
 
     /**
@@ -127,6 +147,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -134,6 +156,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -194,6 +218,23 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    @Import(name="replicaZones")
+    private @Nullable Output<List<String>> replicaZones;
+
+    /**
+     * @return Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaZones() {
+        return Optional.ofNullable(this.replicaZones);
+    }
+
+    /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -246,6 +287,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         this.annotations = $.annotations;
         this.container = $.container;
         this.displayName = $.displayName;
+        this.enableAuditAgent = $.enableAuditAgent;
         this.encryptionKey = $.encryptionKey;
         this.host = $.host;
         this.idleTimeout = $.idleTimeout;
@@ -253,6 +295,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         this.location = $.location;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
+        this.replicaZones = $.replicaZones;
         this.runningTimeout = $.runningTimeout;
         this.workstationClusterId = $.workstationClusterId;
         this.workstationConfigId = $.workstationConfigId;
@@ -278,6 +321,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -289,6 +334,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -339,6 +386,27 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param enableAuditAgent Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuditAgent(@Nullable Output<Boolean> enableAuditAgent) {
+            $.enableAuditAgent = enableAuditAgent;
+            return this;
+        }
+
+        /**
+         * @param enableAuditAgent Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuditAgent(Boolean enableAuditAgent) {
+            return enableAuditAgent(Output.of(enableAuditAgent));
         }
 
         /**
@@ -418,6 +486,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -429,6 +499,8 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -517,6 +589,40 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(@Nullable Output<List<String>> replicaZones) {
+            $.replicaZones = replicaZones;
+            return this;
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(List<String> replicaZones) {
+            return replicaZones(Output.of(replicaZones));
+        }
+
+        /**
+         * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+         * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
 
         /**

@@ -103,6 +103,13 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> ChannelId { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel
         /// will not be automatically deleted. This field is present in the output whether it's
         /// set directly or via the `ttl` field.
@@ -112,6 +119,8 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -122,6 +131,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The number of previous releases to retain on the channel for rollback or other
@@ -212,6 +228,8 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -257,6 +275,19 @@ namespace Pulumi.Gcp.Firebase
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel
         /// will not be automatically deleted. This field is present in the output whether it's
@@ -270,6 +301,8 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -283,6 +316,19 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The number of previous releases to retain on the channel for rollback or other

@@ -66,6 +66,7 @@ public final class GetInstanceResult {
      */
     private String description;
     private String desiredStatus;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Whether the instance has virtual displays enabled.
      * 
@@ -131,6 +132,7 @@ public final class GetInstanceResult {
     private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetInstanceParam> params;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetInstanceReservationAffinity> reservationAffinities;
     private List<String> resourcePolicies;
     /**
@@ -232,6 +234,9 @@ public final class GetInstanceResult {
     public String desiredStatus() {
         return this.desiredStatus;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return Whether the instance has virtual displays enabled.
      * 
@@ -331,6 +336,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetInstanceReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
@@ -410,6 +418,7 @@ public final class GetInstanceResult {
         private Boolean deletionProtection;
         private String description;
         private String desiredStatus;
+        private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
         private List<GetInstanceGuestAccelerator> guestAccelerators;
         private String hostname;
@@ -427,6 +436,7 @@ public final class GetInstanceResult {
         private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetInstanceParam> params;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetInstanceReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
         private List<GetInstanceScheduling> schedulings;
@@ -451,6 +461,7 @@ public final class GetInstanceResult {
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.desiredStatus = defaults.desiredStatus;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.hostname = defaults.hostname;
@@ -468,6 +479,7 @@ public final class GetInstanceResult {
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.params = defaults.params;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.schedulings = defaults.schedulings;
@@ -545,6 +557,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder desiredStatus(String desiredStatus) {
             this.desiredStatus = Objects.requireNonNull(desiredStatus);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -645,6 +662,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder reservationAffinities(List<GetInstanceReservationAffinity> reservationAffinities) {
             this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
             return this;
@@ -728,6 +750,7 @@ public final class GetInstanceResult {
             o.deletionProtection = deletionProtection;
             o.description = description;
             o.desiredStatus = desiredStatus;
+            o.effectiveLabels = effectiveLabels;
             o.enableDisplay = enableDisplay;
             o.guestAccelerators = guestAccelerators;
             o.hostname = hostname;
@@ -745,6 +768,7 @@ public final class GetInstanceResult {
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.params = params;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;
             o.schedulings = schedulings;

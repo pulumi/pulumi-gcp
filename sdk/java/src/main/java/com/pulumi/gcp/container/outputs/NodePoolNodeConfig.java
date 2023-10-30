@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigConfidentialNodes;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEffectiveTaint;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigFastSocket;
@@ -42,6 +43,7 @@ public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
+    private @Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints;
     private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
     private @Nullable NodePoolNodeConfigFastSocket fastSocket;
@@ -92,6 +94,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+    public List<NodePoolNodeConfigEffectiveTaint> effectiveTaints() {
+        return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
     }
     public Optional<NodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
@@ -198,6 +203,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
+        private @Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints;
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable NodePoolNodeConfigFastSocket fastSocket;
@@ -236,6 +242,7 @@ public final class NodePoolNodeConfig {
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
+    	      this.effectiveTaints = defaults.effectiveTaints;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
@@ -292,6 +299,14 @@ public final class NodePoolNodeConfig {
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveTaints(@Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints) {
+            this.effectiveTaints = effectiveTaints;
+            return this;
+        }
+        public Builder effectiveTaints(NodePoolNodeConfigEffectiveTaint... effectiveTaints) {
+            return effectiveTaints(List.of(effectiveTaints));
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
@@ -462,6 +477,7 @@ public final class NodePoolNodeConfig {
             o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
+            o.effectiveTaints = effectiveTaints;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.fastSocket = fastSocket;

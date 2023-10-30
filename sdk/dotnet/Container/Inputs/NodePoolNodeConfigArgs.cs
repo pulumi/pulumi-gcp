@@ -30,6 +30,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        [Input("effectiveTaints")]
+        private InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs>? _effectiveTaints;
+        public InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs> EffectiveTaints
+        {
+            get => _effectiveTaints ?? (_effectiveTaints = new InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs>());
+            set => _effectiveTaints = value;
+        }
+
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 

@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -143,6 +144,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -227,6 +229,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -304,6 +307,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -377,6 +381,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -478,6 +483,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
+ *             .deletionProtection(&#34;&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -595,9 +601,28 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Description: A set of custom labels supplied by the user.
      * A list of key-&gt;value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -607,6 +632,9 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * @return Description: A set of custom labels supplied by the user.
      * A list of key-&gt;value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -655,6 +683,22 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Defines the configuration of Restores created via this RestorePlan.

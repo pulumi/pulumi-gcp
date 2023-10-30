@@ -44,6 +44,7 @@ export interface GetProjectArgs {
 export interface GetProjectResult {
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -57,6 +58,7 @@ export interface GetProjectResult {
     readonly number: string;
     readonly orgId: string;
     readonly projectId?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly skipDelete: boolean;
 }
 /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -185,6 +185,9 @@ type ExternalVpnGateway struct {
 
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayOutput `pulumi:"interfaces"`
@@ -192,6 +195,8 @@ type ExternalVpnGateway struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels for the external VPN gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -206,6 +211,9 @@ type ExternalVpnGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
@@ -245,6 +253,9 @@ func GetExternalVpnGateway(ctx *pulumi.Context,
 type externalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
@@ -252,6 +263,8 @@ type externalVpnGatewayState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels for the external VPN gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -266,6 +279,9 @@ type externalVpnGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
@@ -276,6 +292,9 @@ type externalVpnGatewayState struct {
 type ExternalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
@@ -283,6 +302,8 @@ type ExternalVpnGatewayState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels for the external VPN gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -297,6 +318,9 @@ type ExternalVpnGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
@@ -315,6 +339,8 @@ type externalVpnGatewayArgs struct {
 	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
 	// Labels for the external VPN gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -342,6 +368,8 @@ type ExternalVpnGatewayArgs struct {
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
 	// Labels for the external VPN gateway resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -477,6 +505,12 @@ func (o ExternalVpnGatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ExternalVpnGatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A list of interfaces on this external VPN gateway.
 // Structure is documented below.
 func (o ExternalVpnGatewayOutput) Interfaces() ExternalVpnGatewayInterfaceArrayOutput {
@@ -490,6 +524,8 @@ func (o ExternalVpnGatewayOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels for the external VPN gateway resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ExternalVpnGatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -511,6 +547,12 @@ func (o ExternalVpnGatewayOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ExternalVpnGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ExternalVpnGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Indicates the redundancy type of this external VPN gateway

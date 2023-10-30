@@ -91,6 +91,9 @@ class SubscriptionArgs:
                by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
                you can't modify the filter.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
                retain_acked_messages is true, then this also configures the retention
@@ -307,6 +310,9 @@ class SubscriptionArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -411,6 +417,7 @@ class _SubscriptionState:
                  bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
                  cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
                  dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
@@ -419,6 +426,7 @@ class _SubscriptionState:
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
                  retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
@@ -456,6 +464,8 @@ class _SubscriptionState:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -478,6 +488,9 @@ class _SubscriptionState:
                by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
                you can't modify the filter.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
                retain_acked_messages is true, then this also configures the retention
@@ -489,6 +502,8 @@ class _SubscriptionState:
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -514,6 +529,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_exactly_once_delivery is not None:
             pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
@@ -530,6 +547,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if push_config is not None:
             pulumi.set(__self__, "push_config", push_config)
         if retain_acked_messages is not None:
@@ -615,6 +634,19 @@ class _SubscriptionState:
         pulumi.set(self, "dead_letter_policy", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="enableExactlyOnceDelivery")
     def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -684,6 +716,9 @@ class _SubscriptionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -734,6 +769,19 @@ class _SubscriptionState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="pushConfig")
@@ -1013,6 +1061,9 @@ class Subscription(pulumi.CustomResource):
                by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
                you can't modify the filter.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
                retain_acked_messages is true, then this also configures the retention
@@ -1245,6 +1296,8 @@ class Subscription(pulumi.CustomResource):
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Subscription, __self__).__init__(
             'gcp:pubsub/subscription:Subscription',
             resource_name,
@@ -1259,6 +1312,7 @@ class Subscription(pulumi.CustomResource):
             bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']]] = None,
             cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']]] = None,
             dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
             expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
@@ -1267,6 +1321,7 @@ class Subscription(pulumi.CustomResource):
             message_retention_duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
             retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
@@ -1309,6 +1364,8 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1331,6 +1388,9 @@ class Subscription(pulumi.CustomResource):
                by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
                you can't modify the filter.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
                retain_acked_messages is true, then this also configures the retention
@@ -1342,6 +1402,8 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -1367,6 +1429,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["bigquery_config"] = bigquery_config
         __props__.__dict__["cloud_storage_config"] = cloud_storage_config
         __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
         __props__.__dict__["enable_message_ordering"] = enable_message_ordering
         __props__.__dict__["expiration_policy"] = expiration_policy
@@ -1375,6 +1438,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["message_retention_duration"] = message_retention_duration
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["push_config"] = push_config
         __props__.__dict__["retain_acked_messages"] = retain_acked_messages
         __props__.__dict__["retry_policy"] = retry_policy
@@ -1441,6 +1505,15 @@ class Subscription(pulumi.CustomResource):
         return pulumi.get(self, "dead_letter_policy")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableExactlyOnceDelivery")
     def enable_exactly_once_delivery(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1494,6 +1567,9 @@ class Subscription(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1528,6 +1604,15 @@ class Subscription(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="pushConfig")

@@ -18,6 +18,7 @@ public final class GetGlobalForwardingRuleResult {
     private Boolean allowPscGlobalAccess;
     private String baseForwardingRule;
     private String description;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -37,6 +38,7 @@ public final class GetGlobalForwardingRuleResult {
     private @Nullable String project;
     private String pscConnectionId;
     private String pscConnectionStatus;
+    private Map<String,String> pulumiLabels;
     private String selfLink;
     private List<String> sourceIpRanges;
     private String subnetwork;
@@ -51,6 +53,9 @@ public final class GetGlobalForwardingRuleResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -101,6 +106,9 @@ public final class GetGlobalForwardingRuleResult {
     public String pscConnectionStatus() {
         return this.pscConnectionStatus;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -126,6 +134,7 @@ public final class GetGlobalForwardingRuleResult {
         private Boolean allowPscGlobalAccess;
         private String baseForwardingRule;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String id;
         private String ipAddress;
         private String ipProtocol;
@@ -141,6 +150,7 @@ public final class GetGlobalForwardingRuleResult {
         private @Nullable String project;
         private String pscConnectionId;
         private String pscConnectionStatus;
+        private Map<String,String> pulumiLabels;
         private String selfLink;
         private List<String> sourceIpRanges;
         private String subnetwork;
@@ -151,6 +161,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.allowPscGlobalAccess = defaults.allowPscGlobalAccess;
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
@@ -166,6 +177,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.project = defaults.project;
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
     	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
@@ -185,6 +197,11 @@ public final class GetGlobalForwardingRuleResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -266,6 +283,11 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -293,6 +315,7 @@ public final class GetGlobalForwardingRuleResult {
             o.allowPscGlobalAccess = allowPscGlobalAccess;
             o.baseForwardingRule = baseForwardingRule;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.ipAddress = ipAddress;
             o.ipProtocol = ipProtocol;
@@ -308,6 +331,7 @@ public final class GetGlobalForwardingRuleResult {
             o.project = project;
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
+            o.pulumiLabels = pulumiLabels;
             o.selfLink = selfLink;
             o.sourceIpRanges = sourceIpRanges;
             o.subnetwork = subnetwork;

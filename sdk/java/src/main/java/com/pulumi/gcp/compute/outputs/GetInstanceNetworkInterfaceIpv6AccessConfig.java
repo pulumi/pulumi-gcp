@@ -26,6 +26,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private String publicPtrDomainName;
+    private String securityPolicy;
 
     private GetInstanceNetworkInterfaceIpv6AccessConfig() {}
     public String externalIpv6() {
@@ -55,6 +56,9 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }
+    public String securityPolicy() {
+        return this.securityPolicy;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,6 +74,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
         private String name;
         private String networkTier;
         private String publicPtrDomainName;
+        private String securityPolicy;
         public Builder() {}
         public Builder(GetInstanceNetworkInterfaceIpv6AccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -78,6 +83,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
     	      this.name = defaults.name;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
+    	      this.securityPolicy = defaults.securityPolicy;
         }
 
         @CustomType.Setter
@@ -105,6 +111,11 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
             this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
             return this;
         }
+        @CustomType.Setter
+        public Builder securityPolicy(String securityPolicy) {
+            this.securityPolicy = Objects.requireNonNull(securityPolicy);
+            return this;
+        }
         public GetInstanceNetworkInterfaceIpv6AccessConfig build() {
             final var o = new GetInstanceNetworkInterfaceIpv6AccessConfig();
             o.externalIpv6 = externalIpv6;
@@ -112,6 +123,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
             o.name = name;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
+            o.securityPolicy = securityPolicy;
             return o;
         }
     }

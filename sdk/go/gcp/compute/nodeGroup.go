@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -34,7 +34,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,7 +51,7 @@ import (
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Zone:         pulumi.String("us-central1-a"),
 //				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
-//				Size:         pulumi.Int(1),
+//				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -113,8 +113,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -138,7 +138,7 @@ import (
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Zone:         pulumi.String("us-central1-f"),
 //				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
-//				Size:         pulumi.Int(1),
+//				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //				ShareSettings: &compute.NodeGroupShareSettingsArgs{
 //					ShareType: pulumi.String("SPECIFIC_PROJECTS"),
@@ -191,13 +191,14 @@ type NodeGroup struct {
 
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
+	// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrOutput `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
@@ -218,7 +219,7 @@ type NodeGroup struct {
 	// Share settings for the node group.
 	// Structure is documented below.
 	ShareSettings NodeGroupShareSettingsOutput `pulumi:"shareSettings"`
-	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The total number of nodes in the node group.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Zone where this node group is located
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -259,13 +260,14 @@ func GetNodeGroup(ctx *pulumi.Context,
 type nodeGroupState struct {
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
+	// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	// Structure is documented below.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
-	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
@@ -286,7 +288,7 @@ type nodeGroupState struct {
 	// Share settings for the node group.
 	// Structure is documented below.
 	ShareSettings *NodeGroupShareSettings `pulumi:"shareSettings"`
-	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The total number of nodes in the node group.
 	Size *int `pulumi:"size"`
 	// Zone where this node group is located
 	Zone *string `pulumi:"zone"`
@@ -295,13 +297,14 @@ type nodeGroupState struct {
 type NodeGroupState struct {
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
+	// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
-	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
@@ -322,7 +325,7 @@ type NodeGroupState struct {
 	// Share settings for the node group.
 	// Structure is documented below.
 	ShareSettings NodeGroupShareSettingsPtrInput
-	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The total number of nodes in the node group.
 	Size pulumi.IntPtrInput
 	// Zone where this node group is located
 	Zone pulumi.StringPtrInput
@@ -335,11 +338,12 @@ func (NodeGroupState) ElementType() reflect.Type {
 type nodeGroupArgs struct {
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
+	// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	// Structure is documented below.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
-	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
@@ -358,8 +362,6 @@ type nodeGroupArgs struct {
 	// Share settings for the node group.
 	// Structure is documented below.
 	ShareSettings *NodeGroupShareSettings `pulumi:"shareSettings"`
-	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
-	Size *int `pulumi:"size"`
 	// Zone where this node group is located
 	Zone *string `pulumi:"zone"`
 }
@@ -368,11 +370,12 @@ type nodeGroupArgs struct {
 type NodeGroupArgs struct {
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
+	// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
-	// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
@@ -391,8 +394,6 @@ type NodeGroupArgs struct {
 	// Share settings for the node group.
 	// Structure is documented below.
 	ShareSettings NodeGroupShareSettingsPtrInput
-	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
-	Size pulumi.IntPtrInput
 	// Zone where this node group is located
 	Zone pulumi.StringPtrInput
 }
@@ -510,6 +511,7 @@ func (o NodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup
 
 // If you use sole-tenant nodes for your workloads, you can use the node
 // group autoscaler to automatically manage the sizes of your node groups.
+// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 // Structure is documented below.
 func (o NodeGroupOutput) AutoscalingPolicy() NodeGroupAutoscalingPolicyOutput {
 	return o.ApplyT(func(v *NodeGroup) NodeGroupAutoscalingPolicyOutput { return v.AutoscalingPolicy }).(NodeGroupAutoscalingPolicyOutput)
@@ -525,7 +527,7 @@ func (o NodeGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 func (o NodeGroupOutput) InitialSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntPtrOutput { return v.InitialSize }).(pulumi.IntPtrOutput)
 }
@@ -570,7 +572,7 @@ func (o NodeGroupOutput) ShareSettings() NodeGroupShareSettingsOutput {
 	return o.ApplyT(func(v *NodeGroup) NodeGroupShareSettingsOutput { return v.ShareSettings }).(NodeGroupShareSettingsOutput)
 }
 
-// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+// The total number of nodes in the node group.
 func (o NodeGroupOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

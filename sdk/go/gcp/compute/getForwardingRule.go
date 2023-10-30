@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,13 +65,14 @@ type LookupForwardingRuleArgs struct {
 
 // A collection of values returned by getForwardingRule.
 type LookupForwardingRuleResult struct {
-	AllPorts             bool   `pulumi:"allPorts"`
-	AllowGlobalAccess    bool   `pulumi:"allowGlobalAccess"`
-	AllowPscGlobalAccess bool   `pulumi:"allowPscGlobalAccess"`
-	BackendService       string `pulumi:"backendService"`
-	BaseForwardingRule   string `pulumi:"baseForwardingRule"`
-	CreationTimestamp    string `pulumi:"creationTimestamp"`
-	Description          string `pulumi:"description"`
+	AllPorts             bool              `pulumi:"allPorts"`
+	AllowGlobalAccess    bool              `pulumi:"allowGlobalAccess"`
+	AllowPscGlobalAccess bool              `pulumi:"allowPscGlobalAccess"`
+	BackendService       string            `pulumi:"backendService"`
+	BaseForwardingRule   string            `pulumi:"baseForwardingRule"`
+	CreationTimestamp    string            `pulumi:"creationTimestamp"`
+	Description          string            `pulumi:"description"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
@@ -90,6 +91,7 @@ type LookupForwardingRuleResult struct {
 	Project                       *string                                         `pulumi:"project"`
 	PscConnectionId               string                                          `pulumi:"pscConnectionId"`
 	PscConnectionStatus           string                                          `pulumi:"pscConnectionStatus"`
+	PulumiLabels                  map[string]string                               `pulumi:"pulumiLabels"`
 	Region                        *string                                         `pulumi:"region"`
 	SelfLink                      string                                          `pulumi:"selfLink"`
 	ServiceDirectoryRegistrations []GetForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
@@ -180,6 +182,10 @@ func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupForwardingRuleResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupForwardingRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -247,6 +253,10 @@ func (o LookupForwardingRuleResultOutput) PscConnectionId() pulumi.StringOutput 
 
 func (o LookupForwardingRuleResultOutput) PscConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) Region() pulumi.StringPtrOutput {

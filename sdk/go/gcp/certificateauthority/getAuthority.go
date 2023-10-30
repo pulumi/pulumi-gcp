@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,6 +75,7 @@ type LookupAuthorityResult struct {
 	CreateTime             string                  `pulumi:"createTime"`
 	DeletionProtection     bool                    `pulumi:"deletionProtection"`
 	DesiredState           string                  `pulumi:"desiredState"`
+	EffectiveLabels        map[string]string       `pulumi:"effectiveLabels"`
 	GcsBucket              string                  `pulumi:"gcsBucket"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                                 string                `pulumi:"id"`
@@ -90,6 +91,7 @@ type LookupAuthorityResult struct {
 	PemCsr             string                          `pulumi:"pemCsr"`
 	Pool               *string                         `pulumi:"pool"`
 	Project            *string                         `pulumi:"project"`
+	PulumiLabels       map[string]string               `pulumi:"pulumiLabels"`
 	SkipGracePeriod    bool                            `pulumi:"skipGracePeriod"`
 	State              string                          `pulumi:"state"`
 	SubordinateConfigs []GetAuthoritySubordinateConfig `pulumi:"subordinateConfigs"`
@@ -174,6 +176,10 @@ func (o LookupAuthorityResultOutput) DesiredState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.DesiredState }).(pulumi.StringOutput)
 }
 
+func (o LookupAuthorityResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAuthorityResultOutput) GcsBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.GcsBucket }).(pulumi.StringOutput)
 }
@@ -226,6 +232,10 @@ func (o LookupAuthorityResultOutput) Pool() pulumi.StringPtrOutput {
 
 func (o LookupAuthorityResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAuthorityResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAuthorityResultOutput) SkipGracePeriod() pulumi.BoolOutput {

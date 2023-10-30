@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,26 +29,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
-//			}, nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(defaultNetwork.Id),
+//				Network:   defaultNetwork.ID(),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
@@ -60,13 +58,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(defaultNetwork.Id),
+//				Network:      defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(defaultNetwork.Id),
+//				Network: defaultNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -123,6 +121,8 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
 	// Note that primary and read instances can have different availability types.
@@ -141,6 +141,12 @@ type Instance struct {
 	DatabaseFlags pulumi.StringMapOutput `pulumi:"databaseFlags"`
 	// User-settable and human-readable display name for the Instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrOutput `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
@@ -153,12 +159,20 @@ type Instance struct {
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// User-defined labels for the alloydb instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig InstanceMachineConfigOutput `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Configuration for query insights.
+	// Structure is documented below.
+	QueryInsightsConfig InstanceQueryInsightsConfigOutput `pulumi:"queryInsightsConfig"`
 	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrOutput `pulumi:"readPoolConfig"`
@@ -212,6 +226,8 @@ func GetInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
 	// Note that primary and read instances can have different availability types.
@@ -230,6 +246,12 @@ type instanceState struct {
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// User-settable and human-readable display name for the Instance.
 	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
@@ -242,12 +264,20 @@ type instanceState struct {
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress *string `pulumi:"ipAddress"`
 	// User-defined labels for the alloydb instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Configuration for query insights.
+	// Structure is documented below.
+	QueryInsightsConfig *InstanceQueryInsightsConfig `pulumi:"queryInsightsConfig"`
 	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig *InstanceReadPoolConfig `pulumi:"readPoolConfig"`
@@ -263,6 +293,8 @@ type instanceState struct {
 
 type InstanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
 	// Note that primary and read instances can have different availability types.
@@ -281,6 +313,12 @@ type InstanceState struct {
 	DatabaseFlags pulumi.StringMapInput
 	// User-settable and human-readable display name for the Instance.
 	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
@@ -293,12 +331,20 @@ type InstanceState struct {
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringPtrInput
 	// User-defined labels for the alloydb instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig InstanceMachineConfigPtrInput
 	// The name of the instance resource.
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
+	// Configuration for query insights.
+	// Structure is documented below.
+	QueryInsightsConfig InstanceQueryInsightsConfigPtrInput
 	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrInput
@@ -318,6 +364,8 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
 	// Note that primary and read instances can have different availability types.
@@ -344,10 +392,15 @@ type instanceArgs struct {
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
+	// Configuration for query insights.
+	// Structure is documented below.
+	QueryInsightsConfig *InstanceQueryInsightsConfig `pulumi:"queryInsightsConfig"`
 	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig *InstanceReadPoolConfig `pulumi:"readPoolConfig"`
@@ -356,6 +409,8 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
 	// Note that primary and read instances can have different availability types.
@@ -382,10 +437,15 @@ type InstanceArgs struct {
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig InstanceMachineConfigPtrInput
+	// Configuration for query insights.
+	// Structure is documented below.
+	QueryInsightsConfig InstanceQueryInsightsConfigPtrInput
 	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrInput
@@ -503,6 +563,8 @@ func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] 
 }
 
 // Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o InstanceOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -539,6 +601,18 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o InstanceOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 func (o InstanceOutput) GceZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GceZone }).(pulumi.StringPtrOutput)
@@ -563,6 +637,8 @@ func (o InstanceOutput) IpAddress() pulumi.StringOutput {
 }
 
 // User-defined labels for the alloydb instance.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -576,6 +652,18 @@ func (o InstanceOutput) MachineConfig() InstanceMachineConfigOutput {
 // The name of the instance resource.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Configuration for query insights.
+// Structure is documented below.
+func (o InstanceOutput) QueryInsightsConfig() InstanceQueryInsightsConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceQueryInsightsConfigOutput { return v.QueryInsightsConfig }).(InstanceQueryInsightsConfigOutput)
 }
 
 // Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.

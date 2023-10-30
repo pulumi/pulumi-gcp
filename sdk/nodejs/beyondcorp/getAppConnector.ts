@@ -57,6 +57,7 @@ export interface GetAppConnectorArgs {
  */
 export interface GetAppConnectorResult {
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -65,6 +66,7 @@ export interface GetAppConnectorResult {
     readonly name: string;
     readonly principalInfos: outputs.beyondcorp.GetAppConnectorPrincipalInfo[];
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly state: string;
 }

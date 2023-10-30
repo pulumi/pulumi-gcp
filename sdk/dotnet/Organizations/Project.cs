@@ -102,6 +102,13 @@ namespace Pulumi.Gcp.Organizations
         public Output<string?> BillingAccount { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The numeric ID of the folder this project should be
         /// created under. Only one of `org_id` or `folder_id` may be
         /// specified. If the `folder_id` is specified, then the project is
@@ -113,6 +120,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// A set of key/value label pairs to assign to the project.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -145,6 +154,12 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// If true, the resource can be deleted
@@ -232,6 +247,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// A set of key/value label pairs to assign to the project.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -295,6 +312,19 @@ namespace Pulumi.Gcp.Organizations
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The numeric ID of the folder this project should be
         /// created under. Only one of `org_id` or `folder_id` may be
@@ -310,6 +340,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// A set of key/value label pairs to assign to the project.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -345,6 +377,18 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// If true, the resource can be deleted

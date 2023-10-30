@@ -29,9 +29,11 @@ public final class InstanceFromTemplateNetworkInterface {
      */
     private @Nullable String name;
     private @Nullable String network;
+    private @Nullable String networkAttachment;
     private @Nullable String networkIp;
     private @Nullable String nicType;
     private @Nullable Integer queueCount;
+    private @Nullable String securityPolicy;
     private @Nullable String stackType;
     private @Nullable String subnetwork;
     private @Nullable String subnetworkProject;
@@ -66,6 +68,9 @@ public final class InstanceFromTemplateNetworkInterface {
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    public Optional<String> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
     public Optional<String> networkIp() {
         return Optional.ofNullable(this.networkIp);
     }
@@ -74,6 +79,9 @@ public final class InstanceFromTemplateNetworkInterface {
     }
     public Optional<Integer> queueCount() {
         return Optional.ofNullable(this.queueCount);
+    }
+    public Optional<String> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
     }
     public Optional<String> stackType() {
         return Optional.ofNullable(this.stackType);
@@ -102,9 +110,11 @@ public final class InstanceFromTemplateNetworkInterface {
         private @Nullable String ipv6Address;
         private @Nullable String name;
         private @Nullable String network;
+        private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
         private @Nullable Integer queueCount;
+        private @Nullable String securityPolicy;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
@@ -119,9 +129,11 @@ public final class InstanceFromTemplateNetworkInterface {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
     	      this.queueCount = defaults.queueCount;
+    	      this.securityPolicy = defaults.securityPolicy;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -177,6 +189,11 @@ public final class InstanceFromTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(@Nullable String networkAttachment) {
+            this.networkAttachment = networkAttachment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
             this.networkIp = networkIp;
             return this;
@@ -189,6 +206,11 @@ public final class InstanceFromTemplateNetworkInterface {
         @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
             this.queueCount = queueCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityPolicy(@Nullable String securityPolicy) {
+            this.securityPolicy = securityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -216,9 +238,11 @@ public final class InstanceFromTemplateNetworkInterface {
             o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
+            o.networkAttachment = networkAttachment;
             o.networkIp = networkIp;
             o.nicType = nicType;
             o.queueCount = queueCount;
+            o.securityPolicy = securityPolicy;
             o.stackType = stackType;
             o.subnetwork = subnetwork;
             o.subnetworkProject = subnetworkProject;

@@ -247,9 +247,12 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> annotations;
+    private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return Annotations on the node Pool.
@@ -261,9 +264,12 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
-    public Output<Map<String,String>> annotations() {
-        return this.annotations;
+    public Output<Optional<Map<String,String>>> annotations() {
+        return Codegen.optional(this.annotations);
     }
     /**
      * The node configuration of the node pool.
@@ -322,6 +328,22 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * This checksum is computed by the server based on the value of other

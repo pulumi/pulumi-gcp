@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,8 +55,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -137,7 +137,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -178,12 +178,16 @@ type Cluster struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigOutput `pulumi:"clusterConfig"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -193,6 +197,8 @@ type Cluster struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -234,12 +240,16 @@ type clusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -249,6 +259,8 @@ type clusterState struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region *string `pulumi:"region"`
@@ -261,12 +273,16 @@ type ClusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels pulumi.StringMapInput
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrInput
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -276,6 +292,8 @@ type ClusterState struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrInput
@@ -295,9 +313,9 @@ type clusterArgs struct {
 	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 	// terraform apply
 	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
-	// The list of labels (key/value pairs) to be applied to
-	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-	// which is the name of the cluster.
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -323,9 +341,9 @@ type ClusterArgs struct {
 	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 	// terraform apply
 	GracefulDecommissionTimeout pulumi.StringPtrInput
-	// The list of labels (key/value pairs) to be applied to
-	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-	// which is the name of the cluster.
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -460,15 +478,22 @@ func (o ClusterOutput) ClusterConfig() ClusterClusterConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterConfigOutput { return v.ClusterConfig }).(ClusterClusterConfigOutput)
 }
 
+// The list of labels (key/value pairs) to be applied to
+// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+// which is the name of the cluster.
+func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 // terraform apply
 func (o ClusterOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GracefulDecommissionTimeout }).(pulumi.StringPtrOutput)
 }
 
-// The list of labels (key/value pairs) to be applied to
-// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-// which is the name of the cluster.
+// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+// to the field 'effective_labels' for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -485,6 +510,11 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 // is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region in which the cluster and associated nodes will be created in.

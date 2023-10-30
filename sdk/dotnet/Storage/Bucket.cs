@@ -176,6 +176,13 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
         [Output("encryption")]
@@ -193,7 +200,7 @@ namespace Pulumi.Gcp.Storage
         /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -233,6 +240,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("publicAccessPrevention")]
         public Output<string> PublicAccessPrevention { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
@@ -503,6 +516,19 @@ namespace Pulumi.Gcp.Storage
         [Input("defaultEventBasedHold")]
         public Input<bool>? DefaultEventBasedHold { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
@@ -573,6 +599,18 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("publicAccessPrevention")]
         public Input<string>? PublicAccessPrevention { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.

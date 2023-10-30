@@ -178,6 +178,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int TcpEstablishedIdleTimeoutSec;
         public readonly int TcpTimeWaitTimeoutSec;
         public readonly int TcpTransitoryIdleTimeoutSec;
+        public readonly string Type;
         public readonly int UdpIdleTimeoutSec;
 
         [OutputConstructor]
@@ -222,6 +223,8 @@ namespace Pulumi.Gcp.Compute
 
             int tcpTransitoryIdleTimeoutSec,
 
+            string type,
+
             int udpIdleTimeoutSec)
         {
             DrainNatIps = drainNatIps;
@@ -244,6 +247,7 @@ namespace Pulumi.Gcp.Compute
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             TcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
+            Type = type;
             UdpIdleTimeoutSec = udpIdleTimeoutSec;
         }
     }

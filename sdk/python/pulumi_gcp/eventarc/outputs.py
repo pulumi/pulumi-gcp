@@ -246,20 +246,20 @@ class TriggerMatchingCriteria(dict):
 @pulumi.output_type
 class TriggerTransport(dict):
     def __init__(__self__, *,
-                 pubsubs: Optional[Sequence['outputs.TriggerTransportPubsub']] = None):
+                 pubsub: Optional['outputs.TriggerTransportPubsub'] = None):
         """
-        :param Sequence['TriggerTransportPubsubArgs'] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        :param 'TriggerTransportPubsubArgs' pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
-        if pubsubs is not None:
-            pulumi.set(__self__, "pubsubs", pubsubs)
+        if pubsub is not None:
+            pulumi.set(__self__, "pubsub", pubsub)
 
     @property
     @pulumi.getter
-    def pubsubs(self) -> Optional[Sequence['outputs.TriggerTransportPubsub']]:
+    def pubsub(self) -> Optional['outputs.TriggerTransportPubsub']:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
-        return pulumi.get(self, "pubsubs")
+        return pulumi.get(self, "pubsub")
 
 
 @pulumi.output_type

@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Compute
         /// Zone where the containing instance group manager is located
         /// </summary>
         [Output("zone")]
-        public Output<string?> Zone { get; private set; } = null!;
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

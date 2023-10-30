@@ -52,12 +52,18 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     /**
      * Optional. Labels with user-defined metadata.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Optional. Labels with user-defined metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -215,6 +221,9 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         /**
          * @param labels Optional. Labels with user-defined metadata.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -225,6 +234,9 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param labels Optional. Labels with user-defined metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

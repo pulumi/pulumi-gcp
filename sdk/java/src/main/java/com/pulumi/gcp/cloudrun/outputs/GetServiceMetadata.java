@@ -12,16 +12,25 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetadata {
     private Map<String,String> annotations;
+    private Map<String,String> effectiveAnnotations;
+    private Map<String,String> effectiveLabels;
     private Integer generation;
     private Map<String,String> labels;
     private String namespace;
     private String resourceVersion;
     private String selfLink;
+    private Map<String,String> terraformLabels;
     private String uid;
 
     private GetServiceMetadata() {}
     public Map<String,String> annotations() {
         return this.annotations;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Integer generation() {
         return this.generation;
@@ -38,6 +47,9 @@ public final class GetServiceMetadata {
     public String selfLink() {
         return this.selfLink;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String uid() {
         return this.uid;
     }
@@ -52,27 +64,43 @@ public final class GetServiceMetadata {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
+        private Map<String,String> effectiveAnnotations;
+        private Map<String,String> effectiveLabels;
         private Integer generation;
         private Map<String,String> labels;
         private String namespace;
         private String resourceVersion;
         private String selfLink;
+        private Map<String,String> terraformLabels;
         private String uid;
         public Builder() {}
         public Builder(GetServiceMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.generation = defaults.generation;
     	      this.labels = defaults.labels;
     	      this.namespace = defaults.namespace;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.selfLink = defaults.selfLink;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.uid = defaults.uid;
         }
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -101,6 +129,11 @@ public final class GetServiceMetadata {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
@@ -108,11 +141,14 @@ public final class GetServiceMetadata {
         public GetServiceMetadata build() {
             final var o = new GetServiceMetadata();
             o.annotations = annotations;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.generation = generation;
             o.labels = labels;
             o.namespace = namespace;
             o.resourceVersion = resourceVersion;
             o.selfLink = selfLink;
+            o.terraformLabels = terraformLabels;
             o.uid = uid;
             return o;
         }

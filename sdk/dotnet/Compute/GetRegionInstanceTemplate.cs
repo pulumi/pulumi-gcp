@@ -195,6 +195,7 @@ namespace Pulumi.Gcp.Compute
         /// documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateDiskResult> Disks;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -267,6 +268,7 @@ namespace Pulumi.Gcp.Compute
         /// is not provided, the provider project is used.
         /// </summary>
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateReservationAffinityResult> ReservationAffinities;
         /// <summary>
@@ -312,6 +314,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateDiskResult> disks,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             bool enableDisplay,
 
             string? filter,
@@ -346,6 +350,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateReservationAffinityResult> reservationAffinities,
@@ -369,6 +375,7 @@ namespace Pulumi.Gcp.Compute
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             Description = description;
             Disks = disks;
+            EffectiveLabels = effectiveLabels;
             EnableDisplay = enableDisplay;
             Filter = filter;
             GuestAccelerators = guestAccelerators;
@@ -386,6 +393,7 @@ namespace Pulumi.Gcp.Compute
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;

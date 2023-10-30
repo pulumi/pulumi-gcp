@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string CreateTime;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Format;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -154,6 +155,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string Mode;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> RemoteRepositoryConfigs;
         public readonly string RepositoryId;
         public readonly string UpdateTime;
@@ -170,6 +172,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
             string description,
 
             ImmutableArray<Outputs.GetRepositoryDockerConfigResult> dockerConfigs,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string format,
 
@@ -189,6 +193,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> remoteRepositoryConfigs,
 
             string repositoryId,
@@ -202,6 +208,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             CreateTime = createTime;
             Description = description;
             DockerConfigs = dockerConfigs;
+            EffectiveLabels = effectiveLabels;
             Format = format;
             Id = id;
             KmsKeyName = kmsKeyName;
@@ -211,6 +218,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             Mode = mode;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             RemoteRepositoryConfigs = remoteRepositoryConfigs;
             RepositoryId = repositoryId;
             UpdateTime = updateTime;

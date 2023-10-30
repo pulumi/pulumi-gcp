@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrun"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -124,9 +124,6 @@ func NewDomainMapping(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Metadata == nil {
-		return nil, errors.New("invalid value for required argument 'Metadata'")
-	}
 	if args.Spec == nil {
 		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
@@ -199,7 +196,7 @@ type domainMappingArgs struct {
 	Location string `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
-	Metadata DomainMappingMetadata `pulumi:"metadata"`
+	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -216,7 +213,7 @@ type DomainMappingArgs struct {
 	Location pulumi.StringInput
 	// Metadata associated with this DomainMapping.
 	// Structure is documented below.
-	Metadata DomainMappingMetadataInput
+	Metadata DomainMappingMetadataPtrInput
 	// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.

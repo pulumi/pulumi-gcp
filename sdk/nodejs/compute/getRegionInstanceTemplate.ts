@@ -94,6 +94,7 @@ export interface GetRegionInstanceTemplateResult {
      * documented below.
      */
     readonly disks: outputs.compute.GetRegionInstanceTemplateDisk[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -166,6 +167,7 @@ export interface GetRegionInstanceTemplateResult {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly reservationAffinities: outputs.compute.GetRegionInstanceTemplateReservationAffinity[];
     /**

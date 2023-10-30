@@ -63,10 +63,6 @@ public final class GetImageResult {
      * 
      */
     private String labelFingerprint;
-    /**
-     * @return A map of labels applied to this image.
-     * 
-     */
     private Map<String,String> labels;
     /**
      * @return A list of applicable license URI.
@@ -182,10 +178,6 @@ public final class GetImageResult {
     public String labelFingerprint() {
         return this.labelFingerprint;
     }
-    /**
-     * @return A map of labels applied to this image.
-     * 
-     */
     public Map<String,String> labels() {
         return this.labels;
     }

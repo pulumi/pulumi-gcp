@@ -93,6 +93,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
         /// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
         /// be redirected to this port regardless of its actual ip:port destination. If unset, a port
@@ -104,6 +111,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the Mesh resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -123,6 +132,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL of this resource.
@@ -203,6 +219,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the Mesh resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -246,6 +264,19 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
         /// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
@@ -261,6 +292,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the Mesh resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -283,6 +316,19 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// Server-defined URL of this resource.

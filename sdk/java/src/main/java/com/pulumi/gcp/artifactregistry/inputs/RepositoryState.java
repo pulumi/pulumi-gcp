@@ -105,6 +105,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
@@ -157,6 +174,9 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
@@ -167,6 +187,9 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -263,6 +286,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      * 
@@ -336,6 +376,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.dockerConfig = $.dockerConfig;
+        this.effectiveLabels = $.effectiveLabels;
         this.format = $.format;
         this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
@@ -344,6 +385,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.mode = $.mode;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.remoteRepositoryConfig = $.remoteRepositoryConfig;
         this.repositoryId = $.repositoryId;
         this.updateTime = $.updateTime;
@@ -492,6 +534,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param format The format of packages that are stored in the repository. Supported formats
          * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
          * You can only create alpha formats if you are a member of the
@@ -556,6 +621,9 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * and may only contain lowercase letters, numeric characters, underscores,
          * and dashes.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -570,6 +638,9 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * longer than 63 characters. Label keys must begin with a lowercase letter
          * and may only contain lowercase letters, numeric characters, underscores,
          * and dashes.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -695,6 +766,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

@@ -149,10 +149,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudIdsCustomEndpoint')
 
     @property
-    def cloud_iot_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('cloudIotCustomEndpoint')
-
-    @property
     def cloud_resource_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudResourceManagerCustomEndpoint')
 
@@ -269,6 +265,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('datastreamCustomEndpoint')
 
     @property
+    def default_labels(self) -> Optional[str]:
+        return __config__.get('defaultLabels')
+
+    @property
     def deployment_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('deploymentManagerCustomEndpoint')
 
@@ -339,10 +339,6 @@ class _ExportableConfig(types.ModuleType):
     @property
     def firestore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firestoreCustomEndpoint')
-
-    @property
-    def game_services_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('gameServicesCustomEndpoint')
 
     @property
     def gke_backup_custom_endpoint(self) -> Optional[str]:

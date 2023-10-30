@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -58,18 +58,20 @@ type LookupProjectArgs struct {
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	AutoCreateNetwork bool   `pulumi:"autoCreateNetwork"`
-	BillingAccount    string `pulumi:"billingAccount"`
-	FolderId          string `pulumi:"folderId"`
+	AutoCreateNetwork bool              `pulumi:"autoCreateNetwork"`
+	BillingAccount    string            `pulumi:"billingAccount"`
+	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
+	FolderId          string            `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string            `pulumi:"id"`
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
 	// The numeric identifier of the project.
-	Number     string  `pulumi:"number"`
-	OrgId      string  `pulumi:"orgId"`
-	ProjectId  *string `pulumi:"projectId"`
-	SkipDelete bool    `pulumi:"skipDelete"`
+	Number       string            `pulumi:"number"`
+	OrgId        string            `pulumi:"orgId"`
+	ProjectId    *string           `pulumi:"projectId"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	SkipDelete   bool              `pulumi:"skipDelete"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -124,6 +126,10 @@ func (o LookupProjectResultOutput) BillingAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingAccount }).(pulumi.StringOutput)
 }
 
+func (o LookupProjectResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupProjectResultOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.FolderId }).(pulumi.StringOutput)
 }
@@ -152,6 +158,10 @@ func (o LookupProjectResultOutput) OrgId() pulumi.StringOutput {
 
 func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupProjectResultOutput) SkipDelete() pulumi.BoolOutput {

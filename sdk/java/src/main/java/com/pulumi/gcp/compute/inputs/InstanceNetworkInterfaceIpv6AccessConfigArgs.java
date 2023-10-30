@@ -102,6 +102,13 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
     private InstanceNetworkInterfaceIpv6AccessConfigArgs() {}
 
     private InstanceNetworkInterfaceIpv6AccessConfigArgs(InstanceNetworkInterfaceIpv6AccessConfigArgs $) {
@@ -110,6 +117,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
+        this.securityPolicy = $.securityPolicy;
     }
 
     public static Builder builder() {
@@ -245,6 +253,15 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
          */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
+        }
+
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         public InstanceNetworkInterfaceIpv6AccessConfigArgs build() {

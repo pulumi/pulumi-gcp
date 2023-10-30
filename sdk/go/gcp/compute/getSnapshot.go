@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -79,11 +79,12 @@ type LookupSnapshotArgs struct {
 
 // A collection of values returned by getSnapshot.
 type LookupSnapshotResult struct {
-	ChainName         string  `pulumi:"chainName"`
-	CreationTimestamp string  `pulumi:"creationTimestamp"`
-	Description       string  `pulumi:"description"`
-	DiskSizeGb        int     `pulumi:"diskSizeGb"`
-	Filter            *string `pulumi:"filter"`
+	ChainName         string            `pulumi:"chainName"`
+	CreationTimestamp string            `pulumi:"creationTimestamp"`
+	Description       string            `pulumi:"description"`
+	DiskSizeGb        int               `pulumi:"diskSizeGb"`
+	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
+	Filter            *string           `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                               `pulumi:"id"`
 	LabelFingerprint         string                               `pulumi:"labelFingerprint"`
@@ -92,6 +93,7 @@ type LookupSnapshotResult struct {
 	MostRecent               *bool                                `pulumi:"mostRecent"`
 	Name                     *string                              `pulumi:"name"`
 	Project                  *string                              `pulumi:"project"`
+	PulumiLabels             map[string]string                    `pulumi:"pulumiLabels"`
 	SelfLink                 string                               `pulumi:"selfLink"`
 	SnapshotEncryptionKeys   []GetSnapshotSnapshotEncryptionKey   `pulumi:"snapshotEncryptionKeys"`
 	SnapshotId               int                                  `pulumi:"snapshotId"`
@@ -173,6 +175,10 @@ func (o LookupSnapshotResultOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+func (o LookupSnapshotResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSnapshotResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -204,6 +210,10 @@ func (o LookupSnapshotResultOutput) Name() pulumi.StringPtrOutput {
 
 func (o LookupSnapshotResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSnapshotResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSnapshotResultOutput) SelfLink() pulumi.StringOutput {

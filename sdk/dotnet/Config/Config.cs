@@ -263,13 +263,6 @@ namespace Pulumi.Gcp
             set => _cloudIdsCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _cloudIotCustomEndpoint = new __Value<string?>(() => __config.Get("cloudIotCustomEndpoint"));
-        public static string? CloudIotCustomEndpoint
-        {
-            get => _cloudIotCustomEndpoint.Get();
-            set => _cloudIotCustomEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _cloudResourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("cloudResourceManagerCustomEndpoint"));
         public static string? CloudResourceManagerCustomEndpoint
         {
@@ -473,6 +466,13 @@ namespace Pulumi.Gcp
             set => _datastreamCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<ImmutableDictionary<string, string>?> _defaultLabels = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("defaultLabels"));
+        public static ImmutableDictionary<string, string>? DefaultLabels
+        {
+            get => _defaultLabels.Get();
+            set => _defaultLabels.Set(value);
+        }
+
         private static readonly __Value<string?> _deploymentManagerCustomEndpoint = new __Value<string?>(() => __config.Get("deploymentManagerCustomEndpoint"));
         public static string? DeploymentManagerCustomEndpoint
         {
@@ -597,13 +597,6 @@ namespace Pulumi.Gcp
         {
             get => _firestoreCustomEndpoint.Get();
             set => _firestoreCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _gameServicesCustomEndpoint = new __Value<string?>(() => __config.Get("gameServicesCustomEndpoint"));
-        public static string? GameServicesCustomEndpoint
-        {
-            get => _gameServicesCustomEndpoint.Get();
-            set => _gameServicesCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _gkeBackupCustomEndpoint = new __Value<string?>(() => __config.Get("gkeBackupCustomEndpoint"));

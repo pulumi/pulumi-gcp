@@ -37,6 +37,9 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
@@ -121,6 +124,9 @@ class ConnectionProfileArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -189,6 +195,7 @@ class _ConnectionProfileState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  dbprovider: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -196,6 +203,7 @@ class _ConnectionProfileState:
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
@@ -210,9 +218,14 @@ class _ConnectionProfileState:
         :param pulumi.Input[str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[str] dbprovider: The database provider.
         :param pulumi.Input[str] display_name: The connection profile display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]] errors: Output only. The error details in case of state FAILED.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
@@ -221,6 +234,8 @@ class _ConnectionProfileState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: The current connection profile state.
         """
         if alloydb is not None:
@@ -235,6 +250,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "dbprovider", dbprovider)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
         if labels is not None:
@@ -249,6 +266,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -330,6 +349,19 @@ class _ConnectionProfileState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]:
         """
@@ -347,6 +379,9 @@ class _ConnectionProfileState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -416,6 +451,19 @@ class _ConnectionProfileState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -602,6 +650,9 @@ class ConnectionProfile(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
@@ -807,8 +858,10 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["dbprovider"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["errors"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
         super(ConnectionProfile, __self__).__init__(
             'gcp:databasemigrationservice/connectionProfile:ConnectionProfile',
@@ -826,6 +879,7 @@ class ConnectionProfile(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             dbprovider: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -833,6 +887,7 @@ class ConnectionProfile(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
@@ -852,9 +907,14 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[str] dbprovider: The database provider.
         :param pulumi.Input[str] display_name: The connection profile display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProfileErrorArgs']]]] errors: Output only. The error details in case of state FAILED.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
@@ -863,6 +923,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: The current connection profile state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -875,6 +937,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dbprovider"] = dbprovider
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -882,6 +945,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["postgresql"] = postgresql
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -939,6 +1003,15 @@ class ConnectionProfile(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def errors(self) -> pulumi.Output[Sequence['outputs.ConnectionProfileError']]:
         """
@@ -952,6 +1025,9 @@ class ConnectionProfile(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -997,6 +1073,15 @@ class ConnectionProfile(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

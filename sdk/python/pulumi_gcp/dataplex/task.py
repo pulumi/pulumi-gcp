@@ -36,6 +36,9 @@ class TaskArgs:
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -122,6 +125,9 @@ class TaskArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -211,6 +217,7 @@ class _TaskState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  execution_spec: Optional[pulumi.Input['TaskExecutionSpecArgs']] = None,
                  execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -219,6 +226,7 @@ class _TaskState:
                  name: Optional[pulumi.Input[str]] = None,
                  notebook: Optional[pulumi.Input['TaskNotebookArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
@@ -230,11 +238,16 @@ class _TaskState:
         :param pulumi.Input[str] create_time: The time when the task was created.
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['TaskExecutionSpecArgs'] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]] execution_statuses: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[str] name: (Output)
@@ -243,6 +256,8 @@ class _TaskState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
@@ -261,6 +276,8 @@ class _TaskState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if execution_spec is not None:
             pulumi.set(__self__, "execution_spec", execution_spec)
         if execution_statuses is not None:
@@ -277,6 +294,8 @@ class _TaskState:
             pulumi.set(__self__, "notebook", notebook)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if spark is not None:
             pulumi.set(__self__, "spark", spark)
         if state is not None:
@@ -327,6 +346,19 @@ class _TaskState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="executionSpec")
     def execution_spec(self) -> Optional[pulumi.Input['TaskExecutionSpecArgs']]:
         """
@@ -357,6 +389,9 @@ class _TaskState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -426,6 +461,19 @@ class _TaskState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -556,6 +604,9 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
@@ -652,8 +703,10 @@ class Task(pulumi.CustomResource):
                 raise TypeError("Missing required property 'trigger_spec'")
             __props__.__dict__["trigger_spec"] = trigger_spec
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["execution_statuses"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -670,6 +723,7 @@ class Task(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -678,6 +732,7 @@ class Task(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             task_id: Optional[pulumi.Input[str]] = None,
@@ -694,11 +749,16 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the task was created.
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]] execution_statuses: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[str] name: (Output)
@@ -707,6 +767,8 @@ class Task(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
@@ -726,6 +788,7 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["execution_spec"] = execution_spec
         __props__.__dict__["execution_statuses"] = execution_statuses
         __props__.__dict__["labels"] = labels
@@ -734,6 +797,7 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notebook"] = notebook
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["spark"] = spark
         __props__.__dict__["state"] = state
         __props__.__dict__["task_id"] = task_id
@@ -767,6 +831,15 @@ class Task(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="executionSpec")
     def execution_spec(self) -> pulumi.Output['outputs.TaskExecutionSpec']:
         """
@@ -789,6 +862,9 @@ class Task(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -834,6 +910,15 @@ class Task(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

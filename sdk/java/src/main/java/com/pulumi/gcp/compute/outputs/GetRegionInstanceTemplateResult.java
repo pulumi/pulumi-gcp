@@ -49,6 +49,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private List<GetRegionInstanceTemplateDisk> disks;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -135,6 +136,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
     /**
@@ -209,6 +211,9 @@ public final class GetRegionInstanceTemplateResult {
      */
     public List<GetRegionInstanceTemplateDisk> disks() {
         return this.disks;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
@@ -330,6 +335,9 @@ public final class GetRegionInstanceTemplateResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -402,6 +410,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
         private String description;
         private List<GetRegionInstanceTemplateDisk> disks;
+        private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
         private @Nullable String filter;
         private List<GetRegionInstanceTemplateGuestAccelerator> guestAccelerators;
@@ -419,6 +428,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
@@ -436,6 +446,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
     	      this.description = defaults.description;
     	      this.disks = defaults.disks;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
     	      this.filter = defaults.filter;
     	      this.guestAccelerators = defaults.guestAccelerators;
@@ -453,6 +464,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
@@ -497,6 +509,11 @@ public final class GetRegionInstanceTemplateResult {
         }
         public Builder disks(GetRegionInstanceTemplateDisk... disks) {
             return disks(List.of(disks));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
@@ -593,6 +610,11 @@ public final class GetRegionInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -662,6 +684,7 @@ public final class GetRegionInstanceTemplateResult {
             o.confidentialInstanceConfigs = confidentialInstanceConfigs;
             o.description = description;
             o.disks = disks;
+            o.effectiveLabels = effectiveLabels;
             o.enableDisplay = enableDisplay;
             o.filter = filter;
             o.guestAccelerators = guestAccelerators;
@@ -679,6 +702,7 @@ public final class GetRegionInstanceTemplateResult {
             o.networkInterfaces = networkInterfaces;
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;

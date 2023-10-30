@@ -46,6 +46,9 @@ namespace Pulumi.Gcp.BigTable.Inputs
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
 
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
         /// <summary>
         /// The storage type to use. One of `"SSD"` or
         /// `"HDD"`. Defaults to `"SSD"`.

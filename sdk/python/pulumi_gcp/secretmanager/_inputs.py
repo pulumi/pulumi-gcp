@@ -104,25 +104,15 @@ class SecretIamMemberConditionArgs:
 class SecretReplicationArgs:
     def __init__(__self__, *,
                  auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
-                 automatic: Optional[pulumi.Input[bool]] = None,
                  user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None):
         """
         :param pulumi.Input['SecretReplicationAutoArgs'] auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param pulumi.Input[bool] automatic: (Optional, Deprecated)
-               The Secret will automatically be replicated without any restrictions.
-               
-               > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         :param pulumi.Input['SecretReplicationUserManagedArgs'] user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         if auto is not None:
             pulumi.set(__self__, "auto", auto)
-        if automatic is not None:
-            warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
-            pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
-        if automatic is not None:
-            pulumi.set(__self__, "automatic", automatic)
         if user_managed is not None:
             pulumi.set(__self__, "user_managed", user_managed)
 
@@ -138,24 +128,6 @@ class SecretReplicationArgs:
     @auto.setter
     def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArgs']]):
         pulumi.set(self, "auto", value)
-
-    @property
-    @pulumi.getter
-    def automatic(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional, Deprecated)
-        The Secret will automatically be replicated without any restrictions.
-
-        > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-        """
-        warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
-        pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
-
-        return pulumi.get(self, "automatic")
-
-    @automatic.setter
-    def automatic(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "automatic", value)
 
     @property
     @pulumi.getter(name="userManaged")

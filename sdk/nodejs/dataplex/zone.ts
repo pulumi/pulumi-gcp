@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     description: "Lake for DCL",
  *     displayName: "Lake for DCL",
+ *     project: "my-project-name",
  *     labels: {
  *         "my-lake": "exists",
  *     },
- *     project: "my-project-name",
  * });
  * const primary = new gcp.dataplex.Zone("primary", {
  *     discoverySpec: {
@@ -37,8 +37,8 @@ import * as utilities from "../utilities";
  *     type: "RAW",
  *     description: "Zone for DCL",
  *     displayName: "Zone for DCL",
- *     labels: {},
  *     project: "my-project-name",
+ *     labels: {},
  * });
  * ```
  *
@@ -107,7 +107,15 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -126,6 +134,10 @@ export class Zone extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */
@@ -165,11 +177,13 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["discoverySpec"] = state ? state.discoverySpec : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lake"] = state ? state.lake : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -204,6 +218,8 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["assetStatuses"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -238,7 +254,15 @@ export interface ZoneState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -257,6 +281,10 @@ export interface ZoneState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */
@@ -297,6 +325,9 @@ export interface ZoneArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

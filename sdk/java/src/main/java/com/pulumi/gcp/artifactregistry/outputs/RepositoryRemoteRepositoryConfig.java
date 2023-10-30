@@ -4,10 +4,12 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigAptRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigPythonRepository;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigYumRepository;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RepositoryRemoteRepositoryConfig {
+    /**
+     * @return Specific settings for an Apt remote repository.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository;
     /**
      * @return The description of the remote source.
      * 
@@ -44,8 +52,22 @@ public final class RepositoryRemoteRepositoryConfig {
      * 
      */
     private @Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository;
+    /**
+     * @return Specific settings for an Yum remote repository.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository;
 
     private RepositoryRemoteRepositoryConfig() {}
+    /**
+     * @return Specific settings for an Apt remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigAptRepository> aptRepository() {
+        return Optional.ofNullable(this.aptRepository);
+    }
     /**
      * @return The description of the remote source.
      * 
@@ -85,6 +107,14 @@ public final class RepositoryRemoteRepositoryConfig {
     public Optional<RepositoryRemoteRepositoryConfigPythonRepository> pythonRepository() {
         return Optional.ofNullable(this.pythonRepository);
     }
+    /**
+     * @return Specific settings for an Yum remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigYumRepository> yumRepository() {
+        return Optional.ofNullable(this.yumRepository);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -95,21 +125,30 @@ public final class RepositoryRemoteRepositoryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository;
         private @Nullable String description;
         private @Nullable RepositoryRemoteRepositoryConfigDockerRepository dockerRepository;
         private @Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository;
         private @Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository;
         private @Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository;
+        private @Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository;
         public Builder() {}
         public Builder(RepositoryRemoteRepositoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aptRepository = defaults.aptRepository;
     	      this.description = defaults.description;
     	      this.dockerRepository = defaults.dockerRepository;
     	      this.mavenRepository = defaults.mavenRepository;
     	      this.npmRepository = defaults.npmRepository;
     	      this.pythonRepository = defaults.pythonRepository;
+    	      this.yumRepository = defaults.yumRepository;
         }
 
+        @CustomType.Setter
+        public Builder aptRepository(@Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository) {
+            this.aptRepository = aptRepository;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
@@ -135,13 +174,20 @@ public final class RepositoryRemoteRepositoryConfig {
             this.pythonRepository = pythonRepository;
             return this;
         }
+        @CustomType.Setter
+        public Builder yumRepository(@Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository) {
+            this.yumRepository = yumRepository;
+            return this;
+        }
         public RepositoryRemoteRepositoryConfig build() {
             final var o = new RepositoryRemoteRepositoryConfig();
+            o.aptRepository = aptRepository;
             o.description = description;
             o.dockerRepository = dockerRepository;
             o.mavenRepository = mavenRepository;
             o.npmRepository = npmRepository;
             o.pythonRepository = pythonRepository;
+            o.yumRepository = yumRepository;
             return o;
         }
     }

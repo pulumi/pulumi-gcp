@@ -117,7 +117,14 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -145,6 +152,11 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      */
     public readonly publicKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[] | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
      * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -167,10 +179,12 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EdgeCacheKeysetState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["validationSharedKeys"] = state ? state.validationSharedKeys : undefined;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
@@ -180,6 +194,8 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publicKeys"] = args ? args.publicKeys : undefined;
             resourceInputs["validationSharedKeys"] = args ? args.validationSharedKeys : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeCacheKeyset.__pulumiType, name, resourceInputs, opts);
@@ -195,7 +211,14 @@ export interface EdgeCacheKeysetState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -223,6 +246,11 @@ export interface EdgeCacheKeysetState {
      */
     publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
      * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -242,6 +270,8 @@ export interface EdgeCacheKeysetArgs {
     description?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

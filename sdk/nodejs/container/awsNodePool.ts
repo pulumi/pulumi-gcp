@@ -433,6 +433,9 @@ export class AwsNodePool extends pulumi.CustomResource {
 
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -451,6 +454,11 @@ export class AwsNodePool extends pulumi.CustomResource {
      * Output only. The time at which this node pool was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -492,6 +500,10 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     */
+    public readonly updateSettings!: pulumi.Output<outputs.container.AwsNodePoolUpdateSettings>;
+    /**
      * Output only. The time at which this node pool was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -518,6 +530,7 @@ export class AwsNodePool extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
@@ -528,6 +541,7 @@ export class AwsNodePool extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnetId"] = state ? state.subnetId : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateSettings"] = state ? state.updateSettings : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -563,8 +577,10 @@ export class AwsNodePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["updateSettings"] = args ? args.updateSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -582,6 +598,9 @@ export class AwsNodePool extends pulumi.CustomResource {
 export interface AwsNodePoolState {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -600,6 +619,11 @@ export interface AwsNodePoolState {
      * Output only. The time at which this node pool was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -641,6 +665,10 @@ export interface AwsNodePoolState {
      */
     uid?: pulumi.Input<string>;
     /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     */
+    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
+    /**
      * Output only. The time at which this node pool was last updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -656,6 +684,9 @@ export interface AwsNodePoolState {
 export interface AwsNodePoolArgs {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -694,6 +725,10 @@ export interface AwsNodePoolArgs {
      * The subnet where the node pool node run.
      */
     subnetId: pulumi.Input<string>;
+    /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     */
+    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
     /**
      * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */

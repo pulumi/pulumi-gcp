@@ -20,6 +20,7 @@ public final class GetAiIndexResult {
     private List<GetAiIndexDeployedIndex> deployedIndexes;
     private String description;
     private String displayName;
+    private Map<String,String> effectiveLabels;
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -33,6 +34,7 @@ public final class GetAiIndexResult {
     private List<GetAiIndexMetadata> metadatas;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String region;
     private String updateTime;
 
@@ -48,6 +50,9 @@ public final class GetAiIndexResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String etag() {
         return this.etag;
@@ -80,6 +85,9 @@ public final class GetAiIndexResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String region() {
         return this.region;
     }
@@ -100,6 +108,7 @@ public final class GetAiIndexResult {
         private List<GetAiIndexDeployedIndex> deployedIndexes;
         private String description;
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String etag;
         private String id;
         private List<GetAiIndexIndexStat> indexStats;
@@ -109,6 +118,7 @@ public final class GetAiIndexResult {
         private List<GetAiIndexMetadata> metadatas;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String region;
         private String updateTime;
         public Builder() {}
@@ -118,6 +128,7 @@ public final class GetAiIndexResult {
     	      this.deployedIndexes = defaults.deployedIndexes;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.indexStats = defaults.indexStats;
@@ -127,6 +138,7 @@ public final class GetAiIndexResult {
     	      this.metadatas = defaults.metadatas;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.updateTime = defaults.updateTime;
         }
@@ -152,6 +164,11 @@ public final class GetAiIndexResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -206,6 +223,11 @@ public final class GetAiIndexResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -221,6 +243,7 @@ public final class GetAiIndexResult {
             o.deployedIndexes = deployedIndexes;
             o.description = description;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.etag = etag;
             o.id = id;
             o.indexStats = indexStats;
@@ -230,6 +253,7 @@ public final class GetAiIndexResult {
             o.metadatas = metadatas;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.updateTime = updateTime;
             return o;

@@ -141,6 +141,11 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Key algorithm to use when generating the private key.
      * Possible values are: `RSA_2048`, `ECDSA_P256`.
      */
@@ -148,6 +153,9 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
     /**
      * 'Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -169,6 +177,11 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
@@ -199,12 +212,14 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
             resourceInputs["certificateAuthorityConfig"] = state ? state.certificateAuthorityConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lifetime"] = state ? state.lifetime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rotationWindowPercentage"] = state ? state.rotationWindowPercentage : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -231,6 +246,8 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rotationWindowPercentage"] = args ? args.rotationWindowPercentage : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -258,6 +275,11 @@ export interface CertificateIssuanceConfigState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Key algorithm to use when generating the private key.
      * Possible values are: `RSA_2048`, `ECDSA_P256`.
      */
@@ -265,6 +287,9 @@ export interface CertificateIssuanceConfigState {
     /**
      * 'Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -286,6 +311,11 @@ export interface CertificateIssuanceConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
@@ -322,6 +352,9 @@ export interface CertificateIssuanceConfigArgs {
     /**
      * 'Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

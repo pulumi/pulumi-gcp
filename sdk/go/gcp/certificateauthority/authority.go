@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -34,7 +34,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -104,7 +104,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -221,9 +221,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -372,6 +372,9 @@ type Authority struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -389,6 +392,9 @@ type Authority struct {
 	// Labels with user-defined metadata.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -412,6 +418,9 @@ type Authority struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -497,6 +506,9 @@ type authorityState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState *string `pulumi:"desiredState"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -514,6 +526,9 @@ type authorityState struct {
 	// Labels with user-defined metadata.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -537,6 +552,9 @@ type authorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -578,6 +596,9 @@ type AuthorityState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -595,6 +616,9 @@ type AuthorityState struct {
 	// Labels with user-defined metadata.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -618,6 +642,9 @@ type AuthorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -673,6 +700,9 @@ type authorityArgs struct {
 	// Labels with user-defined metadata.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -734,6 +764,9 @@ type AuthorityArgs struct {
 	// Labels with user-defined metadata.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -912,6 +945,12 @@ func (o AuthorityOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AuthorityOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 // such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 // (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -938,6 +977,9 @@ func (o AuthorityOutput) KeySpec() AuthorityKeySpecOutput {
 // Labels with user-defined metadata.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 // "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AuthorityOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -983,6 +1025,12 @@ func (o AuthorityOutput) Pool() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AuthorityOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AuthorityOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // If this flag is set, the Certificate Authority will be deleted as soon as

@@ -96,6 +96,10 @@ namespace Pulumi.Gcp.NetworkManagement
     ///             Instance = destination.Id,
     ///         },
     ///         Protocol = "TCP",
+    ///         Labels = 
+    ///         {
+    ///             { "env", "test" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -203,7 +207,17 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<Outputs.ConnectivityTestDestination> Destination { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -226,6 +240,13 @@ namespace Pulumi.Gcp.NetworkManagement
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Other projects that may be relevant for reachability analysis.
@@ -337,6 +358,9 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -436,11 +460,27 @@ namespace Pulumi.Gcp.NetworkManagement
         [Input("destination")]
         public Input<Inputs.ConnectivityTestDestinationGetArgs>? Destination { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -466,6 +506,19 @@ namespace Pulumi.Gcp.NetworkManagement
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         [Input("relatedProjects")]
         private InputList<string>? _relatedProjects;

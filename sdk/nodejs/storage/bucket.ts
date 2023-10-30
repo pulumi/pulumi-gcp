@@ -150,6 +150,11 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The bucket's encryption configuration. Structure is documented below.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
@@ -162,7 +167,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * A map of key/value label pairs to assign to the bucket.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
@@ -190,6 +195,10 @@ export class Bucket extends pulumi.CustomResource {
      * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     public readonly publicAccessPrevention!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */
@@ -240,6 +249,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["cors"] = state ? state.cors : undefined;
             resourceInputs["customPlacementConfig"] = state ? state.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -249,6 +259,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requesterPays"] = state ? state.requesterPays : undefined;
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -281,6 +292,8 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -309,6 +322,11 @@ export interface BucketState {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
      */
@@ -350,6 +368,10 @@ export interface BucketState {
      * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     publicAccessPrevention?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */

@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppConnectorResult {
     private String displayName;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -24,12 +25,16 @@ public final class GetAppConnectorResult {
     private String name;
     private List<GetAppConnectorPrincipalInfo> principalInfos;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private String state;
 
     private GetAppConnectorResult() {}
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -50,6 +55,9 @@ public final class GetAppConnectorResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -67,22 +75,26 @@ public final class GetAppConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String id;
         private Map<String,String> labels;
         private String name;
         private List<GetAppConnectorPrincipalInfo> principalInfos;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String state;
         public Builder() {}
         public Builder(GetAppConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.principalInfos = defaults.principalInfos;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
         }
@@ -90,6 +102,11 @@ public final class GetAppConnectorResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -121,6 +138,11 @@ public final class GetAppConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -133,11 +155,13 @@ public final class GetAppConnectorResult {
         public GetAppConnectorResult build() {
             final var o = new GetAppConnectorResult();
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.principalInfos = principalInfos;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.state = state;
             return o;

@@ -15,6 +15,7 @@ import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubEnterpriseConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionInstallationState;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -214,12 +215,18 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Allows clients to store small amounts of arbitrary data.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -252,6 +259,22 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

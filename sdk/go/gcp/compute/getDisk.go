@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,6 +82,7 @@ type LookupDiskResult struct {
 	// The optional description of this resource.
 	Description               string                     `pulumi:"description"`
 	DiskEncryptionKeys        []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	EffectiveLabels           map[string]string          `pulumi:"effectiveLabels"`
 	EnableConfidentialCompute bool                       `pulumi:"enableConfidentialCompute"`
 	GuestOsFeatures           []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
@@ -91,9 +92,8 @@ type LookupDiskResult struct {
 	Interface string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
-	LabelFingerprint string `pulumi:"labelFingerprint"`
-	// A map of labels applied to this disk.
-	Labels map[string]string `pulumi:"labels"`
+	LabelFingerprint string            `pulumi:"labelFingerprint"`
+	Labels           map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
@@ -102,11 +102,12 @@ type LookupDiskResult struct {
 	MultiWriter         bool     `pulumi:"multiWriter"`
 	Name                string   `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes.
-	PhysicalBlockSizeBytes int      `pulumi:"physicalBlockSizeBytes"`
-	Project                *string  `pulumi:"project"`
-	ProvisionedIops        int      `pulumi:"provisionedIops"`
-	ProvisionedThroughput  int      `pulumi:"provisionedThroughput"`
-	ResourcePolicies       []string `pulumi:"resourcePolicies"`
+	PhysicalBlockSizeBytes int               `pulumi:"physicalBlockSizeBytes"`
+	Project                *string           `pulumi:"project"`
+	ProvisionedIops        int               `pulumi:"provisionedIops"`
+	ProvisionedThroughput  int               `pulumi:"provisionedThroughput"`
+	PulumiLabels           map[string]string `pulumi:"pulumiLabels"`
+	ResourcePolicies       []string          `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Size of the persistent disk, specified in GB.
@@ -211,6 +212,10 @@ func (o LookupDiskResultOutput) DiskEncryptionKeys() GetDiskDiskEncryptionKeyArr
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetDiskDiskEncryptionKeyArrayOutput)
 }
 
+func (o LookupDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -239,7 +244,6 @@ func (o LookupDiskResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A map of labels applied to this disk.
 func (o LookupDiskResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -281,6 +285,10 @@ func (o LookupDiskResultOutput) ProvisionedIops() pulumi.IntOutput {
 
 func (o LookupDiskResultOutput) ProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
+}
+
+func (o LookupDiskResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutput {

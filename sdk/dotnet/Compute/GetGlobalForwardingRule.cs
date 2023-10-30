@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Compute
         public readonly bool AllowPscGlobalAccess;
         public readonly string BaseForwardingRule;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -140,6 +141,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
         public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Subnetwork;
@@ -152,6 +154,8 @@ namespace Pulumi.Gcp.Compute
             string baseForwardingRule,
 
             string description,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -183,6 +187,8 @@ namespace Pulumi.Gcp.Compute
 
             string pscConnectionStatus,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string selfLink,
 
             ImmutableArray<string> sourceIpRanges,
@@ -194,6 +200,7 @@ namespace Pulumi.Gcp.Compute
             AllowPscGlobalAccess = allowPscGlobalAccess;
             BaseForwardingRule = baseForwardingRule;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
@@ -209,6 +216,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
+            PulumiLabels = pulumiLabels;
             SelfLink = selfLink;
             SourceIpRanges = sourceIpRanges;
             Subnetwork = subnetwork;

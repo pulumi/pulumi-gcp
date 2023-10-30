@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEffectiveTaintArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigFastSocketArgs;
@@ -78,6 +79,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+
+    @Import(name="effectiveTaints")
+    private @Nullable Output<List<NodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints;
+
+    public Optional<Output<List<NodePoolNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
+        return Optional.ofNullable(this.effectiveTaints);
     }
 
     @Import(name="ephemeralStorageConfig")
@@ -298,6 +306,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.confidentialNodes = $.confidentialNodes;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
+        this.effectiveTaints = $.effectiveTaints;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
@@ -403,6 +412,19 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
+        }
+
+        public Builder effectiveTaints(@Nullable Output<List<NodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints) {
+            $.effectiveTaints = effectiveTaints;
+            return this;
+        }
+
+        public Builder effectiveTaints(List<NodePoolNodeConfigEffectiveTaintArgs> effectiveTaints) {
+            return effectiveTaints(Output.of(effectiveTaints));
+        }
+
+        public Builder effectiveTaints(NodePoolNodeConfigEffectiveTaintArgs... effectiveTaints) {
+            return effectiveTaints(List.of(effectiveTaints));
         }
 
         public Builder ephemeralStorageConfig(@Nullable Output<NodePoolNodeConfigEphemeralStorageConfigArgs> ephemeralStorageConfig) {

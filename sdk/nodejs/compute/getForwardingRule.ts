@@ -64,6 +64,7 @@ export interface GetForwardingRuleResult {
     readonly baseForwardingRule: string;
     readonly creationTimestamp: string;
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -84,6 +85,7 @@ export interface GetForwardingRuleResult {
     readonly project?: string;
     readonly pscConnectionId: string;
     readonly pscConnectionStatus: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly selfLink: string;
     readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];

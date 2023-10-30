@@ -16,23 +16,23 @@ namespace Pulumi.Gcp.Logging.Outputs
         /// <summary>
         /// Must be greater than 1.
         /// </summary>
-        public readonly double? GrowthFactor;
+        public readonly double GrowthFactor;
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        public readonly int? NumFiniteBuckets;
+        public readonly int NumFiniteBuckets;
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        public readonly double? Scale;
+        public readonly double Scale;
 
         [OutputConstructor]
         private MetricBucketOptionsExponentialBuckets(
-            double? growthFactor,
+            double growthFactor,
 
-            int? numFiniteBuckets,
+            int numFiniteBuckets,
 
-            double? scale)
+            double scale)
         {
             GrowthFactor = growthFactor;
             NumFiniteBuckets = numFiniteBuckets;

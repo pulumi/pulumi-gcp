@@ -77,6 +77,11 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.compute.RegionInstanceTemplateDisk[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
@@ -93,6 +98,9 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -154,6 +162,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The Region in which the resource belongs.
      * If region is not provided, the provider region is used.
      */
@@ -212,6 +224,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
@@ -226,6 +239,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -268,7 +282,9 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
         }
@@ -305,6 +321,11 @@ export interface RegionInstanceTemplateState {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateDisk>[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
@@ -321,6 +342,9 @@ export interface RegionInstanceTemplateState {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -381,6 +405,10 @@ export interface RegionInstanceTemplateState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Region in which the resource belongs.
      * If region is not provided, the provider region is used.
@@ -467,6 +495,9 @@ export interface RegionInstanceTemplateArgs {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

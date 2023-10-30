@@ -21,10 +21,13 @@ class GetHostingChannelResult:
     """
     A collection of values returned by getHostingChannel.
     """
-    def __init__(__self__, channel_id=None, expire_time=None, id=None, labels=None, name=None, retained_release_count=None, site_id=None, ttl=None):
+    def __init__(__self__, channel_id=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, pulumi_labels=None, retained_release_count=None, site_id=None, ttl=None):
         if channel_id and not isinstance(channel_id, str):
             raise TypeError("Expected argument 'channel_id' to be a str")
         pulumi.set(__self__, "channel_id", channel_id)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
@@ -37,6 +40,9 @@ class GetHostingChannelResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if retained_release_count and not isinstance(retained_release_count, int):
             raise TypeError("Expected argument 'retained_release_count' to be a int")
         pulumi.set(__self__, "retained_release_count", retained_release_count)
@@ -51,6 +57,11 @@ class GetHostingChannelResult:
     @pulumi.getter(name="channelId")
     def channel_id(self) -> str:
         return pulumi.get(self, "channel_id")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -79,6 +90,11 @@ class GetHostingChannelResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="retainedReleaseCount")
     def retained_release_count(self) -> int:
         return pulumi.get(self, "retained_release_count")
@@ -101,10 +117,12 @@ class AwaitableGetHostingChannelResult(GetHostingChannelResult):
             yield self
         return GetHostingChannelResult(
             channel_id=self.channel_id,
+            effective_labels=self.effective_labels,
             expire_time=self.expire_time,
             id=self.id,
             labels=self.labels,
             name=self.name,
+            pulumi_labels=self.pulumi_labels,
             retained_release_count=self.retained_release_count,
             site_id=self.site_id,
             ttl=self.ttl)
@@ -127,10 +145,12 @@ def get_hosting_channel(channel_id: Optional[str] = None,
 
     return AwaitableGetHostingChannelResult(
         channel_id=pulumi.get(__ret__, 'channel_id'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
         site_id=pulumi.get(__ret__, 'site_id'),
         ttl=pulumi.get(__ret__, 'ttl'))

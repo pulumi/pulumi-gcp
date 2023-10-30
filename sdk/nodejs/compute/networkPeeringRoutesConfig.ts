@@ -80,6 +80,7 @@ import * as utilities from "../utilities";
  *         clusterSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
  *         servicesSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
  *     },
+ *     deletionProtection: true,
  * });
  * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", {
  *     peering: privateCluster.privateClusterConfig.apply(privateClusterConfig => privateClusterConfig.peeringName),

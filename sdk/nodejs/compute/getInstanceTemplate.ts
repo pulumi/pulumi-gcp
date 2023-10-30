@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+ *
  * Get information about a VM instance template resource within GCE. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
@@ -94,6 +96,7 @@ export interface GetInstanceTemplateResult {
      * documented below.
      */
     readonly disks: outputs.compute.GetInstanceTemplateDisk[];
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
@@ -165,6 +168,7 @@ export interface GetInstanceTemplateResult {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -212,6 +216,8 @@ export interface GetInstanceTemplateResult {
     readonly tagsFingerprint: string;
 }
 /**
+ * > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+ *
  * Get information about a VM instance template resource within GCE. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and

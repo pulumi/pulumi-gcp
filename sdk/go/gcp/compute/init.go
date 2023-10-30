@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Address{}
 	case "gcp:compute/attachedDisk:AttachedDisk":
 		r = &AttachedDisk{}
-	case "gcp:compute/autoscalar:Autoscalar":
-		r = &Autoscalar{}
 	case "gcp:compute/autoscaler:Autoscaler":
 		r = &Autoscaler{}
 	case "gcp:compute/backendBucket:BackendBucket":
@@ -318,11 +316,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/attachedDisk",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"compute/autoscalar",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -49,6 +49,7 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private List<GetInstanceTemplateDisk> disks;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -134,6 +135,7 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     /**
      * @return An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -223,6 +225,9 @@ public final class GetInstanceTemplateResult {
      */
     public List<GetInstanceTemplateDisk> disks() {
         return this.disks;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
@@ -343,6 +348,9 @@ public final class GetInstanceTemplateResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     /**
      * @return An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -432,6 +440,7 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
         private String description;
         private List<GetInstanceTemplateDisk> disks;
+        private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
         private @Nullable String filter;
         private List<GetInstanceTemplateGuestAccelerator> guestAccelerators;
@@ -449,6 +458,7 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String region;
         private List<GetInstanceTemplateReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
@@ -467,6 +477,7 @@ public final class GetInstanceTemplateResult {
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
     	      this.description = defaults.description;
     	      this.disks = defaults.disks;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
     	      this.filter = defaults.filter;
     	      this.guestAccelerators = defaults.guestAccelerators;
@@ -484,6 +495,7 @@ public final class GetInstanceTemplateResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
@@ -529,6 +541,11 @@ public final class GetInstanceTemplateResult {
         }
         public Builder disks(GetInstanceTemplateDisk... disks) {
             return disks(List.of(disks));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
@@ -625,6 +642,11 @@ public final class GetInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -699,6 +721,7 @@ public final class GetInstanceTemplateResult {
             o.confidentialInstanceConfigs = confidentialInstanceConfigs;
             o.description = description;
             o.disks = disks;
+            o.effectiveLabels = effectiveLabels;
             o.enableDisplay = enableDisplay;
             o.filter = filter;
             o.guestAccelerators = guestAccelerators;
@@ -716,6 +739,7 @@ public final class GetInstanceTemplateResult {
             o.networkInterfaces = networkInterfaces;
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;

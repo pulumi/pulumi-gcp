@@ -26,6 +26,9 @@ import * as utilities from "../utilities";
  *     hiveMetastoreConfig: {
  *         version: "2.3.6",
  *     },
+ *     labels: {
+ *         env: "test",
+ *     },
  *     location: "us-central1",
  *     maintenanceWindow: {
  *         dayOfWeek: "SUNDAY",
@@ -180,6 +183,11 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly databaseType!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
@@ -197,6 +205,8 @@ export class MetastoreService extends pulumi.CustomResource {
     public readonly hiveMetastoreConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceHiveMetastoreConfig | undefined>;
     /**
      * User-defined labels for the metastore service.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -238,6 +248,11 @@ export class MetastoreService extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
@@ -296,6 +311,7 @@ export class MetastoreService extends pulumi.CustomResource {
             const state = argsOrState as MetastoreServiceState | undefined;
             resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
             resourceInputs["databaseType"] = state ? state.databaseType : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
@@ -308,6 +324,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
@@ -338,8 +355,10 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -364,6 +383,11 @@ export interface MetastoreServiceState {
      */
     databaseType?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
@@ -381,6 +405,8 @@ export interface MetastoreServiceState {
     hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
     /**
      * User-defined labels for the metastore service.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -422,6 +448,11 @@ export interface MetastoreServiceState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
@@ -489,6 +520,8 @@ export interface MetastoreServiceArgs {
     hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
     /**
      * User-defined labels for the metastore service.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -20,8 +20,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-        /// deprecated `enable_binary_authorization` parameter being set to `true`.
+        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         /// </summary>
         [Input("evaluationMode")]
         public Input<string>? EvaluationMode { get; set; }

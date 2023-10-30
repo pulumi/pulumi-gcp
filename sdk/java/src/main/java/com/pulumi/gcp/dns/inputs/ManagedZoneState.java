@@ -108,6 +108,23 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Set this true to delete all records in the zone.
      * 
      */
@@ -146,12 +163,18 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to this ManagedZone.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -267,6 +290,23 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `private_visibility_config`.
@@ -331,6 +371,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.dnsName = $.dnsName;
         this.dnssecConfig = $.dnssecConfig;
+        this.effectiveLabels = $.effectiveLabels;
         this.forceDestroy = $.forceDestroy;
         this.forwardingConfig = $.forwardingConfig;
         this.labels = $.labels;
@@ -340,6 +381,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         this.peeringConfig = $.peeringConfig;
         this.privateVisibilityConfig = $.privateVisibilityConfig;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.reverseLookup = $.reverseLookup;
         this.serviceDirectoryConfig = $.serviceDirectoryConfig;
         this.visibility = $.visibility;
@@ -475,6 +517,29 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param forceDestroy Set this true to delete all records in the zone.
          * 
          * @return builder
@@ -525,6 +590,9 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels A set of key/value label pairs to assign to this ManagedZone.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -535,6 +603,9 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A set of key/value label pairs to assign to this ManagedZone.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -696,6 +767,29 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

@@ -22,13 +22,16 @@ class GetCertificateMapResult:
     """
     A collection of values returned by getCertificateMap.
     """
-    def __init__(__self__, create_time=None, description=None, gclb_targets=None, id=None, labels=None, name=None, project=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, effective_labels=None, gclb_targets=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if gclb_targets and not isinstance(gclb_targets, list):
             raise TypeError("Expected argument 'gclb_targets' to be a list")
         pulumi.set(__self__, "gclb_targets", gclb_targets)
@@ -44,6 +47,9 @@ class GetCertificateMapResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -57,6 +63,11 @@ class GetCertificateMapResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="gclbTargets")
@@ -87,6 +98,11 @@ class GetCertificateMapResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         return pulumi.get(self, "update_time")
@@ -100,11 +116,13 @@ class AwaitableGetCertificateMapResult(GetCertificateMapResult):
         return GetCertificateMapResult(
             create_time=self.create_time,
             description=self.description,
+            effective_labels=self.effective_labels,
             gclb_targets=self.gclb_targets,
             id=self.id,
             labels=self.labels,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             update_time=self.update_time)
 
 
@@ -139,11 +157,13 @@ def get_certificate_map(name: Optional[str] = None,
     return AwaitableGetCertificateMapResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gclb_targets=pulumi.get(__ret__, 'gclb_targets'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

@@ -136,6 +136,11 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
@@ -150,6 +155,9 @@ export class AiFeatureStore extends pulumi.CustomResource {
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * A set of key/value label pairs to assign to this Featurestore.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -174,6 +182,11 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region of the dataset. eg us-central1
      */
     public readonly region!: pulumi.Output<string>;
@@ -196,6 +209,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
@@ -204,6 +218,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["onlineServingConfig"] = state ? state.onlineServingConfig : undefined;
             resourceInputs["onlineStorageTtlDays"] = state ? state.onlineStorageTtlDays : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -217,7 +232,9 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -234,6 +251,11 @@ export interface AiFeatureStoreState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
@@ -248,6 +270,9 @@ export interface AiFeatureStoreState {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * A set of key/value label pairs to assign to this Featurestore.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -271,6 +296,11 @@ export interface AiFeatureStoreState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the dataset. eg us-central1
      */
@@ -296,6 +326,9 @@ export interface AiFeatureStoreArgs {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * A set of key/value label pairs to assign to this Featurestore.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

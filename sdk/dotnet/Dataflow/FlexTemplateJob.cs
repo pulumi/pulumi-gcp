@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Dataflow
         /// The algorithm to use for autoscaling
         /// </summary>
         [Output("autoscalingAlgorithm")]
-        public Output<string?> AutoscalingAlgorithm { get; private set; } = null!;
+        public Output<string> AutoscalingAlgorithm { get; private set; } = null!;
 
         /// <summary>
         /// The GCS path to the Dataflow job Flex
@@ -128,6 +128,13 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Output("containerSpecGcsPath")]
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if the job should use the streaming engine feature.
@@ -152,7 +159,7 @@ namespace Pulumi.Gcp.Dataflow
         /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         /// </summary>
         [Output("kmsKeyName")]
-        public Output<string?> KmsKeyName { get; private set; } = null!;
+        public Output<string> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// User labels to be specified for the job. Keys and values
@@ -170,20 +177,20 @@ namespace Pulumi.Gcp.Dataflow
         /// The machine type to use for launching the job. The default is n1-standard-1.
         /// </summary>
         [Output("launcherMachineType")]
-        public Output<string?> LauncherMachineType { get; private set; } = null!;
+        public Output<string> LauncherMachineType { get; private set; } = null!;
 
         /// <summary>
         /// The machine type to use for the job.
         /// </summary>
         [Output("machineType")]
-        public Output<string?> MachineType { get; private set; } = null!;
+        public Output<string> MachineType { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
         /// 1000.
         /// </summary>
         [Output("maxWorkers")]
-        public Output<int?> MaxWorkers { get; private set; } = null!;
+        public Output<int> MaxWorkers { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the resource, required by Dataflow.
@@ -195,13 +202,13 @@ namespace Pulumi.Gcp.Dataflow
         /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
         /// </summary>
         [Output("network")]
-        public Output<string?> Network { get; private set; } = null!;
+        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// The initial number of Google Compute Engine instances for the job.
         /// </summary>
         [Output("numWorkers")]
-        public Output<int?> NumWorkers { get; private set; } = null!;
+        public Output<int> NumWorkers { get; private set; } = null!;
 
         /// <summary>
         /// One of "drain" or "cancel". Specifies behavior of
@@ -226,6 +233,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The region in which the created job should run.
         /// </summary>
         [Output("region")]
@@ -236,7 +249,7 @@ namespace Pulumi.Gcp.Dataflow
         /// the SDK. Note this field is only valid for portable pipelines.
         /// </summary>
         [Output("sdkContainerImage")]
-        public Output<string?> SdkContainerImage { get; private set; } = null!;
+        public Output<string> SdkContainerImage { get; private set; } = null!;
 
         /// <summary>
         /// The Service Account email used to create the job.
@@ -268,7 +281,7 @@ namespace Pulumi.Gcp.Dataflow
         /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         /// </summary>
         [Output("subnetwork")]
-        public Output<string?> Subnetwork { get; private set; } = null!;
+        public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
         /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -557,6 +570,19 @@ namespace Pulumi.Gcp.Dataflow
         [Input("containerSpecGcsPath")]
         public Input<string>? ContainerSpecGcsPath { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Indicates if the job should use the streaming engine feature.
         /// </summary>
@@ -664,6 +690,18 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The region in which the created job should run.

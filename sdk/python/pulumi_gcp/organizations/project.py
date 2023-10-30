@@ -39,6 +39,8 @@ class ProjectArgs:
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
                Changing this forces a new project to be created.  Only one of
@@ -128,6 +130,8 @@ class ProjectArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -183,12 +187,14 @@ class _ProjectState:
     def __init__(__self__, *,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  skip_delete: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
@@ -200,12 +206,16 @@ class _ProjectState:
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] number: The numeric identifier of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
@@ -215,6 +225,7 @@ class _ProjectState:
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
         """
@@ -222,6 +233,8 @@ class _ProjectState:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
@@ -234,6 +247,8 @@ class _ProjectState:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if skip_delete is not None:
             pulumi.set(__self__, "skip_delete", skip_delete)
 
@@ -268,6 +283,19 @@ class _ProjectState:
         pulumi.set(self, "billing_account", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -288,6 +316,8 @@ class _ProjectState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -347,6 +377,18 @@ class _ProjectState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="skipDelete")
@@ -444,6 +486,8 @@ class Project(pulumi.CustomResource):
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
                Changing this forces a new project to be created.  Only one of
@@ -555,7 +599,9 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["skip_delete"] = skip_delete
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["number"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Project, __self__).__init__(
             'gcp:organizations/project:Project',
             resource_name,
@@ -568,12 +614,14 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_create_network: Optional[pulumi.Input[bool]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             number: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             skip_delete: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -590,12 +638,16 @@ class Project(pulumi.CustomResource):
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
                created under the specified folder. Changing this forces the
                project to be migrated to the newly specified folder.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the project.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The display name of the project.
         :param pulumi.Input[str] number: The numeric identifier of the project.
         :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
@@ -605,6 +657,7 @@ class Project(pulumi.CustomResource):
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
         """
@@ -614,12 +667,14 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["auto_create_network"] = auto_create_network
         __props__.__dict__["billing_account"] = billing_account
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["number"] = number
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["skip_delete"] = skip_delete
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -646,6 +701,15 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "billing_account")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -662,6 +726,8 @@ class Project(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to the project.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -701,6 +767,14 @@ class Project(pulumi.CustomResource):
         The project ID. Changing this forces a new project to be created.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="skipDelete")

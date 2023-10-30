@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricBucketOptionsExponentialBuckets {
@@ -16,39 +14,39 @@ public final class MetricBucketOptionsExponentialBuckets {
      * @return Must be greater than 1.
      * 
      */
-    private @Nullable Double growthFactor;
+    private Double growthFactor;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private @Nullable Integer numFiniteBuckets;
+    private Integer numFiniteBuckets;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private @Nullable Double scale;
+    private Double scale;
 
     private MetricBucketOptionsExponentialBuckets() {}
     /**
      * @return Must be greater than 1.
      * 
      */
-    public Optional<Double> growthFactor() {
-        return Optional.ofNullable(this.growthFactor);
+    public Double growthFactor() {
+        return this.growthFactor;
     }
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Integer> numFiniteBuckets() {
-        return Optional.ofNullable(this.numFiniteBuckets);
+    public Integer numFiniteBuckets() {
+        return this.numFiniteBuckets;
     }
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Double> scale() {
-        return Optional.ofNullable(this.scale);
+    public Double scale() {
+        return this.scale;
     }
 
     public static Builder builder() {
@@ -60,9 +58,9 @@ public final class MetricBucketOptionsExponentialBuckets {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Double growthFactor;
-        private @Nullable Integer numFiniteBuckets;
-        private @Nullable Double scale;
+        private Double growthFactor;
+        private Integer numFiniteBuckets;
+        private Double scale;
         public Builder() {}
         public Builder(MetricBucketOptionsExponentialBuckets defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,18 +70,18 @@ public final class MetricBucketOptionsExponentialBuckets {
         }
 
         @CustomType.Setter
-        public Builder growthFactor(@Nullable Double growthFactor) {
-            this.growthFactor = growthFactor;
+        public Builder growthFactor(Double growthFactor) {
+            this.growthFactor = Objects.requireNonNull(growthFactor);
             return this;
         }
         @CustomType.Setter
-        public Builder numFiniteBuckets(@Nullable Integer numFiniteBuckets) {
-            this.numFiniteBuckets = numFiniteBuckets;
+        public Builder numFiniteBuckets(Integer numFiniteBuckets) {
+            this.numFiniteBuckets = Objects.requireNonNull(numFiniteBuckets);
             return this;
         }
         @CustomType.Setter
-        public Builder scale(@Nullable Double scale) {
-            this.scale = scale;
+        public Builder scale(Double scale) {
+            this.scale = Objects.requireNonNull(scale);
             return this;
         }
         public MetricBucketOptionsExponentialBuckets build() {

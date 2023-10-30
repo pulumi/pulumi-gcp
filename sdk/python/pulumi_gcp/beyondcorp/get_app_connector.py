@@ -22,10 +22,13 @@ class GetAppConnectorResult:
     """
     A collection of values returned by getAppConnector.
     """
-    def __init__(__self__, display_name=None, id=None, labels=None, name=None, principal_infos=None, project=None, region=None, state=None):
+    def __init__(__self__, display_name=None, effective_labels=None, id=None, labels=None, name=None, principal_infos=None, project=None, pulumi_labels=None, region=None, state=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -41,6 +44,9 @@ class GetAppConnectorResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -52,6 +58,11 @@ class GetAppConnectorResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -82,6 +93,11 @@ class GetAppConnectorResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -99,11 +115,13 @@ class AwaitableGetAppConnectorResult(GetAppConnectorResult):
             yield self
         return GetAppConnectorResult(
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             id=self.id,
             labels=self.labels,
             name=self.name,
             principal_infos=self.principal_infos,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             state=self.state)
 
@@ -142,11 +160,13 @@ def get_app_connector(name: Optional[str] = None,
 
     return AwaitableGetAppConnectorResult(
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         principal_infos=pulumi.get(__ret__, 'principal_infos'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'))
 

@@ -13,6 +13,7 @@ public final class GetDatabaseInstancesInstanceClone {
     private String allocatedIpRange;
     private List<String> databaseNames;
     private String pointInTime;
+    private String preferredZone;
     private String sourceInstanceName;
 
     private GetDatabaseInstancesInstanceClone() {}
@@ -24,6 +25,9 @@ public final class GetDatabaseInstancesInstanceClone {
     }
     public String pointInTime() {
         return this.pointInTime;
+    }
+    public String preferredZone() {
+        return this.preferredZone;
     }
     public String sourceInstanceName() {
         return this.sourceInstanceName;
@@ -41,6 +45,7 @@ public final class GetDatabaseInstancesInstanceClone {
         private String allocatedIpRange;
         private List<String> databaseNames;
         private String pointInTime;
+        private String preferredZone;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceClone defaults) {
@@ -48,6 +53,7 @@ public final class GetDatabaseInstancesInstanceClone {
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
+    	      this.preferredZone = defaults.preferredZone;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
@@ -70,6 +76,11 @@ public final class GetDatabaseInstancesInstanceClone {
             return this;
         }
         @CustomType.Setter
+        public Builder preferredZone(String preferredZone) {
+            this.preferredZone = Objects.requireNonNull(preferredZone);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
             return this;
@@ -79,6 +90,7 @@ public final class GetDatabaseInstancesInstanceClone {
             o.allocatedIpRange = allocatedIpRange;
             o.databaseNames = databaseNames;
             o.pointInTime = pointInTime;
+            o.preferredZone = preferredZone;
             o.sourceInstanceName = sourceInstanceName;
             return o;
         }

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+//
 // Get information about a VM instance template resource within GCE. For more information see
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
@@ -24,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,7 +92,8 @@ type LookupInstanceTemplateResult struct {
 	// Disks to attach to instances created from this template.
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
-	Disks []GetInstanceTemplateDisk `pulumi:"disks"`
+	Disks           []GetInstanceTemplateDisk `pulumi:"disks"`
+	EffectiveLabels map[string]string         `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay bool    `pulumi:"enableDisplay"`
@@ -133,7 +136,8 @@ type LookupInstanceTemplateResult struct {
 	NetworkPerformanceConfigs []GetInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -250,6 +254,10 @@ func (o LookupInstanceTemplateResultOutput) Disks() GetInstanceTemplateDiskArray
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateDisk { return v.Disks }).(GetInstanceTemplateDiskArrayOutput)
 }
 
+func (o LookupInstanceTemplateResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (o LookupInstanceTemplateResultOutput) EnableDisplay() pulumi.BoolOutput {
@@ -344,6 +352,10 @@ func (o LookupInstanceTemplateResultOutput) NetworkPerformanceConfigs() GetInsta
 // is not provided, the provider project is used.
 func (o LookupInstanceTemplateResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // An instance template is a global resource that is not

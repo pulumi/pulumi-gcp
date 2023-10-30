@@ -14,6 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKMSCryptoKeyResult {
     private String destroyScheduledDuration;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -23,6 +24,7 @@ public final class GetKMSCryptoKeyResult {
     private String keyRing;
     private Map<String,String> labels;
     private String name;
+    private Map<String,String> pulumiLabels;
     /**
      * @return Defines the cryptographic capabilities of the key.
      * 
@@ -42,6 +44,9 @@ public final class GetKMSCryptoKeyResult {
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -60,6 +65,9 @@ public final class GetKMSCryptoKeyResult {
     }
     public String name() {
         return this.name;
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * @return Defines the cryptographic capabilities of the key.
@@ -94,11 +102,13 @@ public final class GetKMSCryptoKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String destroyScheduledDuration;
+        private Map<String,String> effectiveLabels;
         private String id;
         private Boolean importOnly;
         private String keyRing;
         private Map<String,String> labels;
         private String name;
+        private Map<String,String> pulumiLabels;
         private String purpose;
         private String rotationPeriod;
         private Boolean skipInitialVersionCreation;
@@ -107,11 +117,13 @@ public final class GetKMSCryptoKeyResult {
         public Builder(GetKMSCryptoKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.importOnly = defaults.importOnly;
     	      this.keyRing = defaults.keyRing;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.purpose = defaults.purpose;
     	      this.rotationPeriod = defaults.rotationPeriod;
     	      this.skipInitialVersionCreation = defaults.skipInitialVersionCreation;
@@ -121,6 +133,11 @@ public final class GetKMSCryptoKeyResult {
         @CustomType.Setter
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
             this.destroyScheduledDuration = Objects.requireNonNull(destroyScheduledDuration);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -149,6 +166,11 @@ public final class GetKMSCryptoKeyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder purpose(String purpose) {
             this.purpose = Objects.requireNonNull(purpose);
             return this;
@@ -174,11 +196,13 @@ public final class GetKMSCryptoKeyResult {
         public GetKMSCryptoKeyResult build() {
             final var o = new GetKMSCryptoKeyResult();
             o.destroyScheduledDuration = destroyScheduledDuration;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.importOnly = importOnly;
             o.keyRing = keyRing;
             o.labels = labels;
             o.name = name;
+            o.pulumiLabels = pulumiLabels;
             o.purpose = purpose;
             o.rotationPeriod = rotationPeriod;
             o.skipInitialVersionCreation = skipInitialVersionCreation;

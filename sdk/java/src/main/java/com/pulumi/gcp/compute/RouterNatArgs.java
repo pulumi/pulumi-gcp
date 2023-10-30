@@ -64,16 +64,16 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
     @Import(name="enableEndpointIndependentMapping")
     private @Nullable Output<Boolean> enableEndpointIndependentMapping;
 
     /**
-     * @return Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * @return Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
     public Optional<Output<Boolean>> enableEndpointIndependentMapping() {
@@ -168,8 +168,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
-    @Import(name="natIpAllocateOption", required=true)
-    private Output<String> natIpAllocateOption;
+    @Import(name="natIpAllocateOption")
+    private @Nullable Output<String> natIpAllocateOption;
 
     /**
      * @return How external IPs should be allocated for this NAT. Valid values are
@@ -178,8 +178,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
-    public Output<String> natIpAllocateOption() {
-        return this.natIpAllocateOption;
+    public Optional<Output<String>> natIpAllocateOption() {
+        return Optional.ofNullable(this.natIpAllocateOption);
     }
 
     /**
@@ -373,6 +373,25 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      * 
      */
@@ -409,6 +428,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         this.tcpEstablishedIdleTimeoutSec = $.tcpEstablishedIdleTimeoutSec;
         this.tcpTimeWaitTimeoutSec = $.tcpTimeWaitTimeoutSec;
         this.tcpTransitoryIdleTimeoutSec = $.tcpTransitoryIdleTimeoutSec;
+        this.type = $.type;
         this.udpIdleTimeoutSec = $.udpIdleTimeoutSec;
     }
 
@@ -496,8 +516,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEndpointIndependentMapping Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-         * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
+         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
          * 
          * @return builder
          * 
@@ -508,8 +528,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEndpointIndependentMapping Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-         * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
+         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
          * 
          * @return builder
          * 
@@ -638,7 +658,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder natIpAllocateOption(Output<String> natIpAllocateOption) {
+        public Builder natIpAllocateOption(@Nullable Output<String> natIpAllocateOption) {
             $.natIpAllocateOption = natIpAllocateOption;
             return this;
         }
@@ -941,6 +961,31 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
          * @param udpIdleTimeoutSec Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
          * 
          * @return builder
@@ -962,7 +1007,6 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterNatArgs build() {
-            $.natIpAllocateOption = Objects.requireNonNull($.natIpAllocateOption, "expected parameter 'natIpAllocateOption' to be non-null");
             $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
             $.sourceSubnetworkIpRangesToNat = Objects.requireNonNull($.sourceSubnetworkIpRangesToNat, "expected parameter 'sourceSubnetworkIpRangesToNat' to be non-null");
             return $;

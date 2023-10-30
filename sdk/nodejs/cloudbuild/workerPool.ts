@@ -112,7 +112,8 @@ export class WorkerPool extends pulumi.CustomResource {
 
     /**
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -127,6 +128,11 @@ export class WorkerPool extends pulumi.CustomResource {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * The location for the resource
      */
@@ -180,6 +186,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
@@ -202,6 +209,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -217,7 +225,8 @@ export class WorkerPool extends pulumi.CustomResource {
 export interface WorkerPoolState {
     /**
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -232,6 +241,11 @@ export interface WorkerPoolState {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * The location for the resource
      */
@@ -275,7 +289,8 @@ export interface WorkerPoolState {
 export interface WorkerPoolArgs {
     /**
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

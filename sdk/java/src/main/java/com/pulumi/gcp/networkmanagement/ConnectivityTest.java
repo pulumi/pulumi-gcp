@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  *                 .instance(destination.id())
  *                 .build())
  *             .protocol(&#34;TCP&#34;)
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .build());
  * 
  *     }
@@ -256,7 +257,26 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
         return this.destination;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -264,6 +284,9 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -312,6 +335,22 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> protocol() {
         return Codegen.optional(this.protocol);
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Other projects that may be relevant for reachability analysis.

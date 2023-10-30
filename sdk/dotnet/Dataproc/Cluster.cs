@@ -175,6 +175,14 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.ClusterClusterConfig> ClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The list of labels (key/value pairs) to be applied to
+        /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+        /// which is the name of the cluster.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
         /// terraform apply
         /// </summary>
@@ -182,12 +190,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The list of labels (key/value pairs) to be applied to
-        /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        /// which is the name of the cluster.
+        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        /// to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the cluster, unique within the project and
@@ -204,6 +212,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The region in which the cluster and associated nodes will be created in.
@@ -283,9 +297,9 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The list of labels (key/value pairs) to be applied to
-        /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        /// which is the name of the cluster.
+        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        /// to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -338,6 +352,20 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigGetArgs>? ClusterConfig { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// The list of labels (key/value pairs) to be applied to
+        /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+        /// which is the name of the cluster.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
         /// terraform apply
@@ -349,9 +377,9 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The list of labels (key/value pairs) to be applied to
-        /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-        /// which is the name of the cluster.
+        /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+        /// to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -374,6 +402,18 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
 
         /// <summary>
         /// The region in which the cluster and associated nodes will be created in.

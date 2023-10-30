@@ -254,9 +254,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_MODELER: standalone modeling service
      *   Default value is `LOOKER_CORE_TRIAL`.
-     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      * 
      */
     @Import(name="platformEdition")
@@ -269,9 +268,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_MODELER: standalone modeling service
      *   Default value is `LOOKER_CORE_TRIAL`.
-     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      * 
      */
     public Optional<Output<String>> platformEdition() {
@@ -757,9 +755,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
          * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
          * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-         * - LOOKER_MODELER: standalone modeling service
          *   Default value is `LOOKER_CORE_TRIAL`.
-         *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+         *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
          * 
          * @return builder
          * 
@@ -776,9 +773,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
          * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
          * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-         * - LOOKER_MODELER: standalone modeling service
          *   Default value is `LOOKER_CORE_TRIAL`.
-         *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+         *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
          * 
          * @return builder
          * 

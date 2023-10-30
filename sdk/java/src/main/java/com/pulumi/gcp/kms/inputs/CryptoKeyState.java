@@ -36,6 +36,23 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Whether this key may contain imported versions only.
      * 
      */
@@ -74,12 +91,18 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels with user-defined metadata to apply to this resource.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels with user-defined metadata to apply to this resource.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -99,6 +122,23 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
     }
 
     /**
@@ -181,10 +221,12 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
     private CryptoKeyState(CryptoKeyState $) {
         this.destroyScheduledDuration = $.destroyScheduledDuration;
+        this.effectiveLabels = $.effectiveLabels;
         this.importOnly = $.importOnly;
         this.keyRing = $.keyRing;
         this.labels = $.labels;
         this.name = $.name;
+        this.pulumiLabels = $.pulumiLabels;
         this.purpose = $.purpose;
         this.rotationPeriod = $.rotationPeriod;
         this.skipInitialVersionCreation = $.skipInitialVersionCreation;
@@ -230,6 +272,29 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
             return destroyScheduledDuration(Output.of(destroyScheduledDuration));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -283,6 +348,9 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels with user-defined metadata to apply to this resource.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -293,6 +361,9 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels with user-defined metadata to apply to this resource.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -320,6 +391,29 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

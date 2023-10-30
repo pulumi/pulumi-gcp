@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,7 +60,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,7 +91,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -137,10 +137,16 @@ type AddressGroup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// List of items.
 	Items pulumi.StringArrayOutput `pulumi:"items"`
 	// Set of label tags associated with the AddressGroup resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
@@ -151,6 +157,9 @@ type AddressGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -207,10 +216,16 @@ type addressGroupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// List of items.
 	Items []string `pulumi:"items"`
 	// Set of label tags associated with the AddressGroup resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
@@ -221,6 +236,9 @@ type addressGroupState struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent *string `pulumi:"parent"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type *string `pulumi:"type"`
@@ -239,10 +257,16 @@ type AddressGroupState struct {
 	CreateTime pulumi.StringPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// List of items.
 	Items pulumi.StringArrayInput
 	// Set of label tags associated with the AddressGroup resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway security policy.
 	// The default value is `global`.
@@ -253,6 +277,9 @@ type AddressGroupState struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringPtrInput
@@ -275,6 +302,9 @@ type addressGroupArgs struct {
 	Items []string `pulumi:"items"`
 	// Set of label tags associated with the AddressGroup resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
@@ -300,6 +330,9 @@ type AddressGroupArgs struct {
 	Items pulumi.StringArrayInput
 	// Set of label tags associated with the AddressGroup resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway security policy.
 	// The default value is `global`.
@@ -443,6 +476,12 @@ func (o AddressGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AddressGroupOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // List of items.
 func (o AddressGroupOutput) Items() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
@@ -450,6 +489,9 @@ func (o AddressGroupOutput) Items() pulumi.StringArrayOutput {
 
 // Set of label tags associated with the AddressGroup resource.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AddressGroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -470,6 +512,12 @@ func (o AddressGroupOutput) Name() pulumi.StringOutput {
 // The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 func (o AddressGroupOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AddressGroupOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The type of the Address Group. Possible values are "IPV4" or "IPV6".

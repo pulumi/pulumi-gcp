@@ -75,6 +75,7 @@ export interface GetSnapshotResult {
     readonly creationTimestamp: string;
     readonly description: string;
     readonly diskSizeGb: number;
+    readonly effectiveLabels: {[key: string]: string};
     readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -86,6 +87,7 @@ export interface GetSnapshotResult {
     readonly mostRecent?: boolean;
     readonly name?: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly selfLink: string;
     readonly snapshotEncryptionKeys: outputs.compute.GetSnapshotSnapshotEncryptionKey[];
     readonly snapshotId: number;

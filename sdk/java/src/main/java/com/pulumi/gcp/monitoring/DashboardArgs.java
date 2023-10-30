@@ -16,20 +16,16 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     public static final DashboardArgs Empty = new DashboardArgs();
 
     /**
-     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-     * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-     * 
-     * ***
+     * The JSON representation of a dashboard, following the format at
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     @Import(name="dashboardJson", required=true)
     private Output<String> dashboardJson;
 
     /**
-     * @return The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-     * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-     * 
-     * ***
+     * @return The JSON representation of a dashboard, following the format at
+     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     public Output<String> dashboardJson() {
@@ -79,10 +75,8 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-         * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-         * 
-         * ***
+         * @param dashboardJson The JSON representation of a dashboard, following the format at
+         * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * 
          * @return builder
          * 
@@ -93,10 +87,8 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-         * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-         * 
-         * ***
+         * @param dashboardJson The JSON representation of a dashboard, following the format at
+         * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * 
          * @return builder
          * 

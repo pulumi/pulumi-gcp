@@ -114,7 +114,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The algorithm to use for autoscaling
      */
-    public readonly autoscalingAlgorithm!: pulumi.Output<string | undefined>;
+    public readonly autoscalingAlgorithm!: pulumi.Output<string>;
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
@@ -122,6 +122,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * - - -
      */
     public readonly containerSpecGcsPath!: pulumi.Output<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Indicates if the job should use the streaming engine feature.
      */
@@ -138,7 +143,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * The name for the Cloud KMS key for the job. Key format is:
      * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    public readonly kmsKeyName!: pulumi.Output<string>;
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -152,16 +157,16 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The machine type to use for launching the job. The default is n1-standard-1.
      */
-    public readonly launcherMachineType!: pulumi.Output<string | undefined>;
+    public readonly launcherMachineType!: pulumi.Output<string>;
     /**
      * The machine type to use for the job.
      */
-    public readonly machineType!: pulumi.Output<string | undefined>;
+    public readonly machineType!: pulumi.Output<string>;
     /**
      * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
      * 1000.
      */
-    public readonly maxWorkers!: pulumi.Output<number | undefined>;
+    public readonly maxWorkers!: pulumi.Output<number>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
@@ -169,11 +174,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * The initial number of Google Compute Engine instances for the job.
      */
-    public readonly numWorkers!: pulumi.Output<number | undefined>;
+    public readonly numWorkers!: pulumi.Output<number>;
     /**
      * One of "drain" or "cancel". Specifies behavior of
      * deletion during `pulumi destroy`.  See above note.
@@ -191,6 +196,10 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region in which the created job should run.
      */
     public readonly region!: pulumi.Output<string>;
@@ -198,7 +207,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
      * the SDK. Note this field is only valid for portable pipelines.
      */
-    public readonly sdkContainerImage!: pulumi.Output<string | undefined>;
+    public readonly sdkContainerImage!: pulumi.Output<string>;
     /**
      * The Service Account email used to create the job.
      */
@@ -220,7 +229,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    public readonly subnetwork!: pulumi.Output<string>;
     /**
      * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
      */
@@ -251,6 +260,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
             resourceInputs["autoscalingAlgorithm"] = state ? state.autoscalingAlgorithm : undefined;
             resourceInputs["containerSpecGcsPath"] = state ? state.containerSpecGcsPath : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
             resourceInputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
             resourceInputs["jobId"] = state ? state.jobId : undefined;
@@ -265,6 +275,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["onDelete"] = state ? state.onDelete : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["sdkContainerImage"] = state ? state.sdkContainerImage : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
@@ -304,7 +315,9 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tempLocation"] = args ? args.tempLocation : undefined;
             resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -332,6 +345,11 @@ export interface FlexTemplateJobState {
      * - - -
      */
     containerSpecGcsPath?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Indicates if the job should use the streaming engine feature.
      */
@@ -400,6 +418,10 @@ export interface FlexTemplateJobState {
      * provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which the created job should run.
      */

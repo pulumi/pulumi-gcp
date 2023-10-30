@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *         clusterIpv4CidrBlock: "/19",
  *         servicesIpv4CidrBlock: "/22",
  *     },
+ *     deletionProtection: true,
  * });
  * const myPort = new gcp.compute.InstanceGroupNamedPort("myPort", {
  *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?.[0]),

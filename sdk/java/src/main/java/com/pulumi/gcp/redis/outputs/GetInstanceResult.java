@@ -29,6 +29,7 @@ public final class GetInstanceResult {
     private String currentLocationId;
     private String customerManagedKey;
     private String displayName;
+    private Map<String,String> effectiveLabels;
     private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -46,6 +47,7 @@ public final class GetInstanceResult {
     private String persistenceIamIdentity;
     private Integer port;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String readEndpoint;
     private Integer readEndpointPort;
     private String readReplicasMode;
@@ -86,6 +88,9 @@ public final class GetInstanceResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String host() {
         return this.host;
@@ -129,6 +134,9 @@ public final class GetInstanceResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public String readEndpoint() {
         return this.readEndpoint;
@@ -185,6 +193,7 @@ public final class GetInstanceResult {
         private String currentLocationId;
         private String customerManagedKey;
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String host;
         private String id;
         private Map<String,String> labels;
@@ -198,6 +207,7 @@ public final class GetInstanceResult {
         private String persistenceIamIdentity;
         private Integer port;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String readEndpoint;
         private Integer readEndpointPort;
         private String readReplicasMode;
@@ -222,6 +232,7 @@ public final class GetInstanceResult {
     	      this.currentLocationId = defaults.currentLocationId;
     	      this.customerManagedKey = defaults.customerManagedKey;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -235,6 +246,7 @@ public final class GetInstanceResult {
     	      this.persistenceIamIdentity = defaults.persistenceIamIdentity;
     	      this.port = defaults.port;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.readEndpoint = defaults.readEndpoint;
     	      this.readEndpointPort = defaults.readEndpointPort;
     	      this.readReplicasMode = defaults.readReplicasMode;
@@ -292,6 +304,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -372,6 +389,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder readEndpoint(String readEndpoint) {
             this.readEndpoint = Objects.requireNonNull(readEndpoint);
             return this;
@@ -445,6 +467,7 @@ public final class GetInstanceResult {
             o.currentLocationId = currentLocationId;
             o.customerManagedKey = customerManagedKey;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.host = host;
             o.id = id;
             o.labels = labels;
@@ -458,6 +481,7 @@ public final class GetInstanceResult {
             o.persistenceIamIdentity = persistenceIamIdentity;
             o.port = port;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.readEndpoint = readEndpoint;
             o.readEndpointPort = readEndpointPort;
             o.readReplicasMode = readReplicasMode;

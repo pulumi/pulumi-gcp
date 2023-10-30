@@ -15,11 +15,6 @@ export type AttachedDisk = import("./attachedDisk").AttachedDisk;
 export const AttachedDisk: typeof import("./attachedDisk").AttachedDisk = null as any;
 utilities.lazyLoad(exports, ["AttachedDisk"], () => require("./attachedDisk"));
 
-export { AutoscalarArgs, AutoscalarState } from "./autoscalar";
-export type Autoscalar = import("./autoscalar").Autoscalar;
-export const Autoscalar: typeof import("./autoscalar").Autoscalar = null as any;
-utilities.lazyLoad(exports, ["Autoscalar"], () => require("./autoscalar"));
-
 export { AutoscalerArgs, AutoscalerState } from "./autoscaler";
 export type Autoscaler = import("./autoscaler").Autoscaler;
 export const Autoscaler: typeof import("./autoscaler").Autoscaler = null as any;
@@ -949,8 +944,6 @@ const _module = {
                 return new Address(name, <any>undefined, { urn })
             case "gcp:compute/attachedDisk:AttachedDisk":
                 return new AttachedDisk(name, <any>undefined, { urn })
-            case "gcp:compute/autoscalar:Autoscalar":
-                return new Autoscalar(name, <any>undefined, { urn })
             case "gcp:compute/autoscaler:Autoscaler":
                 return new Autoscaler(name, <any>undefined, { urn })
             case "gcp:compute/backendBucket:BackendBucket":
@@ -1228,7 +1221,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "compute/address", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/attachedDisk", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/autoscalar", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/autoscaler", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketIamBinding", _module)

@@ -5,10 +5,8 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerEnv;
-import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerResources;
-import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -40,20 +38,6 @@ public final class JobTemplateTemplateContainer {
      */
     private String image;
     /**
-     * @return (Optional, Deprecated)
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    private @Nullable JobTemplateTemplateContainerLivenessProbe livenessProbe;
-    /**
      * @return Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -71,20 +55,6 @@ public final class JobTemplateTemplateContainer {
      * 
      */
     private @Nullable JobTemplateTemplateContainerResources resources;
-    /**
-     * @return (Optional, Deprecated)
-     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
@@ -128,22 +98,6 @@ public final class JobTemplateTemplateContainer {
         return this.image;
     }
     /**
-     * @return (Optional, Deprecated)
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    public Optional<JobTemplateTemplateContainerLivenessProbe> livenessProbe() {
-        return Optional.ofNullable(this.livenessProbe);
-    }
-    /**
      * @return Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -166,22 +120,6 @@ public final class JobTemplateTemplateContainer {
      */
     public Optional<JobTemplateTemplateContainerResources> resources() {
         return Optional.ofNullable(this.resources);
-    }
-    /**
-     * @return (Optional, Deprecated)
-     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-     * This field is not supported in Cloud Run Job currently.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     * @deprecated
-     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-     * 
-     */
-    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
-    public Optional<JobTemplateTemplateContainerStartupProbe> startupProbe() {
-        return Optional.ofNullable(this.startupProbe);
     }
     /**
      * @return Volume to mount into the container&#39;s filesystem.
@@ -212,11 +150,9 @@ public final class JobTemplateTemplateContainer {
         private @Nullable List<String> commands;
         private @Nullable List<JobTemplateTemplateContainerEnv> envs;
         private String image;
-        private @Nullable JobTemplateTemplateContainerLivenessProbe livenessProbe;
         private @Nullable String name;
         private @Nullable List<JobTemplateTemplateContainerPort> ports;
         private @Nullable JobTemplateTemplateContainerResources resources;
-        private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
         private @Nullable List<JobTemplateTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -226,11 +162,9 @@ public final class JobTemplateTemplateContainer {
     	      this.commands = defaults.commands;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
-    	      this.livenessProbe = defaults.livenessProbe;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
-    	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -265,11 +199,6 @@ public final class JobTemplateTemplateContainer {
             return this;
         }
         @CustomType.Setter
-        public Builder livenessProbe(@Nullable JobTemplateTemplateContainerLivenessProbe livenessProbe) {
-            this.livenessProbe = livenessProbe;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
@@ -285,11 +214,6 @@ public final class JobTemplateTemplateContainer {
         @CustomType.Setter
         public Builder resources(@Nullable JobTemplateTemplateContainerResources resources) {
             this.resources = resources;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder startupProbe(@Nullable JobTemplateTemplateContainerStartupProbe startupProbe) {
-            this.startupProbe = startupProbe;
             return this;
         }
         @CustomType.Setter
@@ -311,11 +235,9 @@ public final class JobTemplateTemplateContainer {
             o.commands = commands;
             o.envs = envs;
             o.image = image;
-            o.livenessProbe = livenessProbe;
             o.name = name;
             o.ports = ports;
             o.resources = resources;
-            o.startupProbe = startupProbe;
             o.volumeMounts = volumeMounts;
             o.workingDir = workingDir;
             return o;

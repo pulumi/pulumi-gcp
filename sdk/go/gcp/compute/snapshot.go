@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -43,7 +43,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,7 +91,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -171,10 +171,15 @@ type Snapshot struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this Snapshot.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A list of public visible licenses that apply to this snapshot. This
 	// can be because the original image had licenses attached (such as a
@@ -192,6 +197,9 @@ type Snapshot struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -273,10 +281,15 @@ type snapshotState struct {
 	Description *string `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this Snapshot.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A list of public visible licenses that apply to this snapshot. This
 	// can be because the original image had licenses attached (such as a
@@ -294,6 +307,9 @@ type snapshotState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -343,10 +359,15 @@ type SnapshotState struct {
 	Description pulumi.StringPtrInput
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this Snapshot.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A list of public visible licenses that apply to this snapshot. This
 	// can be because the original image had licenses attached (such as a
@@ -364,6 +385,9 @@ type SnapshotState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -414,6 +438,8 @@ type snapshotArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this Snapshot.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -465,6 +491,8 @@ type SnapshotArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this Snapshot.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -640,6 +668,12 @@ func (o SnapshotOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The fingerprint used for optimistic locking of this resource. Used
 // internally during updates.
 func (o SnapshotOutput) LabelFingerprint() pulumi.StringOutput {
@@ -647,6 +681,8 @@ func (o SnapshotOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this Snapshot.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -674,6 +710,12 @@ func (o SnapshotOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o SnapshotOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SnapshotOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The URI of the created resource.

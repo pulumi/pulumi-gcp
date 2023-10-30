@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerMatchingCriteriaArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,23 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
@@ -113,12 +131,18 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -186,6 +210,21 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      * 
      */
@@ -204,15 +243,15 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    @Import(name="transports")
-    private @Nullable Output<List<TriggerTransportArgs>> transports;
+    @Import(name="transport")
+    private @Nullable Output<TriggerTransportArgs> transport;
 
     /**
      * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    public Optional<Output<List<TriggerTransportArgs>>> transports() {
-        return Optional.ofNullable(this.transports);
+    public Optional<Output<TriggerTransportArgs>> transport() {
+        return Optional.ofNullable(this.transport);
     }
 
     /**
@@ -252,6 +291,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.conditions = $.conditions;
         this.createTime = $.createTime;
         this.destination = $.destination;
+        this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.eventDataContentType = $.eventDataContentType;
         this.labels = $.labels;
@@ -259,8 +299,9 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.matchingCriterias = $.matchingCriterias;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.serviceAccount = $.serviceAccount;
-        this.transports = $.transports;
+        this.transport = $.transport;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -368,6 +409,29 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -412,6 +476,9 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -422,6 +489,9 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -525,6 +595,27 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param serviceAccount Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
          * 
          * @return builder
@@ -546,34 +637,24 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
          */
-        public Builder transports(@Nullable Output<List<TriggerTransportArgs>> transports) {
-            $.transports = transports;
+        public Builder transport(@Nullable Output<TriggerTransportArgs> transport) {
+            $.transport = transport;
             return this;
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
          */
-        public Builder transports(List<TriggerTransportArgs> transports) {
-            return transports(Output.of(transports));
-        }
-
-        /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder transports(TriggerTransportArgs... transports) {
-            return transports(List.of(transports));
+        public Builder transport(TriggerTransportArgs transport) {
+            return transport(Output.of(transport));
         }
 
         /**

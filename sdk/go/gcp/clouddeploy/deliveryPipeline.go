@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,17 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
 //						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
@@ -64,6 +56,14 @@ import (
 //							TargetId: pulumi.String("example-target-two"),
 //						},
 //					},
+//				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -89,17 +89,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
 //						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
@@ -122,6 +114,14 @@ import (
 //							TargetId: pulumi.String("example-target-two"),
 //						},
 //					},
+//				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -139,7 +139,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -147,17 +147,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
 //						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
@@ -181,6 +173,14 @@ import (
 //						},
 //					},
 //				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -197,7 +197,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -255,7 +255,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/clouddeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -263,17 +263,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Location: pulumi.String("us-west1"),
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
 //						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
@@ -296,6 +288,14 @@ import (
 //							TargetId: pulumi.String("example-target-two"),
 //						},
 //					},
+//				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -332,6 +332,9 @@ type DeliveryPipeline struct {
 	pulumi.CustomResourceState
 
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions DeliveryPipelineConditionArrayOutput `pulumi:"conditions"`
@@ -339,9 +342,18 @@ type DeliveryPipeline struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -349,6 +361,8 @@ type DeliveryPipeline struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrOutput `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -393,6 +407,9 @@ func GetDeliveryPipeline(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DeliveryPipeline resources.
 type deliveryPipelineState struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions []DeliveryPipelineCondition `pulumi:"conditions"`
@@ -400,9 +417,18 @@ type deliveryPipelineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -410,6 +436,8 @@ type deliveryPipelineState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *DeliveryPipelineSerialPipeline `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -422,6 +450,9 @@ type deliveryPipelineState struct {
 
 type DeliveryPipelineState struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Information around the state of the Delivery Pipeline.
 	Conditions DeliveryPipelineConditionArrayInput
@@ -429,9 +460,18 @@ type DeliveryPipelineState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -439,6 +479,8 @@ type DeliveryPipelineState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrInput
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -455,10 +497,16 @@ func (DeliveryPipelineState) ElementType() reflect.Type {
 
 type deliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -475,10 +523,16 @@ type deliveryPipelineArgs struct {
 // The set of arguments for constructing a DeliveryPipeline resource.
 type DeliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -604,6 +658,9 @@ func (o DeliveryPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*De
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o DeliveryPipelineOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -623,12 +680,27 @@ func (o DeliveryPipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o DeliveryPipelineOutput) EffectiveAnnotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DeliveryPipelineOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o DeliveryPipelineOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -646,6 +718,11 @@ func (o DeliveryPipelineOutput) Name() pulumi.StringOutput {
 // The project for the resource
 func (o DeliveryPipelineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o DeliveryPipelineOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.

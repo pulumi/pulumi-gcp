@@ -25,9 +25,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Name;
         public readonly string? Network;
+        public readonly string? NetworkAttachment;
         public readonly string? NetworkIp;
         public readonly string? NicType;
         public readonly int? QueueCount;
+        public readonly string? SecurityPolicy;
         public readonly string? StackType;
         public readonly string? Subnetwork;
         public readonly string? SubnetworkProject;
@@ -50,11 +52,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? network,
 
+            string? networkAttachment,
+
             string? networkIp,
 
             string? nicType,
 
             int? queueCount,
+
+            string? securityPolicy,
 
             string? stackType,
 
@@ -70,9 +76,11 @@ namespace Pulumi.Gcp.Compute.Outputs
             Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
             QueueCount = queueCount;
+            SecurityPolicy = securityPolicy;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;

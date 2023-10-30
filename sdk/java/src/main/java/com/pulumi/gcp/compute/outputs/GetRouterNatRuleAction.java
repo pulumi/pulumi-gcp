@@ -11,14 +11,22 @@ import java.util.Objects;
 @CustomType
 public final class GetRouterNatRuleAction {
     private List<String> sourceNatActiveIps;
+    private List<String> sourceNatActiveRanges;
     private List<String> sourceNatDrainIps;
+    private List<String> sourceNatDrainRanges;
 
     private GetRouterNatRuleAction() {}
     public List<String> sourceNatActiveIps() {
         return this.sourceNatActiveIps;
     }
+    public List<String> sourceNatActiveRanges() {
+        return this.sourceNatActiveRanges;
+    }
     public List<String> sourceNatDrainIps() {
         return this.sourceNatDrainIps;
+    }
+    public List<String> sourceNatDrainRanges() {
+        return this.sourceNatDrainRanges;
     }
 
     public static Builder builder() {
@@ -31,12 +39,16 @@ public final class GetRouterNatRuleAction {
     @CustomType.Builder
     public static final class Builder {
         private List<String> sourceNatActiveIps;
+        private List<String> sourceNatActiveRanges;
         private List<String> sourceNatDrainIps;
+        private List<String> sourceNatDrainRanges;
         public Builder() {}
         public Builder(GetRouterNatRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sourceNatActiveIps = defaults.sourceNatActiveIps;
+    	      this.sourceNatActiveRanges = defaults.sourceNatActiveRanges;
     	      this.sourceNatDrainIps = defaults.sourceNatDrainIps;
+    	      this.sourceNatDrainRanges = defaults.sourceNatDrainRanges;
         }
 
         @CustomType.Setter
@@ -48,6 +60,14 @@ public final class GetRouterNatRuleAction {
             return sourceNatActiveIps(List.of(sourceNatActiveIps));
         }
         @CustomType.Setter
+        public Builder sourceNatActiveRanges(List<String> sourceNatActiveRanges) {
+            this.sourceNatActiveRanges = Objects.requireNonNull(sourceNatActiveRanges);
+            return this;
+        }
+        public Builder sourceNatActiveRanges(String... sourceNatActiveRanges) {
+            return sourceNatActiveRanges(List.of(sourceNatActiveRanges));
+        }
+        @CustomType.Setter
         public Builder sourceNatDrainIps(List<String> sourceNatDrainIps) {
             this.sourceNatDrainIps = Objects.requireNonNull(sourceNatDrainIps);
             return this;
@@ -55,10 +75,20 @@ public final class GetRouterNatRuleAction {
         public Builder sourceNatDrainIps(String... sourceNatDrainIps) {
             return sourceNatDrainIps(List.of(sourceNatDrainIps));
         }
+        @CustomType.Setter
+        public Builder sourceNatDrainRanges(List<String> sourceNatDrainRanges) {
+            this.sourceNatDrainRanges = Objects.requireNonNull(sourceNatDrainRanges);
+            return this;
+        }
+        public Builder sourceNatDrainRanges(String... sourceNatDrainRanges) {
+            return sourceNatDrainRanges(List.of(sourceNatDrainRanges));
+        }
         public GetRouterNatRuleAction build() {
             final var o = new GetRouterNatRuleAction();
             o.sourceNatActiveIps = sourceNatActiveIps;
+            o.sourceNatActiveRanges = sourceNatActiveRanges;
             o.sourceNatDrainIps = sourceNatDrainIps;
+            o.sourceNatDrainRanges = sourceNatDrainRanges;
             return o;
         }
     }

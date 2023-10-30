@@ -179,6 +179,11 @@ export class GrpcRoute extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      */
     public readonly gateways!: pulumi.Output<string[] | undefined>;
@@ -188,6 +193,8 @@ export class GrpcRoute extends pulumi.CustomResource {
     public readonly hostnames!: pulumi.Output<string[]>;
     /**
      * Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -203,6 +210,11 @@ export class GrpcRoute extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
@@ -232,12 +244,14 @@ export class GrpcRoute extends pulumi.CustomResource {
             const state = argsOrState as GrpcRouteState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gateways"] = state ? state.gateways : undefined;
             resourceInputs["hostnames"] = state ? state.hostnames : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["meshes"] = state ? state.meshes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -258,6 +272,8 @@ export class GrpcRoute extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -279,6 +295,11 @@ export interface GrpcRouteState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
@@ -288,6 +309,8 @@ export interface GrpcRouteState {
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -303,6 +326,11 @@ export interface GrpcRouteState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
@@ -336,6 +364,8 @@ export interface GrpcRouteArgs {
     hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

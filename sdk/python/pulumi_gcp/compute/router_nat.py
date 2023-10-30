@@ -16,7 +16,6 @@ __all__ = ['RouterNatArgs', 'RouterNat']
 @pulumi.input_type
 class RouterNatArgs:
     def __init__(__self__, *,
-                 nat_ip_allocate_option: pulumi.Input[str],
                  router: pulumi.Input[str],
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[str],
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27,6 +26,7 @@ class RouterNatArgs:
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
                  nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -35,13 +35,10 @@ class RouterNatArgs:
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RouterNat resource.
-        :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
-               `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
-               Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
                
                
@@ -65,8 +62,8 @@ class RouterNatArgs:
                If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
-        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
+               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -75,6 +72,10 @@ class RouterNatArgs:
         :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
         :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
+        :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
+               `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+               Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -91,9 +92,11 @@ class RouterNatArgs:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+               Possible values: ["PUBLIC", "PRIVATE"]
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
-        pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
         pulumi.set(__self__, "router", router)
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if drain_nat_ips is not None:
@@ -112,6 +115,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "min_ports_per_vm", min_ports_per_vm)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nat_ip_allocate_option is not None:
+            pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
         if nat_ips is not None:
             pulumi.set(__self__, "nat_ips", nat_ips)
         if project is not None:
@@ -128,23 +133,10 @@ class RouterNatArgs:
             pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if udp_idle_timeout_sec is not None:
             pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
-
-    @property
-    @pulumi.getter(name="natIpAllocateOption")
-    def nat_ip_allocate_option(self) -> pulumi.Input[str]:
-        """
-        How external IPs should be allocated for this NAT. Valid values are
-        `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
-        Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-        Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
-        """
-        return pulumi.get(self, "nat_ip_allocate_option")
-
-    @nat_ip_allocate_option.setter
-    def nat_ip_allocate_option(self, value: pulumi.Input[str]):
-        pulumi.set(self, "nat_ip_allocate_option", value)
 
     @property
     @pulumi.getter
@@ -217,8 +209,8 @@ class RouterNatArgs:
     @pulumi.getter(name="enableEndpointIndependentMapping")
     def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        Enable endpoint independent mapping.
+        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
@@ -288,6 +280,21 @@ class RouterNatArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="natIpAllocateOption")
+    def nat_ip_allocate_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        How external IPs should be allocated for this NAT. Valid values are
+        `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+        Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+        Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
+        """
+        return pulumi.get(self, "nat_ip_allocate_option")
+
+    @nat_ip_allocate_option.setter
+    def nat_ip_allocate_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nat_ip_allocate_option", value)
 
     @property
     @pulumi.getter(name="natIps")
@@ -394,6 +401,20 @@ class RouterNatArgs:
         pulumi.set(self, "tcp_transitory_idle_timeout_sec", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        Possible values: ["PUBLIC", "PRIVATE"]
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="udpIdleTimeoutSec")
     def udp_idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -428,6 +449,7 @@ class _RouterNatState:
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering RouterNat resources.
@@ -439,8 +461,8 @@ class _RouterNatState:
                If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
-        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
+               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -484,6 +506,9 @@ class _RouterNatState:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+               Possible values: ["PUBLIC", "PRIVATE"]
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         if drain_nat_ips is not None:
@@ -524,6 +549,8 @@ class _RouterNatState:
             pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if udp_idle_timeout_sec is not None:
             pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
 
@@ -561,8 +588,8 @@ class _RouterNatState:
     @pulumi.getter(name="enableEndpointIndependentMapping")
     def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        Enable endpoint independent mapping.
+        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
@@ -790,6 +817,20 @@ class _RouterNatState:
         pulumi.set(self, "tcp_transitory_idle_timeout_sec", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        Possible values: ["PUBLIC", "PRIVATE"]
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="udpIdleTimeoutSec")
     def udp_idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -826,6 +867,7 @@ class RouterNat(pulumi.CustomResource):
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -933,6 +975,59 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
+        ### Router Nat Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", opts=pulumi.ResourceOptions(provider=google_beta))
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_NAT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hub = gcp.networkconnectivity.Hub("hub", description="vpc hub for inter vpc nat",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        spoke = gcp.networkconnectivity.Spoke("spoke",
+            location="global",
+            description="vpc spoke for inter vpc nat",
+            hub=hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=net.self_link,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nat_type = gcp.compute.RouterNat("natType",
+            router=router.name,
+            region=router.region,
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            enable_dynamic_port_allocation=False,
+            enable_endpoint_independent_mapping=False,
+            min_ports_per_vm=32,
+            type="PRIVATE",
+            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
+                name=subnet.id,
+                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
+            )],
+            rules=[gcp.compute.RouterNatRuleArgs(
+                rule_number=100,
+                description="rule for private nat",
+                match="nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
+                action=gcp.compute.RouterNatRuleActionArgs(
+                    source_nat_active_ranges=[subnet.self_link],
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -964,8 +1059,8 @@ class RouterNat(pulumi.CustomResource):
                If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
-        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
+               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -1009,6 +1104,9 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+               Possible values: ["PUBLIC", "PRIVATE"]
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         ...
@@ -1122,6 +1220,59 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
+        ### Router Nat Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", opts=pulumi.ResourceOptions(provider=google_beta))
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_NAT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hub = gcp.networkconnectivity.Hub("hub", description="vpc hub for inter vpc nat",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        spoke = gcp.networkconnectivity.Spoke("spoke",
+            location="global",
+            description="vpc spoke for inter vpc nat",
+            hub=hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=net.self_link,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nat_type = gcp.compute.RouterNat("natType",
+            router=router.name,
+            region=router.region,
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            enable_dynamic_port_allocation=False,
+            enable_endpoint_independent_mapping=False,
+            min_ports_per_vm=32,
+            type="PRIVATE",
+            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
+                name=subnet.id,
+                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
+            )],
+            rules=[gcp.compute.RouterNatRuleArgs(
+                rule_number=100,
+                description="rule for private nat",
+                match="nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
+                action=gcp.compute.RouterNatRuleActionArgs(
+                    source_nat_active_ranges=[subnet.self_link],
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1177,6 +1328,7 @@ class RouterNat(pulumi.CustomResource):
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1195,8 +1347,6 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
             __props__.__dict__["min_ports_per_vm"] = min_ports_per_vm
             __props__.__dict__["name"] = name
-            if nat_ip_allocate_option is None and not opts.urn:
-                raise TypeError("Missing required property 'nat_ip_allocate_option'")
             __props__.__dict__["nat_ip_allocate_option"] = nat_ip_allocate_option
             __props__.__dict__["nat_ips"] = nat_ips
             __props__.__dict__["project"] = project
@@ -1212,6 +1362,7 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
             __props__.__dict__["tcp_time_wait_timeout_sec"] = tcp_time_wait_timeout_sec
             __props__.__dict__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
+            __props__.__dict__["type"] = type
             __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         super(RouterNat, __self__).__init__(
             'gcp:compute/routerNat:RouterNat',
@@ -1242,6 +1393,7 @@ class RouterNat(pulumi.CustomResource):
             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
             tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None) -> 'RouterNat':
         """
         Get an existing RouterNat resource's state with the given name, id, and optional extra
@@ -1258,8 +1410,8 @@ class RouterNat(pulumi.CustomResource):
                If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
-        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
+               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -1303,6 +1455,9 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+               Possible values: ["PUBLIC", "PRIVATE"]
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1328,6 +1483,7 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
         __props__.__dict__["tcp_time_wait_timeout_sec"] = tcp_time_wait_timeout_sec
         __props__.__dict__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
+        __props__.__dict__["type"] = type
         __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
 
@@ -1355,10 +1511,10 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableEndpointIndependentMapping")
-    def enable_endpoint_independent_mapping(self) -> pulumi.Output[Optional[bool]]:
+    def enable_endpoint_independent_mapping(self) -> pulumi.Output[bool]:
         """
-        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        Enable endpoint independent mapping.
+        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
@@ -1407,7 +1563,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natIpAllocateOption")
-    def nat_ip_allocate_option(self) -> pulumi.Output[str]:
+    def nat_ip_allocate_option(self) -> pulumi.Output[Optional[str]]:
         """
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -1516,6 +1672,16 @@ class RouterNat(pulumi.CustomResource):
         Defaults to 30s if not set.
         """
         return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        Possible values: ["PUBLIC", "PRIVATE"]
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="udpIdleTimeoutSec")
