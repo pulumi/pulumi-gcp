@@ -33,4 +33,5 @@ skipGoReleaserHooks: true
 javaGenVersion: v0.9.7
 runner:
   publish: pulumi-ubuntu-8core
+  prerequisites: pulumi-ubuntu-8core
   buildSdk: pulumi-ubuntu-8core
