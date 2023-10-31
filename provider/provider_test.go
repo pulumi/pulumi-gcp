@@ -31,8 +31,6 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 
 // This funcion inlines bits of ProviderTest.Run to avoid running E2E tests and instead focuses on
 // upgrade tests. Currently E2E tests are not able to run in this provider.
-//
-// TODO[pulumi/ci-mgmt#675] expose credentials so this just becomes pt.Run(t).
 func runTest(t *testing.T, pt *providertest.ProviderTest) {
 	t.Run("upgrade-snapshot", func(t *testing.T) {
 		t.Helper()
