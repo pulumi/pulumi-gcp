@@ -26,14 +26,14 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
+//			defaultAccount, err := serviceaccount.NewAccount(ctx, "defaultAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("service_account_id"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})

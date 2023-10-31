@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = gcp.serviceAccount.getIamPolicy({
+ * const foo = gcp.serviceaccount.getIamPolicy({
  *     serviceAccountId: google_service_account.test_account.name,
  * });
  * ```
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
 export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:serviceAccount/getIamPolicy:getIamPolicy", {
+    return pulumi.runtime.invoke("gcp:serviceaccount/getIamPolicy:getIamPolicy", {
         "serviceAccountId": args.serviceAccountId,
     }, opts);
 }
@@ -63,7 +63,7 @@ export interface GetIamPolicyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = gcp.serviceAccount.getIamPolicy({
+ * const foo = gcp.serviceaccount.getIamPolicy({
  *     serviceAccountId: google_service_account.test_account.name,
  * });
  * ```

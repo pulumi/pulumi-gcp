@@ -6025,42 +6025,42 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/account",
+  "mod": "serviceaccount/account",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/account:Account": "Account"
+   "gcp:serviceaccount/account:Account": "Account"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMBinding",
+  "mod": "serviceaccount/iAMBinding",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMBinding:IAMBinding": "IAMBinding"
+   "gcp:serviceaccount/iAMBinding:IAMBinding": "IAMBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMMember",
+  "mod": "serviceaccount/iAMMember",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMMember:IAMMember": "IAMMember"
+   "gcp:serviceaccount/iAMMember:IAMMember": "IAMMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMPolicy",
+  "mod": "serviceaccount/iAMPolicy",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMPolicy:IAMPolicy": "IAMPolicy"
+   "gcp:serviceaccount/iAMPolicy:IAMPolicy": "IAMPolicy"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/key",
+  "mod": "serviceaccount/key",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/key:Key": "Key"
+   "gcp:serviceaccount/key:Key": "Key"
   }
  },
  {

@@ -314,7 +314,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="service-account-id",
             display_name="Service Account")
         ```
@@ -324,7 +324,7 @@ class Account(pulumi.CustomResource):
         Service accounts can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+         $ pulumi import gcp:serviceaccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -369,7 +369,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="service-account-id",
             display_name="Service Account")
         ```
@@ -379,7 +379,7 @@ class Account(pulumi.CustomResource):
         Service accounts can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+         $ pulumi import gcp:serviceaccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -422,8 +422,10 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["member"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["unique_id"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:serviceAccount/account:Account")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Account, __self__).__init__(
-            'gcp:serviceAccount/account:Account',
+            'gcp:serviceaccount/account:Account',
             resource_name,
             __props__,
             opts)

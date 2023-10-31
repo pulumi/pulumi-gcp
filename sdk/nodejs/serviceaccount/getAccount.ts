@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const objectViewer = gcp.serviceAccount.getAccount({
+ * const objectViewer = gcp.serviceaccount.getAccount({
  *     accountId: "object-viewer",
  * });
  * ```
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
+    return pulumi.runtime.invoke("gcp:serviceaccount/getAccount:getAccount", {
         "accountId": args.accountId,
         "project": args.project,
     }, opts);
@@ -94,7 +94,7 @@ export interface GetAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const objectViewer = gcp.serviceAccount.getAccount({
+ * const objectViewer = gcp.serviceaccount.getAccount({
  *     accountId: "object-viewer",
  * });
  * ```

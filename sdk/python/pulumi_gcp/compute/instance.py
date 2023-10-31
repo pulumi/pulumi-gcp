@@ -1412,7 +1412,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_account = gcp.service_account.Account("defaultAccount",
+        default_account = gcp.serviceaccount.Account("defaultAccount",
             account_id="service_account_id",
             display_name="Service Account")
         default_instance = gcp.compute.Instance("defaultInstance",
@@ -1574,7 +1574,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_account = gcp.service_account.Account("defaultAccount",
+        default_account = gcp.serviceaccount.Account("defaultAccount",
             account_id="service_account_id",
             display_name="Service Account")
         default_instance = gcp.compute.Instance("defaultInstance",

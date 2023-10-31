@@ -37,7 +37,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrun"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("cloud-run-pubsub-invoker"),
 //				DisplayName: pulumi.String("Cloud Run Pub/Sub Invoker"),
 //			})

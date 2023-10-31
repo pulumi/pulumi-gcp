@@ -13,10 +13,10 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### ServiceAccount JSON Credential File.
- *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+ *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
  * ### Service Account Impersonation.
- *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+ *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
  *   Note: to use the following, you must grant `targetServiceAccount` the
  *   `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as http from "@pulumi/http";
  *
- * const oidc = gcp.serviceAccount.getAccountIdToken({
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
  *     targetAudience: "https://your.cloud.run.app/",
  * });
  * const cloudrun = oidc.then(oidc => http.getHttp({
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
 export function getAccountIdToken(args: GetAccountIdTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIdTokenResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", {
+    return pulumi.runtime.invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", {
         "delegates": args.delegates,
         "includeEmail": args.includeEmail,
         "targetAudience": args.targetAudience,
@@ -100,10 +100,10 @@ export interface GetAccountIdTokenResult {
  * ## Example Usage
  *
  * ### ServiceAccount JSON Credential File.
- *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+ *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
  * ### Service Account Impersonation.
- *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+ *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
  *   Note: to use the following, you must grant `targetServiceAccount` the
  *   `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -116,7 +116,7 @@ export interface GetAccountIdTokenResult {
  * import * as gcp from "@pulumi/gcp";
  * import * as http from "@pulumi/http";
  *
- * const oidc = gcp.serviceAccount.getAccountIdToken({
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
  *     targetAudience: "https://your.cloud.run.app/",
  * });
  * const cloudrun = oidc.then(oidc => http.getHttp({

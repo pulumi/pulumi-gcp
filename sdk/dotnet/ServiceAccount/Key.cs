@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// This resource does not support import.
     /// </summary>
-    [GcpResourceType("gcp:serviceAccount/key:Key")]
+    [GcpResourceType("gcp:serviceaccount/key:Key")]
     public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -162,12 +162,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Key(string name, KeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/key:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp:serviceaccount/key:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Key(string name, Input<string> id, KeyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/key:Key", name, state, MakeResourceOptions(options, id))
+            : base("gcp:serviceaccount/key:Key", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -176,6 +176,10 @@ namespace Pulumi.Gcp.ServiceAccount
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/key:Key"},
+                },
                 AdditionalSecretOutputs =
                 {
                     "privateKey",

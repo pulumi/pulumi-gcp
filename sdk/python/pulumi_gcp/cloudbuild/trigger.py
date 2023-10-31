@@ -1063,7 +1063,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
+        cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuildServiceAccount", account_id="cloud-sa")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1498,7 +1498,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
+        cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuildServiceAccount", account_id="cloud-sa")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",

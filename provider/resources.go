@@ -13,14 +13,13 @@ import (
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -256,19 +255,10 @@ var namespaceMap = map[string]string{
 	"gcp": "Gcp",
 }
 
-// There is a bug that 'serviceAccount' is used instead of 'serviceaccount' in Node.js.
-// We should eventually fix it and get rid of this map.
-var specialNamesMap = map[string]string{
-	"ServiceAccount": "serviceAccount",
-}
-
 // gcpMember manufactures a type token for the GCP package and the given module and type.  It automatically uses the GCP
 // package and names the file by simply lower casing the resource's first character.
 func gcpMember(moduleTitle string, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
-	if value, exist := specialNamesMap[moduleTitle]; exist {
-		moduleName = value
-	}
 	namespaceMap[moduleName] = moduleTitle
 	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
 	token := moduleName + "/" + fn
@@ -3883,16 +3873,14 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	err := x.ComputeDefaults(&prov, x.TokensMappedModules("google_", "",
+	prov.MustComputeTokens(tks.MappedModules("google_", "",
 		moduleMapping, func(module, name string) (string, error) {
 			return string(gcpResource(module, name)), nil
 		}))
-	contract.AssertNoErrorf(err, "Failed to map all tokens")
 
 	prov.SetAutonaming(255, "-")
 
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "Failed to apply automatic aliases")
+	prov.MustApplyAutoAliases()
 
 	fixLabelNames(&prov)
 

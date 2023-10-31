@@ -23,7 +23,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dataformSa, err := serviceAccount.NewAccount(ctx, "dataformSa", &serviceAccount.AccountArgs{
+//			dataformSa, err := serviceaccount.NewAccount(ctx, "dataformSa", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("dataform-workflow-sa"),
 //				DisplayName: pulumi.String("Dataform Service Account"),
 //			}, pulumi.Provider(google_beta))

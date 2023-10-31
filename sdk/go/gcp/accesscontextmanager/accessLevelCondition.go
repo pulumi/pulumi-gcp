@@ -45,7 +45,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/accesscontextmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,7 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewAccount(ctx, "created-later", &serviceAccount.AccountArgs{
+//			_, err = serviceaccount.NewAccount(ctx, "created-later", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-account-id"),
 //			})
 //			if err != nil {

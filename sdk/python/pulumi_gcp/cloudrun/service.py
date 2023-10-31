@@ -399,7 +399,7 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )])
-        sa = gcp.service_account.Account("sa",
+        sa = gcp.serviceaccount.Account("sa",
             account_id="cloud-run-pubsub-invoker",
             display_name="Cloud Run Pub/Sub Invoker")
         binding = gcp.cloudrun.IamBinding("binding",
@@ -683,7 +683,7 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )])
-        sa = gcp.service_account.Account("sa",
+        sa = gcp.serviceaccount.Account("sa",
             account_id="cloud-run-pubsub-invoker",
             display_name="Cloud Run Pub/Sub Invoker")
         binding = gcp.cloudrun.IamBinding("binding",

@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * Service accounts can be imported using their URI, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+ *  $ pulumi import gcp:serviceaccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
  * ```
  */
 export class Account extends pulumi.CustomResource {
@@ -54,7 +54,7 @@ export class Account extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:serviceAccount/account:Account';
+    public static readonly __pulumiType = 'gcp:serviceaccount/account:Account';
 
     /**
      * Returns true if the given object is an instance of Account.  This is designed to work even
@@ -151,6 +151,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/account:Account" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }

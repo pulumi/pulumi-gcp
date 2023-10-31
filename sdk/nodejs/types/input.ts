@@ -51551,7 +51551,7 @@ export namespace securitycenter {
     }
 }
 
-export namespace serviceAccount {
+export namespace serviceaccount {
     export interface IAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

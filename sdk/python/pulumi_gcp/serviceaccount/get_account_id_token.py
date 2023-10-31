@@ -106,10 +106,10 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     ## Example Usage
 
     ### ServiceAccount JSON Credential File.
-      `service_account_get_account_id_token` will use the configured provider credentials
+      `serviceaccount_get_account_id_token` will use the configured provider credentials
 
     ### Service Account Impersonation.
-      `service_account_get_account_access_token` will use background impersonated credentials provided by `service_account_get_account_access_token`.
+      `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -122,7 +122,7 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     import pulumi_gcp as gcp
     import pulumi_http as http
 
-    oidc = gcp.serviceAccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
+    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
     cloudrun = http.get_http(url="https://your.cloud.run.app/",
         request_headers={
             "Authorization": f"Bearer {oidc.id_token}",
@@ -142,7 +142,7 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     __args__['targetAudience'] = target_audience
     __args__['targetServiceAccount'] = target_service_account
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts, typ=GetAccountIdTokenResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts, typ=GetAccountIdTokenResult).value
 
     return AwaitableGetAccountIdTokenResult(
         delegates=pulumi.get(__ret__, 'delegates'),
@@ -168,10 +168,10 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ## Example Usage
 
     ### ServiceAccount JSON Credential File.
-      `service_account_get_account_id_token` will use the configured provider credentials
+      `serviceaccount_get_account_id_token` will use the configured provider credentials
 
     ### Service Account Impersonation.
-      `service_account_get_account_access_token` will use background impersonated credentials provided by `service_account_get_account_access_token`.
+      `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -184,7 +184,7 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     import pulumi_gcp as gcp
     import pulumi_http as http
 
-    oidc = gcp.serviceAccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
+    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
     cloudrun = http.get_http(url="https://your.cloud.run.app/",
         request_headers={
             "Authorization": f"Bearer {oidc.id_token}",

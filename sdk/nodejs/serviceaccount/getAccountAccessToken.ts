@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * export = async () => {
  *     const defaultClientConfig = await gcp.organizations.getClientConfig({});
- *     const defaultAccountAccessToken = await gcp.serviceAccount.getAccountAccessToken({
+ *     const defaultAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [
  *             "userinfo-email",
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
 export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAccessTokenResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", {
+    return pulumi.runtime.invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", {
         "delegates": args.delegates,
         "lifetime": args.lifetime,
         "scopes": args.scopes,
@@ -138,7 +138,7 @@ export interface GetAccountAccessTokenResult {
  *
  * export = async () => {
  *     const defaultClientConfig = await gcp.organizations.getClientConfig({});
- *     const defaultAccountAccessToken = await gcp.serviceAccount.getAccountAccessToken({
+ *     const defaultAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [
  *             "userinfo-email",

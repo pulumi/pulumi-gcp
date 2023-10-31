@@ -354,10 +354,10 @@ class Key(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        myaccount = gcp.service_account.Account("myaccount",
+        myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
-        mykey = gcp.service_account.Key("mykey",
+        mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
         ```
@@ -368,12 +368,12 @@ class Key(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumiverse_time as time
 
-        myaccount = gcp.service_account.Account("myaccount",
+        myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
         mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
-        mykey = gcp.service_account.Key("mykey",
+        mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             keepers={
                 "rotation_time": mykey_rotation.rotation_rfc3339,
@@ -415,10 +415,10 @@ class Key(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        myaccount = gcp.service_account.Account("myaccount",
+        myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
-        mykey = gcp.service_account.Key("mykey",
+        mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
         ```
@@ -429,12 +429,12 @@ class Key(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumiverse_time as time
 
-        myaccount = gcp.service_account.Account("myaccount",
+        myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
         mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
-        mykey = gcp.service_account.Key("mykey",
+        mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             keepers={
                 "rotation_time": mykey_rotation.rotation_rfc3339,
@@ -488,10 +488,12 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["public_key"] = None
             __props__.__dict__["valid_after"] = None
             __props__.__dict__["valid_before"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:serviceAccount/key:Key")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Key, __self__).__init__(
-            'gcp:serviceAccount/key:Key',
+            'gcp:serviceaccount/key:Key',
             resource_name,
             __props__,
             opts)

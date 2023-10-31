@@ -137,7 +137,7 @@ def get_account(account_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    object_viewer = gcp.serviceAccount.get_account(account_id="object-viewer")
+    object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
 
 
@@ -157,7 +157,7 @@ def get_account(account_id: Optional[str] = None,
     __args__['accountId'] = account_id
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
         account_id=pulumi.get(__ret__, 'account_id'),
@@ -184,7 +184,7 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    object_viewer = gcp.serviceAccount.get_account(account_id="object-viewer")
+    object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
 
 

@@ -21,26 +21,26 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("dev-foo-account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			mykeyKey, err := serviceAccount.NewKey(ctx, "mykeyKey", &serviceAccount.KeyArgs{
+//			mykeyKey, err := serviceaccount.NewKey(ctx, "mykeyKey", &serviceaccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_ = serviceAccount.GetAccountKeyOutput(ctx, serviceaccount.GetAccountKeyOutputArgs{
+//			_ = serviceaccount.GetAccountKeyOutput(ctx, serviceaccount.GetAccountKeyOutputArgs{
 //				Name:          mykeyKey.Name,
 //				PublicKeyType: pulumi.String("TYPE_X509_PEM_FILE"),
 //			}, nil)
@@ -52,7 +52,7 @@ import (
 func GetAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountKeyResult
-	err := ctx.Invoke("gcp:serviceAccount/getAccountKey:getAccountKey", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getAccountKey:getAccountKey", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -246,7 +246,7 @@ class HmacKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a new service account
-        service_account = gcp.service_account.Account("serviceAccount", account_id="my-svc-acc")
+        service_account = gcp.serviceaccount.Account("serviceAccount", account_id="my-svc-acc")
         #Create the HMAC key for the associated service account
         key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
         ```
@@ -310,7 +310,7 @@ class HmacKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a new service account
-        service_account = gcp.service_account.Account("serviceAccount", account_id="my-svc-acc")
+        service_account = gcp.serviceaccount.Account("serviceAccount", account_id="my-svc-acc")
         #Create the HMAC key for the associated service account
         key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
         ```
