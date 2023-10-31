@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-06T16:40:01.788375-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:01:40.887647892Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:EavXc0EcX90=:v1:k6rw5CGMhnlxPrhx:0Wi2XOdhANs8JaqZrou3WggyiXpqAQ=="
+                "salt": "v1:TyeYzT47m7s=:v1:j7x0OVfbw9fHd8VS:NBLsfYMjn0JwZSGzbBh21pkMXJ+Bxw=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-storage-bu-ab24f2b9",
+                "urn": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::pulumi:pulumi:Stack::test-p-it-runner-storage-bu-777c28be",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-06T20:39:58.254291Z",
-                "modified": "2023-10-06T20:39:58.254291Z"
+                "created": "2023-11-01T16:01:36.176409225Z",
+                "modified": "2023-11-01T16:01:36.176409225Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "dd173485-f229-4111-9ed4-ee41be002ad5",
+                "id": "50477eee-9a99-43b6-a03a-08a2bef2d351",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-storage-bu-ab24f2b9",
+                "parent": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::pulumi:pulumi:Stack::test-p-it-runner-storage-bu-777c28be",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-06T20:39:58.964413Z",
-                "modified": "2023-10-06T20:39:58.964413Z"
+                "created": "2023-11-01T16:01:38.176328832Z",
+                "modified": "2023-11-01T16:01:38.176328832Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::gcp:storage/bucket:Bucket::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::gcp:storage/bucket:Bucket::tested-resource",
                 "custom": true,
-                "id": "tested-resource-48523e9",
+                "id": "tested-resource-aedaea4",
                 "type": "gcp:storage/bucket:Bucket",
                 "inputs": {
                     "__defaults": [
@@ -71,7 +75,7 @@
                     ],
                     "forceDestroy": true,
                     "location": "EU",
-                    "name": "tested-resource-48523e9",
+                    "name": "tested-resource-aedaea4",
                     "storageClass": "STANDARD",
                     "uniformBucketLevelAccess": true,
                     "website": {
@@ -105,28 +109,28 @@
                     "defaultEventBasedHold": false,
                     "encryption": null,
                     "forceDestroy": true,
-                    "id": "tested-resource-48523e9",
+                    "id": "tested-resource-aedaea4",
                     "labels": {},
                     "lifecycleRules": [],
                     "location": "EU",
                     "logging": null,
-                    "name": "tested-resource-48523e9",
-                    "project": "pulumi-development",
+                    "name": "tested-resource-aedaea4",
+                    "project": "pulumi-ci-gcp-provider",
                     "publicAccessPrevention": "inherited",
                     "requesterPays": false,
                     "retentionPolicy": null,
-                    "selfLink": "https://www.googleapis.com/storage/v1/b/tested-resource-48523e9",
+                    "selfLink": "https://www.googleapis.com/storage/v1/b/tested-resource-aedaea4",
                     "storageClass": "STANDARD",
                     "uniformBucketLevelAccess": true,
-                    "url": "gs://tested-resource-48523e9",
+                    "url": "gs://tested-resource-aedaea4",
                     "versioning": null,
                     "website": {
                         "mainPageSuffix": "index.html",
                         "notFoundPage": "404.html"
                     }
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::pulumi:pulumi:Stack::test-p-it-antons-mac-storage-bu-ab24f2b9",
-                "provider": "urn:pulumi:p-it-antons-mac-storage-bu-ab24f2b9::test::pulumi:providers:gcp::provider::dd173485-f229-4111-9ed4-ee41be002ad5",
+                "parent": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::pulumi:pulumi:Stack::test-p-it-runner-storage-bu-777c28be",
+                "provider": "urn:pulumi:p-it-runner-storage-bu-777c28be::test::pulumi:providers:gcp::provider::50477eee-9a99-43b6-a03a-08a2bef2d351",
                 "propertyDependencies": {
                     "cors": null,
                     "forceDestroy": null,
@@ -134,8 +138,8 @@
                     "uniformBucketLevelAccess": null,
                     "website": null
                 },
-                "created": "2023-10-06T20:40:01.788313Z",
-                "modified": "2023-10-06T20:40:01.788313Z"
+                "created": "2023-11-01T16:01:40.887487062Z",
+                "modified": "2023-11-01T16:01:40.887487062Z"
             }
         ]
     }
