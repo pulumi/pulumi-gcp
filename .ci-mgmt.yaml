@@ -14,6 +14,7 @@ env:
   GOOGLE_REGION: "us-central1"
   GOOGLE_ZONE: "us-central1-a"
   PULUMI_MISSING_DOCS_ERROR: true
+  VERSION_PREFIX: 7.0.0
 upstream-provider-repo: terraform-provider-google-beta
 makeTemplate: bridged
 plugins:
