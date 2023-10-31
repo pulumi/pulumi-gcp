@@ -185,7 +185,7 @@ jobs:
         aws s3 cp "${{ env.COVERAGE_OUTPUT_DIR }}/summary.json" "${s3FullURI}" --acl bucket-owner-full-control
   prerequisites:
     name: prerequisites
-    runs-on: ubuntu-latest
+    runs-on: pulumi-ubuntu-8core
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3

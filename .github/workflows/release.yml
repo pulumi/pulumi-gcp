@@ -145,7 +145,7 @@ jobs:
         "${GITHUB_REF#refs/tags/}"
   prerequisites:
     name: prerequisites
-    runs-on: ubuntu-latest
+    runs-on: pulumi-ubuntu-8core
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3
