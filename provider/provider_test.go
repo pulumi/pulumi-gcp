@@ -12,7 +12,7 @@ import (
 
 	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/flags"
-	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
@@ -126,6 +126,9 @@ func runTest(t *testing.T, pt *providertest.ProviderTest) {
 	for _, m := range providertest.UpgradeTestModes() {
 		t.Run(fmt.Sprintf("upgrade-%s", m), func(t *testing.T) {
 			t.Helper()
+			if m == providertest.UpgradeTestMode_Quick {
+				t.Skip("TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure")
+			}
 			pt.VerifyUpgrade(t, m)
 		})
 	}
