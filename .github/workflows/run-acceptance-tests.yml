@@ -271,6 +271,9 @@ jobs:
   record:
     name: record
     runs-on: pulumi-ubuntu-8core
+    permissions:
+      contents: read
+      id-token: write
     steps:
     - if: contains(github.ref, 'snapshot') || contains(github.head_ref, 'snapshot')
       name: Check
