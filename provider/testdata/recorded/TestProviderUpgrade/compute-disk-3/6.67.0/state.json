@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-09T18:08:29.196026-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:22:01.768469891Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:jkNTzzhOAlU=:v1:SuJeVMnoggNCZHx+:5iTOSCEpT5XWoMGpPYarcnVEI4sRPA=="
+                "salt": "v1:78gGqMqSzKY=:v1:tuYPweyG2Yxiw00s:NvVvGGQKR3874Lm6SQHpERAjVaDtYw=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-7882f82b",
+                "urn": "urn:pulumi:p-it-runner-compute-di-53642591::test::pulumi:pulumi:Stack::test-p-it-runner-compute-di-53642591",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-09T22:08:16.818739Z",
-                "modified": "2023-10-09T22:08:16.818739Z"
+                "created": "2023-11-01T16:21:48.44540032Z",
+                "modified": "2023-11-01T16:21:48.44540032Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-compute-di-53642591::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "62d45fa2-4412-4ea0-a133-e168da8c498b",
+                "id": "ab0b9143-e56f-4bf1-945c-81475f0da56e",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-7882f82b",
+                "parent": "urn:pulumi:p-it-runner-compute-di-53642591::test::pulumi:pulumi:Stack::test-p-it-runner-compute-di-53642591",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-09T22:08:17.822442Z",
-                "modified": "2023-10-09T22:08:17.822442Z"
+                "created": "2023-11-01T16:21:50.430454834Z",
+                "modified": "2023-11-01T16:21:50.430454834Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::gcp:compute/disk:Disk::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-compute-di-53642591::test::gcp:compute/disk:Disk::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/zones/us-central1-a/disks/tested-resource-d428bbf",
+                "id": "projects/pulumi-ci-gcp-provider/zones/us-central1-a/disks/tested-resource-c885c9f",
                 "type": "gcp:compute/disk:Disk",
                 "inputs": {
                     "__defaults": [
@@ -70,7 +74,7 @@
                     "licenses": [
                         "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"
                     ],
-                    "name": "tested-resource-d428bbf",
+                    "name": "tested-resource-c885c9f",
                     "physicalBlockSizeBytes": 4096,
                     "type": "pd-ssd",
                     "zone": "us-central1-a"
@@ -78,7 +82,7 @@
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
                     "asyncPrimaryDisk": null,
-                    "creationTimestamp": "2023-10-09T15:08:18.530-07:00",
+                    "creationTimestamp": "2023-11-01T09:21:51.134-07:00",
                     "description": "",
                     "diskEncryptionKey": null,
                     "enableConfidentialCompute": false,
@@ -93,7 +97,7 @@
                             "type": "WINDOWS"
                         }
                     ],
-                    "id": "projects/pulumi-development/zones/us-central1-a/disks/tested-resource-d428bbf",
+                    "id": "projects/pulumi-ci-gcp-provider/zones/us-central1-a/disks/tested-resource-c885c9f",
                     "image": "",
                     "labelFingerprint": "a6HI36FuYIQ=",
                     "labels": {
@@ -105,13 +109,13 @@
                         "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"
                     ],
                     "multiWriter": false,
-                    "name": "tested-resource-d428bbf",
+                    "name": "tested-resource-c885c9f",
                     "physicalBlockSizeBytes": 4096,
-                    "project": "pulumi-development",
+                    "project": "pulumi-ci-gcp-provider",
                     "provisionedIops": 0,
                     "provisionedThroughput": 0,
                     "resourcePolicies": [],
-                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-a/disks/tested-resource-d428bbf",
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/zones/us-central1-a/disks/tested-resource-c885c9f",
                     "size": 100,
                     "snapshot": "",
                     "sourceDisk": "",
@@ -124,8 +128,8 @@
                     "users": [],
                     "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-di-7882f82b",
-                "provider": "urn:pulumi:p-it-antons-mac-compute-di-7882f82b::test::pulumi:providers:gcp::provider::62d45fa2-4412-4ea0-a133-e168da8c498b",
+                "parent": "urn:pulumi:p-it-runner-compute-di-53642591::test::pulumi:pulumi:Stack::test-p-it-runner-compute-di-53642591",
+                "provider": "urn:pulumi:p-it-runner-compute-di-53642591::test::pulumi:providers:gcp::provider::ab0b9143-e56f-4bf1-945c-81475f0da56e",
                 "propertyDependencies": {
                     "guestOsFeatures": null,
                     "labels": null,
@@ -134,8 +138,8 @@
                     "type": null,
                     "zone": null
                 },
-                "created": "2023-10-09T22:08:29.195965Z",
-                "modified": "2023-10-09T22:08:29.195965Z"
+                "created": "2023-11-01T16:22:01.76820163Z",
+                "modified": "2023-11-01T16:22:01.76820163Z"
             }
         ]
     }

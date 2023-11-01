@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-06T16:53:15.677309-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:01:10.432356375Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:f2iP5xEFJp4=:v1:pRbfZxjx1SUwPA/d:95UX9nVUJu+cr0mcAZYPZ2R+CUhLIA=="
+                "salt": "v1:76lGEvDDDgQ=:v1:CySBxRxDkjTE4lSf:PFlc10rLMYuWxqhi8SQMjylwiDCzYw=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::pulumi:pulumi:Stack::test-p-it-antons-mac-pubsub-top-02d0ce55",
+                "urn": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::pulumi:pulumi:Stack::test-p-it-runner-pubsub-top-84b5e8db",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-06T20:53:10.098219Z",
-                "modified": "2023-10-06T20:53:10.098219Z"
+                "created": "2023-11-01T16:01:03.175293522Z",
+                "modified": "2023-11-01T16:01:03.175293522Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "4e40e399-1297-49c1-a355-d3c971f1435e",
+                "id": "cc3a1945-8478-421c-a97d-c5c03953c451",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::pulumi:pulumi:Stack::test-p-it-antons-mac-pubsub-top-02d0ce55",
+                "parent": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::pulumi:pulumi:Stack::test-p-it-runner-pubsub-top-84b5e8db",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-06T20:53:10.784806Z",
-                "modified": "2023-10-06T20:53:10.784806Z"
+                "created": "2023-11-01T16:01:05.11847231Z",
+                "modified": "2023-11-01T16:01:05.11847231Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::gcp:pubsub/topic:Topic::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::gcp:pubsub/topic:Topic::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/topics/tested-resource-525f1a2",
+                "id": "projects/pulumi-ci-gcp-provider/topics/tested-resource-db4457f",
                 "type": "gcp:pubsub/topic:Topic",
                 "inputs": {
                     "__defaults": [
@@ -54,29 +58,29 @@
                         "foo": "bar"
                     },
                     "messageRetentionDuration": "86600s",
-                    "name": "tested-resource-525f1a2"
+                    "name": "tested-resource-db4457f"
                 },
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                    "id": "projects/pulumi-development/topics/tested-resource-525f1a2",
+                    "id": "projects/pulumi-ci-gcp-provider/topics/tested-resource-db4457f",
                     "kmsKeyName": "",
                     "labels": {
                         "foo": "bar"
                     },
                     "messageRetentionDuration": "86600s",
                     "messageStoragePolicy": null,
-                    "name": "tested-resource-525f1a2",
-                    "project": "pulumi-development",
+                    "name": "tested-resource-db4457f",
+                    "project": "pulumi-ci-gcp-provider",
                     "schemaSettings": null
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::pulumi:pulumi:Stack::test-p-it-antons-mac-pubsub-top-02d0ce55",
-                "provider": "urn:pulumi:p-it-antons-mac-pubsub-top-02d0ce55::test::pulumi:providers:gcp::provider::4e40e399-1297-49c1-a355-d3c971f1435e",
+                "parent": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::pulumi:pulumi:Stack::test-p-it-runner-pubsub-top-84b5e8db",
+                "provider": "urn:pulumi:p-it-runner-pubsub-top-84b5e8db::test::pulumi:providers:gcp::provider::cc3a1945-8478-421c-a97d-c5c03953c451",
                 "propertyDependencies": {
                     "labels": null,
                     "messageRetentionDuration": null
                 },
-                "created": "2023-10-06T20:53:15.677271Z",
-                "modified": "2023-10-06T20:53:15.677271Z"
+                "created": "2023-11-01T16:01:10.432274502Z",
+                "modified": "2023-11-01T16:01:10.432274502Z"
             }
         ]
     }
