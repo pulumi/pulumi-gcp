@@ -89,6 +89,20 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// (Output)
         /// An opaque value that represents the internal version of this object that
@@ -106,20 +120,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// (Output)
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// (Output)
