@@ -331,18 +331,17 @@ jobs:
     - name: make upstream
       run: |
         make upstream
-    - name: Build tfgen & provider binaries
-      run: make provider
     - if: contains(github.ref, 'snapshot') || contains(github.head_ref, 'snapshot')
       name: Record provider test snapshots
       run: |
-        cd provider && go test -test.v -test.run '.*/.*/upgrade-snapshot$' -provider-snapshot -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+        cd provider && go test -test.v -test.run '.*/.*/upgrade-snapshot$' -provider-snapshot -v -json -count=1 -cover -timeout 2h -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
     - if: contains(github.ref, 'snapshot') || contains(github.head_ref, 'snapshot')
       name: Open a PR with newly recorded test snapshots
       uses: peter-evans/create-pull-request@v5
       with:
         title: Test snapshot updates
         token: ${{ secrets.GITHUB_TOKEN }}
+        base: master
 
   test:
     if: github.event_name == 'repository_dispatch' ||
