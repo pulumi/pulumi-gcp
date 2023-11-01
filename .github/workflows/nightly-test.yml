@@ -309,11 +309,11 @@ jobs:
     - name: make upstream
       run: |
         make upstream
-    - if: contains(github.ref, "snapshot")
+    - if: contains(github.ref, 'snapshot')
       name: Record provider test snapshots
       run: |
         cd provider && go test -test.v '.*/.*/upgrade-snapshot$' -provider-snapshot -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
-    - if: contains(github.ref, "snapshot")
+    - if: contains(github.ref, 'snapshot')
       name: Open a PR with newly recorded test snapshots
       uses: peter-evans/create-pull-request@v5
       with:
