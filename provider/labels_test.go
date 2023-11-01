@@ -21,4 +21,8 @@ func TestFixLabelNames(t *testing.T) {
 	if r := p.Resources["google_active_directory_domain"]; assert.NotZero(t, r) {
 		assert.Equal(t, "pulumiLabels", r.Fields["terraform_labels"].Name)
 	}
+
+	if r := p.Resources["google_cloud_run_domain_mapping"]; assert.NotZero(t, r) {
+		assert.Equal(t, "pulumiLabels", r.Fields["metadata"].Elem.Fields["terraform_labels"].Name)
+	}
 }
