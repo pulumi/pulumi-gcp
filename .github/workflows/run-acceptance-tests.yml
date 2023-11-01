@@ -267,6 +267,78 @@ jobs:
       run: exit 1
     - name: Workflow is a success
       run: echo "🎉🎈🎉🎈🎉"
+
+  record:
+    name: record
+    runs-on: pulumi-ubuntu-8core
+    steps:
+    - name: Check ref
+      run: |
+        echo github.ref == ${{ github.ref }}
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ env.PR_COMMIT_SHA }}
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v3
+      with:
+        path: ci-scripts
+        repository: pulumi/scripts
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install Go
+      uses: actions/setup-go@v4
+      with:
+        cache-dependency-path: |
+            sdk/go.sum
+        go-version: 1.21.x
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@v2
+    - name: Download provider + tfgen binaries
+      uses: actions/download-artifact@v2
+      with:
+        name: ${{ env.PROVIDER }}-provider.tar.gz
+        path: ${{ github.workspace }}/bin
+    # - name: Untar provider binaries
+    #   run: >-
+    #     tar -zxf ${{ github.workspace }}/bin/provider.tar.gz -C ${{
+    #     github.workspace}}/bin
+    #     find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print -exec chmod +x {} \;
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0
+      with:
+        service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
+        workload_identity_provider: projects/${{ env.GOOGLE_PROJECT_NUMBER
+          }}/locations/global/workloadIdentityPools/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
+    - name: Setup gcloud auth
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        install_components: gke-gcloud-auth-plugin
+    - name: Install gotestfmt
+      uses: GoTestTools/gotestfmt-action@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        version: v2.4.0
+    - name: make upstream
+      run: |
+        make upstream
+    - if: contains(github.ref, 'snapshot')
+      name: Record provider test snapshots
+      run: |
+        cd provider && go test -test.v '.*/.*/upgrade-snapshot$' -provider-snapshot -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+    - if: contains(github.ref, 'snapshot')
+      name: Open a PR with newly recorded test snapshots
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: Test snapshot updates
+        token: ${{ secrets.GITHUB_TOKEN }}
+
   test:
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
