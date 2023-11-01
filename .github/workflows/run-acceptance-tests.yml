@@ -275,6 +275,7 @@ jobs:
     - name: Check ref
       run: |
         echo github.ref == ${{ github.ref }}
+        echo github.head_ref = ${{ github.head_ref }}
     - name: Checkout Repo
       uses: actions/checkout@v3
       with:
