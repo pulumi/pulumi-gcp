@@ -34,7 +34,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigee"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})

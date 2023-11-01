@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = gcp.serviceAccount.getAccountJwt({
+ * const foo = gcp.serviceaccount.getAccountJwt({
  *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
  *     payload: JSON.stringify({
  *         foo: "bar",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
 export function getAccountJwt(args: GetAccountJwtArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountJwtResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:serviceAccount/getAccountJwt:getAccountJwt", {
+    return pulumi.runtime.invoke("gcp:serviceaccount/getAccountJwt:getAccountJwt", {
         "delegates": args.delegates,
         "expiresIn": args.expiresIn,
         "payload": args.payload,
@@ -87,7 +87,7 @@ export interface GetAccountJwtResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = gcp.serviceAccount.getAccountJwt({
+ * const foo = gcp.serviceaccount.getAccountJwt({
  *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
  *     payload: JSON.stringify({
  *         foo: "bar",

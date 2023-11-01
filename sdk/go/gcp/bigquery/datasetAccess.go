@@ -22,7 +22,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
+//			bqowner, err := serviceaccount.NewAccount(ctx, "bqowner", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("bqowner"),
 //			})
 //			if err != nil {

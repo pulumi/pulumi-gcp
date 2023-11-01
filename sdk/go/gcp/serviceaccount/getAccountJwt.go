@@ -25,7 +25,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			foo, err := serviceAccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
+//			foo, err := serviceaccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
 //				TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
 //				Payload:              json0,
 //				ExpiresIn:            pulumi.IntRef(60),
@@ -57,7 +57,7 @@ import (
 func GetAccountJwt(ctx *pulumi.Context, args *GetAccountJwtArgs, opts ...pulumi.InvokeOption) (*GetAccountJwtResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountJwtResult
-	err := ctx.Invoke("gcp:serviceAccount/getAccountJwt:getAccountJwt", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getAccountJwt:getAccountJwt", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ## Example Usage
         /// 
         /// ### ServiceAccount JSON Credential File.
-        ///   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+        ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
         ///   ```hcl
         ///   data "google_service_account_id_token" "oidc" {
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   ```
         /// 
         /// ### Service Account Impersonation.
-        ///   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+        ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ## Example Usage
         /// 
         /// ### ServiceAccount JSON Credential File.
-        ///   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+        ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
         ///   ```hcl
         ///   data "google_service_account_id_token" "oidc" {
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   ```
         /// 
         /// ### Service Account Impersonation.
-        ///   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+        ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
     }
 
 

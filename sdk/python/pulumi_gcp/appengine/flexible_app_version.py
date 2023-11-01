@@ -1139,7 +1139,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
             project=service.project,
             account_id="my-account",
             display_name="Custom Service Account")
@@ -1315,7 +1315,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
             project=service.project,
             account_id="my-account",
             display_name="Custom Service Account")

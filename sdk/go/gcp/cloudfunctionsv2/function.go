@@ -31,7 +31,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -72,7 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
@@ -178,7 +178,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -200,7 +200,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})

@@ -99,7 +99,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -118,7 +118,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewAccount(ctx, "test-account", &serviceAccount.AccountArgs{
+//			_, err = serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})

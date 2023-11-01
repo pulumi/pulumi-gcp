@@ -88,7 +88,7 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    foo = gcp.serviceaccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
     ```
 
 
@@ -97,7 +97,7 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     __args__ = dict()
     __args__['serviceAccountId'] = service_account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
 
     return AwaitableGetIamPolicyResult(
         etag=pulumi.get(__ret__, 'etag'),
@@ -118,7 +118,7 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    foo = gcp.serviceaccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
     ```
 
 

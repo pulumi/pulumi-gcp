@@ -518,7 +518,7 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
-        account = gcp.service_account.Account("account",
+        account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
@@ -597,7 +597,7 @@ class Function(pulumi.CustomResource):
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
-        account = gcp.service_account.Account("account",
+        account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
@@ -755,7 +755,7 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
-        account = gcp.service_account.Account("account",
+        account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
@@ -834,7 +834,7 @@ class Function(pulumi.CustomResource):
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
-        account = gcp.service_account.Account("account",
+        account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
