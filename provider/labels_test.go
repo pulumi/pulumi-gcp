@@ -3,9 +3,12 @@
 package gcp_test
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 
 	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
@@ -25,4 +28,11 @@ func TestFixLabelNames(t *testing.T) {
 	if r := p.Resources["google_cloud_run_domain_mapping"]; assert.NotZero(t, r) {
 		assert.Equal(t, "pulumiLabels", r.Fields["metadata"].Elem.Fields["terraform_labels"].Name)
 	}
+}
+
+func TestNoTFLabelsInSchema(t *testing.T) {
+	schema, err := os.ReadFile(filepath.Join(".", "cmd", "pulumi-resource-gcp", "schema.json"))
+	require.NoError(t, err)
+
+	assert.NotContains(t, string(schema), "terraformLabels")
 }
