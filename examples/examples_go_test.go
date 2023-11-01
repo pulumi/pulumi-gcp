@@ -7,6 +7,7 @@ package examples
 import (
 	"context"
 	cryptoRand "crypto/rand"
+	"encoding/json"
 	"fmt"
 	"math/big"
 	"math/rand"
@@ -19,6 +20,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"os"
 )
 
 func TestAccBucketGo(t *testing.T) {
@@ -178,4 +181,172 @@ func GenerateRandomString(n int) (string, error) {
 	}
 
 	return string(ret), nil
+}
+
+func TestLabelsCombinationsGo(t *testing.T) {
+	type testCase struct {
+		name string
+		s1   tagsState
+		s2   tagsState
+	}
+
+	testCases := []testCase{
+		{
+			"can add an empty label",
+			tagsState{
+				DefaultTags:  map[string]string{},
+				ResourceTags: map[string]string{},
+			},
+			tagsState{
+				DefaultTags:  map[string]string{},
+				ResourceTags: map[string]string{"x": ""},
+			},
+		},
+		{
+			"convoluted test case found by random-sampling",
+			tagsState{
+				DefaultTags:  map[string]string{"x": "", "y": "s"},
+				ResourceTags: map[string]string{"x": ""},
+			},
+			tagsState{
+				DefaultTags:  map[string]string{"x": ""},
+				ResourceTags: map[string]string{"x": "", "y": ""},
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			tc.s1.validateTransitionTo(t, tc.s2)
+		})
+	}
+}
+
+func TestRandomLabelsCombinationsGo(t *testing.T) {
+	tagValues := []string{"", "s"} // empty values are conflated with unknowns in TF internals, must test
+
+	tagsValues := []map[string]string{
+		nil,
+		{},
+	}
+
+	for _, tag := range tagValues {
+		m := map[string]string{"x": tag}
+		tagsValues = append(tagsValues, m)
+	}
+
+	for _, tag1 := range tagValues {
+		for _, tag2 := range tagValues {
+			m := map[string]string{
+				"x": tag1,
+				"y": tag2,
+			}
+			tagsValues = append(tagsValues, m)
+		}
+	}
+
+	states := []tagsState{}
+
+	for _, tags1 := range tagsValues {
+		for _, tags2 := range tagsValues {
+			states = append(states, tagsState{
+				DefaultTags:  tags1,
+				ResourceTags: tags2,
+			})
+		}
+	}
+
+	t.Logf("total state space: %v states", len(states))
+	t.Logf("random-sampling 100 state transitions")
+
+	for i := 0; i < 100; i++ {
+		t.Run(fmt.Sprintf("test-%d", i), func(t *testing.T) {
+			t.Parallel()
+			i := rand.Intn(len(states))
+			j := rand.Intn(len(states))
+			state1, state2 := states[i], states[j]
+			state1.validateTransitionTo(t, state2)
+		})
+	}
+}
+
+type tagsState struct {
+	DefaultTags  map[string]string `json:"defaultTags"`
+	ResourceTags map[string]string `json:"resourceTags"`
+}
+
+func (st tagsState) serialize(t *testing.T) string {
+	bytes, err := json.Marshal(st)
+	require.NoError(t, err)
+	return string(bytes)
+}
+
+func (st tagsState) validateTransitionTo(t *testing.T, st2 tagsState) {
+	t.Logf("state1 = %v", st.serialize(t))
+	t.Logf("state2 = %v", st2.serialize(t))
+
+	baseOpts := integration.ProgramTestOptions{}
+	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
+		baseOpts = getGoBaseOptions(t)
+	}
+
+	opts := baseOpts.With(integration.ProgramTestOptions{
+		Dir:                    "labels-combinations-go",
+		ExtraRuntimeValidation: validateStateResult(1, st, st2),
+		EditDirs: []integration.EditDir{{
+			Dir:                    filepath.Join("labels-combinations-go", "step1"),
+			Additive:               true,
+			ExtraRuntimeValidation: validateStateResult(2, st, st2),
+		}},
+		Config: map[string]string{
+			"state1": st.serialize(t),
+			"state2": st2.serialize(t),
+		},
+		Quick:            true,
+		DestroyOnCleanup: true,
+	})
+
+	integration.ProgramTest(t, &opts)
+}
+
+func (st tagsState) expectedTags() map[string]string {
+	r := map[string]string{}
+	for k, v := range st.DefaultTags {
+		r[k] = v
+	}
+	for k, v := range st.ResourceTags {
+		r[k] = v
+	}
+	return r
+}
+
+func validateStateResult(phase int, st1, st2 tagsState) func(
+	t *testing.T,
+	stack integration.RuntimeValidationStackInfo,
+) {
+	var st tagsState
+	switch phase {
+	case 1:
+		st = st1
+	default:
+		st = st2
+	}
+
+	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+		for k, v := range stack.Outputs {
+			actualTagsJSON := v.(string)
+			var actualTags map[string]string
+			err := json.Unmarshal([]byte(actualTagsJSON), &actualTags)
+			require.NoError(t, err)
+			t.Logf("phase: %d", phase)
+			t.Logf("state1: %v", st1.serialize(t))
+			if phase == 2 {
+				t.Logf("state2: %v", st2.serialize(t))
+			}
+			require.Equalf(t, st.expectedTags(), actualTags, "key=%s", k)
+			t.Logf("key=%s tags are as expected: %v", k, actualTagsJSON)
+		}
+	}
 }
