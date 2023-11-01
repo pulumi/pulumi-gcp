@@ -272,6 +272,9 @@ jobs:
     name: record
     runs-on: pulumi-ubuntu-8core
     steps:
+    - if: contains(github.ref, 'snapshot') || contains(github.head_ref, 'snapshot')
+      name: Check
+      run: echo "CHECK"
     - name: Checkout Repo
       uses: actions/checkout@v3
       with:
