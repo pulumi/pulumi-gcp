@@ -28,14 +28,18 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		switch elem := m.Elem().(type) {
 		case shim.Resource:
 			obj := elem.Schema()
-			if info.Fields == nil {
-				info.Fields = make(map[string]*tfbridge.SchemaInfo, obj.Len())
+			if info.Elem == nil {
+				info.Elem = new(tfbridge.SchemaInfo)
+			}
+
+			if info.Elem.Fields == nil {
+				info.Elem.Fields = make(map[string]*tfbridge.SchemaInfo, obj.Len())
 			}
 			obj.Range(func(key string, m shim.Schema) bool {
 				i, ok := info.Fields[key]
 				if !ok {
 					i = new(tfbridge.SchemaInfo)
-					info.Fields[key] = i
+					info.Elem.Fields[key] = i
 				}
 				apply(key, m, i)
 				return true
