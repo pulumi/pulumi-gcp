@@ -43,12 +43,12 @@ actions:
         make upstream
 
     - name: Record provider test snapshots
-      if: contains(github.ref, "snapshot")
+      if: contains(github.ref, 'snapshot')
       run: |
         cd provider && go test -test.v '.*/.*/upgrade-snapshot$' -provider-snapshot -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
 
     - name: Open a PR with newly recorded test snapshots
-      if: contains(github.ref, "snapshot")
+      if: contains(github.ref, 'snapshot')
       uses: peter-evans/create-pull-request@v5
       with:
         title: "Test snapshot updates"
