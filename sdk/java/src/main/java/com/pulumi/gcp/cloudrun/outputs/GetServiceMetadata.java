@@ -17,9 +17,9 @@ public final class GetServiceMetadata {
     private Integer generation;
     private Map<String,String> labels;
     private String namespace;
+    private Map<String,String> pulumiLabels;
     private String resourceVersion;
     private String selfLink;
-    private Map<String,String> terraformLabels;
     private String uid;
 
     private GetServiceMetadata() {}
@@ -41,14 +41,14 @@ public final class GetServiceMetadata {
     public String namespace() {
         return this.namespace;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String resourceVersion() {
         return this.resourceVersion;
     }
     public String selfLink() {
         return this.selfLink;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String uid() {
         return this.uid;
@@ -69,9 +69,9 @@ public final class GetServiceMetadata {
         private Integer generation;
         private Map<String,String> labels;
         private String namespace;
+        private Map<String,String> pulumiLabels;
         private String resourceVersion;
         private String selfLink;
-        private Map<String,String> terraformLabels;
         private String uid;
         public Builder() {}
         public Builder(GetServiceMetadata defaults) {
@@ -82,9 +82,9 @@ public final class GetServiceMetadata {
     	      this.generation = defaults.generation;
     	      this.labels = defaults.labels;
     	      this.namespace = defaults.namespace;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.selfLink = defaults.selfLink;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.uid = defaults.uid;
         }
 
@@ -119,6 +119,11 @@ public final class GetServiceMetadata {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
@@ -126,11 +131,6 @@ public final class GetServiceMetadata {
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -146,9 +146,9 @@ public final class GetServiceMetadata {
             o.generation = generation;
             o.labels = labels;
             o.namespace = namespace;
+            o.pulumiLabels = pulumiLabels;
             o.resourceVersion = resourceVersion;
             o.selfLink = selfLink;
-            o.terraformLabels = terraformLabels;
             o.uid = uid;
             return o;
         }

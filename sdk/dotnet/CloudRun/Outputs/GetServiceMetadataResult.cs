@@ -19,9 +19,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly int Generation;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Namespace;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ResourceVersion;
         public readonly string SelfLink;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Uid;
 
         [OutputConstructor]
@@ -38,11 +38,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string @namespace,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string resourceVersion,
 
             string selfLink,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string uid)
         {
@@ -52,9 +52,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Generation = generation;
             Labels = labels;
             Namespace = @namespace;
+            PulumiLabels = pulumiLabels;
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
-            TerraformLabels = terraformLabels;
             Uid = uid;
         }
     }
