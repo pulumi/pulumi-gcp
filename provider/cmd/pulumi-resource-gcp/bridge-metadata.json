@@ -31301,9 +31301,9 @@
             "gcp:cloudrun/DomainMappingMetadata:DomainMappingMetadata": {
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceVersion": "resource_version",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "selfLink": "self_link"
             },
             "gcp:cloudrun/DomainMappingSpec:DomainMappingSpec": {
                 "certificateMode": "certificate_mode",
@@ -31318,9 +31318,9 @@
             "gcp:cloudrun/ServiceMetadata:ServiceMetadata": {
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceVersion": "resource_version",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "selfLink": "self_link"
             },
             "gcp:cloudrun/ServiceStatus:ServiceStatus": {
                 "latestCreatedRevisionName": "latest_created_revision_name",
@@ -31424,9 +31424,9 @@
             "gcp:cloudrun/getServiceMetadata:getServiceMetadata": {
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceVersion": "resource_version",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "selfLink": "self_link"
             },
             "gcp:cloudrun/getServiceStatus:getServiceStatus": {
                 "latestCreatedRevisionName": "latest_created_revision_name",
