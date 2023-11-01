@@ -3,9 +3,8 @@ module github.com/pulumi/pulumi-aws/examples/tags-combinations-go
 go 1.21
 
 require (
-	github.com/pulumi/pulumi-aws/sdk/v6 v6.6.1
 	github.com/pulumi/pulumi-gcp/sdk/v7 v7.0.0-alpha.0
-	github.com/pulumi/pulumi/sdk/v3 v3.90.1
+	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 )
 
 require (

@@ -13,34 +13,34 @@ import (
 )
 
 type state struct {
-	DefaultTags  map[string]string `json:"defaultTags"`
-	ResourceTags map[string]string `json:"resourceTags"`
+	DefaultLabels map[string]string `json:"defaultLabels"`
+	Labels        map[string]string `json:"labels"`
 }
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		conf := config.New(ctx, "")
-		tagsState := conf.Require("state2")
+		labelsState := conf.Require("state2")
 
 		var s state
 
-		err := json.Unmarshal([]byte(tagsState), &s)
+		err := json.Unmarshal([]byte(labelsState), &s)
 		if err != nil {
 			return err
 		}
 
-		tagsMap := pulumi.StringMap{}
-		for k, v := range s.ResourceTags {
-			tagsMap[k] = pulumi.String(v)
+		labelsMap := pulumi.StringMap{}
+		for k, v := range s.Labels {
+			labelsMap[k] = pulumi.String(v)
 		}
 
-		defaultTagsMap := pulumi.StringMap{}
-		for k, v := range s.DefaultTags {
-			defaultTagsMap[k] = pulumi.String(v)
+		defaultLabelsMap := pulumi.StringMap{}
+		for k, v := range s.DefaultLabels {
+			defaultLabelsMap[k] = pulumi.String(v)
 		}
 
 		p, err := gcp.NewProvider(ctx, "prov", &gcp.ProviderArgs{
-			DefaultLabels: defaultTagsMap,
+			DefaultLabels: defaultLabelsMap,
 		})
 		if err != nil {
 			return err
@@ -48,13 +48,13 @@ func main() {
 
 		bucket, err := storage.NewBucket(ctx, "demo-bucket", &storage.BucketArgs{
 			Location: pulumi.String("US"),
-			Labels:   tagsMap,
+			Labels:   labelsMap,
 		}, pulumi.Provider(p))
 		if err != nil {
 			return err
 		}
 
-		ctx.Export("bucket", bucket.TerraformLabels.ApplyT(func(x interface{}) string {
+		ctx.Export("bucket", bucket.PulumiLabels.ApplyT(func(x interface{}) string {
 			b, err := json.Marshal(x.(map[string]string))
 			if err != nil {
 				panic(err)

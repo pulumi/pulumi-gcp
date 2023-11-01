@@ -1,6 +1,4 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
-//go:build go || all
-// +build go all
 
 package examples
 
@@ -186,31 +184,31 @@ func GenerateRandomString(n int) (string, error) {
 func TestLabelsCombinationsGo(t *testing.T) {
 	type testCase struct {
 		name string
-		s1   tagsState
-		s2   tagsState
+		s1   labelsState
+		s2   labelsState
 	}
 
 	testCases := []testCase{
 		{
 			"can add an empty label",
-			tagsState{
-				DefaultTags:  map[string]string{},
-				ResourceTags: map[string]string{},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
 			},
-			tagsState{
-				DefaultTags:  map[string]string{},
-				ResourceTags: map[string]string{"x": ""},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": ""},
 			},
 		},
 		{
 			"convoluted test case found by random-sampling",
-			tagsState{
-				DefaultTags:  map[string]string{"x": "", "y": "s"},
-				ResourceTags: map[string]string{"x": ""},
+			labelsState{
+				DefaultLabels: map[string]string{"x": "", "y": "s"},
+				Labels:        map[string]string{"x": ""},
 			},
-			tagsState{
-				DefaultTags:  map[string]string{"x": ""},
-				ResourceTags: map[string]string{"x": "", "y": ""},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+				Labels:        map[string]string{"x": "", "y": ""},
 			},
 		},
 	}
@@ -225,35 +223,35 @@ func TestLabelsCombinationsGo(t *testing.T) {
 }
 
 func TestRandomLabelsCombinationsGo(t *testing.T) {
-	tagValues := []string{"", "s"} // empty values are conflated with unknowns in TF internals, must test
+	labelValues := []string{"", "s"} // empty values are conflated with unknowns in TF internals, must test
 
-	tagsValues := []map[string]string{
+	labelsValues := []map[string]string{
 		nil,
 		{},
 	}
 
-	for _, tag := range tagValues {
-		m := map[string]string{"x": tag}
-		tagsValues = append(tagsValues, m)
+	for _, label := range labelValues {
+		m := map[string]string{"x": label}
+		labelsValues = append(labelsValues, m)
 	}
 
-	for _, tag1 := range tagValues {
-		for _, tag2 := range tagValues {
+	for _, label1 := range labelValues {
+		for _, label2 := range labelValues {
 			m := map[string]string{
-				"x": tag1,
-				"y": tag2,
+				"x": label1,
+				"y": label2,
 			}
-			tagsValues = append(tagsValues, m)
+			labelsValues = append(labelsValues, m)
 		}
 	}
 
-	states := []tagsState{}
+	states := []labelsState{}
 
-	for _, tags1 := range tagsValues {
-		for _, tags2 := range tagsValues {
-			states = append(states, tagsState{
-				DefaultTags:  tags1,
-				ResourceTags: tags2,
+	for _, label1 := range labelsValues {
+		for _, label2 := range labelsValues {
+			states = append(states, labelsState{
+				DefaultLabels: label1,
+				Labels:        label2,
 			})
 		}
 	}
@@ -272,22 +270,29 @@ func TestRandomLabelsCombinationsGo(t *testing.T) {
 	}
 }
 
-type tagsState struct {
-	DefaultTags  map[string]string `json:"defaultTags"`
-	ResourceTags map[string]string `json:"resourceTags"`
+type labelsState struct {
+	DefaultLabels map[string]string `json:"defaultLabels"`
+	Labels        map[string]string `json:"labels"`
 }
 
-func (st tagsState) serialize(t *testing.T) string {
+func (st labelsState) serialize(t *testing.T) string {
 	bytes, err := json.Marshal(st)
 	require.NoError(t, err)
 	return string(bytes)
 }
 
-func (st tagsState) validateTransitionTo(t *testing.T, st2 tagsState) {
+func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 	t.Logf("state1 = %v", st.serialize(t))
 	t.Logf("state2 = %v", st2.serialize(t))
 
-	baseOpts := integration.ProgramTestOptions{}
+	goSdkFolder, err := filepath.Abs(filepath.Join("..", "sdk"))
+	require.NoError(t, err)
+
+	baseOpts := integration.ProgramTestOptions{
+		Dependencies: []string{
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v7=%s", goSdkFolder),
+		},
+	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
 		baseOpts = getGoBaseOptions(t)
 	}
@@ -311,22 +316,22 @@ func (st tagsState) validateTransitionTo(t *testing.T, st2 tagsState) {
 	integration.ProgramTest(t, &opts)
 }
 
-func (st tagsState) expectedTags() map[string]string {
+func (st labelsState) expectedLabels() map[string]string {
 	r := map[string]string{}
-	for k, v := range st.DefaultTags {
+	for k, v := range st.DefaultLabels {
 		r[k] = v
 	}
-	for k, v := range st.ResourceTags {
+	for k, v := range st.Labels {
 		r[k] = v
 	}
 	return r
 }
 
-func validateStateResult(phase int, st1, st2 tagsState) func(
+func validateStateResult(phase int, st1, st2 labelsState) func(
 	t *testing.T,
 	stack integration.RuntimeValidationStackInfo,
 ) {
-	var st tagsState
+	var st labelsState
 	switch phase {
 	case 1:
 		st = st1
@@ -336,17 +341,17 @@ func validateStateResult(phase int, st1, st2 tagsState) func(
 
 	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 		for k, v := range stack.Outputs {
-			actualTagsJSON := v.(string)
-			var actualTags map[string]string
-			err := json.Unmarshal([]byte(actualTagsJSON), &actualTags)
+			actualLabelsJSON := v.(string)
+			var actualLabels map[string]string
+			err := json.Unmarshal([]byte(actualLabelsJSON), &actualLabels)
 			require.NoError(t, err)
 			t.Logf("phase: %d", phase)
 			t.Logf("state1: %v", st1.serialize(t))
 			if phase == 2 {
 				t.Logf("state2: %v", st2.serialize(t))
 			}
-			require.Equalf(t, st.expectedTags(), actualTags, "key=%s", k)
-			t.Logf("key=%s tags are as expected: %v", k, actualTagsJSON)
+			require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
 		}
 	}
 }
