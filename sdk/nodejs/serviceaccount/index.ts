@@ -65,23 +65,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:serviceAccount/account:Account":
+            case "gcp:serviceaccount/account:Account":
                 return new Account(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMBinding:IAMBinding":
+            case "gcp:serviceaccount/iAMBinding:IAMBinding":
                 return new IAMBinding(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMMember:IAMMember":
+            case "gcp:serviceaccount/iAMMember:IAMMember":
                 return new IAMMember(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMPolicy:IAMPolicy":
+            case "gcp:serviceaccount/iAMPolicy:IAMPolicy":
                 return new IAMPolicy(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/key:Key":
+            case "gcp:serviceaccount/key:Key":
                 return new Key(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/account", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/key", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceaccount/account", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceaccount/iAMBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceaccount/iAMMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceaccount/iAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceaccount/key", _module)

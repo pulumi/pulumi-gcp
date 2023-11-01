@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountAccessTokenResult> InvokeAsync(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
     }
 
 

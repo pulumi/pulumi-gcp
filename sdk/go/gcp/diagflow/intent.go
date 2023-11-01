@@ -70,7 +70,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,7 +92,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dialogflowServiceAccount, err := serviceAccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceAccount.AccountArgs{
+//			dialogflowServiceAccount, err := serviceaccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-account"),
 //			})
 //			if err != nil {

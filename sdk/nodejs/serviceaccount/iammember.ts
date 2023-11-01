@@ -11,13 +11,13 @@ import * as utilities from "../utilities";
  *
  * Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
  *
- * * `gcp.serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
- * * `gcp.serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
- * * `gcp.serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+ * * `gcp.serviceaccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+ * * `gcp.serviceaccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+ * * `gcp.serviceaccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
  *
- * > **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.serviceaccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceaccount.IAMBinding` and `gcp.serviceaccount.IAMMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## Example Usage
  * ### Service Account IAM Policy
@@ -128,25 +128,25 @@ import * as utilities from "../utilities";
  * Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+ *  $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+ *  $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+ *  $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+ *  $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+ *  $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
  * ```
  */
 export class IAMMember extends pulumi.CustomResource {
@@ -164,7 +164,7 @@ export class IAMMember extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:serviceAccount/iAMMember:IAMMember';
+    public static readonly __pulumiType = 'gcp:serviceaccount/iAMMember:IAMMember';
 
     /**
      * Returns true if the given object is an instance of IAMMember.  This is designed to work even
@@ -181,7 +181,7 @@ export class IAMMember extends pulumi.CustomResource {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.serviceAccount.IAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.serviceaccount.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the service account IAM policy.
      */
@@ -189,7 +189,7 @@ export class IAMMember extends pulumi.CustomResource {
     public readonly member!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -243,6 +243,8 @@ export class IAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/iAMMember:IAMMember" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IAMMember.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -255,7 +257,7 @@ export interface IAMMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.serviceAccount.IAMMemberCondition>;
+    condition?: pulumi.Input<inputs.serviceaccount.IAMMemberCondition>;
     /**
      * (Computed) The etag of the service account IAM policy.
      */
@@ -263,7 +265,7 @@ export interface IAMMemberState {
     member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
@@ -290,11 +292,11 @@ export interface IAMMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.serviceAccount.IAMMemberCondition>;
+    condition?: pulumi.Input<inputs.serviceaccount.IAMMemberCondition>;
     member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

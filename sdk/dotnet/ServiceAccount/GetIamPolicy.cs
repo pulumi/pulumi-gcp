@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ```
         /// </summary>
         public static Task<GetIamPolicyResult> InvokeAsync(GetIamPolicyArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyResult>("gcp:serviceAccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyResult>("gcp:serviceaccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a service account.
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ```
         /// </summary>
         public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:serviceAccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:serviceaccount/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

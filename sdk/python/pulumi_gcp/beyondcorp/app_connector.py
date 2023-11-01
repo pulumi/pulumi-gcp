@@ -323,7 +323,7 @@ class AppConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
@@ -338,7 +338,7 @@ class AppConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("appConnector",
@@ -414,7 +414,7 @@ class AppConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
@@ -429,7 +429,7 @@ class AppConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("appConnector",

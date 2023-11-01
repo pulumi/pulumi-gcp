@@ -36,7 +36,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/appengine"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -44,7 +44,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customServiceAccount, err := serviceAccount.NewAccount(ctx, "customServiceAccount", &serviceAccount.AccountArgs{
+//			customServiceAccount, err := serviceaccount.NewAccount(ctx, "customServiceAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Custom Service Account"),
 //			})

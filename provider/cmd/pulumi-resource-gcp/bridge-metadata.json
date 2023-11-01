@@ -20325,11 +20325,25 @@
                 }
             },
             "google_service_account": {
-                "current": "gcp:serviceAccount/account:Account",
+                "current": "gcp:serviceaccount/account:Account",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/account:Account",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 7
             },
             "google_service_account_iam_binding": {
-                "current": "gcp:serviceAccount/iAMBinding:IAMBinding",
+                "current": "gcp:serviceaccount/iAMBinding:IAMBinding",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMBinding:IAMBinding",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 7,
                 "fields": {
                     "condition": {
@@ -20341,7 +20355,14 @@
                 }
             },
             "google_service_account_iam_member": {
-                "current": "gcp:serviceAccount/iAMMember:IAMMember",
+                "current": "gcp:serviceaccount/iAMMember:IAMMember",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMMember:IAMMember",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 7,
                 "fields": {
                     "condition": {
@@ -20350,11 +20371,25 @@
                 }
             },
             "google_service_account_iam_policy": {
-                "current": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
+                "current": "gcp:serviceaccount/iAMPolicy:IAMPolicy",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 7
             },
             "google_service_account_key": {
-                "current": "gcp:serviceAccount/key:Key",
+                "current": "gcp:serviceaccount/key:Key",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/key:Key",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 7
             },
             "google_service_directory_endpoint": {
@@ -25160,11 +25195,11 @@
                 "majorVersion": 7
             },
             "google_service_account": {
-                "current": "gcp:serviceAccount/getAccount:getAccount",
+                "current": "gcp:serviceaccount/getAccount:getAccount",
                 "majorVersion": 7
             },
             "google_service_account_access_token": {
-                "current": "gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken",
+                "current": "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken",
                 "majorVersion": 7,
                 "fields": {
                     "delegates": {
@@ -25176,11 +25211,11 @@
                 }
             },
             "google_service_account_iam_policy": {
-                "current": "gcp:serviceAccount/getIamPolicy:getIamPolicy",
+                "current": "gcp:serviceaccount/getIamPolicy:getIamPolicy",
                 "majorVersion": 7
             },
             "google_service_account_id_token": {
-                "current": "gcp:serviceAccount/getAccountIdToken:getAccountIdToken",
+                "current": "gcp:serviceaccount/getAccountIdToken:getAccountIdToken",
                 "majorVersion": 7,
                 "fields": {
                     "delegates": {
@@ -25189,7 +25224,7 @@
                 }
             },
             "google_service_account_jwt": {
-                "current": "gcp:serviceAccount/getAccountJwt:getAccountJwt",
+                "current": "gcp:serviceaccount/getAccountJwt:getAccountJwt",
                 "majorVersion": 7,
                 "fields": {
                     "delegates": {
@@ -25198,7 +25233,7 @@
                 }
             },
             "google_service_account_key": {
-                "current": "gcp:serviceAccount/getAccountKey:getAccountKey",
+                "current": "gcp:serviceaccount/getAccountKey:getAccountKey",
                 "majorVersion": 7
             },
             "google_service_directory_namespace_iam_policy": {
@@ -26473,11 +26508,11 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
-            "gcp:serviceAccount/account:Account": 0,
-            "gcp:serviceAccount/iAMBinding:IAMBinding": 0,
-            "gcp:serviceAccount/iAMMember:IAMMember": 0,
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": 0,
-            "gcp:serviceAccount/key:Key": 0,
+            "gcp:serviceaccount/account:Account": 0,
+            "gcp:serviceaccount/iAMBinding:IAMBinding": 0,
+            "gcp:serviceaccount/iAMMember:IAMMember": 0,
+            "gcp:serviceaccount/iAMPolicy:IAMPolicy": 0,
+            "gcp:serviceaccount/key:Key": 0,
             "gcp:servicedirectory/endpoint:Endpoint": 0,
             "gcp:servicedirectory/namespace:Namespace": 0,
             "gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding": 0,
@@ -26772,12 +26807,12 @@
             "gcp:secretmanager/getSecretVersion:getSecretVersion": 0,
             "gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess": 0,
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": 0,
-            "gcp:serviceAccount/getAccount:getAccount": 0,
-            "gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken": 0,
-            "gcp:serviceAccount/getAccountIdToken:getAccountIdToken": 0,
-            "gcp:serviceAccount/getAccountJwt:getAccountJwt": 0,
-            "gcp:serviceAccount/getAccountKey:getAccountKey": 0,
-            "gcp:serviceAccount/getIamPolicy:getIamPolicy": 0,
+            "gcp:serviceaccount/getAccount:getAccount": 0,
+            "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": 0,
+            "gcp:serviceaccount/getAccountIdToken:getAccountIdToken": 0,
+            "gcp:serviceaccount/getAccountJwt:getAccountJwt": 0,
+            "gcp:serviceaccount/getAccountKey:getAccountKey": 0,
+            "gcp:serviceaccount/getIamPolicy:getIamPolicy": 0,
             "gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy": 0,
             "gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain": 0,
@@ -27534,11 +27569,11 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": "google_scc_source_iam_binding",
             "gcp:securitycenter/sourceIamMember:SourceIamMember": "google_scc_source_iam_member",
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "google_scc_source_iam_policy",
-            "gcp:serviceAccount/account:Account": "google_service_account",
-            "gcp:serviceAccount/iAMBinding:IAMBinding": "google_service_account_iam_binding",
-            "gcp:serviceAccount/iAMMember:IAMMember": "google_service_account_iam_member",
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": "google_service_account_iam_policy",
-            "gcp:serviceAccount/key:Key": "google_service_account_key",
+            "gcp:serviceaccount/account:Account": "google_service_account",
+            "gcp:serviceaccount/iAMBinding:IAMBinding": "google_service_account_iam_binding",
+            "gcp:serviceaccount/iAMMember:IAMMember": "google_service_account_iam_member",
+            "gcp:serviceaccount/iAMPolicy:IAMPolicy": "google_service_account_iam_policy",
+            "gcp:serviceaccount/key:Key": "google_service_account_key",
             "gcp:servicedirectory/endpoint:Endpoint": "google_service_directory_endpoint",
             "gcp:servicedirectory/namespace:Namespace": "google_service_directory_namespace",
             "gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding": "google_service_directory_namespace_iam_binding",
@@ -27833,12 +27868,12 @@
             "gcp:secretmanager/getSecretVersion:getSecretVersion": "google_secret_manager_secret_version",
             "gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess": "google_secret_manager_secret_version_access",
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": "google_scc_source_iam_policy",
-            "gcp:serviceAccount/getAccount:getAccount": "google_service_account",
-            "gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken": "google_service_account_access_token",
-            "gcp:serviceAccount/getAccountIdToken:getAccountIdToken": "google_service_account_id_token",
-            "gcp:serviceAccount/getAccountJwt:getAccountJwt": "google_service_account_jwt",
-            "gcp:serviceAccount/getAccountKey:getAccountKey": "google_service_account_key",
-            "gcp:serviceAccount/getIamPolicy:getIamPolicy": "google_service_account_iam_policy",
+            "gcp:serviceaccount/getAccount:getAccount": "google_service_account",
+            "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": "google_service_account_access_token",
+            "gcp:serviceaccount/getAccountIdToken:getAccountIdToken": "google_service_account_id_token",
+            "gcp:serviceaccount/getAccountJwt:getAccountJwt": "google_service_account_jwt",
+            "gcp:serviceaccount/getAccountKey:getAccountKey": "google_service_account_key",
+            "gcp:serviceaccount/getIamPolicy:getIamPolicy": "google_service_account_iam_policy",
             "gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy": "google_service_directory_namespace_iam_policy",
             "gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy": "google_service_directory_service_iam_policy",
             "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain": "google_service_networking_peered_dns_domain",
@@ -44535,50 +44570,50 @@
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": {
                 "policyData": "policy_data"
             },
-            "gcp:serviceAccount/account:Account": {
+            "gcp:serviceaccount/account:Account": {
                 "accountId": "account_id",
                 "displayName": "display_name",
                 "uniqueId": "unique_id"
             },
-            "gcp:serviceAccount/getAccount:getAccount": {
+            "gcp:serviceaccount/getAccount:getAccount": {
                 "accountId": "account_id",
                 "displayName": "display_name",
                 "uniqueId": "unique_id"
             },
-            "gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken": {
+            "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": {
                 "accessToken": "access_token",
                 "targetServiceAccount": "target_service_account"
             },
-            "gcp:serviceAccount/getAccountIdToken:getAccountIdToken": {
+            "gcp:serviceaccount/getAccountIdToken:getAccountIdToken": {
                 "idToken": "id_token",
                 "includeEmail": "include_email",
                 "targetAudience": "target_audience",
                 "targetServiceAccount": "target_service_account"
             },
-            "gcp:serviceAccount/getAccountJwt:getAccountJwt": {
+            "gcp:serviceaccount/getAccountJwt:getAccountJwt": {
                 "expiresIn": "expires_in",
                 "targetServiceAccount": "target_service_account"
             },
-            "gcp:serviceAccount/getAccountKey:getAccountKey": {
+            "gcp:serviceaccount/getAccountKey:getAccountKey": {
                 "keyAlgorithm": "key_algorithm",
                 "publicKey": "public_key",
                 "publicKeyType": "public_key_type"
             },
-            "gcp:serviceAccount/getIamPolicy:getIamPolicy": {
+            "gcp:serviceaccount/getIamPolicy:getIamPolicy": {
                 "policyData": "policy_data",
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMBinding:IAMBinding": {
+            "gcp:serviceaccount/iAMBinding:IAMBinding": {
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMMember:IAMMember": {
+            "gcp:serviceaccount/iAMMember:IAMMember": {
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": {
+            "gcp:serviceaccount/iAMPolicy:IAMPolicy": {
                 "policyData": "policy_data",
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/key:Key": {
+            "gcp:serviceaccount/key:Key": {
                 "keyAlgorithm": "key_algorithm",
                 "privateKey": "private_key",
                 "privateKeyType": "private_key_type",

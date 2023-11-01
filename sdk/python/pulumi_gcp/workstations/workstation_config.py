@@ -1056,7 +1056,7 @@ class WorkstationConfig(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
         opts=pulumi.ResourceOptions(provider=google_beta))
-        default_account = gcp.service_account.Account("defaultAccount",
+        default_account = gcp.serviceaccount.Account("defaultAccount",
             account_id="my-account",
             display_name="Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1443,7 +1443,7 @@ class WorkstationConfig(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
         opts=pulumi.ResourceOptions(provider=google_beta))
-        default_account = gcp.service_account.Account("defaultAccount",
+        default_account = gcp.serviceaccount.Account("defaultAccount",
             account_id="my-account",
             display_name="Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))

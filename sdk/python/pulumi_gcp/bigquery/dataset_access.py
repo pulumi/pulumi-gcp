@@ -524,7 +524,7 @@ class DatasetAccess(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=dataset.dataset_id,
             role="OWNER",
@@ -673,7 +673,7 @@ class DatasetAccess(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=dataset.dataset_id,
             role="OWNER",

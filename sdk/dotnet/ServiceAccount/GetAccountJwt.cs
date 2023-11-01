@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountJwtResult> InvokeAsync(GetAccountJwtArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountJwtResult> Invoke(GetAccountJwtInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -69,7 +69,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +80,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
+//			cloudbuildServiceAccount, err := serviceaccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("cloud-sa"),
 //			})
 //			if err != nil {

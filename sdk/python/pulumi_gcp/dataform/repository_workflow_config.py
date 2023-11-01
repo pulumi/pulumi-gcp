@@ -388,7 +388,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 },
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.service_account.Account("dataformSa",
+        dataform_sa = gcp.serviceaccount.Account("dataformSa",
             account_id="dataform-workflow-sa",
             display_name="Dataform Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -515,7 +515,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 },
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.service_account.Account("dataformSa",
+        dataform_sa = gcp.serviceaccount.Account("dataformSa",
             account_id="dataform-workflow-sa",
             display_name="Dataform Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
