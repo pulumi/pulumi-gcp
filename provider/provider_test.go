@@ -5,6 +5,7 @@ package gcp
 import (
 	"context"
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -21,11 +22,29 @@ func TestUpgradeCoverage(t *testing.T) {
 }
 
 func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.ProviderTest {
+	envVars := map[string]string{
+		"gcp:config:project": "GOOGLE_PROJECT",
+		"gcp:config:zone":    "GOOGLE_ZONE",
+		"gcp:config:region":  "GOOGLE_REGION",
+	}
+
+	defaultValues := map[string]string{
+		"gcp:config:project": "pulumi-development",
+	}
+
+	for setting, envVar := range envVars {
+		if envVarValue, ok := os.LookupEnv(envVar); ok {
+			opts = append(opts, providertest.WithConfig(setting, envVarValue))
+		} else if defValue, ok := defaultValues[setting]; ok {
+			opts = append(opts, providertest.WithConfig(setting, defValue))
+		}
+	}
+
 	opts = append(opts,
 		providertest.WithProviderName("gcp"),
 		providertest.WithBaselineVersion("6.67.0"),
-		providertest.WithConfig("gcp:project", "pulumi-development"),
 		providertest.WithResourceProviderServer(providerServer(t)))
+
 	return providertest.NewProviderTest(dir, opts...)
 }
 
