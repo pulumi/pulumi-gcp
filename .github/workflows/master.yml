@@ -183,6 +183,10 @@ jobs:
         s3FullURI="s3://${{ secrets.S3_COVERAGE_BUCKET_NAME }}/summaries/${summaryName}"
 
         aws s3 cp "${{ env.COVERAGE_OUTPUT_DIR }}/summary.json" "${s3FullURI}" --acl bucket-owner-full-control
+  license_check:
+    name: License Check
+    uses: ./.github/workflows/license.yml
+    secrets: inherit
   prerequisites:
     name: prerequisites
     runs-on: pulumi-ubuntu-8core
@@ -262,7 +266,9 @@ jobs:
 
   publish:
     name: publish
-    needs: test
+    needs:
+      - test
+      - license_check
     runs-on: pulumi-ubuntu-8core
     steps:
     - name: Checkout Repo
