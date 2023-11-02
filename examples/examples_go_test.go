@@ -211,6 +211,28 @@ func TestLabelsCombinationsGo(t *testing.T) {
 				Labels:        map[string]string{"x": "", "y": ""},
 			},
 		},
+		{
+			"can add a new default label on Update of existing stack",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"hello": "goodbye"},
+				Labels:        map[string]string{},
+			},
+		},
+		{
+			"no changes means no changes",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+		},
 	}
 
 	for _, tc := range testCases {
