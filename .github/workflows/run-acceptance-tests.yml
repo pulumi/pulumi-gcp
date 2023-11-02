@@ -259,6 +259,7 @@ jobs:
       ! cancelled()
     needs:
     - test
+    - license_check
     runs-on: ubuntu-latest
     steps:
     - name: Workflow is not a success
@@ -386,6 +387,10 @@ jobs:
         - dotnet
         - go
         - java
+  license_check:
+    name: License Check
+    uses: ./.github/workflows/license.yml
+    secrets: inherit
 name: run-acceptance-tests
 on:
   pull_request:

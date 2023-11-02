@@ -130,6 +130,10 @@ jobs:
         - dotnet
         - go
         - java
+  license_check:
+    name: License Check
+    uses: ./.github/workflows/license.yml
+    secrets: inherit
   prerequisites:
     name: prerequisites
     runs-on: pulumi-ubuntu-8core
@@ -209,7 +213,9 @@ jobs:
 
   publish:
     name: publish
-    needs: test
+    needs:
+      - test
+      - license_check
     runs-on: pulumi-ubuntu-8core
     steps:
     - name: Checkout Repo
