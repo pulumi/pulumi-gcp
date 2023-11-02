@@ -4,14 +4,12 @@ package gcp
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest"
-	"github.com/pulumi/providertest/flags"
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -43,32 +41,19 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 	opts = append(opts,
 		providertest.WithProviderName("gcp"),
 		providertest.WithBaselineVersion("6.67.0"),
-		providertest.WithResourceProviderServer(providerServer(t)))
+		providertest.WithResourceProviderServer(providerServer(t)),
+		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_Quick,
+			"TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure"),
+	)
 
 	return providertest.NewProviderTest(dir, opts...)
 }
 
-// This funcion inlines bits of ProviderTest.Run to avoid running E2E tests and instead focuses on
-// upgrade tests. Currently E2E tests are not able to run in this provider.
 func runTest(t *testing.T, pt *providertest.ProviderTest) {
-	t.Run("upgrade-snapshot", func(t *testing.T) {
-		t.Helper()
-		if flags.Snapshot.IsSet() {
-			t.Logf("Recording baseline behavior because %s", flags.Snapshot.WhySet())
-			pt.VerifyUpgradeSnapshot(t)
-		} else {
-			t.Skipf("Skip recording baseline behavior because %s", flags.Snapshot.WhyNotSet())
-		}
-	})
-	for _, m := range providertest.UpgradeTestModes() {
-		t.Run(fmt.Sprintf("upgrade-%s", m), func(t *testing.T) {
-			t.Helper()
-			if m == providertest.UpgradeTestMode_Quick {
-				t.Skip("TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure")
-			}
-			pt.VerifyUpgrade(t, m)
-		})
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
+	pt.Run(t)
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
