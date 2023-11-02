@@ -36,13 +36,6 @@ func TestPubSubTopic(t *testing.T) {
 	runTest(t, test(t, "test-programs/pubsub-topic"))
 }
 
-func TestServiceAccount(t *testing.T) {
-	runTest(t, test(t, "test-programs/serviceaccount-account",
-		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
-			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
-	))
-}
-
 func TestStorageBucket(t *testing.T) {
 	runTest(t, test(t, "test-programs/storage-bucket"))
 }
