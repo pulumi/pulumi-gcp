@@ -6,6 +6,10 @@ resources:
         type: pulumi:providers:gcp
         options:
             version: 6.67.0
+            ignoreChanges:
+              - project
+              - region
+              - zone
         properties:
             project: ${gcp:project}
     tested-resource:

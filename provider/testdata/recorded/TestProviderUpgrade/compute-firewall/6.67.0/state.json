@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-10T10:00:33.944499-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:16:05.179707404Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:Gej1H+GqhmI=:v1:gFx7zpznlDuF2TiI:9sMp3vBR7XgModLJ6f1lDvjQkbEQIA=="
+                "salt": "v1:naa/QDtoW7I=:v1:TnCcADw/DbVPPyoj:2LiKMSPTUNWrHGOLlstqQJJzjrr7Hw=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "urn": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:pulumi:Stack::test-p-it-runner-compute-fi-86c32ed0",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-10T13:59:17.822448Z",
-                "modified": "2023-10-10T13:59:17.822448Z"
+                "created": "2023-11-01T16:14:47.937552168Z",
+                "modified": "2023-11-01T16:14:47.937552168Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "id": "318d3c4e-439c-4245-909c-5aca00f17967",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "parent": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:pulumi:Stack::test-p-it-runner-compute-fi-86c32ed0",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-10T13:59:18.611713Z",
-                "modified": "2023-10-10T13:59:18.611713Z"
+                "created": "2023-11-01T16:14:50.026558149Z",
+                "modified": "2023-11-01T16:14:50.026558149Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork",
+                "urn": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::gcp:compute/network:Network::defaultNetwork",
                 "custom": true,
-                "id": "projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                "id": "projects/pulumi-ci-gcp-provider/global/networks/dnetp-it-runner-compute-fi-86c32ed0",
                 "type": "gcp:compute/network:Network",
                 "inputs": {
                     "__defaults": [
@@ -53,7 +57,7 @@
                     ],
                     "autoCreateSubnetworks": true,
                     "deleteDefaultRoutesOnCreate": false,
-                    "name": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "name": "dnetp-it-runner-compute-fi-86c32ed0",
                     "networkFirewallPolicyEnforcementOrder": "AFTER_CLASSIC_FIREWALL"
                 },
                 "outputs": {
@@ -63,27 +67,27 @@
                     "description": "",
                     "enableUlaInternalIpv6": false,
                     "gatewayIpv4": "",
-                    "id": "projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                    "id": "projects/pulumi-ci-gcp-provider/global/networks/dnetp-it-runner-compute-fi-86c32ed0",
                     "internalIpv6Range": "",
                     "mtu": 0,
-                    "name": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "name": "dnetp-it-runner-compute-fi-86c32ed0",
                     "networkFirewallPolicyEnforcementOrder": "AFTER_CLASSIC_FIREWALL",
-                    "project": "pulumi-development",
+                    "project": "pulumi-ci-gcp-provider",
                     "routingMode": "REGIONAL",
-                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745"
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/global/networks/dnetp-it-runner-compute-fi-86c32ed0"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
-                "provider": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider::916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "parent": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:pulumi:Stack::test-p-it-runner-compute-fi-86c32ed0",
+                "provider": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:providers:gcp::provider::318d3c4e-439c-4245-909c-5aca00f17967",
                 "propertyDependencies": {
                     "name": null
                 },
-                "created": "2023-10-10T14:00:22.168684Z",
-                "modified": "2023-10-10T14:00:22.168684Z"
+                "created": "2023-11-01T16:15:53.826577767Z",
+                "modified": "2023-11-01T16:15:53.826577767Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/firewall:Firewall::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::gcp:compute/firewall:Firewall::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                "id": "projects/pulumi-ci-gcp-provider/global/firewalls/tested-resource-8025df9",
                 "type": "gcp:compute/firewall:Firewall",
                 "inputs": {
                     "__defaults": [
@@ -105,8 +109,8 @@
                             "protocol": "tcp"
                         }
                     ],
-                    "name": "tested-resource-cd556d3",
-                    "network": "dnetp-it-antons-mac-compute-fi-02d64745",
+                    "name": "tested-resource-8025df9",
+                    "network": "dnetp-it-runner-compute-fi-86c32ed0",
                     "priority": 1000,
                     "sourceTags": [
                         "web"
@@ -128,19 +132,19 @@
                             "protocol": "tcp"
                         }
                     ],
-                    "creationTimestamp": "2023-10-10T07:00:22.736-07:00",
+                    "creationTimestamp": "2023-11-01T09:15:54.250-07:00",
                     "denies": [],
                     "description": "",
                     "destinationRanges": [],
                     "direction": "INGRESS",
                     "disabled": false,
-                    "id": "projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                    "id": "projects/pulumi-ci-gcp-provider/global/firewalls/tested-resource-8025df9",
                     "logConfig": null,
-                    "name": "tested-resource-cd556d3",
-                    "network": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/networks/dnetp-it-antons-mac-compute-fi-02d64745",
+                    "name": "tested-resource-8025df9",
+                    "network": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/global/networks/dnetp-it-runner-compute-fi-86c32ed0",
                     "priority": 1000,
-                    "project": "pulumi-development",
-                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/firewalls/tested-resource-cd556d3",
+                    "project": "pulumi-ci-gcp-provider",
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/global/firewalls/tested-resource-8025df9",
                     "sourceRanges": [],
                     "sourceServiceAccounts": [],
                     "sourceTags": [
@@ -149,20 +153,20 @@
                     "targetServiceAccounts": [],
                     "targetTags": []
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:pulumi:Stack::test-p-it-antons-mac-compute-fi-02d64745",
+                "parent": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:pulumi:Stack::test-p-it-runner-compute-fi-86c32ed0",
                 "dependencies": [
-                    "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork"
+                    "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::gcp:compute/network:Network::defaultNetwork"
                 ],
-                "provider": "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::pulumi:providers:gcp::provider::916f00a1-77e1-4086-8bc6-6ec824c22cc5",
+                "provider": "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::pulumi:providers:gcp::provider::318d3c4e-439c-4245-909c-5aca00f17967",
                 "propertyDependencies": {
                     "allows": null,
                     "network": [
-                        "urn:pulumi:p-it-antons-mac-compute-fi-02d64745::test::gcp:compute/network:Network::defaultNetwork"
+                        "urn:pulumi:p-it-runner-compute-fi-86c32ed0::test::gcp:compute/network:Network::defaultNetwork"
                     ],
                     "sourceTags": null
                 },
-                "created": "2023-10-10T14:00:33.944433Z",
-                "modified": "2023-10-10T14:00:33.944433Z"
+                "created": "2023-11-01T16:16:05.179486422Z",
+                "modified": "2023-11-01T16:16:05.179486422Z"
             }
         ]
     }

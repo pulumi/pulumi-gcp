@@ -9,6 +9,10 @@ resources:
     type: pulumi:providers:gcp
     options:
       version: 6.67.0
+      ignoreChanges:
+        - project
+        - region
+        - zone
 
   tested-resource:
     type: gcp:serviceAccount:Account

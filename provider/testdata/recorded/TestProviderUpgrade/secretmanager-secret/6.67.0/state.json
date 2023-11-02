@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-06T17:10:18.885635-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:01:55.039928525Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:QIvU2I+BrSk=:v1:qZUe9kFdO+zq3vEk:oa3Fmw8qdm6AzMPaFEZ2NeLExksLNw=="
+                "salt": "v1:S+y+F8p+afk=:v1:+VA4ma0ypA+Y/pJX:9F0jxxVP0GZQMPSzIgFwqT/5UFkKXA=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-secretmana-e583990c",
+                "urn": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::pulumi:pulumi:Stack::test-p-it-runner-secretmana-0fa97506",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-06T21:10:17.430649Z",
-                "modified": "2023-10-06T21:10:17.430649Z"
+                "created": "2023-11-01T16:01:52.456797796Z",
+                "modified": "2023-11-01T16:01:52.456797796Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "71b4da1c-246c-476f-9eea-fa7856baf056",
+                "id": "0472dfd6-2c95-48f4-81b4-aa23e81b4ee3",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-secretmana-e583990c",
+                "parent": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::pulumi:pulumi:Stack::test-p-it-runner-secretmana-0fa97506",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-06T21:10:18.135387Z",
-                "modified": "2023-10-06T21:10:18.135387Z"
+                "created": "2023-11-01T16:01:54.404638683Z",
+                "modified": "2023-11-01T16:01:54.404638683Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::gcp:secretmanager/secret:Secret::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::gcp:secretmanager/secret:Secret::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/secrets/secret",
+                "id": "projects/pulumi-ci-gcp-provider/secrets/secret",
                 "type": "gcp:secretmanager/secret:Secret",
                 "inputs": {
                     "__defaults": [],
@@ -72,14 +76,14 @@
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
                     "annotations": {},
-                    "createTime": "2023-10-06T21:10:18.713712Z",
+                    "createTime": "2023-11-01T16:01:54.948365Z",
                     "expireTime": "",
-                    "id": "projects/pulumi-development/secrets/secret",
+                    "id": "projects/pulumi-ci-gcp-provider/secrets/secret",
                     "labels": {
                         "label": "my-label"
                     },
-                    "name": "projects/921927215178/secrets/secret",
-                    "project": "pulumi-development",
+                    "name": "projects/895284651812/secrets/secret",
+                    "project": "pulumi-ci-gcp-provider",
                     "replication": {
                         "auto": null,
                         "automatic": false,
@@ -101,15 +105,15 @@
                     "topics": [],
                     "versionAliases": {}
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-secretmana-e583990c",
-                "provider": "urn:pulumi:p-it-antons-mac-secretmana-e583990c::test::pulumi:providers:gcp::provider::71b4da1c-246c-476f-9eea-fa7856baf056",
+                "parent": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::pulumi:pulumi:Stack::test-p-it-runner-secretmana-0fa97506",
+                "provider": "urn:pulumi:p-it-runner-secretmana-0fa97506::test::pulumi:providers:gcp::provider::0472dfd6-2c95-48f4-81b4-aa23e81b4ee3",
                 "propertyDependencies": {
                     "labels": null,
                     "replication": null,
                     "secretId": null
                 },
-                "created": "2023-10-06T21:10:18.885577Z",
-                "modified": "2023-10-06T21:10:18.885577Z"
+                "created": "2023-11-01T16:01:55.039810494Z",
+                "modified": "2023-11-01T16:01:55.039810494Z"
             }
         ]
     }
