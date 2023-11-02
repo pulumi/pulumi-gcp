@@ -282,7 +282,7 @@ func TestRandomLabelsCombinationsGo(t *testing.T) {
 	t.Logf("random-sampling 100 state transitions")
 
 	for i := 0; i < 100; i++ {
-		t.Run("", func(t *testing.T) {
+		t.Run(fmt.Sprintf("test%d", i), func(t *testing.T) {
 			t.Parallel()
 			i := rand.Intn(len(states))
 			j := rand.Intn(len(states))
