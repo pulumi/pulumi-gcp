@@ -78,7 +78,10 @@ func TestRegression794(t *testing.T) {
 
 	t.Cleanup(func() {
 		// Select an empty program to delete the stack.
-		s, err := auto.UpsertStackInlineSource(ctx, stackName, originProject, nil)
+		s, err := auto.UpsertStackInlineSource(ctx, stackName, originProject, nil, auto.WorkDir(workdir), auto.EnvVars(map[string]string{
+			workspace.PulumiBackendURLEnvVar: backendUrl,
+			"PULUMI_CONFIG_PASSPHRASE":       configPassphrase,
+		}))
 		if err != nil {
 			t.Fatalf("failed to select workspace to delete: %v", err)
 		}
@@ -94,6 +97,9 @@ func TestRegression794(t *testing.T) {
 			instance, err := sql.NewDatabaseInstance(ctx, "test", &sql.DatabaseInstanceArgs{
 				Name:            pulumi.String(databaseName),
 				DatabaseVersion: pulumi.String("POSTGRES_15"),
+				// We need to explicitly disable deletion protection, otherwise the database will not be deleted
+				// when the stack is destroyed.
+				DeletionProtection: pulumi.BoolPtr(false),
 				Settings: sql.DatabaseInstanceSettingsArgs{
 					// In testing, we saw these times for running tests over at least two trials on each:
 					//
