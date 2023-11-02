@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"math/big"
 	"math/rand"
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -19,7 +20,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"os"
 )
 
 func TestAccBucketGo(t *testing.T) {
