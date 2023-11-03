@@ -4,6 +4,8 @@ package gcp
 
 import (
 	"context"
+	"fmt"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -16,9 +18,8 @@ import (
 // called "terraform_labels", overriding these with "pulumiLabels" via
 // tfbridge.SchemaInfo.
 func fixLabelNames(prov *tfbridge.ProviderInfo) {
-	// Recursively applies the label fix
+	// Recursively applies the label fix and gathers resource paths to pulumiLabels
 	var apply func(string, shim.Schema, *tfbridge.SchemaInfo, *[]resource.PropertyPath, resource.PropertyPath)
-
 	apply = func(key string, m shim.Schema, info *tfbridge.SchemaInfo,
 		paths *[]resource.PropertyPath,
 		currentPath resource.PropertyPath,
@@ -26,6 +27,14 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		if key == "terraform_labels" {
 			info.Name = "pulumiLabels"
 			// Gather all paths to pulumiLabels
+			for _, v := range currentPath {
+				if v, ok := v.(string); ok && v == "*" {
+					panic(fmt.Sprintf("at path %s: globs are not supported", currentPath))
+				}
+			}
+			// we need to reset the `terraformLabels` key that we wrote to currentPath to be `pulumiLabels`
+			currentPath = currentPath[:len(currentPath)-1]
+			currentPath = append(currentPath, info.Name)
 			*paths = append(*paths, currentPath)
 		}
 
@@ -49,7 +58,8 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 					i = new(tfbridge.SchemaInfo)
 					info.Elem.Fields[key] = i
 				}
-				currentPath = append(currentPath, key)
+				pulumiKey := tfbridge.TerraformToPulumiNameV2(key, obj, info.Elem.Fields)
+				currentPath = append(currentPath, pulumiKey)
 				apply(key, m, i, paths, currentPath)
 				return true
 			})
@@ -72,7 +82,8 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 			*fields = make(map[string]*tfbridge.SchemaInfo, s.Len())
 		}
 		s.Range(func(key string, m shim.Schema) bool {
-			currentPath := resource.PropertyPath{key}
+			pulumiKey := tfbridge.TerraformToPulumiNameV2(key, s, *fields)
+			currentPath := resource.PropertyPath{pulumiKey}
 			i, ok := (*fields)[key]
 			if !ok {
 				i = new(tfbridge.SchemaInfo)
@@ -105,7 +116,6 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 // creating a permanent diff.
 // See also: https://github.com/pulumi/pulumi-gcp/issues/1314
 func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTransform {
-
 	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
 		obj := resource.NewObjectProperty(prop)
 		for _, path := range paths {
@@ -117,5 +127,4 @@ func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTrans
 		}
 		return obj.ObjectValue(), nil
 	}
-
 }
