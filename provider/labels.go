@@ -135,8 +135,15 @@ func ensureLabelSecrets(paths []resource.PropertyPath) tfbridge.PropertyTransfor
 	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
 		obj := resource.NewObjectProperty(prop)
 		for _, pulumiLabelsPath := range paths {
-			labelPath := append(pulumiLabelsPath[:len(pulumiLabelsPath)-1], "labels")
-			effectiveLabelPath := append(pulumiLabelsPath[:len(pulumiLabelsPath)-1], "effectiveLabels")
+			// Copy to labels without clobbering pulumiLabelsPath
+			labelPath := make(resource.PropertyPath, len(pulumiLabelsPath))
+			copy(labelPath, pulumiLabelsPath)
+			labelPath[len(labelPath)-1] = "labels"
+
+			// Copy to effectiveLabelPath without clobbering pulumiLabelsPath
+			effectiveLabelPath := make(resource.PropertyPath, len(pulumiLabelsPath))
+			copy(effectiveLabelPath, pulumiLabelsPath)
+			effectiveLabelPath[len(effectiveLabelPath)-1] = "effectiveLabels"
 
 			err := errors.Join(
 				matchPathSecretness(obj, labelPath, pulumiLabelsPath),
@@ -145,6 +152,25 @@ func ensureLabelSecrets(paths []resource.PropertyPath) tfbridge.PropertyTransfor
 			if err != nil {
 				return nil, err
 			}
+
+			labelsValue, ok := labelPath.Get(obj)
+			if !ok || !labelsValue.IsObject() {
+				continue
+			}
+			for key := range labelsValue.ObjectValue() {
+				k := string(key)
+				l := append(labelPath, k)
+				e := append(effectiveLabelPath, k)
+				p := append(pulumiLabelsPath, k)
+				err := errors.Join(
+					matchPathSecretness(obj, l, e),
+					matchPathSecretness(obj, l, p),
+				)
+				if err != nil {
+					return nil, err
+				}
+			}
+
 		}
 		return obj.ObjectValue(), nil
 	}
