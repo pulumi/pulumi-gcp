@@ -4,6 +4,7 @@ package gcp
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -101,6 +102,7 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		labelPaths := update(rMap.Get(token).Schema(), &info.Fields)
 		if len(labelPaths) > 0 {
 			info.TransformFromState = ensureLabelPathsExist(labelPaths)
+			info.TransformOutputs = ensureLabelSecrets(labelPaths)
 		}
 	}
 
@@ -127,4 +129,57 @@ func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTrans
 		}
 		return obj.ObjectValue(), nil
 	}
+}
+
+func ensureLabelSecrets(paths []resource.PropertyPath) tfbridge.PropertyTransform {
+	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
+		obj := resource.NewObjectProperty(prop)
+		for _, pulumiLabelsPath := range paths {
+			labelPath := append(pulumiLabelsPath[:len(pulumiLabelsPath)-1], "labels")
+			effectiveLabelPath := append(pulumiLabelsPath[:len(pulumiLabelsPath)-1], "effectiveLabels")
+
+			err := errors.Join(
+				matchPathSecretness(obj, labelPath, pulumiLabelsPath),
+				matchPathSecretness(obj, labelPath, effectiveLabelPath),
+			)
+			if err != nil {
+				return nil, err
+			}
+		}
+		return obj.ObjectValue(), nil
+	}
+}
+
+func matchPathSecretness(obj resource.PropertyValue, src, dst resource.PropertyPath) error {
+	srcValue, ok := src.Get(obj)
+	if !ok {
+		return nil
+	}
+
+	isSecret := srcValue.IsSecret() || (srcValue.IsOutput() && srcValue.OutputValue().Secret)
+
+	if !isSecret {
+		return nil
+	}
+	dstValue, ok := dst.Get(obj)
+	if !ok || dstValue.IsSecret() {
+		return nil
+	}
+
+	// dstValue is an output, but not a secret. We set the secret flag on the output.
+	if dstValue.IsOutput() {
+		v := dstValue.OutputValue()
+		v.Secret = true
+		didSet := dst.Set(obj, resource.NewOutputProperty(v))
+		if !didSet {
+			return fmt.Errorf("failed to set %s as secret", dst)
+		}
+		return nil
+	}
+
+	didSet := dst.Set(obj, resource.MakeSecret(dstValue))
+	if !didSet {
+		return fmt.Errorf("failed to set %s as secret", dst)
+	}
+	return nil
 }
