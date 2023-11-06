@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A ScanConfig resource contains the configurations to launch a scan.
@@ -339,12 +338,6 @@ func (i *SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigOutput)
 }
 
-func (i *SecurityScanConfig) ToOutput(ctx context.Context) pulumix.Output[*SecurityScanConfig] {
-	return pulumix.Output[*SecurityScanConfig]{
-		OutputState: i.ToSecurityScanConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecurityScanConfigArrayInput is an input type that accepts SecurityScanConfigArray and SecurityScanConfigArrayOutput values.
 // You can construct a concrete instance of `SecurityScanConfigArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutput() SecurityScanC
 
 func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutputWithContext(ctx context.Context) SecurityScanConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigArrayOutput)
-}
-
-func (i SecurityScanConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityScanConfig] {
-	return pulumix.Output[[]*SecurityScanConfig]{
-		OutputState: i.ToSecurityScanConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecurityScanConfigMapInput is an input type that accepts SecurityScanConfigMap and SecurityScanConfigMapOutput values.
@@ -401,12 +388,6 @@ func (i SecurityScanConfigMap) ToSecurityScanConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigMapOutput)
 }
 
-func (i SecurityScanConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityScanConfig] {
-	return pulumix.Output[map[string]*SecurityScanConfig]{
-		OutputState: i.ToSecurityScanConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityScanConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityScanConfigOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o SecurityScanConfigOutput) ToSecurityScanConfigOutput() SecurityScanConfi
 
 func (o SecurityScanConfigOutput) ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput {
 	return o
-}
-
-func (o SecurityScanConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityScanConfig] {
-	return pulumix.Output[*SecurityScanConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication configuration.
@@ -510,12 +485,6 @@ func (o SecurityScanConfigArrayOutput) ToSecurityScanConfigArrayOutputWithContex
 	return o
 }
 
-func (o SecurityScanConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityScanConfig] {
-	return pulumix.Output[[]*SecurityScanConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityScanConfigArrayOutput) Index(i pulumi.IntInput) SecurityScanConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityScanConfig {
 		return vs[0].([]*SecurityScanConfig)[vs[1].(int)]
@@ -534,12 +503,6 @@ func (o SecurityScanConfigMapOutput) ToSecurityScanConfigMapOutput() SecuritySca
 
 func (o SecurityScanConfigMapOutput) ToSecurityScanConfigMapOutputWithContext(ctx context.Context) SecurityScanConfigMapOutput {
 	return o
-}
-
-func (o SecurityScanConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityScanConfig] {
-	return pulumix.Output[map[string]*SecurityScanConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityScanConfigMapOutput) MapIndex(k pulumi.StringInput) SecurityScanConfigOutput {

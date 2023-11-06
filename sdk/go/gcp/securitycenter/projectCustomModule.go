@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a Security Health Analytics custom module, including
@@ -336,12 +335,6 @@ func (i *ProjectCustomModule) ToProjectCustomModuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleOutput)
 }
 
-func (i *ProjectCustomModule) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModule] {
-	return pulumix.Output[*ProjectCustomModule]{
-		OutputState: i.ToProjectCustomModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectCustomModuleArrayInput is an input type that accepts ProjectCustomModuleArray and ProjectCustomModuleArrayOutput values.
 // You can construct a concrete instance of `ProjectCustomModuleArrayInput` via:
 //
@@ -365,12 +358,6 @@ func (i ProjectCustomModuleArray) ToProjectCustomModuleArrayOutput() ProjectCust
 
 func (i ProjectCustomModuleArray) ToProjectCustomModuleArrayOutputWithContext(ctx context.Context) ProjectCustomModuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleArrayOutput)
-}
-
-func (i ProjectCustomModuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCustomModule] {
-	return pulumix.Output[[]*ProjectCustomModule]{
-		OutputState: i.ToProjectCustomModuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectCustomModuleMapInput is an input type that accepts ProjectCustomModuleMap and ProjectCustomModuleMapOutput values.
@@ -398,12 +385,6 @@ func (i ProjectCustomModuleMap) ToProjectCustomModuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomModuleMapOutput)
 }
 
-func (i ProjectCustomModuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCustomModule] {
-	return pulumix.Output[map[string]*ProjectCustomModule]{
-		OutputState: i.ToProjectCustomModuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomModuleOutput) ElementType() reflect.Type {
@@ -416,12 +397,6 @@ func (o ProjectCustomModuleOutput) ToProjectCustomModuleOutput() ProjectCustomMo
 
 func (o ProjectCustomModuleOutput) ToProjectCustomModuleOutputWithContext(ctx context.Context) ProjectCustomModuleOutput {
 	return o
-}
-
-func (o ProjectCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomModule] {
-	return pulumix.Output[*ProjectCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If empty, indicates that the custom module was created in the organization,folder,
@@ -489,12 +464,6 @@ func (o ProjectCustomModuleArrayOutput) ToProjectCustomModuleArrayOutputWithCont
 	return o
 }
 
-func (o ProjectCustomModuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCustomModule] {
-	return pulumix.Output[[]*ProjectCustomModule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectCustomModuleArrayOutput) Index(i pulumi.IntInput) ProjectCustomModuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectCustomModule {
 		return vs[0].([]*ProjectCustomModule)[vs[1].(int)]
@@ -513,12 +482,6 @@ func (o ProjectCustomModuleMapOutput) ToProjectCustomModuleMapOutput() ProjectCu
 
 func (o ProjectCustomModuleMapOutput) ToProjectCustomModuleMapOutputWithContext(ctx context.Context) ProjectCustomModuleMapOutput {
 	return o
-}
-
-func (o ProjectCustomModuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCustomModule] {
-	return pulumix.Output[map[string]*ProjectCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomModuleMapOutput) MapIndex(k pulumi.StringInput) ProjectCustomModuleOutput {

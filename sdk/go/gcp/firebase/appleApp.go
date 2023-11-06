@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -323,12 +322,6 @@ func (i *AppleApp) ToAppleAppOutputWithContext(ctx context.Context) AppleAppOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AppleAppOutput)
 }
 
-func (i *AppleApp) ToOutput(ctx context.Context) pulumix.Output[*AppleApp] {
-	return pulumix.Output[*AppleApp]{
-		OutputState: i.ToAppleAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppleAppArrayInput is an input type that accepts AppleAppArray and AppleAppArrayOutput values.
 // You can construct a concrete instance of `AppleAppArrayInput` via:
 //
@@ -352,12 +345,6 @@ func (i AppleAppArray) ToAppleAppArrayOutput() AppleAppArrayOutput {
 
 func (i AppleAppArray) ToAppleAppArrayOutputWithContext(ctx context.Context) AppleAppArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppleAppArrayOutput)
-}
-
-func (i AppleAppArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppleApp] {
-	return pulumix.Output[[]*AppleApp]{
-		OutputState: i.ToAppleAppArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppleAppMapInput is an input type that accepts AppleAppMap and AppleAppMapOutput values.
@@ -385,12 +372,6 @@ func (i AppleAppMap) ToAppleAppMapOutputWithContext(ctx context.Context) AppleAp
 	return pulumi.ToOutputWithContext(ctx, i).(AppleAppMapOutput)
 }
 
-func (i AppleAppMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppleApp] {
-	return pulumix.Output[map[string]*AppleApp]{
-		OutputState: i.ToAppleAppMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppleAppOutput struct{ *pulumi.OutputState }
 
 func (AppleAppOutput) ElementType() reflect.Type {
@@ -403,12 +384,6 @@ func (o AppleAppOutput) ToAppleAppOutput() AppleAppOutput {
 
 func (o AppleAppOutput) ToAppleAppOutputWithContext(ctx context.Context) AppleAppOutput {
 	return o
-}
-
-func (o AppleAppOutput) ToOutput(ctx context.Context) pulumix.Output[*AppleApp] {
-	return pulumix.Output[*AppleApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
@@ -479,12 +454,6 @@ func (o AppleAppArrayOutput) ToAppleAppArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AppleAppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppleApp] {
-	return pulumix.Output[[]*AppleApp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppleAppArrayOutput) Index(i pulumi.IntInput) AppleAppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppleApp {
 		return vs[0].([]*AppleApp)[vs[1].(int)]
@@ -503,12 +472,6 @@ func (o AppleAppMapOutput) ToAppleAppMapOutput() AppleAppMapOutput {
 
 func (o AppleAppMapOutput) ToAppleAppMapOutputWithContext(ctx context.Context) AppleAppMapOutput {
 	return o
-}
-
-func (o AppleAppMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppleApp] {
-	return pulumix.Output[map[string]*AppleApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppleAppMapOutput) MapIndex(k pulumi.StringInput) AppleAppOutput {

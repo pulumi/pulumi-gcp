@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Anthos node pool running on Azure.
@@ -405,12 +404,6 @@ func (i *AzureNodePool) ToAzureNodePoolOutputWithContext(ctx context.Context) Az
 	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolOutput)
 }
 
-func (i *AzureNodePool) ToOutput(ctx context.Context) pulumix.Output[*AzureNodePool] {
-	return pulumix.Output[*AzureNodePool]{
-		OutputState: i.ToAzureNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureNodePoolArrayInput is an input type that accepts AzureNodePoolArray and AzureNodePoolArrayOutput values.
 // You can construct a concrete instance of `AzureNodePoolArrayInput` via:
 //
@@ -434,12 +427,6 @@ func (i AzureNodePoolArray) ToAzureNodePoolArrayOutput() AzureNodePoolArrayOutpu
 
 func (i AzureNodePoolArray) ToAzureNodePoolArrayOutputWithContext(ctx context.Context) AzureNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolArrayOutput)
-}
-
-func (i AzureNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzureNodePool] {
-	return pulumix.Output[[]*AzureNodePool]{
-		OutputState: i.ToAzureNodePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AzureNodePoolMapInput is an input type that accepts AzureNodePoolMap and AzureNodePoolMapOutput values.
@@ -467,12 +454,6 @@ func (i AzureNodePoolMap) ToAzureNodePoolMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolMapOutput)
 }
 
-func (i AzureNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureNodePool] {
-	return pulumix.Output[map[string]*AzureNodePool]{
-		OutputState: i.ToAzureNodePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureNodePoolOutput struct{ *pulumi.OutputState }
 
 func (AzureNodePoolOutput) ElementType() reflect.Type {
@@ -485,12 +466,6 @@ func (o AzureNodePoolOutput) ToAzureNodePoolOutput() AzureNodePoolOutput {
 
 func (o AzureNodePoolOutput) ToAzureNodePoolOutputWithContext(ctx context.Context) AzureNodePoolOutput {
 	return o
-}
-
-func (o AzureNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureNodePool] {
-	return pulumix.Output[*AzureNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -597,12 +572,6 @@ func (o AzureNodePoolArrayOutput) ToAzureNodePoolArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AzureNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzureNodePool] {
-	return pulumix.Output[[]*AzureNodePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzureNodePoolArrayOutput) Index(i pulumi.IntInput) AzureNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureNodePool {
 		return vs[0].([]*AzureNodePool)[vs[1].(int)]
@@ -621,12 +590,6 @@ func (o AzureNodePoolMapOutput) ToAzureNodePoolMapOutput() AzureNodePoolMapOutpu
 
 func (o AzureNodePoolMapOutput) ToAzureNodePoolMapOutputWithContext(ctx context.Context) AzureNodePoolMapOutput {
 	return o
-}
-
-func (o AzureNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureNodePool] {
-	return pulumix.Output[map[string]*AzureNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureNodePoolMapOutput) MapIndex(k pulumi.StringInput) AzureNodePoolOutput {

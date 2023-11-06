@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A game server config resource. Configs are global and immutable.
@@ -354,12 +353,6 @@ func (i *GameServerConfig) ToGameServerConfigOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigOutput)
 }
 
-func (i *GameServerConfig) ToOutput(ctx context.Context) pulumix.Output[*GameServerConfig] {
-	return pulumix.Output[*GameServerConfig]{
-		OutputState: i.ToGameServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerConfigArrayInput is an input type that accepts GameServerConfigArray and GameServerConfigArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigArrayInput` via:
 //
@@ -383,12 +376,6 @@ func (i GameServerConfigArray) ToGameServerConfigArrayOutput() GameServerConfigA
 
 func (i GameServerConfigArray) ToGameServerConfigArrayOutputWithContext(ctx context.Context) GameServerConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigArrayOutput)
-}
-
-func (i GameServerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerConfig] {
-	return pulumix.Output[[]*GameServerConfig]{
-		OutputState: i.ToGameServerConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GameServerConfigMapInput is an input type that accepts GameServerConfigMap and GameServerConfigMapOutput values.
@@ -416,12 +403,6 @@ func (i GameServerConfigMap) ToGameServerConfigMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigMapOutput)
 }
 
-func (i GameServerConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerConfig] {
-	return pulumix.Output[map[string]*GameServerConfig]{
-		OutputState: i.ToGameServerConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigOutput) ElementType() reflect.Type {
@@ -434,12 +415,6 @@ func (o GameServerConfigOutput) ToGameServerConfigOutput() GameServerConfigOutpu
 
 func (o GameServerConfigOutput) ToGameServerConfigOutputWithContext(ctx context.Context) GameServerConfigOutput {
 	return o
-}
-
-func (o GameServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerConfig] {
-	return pulumix.Output[*GameServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique id for the deployment config.
@@ -508,12 +483,6 @@ func (o GameServerConfigArrayOutput) ToGameServerConfigArrayOutputWithContext(ct
 	return o
 }
 
-func (o GameServerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerConfig] {
-	return pulumix.Output[[]*GameServerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GameServerConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerConfig {
 		return vs[0].([]*GameServerConfig)[vs[1].(int)]
@@ -532,12 +501,6 @@ func (o GameServerConfigMapOutput) ToGameServerConfigMapOutput() GameServerConfi
 
 func (o GameServerConfigMapOutput) ToGameServerConfigMapOutputWithContext(ctx context.Context) GameServerConfigMapOutput {
 	return o
-}
-
-func (o GameServerConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerConfig] {
-	return pulumix.Output[map[string]*GameServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerConfigMapOutput) MapIndex(k pulumi.StringInput) GameServerConfigOutput {

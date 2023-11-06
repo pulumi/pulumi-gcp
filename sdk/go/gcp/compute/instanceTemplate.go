@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a VM instance template resource within GCE. For more information see
@@ -757,12 +756,6 @@ func (i *InstanceTemplate) ToInstanceTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateOutput)
 }
 
-func (i *InstanceTemplate) ToOutput(ctx context.Context) pulumix.Output[*InstanceTemplate] {
-	return pulumix.Output[*InstanceTemplate]{
-		OutputState: i.ToInstanceTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceTemplateArrayInput is an input type that accepts InstanceTemplateArray and InstanceTemplateArrayOutput values.
 // You can construct a concrete instance of `InstanceTemplateArrayInput` via:
 //
@@ -786,12 +779,6 @@ func (i InstanceTemplateArray) ToInstanceTemplateArrayOutput() InstanceTemplateA
 
 func (i InstanceTemplateArray) ToInstanceTemplateArrayOutputWithContext(ctx context.Context) InstanceTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateArrayOutput)
-}
-
-func (i InstanceTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceTemplate] {
-	return pulumix.Output[[]*InstanceTemplate]{
-		OutputState: i.ToInstanceTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceTemplateMapInput is an input type that accepts InstanceTemplateMap and InstanceTemplateMapOutput values.
@@ -819,12 +806,6 @@ func (i InstanceTemplateMap) ToInstanceTemplateMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateMapOutput)
 }
 
-func (i InstanceTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceTemplate] {
-	return pulumix.Output[map[string]*InstanceTemplate]{
-		OutputState: i.ToInstanceTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceTemplateOutput) ElementType() reflect.Type {
@@ -837,12 +818,6 @@ func (o InstanceTemplateOutput) ToInstanceTemplateOutput() InstanceTemplateOutpu
 
 func (o InstanceTemplateOutput) ToInstanceTemplateOutputWithContext(ctx context.Context) InstanceTemplateOutput {
 	return o
-}
-
-func (o InstanceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceTemplate] {
-	return pulumix.Output[*InstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -1046,12 +1021,6 @@ func (o InstanceTemplateArrayOutput) ToInstanceTemplateArrayOutputWithContext(ct
 	return o
 }
 
-func (o InstanceTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceTemplate] {
-	return pulumix.Output[[]*InstanceTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceTemplateArrayOutput) Index(i pulumi.IntInput) InstanceTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceTemplate {
 		return vs[0].([]*InstanceTemplate)[vs[1].(int)]
@@ -1070,12 +1039,6 @@ func (o InstanceTemplateMapOutput) ToInstanceTemplateMapOutput() InstanceTemplat
 
 func (o InstanceTemplateMapOutput) ToInstanceTemplateMapOutputWithContext(ctx context.Context) InstanceTemplateMapOutput {
 	return o
-}
-
-func (o InstanceTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceTemplate] {
-	return pulumix.Output[map[string]*InstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceTemplateMapOutput) MapIndex(k pulumi.StringInput) InstanceTemplateOutput {

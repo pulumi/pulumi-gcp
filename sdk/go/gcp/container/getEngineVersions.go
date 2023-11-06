@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
@@ -157,12 +156,6 @@ func (o GetEngineVersionsResultOutput) ToGetEngineVersionsResultOutput() GetEngi
 
 func (o GetEngineVersionsResultOutput) ToGetEngineVersionsResultOutputWithContext(ctx context.Context) GetEngineVersionsResultOutput {
 	return o
-}
-
-func (o GetEngineVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEngineVersionsResult] {
-	return pulumix.Output[GetEngineVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Version of Kubernetes the service deploys by default.

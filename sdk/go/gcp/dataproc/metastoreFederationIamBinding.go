@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -256,12 +255,6 @@ func (i *MetastoreFederationIamBinding) ToMetastoreFederationIamBindingOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingOutput)
 }
 
-func (i *MetastoreFederationIamBinding) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamBinding] {
-	return pulumix.Output[*MetastoreFederationIamBinding]{
-		OutputState: i.ToMetastoreFederationIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreFederationIamBindingArrayInput is an input type that accepts MetastoreFederationIamBindingArray and MetastoreFederationIamBindingArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationIamBindingArrayInput` via:
 //
@@ -285,12 +278,6 @@ func (i MetastoreFederationIamBindingArray) ToMetastoreFederationIamBindingArray
 
 func (i MetastoreFederationIamBindingArray) ToMetastoreFederationIamBindingArrayOutputWithContext(ctx context.Context) MetastoreFederationIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingArrayOutput)
-}
-
-func (i MetastoreFederationIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamBinding] {
-	return pulumix.Output[[]*MetastoreFederationIamBinding]{
-		OutputState: i.ToMetastoreFederationIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreFederationIamBindingMapInput is an input type that accepts MetastoreFederationIamBindingMap and MetastoreFederationIamBindingMapOutput values.
@@ -318,12 +305,6 @@ func (i MetastoreFederationIamBindingMap) ToMetastoreFederationIamBindingMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingMapOutput)
 }
 
-func (i MetastoreFederationIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamBinding] {
-	return pulumix.Output[map[string]*MetastoreFederationIamBinding]{
-		OutputState: i.ToMetastoreFederationIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationIamBindingOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationIamBindingOutput) ElementType() reflect.Type {
@@ -336,12 +317,6 @@ func (o MetastoreFederationIamBindingOutput) ToMetastoreFederationIamBindingOutp
 
 func (o MetastoreFederationIamBindingOutput) ToMetastoreFederationIamBindingOutputWithContext(ctx context.Context) MetastoreFederationIamBindingOutput {
 	return o
-}
-
-func (o MetastoreFederationIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamBinding] {
-	return pulumix.Output[*MetastoreFederationIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamBindingOutput) Condition() MetastoreFederationIamBindingConditionPtrOutput {
@@ -408,12 +383,6 @@ func (o MetastoreFederationIamBindingArrayOutput) ToMetastoreFederationIamBindin
 	return o
 }
 
-func (o MetastoreFederationIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamBinding] {
-	return pulumix.Output[[]*MetastoreFederationIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreFederationIamBindingArrayOutput) Index(i pulumi.IntInput) MetastoreFederationIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreFederationIamBinding {
 		return vs[0].([]*MetastoreFederationIamBinding)[vs[1].(int)]
@@ -432,12 +401,6 @@ func (o MetastoreFederationIamBindingMapOutput) ToMetastoreFederationIamBindingM
 
 func (o MetastoreFederationIamBindingMapOutput) ToMetastoreFederationIamBindingMapOutputWithContext(ctx context.Context) MetastoreFederationIamBindingMapOutput {
 	return o
-}
-
-func (o MetastoreFederationIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamBinding] {
-	return pulumix.Output[map[string]*MetastoreFederationIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamBindingMapOutput) MapIndex(k pulumi.StringInput) MetastoreFederationIamBindingOutput {

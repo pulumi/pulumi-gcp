@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
@@ -710,12 +709,6 @@ func (i *FlexibleAppVersion) ToFlexibleAppVersionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionOutput)
 }
 
-func (i *FlexibleAppVersion) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersion] {
-	return pulumix.Output[*FlexibleAppVersion]{
-		OutputState: i.ToFlexibleAppVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlexibleAppVersionArrayInput is an input type that accepts FlexibleAppVersionArray and FlexibleAppVersionArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionArrayInput` via:
 //
@@ -739,12 +732,6 @@ func (i FlexibleAppVersionArray) ToFlexibleAppVersionArrayOutput() FlexibleAppVe
 
 func (i FlexibleAppVersionArray) ToFlexibleAppVersionArrayOutputWithContext(ctx context.Context) FlexibleAppVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionArrayOutput)
-}
-
-func (i FlexibleAppVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlexibleAppVersion] {
-	return pulumix.Output[[]*FlexibleAppVersion]{
-		OutputState: i.ToFlexibleAppVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlexibleAppVersionMapInput is an input type that accepts FlexibleAppVersionMap and FlexibleAppVersionMapOutput values.
@@ -772,12 +759,6 @@ func (i FlexibleAppVersionMap) ToFlexibleAppVersionMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionMapOutput)
 }
 
-func (i FlexibleAppVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlexibleAppVersion] {
-	return pulumix.Output[map[string]*FlexibleAppVersion]{
-		OutputState: i.ToFlexibleAppVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlexibleAppVersionOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionOutput) ElementType() reflect.Type {
@@ -790,12 +771,6 @@ func (o FlexibleAppVersionOutput) ToFlexibleAppVersionOutput() FlexibleAppVersio
 
 func (o FlexibleAppVersionOutput) ToFlexibleAppVersionOutputWithContext(ctx context.Context) FlexibleAppVersionOutput {
 	return o
-}
-
-func (o FlexibleAppVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*FlexibleAppVersion] {
-	return pulumix.Output[*FlexibleAppVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Serving configuration for Google Cloud Endpoints.
@@ -990,12 +965,6 @@ func (o FlexibleAppVersionArrayOutput) ToFlexibleAppVersionArrayOutputWithContex
 	return o
 }
 
-func (o FlexibleAppVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlexibleAppVersion] {
-	return pulumix.Output[[]*FlexibleAppVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlexibleAppVersionArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlexibleAppVersion {
 		return vs[0].([]*FlexibleAppVersion)[vs[1].(int)]
@@ -1014,12 +983,6 @@ func (o FlexibleAppVersionMapOutput) ToFlexibleAppVersionMapOutput() FlexibleApp
 
 func (o FlexibleAppVersionMapOutput) ToFlexibleAppVersionMapOutputWithContext(ctx context.Context) FlexibleAppVersionMapOutput {
 	return o
-}
-
-func (o FlexibleAppVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlexibleAppVersion] {
-	return pulumix.Output[map[string]*FlexibleAppVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlexibleAppVersionMapOutput) MapIndex(k pulumi.StringInput) FlexibleAppVersionOutput {

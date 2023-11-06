@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
@@ -498,12 +497,6 @@ func (i *IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindi
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingOutput)
 }
 
-func (i *IamBinding) ToOutput(ctx context.Context) pulumix.Output[*IamBinding] {
-	return pulumix.Output[*IamBinding]{
-		OutputState: i.ToIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IamBindingArrayInput is an input type that accepts IamBindingArray and IamBindingArrayOutput values.
 // You can construct a concrete instance of `IamBindingArrayInput` via:
 //
@@ -527,12 +520,6 @@ func (i IamBindingArray) ToIamBindingArrayOutput() IamBindingArrayOutput {
 
 func (i IamBindingArray) ToIamBindingArrayOutputWithContext(ctx context.Context) IamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingArrayOutput)
-}
-
-func (i IamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamBinding] {
-	return pulumix.Output[[]*IamBinding]{
-		OutputState: i.ToIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IamBindingMapInput is an input type that accepts IamBindingMap and IamBindingMapOutput values.
@@ -560,12 +547,6 @@ func (i IamBindingMap) ToIamBindingMapOutputWithContext(ctx context.Context) Iam
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingMapOutput)
 }
 
-func (i IamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamBinding] {
-	return pulumix.Output[map[string]*IamBinding]{
-		OutputState: i.ToIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IamBindingOutput struct{ *pulumi.OutputState }
 
 func (IamBindingOutput) ElementType() reflect.Type {
@@ -578,12 +559,6 @@ func (o IamBindingOutput) ToIamBindingOutput() IamBindingOutput {
 
 func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
 	return o
-}
-
-func (o IamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*IamBinding] {
-	return pulumix.Output[*IamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -648,12 +623,6 @@ func (o IamBindingArrayOutput) ToIamBindingArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o IamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamBinding] {
-	return pulumix.Output[[]*IamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IamBindingArrayOutput) Index(i pulumi.IntInput) IamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamBinding {
 		return vs[0].([]*IamBinding)[vs[1].(int)]
@@ -672,12 +641,6 @@ func (o IamBindingMapOutput) ToIamBindingMapOutput() IamBindingMapOutput {
 
 func (o IamBindingMapOutput) ToIamBindingMapOutputWithContext(ctx context.Context) IamBindingMapOutput {
 	return o
-}
-
-func (o IamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamBinding] {
-	return pulumix.Output[map[string]*IamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IamBindingMapOutput) MapIndex(k pulumi.StringInput) IamBindingOutput {

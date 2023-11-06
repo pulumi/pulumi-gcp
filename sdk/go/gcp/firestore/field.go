@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a single field in the database.
@@ -339,12 +338,6 @@ func (i *Field) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldOutput)
 }
 
-func (i *Field) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: i.ToFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FieldArrayInput is an input type that accepts FieldArray and FieldArrayOutput values.
 // You can construct a concrete instance of `FieldArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i FieldArray) ToFieldArrayOutput() FieldArrayOutput {
 
 func (i FieldArray) ToFieldArrayOutputWithContext(ctx context.Context) FieldArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldArrayOutput)
-}
-
-func (i FieldArray) ToOutput(ctx context.Context) pulumix.Output[[]*Field] {
-	return pulumix.Output[[]*Field]{
-		OutputState: i.ToFieldArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FieldMapInput is an input type that accepts FieldMap and FieldMapOutput values.
@@ -401,12 +388,6 @@ func (i FieldMap) ToFieldMapOutputWithContext(ctx context.Context) FieldMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FieldMapOutput)
 }
 
-func (i FieldMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Field] {
-	return pulumix.Output[map[string]*Field]{
-		OutputState: i.ToFieldMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldOutput struct{ *pulumi.OutputState }
 
 func (FieldOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o FieldOutput) ToFieldOutput() FieldOutput {
 
 func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return o
-}
-
-func (o FieldOutput) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the collection group to configure.
@@ -485,12 +460,6 @@ func (o FieldArrayOutput) ToFieldArrayOutputWithContext(ctx context.Context) Fie
 	return o
 }
 
-func (o FieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Field] {
-	return pulumix.Output[[]*Field]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Field {
 		return vs[0].([]*Field)[vs[1].(int)]
@@ -509,12 +478,6 @@ func (o FieldMapOutput) ToFieldMapOutput() FieldMapOutput {
 
 func (o FieldMapOutput) ToFieldMapOutputWithContext(ctx context.Context) FieldMapOutput {
 	return o
-}
-
-func (o FieldMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Field] {
-	return pulumix.Output[map[string]*Field]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldMapOutput) MapIndex(k pulumi.StringInput) FieldOutput {

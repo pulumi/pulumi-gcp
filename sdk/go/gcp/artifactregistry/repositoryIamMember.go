@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Artifact Registry Repository. Each of these resources serves a different use case:
@@ -380,12 +379,6 @@ func (i *RepositoryIamMember) ToRepositoryIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberOutput)
 }
 
-func (i *RepositoryIamMember) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMember] {
-	return pulumix.Output[*RepositoryIamMember]{
-		OutputState: i.ToRepositoryIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryIamMemberArrayInput is an input type that accepts RepositoryIamMemberArray and RepositoryIamMemberArrayOutput values.
 // You can construct a concrete instance of `RepositoryIamMemberArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i RepositoryIamMemberArray) ToRepositoryIamMemberArrayOutput() RepositoryI
 
 func (i RepositoryIamMemberArray) ToRepositoryIamMemberArrayOutputWithContext(ctx context.Context) RepositoryIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberArrayOutput)
-}
-
-func (i RepositoryIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamMember] {
-	return pulumix.Output[[]*RepositoryIamMember]{
-		OutputState: i.ToRepositoryIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryIamMemberMapInput is an input type that accepts RepositoryIamMemberMap and RepositoryIamMemberMapOutput values.
@@ -442,12 +429,6 @@ func (i RepositoryIamMemberMap) ToRepositoryIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberMapOutput)
 }
 
-func (i RepositoryIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamMember] {
-	return pulumix.Output[map[string]*RepositoryIamMember]{
-		OutputState: i.ToRepositoryIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutput() RepositoryIamMe
 
 func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutputWithContext(ctx context.Context) RepositoryIamMemberOutput {
 	return o
-}
-
-func (o RepositoryIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMember] {
-	return pulumix.Output[*RepositoryIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberOutput) Condition() RepositoryIamMemberConditionPtrOutput {
@@ -531,12 +506,6 @@ func (o RepositoryIamMemberArrayOutput) ToRepositoryIamMemberArrayOutputWithCont
 	return o
 }
 
-func (o RepositoryIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamMember] {
-	return pulumix.Output[[]*RepositoryIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryIamMemberArrayOutput) Index(i pulumi.IntInput) RepositoryIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryIamMember {
 		return vs[0].([]*RepositoryIamMember)[vs[1].(int)]
@@ -555,12 +524,6 @@ func (o RepositoryIamMemberMapOutput) ToRepositoryIamMemberMapOutput() Repositor
 
 func (o RepositoryIamMemberMapOutput) ToRepositoryIamMemberMapOutputWithContext(ctx context.Context) RepositoryIamMemberMapOutput {
 	return o
-}
-
-func (o RepositoryIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamMember] {
-	return pulumix.Output[map[string]*RepositoryIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamMemberOutput {

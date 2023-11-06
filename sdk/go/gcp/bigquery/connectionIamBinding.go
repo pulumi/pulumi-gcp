@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
@@ -410,12 +409,6 @@ func (i *ConnectionIamBinding) ToConnectionIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingOutput)
 }
 
-func (i *ConnectionIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamBinding] {
-	return pulumix.Output[*ConnectionIamBinding]{
-		OutputState: i.ToConnectionIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionIamBindingArrayInput is an input type that accepts ConnectionIamBindingArray and ConnectionIamBindingArrayOutput values.
 // You can construct a concrete instance of `ConnectionIamBindingArrayInput` via:
 //
@@ -439,12 +432,6 @@ func (i ConnectionIamBindingArray) ToConnectionIamBindingArrayOutput() Connectio
 
 func (i ConnectionIamBindingArray) ToConnectionIamBindingArrayOutputWithContext(ctx context.Context) ConnectionIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingArrayOutput)
-}
-
-func (i ConnectionIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamBinding] {
-	return pulumix.Output[[]*ConnectionIamBinding]{
-		OutputState: i.ToConnectionIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectionIamBindingMapInput is an input type that accepts ConnectionIamBindingMap and ConnectionIamBindingMapOutput values.
@@ -472,12 +459,6 @@ func (i ConnectionIamBindingMap) ToConnectionIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingMapOutput)
 }
 
-func (i ConnectionIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamBinding] {
-	return pulumix.Output[map[string]*ConnectionIamBinding]{
-		OutputState: i.ToConnectionIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIamBindingOutput) ElementType() reflect.Type {
@@ -490,12 +471,6 @@ func (o ConnectionIamBindingOutput) ToConnectionIamBindingOutput() ConnectionIam
 
 func (o ConnectionIamBindingOutput) ToConnectionIamBindingOutputWithContext(ctx context.Context) ConnectionIamBindingOutput {
 	return o
-}
-
-func (o ConnectionIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamBinding] {
-	return pulumix.Output[*ConnectionIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionIamBindingOutput) Condition() ConnectionIamBindingConditionPtrOutput {
@@ -567,12 +542,6 @@ func (o ConnectionIamBindingArrayOutput) ToConnectionIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o ConnectionIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamBinding] {
-	return pulumix.Output[[]*ConnectionIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionIamBindingArrayOutput) Index(i pulumi.IntInput) ConnectionIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIamBinding {
 		return vs[0].([]*ConnectionIamBinding)[vs[1].(int)]
@@ -591,12 +560,6 @@ func (o ConnectionIamBindingMapOutput) ToConnectionIamBindingMapOutput() Connect
 
 func (o ConnectionIamBindingMapOutput) ToConnectionIamBindingMapOutputWithContext(ctx context.Context) ConnectionIamBindingMapOutput {
 	return o
-}
-
-func (o ConnectionIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamBinding] {
-	return pulumix.Output[map[string]*ConnectionIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConnectionIamBindingOutput {

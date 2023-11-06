@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Pubsub subscription.
@@ -109,12 +108,6 @@ func (o GetSubscriptionIamPolicyResultOutput) ToGetSubscriptionIamPolicyResultOu
 
 func (o GetSubscriptionIamPolicyResultOutput) ToGetSubscriptionIamPolicyResultOutputWithContext(ctx context.Context) GetSubscriptionIamPolicyResultOutput {
 	return o
-}
-
-func (o GetSubscriptionIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionIamPolicyResult] {
-	return pulumix.Output[GetSubscriptionIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

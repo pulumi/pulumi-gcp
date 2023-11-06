@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // By default, your agent responds to a matched intent with a static response. If you're using one of the integration options, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday.
@@ -237,12 +236,6 @@ func (i *Fulfillment) ToFulfillmentOutputWithContext(ctx context.Context) Fulfil
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentOutput)
 }
 
-func (i *Fulfillment) ToOutput(ctx context.Context) pulumix.Output[*Fulfillment] {
-	return pulumix.Output[*Fulfillment]{
-		OutputState: i.ToFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FulfillmentArrayInput is an input type that accepts FulfillmentArray and FulfillmentArrayOutput values.
 // You can construct a concrete instance of `FulfillmentArrayInput` via:
 //
@@ -266,12 +259,6 @@ func (i FulfillmentArray) ToFulfillmentArrayOutput() FulfillmentArrayOutput {
 
 func (i FulfillmentArray) ToFulfillmentArrayOutputWithContext(ctx context.Context) FulfillmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentArrayOutput)
-}
-
-func (i FulfillmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Fulfillment] {
-	return pulumix.Output[[]*Fulfillment]{
-		OutputState: i.ToFulfillmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FulfillmentMapInput is an input type that accepts FulfillmentMap and FulfillmentMapOutput values.
@@ -299,12 +286,6 @@ func (i FulfillmentMap) ToFulfillmentMapOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentMapOutput)
 }
 
-func (i FulfillmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Fulfillment] {
-	return pulumix.Output[map[string]*Fulfillment]{
-		OutputState: i.ToFulfillmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FulfillmentOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentOutput) ElementType() reflect.Type {
@@ -317,12 +298,6 @@ func (o FulfillmentOutput) ToFulfillmentOutput() FulfillmentOutput {
 
 func (o FulfillmentOutput) ToFulfillmentOutputWithContext(ctx context.Context) FulfillmentOutput {
 	return o
-}
-
-func (o FulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[*Fulfillment] {
-	return pulumix.Output[*Fulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The human-readable name of the fulfillment, unique within the agent.
@@ -375,12 +350,6 @@ func (o FulfillmentArrayOutput) ToFulfillmentArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o FulfillmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Fulfillment] {
-	return pulumix.Output[[]*Fulfillment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FulfillmentArrayOutput) Index(i pulumi.IntInput) FulfillmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Fulfillment {
 		return vs[0].([]*Fulfillment)[vs[1].(int)]
@@ -399,12 +368,6 @@ func (o FulfillmentMapOutput) ToFulfillmentMapOutput() FulfillmentMapOutput {
 
 func (o FulfillmentMapOutput) ToFulfillmentMapOutputWithContext(ctx context.Context) FulfillmentMapOutput {
 	return o
-}
-
-func (o FulfillmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Fulfillment] {
-	return pulumix.Output[map[string]*Fulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FulfillmentMapOutput) MapIndex(k pulumi.StringInput) FulfillmentOutput {

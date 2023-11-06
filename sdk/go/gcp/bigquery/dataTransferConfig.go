@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a data transfer configuration. A transfer configuration
@@ -491,12 +490,6 @@ func (i *DataTransferConfig) ToDataTransferConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigOutput)
 }
 
-func (i *DataTransferConfig) ToOutput(ctx context.Context) pulumix.Output[*DataTransferConfig] {
-	return pulumix.Output[*DataTransferConfig]{
-		OutputState: i.ToDataTransferConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataTransferConfigArrayInput is an input type that accepts DataTransferConfigArray and DataTransferConfigArrayOutput values.
 // You can construct a concrete instance of `DataTransferConfigArrayInput` via:
 //
@@ -520,12 +513,6 @@ func (i DataTransferConfigArray) ToDataTransferConfigArrayOutput() DataTransferC
 
 func (i DataTransferConfigArray) ToDataTransferConfigArrayOutputWithContext(ctx context.Context) DataTransferConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigArrayOutput)
-}
-
-func (i DataTransferConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataTransferConfig] {
-	return pulumix.Output[[]*DataTransferConfig]{
-		OutputState: i.ToDataTransferConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataTransferConfigMapInput is an input type that accepts DataTransferConfigMap and DataTransferConfigMapOutput values.
@@ -553,12 +540,6 @@ func (i DataTransferConfigMap) ToDataTransferConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigMapOutput)
 }
 
-func (i DataTransferConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataTransferConfig] {
-	return pulumix.Output[map[string]*DataTransferConfig]{
-		OutputState: i.ToDataTransferConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataTransferConfigOutput struct{ *pulumi.OutputState }
 
 func (DataTransferConfigOutput) ElementType() reflect.Type {
@@ -571,12 +552,6 @@ func (o DataTransferConfigOutput) ToDataTransferConfigOutput() DataTransferConfi
 
 func (o DataTransferConfigOutput) ToDataTransferConfigOutputWithContext(ctx context.Context) DataTransferConfigOutput {
 	return o
-}
-
-func (o DataTransferConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DataTransferConfig] {
-	return pulumix.Output[*DataTransferConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of days to look back to automatically refresh the data.
@@ -702,12 +677,6 @@ func (o DataTransferConfigArrayOutput) ToDataTransferConfigArrayOutputWithContex
 	return o
 }
 
-func (o DataTransferConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataTransferConfig] {
-	return pulumix.Output[[]*DataTransferConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataTransferConfigArrayOutput) Index(i pulumi.IntInput) DataTransferConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataTransferConfig {
 		return vs[0].([]*DataTransferConfig)[vs[1].(int)]
@@ -726,12 +695,6 @@ func (o DataTransferConfigMapOutput) ToDataTransferConfigMapOutput() DataTransfe
 
 func (o DataTransferConfigMapOutput) ToDataTransferConfigMapOutputWithContext(ctx context.Context) DataTransferConfigMapOutput {
 	return o
-}
-
-func (o DataTransferConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataTransferConfig] {
-	return pulumix.Output[map[string]*DataTransferConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataTransferConfigMapOutput) MapIndex(k pulumi.StringInput) DataTransferConfigOutput {

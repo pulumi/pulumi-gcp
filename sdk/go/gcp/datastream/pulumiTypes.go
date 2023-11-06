@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfile
 
 func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfileOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileBigqueryProfileOutput)
-}
-
-func (i ConnectionProfileBigqueryProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileBigqueryProfile] {
-	return pulumix.Output[ConnectionProfileBigqueryProfile]{
-		OutputState: i.ToConnectionProfileBigqueryProfileOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput {
@@ -90,12 +83,6 @@ func (i *connectionProfileBigqueryProfilePtrType) ToConnectionProfileBigqueryPro
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileBigqueryProfilePtrOutput)
 }
 
-func (i *connectionProfileBigqueryProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileBigqueryProfile] {
-	return pulumix.Output[*ConnectionProfileBigqueryProfile]{
-		OutputState: i.ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileBigqueryProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileBigqueryProfileOutput) ElementType() reflect.Type {
@@ -120,12 +107,6 @@ func (o ConnectionProfileBigqueryProfileOutput) ToConnectionProfileBigqueryProfi
 	}).(ConnectionProfileBigqueryProfilePtrOutput)
 }
 
-func (o ConnectionProfileBigqueryProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileBigqueryProfile] {
-	return pulumix.Output[ConnectionProfileBigqueryProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 type ConnectionProfileBigqueryProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileBigqueryProfilePtrOutput) ElementType() reflect.Type {
@@ -138,12 +119,6 @@ func (o ConnectionProfileBigqueryProfilePtrOutput) ToConnectionProfileBigqueryPr
 
 func (o ConnectionProfileBigqueryProfilePtrOutput) ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfilePtrOutput {
 	return o
-}
-
-func (o ConnectionProfileBigqueryProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileBigqueryProfile] {
-	return pulumix.Output[*ConnectionProfileBigqueryProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileBigqueryProfilePtrOutput) Elem() ConnectionProfileBigqueryProfileOutput {
@@ -209,12 +184,6 @@ func (i ConnectionProfileForwardSshConnectivityArgs) ToConnectionProfileForwardS
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileForwardSshConnectivityOutput)
 }
 
-func (i ConnectionProfileForwardSshConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileForwardSshConnectivity] {
-	return pulumix.Output[ConnectionProfileForwardSshConnectivity]{
-		OutputState: i.ToConnectionProfileForwardSshConnectivityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileForwardSshConnectivityArgs) ToConnectionProfileForwardSshConnectivityPtrOutput() ConnectionProfileForwardSshConnectivityPtrOutput {
 	return i.ToConnectionProfileForwardSshConnectivityPtrOutputWithContext(context.Background())
 }
@@ -256,12 +225,6 @@ func (i *connectionProfileForwardSshConnectivityPtrType) ToConnectionProfileForw
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileForwardSshConnectivityPtrOutput)
 }
 
-func (i *connectionProfileForwardSshConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileForwardSshConnectivity] {
-	return pulumix.Output[*ConnectionProfileForwardSshConnectivity]{
-		OutputState: i.ToConnectionProfileForwardSshConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileForwardSshConnectivityOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileForwardSshConnectivityOutput) ElementType() reflect.Type {
@@ -284,12 +247,6 @@ func (o ConnectionProfileForwardSshConnectivityOutput) ToConnectionProfileForwar
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileForwardSshConnectivity) *ConnectionProfileForwardSshConnectivity {
 		return &v
 	}).(ConnectionProfileForwardSshConnectivityPtrOutput)
-}
-
-func (o ConnectionProfileForwardSshConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileForwardSshConnectivity] {
-	return pulumix.Output[ConnectionProfileForwardSshConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname for the SSH tunnel.
@@ -331,12 +288,6 @@ func (o ConnectionProfileForwardSshConnectivityPtrOutput) ToConnectionProfileFor
 
 func (o ConnectionProfileForwardSshConnectivityPtrOutput) ToConnectionProfileForwardSshConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileForwardSshConnectivityPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileForwardSshConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileForwardSshConnectivity] {
-	return pulumix.Output[*ConnectionProfileForwardSshConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileForwardSshConnectivityPtrOutput) Elem() ConnectionProfileForwardSshConnectivityOutput {
@@ -438,12 +389,6 @@ func (i ConnectionProfileGcsProfileArgs) ToConnectionProfileGcsProfileOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileGcsProfileOutput)
 }
 
-func (i ConnectionProfileGcsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileGcsProfile] {
-	return pulumix.Output[ConnectionProfileGcsProfile]{
-		OutputState: i.ToConnectionProfileGcsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileGcsProfileArgs) ToConnectionProfileGcsProfilePtrOutput() ConnectionProfileGcsProfilePtrOutput {
 	return i.ToConnectionProfileGcsProfilePtrOutputWithContext(context.Background())
 }
@@ -485,12 +430,6 @@ func (i *connectionProfileGcsProfilePtrType) ToConnectionProfileGcsProfilePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileGcsProfilePtrOutput)
 }
 
-func (i *connectionProfileGcsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileGcsProfile] {
-	return pulumix.Output[*ConnectionProfileGcsProfile]{
-		OutputState: i.ToConnectionProfileGcsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileGcsProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileGcsProfileOutput) ElementType() reflect.Type {
@@ -515,12 +454,6 @@ func (o ConnectionProfileGcsProfileOutput) ToConnectionProfileGcsProfilePtrOutpu
 	}).(ConnectionProfileGcsProfilePtrOutput)
 }
 
-func (o ConnectionProfileGcsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileGcsProfile] {
-	return pulumix.Output[ConnectionProfileGcsProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Storage bucket name.
 func (o ConnectionProfileGcsProfileOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileGcsProfile) string { return v.Bucket }).(pulumi.StringOutput)
@@ -543,12 +476,6 @@ func (o ConnectionProfileGcsProfilePtrOutput) ToConnectionProfileGcsProfilePtrOu
 
 func (o ConnectionProfileGcsProfilePtrOutput) ToConnectionProfileGcsProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileGcsProfilePtrOutput {
 	return o
-}
-
-func (o ConnectionProfileGcsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileGcsProfile] {
-	return pulumix.Output[*ConnectionProfileGcsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileGcsProfilePtrOutput) Elem() ConnectionProfileGcsProfileOutput {
@@ -634,12 +561,6 @@ func (i ConnectionProfileMysqlProfileArgs) ToConnectionProfileMysqlProfileOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlProfileOutput)
 }
 
-func (i ConnectionProfileMysqlProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlProfile] {
-	return pulumix.Output[ConnectionProfileMysqlProfile]{
-		OutputState: i.ToConnectionProfileMysqlProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlProfileArgs) ToConnectionProfileMysqlProfilePtrOutput() ConnectionProfileMysqlProfilePtrOutput {
 	return i.ToConnectionProfileMysqlProfilePtrOutputWithContext(context.Background())
 }
@@ -681,12 +602,6 @@ func (i *connectionProfileMysqlProfilePtrType) ToConnectionProfileMysqlProfilePt
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlProfilePtrOutput)
 }
 
-func (i *connectionProfileMysqlProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlProfile] {
-	return pulumix.Output[*ConnectionProfileMysqlProfile]{
-		OutputState: i.ToConnectionProfileMysqlProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlProfileOutput) ElementType() reflect.Type {
@@ -709,12 +624,6 @@ func (o ConnectionProfileMysqlProfileOutput) ToConnectionProfileMysqlProfilePtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysqlProfile) *ConnectionProfileMysqlProfile {
 		return &v
 	}).(ConnectionProfileMysqlProfilePtrOutput)
-}
-
-func (o ConnectionProfileMysqlProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlProfile] {
-	return pulumix.Output[ConnectionProfileMysqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname for the MySQL connection.
@@ -756,12 +665,6 @@ func (o ConnectionProfileMysqlProfilePtrOutput) ToConnectionProfileMysqlProfileP
 
 func (o ConnectionProfileMysqlProfilePtrOutput) ToConnectionProfileMysqlProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlProfilePtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlProfile] {
-	return pulumix.Output[*ConnectionProfileMysqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlProfilePtrOutput) Elem() ConnectionProfileMysqlProfileOutput {
@@ -903,12 +806,6 @@ func (i ConnectionProfileMysqlProfileSslConfigArgs) ToConnectionProfileMysqlProf
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlProfileSslConfigOutput)
 }
 
-func (i ConnectionProfileMysqlProfileSslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlProfileSslConfig] {
-	return pulumix.Output[ConnectionProfileMysqlProfileSslConfig]{
-		OutputState: i.ToConnectionProfileMysqlProfileSslConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlProfileSslConfigArgs) ToConnectionProfileMysqlProfileSslConfigPtrOutput() ConnectionProfileMysqlProfileSslConfigPtrOutput {
 	return i.ToConnectionProfileMysqlProfileSslConfigPtrOutputWithContext(context.Background())
 }
@@ -950,12 +847,6 @@ func (i *connectionProfileMysqlProfileSslConfigPtrType) ToConnectionProfileMysql
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlProfileSslConfigPtrOutput)
 }
 
-func (i *connectionProfileMysqlProfileSslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlProfileSslConfig] {
-	return pulumix.Output[*ConnectionProfileMysqlProfileSslConfig]{
-		OutputState: i.ToConnectionProfileMysqlProfileSslConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlProfileSslConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlProfileSslConfigOutput) ElementType() reflect.Type {
@@ -978,12 +869,6 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) ToConnectionProfileMysqlPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysqlProfileSslConfig) *ConnectionProfileMysqlProfileSslConfig {
 		return &v
 	}).(ConnectionProfileMysqlProfileSslConfigPtrOutput)
-}
-
-func (o ConnectionProfileMysqlProfileSslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlProfileSslConfig] {
-	return pulumix.Output[ConnectionProfileMysqlProfileSslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PEM-encoded certificate of the CA that signed the source database
@@ -1040,12 +925,6 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ToConnectionProfileMysq
 
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ToConnectionProfileMysqlProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlProfileSslConfigPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlProfileSslConfig] {
-	return pulumix.Output[*ConnectionProfileMysqlProfileSslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) Elem() ConnectionProfileMysqlProfileSslConfigOutput {
@@ -1185,12 +1064,6 @@ func (i ConnectionProfileOracleProfileArgs) ToConnectionProfileOracleProfileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleProfileOutput)
 }
 
-func (i ConnectionProfileOracleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileOracleProfile] {
-	return pulumix.Output[ConnectionProfileOracleProfile]{
-		OutputState: i.ToConnectionProfileOracleProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileOracleProfileArgs) ToConnectionProfileOracleProfilePtrOutput() ConnectionProfileOracleProfilePtrOutput {
 	return i.ToConnectionProfileOracleProfilePtrOutputWithContext(context.Background())
 }
@@ -1232,12 +1105,6 @@ func (i *connectionProfileOracleProfilePtrType) ToConnectionProfileOracleProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleProfilePtrOutput)
 }
 
-func (i *connectionProfileOracleProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileOracleProfile] {
-	return pulumix.Output[*ConnectionProfileOracleProfile]{
-		OutputState: i.ToConnectionProfileOracleProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileOracleProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOracleProfileOutput) ElementType() reflect.Type {
@@ -1260,12 +1127,6 @@ func (o ConnectionProfileOracleProfileOutput) ToConnectionProfileOracleProfilePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOracleProfile) *ConnectionProfileOracleProfile {
 		return &v
 	}).(ConnectionProfileOracleProfilePtrOutput)
-}
-
-func (o ConnectionProfileOracleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileOracleProfile] {
-	return pulumix.Output[ConnectionProfileOracleProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connection string attributes
@@ -1311,12 +1172,6 @@ func (o ConnectionProfileOracleProfilePtrOutput) ToConnectionProfileOracleProfil
 
 func (o ConnectionProfileOracleProfilePtrOutput) ToConnectionProfileOracleProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileOracleProfilePtrOutput {
 	return o
-}
-
-func (o ConnectionProfileOracleProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileOracleProfile] {
-	return pulumix.Output[*ConnectionProfileOracleProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileOracleProfilePtrOutput) Elem() ConnectionProfileOracleProfileOutput {
@@ -1441,12 +1296,6 @@ func (i ConnectionProfilePostgresqlProfileArgs) ToConnectionProfilePostgresqlPro
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileOutput)
 }
 
-func (i ConnectionProfilePostgresqlProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlProfile] {
-	return pulumix.Output[ConnectionProfilePostgresqlProfile]{
-		OutputState: i.ToConnectionProfilePostgresqlProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePostgresqlProfileArgs) ToConnectionProfilePostgresqlProfilePtrOutput() ConnectionProfilePostgresqlProfilePtrOutput {
 	return i.ToConnectionProfilePostgresqlProfilePtrOutputWithContext(context.Background())
 }
@@ -1488,12 +1337,6 @@ func (i *connectionProfilePostgresqlProfilePtrType) ToConnectionProfilePostgresq
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfilePtrOutput)
 }
 
-func (i *connectionProfilePostgresqlProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlProfile] {
-	return pulumix.Output[*ConnectionProfilePostgresqlProfile]{
-		OutputState: i.ToConnectionProfilePostgresqlProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePostgresqlProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePostgresqlProfileOutput) ElementType() reflect.Type {
@@ -1516,12 +1359,6 @@ func (o ConnectionProfilePostgresqlProfileOutput) ToConnectionProfilePostgresqlP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlProfile) *ConnectionProfilePostgresqlProfile {
 		return &v
 	}).(ConnectionProfilePostgresqlProfilePtrOutput)
-}
-
-func (o ConnectionProfilePostgresqlProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlProfile] {
-	return pulumix.Output[ConnectionProfilePostgresqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database for the PostgreSQL connection.
@@ -1562,12 +1399,6 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) ToConnectionProfilePostgres
 
 func (o ConnectionProfilePostgresqlProfilePtrOutput) ToConnectionProfilePostgresqlProfilePtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfilePtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePostgresqlProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlProfile] {
-	return pulumix.Output[*ConnectionProfilePostgresqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Elem() ConnectionProfilePostgresqlProfileOutput {
@@ -1664,12 +1495,6 @@ func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConn
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePrivateConnectivityOutput)
 }
 
-func (i ConnectionProfilePrivateConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePrivateConnectivity] {
-	return pulumix.Output[ConnectionProfilePrivateConnectivity]{
-		OutputState: i.ToConnectionProfilePrivateConnectivityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput {
 	return i.ToConnectionProfilePrivateConnectivityPtrOutputWithContext(context.Background())
 }
@@ -1711,12 +1536,6 @@ func (i *connectionProfilePrivateConnectivityPtrType) ToConnectionProfilePrivate
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePrivateConnectivityPtrOutput)
 }
 
-func (i *connectionProfilePrivateConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePrivateConnectivity] {
-	return pulumix.Output[*ConnectionProfilePrivateConnectivity]{
-		OutputState: i.ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePrivateConnectivityOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePrivateConnectivityOutput) ElementType() reflect.Type {
@@ -1741,12 +1560,6 @@ func (o ConnectionProfilePrivateConnectivityOutput) ToConnectionProfilePrivateCo
 	}).(ConnectionProfilePrivateConnectivityPtrOutput)
 }
 
-func (o ConnectionProfilePrivateConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePrivateConnectivity] {
-	return pulumix.Output[ConnectionProfilePrivateConnectivity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
 func (o ConnectionProfilePrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfilePrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
@@ -1764,12 +1577,6 @@ func (o ConnectionProfilePrivateConnectivityPtrOutput) ToConnectionProfilePrivat
 
 func (o ConnectionProfilePrivateConnectivityPtrOutput) ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityPtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePrivateConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePrivateConnectivity] {
-	return pulumix.Output[*ConnectionProfilePrivateConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePrivateConnectivityPtrOutput) Elem() ConnectionProfilePrivateConnectivityOutput {
@@ -1829,12 +1636,6 @@ func (i PrivateConnectionErrorArgs) ToPrivateConnectionErrorOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorOutput)
 }
 
-func (i PrivateConnectionErrorArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionError] {
-	return pulumix.Output[PrivateConnectionError]{
-		OutputState: i.ToPrivateConnectionErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateConnectionErrorArrayInput is an input type that accepts PrivateConnectionErrorArray and PrivateConnectionErrorArrayOutput values.
 // You can construct a concrete instance of `PrivateConnectionErrorArrayInput` via:
 //
@@ -1860,12 +1661,6 @@ func (i PrivateConnectionErrorArray) ToPrivateConnectionErrorArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorArrayOutput)
 }
 
-func (i PrivateConnectionErrorArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateConnectionError] {
-	return pulumix.Output[[]PrivateConnectionError]{
-		OutputState: i.ToPrivateConnectionErrorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateConnectionErrorOutput struct{ *pulumi.OutputState }
 
 func (PrivateConnectionErrorOutput) ElementType() reflect.Type {
@@ -1878,12 +1673,6 @@ func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutput() PrivateCo
 
 func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutputWithContext(ctx context.Context) PrivateConnectionErrorOutput {
 	return o
-}
-
-func (o PrivateConnectionErrorOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionError] {
-	return pulumix.Output[PrivateConnectionError]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of messages that carry the error details.
@@ -1908,12 +1697,6 @@ func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutput()
 
 func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutputWithContext(ctx context.Context) PrivateConnectionErrorArrayOutput {
 	return o
-}
-
-func (o PrivateConnectionErrorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateConnectionError] {
-	return pulumix.Output[[]PrivateConnectionError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConnectionErrorOutput {
@@ -1965,12 +1748,6 @@ func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConf
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigOutput)
 }
 
-func (i PrivateConnectionVpcPeeringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionVpcPeeringConfig] {
-	return pulumix.Output[PrivateConnectionVpcPeeringConfig]{
-		OutputState: i.ToPrivateConnectionVpcPeeringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
 	return i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
 }
@@ -2012,12 +1789,6 @@ func (i *privateConnectionVpcPeeringConfigPtrType) ToPrivateConnectionVpcPeering
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigPtrOutput)
 }
 
-func (i *privateConnectionVpcPeeringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionVpcPeeringConfig] {
-	return pulumix.Output[*PrivateConnectionVpcPeeringConfig]{
-		OutputState: i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateConnectionVpcPeeringConfigOutput struct{ *pulumi.OutputState }
 
 func (PrivateConnectionVpcPeeringConfigOutput) ElementType() reflect.Type {
@@ -2040,12 +1811,6 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectionVpcPeeringConfig) *PrivateConnectionVpcPeeringConfig {
 		return &v
 	}).(PrivateConnectionVpcPeeringConfigPtrOutput)
-}
-
-func (o PrivateConnectionVpcPeeringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionVpcPeeringConfig] {
-	return pulumix.Output[PrivateConnectionVpcPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A free subnet for peering. (CIDR of /29)
@@ -2073,12 +1838,6 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeerin
 
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
 	return o
-}
-
-func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionVpcPeeringConfig] {
-	return pulumix.Output[*PrivateConnectionVpcPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcPeeringConfigOutput {
@@ -2161,12 +1920,6 @@ func (i StreamBackfillAllArgs) ToStreamBackfillAllOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOutput)
 }
 
-func (i StreamBackfillAllArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAll] {
-	return pulumix.Output[StreamBackfillAll]{
-		OutputState: i.ToStreamBackfillAllOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamBackfillAllArgs) ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput {
 	return i.ToStreamBackfillAllPtrOutputWithContext(context.Background())
 }
@@ -2208,12 +1961,6 @@ func (i *streamBackfillAllPtrType) ToStreamBackfillAllPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPtrOutput)
 }
 
-func (i *streamBackfillAllPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAll] {
-	return pulumix.Output[*StreamBackfillAll]{
-		OutputState: i.ToStreamBackfillAllPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllOutput) ElementType() reflect.Type {
@@ -2236,12 +1983,6 @@ func (o StreamBackfillAllOutput) ToStreamBackfillAllPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAll) *StreamBackfillAll {
 		return &v
 	}).(StreamBackfillAllPtrOutput)
-}
-
-func (o StreamBackfillAllOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAll] {
-	return pulumix.Output[StreamBackfillAll]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL data source objects to avoid backfilling.
@@ -2276,12 +2017,6 @@ func (o StreamBackfillAllPtrOutput) ToStreamBackfillAllPtrOutput() StreamBackfil
 
 func (o StreamBackfillAllPtrOutput) ToStreamBackfillAllPtrOutputWithContext(ctx context.Context) StreamBackfillAllPtrOutput {
 	return o
-}
-
-func (o StreamBackfillAllPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAll] {
-	return pulumix.Output[*StreamBackfillAll]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllPtrOutput) Elem() StreamBackfillAllOutput {
@@ -2362,12 +2097,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExclu
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
 	return i.ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(context.Background())
 }
@@ -2409,12 +2138,6 @@ func (i *streamBackfillAllMysqlExcludedObjectsPtrType) ToStreamBackfillAllMysqlE
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
 }
 
-func (i *streamBackfillAllMysqlExcludedObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllMysqlExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllMysqlExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllMysqlExcludedObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllMysqlExcludedObjectsOutput) ElementType() reflect.Type {
@@ -2439,12 +2162,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToStreamBackfillAllMysqlExc
 	}).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
 }
 
-func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL databases on the server
 // Structure is documented below.
 func (o StreamBackfillAllMysqlExcludedObjectsOutput) MysqlDatabases() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
@@ -2465,12 +2182,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) ToStreamBackfillAllMysql
 
 func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllMysqlExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllMysqlExcludedObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) Elem() StreamBackfillAllMysqlExcludedObjectsOutput {
@@ -2533,12 +2244,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs) ToStreamBackfill
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabase] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabase]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput` via:
 //
@@ -2564,12 +2269,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray) ToStreamBackfil
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
@@ -2582,12 +2281,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToStreamBackfi
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabase] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name.
@@ -2615,12 +2308,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ToStreamB
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
@@ -2668,12 +2355,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs) ToStre
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput` via:
 //
@@ -2699,12 +2380,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray) ToStr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
@@ -2717,12 +2392,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToSt
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -2750,12 +2419,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput)
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
@@ -2825,12 +2488,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnA
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
 //
@@ -2856,12 +2513,6 @@ func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnA
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
-func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
@@ -2874,12 +2525,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
 	return o
-}
-
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column collation.
@@ -2945,12 +2590,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnA
 	return o
 }
 
-func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
 		return vs[0].([]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
@@ -2990,12 +2629,6 @@ func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExc
 
 func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOutput)
-}
-
-func (i StreamBackfillAllOracleExcludedObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput {
@@ -3039,12 +2672,6 @@ func (i *streamBackfillAllOracleExcludedObjectsPtrType) ToStreamBackfillAllOracl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
 }
 
-func (i *streamBackfillAllOracleExcludedObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllOracleExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllOracleExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllOracleExcludedObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllOracleExcludedObjectsOutput) ElementType() reflect.Type {
@@ -3069,12 +2696,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOutput) ToStreamBackfillAllOracleE
 	}).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
 }
 
-func (o StreamBackfillAllOracleExcludedObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Oracle schemas/databases in the database server
 // Structure is documented below.
 func (o StreamBackfillAllOracleExcludedObjectsOutput) OracleSchemas() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
@@ -3095,12 +2716,6 @@ func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) ToStreamBackfillAllOrac
 
 func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllOracleExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllOracleExcludedObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) Elem() StreamBackfillAllOracleExcludedObjectsOutput {
@@ -3163,12 +2778,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs) ToStreamBackfill
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchema] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchema]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput` via:
 //
@@ -3194,12 +2803,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArray) ToStreamBackfil
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchema] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchema]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ElementType() reflect.Type {
@@ -3212,12 +2815,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToStreamBackfi
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchema] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the database.
@@ -3245,12 +2842,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ToStreamB
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchema] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
@@ -3298,12 +2889,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs) ToStr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput` via:
 //
@@ -3329,12 +2914,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray) ToSt
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
@@ -3347,12 +2926,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToS
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -3380,12 +2953,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
@@ -3475,12 +3042,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
 //
@@ -3506,12 +3067,6 @@ func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
-func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
@@ -3524,12 +3079,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return o
-}
-
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -3615,12 +3164,6 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	return o
 }
 
-func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
 		return vs[0].([]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
@@ -3660,12 +3203,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostg
 
 func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsOutput)
-}
-
-func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
@@ -3709,12 +3246,6 @@ func (i *streamBackfillAllPostgresqlExcludedObjectsPtrType) ToStreamBackfillAllP
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
 }
 
-func (i *streamBackfillAllPostgresqlExcludedObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllPostgresqlExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllPostgresqlExcludedObjects]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllPostgresqlExcludedObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPostgresqlExcludedObjectsOutput) ElementType() reflect.Type {
@@ -3739,12 +3270,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToStreamBackfillAllPos
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
 }
 
-func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjects] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL schemas on the server
 // Structure is documented below.
 func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) PostgresqlSchemas() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
@@ -3765,12 +3290,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ToStreamBackfillAll
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillAllPostgresqlExcludedObjects] {
-	return pulumix.Output[*StreamBackfillAllPostgresqlExcludedObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) Elem() StreamBackfillAllPostgresqlExcludedObjectsOutput {
@@ -3833,12 +3352,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs) ToStream
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput` via:
 //
@@ -3864,12 +3377,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray) ToStrea
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
@@ -3882,12 +3389,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToStre
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the schema.
@@ -3915,12 +3416,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) T
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
@@ -3968,12 +3463,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
 //
@@ -3999,12 +3488,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
@@ -4017,12 +3500,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -4052,12 +3529,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
@@ -4135,12 +3606,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
 //
@@ -4166,12 +3631,6 @@ func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
-func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
@@ -4184,12 +3643,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
 	return o
-}
-
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -4266,12 +3719,6 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return o
 }
 
-func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
 		return vs[0].([]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
@@ -4305,12 +3752,6 @@ func (i StreamBackfillNoneArgs) ToStreamBackfillNoneOutput() StreamBackfillNoneO
 
 func (i StreamBackfillNoneArgs) ToStreamBackfillNoneOutputWithContext(ctx context.Context) StreamBackfillNoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillNoneOutput)
-}
-
-func (i StreamBackfillNoneArgs) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillNone] {
-	return pulumix.Output[StreamBackfillNone]{
-		OutputState: i.ToStreamBackfillNoneOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamBackfillNoneArgs) ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput {
@@ -4354,12 +3795,6 @@ func (i *streamBackfillNonePtrType) ToStreamBackfillNonePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillNonePtrOutput)
 }
 
-func (i *streamBackfillNonePtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillNone] {
-	return pulumix.Output[*StreamBackfillNone]{
-		OutputState: i.ToStreamBackfillNonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamBackfillNoneOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillNoneOutput) ElementType() reflect.Type {
@@ -4384,12 +3819,6 @@ func (o StreamBackfillNoneOutput) ToStreamBackfillNonePtrOutputWithContext(ctx c
 	}).(StreamBackfillNonePtrOutput)
 }
 
-func (o StreamBackfillNoneOutput) ToOutput(ctx context.Context) pulumix.Output[StreamBackfillNone] {
-	return pulumix.Output[StreamBackfillNone]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StreamBackfillNonePtrOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillNonePtrOutput) ElementType() reflect.Type {
@@ -4402,12 +3831,6 @@ func (o StreamBackfillNonePtrOutput) ToStreamBackfillNonePtrOutput() StreamBackf
 
 func (o StreamBackfillNonePtrOutput) ToStreamBackfillNonePtrOutputWithContext(ctx context.Context) StreamBackfillNonePtrOutput {
 	return o
-}
-
-func (o StreamBackfillNonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamBackfillNone] {
-	return pulumix.Output[*StreamBackfillNone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamBackfillNonePtrOutput) Elem() StreamBackfillNoneOutput {
@@ -4465,12 +3888,6 @@ func (i StreamDestinationConfigArgs) ToStreamDestinationConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigOutput)
 }
 
-func (i StreamDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigArgs) ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput {
 	return i.ToStreamDestinationConfigPtrOutputWithContext(context.Background())
 }
@@ -4512,12 +3929,6 @@ func (i *streamDestinationConfigPtrType) ToStreamDestinationConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigPtrOutput)
 }
 
-func (i *streamDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigOutput) ElementType() reflect.Type {
@@ -4540,12 +3951,6 @@ func (o StreamDestinationConfigOutput) ToStreamDestinationConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfig) *StreamDestinationConfig {
 		return &v
 	}).(StreamDestinationConfigPtrOutput)
-}
-
-func (o StreamDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A configuration for how data should be loaded to Cloud Storage.
@@ -4581,12 +3986,6 @@ func (o StreamDestinationConfigPtrOutput) ToStreamDestinationConfigPtrOutput() S
 
 func (o StreamDestinationConfigPtrOutput) ToStreamDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigPtrOutput) Elem() StreamDestinationConfigOutput {
@@ -4682,12 +4081,6 @@ func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinatio
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigOutput)
 }
 
-func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
 	return i.ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(context.Background())
 }
@@ -4729,12 +4122,6 @@ func (i *streamDestinationConfigBigqueryDestinationConfigPtrType) ToStreamDestin
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
 }
 
-func (i *streamDestinationConfigBigqueryDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigBigqueryDestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigBigqueryDestinationConfigOutput) ElementType() reflect.Type {
@@ -4757,12 +4144,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
 		return &v
 	}).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The guaranteed data freshness (in seconds) when querying tables created by the stream.
@@ -4801,12 +4182,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ToStreamDesti
 
 func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigOutput {
@@ -4889,12 +4264,6 @@ func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput)
 }
 
-func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
 	return i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(context.Background())
 }
@@ -4936,12 +4305,6 @@ func (i *streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
 }
 
-func (i *streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ElementType() reflect.Type {
@@ -4966,12 +4329,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutpu
 	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
 }
 
-func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dataset ID in the format projects/{project}/datasets/{dataset_id} or
 // {project}:{dataset_id}
 func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) DatasetId() pulumi.StringOutput {
@@ -4990,12 +4347,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOu
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
@@ -5054,12 +4405,6 @@ func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsA
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput)
 }
 
-func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
 	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
 }
@@ -5101,12 +4446,6 @@ func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
 }
 
-func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ElementType() reflect.Type {
@@ -5131,12 +4470,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsO
 	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
 }
 
-func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dataset template used for dynamic dataset creation.
 // Structure is documented below.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) DatasetTemplate() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
@@ -5157,12 +4490,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsP
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
@@ -5241,12 +4568,6 @@ func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput)
 }
 
-func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
 	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(context.Background())
 }
@@ -5288,12 +4609,6 @@ func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
 }
 
-func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate]{
-		OutputState: i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ElementType() reflect.Type {
@@ -5316,12 +4631,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
 		return &v
 	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate] {
-	return pulumix.Output[StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If supplied, every created dataset will have its name prefixed by the provided value.
@@ -5364,12 +4673,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate] {
-	return pulumix.Output[*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
@@ -5472,12 +4775,6 @@ func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConf
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigOutput)
 }
 
-func (i StreamDestinationConfigGcsDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput {
 	return i.ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(context.Background())
 }
@@ -5519,12 +4816,6 @@ func (i *streamDestinationConfigGcsDestinationConfigPtrType) ToStreamDestination
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
 }
 
-func (i *streamDestinationConfigGcsDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfig]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigGcsDestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigGcsDestinationConfigOutput) ElementType() reflect.Type {
@@ -5547,12 +4838,6 @@ func (o StreamDestinationConfigGcsDestinationConfigOutput) ToStreamDestinationCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfig {
 		return &v
 	}).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
-}
-
-func (o StreamDestinationConfigGcsDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfig] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AVRO file format configuration.
@@ -5598,12 +4883,6 @@ func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) ToStreamDestinatio
 
 func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfig] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigOutput {
@@ -5697,12 +4976,6 @@ func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamD
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput)
 }
 
-func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfigAvroFileFormat] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfigAvroFileFormat]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
 	return i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(context.Background())
 }
@@ -5744,12 +5017,6 @@ func (i *streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType) ToStr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
 }
 
-func (i *streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfigAvroFileFormat] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfigAvroFileFormat]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ElementType() reflect.Type {
@@ -5774,12 +5041,6 @@ func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToStrea
 	}).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
 }
 
-func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfigAvroFileFormat] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfigAvroFileFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ElementType() reflect.Type {
@@ -5792,12 +5053,6 @@ func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ToSt
 
 func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfigAvroFileFormat] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfigAvroFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
@@ -5851,12 +5106,6 @@ func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamD
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput)
 }
 
-func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfigJsonFileFormat] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfigJsonFileFormat]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
 	return i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(context.Background())
 }
@@ -5898,12 +5147,6 @@ func (i *streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType) ToStr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
 }
 
-func (i *streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfigJsonFileFormat] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfigJsonFileFormat]{
-		OutputState: i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ElementType() reflect.Type {
@@ -5926,12 +5169,6 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStrea
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
 		return &v
 	}).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
-}
-
-func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[StreamDestinationConfigGcsDestinationConfigJsonFileFormat] {
-	return pulumix.Output[StreamDestinationConfigGcsDestinationConfigJsonFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compression of the loaded JSON file.
@@ -5958,12 +5195,6 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ToSt
 
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
 	return o
-}
-
-func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamDestinationConfigGcsDestinationConfigJsonFileFormat] {
-	return pulumix.Output[*StreamDestinationConfigGcsDestinationConfigJsonFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
@@ -6049,12 +5280,6 @@ func (i StreamSourceConfigArgs) ToStreamSourceConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOutput)
 }
 
-func (i StreamSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfig] {
-	return pulumix.Output[StreamSourceConfig]{
-		OutputState: i.ToStreamSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigArgs) ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput {
 	return i.ToStreamSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -6096,12 +5321,6 @@ func (i *streamSourceConfigPtrType) ToStreamSourceConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPtrOutput)
 }
 
-func (i *streamSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfig] {
-	return pulumix.Output[*StreamSourceConfig]{
-		OutputState: i.ToStreamSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOutput) ElementType() reflect.Type {
@@ -6124,12 +5343,6 @@ func (o StreamSourceConfigOutput) ToStreamSourceConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfig) *StreamSourceConfig {
 		return &v
 	}).(StreamSourceConfigPtrOutput)
-}
-
-func (o StreamSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfig] {
-	return pulumix.Output[StreamSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL data source configuration.
@@ -6167,12 +5380,6 @@ func (o StreamSourceConfigPtrOutput) ToStreamSourceConfigPtrOutput() StreamSourc
 
 func (o StreamSourceConfigPtrOutput) ToStreamSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfig] {
-	return pulumix.Output[*StreamSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPtrOutput) Elem() StreamSourceConfigOutput {
@@ -6281,12 +5488,6 @@ func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSource
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfig] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfig]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput {
 	return i.ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -6328,12 +5529,6 @@ func (i *streamSourceConfigMysqlSourceConfigPtrType) ToStreamSourceConfigMysqlSo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigPtrOutput)
 }
 
-func (i *streamSourceConfigMysqlSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfig]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigOutput) ElementType() reflect.Type {
@@ -6356,12 +5551,6 @@ func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSour
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfig {
 		return &v
 	}).(StreamSourceConfigMysqlSourceConfigPtrOutput)
-}
-
-func (o StreamSourceConfigMysqlSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfig] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL objects to exclude from the stream.
@@ -6404,12 +5593,6 @@ func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ToStreamSourceConfigMysqlS
 
 func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigOutput {
@@ -6501,12 +5684,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceCon
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
 	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
 }
@@ -6548,12 +5725,6 @@ func (i *streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType) ToStreamSourc
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
@@ -6578,12 +5749,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToStreamSourceC
 	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL databases on the server
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
@@ -6604,12 +5769,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ToStreamSour
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
@@ -6672,12 +5831,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs) ToSt
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput` via:
 //
@@ -6703,12 +5856,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
@@ -6721,12 +5868,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) To
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name.
@@ -6754,12 +5895,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutpu
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
@@ -6807,12 +5942,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput` via:
 //
@@ -6838,12 +5967,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
@@ -6856,12 +5979,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -6891,12 +6008,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
@@ -6966,12 +6077,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
 //
@@ -6997,12 +6102,6 @@ func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
@@ -7015,12 +6114,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column collation.
@@ -7088,12 +6181,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return o
 }
 
-func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
 		return vs[0].([]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
@@ -7133,12 +6220,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceCon
 
 func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput)
-}
-
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
@@ -7182,12 +6263,6 @@ func (i *streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType) ToStreamSourc
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
@@ -7212,12 +6287,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToStreamSourceC
 	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL databases on the server
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
@@ -7238,12 +6307,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ToStreamSour
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigMysqlSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigMysqlSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
@@ -7306,12 +6369,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs) ToSt
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput` via:
 //
@@ -7337,12 +6394,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
@@ -7355,12 +6406,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) To
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name.
@@ -7388,12 +6433,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutpu
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
@@ -7441,12 +6480,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput` via:
 //
@@ -7472,12 +6505,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
@@ -7490,12 +6517,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -7525,12 +6546,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
@@ -7600,12 +6615,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
 //
@@ -7631,12 +6640,6 @@ func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
-func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
@@ -7649,12 +6652,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column collation.
@@ -7720,12 +6717,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
@@ -7795,12 +6786,6 @@ func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSour
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfig] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfig]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput {
 	return i.ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -7842,12 +6827,6 @@ func (i *streamSourceConfigOracleSourceConfigPtrType) ToStreamSourceConfigOracle
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigPtrOutput)
 }
 
-func (i *streamSourceConfigOracleSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfig]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigOutput) ElementType() reflect.Type {
@@ -7870,12 +6849,6 @@ func (o StreamSourceConfigOracleSourceConfigOutput) ToStreamSourceConfigOracleSo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfig {
 		return &v
 	}).(StreamSourceConfigOracleSourceConfigPtrOutput)
-}
-
-func (o StreamSourceConfigOracleSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfig] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration to drop large object values.
@@ -7932,12 +6905,6 @@ func (o StreamSourceConfigOracleSourceConfigPtrOutput) ToStreamSourceConfigOracl
 
 func (o StreamSourceConfigOracleSourceConfigPtrOutput) ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigPtrOutput) Elem() StreamSourceConfigOracleSourceConfigOutput {
@@ -8043,12 +7010,6 @@ func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSource
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigDropLargeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigDropLargeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
 	return i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(context.Background())
 }
@@ -8090,12 +7051,6 @@ func (i *streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType) ToStreamSo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigDropLargeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigDropLargeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ElementType() reflect.Type {
@@ -8120,12 +7075,6 @@ func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToStreamSour
 	}).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigDropLargeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigDropLargeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ElementType() reflect.Type {
@@ -8138,12 +7087,6 @@ func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ToStreamS
 
 func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigDropLargeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigDropLargeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
@@ -8191,12 +7134,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceCo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
 	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
 }
@@ -8238,12 +7175,6 @@ func (i *streamSourceConfigOracleSourceConfigExcludeObjectsPtrType) ToStreamSour
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigOracleSourceConfigExcludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
@@ -8268,12 +7199,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToStreamSource
 	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Oracle schemas/databases in the database server
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
@@ -8294,12 +7219,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ToStreamSou
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
@@ -8362,12 +7281,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs) ToSt
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput` via:
 //
@@ -8393,12 +7306,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ElementType() reflect.Type {
@@ -8411,12 +7318,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) To
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the database.
@@ -8444,12 +7345,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutpu
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
@@ -8497,12 +7392,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput` via:
 //
@@ -8528,12 +7417,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
@@ -8546,12 +7429,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -8581,12 +7458,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
@@ -8676,12 +7547,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
 //
@@ -8707,12 +7572,6 @@ func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
@@ -8725,12 +7584,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -8818,12 +7671,6 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return o
 }
 
-func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
 		return vs[0].([]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
@@ -8863,12 +7710,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceCo
 
 func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOutput)
-}
-
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
@@ -8912,12 +7753,6 @@ func (i *streamSourceConfigOracleSourceConfigIncludeObjectsPtrType) ToStreamSour
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigOracleSourceConfigIncludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
@@ -8942,12 +7777,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToStreamSource
 	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Oracle schemas/databases in the database server
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
@@ -8968,12 +7797,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ToStreamSou
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
@@ -9036,12 +7859,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs) ToSt
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput` via:
 //
@@ -9067,12 +7884,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ElementType() reflect.Type {
@@ -9085,12 +7896,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) To
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the database.
@@ -9118,12 +7923,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutpu
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
@@ -9171,12 +7970,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput` via:
 //
@@ -9202,12 +7995,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
@@ -9220,12 +8007,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -9255,12 +8036,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
@@ -9350,12 +8125,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
 //
@@ -9381,12 +8150,6 @@ func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
-func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
@@ -9399,12 +8162,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -9492,12 +8249,6 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return o
 }
 
-func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn] {
-	return pulumix.Output[[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
 		return vs[0].([]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
@@ -9531,12 +8282,6 @@ func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSour
 
 func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput)
-}
-
-func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigStreamLargeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigStreamLargeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
@@ -9580,12 +8325,6 @@ func (i *streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType) ToStream
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigStreamLargeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigStreamLargeObjects]{
-		OutputState: i.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ElementType() reflect.Type {
@@ -9610,12 +8349,6 @@ func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToStreamSo
 	}).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigOracleSourceConfigStreamLargeObjects] {
-	return pulumix.Output[StreamSourceConfigOracleSourceConfigStreamLargeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ElementType() reflect.Type {
@@ -9628,12 +8361,6 @@ func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ToStrea
 
 func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigOracleSourceConfigStreamLargeObjects] {
-	return pulumix.Output[*StreamSourceConfigOracleSourceConfigStreamLargeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
@@ -9705,12 +8432,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfig] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfig]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
 	return i.ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -9752,12 +8473,6 @@ func (i *streamSourceConfigPostgresqlSourceConfigPtrType) ToStreamSourceConfigPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
 }
 
-func (i *streamSourceConfigPostgresqlSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfig]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigOutput) ElementType() reflect.Type {
@@ -9780,12 +8495,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToStreamSourceConfigPost
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfig {
 		return &v
 	}).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfig] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL objects to exclude from the stream.
@@ -9834,12 +8543,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ToStreamSourceConfigP
 
 func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfig] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigOutput {
@@ -9942,12 +8645,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSour
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
 	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
 }
@@ -9989,12 +8686,6 @@ func (i *streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType) ToStream
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigExcludeObjects]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
@@ -10019,12 +8710,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToStreamSo
 	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjects] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL schemas on the server
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
@@ -10045,12 +8730,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ToStrea
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigExcludeObjects] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigExcludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
@@ -10113,12 +8792,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaAr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput` via:
 //
@@ -10144,12 +8817,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaAr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
@@ -10162,12 +8829,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOu
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the schema.
@@ -10195,12 +8856,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaAr
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
@@ -10248,12 +8903,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
 //
@@ -10279,12 +8928,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
@@ -10297,12 +8940,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -10332,12 +8969,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
@@ -10415,12 +9046,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
 //
@@ -10446,12 +9071,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
@@ -10464,12 +9083,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -10546,12 +9159,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return o
 }
 
-func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
 		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
@@ -10591,12 +9198,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSour
 
 func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput)
-}
-
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
@@ -10640,12 +9241,6 @@ func (i *streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType) ToStream
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (i *streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigIncludeObjects]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
@@ -10670,12 +9265,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToStreamSo
 	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
 }
 
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjects] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL schemas on the server
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
@@ -10696,12 +9285,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ToStrea
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigIncludeObjects] {
-	return pulumix.Output[*StreamSourceConfigPostgresqlSourceConfigIncludeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
@@ -10764,12 +9347,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaAr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput` via:
 //
@@ -10795,12 +9372,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaAr
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
@@ -10813,12 +9384,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOu
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the schema.
@@ -10846,12 +9411,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaAr
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
@@ -10899,12 +9458,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
 //
@@ -10930,12 +9483,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
@@ -10948,12 +9495,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -10983,12 +9524,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
@@ -11066,12 +9601,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
 // You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
 //
@@ -11097,12 +9626,6 @@ func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
-func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
@@ -11115,12 +9638,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -11195,12 +9712,6 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
 	return o
-}
-
-func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn] {
-	return pulumix.Output[[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {

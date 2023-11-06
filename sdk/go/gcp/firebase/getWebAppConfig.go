@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Google Cloud Firebase web application configuration
@@ -111,12 +110,6 @@ func (o GetWebAppConfigResultOutput) ToGetWebAppConfigResultOutput() GetWebAppCo
 
 func (o GetWebAppConfigResultOutput) ToGetWebAppConfigResultOutputWithContext(ctx context.Context) GetWebAppConfigResultOutput {
 	return o
-}
-
-func (o GetWebAppConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebAppConfigResult] {
-	return pulumix.Output[GetWebAppConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API key associated with the web App.

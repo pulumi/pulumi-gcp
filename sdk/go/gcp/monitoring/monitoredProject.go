@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
@@ -184,12 +183,6 @@ func (i *MonitoredProject) ToMonitoredProjectOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectOutput)
 }
 
-func (i *MonitoredProject) ToOutput(ctx context.Context) pulumix.Output[*MonitoredProject] {
-	return pulumix.Output[*MonitoredProject]{
-		OutputState: i.ToMonitoredProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitoredProjectArrayInput is an input type that accepts MonitoredProjectArray and MonitoredProjectArrayOutput values.
 // You can construct a concrete instance of `MonitoredProjectArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i MonitoredProjectArray) ToMonitoredProjectArrayOutput() MonitoredProjectA
 
 func (i MonitoredProjectArray) ToMonitoredProjectArrayOutputWithContext(ctx context.Context) MonitoredProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectArrayOutput)
-}
-
-func (i MonitoredProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*MonitoredProject] {
-	return pulumix.Output[[]*MonitoredProject]{
-		OutputState: i.ToMonitoredProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonitoredProjectMapInput is an input type that accepts MonitoredProjectMap and MonitoredProjectMapOutput values.
@@ -246,12 +233,6 @@ func (i MonitoredProjectMap) ToMonitoredProjectMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectMapOutput)
 }
 
-func (i MonitoredProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitoredProject] {
-	return pulumix.Output[map[string]*MonitoredProject]{
-		OutputState: i.ToMonitoredProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitoredProjectOutput struct{ *pulumi.OutputState }
 
 func (MonitoredProjectOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o MonitoredProjectOutput) ToMonitoredProjectOutput() MonitoredProjectOutpu
 
 func (o MonitoredProjectOutput) ToMonitoredProjectOutputWithContext(ctx context.Context) MonitoredProjectOutput {
 	return o
-}
-
-func (o MonitoredProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoredProject] {
-	return pulumix.Output[*MonitoredProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The time when this `MonitoredProject` was created.
@@ -303,12 +278,6 @@ func (o MonitoredProjectArrayOutput) ToMonitoredProjectArrayOutputWithContext(ct
 	return o
 }
 
-func (o MonitoredProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitoredProject] {
-	return pulumix.Output[[]*MonitoredProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitoredProjectArrayOutput) Index(i pulumi.IntInput) MonitoredProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitoredProject {
 		return vs[0].([]*MonitoredProject)[vs[1].(int)]
@@ -327,12 +296,6 @@ func (o MonitoredProjectMapOutput) ToMonitoredProjectMapOutput() MonitoredProjec
 
 func (o MonitoredProjectMapOutput) ToMonitoredProjectMapOutputWithContext(ctx context.Context) MonitoredProjectMapOutput {
 	return o
-}
-
-func (o MonitoredProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitoredProject] {
-	return pulumix.Output[map[string]*MonitoredProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredProjectMapOutput) MapIndex(k pulumi.StringInput) MonitoredProjectOutput {

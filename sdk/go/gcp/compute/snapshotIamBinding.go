@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
@@ -356,12 +355,6 @@ func (i *SnapshotIamBinding) ToSnapshotIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingOutput)
 }
 
-func (i *SnapshotIamBinding) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamBinding] {
-	return pulumix.Output[*SnapshotIamBinding]{
-		OutputState: i.ToSnapshotIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SnapshotIamBindingArrayInput is an input type that accepts SnapshotIamBindingArray and SnapshotIamBindingArrayOutput values.
 // You can construct a concrete instance of `SnapshotIamBindingArrayInput` via:
 //
@@ -385,12 +378,6 @@ func (i SnapshotIamBindingArray) ToSnapshotIamBindingArrayOutput() SnapshotIamBi
 
 func (i SnapshotIamBindingArray) ToSnapshotIamBindingArrayOutputWithContext(ctx context.Context) SnapshotIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingArrayOutput)
-}
-
-func (i SnapshotIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamBinding] {
-	return pulumix.Output[[]*SnapshotIamBinding]{
-		OutputState: i.ToSnapshotIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SnapshotIamBindingMapInput is an input type that accepts SnapshotIamBindingMap and SnapshotIamBindingMapOutput values.
@@ -418,12 +405,6 @@ func (i SnapshotIamBindingMap) ToSnapshotIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingMapOutput)
 }
 
-func (i SnapshotIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamBinding] {
-	return pulumix.Output[map[string]*SnapshotIamBinding]{
-		OutputState: i.ToSnapshotIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SnapshotIamBindingOutput struct{ *pulumi.OutputState }
 
 func (SnapshotIamBindingOutput) ElementType() reflect.Type {
@@ -436,12 +417,6 @@ func (o SnapshotIamBindingOutput) ToSnapshotIamBindingOutput() SnapshotIamBindin
 
 func (o SnapshotIamBindingOutput) ToSnapshotIamBindingOutputWithContext(ctx context.Context) SnapshotIamBindingOutput {
 	return o
-}
-
-func (o SnapshotIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamBinding] {
-	return pulumix.Output[*SnapshotIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotIamBindingOutput) Condition() SnapshotIamBindingConditionPtrOutput {
@@ -501,12 +476,6 @@ func (o SnapshotIamBindingArrayOutput) ToSnapshotIamBindingArrayOutputWithContex
 	return o
 }
 
-func (o SnapshotIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamBinding] {
-	return pulumix.Output[[]*SnapshotIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SnapshotIamBindingArrayOutput) Index(i pulumi.IntInput) SnapshotIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SnapshotIamBinding {
 		return vs[0].([]*SnapshotIamBinding)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o SnapshotIamBindingMapOutput) ToSnapshotIamBindingMapOutput() SnapshotIam
 
 func (o SnapshotIamBindingMapOutput) ToSnapshotIamBindingMapOutputWithContext(ctx context.Context) SnapshotIamBindingMapOutput {
 	return o
-}
-
-func (o SnapshotIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamBinding] {
-	return pulumix.Output[map[string]*SnapshotIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotIamBindingMapOutput) MapIndex(k pulumi.StringInput) SnapshotIamBindingOutput {

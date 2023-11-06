@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Cloud Router's status within GCE from its name and region. This data source exposes the
@@ -124,12 +123,6 @@ func (o GetRouterStatusResultOutput) ToGetRouterStatusResultOutput() GetRouterSt
 
 func (o GetRouterStatusResultOutput) ToGetRouterStatusResultOutputWithContext(ctx context.Context) GetRouterStatusResultOutput {
 	return o
-}
-
-func (o GetRouterStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterStatusResult] {
-	return pulumix.Output[GetRouterStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of best `compute#routes` configurations for this router's network. See compute.Route resource for available attributes.

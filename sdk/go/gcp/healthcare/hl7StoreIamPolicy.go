@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
@@ -324,12 +323,6 @@ func (i *Hl7StoreIamPolicy) ToHl7StoreIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyOutput)
 }
 
-func (i *Hl7StoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamPolicy] {
-	return pulumix.Output[*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hl7StoreIamPolicyArrayInput is an input type that accepts Hl7StoreIamPolicyArray and Hl7StoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreIamPolicyArrayInput` via:
 //
@@ -353,12 +346,6 @@ func (i Hl7StoreIamPolicyArray) ToHl7StoreIamPolicyArrayOutput() Hl7StoreIamPoli
 
 func (i Hl7StoreIamPolicyArray) ToHl7StoreIamPolicyArrayOutputWithContext(ctx context.Context) Hl7StoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyArrayOutput)
-}
-
-func (i Hl7StoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamPolicy] {
-	return pulumix.Output[[]*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Hl7StoreIamPolicyMapInput is an input type that accepts Hl7StoreIamPolicyMap and Hl7StoreIamPolicyMapOutput values.
@@ -386,12 +373,6 @@ func (i Hl7StoreIamPolicyMap) ToHl7StoreIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyMapOutput)
 }
 
-func (i Hl7StoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamPolicy] {
-	return pulumix.Output[map[string]*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamPolicyOutput) ElementType() reflect.Type {
@@ -404,12 +385,6 @@ func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyOutput() Hl7StoreIamPolicyOu
 
 func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyOutputWithContext(ctx context.Context) Hl7StoreIamPolicyOutput {
 	return o
-}
-
-func (o Hl7StoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamPolicy] {
-	return pulumix.Output[*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the HL7v2 store's IAM policy.
@@ -454,12 +429,6 @@ func (o Hl7StoreIamPolicyArrayOutput) ToHl7StoreIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o Hl7StoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamPolicy] {
-	return pulumix.Output[[]*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Hl7StoreIamPolicyArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamPolicy {
 		return vs[0].([]*Hl7StoreIamPolicy)[vs[1].(int)]
@@ -478,12 +447,6 @@ func (o Hl7StoreIamPolicyMapOutput) ToHl7StoreIamPolicyMapOutput() Hl7StoreIamPo
 
 func (o Hl7StoreIamPolicyMapOutput) ToHl7StoreIamPolicyMapOutputWithContext(ctx context.Context) Hl7StoreIamPolicyMapOutput {
 	return o
-}
-
-func (o Hl7StoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamPolicy] {
-	return pulumix.Output[map[string]*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamPolicyOutput {

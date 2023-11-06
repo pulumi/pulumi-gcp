@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
@@ -400,12 +399,6 @@ func (i *AutoscalingPolicyIamMember) ToAutoscalingPolicyIamMemberOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberOutput)
 }
 
-func (i *AutoscalingPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamMember] {
-	return pulumix.Output[*AutoscalingPolicyIamMember]{
-		OutputState: i.ToAutoscalingPolicyIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AutoscalingPolicyIamMemberArrayInput is an input type that accepts AutoscalingPolicyIamMemberArray and AutoscalingPolicyIamMemberArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyIamMemberArrayInput` via:
 //
@@ -429,12 +422,6 @@ func (i AutoscalingPolicyIamMemberArray) ToAutoscalingPolicyIamMemberArrayOutput
 
 func (i AutoscalingPolicyIamMemberArray) ToAutoscalingPolicyIamMemberArrayOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberArrayOutput)
-}
-
-func (i AutoscalingPolicyIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamMember] {
-	return pulumix.Output[[]*AutoscalingPolicyIamMember]{
-		OutputState: i.ToAutoscalingPolicyIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AutoscalingPolicyIamMemberMapInput is an input type that accepts AutoscalingPolicyIamMemberMap and AutoscalingPolicyIamMemberMapOutput values.
@@ -462,12 +449,6 @@ func (i AutoscalingPolicyIamMemberMap) ToAutoscalingPolicyIamMemberMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberMapOutput)
 }
 
-func (i AutoscalingPolicyIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamMember] {
-	return pulumix.Output[map[string]*AutoscalingPolicyIamMember]{
-		OutputState: i.ToAutoscalingPolicyIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -480,12 +461,6 @@ func (o AutoscalingPolicyIamMemberOutput) ToAutoscalingPolicyIamMemberOutput() A
 
 func (o AutoscalingPolicyIamMemberOutput) ToAutoscalingPolicyIamMemberOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberOutput {
 	return o
-}
-
-func (o AutoscalingPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamMember] {
-	return pulumix.Output[*AutoscalingPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamMemberOutput) Condition() AutoscalingPolicyIamMemberConditionPtrOutput {
@@ -555,12 +530,6 @@ func (o AutoscalingPolicyIamMemberArrayOutput) ToAutoscalingPolicyIamMemberArray
 	return o
 }
 
-func (o AutoscalingPolicyIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamMember] {
-	return pulumix.Output[[]*AutoscalingPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AutoscalingPolicyIamMemberArrayOutput) Index(i pulumi.IntInput) AutoscalingPolicyIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingPolicyIamMember {
 		return vs[0].([]*AutoscalingPolicyIamMember)[vs[1].(int)]
@@ -579,12 +548,6 @@ func (o AutoscalingPolicyIamMemberMapOutput) ToAutoscalingPolicyIamMemberMapOutp
 
 func (o AutoscalingPolicyIamMemberMapOutput) ToAutoscalingPolicyIamMemberMapOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberMapOutput {
 	return o
-}
-
-func (o AutoscalingPolicyIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamMember] {
-	return pulumix.Output[map[string]*AutoscalingPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamMemberMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyIamMemberOutput {

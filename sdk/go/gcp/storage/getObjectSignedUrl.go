@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
@@ -200,12 +199,6 @@ func (o GetObjectSignedUrlResultOutput) ToGetObjectSignedUrlResultOutput() GetOb
 
 func (o GetObjectSignedUrlResultOutput) ToGetObjectSignedUrlResultOutputWithContext(ctx context.Context) GetObjectSignedUrlResultOutput {
 	return o
-}
-
-func (o GetObjectSignedUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetObjectSignedUrlResult] {
-	return pulumix.Output[GetObjectSignedUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetObjectSignedUrlResultOutput) Bucket() pulumi.StringOutput {

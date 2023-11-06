@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Google Cloud IAP Client.
@@ -115,12 +114,6 @@ func (o LookupClientResultOutput) ToLookupClientResultOutput() LookupClientResul
 
 func (o LookupClientResultOutput) ToLookupClientResultOutputWithContext(ctx context.Context) LookupClientResultOutput {
 	return o
-}
-
-func (o LookupClientResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientResult] {
-	return pulumix.Output[LookupClientResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupClientResultOutput) Brand() pulumi.StringOutput {

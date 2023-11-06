@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -238,12 +237,6 @@ func (i *MetastoreFederationIamPolicy) ToMetastoreFederationIamPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamPolicyOutput)
 }
 
-func (i *MetastoreFederationIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamPolicy] {
-	return pulumix.Output[*MetastoreFederationIamPolicy]{
-		OutputState: i.ToMetastoreFederationIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreFederationIamPolicyArrayInput is an input type that accepts MetastoreFederationIamPolicyArray and MetastoreFederationIamPolicyArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationIamPolicyArrayInput` via:
 //
@@ -267,12 +260,6 @@ func (i MetastoreFederationIamPolicyArray) ToMetastoreFederationIamPolicyArrayOu
 
 func (i MetastoreFederationIamPolicyArray) ToMetastoreFederationIamPolicyArrayOutputWithContext(ctx context.Context) MetastoreFederationIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamPolicyArrayOutput)
-}
-
-func (i MetastoreFederationIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamPolicy] {
-	return pulumix.Output[[]*MetastoreFederationIamPolicy]{
-		OutputState: i.ToMetastoreFederationIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreFederationIamPolicyMapInput is an input type that accepts MetastoreFederationIamPolicyMap and MetastoreFederationIamPolicyMapOutput values.
@@ -300,12 +287,6 @@ func (i MetastoreFederationIamPolicyMap) ToMetastoreFederationIamPolicyMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamPolicyMapOutput)
 }
 
-func (i MetastoreFederationIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamPolicy] {
-	return pulumix.Output[map[string]*MetastoreFederationIamPolicy]{
-		OutputState: i.ToMetastoreFederationIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationIamPolicyOutput) ElementType() reflect.Type {
@@ -318,12 +299,6 @@ func (o MetastoreFederationIamPolicyOutput) ToMetastoreFederationIamPolicyOutput
 
 func (o MetastoreFederationIamPolicyOutput) ToMetastoreFederationIamPolicyOutputWithContext(ctx context.Context) MetastoreFederationIamPolicyOutput {
 	return o
-}
-
-func (o MetastoreFederationIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamPolicy] {
-	return pulumix.Output[*MetastoreFederationIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -379,12 +354,6 @@ func (o MetastoreFederationIamPolicyArrayOutput) ToMetastoreFederationIamPolicyA
 	return o
 }
 
-func (o MetastoreFederationIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamPolicy] {
-	return pulumix.Output[[]*MetastoreFederationIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreFederationIamPolicyArrayOutput) Index(i pulumi.IntInput) MetastoreFederationIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreFederationIamPolicy {
 		return vs[0].([]*MetastoreFederationIamPolicy)[vs[1].(int)]
@@ -403,12 +372,6 @@ func (o MetastoreFederationIamPolicyMapOutput) ToMetastoreFederationIamPolicyMap
 
 func (o MetastoreFederationIamPolicyMapOutput) ToMetastoreFederationIamPolicyMapOutputWithContext(ctx context.Context) MetastoreFederationIamPolicyMapOutput {
 	return o
-}
-
-func (o MetastoreFederationIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamPolicy] {
-	return pulumix.Output[map[string]*MetastoreFederationIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MetastoreFederationIamPolicyOutput {

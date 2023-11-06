@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // You can create multiple versions of your agent flows and deploy them to separate serving environments.
@@ -245,12 +244,6 @@ func (i *CxVersion) ToCxVersionOutputWithContext(ctx context.Context) CxVersionO
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionOutput)
 }
 
-func (i *CxVersion) ToOutput(ctx context.Context) pulumix.Output[*CxVersion] {
-	return pulumix.Output[*CxVersion]{
-		OutputState: i.ToCxVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxVersionArrayInput is an input type that accepts CxVersionArray and CxVersionArrayOutput values.
 // You can construct a concrete instance of `CxVersionArrayInput` via:
 //
@@ -274,12 +267,6 @@ func (i CxVersionArray) ToCxVersionArrayOutput() CxVersionArrayOutput {
 
 func (i CxVersionArray) ToCxVersionArrayOutputWithContext(ctx context.Context) CxVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionArrayOutput)
-}
-
-func (i CxVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxVersion] {
-	return pulumix.Output[[]*CxVersion]{
-		OutputState: i.ToCxVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxVersionMapInput is an input type that accepts CxVersionMap and CxVersionMapOutput values.
@@ -307,12 +294,6 @@ func (i CxVersionMap) ToCxVersionMapOutputWithContext(ctx context.Context) CxVer
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionMapOutput)
 }
 
-func (i CxVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxVersion] {
-	return pulumix.Output[map[string]*CxVersion]{
-		OutputState: i.ToCxVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxVersionOutput struct{ *pulumi.OutputState }
 
 func (CxVersionOutput) ElementType() reflect.Type {
@@ -325,12 +306,6 @@ func (o CxVersionOutput) ToCxVersionOutput() CxVersionOutput {
 
 func (o CxVersionOutput) ToCxVersionOutputWithContext(ctx context.Context) CxVersionOutput {
 	return o
-}
-
-func (o CxVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*CxVersion] {
-	return pulumix.Output[*CxVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -389,12 +364,6 @@ func (o CxVersionArrayOutput) ToCxVersionArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CxVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxVersion] {
-	return pulumix.Output[[]*CxVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxVersionArrayOutput) Index(i pulumi.IntInput) CxVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxVersion {
 		return vs[0].([]*CxVersion)[vs[1].(int)]
@@ -413,12 +382,6 @@ func (o CxVersionMapOutput) ToCxVersionMapOutput() CxVersionMapOutput {
 
 func (o CxVersionMapOutput) ToCxVersionMapOutputWithContext(ctx context.Context) CxVersionMapOutput {
 	return o
-}
-
-func (o CxVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxVersion] {
-	return pulumix.Output[map[string]*CxVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxVersionMapOutput) MapIndex(k pulumi.StringInput) CxVersionOutput {

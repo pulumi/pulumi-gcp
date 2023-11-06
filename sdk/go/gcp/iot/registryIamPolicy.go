@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud IoT Core DeviceRegistry. Each of these resources serves a different use case:
@@ -371,12 +370,6 @@ func (i *RegistryIamPolicy) ToRegistryIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamPolicyOutput)
 }
 
-func (i *RegistryIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamPolicy] {
-	return pulumix.Output[*RegistryIamPolicy]{
-		OutputState: i.ToRegistryIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegistryIamPolicyArrayInput is an input type that accepts RegistryIamPolicyArray and RegistryIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RegistryIamPolicyArrayInput` via:
 //
@@ -400,12 +393,6 @@ func (i RegistryIamPolicyArray) ToRegistryIamPolicyArrayOutput() RegistryIamPoli
 
 func (i RegistryIamPolicyArray) ToRegistryIamPolicyArrayOutputWithContext(ctx context.Context) RegistryIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamPolicyArrayOutput)
-}
-
-func (i RegistryIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryIamPolicy] {
-	return pulumix.Output[[]*RegistryIamPolicy]{
-		OutputState: i.ToRegistryIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegistryIamPolicyMapInput is an input type that accepts RegistryIamPolicyMap and RegistryIamPolicyMapOutput values.
@@ -433,12 +420,6 @@ func (i RegistryIamPolicyMap) ToRegistryIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamPolicyMapOutput)
 }
 
-func (i RegistryIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryIamPolicy] {
-	return pulumix.Output[map[string]*RegistryIamPolicy]{
-		OutputState: i.ToRegistryIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegistryIamPolicyOutput) ElementType() reflect.Type {
@@ -451,12 +432,6 @@ func (o RegistryIamPolicyOutput) ToRegistryIamPolicyOutput() RegistryIamPolicyOu
 
 func (o RegistryIamPolicyOutput) ToRegistryIamPolicyOutputWithContext(ctx context.Context) RegistryIamPolicyOutput {
 	return o
-}
-
-func (o RegistryIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamPolicy] {
-	return pulumix.Output[*RegistryIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -516,12 +491,6 @@ func (o RegistryIamPolicyArrayOutput) ToRegistryIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o RegistryIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryIamPolicy] {
-	return pulumix.Output[[]*RegistryIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegistryIamPolicyArrayOutput) Index(i pulumi.IntInput) RegistryIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryIamPolicy {
 		return vs[0].([]*RegistryIamPolicy)[vs[1].(int)]
@@ -540,12 +509,6 @@ func (o RegistryIamPolicyMapOutput) ToRegistryIamPolicyMapOutput() RegistryIamPo
 
 func (o RegistryIamPolicyMapOutput) ToRegistryIamPolicyMapOutputWithContext(ctx context.Context) RegistryIamPolicyMapOutput {
 	return o
-}
-
-func (o RegistryIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryIamPolicy] {
-	return pulumix.Output[map[string]*RegistryIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RegistryIamPolicyOutput {

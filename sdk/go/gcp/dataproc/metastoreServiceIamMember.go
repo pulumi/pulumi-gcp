@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
@@ -380,12 +379,6 @@ func (i *MetastoreServiceIamMember) ToMetastoreServiceIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberOutput)
 }
 
-func (i *MetastoreServiceIamMember) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamMember] {
-	return pulumix.Output[*MetastoreServiceIamMember]{
-		OutputState: i.ToMetastoreServiceIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceIamMemberArrayInput is an input type that accepts MetastoreServiceIamMemberArray and MetastoreServiceIamMemberArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceIamMemberArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i MetastoreServiceIamMemberArray) ToMetastoreServiceIamMemberArrayOutput()
 
 func (i MetastoreServiceIamMemberArray) ToMetastoreServiceIamMemberArrayOutputWithContext(ctx context.Context) MetastoreServiceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberArrayOutput)
-}
-
-func (i MetastoreServiceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamMember] {
-	return pulumix.Output[[]*MetastoreServiceIamMember]{
-		OutputState: i.ToMetastoreServiceIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreServiceIamMemberMapInput is an input type that accepts MetastoreServiceIamMemberMap and MetastoreServiceIamMemberMapOutput values.
@@ -442,12 +429,6 @@ func (i MetastoreServiceIamMemberMap) ToMetastoreServiceIamMemberMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberMapOutput)
 }
 
-func (i MetastoreServiceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamMember] {
-	return pulumix.Output[map[string]*MetastoreServiceIamMember]{
-		OutputState: i.ToMetastoreServiceIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceIamMemberOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o MetastoreServiceIamMemberOutput) ToMetastoreServiceIamMemberOutput() Met
 
 func (o MetastoreServiceIamMemberOutput) ToMetastoreServiceIamMemberOutputWithContext(ctx context.Context) MetastoreServiceIamMemberOutput {
 	return o
-}
-
-func (o MetastoreServiceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamMember] {
-	return pulumix.Output[*MetastoreServiceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamMemberOutput) Condition() MetastoreServiceIamMemberConditionPtrOutput {
@@ -531,12 +506,6 @@ func (o MetastoreServiceIamMemberArrayOutput) ToMetastoreServiceIamMemberArrayOu
 	return o
 }
 
-func (o MetastoreServiceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamMember] {
-	return pulumix.Output[[]*MetastoreServiceIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreServiceIamMemberArrayOutput) Index(i pulumi.IntInput) MetastoreServiceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreServiceIamMember {
 		return vs[0].([]*MetastoreServiceIamMember)[vs[1].(int)]
@@ -555,12 +524,6 @@ func (o MetastoreServiceIamMemberMapOutput) ToMetastoreServiceIamMemberMapOutput
 
 func (o MetastoreServiceIamMemberMapOutput) ToMetastoreServiceIamMemberMapOutputWithContext(ctx context.Context) MetastoreServiceIamMemberMapOutput {
 	return o
-}
-
-func (o MetastoreServiceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamMember] {
-	return pulumix.Output[map[string]*MetastoreServiceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) MetastoreServiceIamMemberOutput {

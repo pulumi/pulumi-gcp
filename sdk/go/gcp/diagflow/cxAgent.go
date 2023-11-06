@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agents are best described as Natural Language Understanding (NLU) modules that transform user requests into actionable data. You can include agents in your app, product, or service to determine user intent and respond to the user in a natural way.
@@ -347,12 +346,6 @@ func (i *CxAgent) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentOutput)
 }
 
-func (i *CxAgent) ToOutput(ctx context.Context) pulumix.Output[*CxAgent] {
-	return pulumix.Output[*CxAgent]{
-		OutputState: i.ToCxAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxAgentArrayInput is an input type that accepts CxAgentArray and CxAgentArrayOutput values.
 // You can construct a concrete instance of `CxAgentArrayInput` via:
 //
@@ -376,12 +369,6 @@ func (i CxAgentArray) ToCxAgentArrayOutput() CxAgentArrayOutput {
 
 func (i CxAgentArray) ToCxAgentArrayOutputWithContext(ctx context.Context) CxAgentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentArrayOutput)
-}
-
-func (i CxAgentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxAgent] {
-	return pulumix.Output[[]*CxAgent]{
-		OutputState: i.ToCxAgentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxAgentMapInput is an input type that accepts CxAgentMap and CxAgentMapOutput values.
@@ -409,12 +396,6 @@ func (i CxAgentMap) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMa
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentMapOutput)
 }
 
-func (i CxAgentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxAgent] {
-	return pulumix.Output[map[string]*CxAgent]{
-		OutputState: i.ToCxAgentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxAgentOutput struct{ *pulumi.OutputState }
 
 func (CxAgentOutput) ElementType() reflect.Type {
@@ -427,12 +408,6 @@ func (o CxAgentOutput) ToCxAgentOutput() CxAgentOutput {
 
 func (o CxAgentOutput) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOutput {
 	return o
-}
-
-func (o CxAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*CxAgent] {
-	return pulumix.Output[*CxAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -528,12 +503,6 @@ func (o CxAgentArrayOutput) ToCxAgentArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CxAgentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxAgent] {
-	return pulumix.Output[[]*CxAgent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxAgentArrayOutput) Index(i pulumi.IntInput) CxAgentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxAgent {
 		return vs[0].([]*CxAgent)[vs[1].(int)]
@@ -552,12 +521,6 @@ func (o CxAgentMapOutput) ToCxAgentMapOutput() CxAgentMapOutput {
 
 func (o CxAgentMapOutput) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMapOutput {
 	return o
-}
-
-func (o CxAgentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxAgent] {
-	return pulumix.Output[map[string]*CxAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxAgentMapOutput) MapIndex(k pulumi.StringInput) CxAgentOutput {

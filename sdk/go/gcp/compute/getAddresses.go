@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List IP addresses in a project. For more information see
@@ -184,12 +183,6 @@ func (o GetAddressesResultOutput) ToGetAddressesResultOutput() GetAddressesResul
 
 func (o GetAddressesResultOutput) ToGetAddressesResultOutputWithContext(ctx context.Context) GetAddressesResultOutput {
 	return o
-}
-
-func (o GetAddressesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAddressesResult] {
-	return pulumix.Output[GetAddressesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of addresses matching the filter. Structure is defined below.

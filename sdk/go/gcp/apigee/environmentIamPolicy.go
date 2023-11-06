@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -337,12 +336,6 @@ func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyOutput)
 }
 
-func (i *EnvironmentIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamPolicy] {
-	return pulumix.Output[*EnvironmentIamPolicy]{
-		OutputState: i.ToEnvironmentIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentIamPolicyArrayInput is an input type that accepts EnvironmentIamPolicyArray and EnvironmentIamPolicyArrayOutput values.
 // You can construct a concrete instance of `EnvironmentIamPolicyArrayInput` via:
 //
@@ -366,12 +359,6 @@ func (i EnvironmentIamPolicyArray) ToEnvironmentIamPolicyArrayOutput() Environme
 
 func (i EnvironmentIamPolicyArray) ToEnvironmentIamPolicyArrayOutputWithContext(ctx context.Context) EnvironmentIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyArrayOutput)
-}
-
-func (i EnvironmentIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamPolicy] {
-	return pulumix.Output[[]*EnvironmentIamPolicy]{
-		OutputState: i.ToEnvironmentIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvironmentIamPolicyMapInput is an input type that accepts EnvironmentIamPolicyMap and EnvironmentIamPolicyMapOutput values.
@@ -399,12 +386,6 @@ func (i EnvironmentIamPolicyMap) ToEnvironmentIamPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyMapOutput)
 }
 
-func (i EnvironmentIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamPolicy] {
-	return pulumix.Output[map[string]*EnvironmentIamPolicy]{
-		OutputState: i.ToEnvironmentIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamPolicyOutput) ElementType() reflect.Type {
@@ -417,12 +398,6 @@ func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyOutput() EnvironmentIa
 
 func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyOutputWithContext(ctx context.Context) EnvironmentIamPolicyOutput {
 	return o
-}
-
-func (o EnvironmentIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamPolicy] {
-	return pulumix.Output[*EnvironmentIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -471,12 +446,6 @@ func (o EnvironmentIamPolicyArrayOutput) ToEnvironmentIamPolicyArrayOutputWithCo
 	return o
 }
 
-func (o EnvironmentIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamPolicy] {
-	return pulumix.Output[[]*EnvironmentIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentIamPolicyArrayOutput) Index(i pulumi.IntInput) EnvironmentIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvironmentIamPolicy {
 		return vs[0].([]*EnvironmentIamPolicy)[vs[1].(int)]
@@ -495,12 +464,6 @@ func (o EnvironmentIamPolicyMapOutput) ToEnvironmentIamPolicyMapOutput() Environ
 
 func (o EnvironmentIamPolicyMapOutput) ToEnvironmentIamPolicyMapOutputWithContext(ctx context.Context) EnvironmentIamPolicyMapOutput {
 	return o
-}
-
-func (o EnvironmentIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamPolicy] {
-	return pulumix.Output[map[string]*EnvironmentIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentIamPolicyMapOutput) MapIndex(k pulumi.StringInput) EnvironmentIamPolicyOutput {

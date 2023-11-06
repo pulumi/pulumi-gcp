@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
@@ -127,12 +126,6 @@ func (o GetAccountKeyResultOutput) ToGetAccountKeyResultOutput() GetAccountKeyRe
 
 func (o GetAccountKeyResultOutput) ToGetAccountKeyResultOutputWithContext(ctx context.Context) GetAccountKeyResultOutput {
 	return o
-}
-
-func (o GetAccountKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountKeyResult] {
-	return pulumix.Output[GetAccountKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

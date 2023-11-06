@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Backend Service defines a group of virtual machines that will serve
@@ -885,12 +884,6 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceOutput)
 }
 
-func (i *BackendService) ToOutput(ctx context.Context) pulumix.Output[*BackendService] {
-	return pulumix.Output[*BackendService]{
-		OutputState: i.ToBackendServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackendServiceArrayInput is an input type that accepts BackendServiceArray and BackendServiceArrayOutput values.
 // You can construct a concrete instance of `BackendServiceArrayInput` via:
 //
@@ -914,12 +907,6 @@ func (i BackendServiceArray) ToBackendServiceArrayOutput() BackendServiceArrayOu
 
 func (i BackendServiceArray) ToBackendServiceArrayOutputWithContext(ctx context.Context) BackendServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceArrayOutput)
-}
-
-func (i BackendServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendService] {
-	return pulumix.Output[[]*BackendService]{
-		OutputState: i.ToBackendServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackendServiceMapInput is an input type that accepts BackendServiceMap and BackendServiceMapOutput values.
@@ -947,12 +934,6 @@ func (i BackendServiceMap) ToBackendServiceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceMapOutput)
 }
 
-func (i BackendServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendService] {
-	return pulumix.Output[map[string]*BackendService]{
-		OutputState: i.ToBackendServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackendServiceOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceOutput) ElementType() reflect.Type {
@@ -965,12 +946,6 @@ func (o BackendServiceOutput) ToBackendServiceOutput() BackendServiceOutput {
 
 func (o BackendServiceOutput) ToBackendServiceOutputWithContext(ctx context.Context) BackendServiceOutput {
 	return o
-}
-
-func (o BackendServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendService] {
-	return pulumix.Output[*BackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lifetime of cookies in seconds if sessionAffinity is
@@ -1209,12 +1184,6 @@ func (o BackendServiceArrayOutput) ToBackendServiceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o BackendServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendService] {
-	return pulumix.Output[[]*BackendService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackendServiceArrayOutput) Index(i pulumi.IntInput) BackendServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendService {
 		return vs[0].([]*BackendService)[vs[1].(int)]
@@ -1233,12 +1202,6 @@ func (o BackendServiceMapOutput) ToBackendServiceMapOutput() BackendServiceMapOu
 
 func (o BackendServiceMapOutput) ToBackendServiceMapOutputWithContext(ctx context.Context) BackendServiceMapOutput {
 	return o
-}
-
-func (o BackendServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendService] {
-	return pulumix.Output[map[string]*BackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendServiceMapOutput) MapIndex(k pulumi.StringInput) BackendServiceOutput {

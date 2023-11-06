@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for certificatetemplate
@@ -113,12 +112,6 @@ func (o LookupCertificateTemplateIamPolicyResultOutput) ToLookupCertificateTempl
 
 func (o LookupCertificateTemplateIamPolicyResultOutput) ToLookupCertificateTemplateIamPolicyResultOutputWithContext(ctx context.Context) LookupCertificateTemplateIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupCertificateTemplateIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateTemplateIamPolicyResult] {
-	return pulumix.Output[LookupCertificateTemplateIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupCertificateTemplateIamPolicyResultOutput) CertificateTemplate() pulumi.StringOutput {

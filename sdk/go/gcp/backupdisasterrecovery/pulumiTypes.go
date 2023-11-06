@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i ManagementServerManagementUriArgs) ToManagementServerManagementUriOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerManagementUriOutput)
 }
 
-func (i ManagementServerManagementUriArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementServerManagementUri] {
-	return pulumix.Output[ManagementServerManagementUri]{
-		OutputState: i.ToManagementServerManagementUriOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementServerManagementUriArrayInput is an input type that accepts ManagementServerManagementUriArray and ManagementServerManagementUriArrayOutput values.
 // You can construct a concrete instance of `ManagementServerManagementUriArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i ManagementServerManagementUriArray) ToManagementServerManagementUriArray
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerManagementUriArrayOutput)
 }
 
-func (i ManagementServerManagementUriArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerManagementUri] {
-	return pulumix.Output[[]ManagementServerManagementUri]{
-		OutputState: i.ToManagementServerManagementUriArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerManagementUriOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerManagementUriOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o ManagementServerManagementUriOutput) ToManagementServerManagementUriOutp
 
 func (o ManagementServerManagementUriOutput) ToManagementServerManagementUriOutputWithContext(ctx context.Context) ManagementServerManagementUriOutput {
 	return o
-}
-
-func (o ManagementServerManagementUriOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerManagementUri] {
-	return pulumix.Output[ManagementServerManagementUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -136,12 +117,6 @@ func (o ManagementServerManagementUriArrayOutput) ToManagementServerManagementUr
 
 func (o ManagementServerManagementUriArrayOutput) ToManagementServerManagementUriArrayOutputWithContext(ctx context.Context) ManagementServerManagementUriArrayOutput {
 	return o
-}
-
-func (o ManagementServerManagementUriArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerManagementUri] {
-	return pulumix.Output[[]ManagementServerManagementUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerManagementUriArrayOutput) Index(i pulumi.IntInput) ManagementServerManagementUriOutput {
@@ -195,12 +170,6 @@ func (i ManagementServerNetworkArgs) ToManagementServerNetworkOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerNetworkOutput)
 }
 
-func (i ManagementServerNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementServerNetwork] {
-	return pulumix.Output[ManagementServerNetwork]{
-		OutputState: i.ToManagementServerNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementServerNetworkArrayInput is an input type that accepts ManagementServerNetworkArray and ManagementServerNetworkArrayOutput values.
 // You can construct a concrete instance of `ManagementServerNetworkArrayInput` via:
 //
@@ -226,12 +195,6 @@ func (i ManagementServerNetworkArray) ToManagementServerNetworkArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerNetworkArrayOutput)
 }
 
-func (i ManagementServerNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerNetwork] {
-	return pulumix.Output[[]ManagementServerNetwork]{
-		OutputState: i.ToManagementServerNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerNetworkOutput) ElementType() reflect.Type {
@@ -244,12 +207,6 @@ func (o ManagementServerNetworkOutput) ToManagementServerNetworkOutput() Managem
 
 func (o ManagementServerNetworkOutput) ToManagementServerNetworkOutputWithContext(ctx context.Context) ManagementServerNetworkOutput {
 	return o
-}
-
-func (o ManagementServerNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerNetwork] {
-	return pulumix.Output[ManagementServerNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
@@ -278,12 +235,6 @@ func (o ManagementServerNetworkArrayOutput) ToManagementServerNetworkArrayOutput
 
 func (o ManagementServerNetworkArrayOutput) ToManagementServerNetworkArrayOutputWithContext(ctx context.Context) ManagementServerNetworkArrayOutput {
 	return o
-}
-
-func (o ManagementServerNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerNetwork] {
-	return pulumix.Output[[]ManagementServerNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementServerNetworkOutput {

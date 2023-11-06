@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows configuring a single GCP resource that should be inside of a service perimeter.
@@ -214,12 +213,6 @@ func (i *ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceOutput)
 }
 
-func (i *ServicePerimeterResource) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterResource] {
-	return pulumix.Output[*ServicePerimeterResource]{
-		OutputState: i.ToServicePerimeterResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterResourceArrayInput is an input type that accepts ServicePerimeterResourceArray and ServicePerimeterResourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterResourceArrayInput` via:
 //
@@ -243,12 +236,6 @@ func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutput() S
 
 func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutputWithContext(ctx context.Context) ServicePerimeterResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceArrayOutput)
-}
-
-func (i ServicePerimeterResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeterResource] {
-	return pulumix.Output[[]*ServicePerimeterResource]{
-		OutputState: i.ToServicePerimeterResourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimeterResourceMapInput is an input type that accepts ServicePerimeterResourceMap and ServicePerimeterResourceMapOutput values.
@@ -276,12 +263,6 @@ func (i ServicePerimeterResourceMap) ToServicePerimeterResourceMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceMapOutput)
 }
 
-func (i ServicePerimeterResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeterResource] {
-	return pulumix.Output[map[string]*ServicePerimeterResource]{
-		OutputState: i.ToServicePerimeterResourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterResourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterResourceOutput) ElementType() reflect.Type {
@@ -294,12 +275,6 @@ func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutput() Servi
 
 func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput {
 	return o
-}
-
-func (o ServicePerimeterResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterResource] {
-	return pulumix.Output[*ServicePerimeterResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Service Perimeter to add this resource to.
@@ -330,12 +305,6 @@ func (o ServicePerimeterResourceArrayOutput) ToServicePerimeterResourceArrayOutp
 	return o
 }
 
-func (o ServicePerimeterResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeterResource] {
-	return pulumix.Output[[]*ServicePerimeterResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimeterResourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePerimeterResource {
 		return vs[0].([]*ServicePerimeterResource)[vs[1].(int)]
@@ -354,12 +323,6 @@ func (o ServicePerimeterResourceMapOutput) ToServicePerimeterResourceMapOutput()
 
 func (o ServicePerimeterResourceMapOutput) ToServicePerimeterResourceMapOutputWithContext(ctx context.Context) ServicePerimeterResourceMapOutput {
 	return o
-}
-
-func (o ServicePerimeterResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeterResource] {
-	return pulumix.Output[map[string]*ServicePerimeterResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterResourceMapOutput) MapIndex(k pulumi.StringInput) ServicePerimeterResourceOutput {

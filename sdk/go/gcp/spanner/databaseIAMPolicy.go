@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
@@ -341,12 +340,6 @@ func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyOutput)
 }
 
-func (i *DatabaseIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMPolicy] {
-	return pulumix.Output[*DatabaseIAMPolicy]{
-		OutputState: i.ToDatabaseIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseIAMPolicyArrayInput is an input type that accepts DatabaseIAMPolicyArray and DatabaseIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `DatabaseIAMPolicyArrayInput` via:
 //
@@ -370,12 +363,6 @@ func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPoli
 
 func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutputWithContext(ctx context.Context) DatabaseIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyArrayOutput)
-}
-
-func (i DatabaseIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMPolicy] {
-	return pulumix.Output[[]*DatabaseIAMPolicy]{
-		OutputState: i.ToDatabaseIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseIAMPolicyMapInput is an input type that accepts DatabaseIAMPolicyMap and DatabaseIAMPolicyMapOutput values.
@@ -403,12 +390,6 @@ func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyMapOutput)
 }
 
-func (i DatabaseIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMPolicy] {
-	return pulumix.Output[map[string]*DatabaseIAMPolicy]{
-		OutputState: i.ToDatabaseIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMPolicyOutput) ElementType() reflect.Type {
@@ -421,12 +402,6 @@ func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOu
 
 func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
 	return o
-}
-
-func (o DatabaseIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMPolicy] {
-	return pulumix.Output[*DatabaseIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Spanner database.
@@ -479,12 +454,6 @@ func (o DatabaseIAMPolicyArrayOutput) ToDatabaseIAMPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o DatabaseIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMPolicy] {
-	return pulumix.Output[[]*DatabaseIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseIAMPolicyArrayOutput) Index(i pulumi.IntInput) DatabaseIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMPolicy {
 		return vs[0].([]*DatabaseIAMPolicy)[vs[1].(int)]
@@ -503,12 +472,6 @@ func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPo
 
 func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutputWithContext(ctx context.Context) DatabaseIAMPolicyMapOutput {
 	return o
-}
-
-func (o DatabaseIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMPolicy] {
-	return pulumix.Output[map[string]*DatabaseIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMPolicyOutput {

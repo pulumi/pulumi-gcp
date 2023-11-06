@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource, such as allowing the members to run operations as or modify the service account. To configure permissions for a service account on other GCP resources, use the googleProjectIam set of resources.
@@ -432,12 +431,6 @@ func (i *IAMPolicy) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyOutput)
 }
 
-func (i *IAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*IAMPolicy] {
-	return pulumix.Output[*IAMPolicy]{
-		OutputState: i.ToIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMPolicyArrayInput is an input type that accepts IAMPolicyArray and IAMPolicyArrayOutput values.
 // You can construct a concrete instance of `IAMPolicyArrayInput` via:
 //
@@ -461,12 +454,6 @@ func (i IAMPolicyArray) ToIAMPolicyArrayOutput() IAMPolicyArrayOutput {
 
 func (i IAMPolicyArray) ToIAMPolicyArrayOutputWithContext(ctx context.Context) IAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyArrayOutput)
-}
-
-func (i IAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMPolicy] {
-	return pulumix.Output[[]*IAMPolicy]{
-		OutputState: i.ToIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMPolicyMapInput is an input type that accepts IAMPolicyMap and IAMPolicyMapOutput values.
@@ -494,12 +481,6 @@ func (i IAMPolicyMap) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPo
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyMapOutput)
 }
 
-func (i IAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMPolicy] {
-	return pulumix.Output[map[string]*IAMPolicy]{
-		OutputState: i.ToIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (IAMPolicyOutput) ElementType() reflect.Type {
@@ -512,12 +493,6 @@ func (o IAMPolicyOutput) ToIAMPolicyOutput() IAMPolicyOutput {
 
 func (o IAMPolicyOutput) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
 	return o
-}
-
-func (o IAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMPolicy] {
-	return pulumix.Output[*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the service account IAM policy.
@@ -559,12 +534,6 @@ func (o IAMPolicyArrayOutput) ToIAMPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMPolicy] {
-	return pulumix.Output[[]*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMPolicyArrayOutput) Index(i pulumi.IntInput) IAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMPolicy {
 		return vs[0].([]*IAMPolicy)[vs[1].(int)]
@@ -583,12 +552,6 @@ func (o IAMPolicyMapOutput) ToIAMPolicyMapOutput() IAMPolicyMapOutput {
 
 func (o IAMPolicyMapOutput) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPolicyMapOutput {
 	return o
-}
-
-func (o IAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMPolicy] {
-	return pulumix.Output[map[string]*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMPolicyMapOutput) MapIndex(k pulumi.StringInput) IAMPolicyOutput {

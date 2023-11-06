@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAiFeaturestoreEntitytypeIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreEntitytypeIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreEntitytypeIamPolicyResult, error) {
@@ -81,12 +80,6 @@ func (o GetAiFeaturestoreEntitytypeIamPolicyResultOutput) ToGetAiFeaturestoreEnt
 
 func (o GetAiFeaturestoreEntitytypeIamPolicyResultOutput) ToGetAiFeaturestoreEntitytypeIamPolicyResultOutputWithContext(ctx context.Context) GetAiFeaturestoreEntitytypeIamPolicyResultOutput {
 	return o
-}
-
-func (o GetAiFeaturestoreEntitytypeIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiFeaturestoreEntitytypeIamPolicyResult] {
-	return pulumix.Output[GetAiFeaturestoreEntitytypeIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiFeaturestoreEntitytypeIamPolicyResultOutput) Entitytype() pulumi.StringOutput {

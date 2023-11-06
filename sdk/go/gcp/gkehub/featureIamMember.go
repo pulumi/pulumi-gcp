@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Feature. Each of these resources serves a different use case:
@@ -369,12 +368,6 @@ func (i *FeatureIamMember) ToFeatureIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberOutput)
 }
 
-func (i *FeatureIamMember) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMember] {
-	return pulumix.Output[*FeatureIamMember]{
-		OutputState: i.ToFeatureIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureIamMemberArrayInput is an input type that accepts FeatureIamMemberArray and FeatureIamMemberArrayOutput values.
 // You can construct a concrete instance of `FeatureIamMemberArrayInput` via:
 //
@@ -398,12 +391,6 @@ func (i FeatureIamMemberArray) ToFeatureIamMemberArrayOutput() FeatureIamMemberA
 
 func (i FeatureIamMemberArray) ToFeatureIamMemberArrayOutputWithContext(ctx context.Context) FeatureIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberArrayOutput)
-}
-
-func (i FeatureIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureIamMember] {
-	return pulumix.Output[[]*FeatureIamMember]{
-		OutputState: i.ToFeatureIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureIamMemberMapInput is an input type that accepts FeatureIamMemberMap and FeatureIamMemberMapOutput values.
@@ -431,12 +418,6 @@ func (i FeatureIamMemberMap) ToFeatureIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberMapOutput)
 }
 
-func (i FeatureIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureIamMember] {
-	return pulumix.Output[map[string]*FeatureIamMember]{
-		OutputState: i.ToFeatureIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamMemberOutput) ElementType() reflect.Type {
@@ -449,12 +430,6 @@ func (o FeatureIamMemberOutput) ToFeatureIamMemberOutput() FeatureIamMemberOutpu
 
 func (o FeatureIamMemberOutput) ToFeatureIamMemberOutputWithContext(ctx context.Context) FeatureIamMemberOutput {
 	return o
-}
-
-func (o FeatureIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMember] {
-	return pulumix.Output[*FeatureIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamMemberOutput) Condition() FeatureIamMemberConditionPtrOutput {
@@ -519,12 +494,6 @@ func (o FeatureIamMemberArrayOutput) ToFeatureIamMemberArrayOutputWithContext(ct
 	return o
 }
 
-func (o FeatureIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureIamMember] {
-	return pulumix.Output[[]*FeatureIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureIamMemberArrayOutput) Index(i pulumi.IntInput) FeatureIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FeatureIamMember {
 		return vs[0].([]*FeatureIamMember)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o FeatureIamMemberMapOutput) ToFeatureIamMemberMapOutput() FeatureIamMembe
 
 func (o FeatureIamMemberMapOutput) ToFeatureIamMemberMapOutputWithContext(ctx context.Context) FeatureIamMemberMapOutput {
 	return o
-}
-
-func (o FeatureIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureIamMember] {
-	return pulumix.Output[map[string]*FeatureIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamMemberMapOutput) MapIndex(k pulumi.StringInput) FeatureIamMemberOutput {

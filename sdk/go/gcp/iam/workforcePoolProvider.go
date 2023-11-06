@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A configuration for an external identity provider.
@@ -779,12 +778,6 @@ func (i *WorkforcePoolProvider) ToWorkforcePoolProviderOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOutput)
 }
 
-func (i *WorkforcePoolProvider) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolProvider] {
-	return pulumix.Output[*WorkforcePoolProvider]{
-		OutputState: i.ToWorkforcePoolProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkforcePoolProviderArrayInput is an input type that accepts WorkforcePoolProviderArray and WorkforcePoolProviderArrayOutput values.
 // You can construct a concrete instance of `WorkforcePoolProviderArrayInput` via:
 //
@@ -808,12 +801,6 @@ func (i WorkforcePoolProviderArray) ToWorkforcePoolProviderArrayOutput() Workfor
 
 func (i WorkforcePoolProviderArray) ToWorkforcePoolProviderArrayOutputWithContext(ctx context.Context) WorkforcePoolProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderArrayOutput)
-}
-
-func (i WorkforcePoolProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkforcePoolProvider] {
-	return pulumix.Output[[]*WorkforcePoolProvider]{
-		OutputState: i.ToWorkforcePoolProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkforcePoolProviderMapInput is an input type that accepts WorkforcePoolProviderMap and WorkforcePoolProviderMapOutput values.
@@ -841,12 +828,6 @@ func (i WorkforcePoolProviderMap) ToWorkforcePoolProviderMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderMapOutput)
 }
 
-func (i WorkforcePoolProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkforcePoolProvider] {
-	return pulumix.Output[map[string]*WorkforcePoolProvider]{
-		OutputState: i.ToWorkforcePoolProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkforcePoolProviderOutput struct{ *pulumi.OutputState }
 
 func (WorkforcePoolProviderOutput) ElementType() reflect.Type {
@@ -859,12 +840,6 @@ func (o WorkforcePoolProviderOutput) ToWorkforcePoolProviderOutput() WorkforcePo
 
 func (o WorkforcePoolProviderOutput) ToWorkforcePoolProviderOutputWithContext(ctx context.Context) WorkforcePoolProviderOutput {
 	return o
-}
-
-func (o WorkforcePoolProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolProvider] {
-	return pulumix.Output[*WorkforcePoolProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A [Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -1016,12 +991,6 @@ func (o WorkforcePoolProviderArrayOutput) ToWorkforcePoolProviderArrayOutputWith
 	return o
 }
 
-func (o WorkforcePoolProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkforcePoolProvider] {
-	return pulumix.Output[[]*WorkforcePoolProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkforcePoolProviderArrayOutput) Index(i pulumi.IntInput) WorkforcePoolProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkforcePoolProvider {
 		return vs[0].([]*WorkforcePoolProvider)[vs[1].(int)]
@@ -1040,12 +1009,6 @@ func (o WorkforcePoolProviderMapOutput) ToWorkforcePoolProviderMapOutput() Workf
 
 func (o WorkforcePoolProviderMapOutput) ToWorkforcePoolProviderMapOutputWithContext(ctx context.Context) WorkforcePoolProviderMapOutput {
 	return o
-}
-
-func (o WorkforcePoolProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkforcePoolProvider] {
-	return pulumix.Output[map[string]*WorkforcePoolProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkforcePoolProviderMapOutput) MapIndex(k pulumi.StringInput) WorkforcePoolProviderOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
@@ -344,12 +343,6 @@ func (i *AttestorIamPolicy) ToAttestorIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyOutput)
 }
 
-func (i *AttestorIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamPolicy] {
-	return pulumix.Output[*AttestorIamPolicy]{
-		OutputState: i.ToAttestorIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestorIamPolicyArrayInput is an input type that accepts AttestorIamPolicyArray and AttestorIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AttestorIamPolicyArrayInput` via:
 //
@@ -373,12 +366,6 @@ func (i AttestorIamPolicyArray) ToAttestorIamPolicyArrayOutput() AttestorIamPoli
 
 func (i AttestorIamPolicyArray) ToAttestorIamPolicyArrayOutputWithContext(ctx context.Context) AttestorIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyArrayOutput)
-}
-
-func (i AttestorIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AttestorIamPolicy] {
-	return pulumix.Output[[]*AttestorIamPolicy]{
-		OutputState: i.ToAttestorIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AttestorIamPolicyMapInput is an input type that accepts AttestorIamPolicyMap and AttestorIamPolicyMapOutput values.
@@ -406,12 +393,6 @@ func (i AttestorIamPolicyMap) ToAttestorIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyMapOutput)
 }
 
-func (i AttestorIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttestorIamPolicy] {
-	return pulumix.Output[map[string]*AttestorIamPolicy]{
-		OutputState: i.ToAttestorIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttestorIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamPolicyOutput) ElementType() reflect.Type {
@@ -424,12 +405,6 @@ func (o AttestorIamPolicyOutput) ToAttestorIamPolicyOutput() AttestorIamPolicyOu
 
 func (o AttestorIamPolicyOutput) ToAttestorIamPolicyOutputWithContext(ctx context.Context) AttestorIamPolicyOutput {
 	return o
-}
-
-func (o AttestorIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamPolicy] {
-	return pulumix.Output[*AttestorIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -480,12 +455,6 @@ func (o AttestorIamPolicyArrayOutput) ToAttestorIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o AttestorIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AttestorIamPolicy] {
-	return pulumix.Output[[]*AttestorIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttestorIamPolicyArrayOutput) Index(i pulumi.IntInput) AttestorIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttestorIamPolicy {
 		return vs[0].([]*AttestorIamPolicy)[vs[1].(int)]
@@ -504,12 +473,6 @@ func (o AttestorIamPolicyMapOutput) ToAttestorIamPolicyMapOutput() AttestorIamPo
 
 func (o AttestorIamPolicyMapOutput) ToAttestorIamPolicyMapOutputWithContext(ctx context.Context) AttestorIamPolicyMapOutput {
 	return o
-}
-
-func (o AttestorIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttestorIamPolicy] {
-	return pulumix.Output[map[string]*AttestorIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestorIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AttestorIamPolicyOutput {

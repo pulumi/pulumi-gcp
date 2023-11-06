@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for tagkey
@@ -103,12 +102,6 @@ func (o LookupTagKeyIamPolicyResultOutput) ToLookupTagKeyIamPolicyResultOutput()
 
 func (o LookupTagKeyIamPolicyResultOutput) ToLookupTagKeyIamPolicyResultOutputWithContext(ctx context.Context) LookupTagKeyIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupTagKeyIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagKeyIamPolicyResult] {
-	return pulumix.Output[LookupTagKeyIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

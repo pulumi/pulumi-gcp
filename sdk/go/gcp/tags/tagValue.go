@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
@@ -232,12 +231,6 @@ func (i *TagValue) ToTagValueOutputWithContext(ctx context.Context) TagValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueOutput)
 }
 
-func (i *TagValue) ToOutput(ctx context.Context) pulumix.Output[*TagValue] {
-	return pulumix.Output[*TagValue]{
-		OutputState: i.ToTagValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagValueArrayInput is an input type that accepts TagValueArray and TagValueArrayOutput values.
 // You can construct a concrete instance of `TagValueArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i TagValueArray) ToTagValueArrayOutput() TagValueArrayOutput {
 
 func (i TagValueArray) ToTagValueArrayOutputWithContext(ctx context.Context) TagValueArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueArrayOutput)
-}
-
-func (i TagValueArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagValue] {
-	return pulumix.Output[[]*TagValue]{
-		OutputState: i.ToTagValueArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagValueMapInput is an input type that accepts TagValueMap and TagValueMapOutput values.
@@ -294,12 +281,6 @@ func (i TagValueMap) ToTagValueMapOutputWithContext(ctx context.Context) TagValu
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueMapOutput)
 }
 
-func (i TagValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagValue] {
-	return pulumix.Output[map[string]*TagValue]{
-		OutputState: i.ToTagValueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagValueOutput struct{ *pulumi.OutputState }
 
 func (TagValueOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o TagValueOutput) ToTagValueOutput() TagValueOutput {
 
 func (o TagValueOutput) ToTagValueOutputWithContext(ctx context.Context) TagValueOutput {
 	return o
-}
-
-func (o TagValueOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValue] {
-	return pulumix.Output[*TagValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Creation time.
@@ -374,12 +349,6 @@ func (o TagValueArrayOutput) ToTagValueArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TagValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagValue] {
-	return pulumix.Output[[]*TagValue]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagValueArrayOutput) Index(i pulumi.IntInput) TagValueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagValue {
 		return vs[0].([]*TagValue)[vs[1].(int)]
@@ -398,12 +367,6 @@ func (o TagValueMapOutput) ToTagValueMapOutput() TagValueMapOutput {
 
 func (o TagValueMapOutput) ToTagValueMapOutputWithContext(ctx context.Context) TagValueMapOutput {
 	return o
-}
-
-func (o TagValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagValue] {
-	return pulumix.Output[map[string]*TagValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagValueMapOutput) MapIndex(k pulumi.StringInput) TagValueOutput {

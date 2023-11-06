@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -79,12 +78,6 @@ func (i AccessApprovalSettingsEnrolledServiceArgs) ToAccessApprovalSettingsEnrol
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsEnrolledServiceOutput)
 }
 
-func (i AccessApprovalSettingsEnrolledServiceArgs) ToOutput(ctx context.Context) pulumix.Output[AccessApprovalSettingsEnrolledService] {
-	return pulumix.Output[AccessApprovalSettingsEnrolledService]{
-		OutputState: i.ToAccessApprovalSettingsEnrolledServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessApprovalSettingsEnrolledServiceArrayInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArray and AccessApprovalSettingsEnrolledServiceArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceArrayInput` via:
 //
@@ -110,12 +103,6 @@ func (i AccessApprovalSettingsEnrolledServiceArray) ToAccessApprovalSettingsEnro
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsEnrolledServiceArrayOutput)
 }
 
-func (i AccessApprovalSettingsEnrolledServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessApprovalSettingsEnrolledService] {
-	return pulumix.Output[[]AccessApprovalSettingsEnrolledService]{
-		OutputState: i.ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessApprovalSettingsEnrolledServiceOutput struct{ *pulumi.OutputState }
 
 func (AccessApprovalSettingsEnrolledServiceOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnr
 
 func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnrolledServiceOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceOutput {
 	return o
-}
-
-func (o AccessApprovalSettingsEnrolledServiceOutput) ToOutput(ctx context.Context) pulumix.Output[AccessApprovalSettingsEnrolledService] {
-	return pulumix.Output[AccessApprovalSettingsEnrolledService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
@@ -172,12 +153,6 @@ func (o AccessApprovalSettingsEnrolledServiceArrayOutput) ToAccessApprovalSettin
 
 func (o AccessApprovalSettingsEnrolledServiceArrayOutput) ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceArrayOutput {
 	return o
-}
-
-func (o AccessApprovalSettingsEnrolledServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessApprovalSettingsEnrolledService] {
-	return pulumix.Output[[]AccessApprovalSettingsEnrolledService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessApprovalSettingsEnrolledServiceArrayOutput) Index(i pulumi.IntInput) AccessApprovalSettingsEnrolledServiceOutput {
@@ -221,12 +196,6 @@ func (i IAMBindingConditionArgs) ToIAMBindingConditionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput)
 }
 
-func (i IAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[IAMBindingCondition] {
-	return pulumix.Output[IAMBindingCondition]{
-		OutputState: i.ToIAMBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
 	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -268,12 +237,6 @@ func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
 }
 
-func (i *iambindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMBindingCondition] {
-	return pulumix.Output[*IAMBindingCondition]{
-		OutputState: i.ToIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionOutput) ElementType() reflect.Type {
@@ -296,12 +259,6 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
 		return &v
 	}).(IAMBindingConditionPtrOutput)
-}
-
-func (o IAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[IAMBindingCondition] {
-	return pulumix.Output[IAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -328,12 +285,6 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutput() IAMBindin
 
 func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
 	return o
-}
-
-func (o IAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMBindingCondition] {
-	return pulumix.Output[*IAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
@@ -422,12 +373,6 @@ func (i IAMMemberConditionArgs) ToIAMMemberConditionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput)
 }
 
-func (i IAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[IAMMemberCondition] {
-	return pulumix.Output[IAMMemberCondition]{
-		OutputState: i.ToIAMMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
 	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -469,12 +414,6 @@ func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
 }
 
-func (i *iammemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMMemberCondition] {
-	return pulumix.Output[*IAMMemberCondition]{
-		OutputState: i.ToIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionOutput) ElementType() reflect.Type {
@@ -497,12 +436,6 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
 		return &v
 	}).(IAMMemberConditionPtrOutput)
-}
-
-func (o IAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[IAMMemberCondition] {
-	return pulumix.Output[IAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -536,12 +469,6 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutput() IAMMemberCo
 
 func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
 	return o
-}
-
-func (o IAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMMemberCondition] {
-	return pulumix.Output[*IAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
@@ -635,12 +562,6 @@ func (i IamAuditConfigAuditLogConfigArgs) ToIamAuditConfigAuditLogConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigAuditLogConfigOutput)
 }
 
-func (i IamAuditConfigAuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[IamAuditConfigAuditLogConfig] {
-	return pulumix.Output[IamAuditConfigAuditLogConfig]{
-		OutputState: i.ToIamAuditConfigAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IamAuditConfigAuditLogConfigArrayInput is an input type that accepts IamAuditConfigAuditLogConfigArray and IamAuditConfigAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigAuditLogConfigArrayInput` via:
 //
@@ -666,12 +587,6 @@ func (i IamAuditConfigAuditLogConfigArray) ToIamAuditConfigAuditLogConfigArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigAuditLogConfigArrayOutput)
 }
 
-func (i IamAuditConfigAuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]IamAuditConfigAuditLogConfig] {
-	return pulumix.Output[[]IamAuditConfigAuditLogConfig]{
-		OutputState: i.ToIamAuditConfigAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IamAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
@@ -684,12 +599,6 @@ func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutput
 
 func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigOutput {
 	return o
-}
-
-func (o IamAuditConfigAuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[IamAuditConfigAuditLogConfig] {
-	return pulumix.Output[IamAuditConfigAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identities that do not cause logging for this type of permission.
@@ -719,12 +628,6 @@ func (o IamAuditConfigAuditLogConfigArrayOutput) ToIamAuditConfigAuditLogConfigA
 
 func (o IamAuditConfigAuditLogConfigArrayOutput) ToIamAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigArrayOutput {
 	return o
-}
-
-func (o IamAuditConfigAuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IamAuditConfigAuditLogConfig] {
-	return pulumix.Output[[]IamAuditConfigAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IamAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigAuditLogConfigOutput {
@@ -764,12 +667,6 @@ func (i PolicyBooleanPolicyArgs) ToPolicyBooleanPolicyOutput() PolicyBooleanPoli
 
 func (i PolicyBooleanPolicyArgs) ToPolicyBooleanPolicyOutputWithContext(ctx context.Context) PolicyBooleanPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyBooleanPolicyOutput)
-}
-
-func (i PolicyBooleanPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyBooleanPolicy] {
-	return pulumix.Output[PolicyBooleanPolicy]{
-		OutputState: i.ToPolicyBooleanPolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i PolicyBooleanPolicyArgs) ToPolicyBooleanPolicyPtrOutput() PolicyBooleanPolicyPtrOutput {
@@ -813,12 +710,6 @@ func (i *policyBooleanPolicyPtrType) ToPolicyBooleanPolicyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyBooleanPolicyPtrOutput)
 }
 
-func (i *policyBooleanPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyBooleanPolicy] {
-	return pulumix.Output[*PolicyBooleanPolicy]{
-		OutputState: i.ToPolicyBooleanPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyBooleanPolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyBooleanPolicyOutput) ElementType() reflect.Type {
@@ -843,12 +734,6 @@ func (o PolicyBooleanPolicyOutput) ToPolicyBooleanPolicyPtrOutputWithContext(ctx
 	}).(PolicyBooleanPolicyPtrOutput)
 }
 
-func (o PolicyBooleanPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyBooleanPolicy] {
-	return pulumix.Output[PolicyBooleanPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If true, then the Policy is enforced. If false, then any configuration is acceptable.
 func (o PolicyBooleanPolicyOutput) Enforced() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
@@ -866,12 +751,6 @@ func (o PolicyBooleanPolicyPtrOutput) ToPolicyBooleanPolicyPtrOutput() PolicyBoo
 
 func (o PolicyBooleanPolicyPtrOutput) ToPolicyBooleanPolicyPtrOutputWithContext(ctx context.Context) PolicyBooleanPolicyPtrOutput {
 	return o
-}
-
-func (o PolicyBooleanPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyBooleanPolicy] {
-	return pulumix.Output[*PolicyBooleanPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyBooleanPolicyPtrOutput) Elem() PolicyBooleanPolicyOutput {
@@ -943,12 +822,6 @@ func (i PolicyListPolicyArgs) ToPolicyListPolicyOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyOutput)
 }
 
-func (i PolicyListPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicy] {
-	return pulumix.Output[PolicyListPolicy]{
-		OutputState: i.ToPolicyListPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicyListPolicyArgs) ToPolicyListPolicyPtrOutput() PolicyListPolicyPtrOutput {
 	return i.ToPolicyListPolicyPtrOutputWithContext(context.Background())
 }
@@ -990,12 +863,6 @@ func (i *policyListPolicyPtrType) ToPolicyListPolicyPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyPtrOutput)
 }
 
-func (i *policyListPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicy] {
-	return pulumix.Output[*PolicyListPolicy]{
-		OutputState: i.ToPolicyListPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyListPolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyListPolicyOutput) ElementType() reflect.Type {
@@ -1018,12 +885,6 @@ func (o PolicyListPolicyOutput) ToPolicyListPolicyPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyListPolicy) *PolicyListPolicy {
 		return &v
 	}).(PolicyListPolicyPtrOutput)
-}
-
-func (o PolicyListPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicy] {
-	return pulumix.Output[PolicyListPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // or `deny` - (Optional) One or the other must be set.
@@ -1060,12 +921,6 @@ func (o PolicyListPolicyPtrOutput) ToPolicyListPolicyPtrOutput() PolicyListPolic
 
 func (o PolicyListPolicyPtrOutput) ToPolicyListPolicyPtrOutputWithContext(ctx context.Context) PolicyListPolicyPtrOutput {
 	return o
-}
-
-func (o PolicyListPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicy] {
-	return pulumix.Output[*PolicyListPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyListPolicyPtrOutput) Elem() PolicyListPolicyOutput {
@@ -1157,12 +1012,6 @@ func (i PolicyListPolicyAllowArgs) ToPolicyListPolicyAllowOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyAllowOutput)
 }
 
-func (i PolicyListPolicyAllowArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicyAllow] {
-	return pulumix.Output[PolicyListPolicyAllow]{
-		OutputState: i.ToPolicyListPolicyAllowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicyListPolicyAllowArgs) ToPolicyListPolicyAllowPtrOutput() PolicyListPolicyAllowPtrOutput {
 	return i.ToPolicyListPolicyAllowPtrOutputWithContext(context.Background())
 }
@@ -1204,12 +1053,6 @@ func (i *policyListPolicyAllowPtrType) ToPolicyListPolicyAllowPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyAllowPtrOutput)
 }
 
-func (i *policyListPolicyAllowPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicyAllow] {
-	return pulumix.Output[*PolicyListPolicyAllow]{
-		OutputState: i.ToPolicyListPolicyAllowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyListPolicyAllowOutput struct{ *pulumi.OutputState }
 
 func (PolicyListPolicyAllowOutput) ElementType() reflect.Type {
@@ -1234,12 +1077,6 @@ func (o PolicyListPolicyAllowOutput) ToPolicyListPolicyAllowPtrOutputWithContext
 	}).(PolicyListPolicyAllowPtrOutput)
 }
 
-func (o PolicyListPolicyAllowOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicyAllow] {
-	return pulumix.Output[PolicyListPolicyAllow]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The policy allows or denies all values.
 func (o PolicyListPolicyAllowOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
@@ -1262,12 +1099,6 @@ func (o PolicyListPolicyAllowPtrOutput) ToPolicyListPolicyAllowPtrOutput() Polic
 
 func (o PolicyListPolicyAllowPtrOutput) ToPolicyListPolicyAllowPtrOutputWithContext(ctx context.Context) PolicyListPolicyAllowPtrOutput {
 	return o
-}
-
-func (o PolicyListPolicyAllowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicyAllow] {
-	return pulumix.Output[*PolicyListPolicyAllow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyListPolicyAllowPtrOutput) Elem() PolicyListPolicyAllowOutput {
@@ -1337,12 +1168,6 @@ func (i PolicyListPolicyDenyArgs) ToPolicyListPolicyDenyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyDenyOutput)
 }
 
-func (i PolicyListPolicyDenyArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicyDeny] {
-	return pulumix.Output[PolicyListPolicyDeny]{
-		OutputState: i.ToPolicyListPolicyDenyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicyListPolicyDenyArgs) ToPolicyListPolicyDenyPtrOutput() PolicyListPolicyDenyPtrOutput {
 	return i.ToPolicyListPolicyDenyPtrOutputWithContext(context.Background())
 }
@@ -1384,12 +1209,6 @@ func (i *policyListPolicyDenyPtrType) ToPolicyListPolicyDenyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyListPolicyDenyPtrOutput)
 }
 
-func (i *policyListPolicyDenyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicyDeny] {
-	return pulumix.Output[*PolicyListPolicyDeny]{
-		OutputState: i.ToPolicyListPolicyDenyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyListPolicyDenyOutput struct{ *pulumi.OutputState }
 
 func (PolicyListPolicyDenyOutput) ElementType() reflect.Type {
@@ -1414,12 +1233,6 @@ func (o PolicyListPolicyDenyOutput) ToPolicyListPolicyDenyPtrOutputWithContext(c
 	}).(PolicyListPolicyDenyPtrOutput)
 }
 
-func (o PolicyListPolicyDenyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyListPolicyDeny] {
-	return pulumix.Output[PolicyListPolicyDeny]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The policy allows or denies all values.
 func (o PolicyListPolicyDenyOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
@@ -1442,12 +1255,6 @@ func (o PolicyListPolicyDenyPtrOutput) ToPolicyListPolicyDenyPtrOutput() PolicyL
 
 func (o PolicyListPolicyDenyPtrOutput) ToPolicyListPolicyDenyPtrOutputWithContext(ctx context.Context) PolicyListPolicyDenyPtrOutput {
 	return o
-}
-
-func (o PolicyListPolicyDenyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyListPolicyDeny] {
-	return pulumix.Output[*PolicyListPolicyDeny]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyListPolicyDenyPtrOutput) Elem() PolicyListPolicyDenyOutput {
@@ -1513,12 +1320,6 @@ func (i PolicyRestorePolicyArgs) ToPolicyRestorePolicyOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyRestorePolicyOutput)
 }
 
-func (i PolicyRestorePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyRestorePolicy] {
-	return pulumix.Output[PolicyRestorePolicy]{
-		OutputState: i.ToPolicyRestorePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicyRestorePolicyArgs) ToPolicyRestorePolicyPtrOutput() PolicyRestorePolicyPtrOutput {
 	return i.ToPolicyRestorePolicyPtrOutputWithContext(context.Background())
 }
@@ -1560,12 +1361,6 @@ func (i *policyRestorePolicyPtrType) ToPolicyRestorePolicyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyRestorePolicyPtrOutput)
 }
 
-func (i *policyRestorePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyRestorePolicy] {
-	return pulumix.Output[*PolicyRestorePolicy]{
-		OutputState: i.ToPolicyRestorePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyRestorePolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyRestorePolicyOutput) ElementType() reflect.Type {
@@ -1590,12 +1385,6 @@ func (o PolicyRestorePolicyOutput) ToPolicyRestorePolicyPtrOutputWithContext(ctx
 	}).(PolicyRestorePolicyPtrOutput)
 }
 
-func (o PolicyRestorePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyRestorePolicy] {
-	return pulumix.Output[PolicyRestorePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // May only be set to true. If set, then the default Policy is restored.
 func (o PolicyRestorePolicyOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
@@ -1613,12 +1402,6 @@ func (o PolicyRestorePolicyPtrOutput) ToPolicyRestorePolicyPtrOutput() PolicyRes
 
 func (o PolicyRestorePolicyPtrOutput) ToPolicyRestorePolicyPtrOutputWithContext(ctx context.Context) PolicyRestorePolicyPtrOutput {
 	return o
-}
-
-func (o PolicyRestorePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyRestorePolicy] {
-	return pulumix.Output[*PolicyRestorePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyRestorePolicyPtrOutput) Elem() PolicyRestorePolicyOutput {
@@ -1702,12 +1485,6 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderOutput)
 }
 
-func (i GetFoldersFolderArgs) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
-	return pulumix.Output[GetFoldersFolder]{
-		OutputState: i.ToGetFoldersFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
@@ -1733,12 +1510,6 @@ func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderArrayOutput)
 }
 
-func (i GetFoldersFolderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
-	return pulumix.Output[[]GetFoldersFolder]{
-		OutputState: i.ToGetFoldersFolderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFoldersFolderOutput struct{ *pulumi.OutputState }
 
 func (GetFoldersFolderOutput) ElementType() reflect.Type {
@@ -1751,12 +1522,6 @@ func (o GetFoldersFolderOutput) ToGetFoldersFolderOutput() GetFoldersFolderOutpu
 
 func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
 	return o
-}
-
-func (o GetFoldersFolderOutput) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
-	return pulumix.Output[GetFoldersFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the folder was created
@@ -1813,12 +1578,6 @@ func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetFoldersFolderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
-	return pulumix.Output[[]GetFoldersFolder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFoldersFolder {
 		return vs[0].([]GetFoldersFolder)[vs[1].(int)]
@@ -1862,12 +1621,6 @@ func (i GetIAMPolicyAuditConfigArgs) ToGetIAMPolicyAuditConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigOutput)
 }
 
-func (i GetIAMPolicyAuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyAuditConfig] {
-	return pulumix.Output[GetIAMPolicyAuditConfig]{
-		OutputState: i.ToGetIAMPolicyAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetIAMPolicyAuditConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigArray and GetIAMPolicyAuditConfigArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigArrayInput` via:
 //
@@ -1893,12 +1646,6 @@ func (i GetIAMPolicyAuditConfigArray) ToGetIAMPolicyAuditConfigArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigArrayOutput)
 }
 
-func (i GetIAMPolicyAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyAuditConfig] {
-	return pulumix.Output[[]GetIAMPolicyAuditConfig]{
-		OutputState: i.ToGetIAMPolicyAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetIAMPolicyAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (GetIAMPolicyAuditConfigOutput) ElementType() reflect.Type {
@@ -1911,12 +1658,6 @@ func (o GetIAMPolicyAuditConfigOutput) ToGetIAMPolicyAuditConfigOutput() GetIAMP
 
 func (o GetIAMPolicyAuditConfigOutput) ToGetIAMPolicyAuditConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigOutput {
 	return o
-}
-
-func (o GetIAMPolicyAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyAuditConfig] {
-	return pulumix.Output[GetIAMPolicyAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A nested block that defines the operations you'd like to log.
@@ -1941,12 +1682,6 @@ func (o GetIAMPolicyAuditConfigArrayOutput) ToGetIAMPolicyAuditConfigArrayOutput
 
 func (o GetIAMPolicyAuditConfigArrayOutput) ToGetIAMPolicyAuditConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigArrayOutput {
 	return o
-}
-
-func (o GetIAMPolicyAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyAuditConfig] {
-	return pulumix.Output[[]GetIAMPolicyAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIAMPolicyAuditConfigArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyAuditConfigOutput {
@@ -1992,12 +1727,6 @@ func (i GetIAMPolicyAuditConfigAuditLogConfigArgs) ToGetIAMPolicyAuditConfigAudi
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigAuditLogConfigOutput)
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyAuditConfigAuditLogConfig] {
-	return pulumix.Output[GetIAMPolicyAuditConfigAuditLogConfig]{
-		OutputState: i.ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetIAMPolicyAuditConfigAuditLogConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigAuditLogConfigArray and GetIAMPolicyAuditConfigAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigAuditLogConfigArrayInput` via:
 //
@@ -2023,12 +1752,6 @@ func (i GetIAMPolicyAuditConfigAuditLogConfigArray) ToGetIAMPolicyAuditConfigAud
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigAuditLogConfigArrayOutput)
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyAuditConfigAuditLogConfig] {
-	return pulumix.Output[[]GetIAMPolicyAuditConfigAuditLogConfig]{
-		OutputState: i.ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetIAMPolicyAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (GetIAMPolicyAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
@@ -2041,12 +1764,6 @@ func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ToGetIAMPolicyAuditConfigAu
 
 func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigOutput {
 	return o
-}
-
-func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyAuditConfigAuditLogConfig] {
-	return pulumix.Output[GetIAMPolicyAuditConfigAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
@@ -2071,12 +1788,6 @@ func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIAMPolicyAuditCon
 
 func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
 	return o
-}
-
-func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyAuditConfigAuditLogConfig] {
-	return pulumix.Output[[]GetIAMPolicyAuditConfigAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyAuditConfigAuditLogConfigOutput {
@@ -2144,12 +1855,6 @@ func (i GetIAMPolicyBindingArgs) ToGetIAMPolicyBindingOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingOutput)
 }
 
-func (i GetIAMPolicyBindingArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyBinding] {
-	return pulumix.Output[GetIAMPolicyBinding]{
-		OutputState: i.ToGetIAMPolicyBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetIAMPolicyBindingArrayInput is an input type that accepts GetIAMPolicyBindingArray and GetIAMPolicyBindingArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyBindingArrayInput` via:
 //
@@ -2175,12 +1880,6 @@ func (i GetIAMPolicyBindingArray) ToGetIAMPolicyBindingArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingArrayOutput)
 }
 
-func (i GetIAMPolicyBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyBinding] {
-	return pulumix.Output[[]GetIAMPolicyBinding]{
-		OutputState: i.ToGetIAMPolicyBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetIAMPolicyBindingOutput struct{ *pulumi.OutputState }
 
 func (GetIAMPolicyBindingOutput) ElementType() reflect.Type {
@@ -2193,12 +1892,6 @@ func (o GetIAMPolicyBindingOutput) ToGetIAMPolicyBindingOutput() GetIAMPolicyBin
 
 func (o GetIAMPolicyBindingOutput) ToGetIAMPolicyBindingOutputWithContext(ctx context.Context) GetIAMPolicyBindingOutput {
 	return o
-}
-
-func (o GetIAMPolicyBindingOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyBinding] {
-	return pulumix.Output[GetIAMPolicyBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
@@ -2237,12 +1930,6 @@ func (o GetIAMPolicyBindingArrayOutput) ToGetIAMPolicyBindingArrayOutput() GetIA
 
 func (o GetIAMPolicyBindingArrayOutput) ToGetIAMPolicyBindingArrayOutputWithContext(ctx context.Context) GetIAMPolicyBindingArrayOutput {
 	return o
-}
-
-func (o GetIAMPolicyBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMPolicyBinding] {
-	return pulumix.Output[[]GetIAMPolicyBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIAMPolicyBindingArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyBindingOutput {
@@ -2292,12 +1979,6 @@ func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingConditionOutput)
 }
 
-func (i GetIAMPolicyBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyBindingCondition] {
-	return pulumix.Output[GetIAMPolicyBindingCondition]{
-		OutputState: i.ToGetIAMPolicyBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput {
 	return i.ToGetIAMPolicyBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2339,12 +2020,6 @@ func (i *getIAMPolicyBindingConditionPtrType) ToGetIAMPolicyBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingConditionPtrOutput)
 }
 
-func (i *getIAMPolicyBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetIAMPolicyBindingCondition] {
-	return pulumix.Output[*GetIAMPolicyBindingCondition]{
-		OutputState: i.ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetIAMPolicyBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (GetIAMPolicyBindingConditionOutput) ElementType() reflect.Type {
@@ -2367,12 +2042,6 @@ func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMPolicyBindingCondition) *GetIAMPolicyBindingCondition {
 		return &v
 	}).(GetIAMPolicyBindingConditionPtrOutput)
-}
-
-func (o GetIAMPolicyBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMPolicyBindingCondition] {
-	return pulumix.Output[GetIAMPolicyBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2402,12 +2071,6 @@ func (o GetIAMPolicyBindingConditionPtrOutput) ToGetIAMPolicyBindingConditionPtr
 
 func (o GetIAMPolicyBindingConditionPtrOutput) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
 	return o
-}
-
-func (o GetIAMPolicyBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetIAMPolicyBindingCondition] {
-	return pulumix.Output[*GetIAMPolicyBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIAMPolicyBindingConditionPtrOutput) Elem() GetIAMPolicyBindingConditionOutput {

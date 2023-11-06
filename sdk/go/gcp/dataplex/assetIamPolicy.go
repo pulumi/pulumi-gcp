@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Asset. Each of these resources serves a different use case:
@@ -374,12 +373,6 @@ func (i *AssetIamPolicy) ToAssetIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AssetIamPolicyOutput)
 }
 
-func (i *AssetIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AssetIamPolicy] {
-	return pulumix.Output[*AssetIamPolicy]{
-		OutputState: i.ToAssetIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssetIamPolicyArrayInput is an input type that accepts AssetIamPolicyArray and AssetIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AssetIamPolicyArrayInput` via:
 //
@@ -403,12 +396,6 @@ func (i AssetIamPolicyArray) ToAssetIamPolicyArrayOutput() AssetIamPolicyArrayOu
 
 func (i AssetIamPolicyArray) ToAssetIamPolicyArrayOutputWithContext(ctx context.Context) AssetIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssetIamPolicyArrayOutput)
-}
-
-func (i AssetIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AssetIamPolicy] {
-	return pulumix.Output[[]*AssetIamPolicy]{
-		OutputState: i.ToAssetIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AssetIamPolicyMapInput is an input type that accepts AssetIamPolicyMap and AssetIamPolicyMapOutput values.
@@ -436,12 +423,6 @@ func (i AssetIamPolicyMap) ToAssetIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AssetIamPolicyMapOutput)
 }
 
-func (i AssetIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AssetIamPolicy] {
-	return pulumix.Output[map[string]*AssetIamPolicy]{
-		OutputState: i.ToAssetIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AssetIamPolicyOutput) ElementType() reflect.Type {
@@ -454,12 +435,6 @@ func (o AssetIamPolicyOutput) ToAssetIamPolicyOutput() AssetIamPolicyOutput {
 
 func (o AssetIamPolicyOutput) ToAssetIamPolicyOutputWithContext(ctx context.Context) AssetIamPolicyOutput {
 	return o
-}
-
-func (o AssetIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetIamPolicy] {
-	return pulumix.Output[*AssetIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -522,12 +497,6 @@ func (o AssetIamPolicyArrayOutput) ToAssetIamPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AssetIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AssetIamPolicy] {
-	return pulumix.Output[[]*AssetIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssetIamPolicyArrayOutput) Index(i pulumi.IntInput) AssetIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AssetIamPolicy {
 		return vs[0].([]*AssetIamPolicy)[vs[1].(int)]
@@ -546,12 +515,6 @@ func (o AssetIamPolicyMapOutput) ToAssetIamPolicyMapOutput() AssetIamPolicyMapOu
 
 func (o AssetIamPolicyMapOutput) ToAssetIamPolicyMapOutputWithContext(ctx context.Context) AssetIamPolicyMapOutput {
 	return o
-}
-
-func (o AssetIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AssetIamPolicy] {
-	return pulumix.Output[map[string]*AssetIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AssetIamPolicyOutput {

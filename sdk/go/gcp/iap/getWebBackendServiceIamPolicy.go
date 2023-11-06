@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for webbackendservice
@@ -111,12 +110,6 @@ func (o LookupWebBackendServiceIamPolicyResultOutput) ToLookupWebBackendServiceI
 
 func (o LookupWebBackendServiceIamPolicyResultOutput) ToLookupWebBackendServiceIamPolicyResultOutputWithContext(ctx context.Context) LookupWebBackendServiceIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupWebBackendServiceIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebBackendServiceIamPolicyResult] {
-	return pulumix.Output[LookupWebBackendServiceIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

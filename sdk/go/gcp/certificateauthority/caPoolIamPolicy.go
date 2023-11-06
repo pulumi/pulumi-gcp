@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
@@ -475,12 +474,6 @@ func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyOutput)
 }
 
-func (i *CaPoolIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*CaPoolIamPolicy] {
-	return pulumix.Output[*CaPoolIamPolicy]{
-		OutputState: i.ToCaPoolIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CaPoolIamPolicyArrayInput is an input type that accepts CaPoolIamPolicyArray and CaPoolIamPolicyArrayOutput values.
 // You can construct a concrete instance of `CaPoolIamPolicyArrayInput` via:
 //
@@ -504,12 +497,6 @@ func (i CaPoolIamPolicyArray) ToCaPoolIamPolicyArrayOutput() CaPoolIamPolicyArra
 
 func (i CaPoolIamPolicyArray) ToCaPoolIamPolicyArrayOutputWithContext(ctx context.Context) CaPoolIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyArrayOutput)
-}
-
-func (i CaPoolIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*CaPoolIamPolicy] {
-	return pulumix.Output[[]*CaPoolIamPolicy]{
-		OutputState: i.ToCaPoolIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CaPoolIamPolicyMapInput is an input type that accepts CaPoolIamPolicyMap and CaPoolIamPolicyMapOutput values.
@@ -537,12 +524,6 @@ func (i CaPoolIamPolicyMap) ToCaPoolIamPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyMapOutput)
 }
 
-func (i CaPoolIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaPoolIamPolicy] {
-	return pulumix.Output[map[string]*CaPoolIamPolicy]{
-		OutputState: i.ToCaPoolIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CaPoolIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyOutput) ElementType() reflect.Type {
@@ -555,12 +536,6 @@ func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {
 
 func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyOutputWithContext(ctx context.Context) CaPoolIamPolicyOutput {
 	return o
-}
-
-func (o CaPoolIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPoolIamPolicy] {
-	return pulumix.Output[*CaPoolIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -618,12 +593,6 @@ func (o CaPoolIamPolicyArrayOutput) ToCaPoolIamPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o CaPoolIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CaPoolIamPolicy] {
-	return pulumix.Output[[]*CaPoolIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CaPoolIamPolicyArrayOutput) Index(i pulumi.IntInput) CaPoolIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaPoolIamPolicy {
 		return vs[0].([]*CaPoolIamPolicy)[vs[1].(int)]
@@ -642,12 +611,6 @@ func (o CaPoolIamPolicyMapOutput) ToCaPoolIamPolicyMapOutput() CaPoolIamPolicyMa
 
 func (o CaPoolIamPolicyMapOutput) ToCaPoolIamPolicyMapOutputWithContext(ctx context.Context) CaPoolIamPolicyMapOutput {
 	return o
-}
-
-func (o CaPoolIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaPoolIamPolicy] {
-	return pulumix.Output[map[string]*CaPoolIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CaPoolIamPolicyMapOutput) MapIndex(k pulumi.StringInput) CaPoolIamPolicyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages.
@@ -1101,12 +1100,6 @@ func (i *CxPage) ToCxPageOutputWithContext(ctx context.Context) CxPageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageOutput)
 }
 
-func (i *CxPage) ToOutput(ctx context.Context) pulumix.Output[*CxPage] {
-	return pulumix.Output[*CxPage]{
-		OutputState: i.ToCxPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageArrayInput is an input type that accepts CxPageArray and CxPageArrayOutput values.
 // You can construct a concrete instance of `CxPageArrayInput` via:
 //
@@ -1130,12 +1123,6 @@ func (i CxPageArray) ToCxPageArrayOutput() CxPageArrayOutput {
 
 func (i CxPageArray) ToCxPageArrayOutputWithContext(ctx context.Context) CxPageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageArrayOutput)
-}
-
-func (i CxPageArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxPage] {
-	return pulumix.Output[[]*CxPage]{
-		OutputState: i.ToCxPageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxPageMapInput is an input type that accepts CxPageMap and CxPageMapOutput values.
@@ -1163,12 +1150,6 @@ func (i CxPageMap) ToCxPageMapOutputWithContext(ctx context.Context) CxPageMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageMapOutput)
 }
 
-func (i CxPageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxPage] {
-	return pulumix.Output[map[string]*CxPage]{
-		OutputState: i.ToCxPageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageOutput struct{ *pulumi.OutputState }
 
 func (CxPageOutput) ElementType() reflect.Type {
@@ -1181,12 +1162,6 @@ func (o CxPageOutput) ToCxPageOutput() CxPageOutput {
 
 func (o CxPageOutput) ToCxPageOutputWithContext(ctx context.Context) CxPageOutput {
 	return o
-}
-
-func (o CxPageOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPage] {
-	return pulumix.Output[*CxPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The human-readable name of the page, unique within the agent.
@@ -1277,12 +1252,6 @@ func (o CxPageArrayOutput) ToCxPageArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CxPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxPage] {
-	return pulumix.Output[[]*CxPage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageArrayOutput) Index(i pulumi.IntInput) CxPageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxPage {
 		return vs[0].([]*CxPage)[vs[1].(int)]
@@ -1301,12 +1270,6 @@ func (o CxPageMapOutput) ToCxPageMapOutput() CxPageMapOutput {
 
 func (o CxPageMapOutput) ToCxPageMapOutputWithContext(ctx context.Context) CxPageMapOutput {
 	return o
-}
-
-func (o CxPageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxPage] {
-	return pulumix.Output[map[string]*CxPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageMapOutput) MapIndex(k pulumi.StringInput) CxPageOutput {

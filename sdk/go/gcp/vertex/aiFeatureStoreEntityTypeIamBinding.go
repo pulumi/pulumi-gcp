@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -244,12 +243,6 @@ func (i *AiFeatureStoreEntityTypeIamBinding) ToAiFeatureStoreEntityTypeIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingOutput)
 }
 
-func (i *AiFeatureStoreEntityTypeIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiFeatureStoreEntityTypeIamBindingArrayInput is an input type that accepts AiFeatureStoreEntityTypeIamBindingArray and AiFeatureStoreEntityTypeIamBindingArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeIamBindingArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i AiFeatureStoreEntityTypeIamBindingArray) ToAiFeatureStoreEntityTypeIamBi
 
 func (i AiFeatureStoreEntityTypeIamBindingArray) ToAiFeatureStoreEntityTypeIamBindingArrayOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingArrayOutput)
-}
-
-func (i AiFeatureStoreEntityTypeIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AiFeatureStoreEntityTypeIamBindingMapInput is an input type that accepts AiFeatureStoreEntityTypeIamBindingMap and AiFeatureStoreEntityTypeIamBindingMapOutput values.
@@ -306,12 +293,6 @@ func (i AiFeatureStoreEntityTypeIamBindingMap) ToAiFeatureStoreEntityTypeIamBind
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingMapOutput)
 }
 
-func (i AiFeatureStoreEntityTypeIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeIamBindingOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o AiFeatureStoreEntityTypeIamBindingOutput) ToAiFeatureStoreEntityTypeIamB
 
 func (o AiFeatureStoreEntityTypeIamBindingOutput) ToAiFeatureStoreEntityTypeIamBindingOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamBindingOutput) Condition() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
@@ -390,12 +365,6 @@ func (o AiFeatureStoreEntityTypeIamBindingArrayOutput) ToAiFeatureStoreEntityTyp
 	return o
 }
 
-func (o AiFeatureStoreEntityTypeIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiFeatureStoreEntityTypeIamBindingArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreEntityTypeIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStoreEntityTypeIamBinding {
 		return vs[0].([]*AiFeatureStoreEntityTypeIamBinding)[vs[1].(int)]
@@ -414,12 +383,6 @@ func (o AiFeatureStoreEntityTypeIamBindingMapOutput) ToAiFeatureStoreEntityTypeI
 
 func (o AiFeatureStoreEntityTypeIamBindingMapOutput) ToAiFeatureStoreEntityTypeIamBindingMapOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingMapOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamBinding] {
-	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamBindingMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreEntityTypeIamBindingOutput {

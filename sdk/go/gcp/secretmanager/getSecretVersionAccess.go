@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the value from a Secret Manager secret version. This is similar to the secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
@@ -117,12 +116,6 @@ func (o GetSecretVersionAccessResultOutput) ToGetSecretVersionAccessResultOutput
 
 func (o GetSecretVersionAccessResultOutput) ToGetSecretVersionAccessResultOutputWithContext(ctx context.Context) GetSecretVersionAccessResultOutput {
 	return o
-}
-
-func (o GetSecretVersionAccessResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretVersionAccessResult] {
-	return pulumix.Output[GetSecretVersionAccessResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -45,12 +44,6 @@ func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClust
 
 func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterClusterOperationsOutput)
-}
-
-func (i BareMetalAdminClusterClusterOperationsArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterClusterOperations] {
-	return pulumix.Output[BareMetalAdminClusterClusterOperations]{
-		OutputState: i.ToBareMetalAdminClusterClusterOperationsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput {
@@ -94,12 +87,6 @@ func (i *bareMetalAdminClusterClusterOperationsPtrType) ToBareMetalAdminClusterC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterClusterOperationsPtrOutput)
 }
 
-func (i *bareMetalAdminClusterClusterOperationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterClusterOperations] {
-	return pulumix.Output[*BareMetalAdminClusterClusterOperations]{
-		OutputState: i.ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterClusterOperationsOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterClusterOperationsOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o BareMetalAdminClusterClusterOperationsOutput) ToBareMetalAdminClusterClu
 	}).(BareMetalAdminClusterClusterOperationsPtrOutput)
 }
 
-func (o BareMetalAdminClusterClusterOperationsOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterClusterOperations] {
-	return pulumix.Output[BareMetalAdminClusterClusterOperations]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 func (o BareMetalAdminClusterClusterOperationsOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterClusterOperations) *bool { return v.EnableApplicationLogs }).(pulumi.BoolPtrOutput)
@@ -147,12 +128,6 @@ func (o BareMetalAdminClusterClusterOperationsPtrOutput) ToBareMetalAdminCluster
 
 func (o BareMetalAdminClusterClusterOperationsPtrOutput) ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterClusterOperationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterClusterOperations] {
-	return pulumix.Output[*BareMetalAdminClusterClusterOperations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterClusterOperationsPtrOutput) Elem() BareMetalAdminClusterClusterOperationsOutput {
@@ -222,12 +197,6 @@ func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPla
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlane] {
-	return pulumix.Output[BareMetalAdminClusterControlPlane]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput {
 	return i.ToBareMetalAdminClusterControlPlanePtrOutputWithContext(context.Background())
 }
@@ -269,12 +238,6 @@ func (i *bareMetalAdminClusterControlPlanePtrType) ToBareMetalAdminClusterContro
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlanePtrOutput)
 }
 
-func (i *bareMetalAdminClusterControlPlanePtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlane] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlane]{
-		OutputState: i.ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneOutput) ElementType() reflect.Type {
@@ -297,12 +260,6 @@ func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterControlPlane) *BareMetalAdminClusterControlPlane {
 		return &v
 	}).(BareMetalAdminClusterControlPlanePtrOutput)
-}
-
-func (o BareMetalAdminClusterControlPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlane] {
-	return pulumix.Output[BareMetalAdminClusterControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customizes the default API server args. Only a subset of
@@ -336,12 +293,6 @@ func (o BareMetalAdminClusterControlPlanePtrOutput) ToBareMetalAdminClusterContr
 
 func (o BareMetalAdminClusterControlPlanePtrOutput) ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlanePtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlanePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlane] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlanePtrOutput) Elem() BareMetalAdminClusterControlPlaneOutput {
@@ -416,12 +367,6 @@ func (i BareMetalAdminClusterControlPlaneApiServerArgArgs) ToBareMetalAdminClust
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneApiServerArgOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneApiServerArgArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneApiServerArg] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneApiServerArg]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterControlPlaneApiServerArgArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneApiServerArgArray and BareMetalAdminClusterControlPlaneApiServerArgArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterControlPlaneApiServerArgArrayInput` via:
 //
@@ -447,12 +392,6 @@ func (i BareMetalAdminClusterControlPlaneApiServerArgArray) ToBareMetalAdminClus
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneApiServerArgArrayOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneApiServerArgArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneApiServerArg] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneApiServerArg]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneApiServerArgOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneApiServerArgOutput) ElementType() reflect.Type {
@@ -465,12 +404,6 @@ func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) ToBareMetalAdminClu
 
 func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneApiServerArg] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneApiServerArg]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
@@ -495,12 +428,6 @@ func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ToBareMetalAdm
 
 func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneApiServerArg] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneApiServerArg]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneApiServerArgOutput {
@@ -544,12 +471,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareM
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
 	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -591,12 +512,6 @@ func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToB
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ElementType() reflect.Type {
@@ -621,12 +536,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBar
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running the control plane.
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
@@ -647,12 +556,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) To
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
@@ -743,12 +646,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
 	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -790,12 +687,6 @@ func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConf
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
@@ -818,12 +709,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
 		return &v
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -877,12 +762,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
@@ -1003,12 +882,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
 //
@@ -1034,12 +907,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -1052,12 +919,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -1096,12 +957,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
@@ -1153,12 +1008,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput` via:
 //
@@ -1184,12 +1033,6 @@ func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput)
 }
 
-func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -1202,12 +1045,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the nodes operating system (default: LINUX).
@@ -1244,12 +1081,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
@@ -1297,12 +1128,6 @@ func (i BareMetalAdminClusterFleetArgs) ToBareMetalAdminClusterFleetOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterFleetOutput)
 }
 
-func (i BareMetalAdminClusterFleetArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterFleet] {
-	return pulumix.Output[BareMetalAdminClusterFleet]{
-		OutputState: i.ToBareMetalAdminClusterFleetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterFleetArrayInput is an input type that accepts BareMetalAdminClusterFleetArray and BareMetalAdminClusterFleetArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterFleetArrayInput` via:
 //
@@ -1328,12 +1153,6 @@ func (i BareMetalAdminClusterFleetArray) ToBareMetalAdminClusterFleetArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterFleetArrayOutput)
 }
 
-func (i BareMetalAdminClusterFleetArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterFleet] {
-	return pulumix.Output[[]BareMetalAdminClusterFleet]{
-		OutputState: i.ToBareMetalAdminClusterFleetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterFleetOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterFleetOutput) ElementType() reflect.Type {
@@ -1346,12 +1165,6 @@ func (o BareMetalAdminClusterFleetOutput) ToBareMetalAdminClusterFleetOutput() B
 
 func (o BareMetalAdminClusterFleetOutput) ToBareMetalAdminClusterFleetOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterFleetOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterFleet] {
-	return pulumix.Output[BareMetalAdminClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1374,12 +1187,6 @@ func (o BareMetalAdminClusterFleetArrayOutput) ToBareMetalAdminClusterFleetArray
 
 func (o BareMetalAdminClusterFleetArrayOutput) ToBareMetalAdminClusterFleetArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterFleetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterFleet] {
-	return pulumix.Output[[]BareMetalAdminClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterFleetArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterFleetOutput {
@@ -1435,12 +1242,6 @@ func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalanc
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerOutput)
 }
 
-func (i BareMetalAdminClusterLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancer] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancer]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput {
 	return i.ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
 }
@@ -1482,12 +1283,6 @@ func (i *bareMetalAdminClusterLoadBalancerPtrType) ToBareMetalAdminClusterLoadBa
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPtrOutput)
 }
 
-func (i *bareMetalAdminClusterLoadBalancerPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancer] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancer]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterLoadBalancerOutput) ElementType() reflect.Type {
@@ -1510,12 +1305,6 @@ func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBala
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancer {
 		return &v
 	}).(BareMetalAdminClusterLoadBalancerPtrOutput)
-}
-
-func (o BareMetalAdminClusterLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancer] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A nested object resource
@@ -1554,12 +1343,6 @@ func (o BareMetalAdminClusterLoadBalancerPtrOutput) ToBareMetalAdminClusterLoadB
 
 func (o BareMetalAdminClusterLoadBalancerPtrOutput) ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterLoadBalancerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancer] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterLoadBalancerPtrOutput) Elem() BareMetalAdminClusterLoadBalancerOutput {
@@ -1638,12 +1421,6 @@ func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerManualLbConfigOutput)
 }
 
-func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerManualLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return i.ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
 }
@@ -1685,12 +1462,6 @@ func (i *bareMetalAdminClusterLoadBalancerManualLbConfigPtrType) ToBareMetalAdmi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterLoadBalancerManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterLoadBalancerManualLbConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ElementType() reflect.Type {
@@ -1715,12 +1486,6 @@ func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToBareMetalAdminC
 	}).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether manual load balancing is enabled.
 func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerManualLbConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -1738,12 +1503,6 @@ func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalAdm
 
 func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
@@ -1799,12 +1558,6 @@ func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminCluster
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPortConfigOutput)
 }
 
-func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerPortConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerPortConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerPortConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
 	return i.ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(context.Background())
 }
@@ -1846,12 +1599,6 @@ func (i *bareMetalAdminClusterLoadBalancerPortConfigPtrType) ToBareMetalAdminClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterLoadBalancerPortConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerPortConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerPortConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterLoadBalancerPortConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterLoadBalancerPortConfigOutput) ElementType() reflect.Type {
@@ -1876,12 +1623,6 @@ func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToBareMetalAdminClust
 	}).(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerPortConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerPortConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The port that control plane hosted load balancers will listen on.
 func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerPortConfig) int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntOutput)
@@ -1899,12 +1640,6 @@ func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ToBareMetalAdminCl
 
 func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerPortConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerPortConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerPortConfigOutput {
@@ -1960,12 +1695,6 @@ func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterL
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerVipConfigOutput)
 }
 
-func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerVipConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerVipConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
 	return i.ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
 }
@@ -2007,12 +1736,6 @@ func (i *bareMetalAdminClusterLoadBalancerVipConfigPtrType) ToBareMetalAdminClus
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterLoadBalancerVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerVipConfig]{
-		OutputState: i.ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterLoadBalancerVipConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterLoadBalancerVipConfigOutput) ElementType() reflect.Type {
@@ -2037,12 +1760,6 @@ func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToBareMetalAdminCluste
 	}).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterLoadBalancerVipConfig] {
-	return pulumix.Output[BareMetalAdminClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
 func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerVipConfig) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
@@ -2060,12 +1777,6 @@ func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ToBareMetalAdminClu
 
 func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*BareMetalAdminClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerVipConfigOutput {
@@ -2127,12 +1838,6 @@ func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaint
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterMaintenanceConfigOutput)
 }
 
-func (i BareMetalAdminClusterMaintenanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterMaintenanceConfig] {
-	return pulumix.Output[BareMetalAdminClusterMaintenanceConfig]{
-		OutputState: i.ToBareMetalAdminClusterMaintenanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput {
 	return i.ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(context.Background())
 }
@@ -2174,12 +1879,6 @@ func (i *bareMetalAdminClusterMaintenanceConfigPtrType) ToBareMetalAdminClusterM
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterMaintenanceConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterMaintenanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterMaintenanceConfig] {
-	return pulumix.Output[*BareMetalAdminClusterMaintenanceConfig]{
-		OutputState: i.ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterMaintenanceConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterMaintenanceConfigOutput) ElementType() reflect.Type {
@@ -2204,12 +1903,6 @@ func (o BareMetalAdminClusterMaintenanceConfigOutput) ToBareMetalAdminClusterMai
 	}).(BareMetalAdminClusterMaintenanceConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterMaintenanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterMaintenanceConfig] {
-	return pulumix.Output[BareMetalAdminClusterMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode.
 // Nodes in maintenance mode will be cordoned and drained. When both of these
 // are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
@@ -2230,12 +1923,6 @@ func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) ToBareMetalAdminCluster
 
 func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterMaintenanceConfig] {
-	return pulumix.Output[*BareMetalAdminClusterMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) Elem() BareMetalAdminClusterMaintenanceConfigOutput {
@@ -2296,12 +1983,6 @@ func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigOutput)
 }
 
-func (i BareMetalAdminClusterNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNetworkConfig] {
-	return pulumix.Output[BareMetalAdminClusterNetworkConfig]{
-		OutputState: i.ToBareMetalAdminClusterNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput {
 	return i.ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -2343,12 +2024,6 @@ func (i *bareMetalAdminClusterNetworkConfigPtrType) ToBareMetalAdminClusterNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNetworkConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNetworkConfig]{
-		OutputState: i.ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterNetworkConfigOutput) ElementType() reflect.Type {
@@ -2373,12 +2048,6 @@ func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetwork
 	}).(BareMetalAdminClusterNetworkConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNetworkConfig] {
-	return pulumix.Output[BareMetalAdminClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A nested object resource
 // Structure is documented below.
 func (o BareMetalAdminClusterNetworkConfigOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
@@ -2399,12 +2068,6 @@ func (o BareMetalAdminClusterNetworkConfigPtrOutput) ToBareMetalAdminClusterNetw
 
 func (o BareMetalAdminClusterNetworkConfigPtrOutput) ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNetworkConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterNetworkConfigPtrOutput) Elem() BareMetalAdminClusterNetworkConfigOutput {
@@ -2465,12 +2128,6 @@ func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput)
 }
 
-func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[BareMetalAdminClusterNetworkConfigIslandModeCidr]{
-		OutputState: i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
 	return i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Background())
 }
@@ -2512,12 +2169,6 @@ func (i *bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType) ToBareMetalAdm
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
 }
 
-func (i *bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[*BareMetalAdminClusterNetworkConfigIslandModeCidr]{
-		OutputState: i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterNetworkConfigIslandModeCidrOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ElementType() reflect.Type {
@@ -2542,12 +2193,6 @@ func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToBareMetalAdmin
 	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
 }
 
-func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[BareMetalAdminClusterNetworkConfigIslandModeCidr]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfigIslandModeCidr) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -2570,12 +2215,6 @@ func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalAd
 
 func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[*BareMetalAdminClusterNetworkConfigIslandModeCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) Elem() BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
@@ -2643,12 +2282,6 @@ func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAc
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeAccessConfigOutput)
 }
 
-func (i BareMetalAdminClusterNodeAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNodeAccessConfig] {
-	return pulumix.Output[BareMetalAdminClusterNodeAccessConfig]{
-		OutputState: i.ToBareMetalAdminClusterNodeAccessConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput {
 	return i.ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(context.Background())
 }
@@ -2690,12 +2323,6 @@ func (i *bareMetalAdminClusterNodeAccessConfigPtrType) ToBareMetalAdminClusterNo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeAccessConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterNodeAccessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNodeAccessConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNodeAccessConfig]{
-		OutputState: i.ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterNodeAccessConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterNodeAccessConfigOutput) ElementType() reflect.Type {
@@ -2720,12 +2347,6 @@ func (o BareMetalAdminClusterNodeAccessConfigOutput) ToBareMetalAdminClusterNode
 	}).(BareMetalAdminClusterNodeAccessConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterNodeAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNodeAccessConfig] {
-	return pulumix.Output[BareMetalAdminClusterNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LoginUser is the user name used to access node machines.
 // It defaults to "root" if not set.
 func (o BareMetalAdminClusterNodeAccessConfigOutput) LoginUser() pulumi.StringPtrOutput {
@@ -2744,12 +2365,6 @@ func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) ToBareMetalAdminClusterN
 
 func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNodeAccessConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) Elem() BareMetalAdminClusterNodeAccessConfigOutput {
@@ -2808,12 +2423,6 @@ func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeConfigOutput)
 }
 
-func (i BareMetalAdminClusterNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNodeConfig] {
-	return pulumix.Output[BareMetalAdminClusterNodeConfig]{
-		OutputState: i.ToBareMetalAdminClusterNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput {
 	return i.ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -2855,12 +2464,6 @@ func (i *bareMetalAdminClusterNodeConfigPtrType) ToBareMetalAdminClusterNodeConf
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNodeConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNodeConfig]{
-		OutputState: i.ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterNodeConfigOutput) ElementType() reflect.Type {
@@ -2885,12 +2488,6 @@ func (o BareMetalAdminClusterNodeConfigOutput) ToBareMetalAdminClusterNodeConfig
 	}).(BareMetalAdminClusterNodeConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterNodeConfig] {
-	return pulumix.Output[BareMetalAdminClusterNodeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of pods a node can run. The size of the CIDR range
 // assigned to the node will be derived from this parameter.
 func (o BareMetalAdminClusterNodeConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
@@ -2909,12 +2506,6 @@ func (o BareMetalAdminClusterNodeConfigPtrOutput) ToBareMetalAdminClusterNodeCon
 
 func (o BareMetalAdminClusterNodeConfigPtrOutput) ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterNodeConfig] {
-	return pulumix.Output[*BareMetalAdminClusterNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterNodeConfigPtrOutput) Elem() BareMetalAdminClusterNodeConfigOutput {
@@ -2983,12 +2574,6 @@ func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterProxyOutput)
 }
 
-func (i BareMetalAdminClusterProxyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterProxy] {
-	return pulumix.Output[BareMetalAdminClusterProxy]{
-		OutputState: i.ToBareMetalAdminClusterProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput {
 	return i.ToBareMetalAdminClusterProxyPtrOutputWithContext(context.Background())
 }
@@ -3030,12 +2615,6 @@ func (i *bareMetalAdminClusterProxyPtrType) ToBareMetalAdminClusterProxyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterProxyPtrOutput)
 }
 
-func (i *bareMetalAdminClusterProxyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterProxy] {
-	return pulumix.Output[*BareMetalAdminClusterProxy]{
-		OutputState: i.ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterProxyOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterProxyOutput) ElementType() reflect.Type {
@@ -3058,12 +2637,6 @@ func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterProxy) *BareMetalAdminClusterProxy {
 		return &v
 	}).(BareMetalAdminClusterProxyPtrOutput)
-}
-
-func (o BareMetalAdminClusterProxyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterProxy] {
-	return pulumix.Output[BareMetalAdminClusterProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
@@ -3092,12 +2665,6 @@ func (o BareMetalAdminClusterProxyPtrOutput) ToBareMetalAdminClusterProxyPtrOutp
 
 func (o BareMetalAdminClusterProxyPtrOutput) ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterProxyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterProxy] {
-	return pulumix.Output[*BareMetalAdminClusterProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterProxyPtrOutput) Elem() BareMetalAdminClusterProxyOutput {
@@ -3169,12 +2736,6 @@ func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurity
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigOutput)
 }
 
-func (i BareMetalAdminClusterSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfig] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfig]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput {
 	return i.ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -3216,12 +2777,6 @@ func (i *bareMetalAdminClusterSecurityConfigPtrType) ToBareMetalAdminClusterSecu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterSecurityConfig] {
-	return pulumix.Output[*BareMetalAdminClusterSecurityConfig]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterSecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterSecurityConfigOutput) ElementType() reflect.Type {
@@ -3246,12 +2801,6 @@ func (o BareMetalAdminClusterSecurityConfigOutput) ToBareMetalAdminClusterSecuri
 	}).(BareMetalAdminClusterSecurityConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfig] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configures user access to the Bare Metal User cluster.
 // Structure is documented below.
 func (o BareMetalAdminClusterSecurityConfigOutput) Authorization() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
@@ -3272,12 +2821,6 @@ func (o BareMetalAdminClusterSecurityConfigPtrOutput) ToBareMetalAdminClusterSec
 
 func (o BareMetalAdminClusterSecurityConfigPtrOutput) ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterSecurityConfig] {
-	return pulumix.Output[*BareMetalAdminClusterSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterSecurityConfigPtrOutput) Elem() BareMetalAdminClusterSecurityConfigOutput {
@@ -3336,12 +2879,6 @@ func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationOutput)
 }
 
-func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorization] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorization]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
 	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -3383,12 +2920,6 @@ func (i *bareMetalAdminClusterSecurityConfigAuthorizationPtrType) ToBareMetalAdm
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
 }
 
-func (i *bareMetalAdminClusterSecurityConfigAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterSecurityConfigAuthorization] {
-	return pulumix.Output[*BareMetalAdminClusterSecurityConfigAuthorization]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterSecurityConfigAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterSecurityConfigAuthorizationOutput) ElementType() reflect.Type {
@@ -3413,12 +2944,6 @@ func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToBareMetalAdmin
 	}).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
 }
 
-func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorization] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
 // Structure is documented below.
 func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) AdminUsers() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
@@ -3439,12 +2964,6 @@ func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalAd
 
 func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterSecurityConfigAuthorization] {
-	return pulumix.Output[*BareMetalAdminClusterSecurityConfigAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) Elem() BareMetalAdminClusterSecurityConfigAuthorizationOutput {
@@ -3501,12 +3020,6 @@ func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs) ToBareMet
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput)
 }
 
-func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput is an input type that accepts BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray and BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput` via:
 //
@@ -3532,12 +3045,6 @@ func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray) ToBareMe
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput)
 }
 
-func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: i.ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ElementType() reflect.Type {
@@ -3550,12 +3057,6 @@ func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ToBareM
 
 func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[BareMetalAdminClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -3575,12 +3076,6 @@ func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) To
 
 func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
@@ -3640,12 +3135,6 @@ func (i BareMetalAdminClusterStatusArgs) ToBareMetalAdminClusterStatusOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusOutput)
 }
 
-func (i BareMetalAdminClusterStatusArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStatus] {
-	return pulumix.Output[BareMetalAdminClusterStatus]{
-		OutputState: i.ToBareMetalAdminClusterStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterStatusArrayInput is an input type that accepts BareMetalAdminClusterStatusArray and BareMetalAdminClusterStatusArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterStatusArrayInput` via:
 //
@@ -3671,12 +3160,6 @@ func (i BareMetalAdminClusterStatusArray) ToBareMetalAdminClusterStatusArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusArrayOutput)
 }
 
-func (i BareMetalAdminClusterStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterStatus] {
-	return pulumix.Output[[]BareMetalAdminClusterStatus]{
-		OutputState: i.ToBareMetalAdminClusterStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStatusOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStatusOutput) ElementType() reflect.Type {
@@ -3689,12 +3172,6 @@ func (o BareMetalAdminClusterStatusOutput) ToBareMetalAdminClusterStatusOutput()
 
 func (o BareMetalAdminClusterStatusOutput) ToBareMetalAdminClusterStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStatusOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStatus] {
-	return pulumix.Output[BareMetalAdminClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3726,12 +3203,6 @@ func (o BareMetalAdminClusterStatusArrayOutput) ToBareMetalAdminClusterStatusArr
 
 func (o BareMetalAdminClusterStatusArrayOutput) ToBareMetalAdminClusterStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterStatus] {
-	return pulumix.Output[[]BareMetalAdminClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStatusArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterStatusOutput {
@@ -3797,12 +3268,6 @@ func (i BareMetalAdminClusterStatusConditionArgs) ToBareMetalAdminClusterStatusC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusConditionOutput)
 }
 
-func (i BareMetalAdminClusterStatusConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStatusCondition] {
-	return pulumix.Output[BareMetalAdminClusterStatusCondition]{
-		OutputState: i.ToBareMetalAdminClusterStatusConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterStatusConditionArrayInput is an input type that accepts BareMetalAdminClusterStatusConditionArray and BareMetalAdminClusterStatusConditionArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterStatusConditionArrayInput` via:
 //
@@ -3828,12 +3293,6 @@ func (i BareMetalAdminClusterStatusConditionArray) ToBareMetalAdminClusterStatus
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusConditionArrayOutput)
 }
 
-func (i BareMetalAdminClusterStatusConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterStatusCondition] {
-	return pulumix.Output[[]BareMetalAdminClusterStatusCondition]{
-		OutputState: i.ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStatusConditionOutput) ElementType() reflect.Type {
@@ -3846,12 +3305,6 @@ func (o BareMetalAdminClusterStatusConditionOutput) ToBareMetalAdminClusterStatu
 
 func (o BareMetalAdminClusterStatusConditionOutput) ToBareMetalAdminClusterStatusConditionOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStatusConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStatusCondition] {
-	return pulumix.Output[BareMetalAdminClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3895,12 +3348,6 @@ func (o BareMetalAdminClusterStatusConditionArrayOutput) ToBareMetalAdminCluster
 
 func (o BareMetalAdminClusterStatusConditionArrayOutput) ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStatusConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterStatusCondition] {
-	return pulumix.Output[[]BareMetalAdminClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStatusConditionArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterStatusConditionOutput {
@@ -3958,12 +3405,6 @@ func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStorageOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageOutput)
 }
 
-func (i BareMetalAdminClusterStorageArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorage] {
-	return pulumix.Output[BareMetalAdminClusterStorage]{
-		OutputState: i.ToBareMetalAdminClusterStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput {
 	return i.ToBareMetalAdminClusterStoragePtrOutputWithContext(context.Background())
 }
@@ -4005,12 +3446,6 @@ func (i *bareMetalAdminClusterStoragePtrType) ToBareMetalAdminClusterStoragePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStoragePtrOutput)
 }
 
-func (i *bareMetalAdminClusterStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorage] {
-	return pulumix.Output[*BareMetalAdminClusterStorage]{
-		OutputState: i.ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStorageOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStorageOutput) ElementType() reflect.Type {
@@ -4033,12 +3468,6 @@ func (o BareMetalAdminClusterStorageOutput) ToBareMetalAdminClusterStoragePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorage) *BareMetalAdminClusterStorage {
 		return &v
 	}).(BareMetalAdminClusterStoragePtrOutput)
-}
-
-func (o BareMetalAdminClusterStorageOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorage] {
-	return pulumix.Output[BareMetalAdminClusterStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the config for local PersistentVolumes backed
@@ -4073,12 +3502,6 @@ func (o BareMetalAdminClusterStoragePtrOutput) ToBareMetalAdminClusterStoragePtr
 
 func (o BareMetalAdminClusterStoragePtrOutput) ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStoragePtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorage] {
-	return pulumix.Output[*BareMetalAdminClusterStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStoragePtrOutput) Elem() BareMetalAdminClusterStorageOutput {
@@ -4154,12 +3577,6 @@ func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput)
 }
 
-func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpNodeMountsConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
 	return i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Background())
 }
@@ -4201,12 +3618,6 @@ func (i *bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType) ToBareMetalAdmi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpNodeMountsConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStorageLvpNodeMountsConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ElementType() reflect.Type {
@@ -4231,12 +3642,6 @@ func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToBareMetalAdminC
 	}).(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpNodeMountsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host machine path.
 func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpNodeMountsConfig) string { return v.Path }).(pulumi.StringOutput)
@@ -4259,12 +3664,6 @@ func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalAdm
 
 func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpNodeMountsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
@@ -4336,12 +3735,6 @@ func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterS
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigOutput)
 }
 
-func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpShareConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpShareConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpShareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
 	return i.ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(context.Background())
 }
@@ -4383,12 +3776,6 @@ func (i *bareMetalAdminClusterStorageLvpShareConfigPtrType) ToBareMetalAdminClus
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterStorageLvpShareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStorageLvpShareConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStorageLvpShareConfigOutput) ElementType() reflect.Type {
@@ -4411,12 +3798,6 @@ func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToBareMetalAdminCluste
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorageLvpShareConfig) *BareMetalAdminClusterStorageLvpShareConfig {
 		return &v
 	}).(BareMetalAdminClusterStorageLvpShareConfigPtrOutput)
-}
-
-func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpShareConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the machine path and storage class for the LVP Share.
@@ -4444,12 +3825,6 @@ func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ToBareMetalAdminClu
 
 func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpShareConfigOutput {
@@ -4520,12 +3895,6 @@ func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdmi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput)
 }
 
-func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
 	return i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Background())
 }
@@ -4567,12 +3936,6 @@ func (i *bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType) ToBareMetal
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ElementType() reflect.Type {
@@ -4597,12 +3960,6 @@ func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalAd
 	}).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[BareMetalAdminClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host machine path.
 func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpShareConfigLvpConfig) string { return v.Path }).(pulumi.StringOutput)
@@ -4625,12 +3982,6 @@ func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMeta
 
 func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[*BareMetalAdminClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
@@ -4712,12 +4063,6 @@ func (i BareMetalAdminClusterValidationCheckArgs) ToBareMetalAdminClusterValidat
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheck] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheck]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterValidationCheckArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckArray and BareMetalAdminClusterValidationCheckArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterValidationCheckArrayInput` via:
 //
@@ -4743,12 +4088,6 @@ func (i BareMetalAdminClusterValidationCheckArray) ToBareMetalAdminClusterValida
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckArrayOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheck] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheck]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterValidationCheckOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterValidationCheckOutput) ElementType() reflect.Type {
@@ -4761,12 +4100,6 @@ func (o BareMetalAdminClusterValidationCheckOutput) ToBareMetalAdminClusterValid
 
 func (o BareMetalAdminClusterValidationCheckOutput) ToBareMetalAdminClusterValidationCheckOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterValidationCheckOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheck] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4802,12 +4135,6 @@ func (o BareMetalAdminClusterValidationCheckArrayOutput) ToBareMetalAdminCluster
 
 func (o BareMetalAdminClusterValidationCheckArrayOutput) ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterValidationCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheck] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterValidationCheckArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckOutput {
@@ -4853,12 +4180,6 @@ func (i BareMetalAdminClusterValidationCheckStatusArgs) ToBareMetalAdminClusterV
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckStatusArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheckStatus] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheckStatus]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterValidationCheckStatusArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusArray and BareMetalAdminClusterValidationCheckStatusArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusArrayInput` via:
 //
@@ -4884,12 +4205,6 @@ func (i BareMetalAdminClusterValidationCheckStatusArray) ToBareMetalAdminCluster
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusArrayOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheckStatus] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheckStatus]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterValidationCheckStatusOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterValidationCheckStatusOutput) ElementType() reflect.Type {
@@ -4902,12 +4217,6 @@ func (o BareMetalAdminClusterValidationCheckStatusOutput) ToBareMetalAdminCluste
 
 func (o BareMetalAdminClusterValidationCheckStatusOutput) ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterValidationCheckStatusOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheckStatus] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4931,12 +4240,6 @@ func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) ToBareMetalAdminC
 
 func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheckStatus] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckStatusOutput {
@@ -5002,12 +4305,6 @@ func (i BareMetalAdminClusterValidationCheckStatusResultArgs) ToBareMetalAdminCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusResultOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckStatusResultArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheckStatusResult] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheckStatusResult]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterValidationCheckStatusResultArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusResultArray and BareMetalAdminClusterValidationCheckStatusResultArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusResultArrayInput` via:
 //
@@ -5033,12 +4330,6 @@ func (i BareMetalAdminClusterValidationCheckStatusResultArray) ToBareMetalAdminC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusResultArrayOutput)
 }
 
-func (i BareMetalAdminClusterValidationCheckStatusResultArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheckStatusResult]{
-		OutputState: i.ToBareMetalAdminClusterValidationCheckStatusResultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalAdminClusterValidationCheckStatusResultOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterValidationCheckStatusResultOutput) ElementType() reflect.Type {
@@ -5051,12 +4342,6 @@ func (o BareMetalAdminClusterValidationCheckStatusResultOutput) ToBareMetalAdmin
 
 func (o BareMetalAdminClusterValidationCheckStatusResultOutput) ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusResultOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterValidationCheckStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterValidationCheckStatusResult] {
-	return pulumix.Output[BareMetalAdminClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5102,12 +4387,6 @@ func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) ToBareMetal
 	return o
 }
 
-func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]BareMetalAdminClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckStatusResultOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterValidationCheckStatusResult {
 		return vs[0].([]BareMetalAdminClusterValidationCheckStatusResult)[vs[1].(int)]
@@ -5151,12 +4430,6 @@ func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthori
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBinaryAuthorizationOutput)
 }
 
-func (i BareMetalClusterBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterBinaryAuthorization] {
-	return pulumix.Output[BareMetalClusterBinaryAuthorization]{
-		OutputState: i.ToBareMetalClusterBinaryAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput {
 	return i.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -5198,12 +4471,6 @@ func (i *bareMetalClusterBinaryAuthorizationPtrType) ToBareMetalClusterBinaryAut
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBinaryAuthorizationPtrOutput)
 }
 
-func (i *bareMetalClusterBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBinaryAuthorization] {
-	return pulumix.Output[*BareMetalClusterBinaryAuthorization]{
-		OutputState: i.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
@@ -5228,12 +4495,6 @@ func (o BareMetalClusterBinaryAuthorizationOutput) ToBareMetalClusterBinaryAutho
 	}).(BareMetalClusterBinaryAuthorizationPtrOutput)
 }
 
-func (o BareMetalClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterBinaryAuthorization] {
-	return pulumix.Output[BareMetalClusterBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mode of operation for binauthz policy evaluation. If unspecified,
 // defaults to DISABLED.
 // Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
@@ -5253,12 +4514,6 @@ func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToBareMetalClusterBinaryAu
 
 func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBinaryAuthorization] {
-	return pulumix.Output[*BareMetalClusterBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterBinaryAuthorizationPtrOutput) Elem() BareMetalClusterBinaryAuthorizationOutput {
@@ -5316,12 +4571,6 @@ func (i BareMetalClusterClusterOperationsArgs) ToBareMetalClusterClusterOperatio
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterClusterOperationsOutput)
 }
 
-func (i BareMetalClusterClusterOperationsArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterClusterOperations] {
-	return pulumix.Output[BareMetalClusterClusterOperations]{
-		OutputState: i.ToBareMetalClusterClusterOperationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterClusterOperationsArgs) ToBareMetalClusterClusterOperationsPtrOutput() BareMetalClusterClusterOperationsPtrOutput {
 	return i.ToBareMetalClusterClusterOperationsPtrOutputWithContext(context.Background())
 }
@@ -5363,12 +4612,6 @@ func (i *bareMetalClusterClusterOperationsPtrType) ToBareMetalClusterClusterOper
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterClusterOperationsPtrOutput)
 }
 
-func (i *bareMetalClusterClusterOperationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterClusterOperations] {
-	return pulumix.Output[*BareMetalClusterClusterOperations]{
-		OutputState: i.ToBareMetalClusterClusterOperationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterClusterOperationsOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterClusterOperationsOutput) ElementType() reflect.Type {
@@ -5393,12 +4636,6 @@ func (o BareMetalClusterClusterOperationsOutput) ToBareMetalClusterClusterOperat
 	}).(BareMetalClusterClusterOperationsPtrOutput)
 }
 
-func (o BareMetalClusterClusterOperationsOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterClusterOperations] {
-	return pulumix.Output[BareMetalClusterClusterOperations]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 func (o BareMetalClusterClusterOperationsOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterClusterOperations) *bool { return v.EnableApplicationLogs }).(pulumi.BoolPtrOutput)
@@ -5416,12 +4653,6 @@ func (o BareMetalClusterClusterOperationsPtrOutput) ToBareMetalClusterClusterOpe
 
 func (o BareMetalClusterClusterOperationsPtrOutput) ToBareMetalClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalClusterClusterOperationsPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterClusterOperationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterClusterOperations] {
-	return pulumix.Output[*BareMetalClusterClusterOperations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterClusterOperationsPtrOutput) Elem() BareMetalClusterClusterOperationsOutput {
@@ -5491,12 +4722,6 @@ func (i BareMetalClusterControlPlaneArgs) ToBareMetalClusterControlPlaneOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneOutput)
 }
 
-func (i BareMetalClusterControlPlaneArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlane] {
-	return pulumix.Output[BareMetalClusterControlPlane]{
-		OutputState: i.ToBareMetalClusterControlPlaneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterControlPlaneArgs) ToBareMetalClusterControlPlanePtrOutput() BareMetalClusterControlPlanePtrOutput {
 	return i.ToBareMetalClusterControlPlanePtrOutputWithContext(context.Background())
 }
@@ -5538,12 +4763,6 @@ func (i *bareMetalClusterControlPlanePtrType) ToBareMetalClusterControlPlanePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlanePtrOutput)
 }
 
-func (i *bareMetalClusterControlPlanePtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlane] {
-	return pulumix.Output[*BareMetalClusterControlPlane]{
-		OutputState: i.ToBareMetalClusterControlPlanePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneOutput) ElementType() reflect.Type {
@@ -5566,12 +4785,6 @@ func (o BareMetalClusterControlPlaneOutput) ToBareMetalClusterControlPlanePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterControlPlane) *BareMetalClusterControlPlane {
 		return &v
 	}).(BareMetalClusterControlPlanePtrOutput)
-}
-
-func (o BareMetalClusterControlPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlane] {
-	return pulumix.Output[BareMetalClusterControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customizes the default API server args. Only a subset of
@@ -5605,12 +4818,6 @@ func (o BareMetalClusterControlPlanePtrOutput) ToBareMetalClusterControlPlanePtr
 
 func (o BareMetalClusterControlPlanePtrOutput) ToBareMetalClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalClusterControlPlanePtrOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlanePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlane] {
-	return pulumix.Output[*BareMetalClusterControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlanePtrOutput) Elem() BareMetalClusterControlPlaneOutput {
@@ -5685,12 +4892,6 @@ func (i BareMetalClusterControlPlaneApiServerArgArgs) ToBareMetalClusterControlP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneApiServerArgOutput)
 }
 
-func (i BareMetalClusterControlPlaneApiServerArgArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneApiServerArg] {
-	return pulumix.Output[BareMetalClusterControlPlaneApiServerArg]{
-		OutputState: i.ToBareMetalClusterControlPlaneApiServerArgOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterControlPlaneApiServerArgArrayInput is an input type that accepts BareMetalClusterControlPlaneApiServerArgArray and BareMetalClusterControlPlaneApiServerArgArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterControlPlaneApiServerArgArrayInput` via:
 //
@@ -5716,12 +4917,6 @@ func (i BareMetalClusterControlPlaneApiServerArgArray) ToBareMetalClusterControl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneApiServerArgArrayOutput)
 }
 
-func (i BareMetalClusterControlPlaneApiServerArgArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneApiServerArg] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneApiServerArg]{
-		OutputState: i.ToBareMetalClusterControlPlaneApiServerArgArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneApiServerArgOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneApiServerArgOutput) ElementType() reflect.Type {
@@ -5734,12 +4929,6 @@ func (o BareMetalClusterControlPlaneApiServerArgOutput) ToBareMetalClusterContro
 
 func (o BareMetalClusterControlPlaneApiServerArgOutput) ToBareMetalClusterControlPlaneApiServerArgOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneApiServerArgOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneApiServerArgOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneApiServerArg] {
-	return pulumix.Output[BareMetalClusterControlPlaneApiServerArg]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
@@ -5764,12 +4953,6 @@ func (o BareMetalClusterControlPlaneApiServerArgArrayOutput) ToBareMetalClusterC
 
 func (o BareMetalClusterControlPlaneApiServerArgArrayOutput) ToBareMetalClusterControlPlaneApiServerArgArrayOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneApiServerArgArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneApiServerArgArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneApiServerArg] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneApiServerArg]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlaneApiServerArgArrayOutput) Index(i pulumi.IntInput) BareMetalClusterControlPlaneApiServerArgOutput {
@@ -5813,12 +4996,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -5860,12 +5037,6 @@ func (i *bareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToBareMe
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput) ElementType() reflect.Type {
@@ -5890,12 +5061,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBareMeta
 	}).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running the control plane.
 // Structure is documented below.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
@@ -5916,12 +5081,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToBareM
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) Elem() BareMetalClusterControlPlaneControlPlaneNodePoolConfigOutput {
@@ -6012,12 +5171,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -6059,12 +5212,6 @@ func (i *bareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtr
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
@@ -6087,12 +5234,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
 		return &v
 	}).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -6146,12 +5287,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrO
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
@@ -6272,12 +5407,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
 //
@@ -6303,12 +5432,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -6321,12 +5444,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -6365,12 +5482,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
@@ -6422,12 +5533,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTain
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray and BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput` via:
 //
@@ -6453,12 +5558,6 @@ func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTain
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput)
 }
 
-func (i BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -6471,12 +5570,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTain
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the nodes operating system (default: LINUX).
@@ -6513,12 +5606,6 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTain
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
@@ -6566,12 +5653,6 @@ func (i BareMetalClusterFleetArgs) ToBareMetalClusterFleetOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterFleetOutput)
 }
 
-func (i BareMetalClusterFleetArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterFleet] {
-	return pulumix.Output[BareMetalClusterFleet]{
-		OutputState: i.ToBareMetalClusterFleetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterFleetArrayInput is an input type that accepts BareMetalClusterFleetArray and BareMetalClusterFleetArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterFleetArrayInput` via:
 //
@@ -6597,12 +5678,6 @@ func (i BareMetalClusterFleetArray) ToBareMetalClusterFleetArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterFleetArrayOutput)
 }
 
-func (i BareMetalClusterFleetArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterFleet] {
-	return pulumix.Output[[]BareMetalClusterFleet]{
-		OutputState: i.ToBareMetalClusterFleetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterFleetOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterFleetOutput) ElementType() reflect.Type {
@@ -6615,12 +5690,6 @@ func (o BareMetalClusterFleetOutput) ToBareMetalClusterFleetOutput() BareMetalCl
 
 func (o BareMetalClusterFleetOutput) ToBareMetalClusterFleetOutputWithContext(ctx context.Context) BareMetalClusterFleetOutput {
 	return o
-}
-
-func (o BareMetalClusterFleetOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterFleet] {
-	return pulumix.Output[BareMetalClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -6643,12 +5712,6 @@ func (o BareMetalClusterFleetArrayOutput) ToBareMetalClusterFleetArrayOutput() B
 
 func (o BareMetalClusterFleetArrayOutput) ToBareMetalClusterFleetArrayOutputWithContext(ctx context.Context) BareMetalClusterFleetArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterFleetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterFleet] {
-	return pulumix.Output[[]BareMetalClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterFleetArrayOutput) Index(i pulumi.IntInput) BareMetalClusterFleetOutput {
@@ -6716,12 +5779,6 @@ func (i BareMetalClusterLoadBalancerArgs) ToBareMetalClusterLoadBalancerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerOutput)
 }
 
-func (i BareMetalClusterLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancer] {
-	return pulumix.Output[BareMetalClusterLoadBalancer]{
-		OutputState: i.ToBareMetalClusterLoadBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerArgs) ToBareMetalClusterLoadBalancerPtrOutput() BareMetalClusterLoadBalancerPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerPtrOutputWithContext(context.Background())
 }
@@ -6763,12 +5820,6 @@ func (i *bareMetalClusterLoadBalancerPtrType) ToBareMetalClusterLoadBalancerPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancer] {
-	return pulumix.Output[*BareMetalClusterLoadBalancer]{
-		OutputState: i.ToBareMetalClusterLoadBalancerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerOutput) ElementType() reflect.Type {
@@ -6791,12 +5842,6 @@ func (o BareMetalClusterLoadBalancerOutput) ToBareMetalClusterLoadBalancerPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancer {
 		return &v
 	}).(BareMetalClusterLoadBalancerPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancer] {
-	return pulumix.Output[BareMetalClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for BGP typed load balancers.
@@ -6845,12 +5890,6 @@ func (o BareMetalClusterLoadBalancerPtrOutput) ToBareMetalClusterLoadBalancerPtr
 
 func (o BareMetalClusterLoadBalancerPtrOutput) ToBareMetalClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancer] {
-	return pulumix.Output[*BareMetalClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerPtrOutput) Elem() BareMetalClusterLoadBalancerOutput {
@@ -6987,12 +6026,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigArgs) ToBareMetalClusterLoadBalan
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerBgpLbConfigArgs) ToBareMetalClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalClusterLoadBalancerBgpLbConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerBgpLbConfigPtrOutputWithContext(context.Background())
 }
@@ -7034,12 +6067,6 @@ func (i *bareMetalClusterLoadBalancerBgpLbConfigPtrType) ToBareMetalClusterLoadB
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerBgpLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigOutput) ElementType() reflect.Type {
@@ -7062,12 +6089,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigOutput) ToBareMetalClusterLoadBal
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancerBgpLbConfig) *BareMetalClusterLoadBalancerBgpLbConfig {
 		return &v
 	}).(BareMetalClusterLoadBalancerBgpLbConfigPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AddressPools is a list of non-overlapping IP pools used by load balancer
@@ -7120,12 +6141,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigPtrOutput) ToBareMetalClusterLoad
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigPtrOutput) ToBareMetalClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigPtrOutput) Elem() BareMetalClusterLoadBalancerBgpLbConfigOutput {
@@ -7237,12 +6252,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs) ToBareMetalClust
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigAddressPool] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigAddressPool]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayInput is an input type that accepts BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArray and BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayInput` via:
 //
@@ -7268,12 +6277,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArray) ToBareMetalClus
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigAddressPool] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigAddressPool]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ElementType() reflect.Type {
@@ -7286,12 +6289,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ToBareMetalClu
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ToBareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigAddressPool] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -7327,12 +6324,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ToBareMet
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ToBareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigAddressPool] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput {
@@ -7392,12 +6383,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs) ToBareMetalClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput is an input type that accepts BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArray and BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput` via:
 //
@@ -7423,12 +6408,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArray) ToBareMetalCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ElementType() reflect.Type {
@@ -7441,12 +6420,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ToBareMetalC
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ToBareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BGP autonomous system number (ASN) for the network that contains the
@@ -7481,12 +6454,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ToBareM
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ToBareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
@@ -7530,12 +6497,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -7577,12 +6538,6 @@ func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ElementType() reflect.Type {
@@ -7607,12 +6562,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput)
 	}).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running a load balancer.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) NodePoolConfig() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
@@ -7633,12 +6582,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutp
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) Elem() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
@@ -7735,12 +6678,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -7782,12 +6719,6 @@ func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
@@ -7810,12 +6741,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
 		return &v
 	}).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The modifiable kubelet configurations for the baremetal machines.
@@ -7877,12 +6802,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
@@ -8024,12 +6943,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(context.Background())
 }
@@ -8071,12 +6984,6 @@ func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ElementType() reflect.Type {
@@ -8099,12 +7006,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
 		return &v
 	}).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum size of bursty pulls, temporarily allows pulls to burst to this
@@ -8153,12 +7054,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) Elem() BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
@@ -8271,12 +7166,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
 //
@@ -8302,12 +7191,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -8320,12 +7203,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -8364,12 +7241,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
@@ -8421,12 +7292,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray and BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput` via:
 //
@@ -8452,12 +7317,6 @@ func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -8470,12 +7329,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the nodes operating system (default: LINUX).
@@ -8512,12 +7365,6 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
@@ -8557,12 +7404,6 @@ func (i BareMetalClusterLoadBalancerManualLbConfigArgs) ToBareMetalClusterLoadBa
 
 func (i BareMetalClusterLoadBalancerManualLbConfigArgs) ToBareMetalClusterLoadBalancerManualLbConfigOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerManualLbConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerManualLbConfigOutput)
-}
-
-func (i BareMetalClusterLoadBalancerManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerManualLbConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalClusterLoadBalancerManualLbConfigArgs) ToBareMetalClusterLoadBalancerManualLbConfigPtrOutput() BareMetalClusterLoadBalancerManualLbConfigPtrOutput {
@@ -8606,12 +7447,6 @@ func (i *bareMetalClusterLoadBalancerManualLbConfigPtrType) ToBareMetalClusterLo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerManualLbConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerManualLbConfigOutput) ElementType() reflect.Type {
@@ -8636,12 +7471,6 @@ func (o BareMetalClusterLoadBalancerManualLbConfigOutput) ToBareMetalClusterLoad
 	}).(BareMetalClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-func (o BareMetalClusterLoadBalancerManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether manual load balancing is enabled.
 func (o BareMetalClusterLoadBalancerManualLbConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerManualLbConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -8659,12 +7488,6 @@ func (o BareMetalClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalClusterL
 
 func (o BareMetalClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerManualLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerManualLbConfigPtrOutput) Elem() BareMetalClusterLoadBalancerManualLbConfigOutput {
@@ -8732,12 +7555,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigArgs) ToBareMetalClusterLoadBal
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerMetalLbConfigArgs) ToBareMetalClusterLoadBalancerMetalLbConfigPtrOutput() BareMetalClusterLoadBalancerMetalLbConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Background())
 }
@@ -8779,12 +7596,6 @@ func (i *bareMetalClusterLoadBalancerMetalLbConfigPtrType) ToBareMetalClusterLoa
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerMetalLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigOutput) ElementType() reflect.Type {
@@ -8807,12 +7618,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigOutput) ToBareMetalClusterLoadB
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancerMetalLbConfig) *BareMetalClusterLoadBalancerMetalLbConfig {
 		return &v
 	}).(BareMetalClusterLoadBalancerMetalLbConfigPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AddressPools is a list of non-overlapping IP pools used by load balancer
@@ -8845,12 +7650,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigPtrOutput) ToBareMetalClusterLo
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigPtrOutput) ToBareMetalClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigPtrOutput) Elem() BareMetalClusterLoadBalancerMetalLbConfigOutput {
@@ -8934,12 +7733,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs) ToBareMetalClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayInput is an input type that accepts BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArray and BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayInput` via:
 //
@@ -8965,12 +7758,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArray) ToBareMetalCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput) ElementType() reflect.Type {
@@ -8983,12 +7770,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToBareMetalC
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToBareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -9024,12 +7805,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToBareM
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToBareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerMetalLbConfigAddressPoolOutput {
@@ -9073,12 +7848,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -9120,12 +7889,6 @@ func (i *bareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput) ElementType() reflect.Type {
@@ -9150,12 +7913,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutpu
 	}).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running a load balancer.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput) NodePoolConfig() BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
@@ -9176,12 +7933,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOu
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigPtrOutput) Elem() BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigOutput {
@@ -9272,12 +8023,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -9319,12 +8064,6 @@ func (i *bareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNode
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
@@ -9347,12 +8086,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
 		return &v
 	}).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -9406,12 +8139,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
@@ -9532,12 +8259,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
 //
@@ -9563,12 +8284,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -9581,12 +8296,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -9625,12 +8334,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
@@ -9682,12 +8385,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray and BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput` via:
 //
@@ -9713,12 +8410,6 @@ func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput)
 }
 
-func (i BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -9731,12 +8422,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the nodes operating system (default: LINUX).
@@ -9773,12 +8458,6 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
@@ -9818,12 +8497,6 @@ func (i BareMetalClusterLoadBalancerPortConfigArgs) ToBareMetalClusterLoadBalanc
 
 func (i BareMetalClusterLoadBalancerPortConfigArgs) ToBareMetalClusterLoadBalancerPortConfigOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerPortConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerPortConfigOutput)
-}
-
-func (i BareMetalClusterLoadBalancerPortConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerPortConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerPortConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerPortConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalClusterLoadBalancerPortConfigArgs) ToBareMetalClusterLoadBalancerPortConfigPtrOutput() BareMetalClusterLoadBalancerPortConfigPtrOutput {
@@ -9867,12 +8540,6 @@ func (i *bareMetalClusterLoadBalancerPortConfigPtrType) ToBareMetalClusterLoadBa
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerPortConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerPortConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerPortConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerPortConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerPortConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerPortConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerPortConfigOutput) ElementType() reflect.Type {
@@ -9897,12 +8564,6 @@ func (o BareMetalClusterLoadBalancerPortConfigOutput) ToBareMetalClusterLoadBala
 	}).(BareMetalClusterLoadBalancerPortConfigPtrOutput)
 }
 
-func (o BareMetalClusterLoadBalancerPortConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerPortConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerPortConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The port that control plane hosted load balancers will listen on.
 func (o BareMetalClusterLoadBalancerPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerPortConfig) int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntOutput)
@@ -9920,12 +8581,6 @@ func (o BareMetalClusterLoadBalancerPortConfigPtrOutput) ToBareMetalClusterLoadB
 
 func (o BareMetalClusterLoadBalancerPortConfigPtrOutput) ToBareMetalClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerPortConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerPortConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerPortConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerPortConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerPortConfigPtrOutput) Elem() BareMetalClusterLoadBalancerPortConfigOutput {
@@ -9985,12 +8640,6 @@ func (i BareMetalClusterLoadBalancerVipConfigArgs) ToBareMetalClusterLoadBalance
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerVipConfigOutput)
 }
 
-func (i BareMetalClusterLoadBalancerVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerVipConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerVipConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterLoadBalancerVipConfigArgs) ToBareMetalClusterLoadBalancerVipConfigPtrOutput() BareMetalClusterLoadBalancerVipConfigPtrOutput {
 	return i.ToBareMetalClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
 }
@@ -10032,12 +8681,6 @@ func (i *bareMetalClusterLoadBalancerVipConfigPtrType) ToBareMetalClusterLoadBal
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterLoadBalancerVipConfigPtrOutput)
 }
 
-func (i *bareMetalClusterLoadBalancerVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerVipConfig]{
-		OutputState: i.ToBareMetalClusterLoadBalancerVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterLoadBalancerVipConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterLoadBalancerVipConfigOutput) ElementType() reflect.Type {
@@ -10062,12 +8705,6 @@ func (o BareMetalClusterLoadBalancerVipConfigOutput) ToBareMetalClusterLoadBalan
 	}).(BareMetalClusterLoadBalancerVipConfigPtrOutput)
 }
 
-func (o BareMetalClusterLoadBalancerVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterLoadBalancerVipConfig] {
-	return pulumix.Output[BareMetalClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this Bare Metal User Cluster.
 func (o BareMetalClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerVipConfig) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
@@ -10090,12 +8727,6 @@ func (o BareMetalClusterLoadBalancerVipConfigPtrOutput) ToBareMetalClusterLoadBa
 
 func (o BareMetalClusterLoadBalancerVipConfigPtrOutput) ToBareMetalClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterLoadBalancerVipConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterLoadBalancerVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*BareMetalClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterLoadBalancerVipConfigPtrOutput) Elem() BareMetalClusterLoadBalancerVipConfigOutput {
@@ -10167,12 +8798,6 @@ func (i BareMetalClusterMaintenanceConfigArgs) ToBareMetalClusterMaintenanceConf
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterMaintenanceConfigOutput)
 }
 
-func (i BareMetalClusterMaintenanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterMaintenanceConfig] {
-	return pulumix.Output[BareMetalClusterMaintenanceConfig]{
-		OutputState: i.ToBareMetalClusterMaintenanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterMaintenanceConfigArgs) ToBareMetalClusterMaintenanceConfigPtrOutput() BareMetalClusterMaintenanceConfigPtrOutput {
 	return i.ToBareMetalClusterMaintenanceConfigPtrOutputWithContext(context.Background())
 }
@@ -10214,12 +8839,6 @@ func (i *bareMetalClusterMaintenanceConfigPtrType) ToBareMetalClusterMaintenance
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterMaintenanceConfigPtrOutput)
 }
 
-func (i *bareMetalClusterMaintenanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterMaintenanceConfig] {
-	return pulumix.Output[*BareMetalClusterMaintenanceConfig]{
-		OutputState: i.ToBareMetalClusterMaintenanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterMaintenanceConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterMaintenanceConfigOutput) ElementType() reflect.Type {
@@ -10244,12 +8863,6 @@ func (o BareMetalClusterMaintenanceConfigOutput) ToBareMetalClusterMaintenanceCo
 	}).(BareMetalClusterMaintenanceConfigPtrOutput)
 }
 
-func (o BareMetalClusterMaintenanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterMaintenanceConfig] {
-	return pulumix.Output[BareMetalClusterMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode.
 // Nodes in maintenance mode will be cordoned and drained. When both of these
 // are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
@@ -10270,12 +8883,6 @@ func (o BareMetalClusterMaintenanceConfigPtrOutput) ToBareMetalClusterMaintenanc
 
 func (o BareMetalClusterMaintenanceConfigPtrOutput) ToBareMetalClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterMaintenanceConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterMaintenanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterMaintenanceConfig] {
-	return pulumix.Output[*BareMetalClusterMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterMaintenanceConfigPtrOutput) Elem() BareMetalClusterMaintenanceConfigOutput {
@@ -10358,12 +8965,6 @@ func (i BareMetalClusterNetworkConfigArgs) ToBareMetalClusterNetworkConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigOutput)
 }
 
-func (i BareMetalClusterNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNetworkConfigArgs) ToBareMetalClusterNetworkConfigPtrOutput() BareMetalClusterNetworkConfigPtrOutput {
 	return i.ToBareMetalClusterNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -10405,12 +9006,6 @@ func (i *bareMetalClusterNetworkConfigPtrType) ToBareMetalClusterNetworkConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigPtrOutput)
 }
 
-func (i *bareMetalClusterNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNetworkConfigOutput) ElementType() reflect.Type {
@@ -10433,12 +9028,6 @@ func (o BareMetalClusterNetworkConfigOutput) ToBareMetalClusterNetworkConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterNetworkConfig) *BareMetalClusterNetworkConfig {
 		return &v
 	}).(BareMetalClusterNetworkConfigPtrOutput)
-}
-
-func (o BareMetalClusterNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enables the use of advanced Anthos networking features, such as Bundled
@@ -10483,12 +9072,6 @@ func (o BareMetalClusterNetworkConfigPtrOutput) ToBareMetalClusterNetworkConfigP
 
 func (o BareMetalClusterNetworkConfigPtrOutput) ToBareMetalClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterNetworkConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNetworkConfigPtrOutput) Elem() BareMetalClusterNetworkConfigOutput {
@@ -10584,12 +9167,6 @@ func (i BareMetalClusterNetworkConfigIslandModeCidrArgs) ToBareMetalClusterNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigIslandModeCidrOutput)
 }
 
-func (i BareMetalClusterNetworkConfigIslandModeCidrArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[BareMetalClusterNetworkConfigIslandModeCidr]{
-		OutputState: i.ToBareMetalClusterNetworkConfigIslandModeCidrOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNetworkConfigIslandModeCidrArgs) ToBareMetalClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalClusterNetworkConfigIslandModeCidrPtrOutput {
 	return i.ToBareMetalClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Background())
 }
@@ -10631,12 +9208,6 @@ func (i *bareMetalClusterNetworkConfigIslandModeCidrPtrType) ToBareMetalClusterN
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigIslandModeCidrPtrOutput)
 }
 
-func (i *bareMetalClusterNetworkConfigIslandModeCidrPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigIslandModeCidr]{
-		OutputState: i.ToBareMetalClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNetworkConfigIslandModeCidrOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNetworkConfigIslandModeCidrOutput) ElementType() reflect.Type {
@@ -10661,12 +9232,6 @@ func (o BareMetalClusterNetworkConfigIslandModeCidrOutput) ToBareMetalClusterNet
 	}).(BareMetalClusterNetworkConfigIslandModeCidrPtrOutput)
 }
 
-func (o BareMetalClusterNetworkConfigIslandModeCidrOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[BareMetalClusterNetworkConfigIslandModeCidr]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalClusterNetworkConfigIslandModeCidrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalClusterNetworkConfigIslandModeCidr) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -10689,12 +9254,6 @@ func (o BareMetalClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalCluster
 
 func (o BareMetalClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNetworkConfigIslandModeCidrPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigIslandModeCidr] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigIslandModeCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNetworkConfigIslandModeCidrPtrOutput) Elem() BareMetalClusterNetworkConfigIslandModeCidrOutput {
@@ -10764,12 +9323,6 @@ func (i BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBare
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput)
 }
 
-func (i BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
 	return i.ToBareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Background())
 }
@@ -10811,12 +9364,6 @@ func (i *bareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
 }
 
-func (i *bareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ElementType() reflect.Type {
@@ -10841,12 +9388,6 @@ func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToBa
 	}).(BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
 }
 
-func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable multiple network interfaces for your pods.
 // When set network_config.advanced_networking is automatically
 // set to true.
@@ -10866,12 +9407,6 @@ func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) T
 
 func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) ToBareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) Elem() BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
@@ -10929,12 +9464,6 @@ func (i BareMetalClusterNetworkConfigSrIovConfigArgs) ToBareMetalClusterNetworkC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigSrIovConfigOutput)
 }
 
-func (i BareMetalClusterNetworkConfigSrIovConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigSrIovConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfigSrIovConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigSrIovConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNetworkConfigSrIovConfigArgs) ToBareMetalClusterNetworkConfigSrIovConfigPtrOutput() BareMetalClusterNetworkConfigSrIovConfigPtrOutput {
 	return i.ToBareMetalClusterNetworkConfigSrIovConfigPtrOutputWithContext(context.Background())
 }
@@ -10976,12 +9505,6 @@ func (i *bareMetalClusterNetworkConfigSrIovConfigPtrType) ToBareMetalClusterNetw
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNetworkConfigSrIovConfigPtrOutput)
 }
 
-func (i *bareMetalClusterNetworkConfigSrIovConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigSrIovConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigSrIovConfig]{
-		OutputState: i.ToBareMetalClusterNetworkConfigSrIovConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNetworkConfigSrIovConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNetworkConfigSrIovConfigOutput) ElementType() reflect.Type {
@@ -11006,12 +9529,6 @@ func (o BareMetalClusterNetworkConfigSrIovConfigOutput) ToBareMetalClusterNetwor
 	}).(BareMetalClusterNetworkConfigSrIovConfigPtrOutput)
 }
 
-func (o BareMetalClusterNetworkConfigSrIovConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNetworkConfigSrIovConfig] {
-	return pulumix.Output[BareMetalClusterNetworkConfigSrIovConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to install the SR-IOV operator.
 func (o BareMetalClusterNetworkConfigSrIovConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterNetworkConfigSrIovConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -11029,12 +9546,6 @@ func (o BareMetalClusterNetworkConfigSrIovConfigPtrOutput) ToBareMetalClusterNet
 
 func (o BareMetalClusterNetworkConfigSrIovConfigPtrOutput) ToBareMetalClusterNetworkConfigSrIovConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterNetworkConfigSrIovConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNetworkConfigSrIovConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNetworkConfigSrIovConfig] {
-	return pulumix.Output[*BareMetalClusterNetworkConfigSrIovConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNetworkConfigSrIovConfigPtrOutput) Elem() BareMetalClusterNetworkConfigSrIovConfigOutput {
@@ -11092,12 +9603,6 @@ func (i BareMetalClusterNodeAccessConfigArgs) ToBareMetalClusterNodeAccessConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNodeAccessConfigOutput)
 }
 
-func (i BareMetalClusterNodeAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNodeAccessConfig] {
-	return pulumix.Output[BareMetalClusterNodeAccessConfig]{
-		OutputState: i.ToBareMetalClusterNodeAccessConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNodeAccessConfigArgs) ToBareMetalClusterNodeAccessConfigPtrOutput() BareMetalClusterNodeAccessConfigPtrOutput {
 	return i.ToBareMetalClusterNodeAccessConfigPtrOutputWithContext(context.Background())
 }
@@ -11139,12 +9644,6 @@ func (i *bareMetalClusterNodeAccessConfigPtrType) ToBareMetalClusterNodeAccessCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNodeAccessConfigPtrOutput)
 }
 
-func (i *bareMetalClusterNodeAccessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNodeAccessConfig] {
-	return pulumix.Output[*BareMetalClusterNodeAccessConfig]{
-		OutputState: i.ToBareMetalClusterNodeAccessConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNodeAccessConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNodeAccessConfigOutput) ElementType() reflect.Type {
@@ -11169,12 +9668,6 @@ func (o BareMetalClusterNodeAccessConfigOutput) ToBareMetalClusterNodeAccessConf
 	}).(BareMetalClusterNodeAccessConfigPtrOutput)
 }
 
-func (o BareMetalClusterNodeAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNodeAccessConfig] {
-	return pulumix.Output[BareMetalClusterNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LoginUser is the user name used to access node machines.
 // It defaults to "root" if not set.
 func (o BareMetalClusterNodeAccessConfigOutput) LoginUser() pulumi.StringPtrOutput {
@@ -11193,12 +9686,6 @@ func (o BareMetalClusterNodeAccessConfigPtrOutput) ToBareMetalClusterNodeAccessC
 
 func (o BareMetalClusterNodeAccessConfigPtrOutput) ToBareMetalClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterNodeAccessConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNodeAccessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNodeAccessConfig] {
-	return pulumix.Output[*BareMetalClusterNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNodeAccessConfigPtrOutput) Elem() BareMetalClusterNodeAccessConfigOutput {
@@ -11263,12 +9750,6 @@ func (i BareMetalClusterNodeConfigArgs) ToBareMetalClusterNodeConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNodeConfigOutput)
 }
 
-func (i BareMetalClusterNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNodeConfig] {
-	return pulumix.Output[BareMetalClusterNodeConfig]{
-		OutputState: i.ToBareMetalClusterNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterNodeConfigArgs) ToBareMetalClusterNodeConfigPtrOutput() BareMetalClusterNodeConfigPtrOutput {
 	return i.ToBareMetalClusterNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -11310,12 +9791,6 @@ func (i *bareMetalClusterNodeConfigPtrType) ToBareMetalClusterNodeConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterNodeConfigPtrOutput)
 }
 
-func (i *bareMetalClusterNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNodeConfig] {
-	return pulumix.Output[*BareMetalClusterNodeConfig]{
-		OutputState: i.ToBareMetalClusterNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterNodeConfigOutput) ElementType() reflect.Type {
@@ -11338,12 +9813,6 @@ func (o BareMetalClusterNodeConfigOutput) ToBareMetalClusterNodeConfigPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterNodeConfig) *BareMetalClusterNodeConfig {
 		return &v
 	}).(BareMetalClusterNodeConfigPtrOutput)
-}
-
-func (o BareMetalClusterNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterNodeConfig] {
-	return pulumix.Output[BareMetalClusterNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available runtimes that can be used to run containers in a Bare Metal User Cluster.
@@ -11370,12 +9839,6 @@ func (o BareMetalClusterNodeConfigPtrOutput) ToBareMetalClusterNodeConfigPtrOutp
 
 func (o BareMetalClusterNodeConfigPtrOutput) ToBareMetalClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterNodeConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterNodeConfig] {
-	return pulumix.Output[*BareMetalClusterNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterNodeConfigPtrOutput) Elem() BareMetalClusterNodeConfigOutput {
@@ -11445,12 +9908,6 @@ func (i BareMetalClusterOsEnvironmentConfigArgs) ToBareMetalClusterOsEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOsEnvironmentConfigOutput)
 }
 
-func (i BareMetalClusterOsEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalClusterOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalClusterOsEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterOsEnvironmentConfigArgs) ToBareMetalClusterOsEnvironmentConfigPtrOutput() BareMetalClusterOsEnvironmentConfigPtrOutput {
 	return i.ToBareMetalClusterOsEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -11492,12 +9949,6 @@ func (i *bareMetalClusterOsEnvironmentConfigPtrType) ToBareMetalClusterOsEnviron
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOsEnvironmentConfigPtrOutput)
 }
 
-func (i *bareMetalClusterOsEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalClusterOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalClusterOsEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterOsEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterOsEnvironmentConfigOutput) ElementType() reflect.Type {
@@ -11522,12 +9973,6 @@ func (o BareMetalClusterOsEnvironmentConfigOutput) ToBareMetalClusterOsEnvironme
 	}).(BareMetalClusterOsEnvironmentConfigPtrOutput)
 }
 
-func (o BareMetalClusterOsEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalClusterOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the package repo should not be included when initializing
 // bare metal machines.
 func (o BareMetalClusterOsEnvironmentConfigOutput) PackageRepoExcluded() pulumi.BoolOutput {
@@ -11546,12 +9991,6 @@ func (o BareMetalClusterOsEnvironmentConfigPtrOutput) ToBareMetalClusterOsEnviro
 
 func (o BareMetalClusterOsEnvironmentConfigPtrOutput) ToBareMetalClusterOsEnvironmentConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterOsEnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterOsEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalClusterOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterOsEnvironmentConfigPtrOutput) Elem() BareMetalClusterOsEnvironmentConfigOutput {
@@ -11620,12 +10059,6 @@ func (i BareMetalClusterProxyArgs) ToBareMetalClusterProxyOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterProxyOutput)
 }
 
-func (i BareMetalClusterProxyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterProxy] {
-	return pulumix.Output[BareMetalClusterProxy]{
-		OutputState: i.ToBareMetalClusterProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterProxyArgs) ToBareMetalClusterProxyPtrOutput() BareMetalClusterProxyPtrOutput {
 	return i.ToBareMetalClusterProxyPtrOutputWithContext(context.Background())
 }
@@ -11667,12 +10100,6 @@ func (i *bareMetalClusterProxyPtrType) ToBareMetalClusterProxyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterProxyPtrOutput)
 }
 
-func (i *bareMetalClusterProxyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterProxy] {
-	return pulumix.Output[*BareMetalClusterProxy]{
-		OutputState: i.ToBareMetalClusterProxyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterProxyOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterProxyOutput) ElementType() reflect.Type {
@@ -11695,12 +10122,6 @@ func (o BareMetalClusterProxyOutput) ToBareMetalClusterProxyPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterProxy) *BareMetalClusterProxy {
 		return &v
 	}).(BareMetalClusterProxyPtrOutput)
-}
-
-func (o BareMetalClusterProxyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterProxy] {
-	return pulumix.Output[BareMetalClusterProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
@@ -11729,12 +10150,6 @@ func (o BareMetalClusterProxyPtrOutput) ToBareMetalClusterProxyPtrOutput() BareM
 
 func (o BareMetalClusterProxyPtrOutput) ToBareMetalClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalClusterProxyPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterProxyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterProxy] {
-	return pulumix.Output[*BareMetalClusterProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterProxyPtrOutput) Elem() BareMetalClusterProxyOutput {
@@ -11806,12 +10221,6 @@ func (i BareMetalClusterSecurityConfigArgs) ToBareMetalClusterSecurityConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigOutput)
 }
 
-func (i BareMetalClusterSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfig] {
-	return pulumix.Output[BareMetalClusterSecurityConfig]{
-		OutputState: i.ToBareMetalClusterSecurityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterSecurityConfigArgs) ToBareMetalClusterSecurityConfigPtrOutput() BareMetalClusterSecurityConfigPtrOutput {
 	return i.ToBareMetalClusterSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -11853,12 +10262,6 @@ func (i *bareMetalClusterSecurityConfigPtrType) ToBareMetalClusterSecurityConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigPtrOutput)
 }
 
-func (i *bareMetalClusterSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterSecurityConfig] {
-	return pulumix.Output[*BareMetalClusterSecurityConfig]{
-		OutputState: i.ToBareMetalClusterSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterSecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterSecurityConfigOutput) ElementType() reflect.Type {
@@ -11883,12 +10286,6 @@ func (o BareMetalClusterSecurityConfigOutput) ToBareMetalClusterSecurityConfigPt
 	}).(BareMetalClusterSecurityConfigPtrOutput)
 }
 
-func (o BareMetalClusterSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfig] {
-	return pulumix.Output[BareMetalClusterSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configures user access to the Bare Metal User cluster.
 // Structure is documented below.
 func (o BareMetalClusterSecurityConfigOutput) Authorization() BareMetalClusterSecurityConfigAuthorizationPtrOutput {
@@ -11909,12 +10306,6 @@ func (o BareMetalClusterSecurityConfigPtrOutput) ToBareMetalClusterSecurityConfi
 
 func (o BareMetalClusterSecurityConfigPtrOutput) ToBareMetalClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterSecurityConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterSecurityConfig] {
-	return pulumix.Output[*BareMetalClusterSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterSecurityConfigPtrOutput) Elem() BareMetalClusterSecurityConfigOutput {
@@ -11973,12 +10364,6 @@ func (i BareMetalClusterSecurityConfigAuthorizationArgs) ToBareMetalClusterSecur
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigAuthorizationOutput)
 }
 
-func (i BareMetalClusterSecurityConfigAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfigAuthorization] {
-	return pulumix.Output[BareMetalClusterSecurityConfigAuthorization]{
-		OutputState: i.ToBareMetalClusterSecurityConfigAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterSecurityConfigAuthorizationArgs) ToBareMetalClusterSecurityConfigAuthorizationPtrOutput() BareMetalClusterSecurityConfigAuthorizationPtrOutput {
 	return i.ToBareMetalClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -12020,12 +10405,6 @@ func (i *bareMetalClusterSecurityConfigAuthorizationPtrType) ToBareMetalClusterS
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigAuthorizationPtrOutput)
 }
 
-func (i *bareMetalClusterSecurityConfigAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterSecurityConfigAuthorization] {
-	return pulumix.Output[*BareMetalClusterSecurityConfigAuthorization]{
-		OutputState: i.ToBareMetalClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterSecurityConfigAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterSecurityConfigAuthorizationOutput) ElementType() reflect.Type {
@@ -12050,12 +10429,6 @@ func (o BareMetalClusterSecurityConfigAuthorizationOutput) ToBareMetalClusterSec
 	}).(BareMetalClusterSecurityConfigAuthorizationPtrOutput)
 }
 
-func (o BareMetalClusterSecurityConfigAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfigAuthorization] {
-	return pulumix.Output[BareMetalClusterSecurityConfigAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
 // Structure is documented below.
 func (o BareMetalClusterSecurityConfigAuthorizationOutput) AdminUsers() BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput {
@@ -12076,12 +10449,6 @@ func (o BareMetalClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalCluster
 
 func (o BareMetalClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterSecurityConfigAuthorizationPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterSecurityConfigAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterSecurityConfigAuthorization] {
-	return pulumix.Output[*BareMetalClusterSecurityConfigAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterSecurityConfigAuthorizationPtrOutput) Elem() BareMetalClusterSecurityConfigAuthorizationOutput {
@@ -12138,12 +10505,6 @@ func (i BareMetalClusterSecurityConfigAuthorizationAdminUserArgs) ToBareMetalClu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigAuthorizationAdminUserOutput)
 }
 
-func (i BareMetalClusterSecurityConfigAuthorizationAdminUserArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[BareMetalClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: i.ToBareMetalClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterSecurityConfigAuthorizationAdminUserArrayInput is an input type that accepts BareMetalClusterSecurityConfigAuthorizationAdminUserArray and BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterSecurityConfigAuthorizationAdminUserArrayInput` via:
 //
@@ -12169,12 +10530,6 @@ func (i BareMetalClusterSecurityConfigAuthorizationAdminUserArray) ToBareMetalCl
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput)
 }
 
-func (i BareMetalClusterSecurityConfigAuthorizationAdminUserArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[[]BareMetalClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: i.ToBareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterSecurityConfigAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterSecurityConfigAuthorizationAdminUserOutput) ElementType() reflect.Type {
@@ -12187,12 +10542,6 @@ func (o BareMetalClusterSecurityConfigAuthorizationAdminUserOutput) ToBareMetalC
 
 func (o BareMetalClusterSecurityConfigAuthorizationAdminUserOutput) ToBareMetalClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx context.Context) BareMetalClusterSecurityConfigAuthorizationAdminUserOutput {
 	return o
-}
-
-func (o BareMetalClusterSecurityConfigAuthorizationAdminUserOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[BareMetalClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -12212,12 +10561,6 @@ func (o BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToBareM
 
 func (o BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToBareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterSecurityConfigAuthorizationAdminUser] {
-	return pulumix.Output[[]BareMetalClusterSecurityConfigAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterSecurityConfigAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) BareMetalClusterSecurityConfigAuthorizationAdminUserOutput {
@@ -12277,12 +10620,6 @@ func (i BareMetalClusterStatusArgs) ToBareMetalClusterStatusOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStatusOutput)
 }
 
-func (i BareMetalClusterStatusArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStatus] {
-	return pulumix.Output[BareMetalClusterStatus]{
-		OutputState: i.ToBareMetalClusterStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterStatusArrayInput is an input type that accepts BareMetalClusterStatusArray and BareMetalClusterStatusArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterStatusArrayInput` via:
 //
@@ -12308,12 +10645,6 @@ func (i BareMetalClusterStatusArray) ToBareMetalClusterStatusArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStatusArrayOutput)
 }
 
-func (i BareMetalClusterStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterStatus] {
-	return pulumix.Output[[]BareMetalClusterStatus]{
-		OutputState: i.ToBareMetalClusterStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStatusOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStatusOutput) ElementType() reflect.Type {
@@ -12326,12 +10657,6 @@ func (o BareMetalClusterStatusOutput) ToBareMetalClusterStatusOutput() BareMetal
 
 func (o BareMetalClusterStatusOutput) ToBareMetalClusterStatusOutputWithContext(ctx context.Context) BareMetalClusterStatusOutput {
 	return o
-}
-
-func (o BareMetalClusterStatusOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStatus] {
-	return pulumix.Output[BareMetalClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -12363,12 +10688,6 @@ func (o BareMetalClusterStatusArrayOutput) ToBareMetalClusterStatusArrayOutput()
 
 func (o BareMetalClusterStatusArrayOutput) ToBareMetalClusterStatusArrayOutputWithContext(ctx context.Context) BareMetalClusterStatusArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterStatus] {
-	return pulumix.Output[[]BareMetalClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStatusArrayOutput) Index(i pulumi.IntInput) BareMetalClusterStatusOutput {
@@ -12434,12 +10753,6 @@ func (i BareMetalClusterStatusConditionArgs) ToBareMetalClusterStatusConditionOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStatusConditionOutput)
 }
 
-func (i BareMetalClusterStatusConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStatusCondition] {
-	return pulumix.Output[BareMetalClusterStatusCondition]{
-		OutputState: i.ToBareMetalClusterStatusConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterStatusConditionArrayInput is an input type that accepts BareMetalClusterStatusConditionArray and BareMetalClusterStatusConditionArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterStatusConditionArrayInput` via:
 //
@@ -12465,12 +10778,6 @@ func (i BareMetalClusterStatusConditionArray) ToBareMetalClusterStatusConditionA
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStatusConditionArrayOutput)
 }
 
-func (i BareMetalClusterStatusConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterStatusCondition] {
-	return pulumix.Output[[]BareMetalClusterStatusCondition]{
-		OutputState: i.ToBareMetalClusterStatusConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStatusConditionOutput) ElementType() reflect.Type {
@@ -12483,12 +10790,6 @@ func (o BareMetalClusterStatusConditionOutput) ToBareMetalClusterStatusCondition
 
 func (o BareMetalClusterStatusConditionOutput) ToBareMetalClusterStatusConditionOutputWithContext(ctx context.Context) BareMetalClusterStatusConditionOutput {
 	return o
-}
-
-func (o BareMetalClusterStatusConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStatusCondition] {
-	return pulumix.Output[BareMetalClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -12532,12 +10833,6 @@ func (o BareMetalClusterStatusConditionArrayOutput) ToBareMetalClusterStatusCond
 
 func (o BareMetalClusterStatusConditionArrayOutput) ToBareMetalClusterStatusConditionArrayOutputWithContext(ctx context.Context) BareMetalClusterStatusConditionArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterStatusConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterStatusCondition] {
-	return pulumix.Output[[]BareMetalClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStatusConditionArrayOutput) Index(i pulumi.IntInput) BareMetalClusterStatusConditionOutput {
@@ -12595,12 +10890,6 @@ func (i BareMetalClusterStorageArgs) ToBareMetalClusterStorageOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageOutput)
 }
 
-func (i BareMetalClusterStorageArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorage] {
-	return pulumix.Output[BareMetalClusterStorage]{
-		OutputState: i.ToBareMetalClusterStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterStorageArgs) ToBareMetalClusterStoragePtrOutput() BareMetalClusterStoragePtrOutput {
 	return i.ToBareMetalClusterStoragePtrOutputWithContext(context.Background())
 }
@@ -12642,12 +10931,6 @@ func (i *bareMetalClusterStoragePtrType) ToBareMetalClusterStoragePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStoragePtrOutput)
 }
 
-func (i *bareMetalClusterStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorage] {
-	return pulumix.Output[*BareMetalClusterStorage]{
-		OutputState: i.ToBareMetalClusterStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStorageOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStorageOutput) ElementType() reflect.Type {
@@ -12670,12 +10953,6 @@ func (o BareMetalClusterStorageOutput) ToBareMetalClusterStoragePtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterStorage) *BareMetalClusterStorage {
 		return &v
 	}).(BareMetalClusterStoragePtrOutput)
-}
-
-func (o BareMetalClusterStorageOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorage] {
-	return pulumix.Output[BareMetalClusterStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the config for local PersistentVolumes backed
@@ -12708,12 +10985,6 @@ func (o BareMetalClusterStoragePtrOutput) ToBareMetalClusterStoragePtrOutput() B
 
 func (o BareMetalClusterStoragePtrOutput) ToBareMetalClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalClusterStoragePtrOutput {
 	return o
-}
-
-func (o BareMetalClusterStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorage] {
-	return pulumix.Output[*BareMetalClusterStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStoragePtrOutput) Elem() BareMetalClusterStorageOutput {
@@ -12793,12 +11064,6 @@ func (i BareMetalClusterStorageLvpNodeMountsConfigArgs) ToBareMetalClusterStorag
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpNodeMountsConfigOutput)
 }
 
-func (i BareMetalClusterStorageLvpNodeMountsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpNodeMountsConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpNodeMountsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterStorageLvpNodeMountsConfigArgs) ToBareMetalClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalClusterStorageLvpNodeMountsConfigPtrOutput {
 	return i.ToBareMetalClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Background())
 }
@@ -12840,12 +11105,6 @@ func (i *bareMetalClusterStorageLvpNodeMountsConfigPtrType) ToBareMetalClusterSt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpNodeMountsConfigPtrOutput)
 }
 
-func (i *bareMetalClusterStorageLvpNodeMountsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpNodeMountsConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStorageLvpNodeMountsConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStorageLvpNodeMountsConfigOutput) ElementType() reflect.Type {
@@ -12868,12 +11127,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) ToBareMetalClusterStor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterStorageLvpNodeMountsConfig) *BareMetalClusterStorageLvpNodeMountsConfig {
 		return &v
 	}).(BareMetalClusterStorageLvpNodeMountsConfigPtrOutput)
-}
-
-func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpNodeMountsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The host machine path.
@@ -12900,12 +11153,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalClusterS
 
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterStorageLvpNodeMountsConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpNodeMountsConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpNodeMountsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) Elem() BareMetalClusterStorageLvpNodeMountsConfigOutput {
@@ -12979,12 +11226,6 @@ func (i BareMetalClusterStorageLvpShareConfigArgs) ToBareMetalClusterStorageLvpS
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpShareConfigOutput)
 }
 
-func (i BareMetalClusterStorageLvpShareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpShareConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpShareConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpShareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterStorageLvpShareConfigArgs) ToBareMetalClusterStorageLvpShareConfigPtrOutput() BareMetalClusterStorageLvpShareConfigPtrOutput {
 	return i.ToBareMetalClusterStorageLvpShareConfigPtrOutputWithContext(context.Background())
 }
@@ -13026,12 +11267,6 @@ func (i *bareMetalClusterStorageLvpShareConfigPtrType) ToBareMetalClusterStorage
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpShareConfigPtrOutput)
 }
 
-func (i *bareMetalClusterStorageLvpShareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpShareConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpShareConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpShareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStorageLvpShareConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStorageLvpShareConfigOutput) ElementType() reflect.Type {
@@ -13054,12 +11289,6 @@ func (o BareMetalClusterStorageLvpShareConfigOutput) ToBareMetalClusterStorageLv
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterStorageLvpShareConfig) *BareMetalClusterStorageLvpShareConfig {
 		return &v
 	}).(BareMetalClusterStorageLvpShareConfigPtrOutput)
-}
-
-func (o BareMetalClusterStorageLvpShareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpShareConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the machine path and storage class for the LVP Share.
@@ -13087,12 +11316,6 @@ func (o BareMetalClusterStorageLvpShareConfigPtrOutput) ToBareMetalClusterStorag
 
 func (o BareMetalClusterStorageLvpShareConfigPtrOutput) ToBareMetalClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterStorageLvpShareConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterStorageLvpShareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpShareConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStorageLvpShareConfigPtrOutput) Elem() BareMetalClusterStorageLvpShareConfigOutput {
@@ -13163,12 +11386,6 @@ func (i BareMetalClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalClusterSt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpShareConfigLvpConfigOutput)
 }
 
-func (i BareMetalClusterStorageLvpShareConfigLvpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpShareConfigLvpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput {
 	return i.ToBareMetalClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Background())
 }
@@ -13210,12 +11427,6 @@ func (i *bareMetalClusterStorageLvpShareConfigLvpConfigPtrType) ToBareMetalClust
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput)
 }
 
-func (i *bareMetalClusterStorageLvpShareConfigLvpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: i.ToBareMetalClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterStorageLvpShareConfigLvpConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterStorageLvpShareConfigLvpConfigOutput) ElementType() reflect.Type {
@@ -13240,12 +11451,6 @@ func (o BareMetalClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalCluster
 	}).(BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput)
 }
 
-func (o BareMetalClusterStorageLvpShareConfigLvpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[BareMetalClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host machine path.
 func (o BareMetalClusterStorageLvpShareConfigLvpConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterStorageLvpShareConfigLvpConfig) string { return v.Path }).(pulumi.StringOutput)
@@ -13268,12 +11473,6 @@ func (o BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMetalClus
 
 func (o BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMetalClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterStorageLvpShareConfigLvpConfig] {
-	return pulumix.Output[*BareMetalClusterStorageLvpShareConfigLvpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput) Elem() BareMetalClusterStorageLvpShareConfigLvpConfigOutput {
@@ -13341,12 +11540,6 @@ func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput)
 }
 
-func (i BareMetalClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[BareMetalClusterUpgradePolicy]{
-		OutputState: i.ToBareMetalClusterUpgradePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
 	return i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
 }
@@ -13388,12 +11581,6 @@ func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyPtrOutput)
 }
 
-func (i *bareMetalClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
-		OutputState: i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterUpgradePolicyOutput) ElementType() reflect.Type {
@@ -13418,12 +11605,6 @@ func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrO
 	}).(BareMetalClusterUpgradePolicyPtrOutput)
 }
 
-func (o BareMetalClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[BareMetalClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies which upgrade policy to use.
 // Possible values are: `SERIAL`, `CONCURRENT`.
 func (o BareMetalClusterUpgradePolicyOutput) Policy() pulumi.StringPtrOutput {
@@ -13442,12 +11623,6 @@ func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyP
 
 func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterUpgradePolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyOutput {
@@ -13520,12 +11695,6 @@ func (i BareMetalClusterValidationCheckArgs) ToBareMetalClusterValidationCheckOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckOutput)
 }
 
-func (i BareMetalClusterValidationCheckArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheck] {
-	return pulumix.Output[BareMetalClusterValidationCheck]{
-		OutputState: i.ToBareMetalClusterValidationCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterValidationCheckArrayInput is an input type that accepts BareMetalClusterValidationCheckArray and BareMetalClusterValidationCheckArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterValidationCheckArrayInput` via:
 //
@@ -13551,12 +11720,6 @@ func (i BareMetalClusterValidationCheckArray) ToBareMetalClusterValidationCheckA
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckArrayOutput)
 }
 
-func (i BareMetalClusterValidationCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheck] {
-	return pulumix.Output[[]BareMetalClusterValidationCheck]{
-		OutputState: i.ToBareMetalClusterValidationCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterValidationCheckOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterValidationCheckOutput) ElementType() reflect.Type {
@@ -13569,12 +11732,6 @@ func (o BareMetalClusterValidationCheckOutput) ToBareMetalClusterValidationCheck
 
 func (o BareMetalClusterValidationCheckOutput) ToBareMetalClusterValidationCheckOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheck] {
-	return pulumix.Output[BareMetalClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -13608,12 +11765,6 @@ func (o BareMetalClusterValidationCheckArrayOutput) ToBareMetalClusterValidation
 
 func (o BareMetalClusterValidationCheckArrayOutput) ToBareMetalClusterValidationCheckArrayOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheck] {
-	return pulumix.Output[[]BareMetalClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterValidationCheckArrayOutput) Index(i pulumi.IntInput) BareMetalClusterValidationCheckOutput {
@@ -13659,12 +11810,6 @@ func (i BareMetalClusterValidationCheckStatusArgs) ToBareMetalClusterValidationC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckStatusOutput)
 }
 
-func (i BareMetalClusterValidationCheckStatusArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheckStatus] {
-	return pulumix.Output[BareMetalClusterValidationCheckStatus]{
-		OutputState: i.ToBareMetalClusterValidationCheckStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterValidationCheckStatusArrayInput is an input type that accepts BareMetalClusterValidationCheckStatusArray and BareMetalClusterValidationCheckStatusArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterValidationCheckStatusArrayInput` via:
 //
@@ -13690,12 +11835,6 @@ func (i BareMetalClusterValidationCheckStatusArray) ToBareMetalClusterValidation
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckStatusArrayOutput)
 }
 
-func (i BareMetalClusterValidationCheckStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheckStatus] {
-	return pulumix.Output[[]BareMetalClusterValidationCheckStatus]{
-		OutputState: i.ToBareMetalClusterValidationCheckStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterValidationCheckStatusOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterValidationCheckStatusOutput) ElementType() reflect.Type {
@@ -13708,12 +11847,6 @@ func (o BareMetalClusterValidationCheckStatusOutput) ToBareMetalClusterValidatio
 
 func (o BareMetalClusterValidationCheckStatusOutput) ToBareMetalClusterValidationCheckStatusOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckStatusOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckStatusOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheckStatus] {
-	return pulumix.Output[BareMetalClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -13737,12 +11870,6 @@ func (o BareMetalClusterValidationCheckStatusArrayOutput) ToBareMetalClusterVali
 
 func (o BareMetalClusterValidationCheckStatusArrayOutput) ToBareMetalClusterValidationCheckStatusArrayOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckStatusArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheckStatus] {
-	return pulumix.Output[[]BareMetalClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterValidationCheckStatusArrayOutput) Index(i pulumi.IntInput) BareMetalClusterValidationCheckStatusOutput {
@@ -13808,12 +11935,6 @@ func (i BareMetalClusterValidationCheckStatusResultArgs) ToBareMetalClusterValid
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckStatusResultOutput)
 }
 
-func (i BareMetalClusterValidationCheckStatusResultArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheckStatusResult] {
-	return pulumix.Output[BareMetalClusterValidationCheckStatusResult]{
-		OutputState: i.ToBareMetalClusterValidationCheckStatusResultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterValidationCheckStatusResultArrayInput is an input type that accepts BareMetalClusterValidationCheckStatusResultArray and BareMetalClusterValidationCheckStatusResultArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterValidationCheckStatusResultArrayInput` via:
 //
@@ -13839,12 +11960,6 @@ func (i BareMetalClusterValidationCheckStatusResultArray) ToBareMetalClusterVali
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterValidationCheckStatusResultArrayOutput)
 }
 
-func (i BareMetalClusterValidationCheckStatusResultArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]BareMetalClusterValidationCheckStatusResult]{
-		OutputState: i.ToBareMetalClusterValidationCheckStatusResultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterValidationCheckStatusResultOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterValidationCheckStatusResultOutput) ElementType() reflect.Type {
@@ -13857,12 +11972,6 @@ func (o BareMetalClusterValidationCheckStatusResultOutput) ToBareMetalClusterVal
 
 func (o BareMetalClusterValidationCheckStatusResultOutput) ToBareMetalClusterValidationCheckStatusResultOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckStatusResultOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterValidationCheckStatusResult] {
-	return pulumix.Output[BareMetalClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -13906,12 +12015,6 @@ func (o BareMetalClusterValidationCheckStatusResultArrayOutput) ToBareMetalClust
 
 func (o BareMetalClusterValidationCheckStatusResultArrayOutput) ToBareMetalClusterValidationCheckStatusResultArrayOutputWithContext(ctx context.Context) BareMetalClusterValidationCheckStatusResultArrayOutput {
 	return o
-}
-
-func (o BareMetalClusterValidationCheckStatusResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]BareMetalClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterValidationCheckStatusResultArrayOutput) Index(i pulumi.IntInput) BareMetalClusterValidationCheckStatusResultOutput {
@@ -13987,12 +12090,6 @@ func (i BareMetalNodePoolNodePoolConfigArgs) ToBareMetalNodePoolNodePoolConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigOutput)
 }
 
-func (i BareMetalNodePoolNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfig] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfig]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalNodePoolNodePoolConfigArgs) ToBareMetalNodePoolNodePoolConfigPtrOutput() BareMetalNodePoolNodePoolConfigPtrOutput {
 	return i.ToBareMetalNodePoolNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -14034,12 +12131,6 @@ func (i *bareMetalNodePoolNodePoolConfigPtrType) ToBareMetalNodePoolNodePoolConf
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalNodePoolNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolNodePoolConfig] {
-	return pulumix.Output[*BareMetalNodePoolNodePoolConfig]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolNodePoolConfigOutput) ElementType() reflect.Type {
@@ -14062,12 +12153,6 @@ func (o BareMetalNodePoolNodePoolConfigOutput) ToBareMetalNodePoolNodePoolConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalNodePoolNodePoolConfig) *BareMetalNodePoolNodePoolConfig {
 		return &v
 	}).(BareMetalNodePoolNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalNodePoolNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfig] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -14115,12 +12200,6 @@ func (o BareMetalNodePoolNodePoolConfigPtrOutput) ToBareMetalNodePoolNodePoolCon
 
 func (o BareMetalNodePoolNodePoolConfigPtrOutput) ToBareMetalNodePoolNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalNodePoolNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalNodePoolNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolNodePoolConfig] {
-	return pulumix.Output[*BareMetalNodePoolNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolNodePoolConfigPtrOutput) Elem() BareMetalNodePoolNodePoolConfigOutput {
@@ -14241,12 +12320,6 @@ func (i BareMetalNodePoolNodePoolConfigNodeConfigArgs) ToBareMetalNodePoolNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigNodeConfigOutput)
 }
 
-func (i BareMetalNodePoolNodePoolConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalNodePoolNodePoolConfigNodeConfigArray and BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodePoolNodePoolConfigNodeConfigArrayInput` via:
 //
@@ -14272,12 +12345,6 @@ func (i BareMetalNodePoolNodePoolConfigNodeConfigArray) ToBareMetalNodePoolNodeP
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput)
 }
 
-func (i BareMetalNodePoolNodePoolConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalNodePoolNodePoolConfigNodeConfig]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -14290,12 +12357,6 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) ToBareMetalNodePoolNode
 
 func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) ToBareMetalNodePoolNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalNodePoolNodePoolConfigNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfigNodeConfig] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of Kubernetes labels (key/value pairs) to be applied to
@@ -14330,12 +12391,6 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) ToBareMetalNodePoo
 
 func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) ToBareMetalNodePoolNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolNodePoolConfigNodeConfig] {
-	return pulumix.Output[[]BareMetalNodePoolNodePoolConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalNodePoolNodePoolConfigNodeConfigOutput {
@@ -14391,12 +12446,6 @@ func (i BareMetalNodePoolNodePoolConfigTaintArgs) ToBareMetalNodePoolNodePoolCon
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigTaintOutput)
 }
 
-func (i BareMetalNodePoolNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolNodePoolConfigTaintArrayInput is an input type that accepts BareMetalNodePoolNodePoolConfigTaintArray and BareMetalNodePoolNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodePoolNodePoolConfigTaintArrayInput` via:
 //
@@ -14422,12 +12471,6 @@ func (i BareMetalNodePoolNodePoolConfigTaintArray) ToBareMetalNodePoolNodePoolCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolNodePoolConfigTaintArrayOutput)
 }
 
-func (i BareMetalNodePoolNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalNodePoolNodePoolConfigTaint]{
-		OutputState: i.ToBareMetalNodePoolNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -14440,12 +12483,6 @@ func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolC
 
 func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalNodePoolNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolNodePoolConfigTaint] {
-	return pulumix.Output[BareMetalNodePoolNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the nodes operating system (default: LINUX).
@@ -14478,12 +12515,6 @@ func (o BareMetalNodePoolNodePoolConfigTaintArrayOutput) ToBareMetalNodePoolNode
 
 func (o BareMetalNodePoolNodePoolConfigTaintArrayOutput) ToBareMetalNodePoolNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalNodePoolNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o BareMetalNodePoolNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolNodePoolConfigTaint] {
-	return pulumix.Output[[]BareMetalNodePoolNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalNodePoolNodePoolConfigTaintOutput {
@@ -14543,12 +12574,6 @@ func (i BareMetalNodePoolStatusArgs) ToBareMetalNodePoolStatusOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolStatusOutput)
 }
 
-func (i BareMetalNodePoolStatusArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolStatus] {
-	return pulumix.Output[BareMetalNodePoolStatus]{
-		OutputState: i.ToBareMetalNodePoolStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolStatusArrayInput is an input type that accepts BareMetalNodePoolStatusArray and BareMetalNodePoolStatusArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodePoolStatusArrayInput` via:
 //
@@ -14574,12 +12599,6 @@ func (i BareMetalNodePoolStatusArray) ToBareMetalNodePoolStatusArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolStatusArrayOutput)
 }
 
-func (i BareMetalNodePoolStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolStatus] {
-	return pulumix.Output[[]BareMetalNodePoolStatus]{
-		OutputState: i.ToBareMetalNodePoolStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolStatusOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolStatusOutput) ElementType() reflect.Type {
@@ -14592,12 +12611,6 @@ func (o BareMetalNodePoolStatusOutput) ToBareMetalNodePoolStatusOutput() BareMet
 
 func (o BareMetalNodePoolStatusOutput) ToBareMetalNodePoolStatusOutputWithContext(ctx context.Context) BareMetalNodePoolStatusOutput {
 	return o
-}
-
-func (o BareMetalNodePoolStatusOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolStatus] {
-	return pulumix.Output[BareMetalNodePoolStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -14629,12 +12642,6 @@ func (o BareMetalNodePoolStatusArrayOutput) ToBareMetalNodePoolStatusArrayOutput
 
 func (o BareMetalNodePoolStatusArrayOutput) ToBareMetalNodePoolStatusArrayOutputWithContext(ctx context.Context) BareMetalNodePoolStatusArrayOutput {
 	return o
-}
-
-func (o BareMetalNodePoolStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolStatus] {
-	return pulumix.Output[[]BareMetalNodePoolStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolStatusArrayOutput) Index(i pulumi.IntInput) BareMetalNodePoolStatusOutput {
@@ -14698,12 +12705,6 @@ func (i BareMetalNodePoolStatusConditionArgs) ToBareMetalNodePoolStatusCondition
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolStatusConditionOutput)
 }
 
-func (i BareMetalNodePoolStatusConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolStatusCondition] {
-	return pulumix.Output[BareMetalNodePoolStatusCondition]{
-		OutputState: i.ToBareMetalNodePoolStatusConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolStatusConditionArrayInput is an input type that accepts BareMetalNodePoolStatusConditionArray and BareMetalNodePoolStatusConditionArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodePoolStatusConditionArrayInput` via:
 //
@@ -14729,12 +12730,6 @@ func (i BareMetalNodePoolStatusConditionArray) ToBareMetalNodePoolStatusConditio
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolStatusConditionArrayOutput)
 }
 
-func (i BareMetalNodePoolStatusConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolStatusCondition] {
-	return pulumix.Output[[]BareMetalNodePoolStatusCondition]{
-		OutputState: i.ToBareMetalNodePoolStatusConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolStatusConditionOutput) ElementType() reflect.Type {
@@ -14747,12 +12742,6 @@ func (o BareMetalNodePoolStatusConditionOutput) ToBareMetalNodePoolStatusConditi
 
 func (o BareMetalNodePoolStatusConditionOutput) ToBareMetalNodePoolStatusConditionOutputWithContext(ctx context.Context) BareMetalNodePoolStatusConditionOutput {
 	return o
-}
-
-func (o BareMetalNodePoolStatusConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolStatusCondition] {
-	return pulumix.Output[BareMetalNodePoolStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -14795,12 +12784,6 @@ func (o BareMetalNodePoolStatusConditionArrayOutput) ToBareMetalNodePoolStatusCo
 
 func (o BareMetalNodePoolStatusConditionArrayOutput) ToBareMetalNodePoolStatusConditionArrayOutputWithContext(ctx context.Context) BareMetalNodePoolStatusConditionArrayOutput {
 	return o
-}
-
-func (o BareMetalNodePoolStatusConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodePoolStatusCondition] {
-	return pulumix.Output[[]BareMetalNodePoolStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolStatusConditionArrayOutput) Index(i pulumi.IntInput) BareMetalNodePoolStatusConditionOutput {
@@ -14846,12 +12829,6 @@ func (i VMwareClusterAntiAffinityGroupsArgs) ToVMwareClusterAntiAffinityGroupsOu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAntiAffinityGroupsOutput)
 }
 
-func (i VMwareClusterAntiAffinityGroupsArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAntiAffinityGroups] {
-	return pulumix.Output[VMwareClusterAntiAffinityGroups]{
-		OutputState: i.ToVMwareClusterAntiAffinityGroupsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterAntiAffinityGroupsArgs) ToVMwareClusterAntiAffinityGroupsPtrOutput() VMwareClusterAntiAffinityGroupsPtrOutput {
 	return i.ToVMwareClusterAntiAffinityGroupsPtrOutputWithContext(context.Background())
 }
@@ -14893,12 +12870,6 @@ func (i *vmwareClusterAntiAffinityGroupsPtrType) ToVMwareClusterAntiAffinityGrou
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAntiAffinityGroupsPtrOutput)
 }
 
-func (i *vmwareClusterAntiAffinityGroupsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAntiAffinityGroups] {
-	return pulumix.Output[*VMwareClusterAntiAffinityGroups]{
-		OutputState: i.ToVMwareClusterAntiAffinityGroupsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterAntiAffinityGroupsOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterAntiAffinityGroupsOutput) ElementType() reflect.Type {
@@ -14923,12 +12894,6 @@ func (o VMwareClusterAntiAffinityGroupsOutput) ToVMwareClusterAntiAffinityGroups
 	}).(VMwareClusterAntiAffinityGroupsPtrOutput)
 }
 
-func (o VMwareClusterAntiAffinityGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAntiAffinityGroups] {
-	return pulumix.Output[VMwareClusterAntiAffinityGroups]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Spread nodes across at least three physical hosts (requires at least three
 // hosts).
 // Enabled by default.
@@ -14948,12 +12913,6 @@ func (o VMwareClusterAntiAffinityGroupsPtrOutput) ToVMwareClusterAntiAffinityGro
 
 func (o VMwareClusterAntiAffinityGroupsPtrOutput) ToVMwareClusterAntiAffinityGroupsPtrOutputWithContext(ctx context.Context) VMwareClusterAntiAffinityGroupsPtrOutput {
 	return o
-}
-
-func (o VMwareClusterAntiAffinityGroupsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAntiAffinityGroups] {
-	return pulumix.Output[*VMwareClusterAntiAffinityGroups]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterAntiAffinityGroupsPtrOutput) Elem() VMwareClusterAntiAffinityGroupsOutput {
@@ -15015,12 +12974,6 @@ func (i VMwareClusterAuthorizationArgs) ToVMwareClusterAuthorizationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAuthorizationOutput)
 }
 
-func (i VMwareClusterAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAuthorization] {
-	return pulumix.Output[VMwareClusterAuthorization]{
-		OutputState: i.ToVMwareClusterAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterAuthorizationArgs) ToVMwareClusterAuthorizationPtrOutput() VMwareClusterAuthorizationPtrOutput {
 	return i.ToVMwareClusterAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -15062,12 +13015,6 @@ func (i *vmwareClusterAuthorizationPtrType) ToVMwareClusterAuthorizationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAuthorizationPtrOutput)
 }
 
-func (i *vmwareClusterAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAuthorization] {
-	return pulumix.Output[*VMwareClusterAuthorization]{
-		OutputState: i.ToVMwareClusterAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterAuthorizationOutput) ElementType() reflect.Type {
@@ -15092,12 +13039,6 @@ func (o VMwareClusterAuthorizationOutput) ToVMwareClusterAuthorizationPtrOutputW
 	}).(VMwareClusterAuthorizationPtrOutput)
 }
 
-func (o VMwareClusterAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAuthorization] {
-	return pulumix.Output[VMwareClusterAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Users that will be granted the cluster-admin role on the cluster, providing
 // full access to the cluster.
 // Structure is documented below.
@@ -15117,12 +13058,6 @@ func (o VMwareClusterAuthorizationPtrOutput) ToVMwareClusterAuthorizationPtrOutp
 
 func (o VMwareClusterAuthorizationPtrOutput) ToVMwareClusterAuthorizationPtrOutputWithContext(ctx context.Context) VMwareClusterAuthorizationPtrOutput {
 	return o
-}
-
-func (o VMwareClusterAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAuthorization] {
-	return pulumix.Output[*VMwareClusterAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterAuthorizationPtrOutput) Elem() VMwareClusterAuthorizationOutput {
@@ -15180,12 +13115,6 @@ func (i VMwareClusterAuthorizationAdminUserArgs) ToVMwareClusterAuthorizationAdm
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAuthorizationAdminUserOutput)
 }
 
-func (i VMwareClusterAuthorizationAdminUserArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAuthorizationAdminUser] {
-	return pulumix.Output[VMwareClusterAuthorizationAdminUser]{
-		OutputState: i.ToVMwareClusterAuthorizationAdminUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterAuthorizationAdminUserArrayInput is an input type that accepts VMwareClusterAuthorizationAdminUserArray and VMwareClusterAuthorizationAdminUserArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterAuthorizationAdminUserArrayInput` via:
 //
@@ -15211,12 +13140,6 @@ func (i VMwareClusterAuthorizationAdminUserArray) ToVMwareClusterAuthorizationAd
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAuthorizationAdminUserArrayOutput)
 }
 
-func (i VMwareClusterAuthorizationAdminUserArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterAuthorizationAdminUser] {
-	return pulumix.Output[[]VMwareClusterAuthorizationAdminUser]{
-		OutputState: i.ToVMwareClusterAuthorizationAdminUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterAuthorizationAdminUserOutput) ElementType() reflect.Type {
@@ -15229,12 +13152,6 @@ func (o VMwareClusterAuthorizationAdminUserOutput) ToVMwareClusterAuthorizationA
 
 func (o VMwareClusterAuthorizationAdminUserOutput) ToVMwareClusterAuthorizationAdminUserOutputWithContext(ctx context.Context) VMwareClusterAuthorizationAdminUserOutput {
 	return o
-}
-
-func (o VMwareClusterAuthorizationAdminUserOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAuthorizationAdminUser] {
-	return pulumix.Output[VMwareClusterAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -15254,12 +13171,6 @@ func (o VMwareClusterAuthorizationAdminUserArrayOutput) ToVMwareClusterAuthoriza
 
 func (o VMwareClusterAuthorizationAdminUserArrayOutput) ToVMwareClusterAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) VMwareClusterAuthorizationAdminUserArrayOutput {
 	return o
-}
-
-func (o VMwareClusterAuthorizationAdminUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterAuthorizationAdminUser] {
-	return pulumix.Output[[]VMwareClusterAuthorizationAdminUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) VMwareClusterAuthorizationAdminUserOutput {
@@ -15299,12 +13210,6 @@ func (i VMwareClusterAutoRepairConfigArgs) ToVMwareClusterAutoRepairConfigOutput
 
 func (i VMwareClusterAutoRepairConfigArgs) ToVMwareClusterAutoRepairConfigOutputWithContext(ctx context.Context) VMwareClusterAutoRepairConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAutoRepairConfigOutput)
-}
-
-func (i VMwareClusterAutoRepairConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAutoRepairConfig] {
-	return pulumix.Output[VMwareClusterAutoRepairConfig]{
-		OutputState: i.ToVMwareClusterAutoRepairConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VMwareClusterAutoRepairConfigArgs) ToVMwareClusterAutoRepairConfigPtrOutput() VMwareClusterAutoRepairConfigPtrOutput {
@@ -15348,12 +13253,6 @@ func (i *vmwareClusterAutoRepairConfigPtrType) ToVMwareClusterAutoRepairConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterAutoRepairConfigPtrOutput)
 }
 
-func (i *vmwareClusterAutoRepairConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAutoRepairConfig] {
-	return pulumix.Output[*VMwareClusterAutoRepairConfig]{
-		OutputState: i.ToVMwareClusterAutoRepairConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterAutoRepairConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterAutoRepairConfigOutput) ElementType() reflect.Type {
@@ -15378,12 +13277,6 @@ func (o VMwareClusterAutoRepairConfigOutput) ToVMwareClusterAutoRepairConfigPtrO
 	}).(VMwareClusterAutoRepairConfigPtrOutput)
 }
 
-func (o VMwareClusterAutoRepairConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterAutoRepairConfig] {
-	return pulumix.Output[VMwareClusterAutoRepairConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether auto repair is enabled.
 func (o VMwareClusterAutoRepairConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VMwareClusterAutoRepairConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -15401,12 +13294,6 @@ func (o VMwareClusterAutoRepairConfigPtrOutput) ToVMwareClusterAutoRepairConfigP
 
 func (o VMwareClusterAutoRepairConfigPtrOutput) ToVMwareClusterAutoRepairConfigPtrOutputWithContext(ctx context.Context) VMwareClusterAutoRepairConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterAutoRepairConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterAutoRepairConfig] {
-	return pulumix.Output[*VMwareClusterAutoRepairConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterAutoRepairConfigPtrOutput) Elem() VMwareClusterAutoRepairConfigOutput {
@@ -15490,12 +13377,6 @@ func (i VMwareClusterControlPlaneNodeArgs) ToVMwareClusterControlPlaneNodeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodeOutput)
 }
 
-func (i VMwareClusterControlPlaneNodeArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNode] {
-	return pulumix.Output[VMwareClusterControlPlaneNode]{
-		OutputState: i.ToVMwareClusterControlPlaneNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterControlPlaneNodeArgs) ToVMwareClusterControlPlaneNodePtrOutput() VMwareClusterControlPlaneNodePtrOutput {
 	return i.ToVMwareClusterControlPlaneNodePtrOutputWithContext(context.Background())
 }
@@ -15537,12 +13418,6 @@ func (i *vmwareClusterControlPlaneNodePtrType) ToVMwareClusterControlPlaneNodePt
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodePtrOutput)
 }
 
-func (i *vmwareClusterControlPlaneNodePtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterControlPlaneNode] {
-	return pulumix.Output[*VMwareClusterControlPlaneNode]{
-		OutputState: i.ToVMwareClusterControlPlaneNodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterControlPlaneNodeOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterControlPlaneNodeOutput) ElementType() reflect.Type {
@@ -15565,12 +13440,6 @@ func (o VMwareClusterControlPlaneNodeOutput) ToVMwareClusterControlPlaneNodePtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterControlPlaneNode) *VMwareClusterControlPlaneNode {
 		return &v
 	}).(VMwareClusterControlPlaneNodePtrOutput)
-}
-
-func (o VMwareClusterControlPlaneNodeOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNode] {
-	return pulumix.Output[VMwareClusterControlPlaneNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AutoResizeConfig provides auto resizing configurations.
@@ -15620,12 +13489,6 @@ func (o VMwareClusterControlPlaneNodePtrOutput) ToVMwareClusterControlPlaneNodeP
 
 func (o VMwareClusterControlPlaneNodePtrOutput) ToVMwareClusterControlPlaneNodePtrOutputWithContext(ctx context.Context) VMwareClusterControlPlaneNodePtrOutput {
 	return o
-}
-
-func (o VMwareClusterControlPlaneNodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterControlPlaneNode] {
-	return pulumix.Output[*VMwareClusterControlPlaneNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterControlPlaneNodePtrOutput) Elem() VMwareClusterControlPlaneNodeOutput {
@@ -15731,12 +13594,6 @@ func (i VMwareClusterControlPlaneNodeAutoResizeConfigArgs) ToVMwareClusterContro
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodeAutoResizeConfigOutput)
 }
 
-func (i VMwareClusterControlPlaneNodeAutoResizeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNodeAutoResizeConfig] {
-	return pulumix.Output[VMwareClusterControlPlaneNodeAutoResizeConfig]{
-		OutputState: i.ToVMwareClusterControlPlaneNodeAutoResizeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterControlPlaneNodeAutoResizeConfigArgs) ToVMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput() VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput {
 	return i.ToVMwareClusterControlPlaneNodeAutoResizeConfigPtrOutputWithContext(context.Background())
 }
@@ -15778,12 +13635,6 @@ func (i *vmwareClusterControlPlaneNodeAutoResizeConfigPtrType) ToVMwareClusterCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput)
 }
 
-func (i *vmwareClusterControlPlaneNodeAutoResizeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterControlPlaneNodeAutoResizeConfig] {
-	return pulumix.Output[*VMwareClusterControlPlaneNodeAutoResizeConfig]{
-		OutputState: i.ToVMwareClusterControlPlaneNodeAutoResizeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterControlPlaneNodeAutoResizeConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterControlPlaneNodeAutoResizeConfigOutput) ElementType() reflect.Type {
@@ -15808,12 +13659,6 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) ToVMwareClusterCont
 	}).(VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput)
 }
 
-func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNodeAutoResizeConfig] {
-	return pulumix.Output[VMwareClusterControlPlaneNodeAutoResizeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable control plane node auto resizing.
 //
 // <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
@@ -15833,12 +13678,6 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) ToVMwareClusterC
 
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) ToVMwareClusterControlPlaneNodeAutoResizeConfigPtrOutputWithContext(ctx context.Context) VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterControlPlaneNodeAutoResizeConfig] {
-	return pulumix.Output[*VMwareClusterControlPlaneNodeAutoResizeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Elem() VMwareClusterControlPlaneNodeAutoResizeConfigOutput {
@@ -15908,12 +13747,6 @@ func (i VMwareClusterControlPlaneNodeVsphereConfigArgs) ToVMwareClusterControlPl
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodeVsphereConfigOutput)
 }
 
-func (i VMwareClusterControlPlaneNodeVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNodeVsphereConfig] {
-	return pulumix.Output[VMwareClusterControlPlaneNodeVsphereConfig]{
-		OutputState: i.ToVMwareClusterControlPlaneNodeVsphereConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterControlPlaneNodeVsphereConfigArrayInput is an input type that accepts VMwareClusterControlPlaneNodeVsphereConfigArray and VMwareClusterControlPlaneNodeVsphereConfigArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterControlPlaneNodeVsphereConfigArrayInput` via:
 //
@@ -15939,12 +13772,6 @@ func (i VMwareClusterControlPlaneNodeVsphereConfigArray) ToVMwareClusterControlP
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterControlPlaneNodeVsphereConfigArrayOutput)
 }
 
-func (i VMwareClusterControlPlaneNodeVsphereConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterControlPlaneNodeVsphereConfig] {
-	return pulumix.Output[[]VMwareClusterControlPlaneNodeVsphereConfig]{
-		OutputState: i.ToVMwareClusterControlPlaneNodeVsphereConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterControlPlaneNodeVsphereConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterControlPlaneNodeVsphereConfigOutput) ElementType() reflect.Type {
@@ -15957,12 +13784,6 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToVMwareClusterControl
 
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToVMwareClusterControlPlaneNodeVsphereConfigOutputWithContext(ctx context.Context) VMwareClusterControlPlaneNodeVsphereConfigOutput {
 	return o
-}
-
-func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterControlPlaneNodeVsphereConfig] {
-	return pulumix.Output[VMwareClusterControlPlaneNodeVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -15991,12 +13812,6 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigArrayOutput) ToVMwareClusterCo
 
 func (o VMwareClusterControlPlaneNodeVsphereConfigArrayOutput) ToVMwareClusterControlPlaneNodeVsphereConfigArrayOutputWithContext(ctx context.Context) VMwareClusterControlPlaneNodeVsphereConfigArrayOutput {
 	return o
-}
-
-func (o VMwareClusterControlPlaneNodeVsphereConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterControlPlaneNodeVsphereConfig] {
-	return pulumix.Output[[]VMwareClusterControlPlaneNodeVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterControlPlaneNodeVsphereConfigArrayOutput) Index(i pulumi.IntInput) VMwareClusterControlPlaneNodeVsphereConfigOutput {
@@ -16046,12 +13861,6 @@ func (i VMwareClusterDataplaneV2Args) ToVMwareClusterDataplaneV2OutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterDataplaneV2Output)
 }
 
-func (i VMwareClusterDataplaneV2Args) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterDataplaneV2] {
-	return pulumix.Output[VMwareClusterDataplaneV2]{
-		OutputState: i.ToVMwareClusterDataplaneV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterDataplaneV2Args) ToVMwareClusterDataplaneV2PtrOutput() VMwareClusterDataplaneV2PtrOutput {
 	return i.ToVMwareClusterDataplaneV2PtrOutputWithContext(context.Background())
 }
@@ -16093,12 +13902,6 @@ func (i *vmwareClusterDataplaneV2PtrType) ToVMwareClusterDataplaneV2PtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterDataplaneV2PtrOutput)
 }
 
-func (i *vmwareClusterDataplaneV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterDataplaneV2] {
-	return pulumix.Output[*VMwareClusterDataplaneV2]{
-		OutputState: i.ToVMwareClusterDataplaneV2PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterDataplaneV2Output struct{ *pulumi.OutputState }
 
 func (VMwareClusterDataplaneV2Output) ElementType() reflect.Type {
@@ -16121,12 +13924,6 @@ func (o VMwareClusterDataplaneV2Output) ToVMwareClusterDataplaneV2PtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterDataplaneV2) *VMwareClusterDataplaneV2 {
 		return &v
 	}).(VMwareClusterDataplaneV2PtrOutput)
-}
-
-func (o VMwareClusterDataplaneV2Output) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterDataplaneV2] {
-	return pulumix.Output[VMwareClusterDataplaneV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable advanced networking which requires dataplaneV2Enabled to be set true.
@@ -16156,12 +13953,6 @@ func (o VMwareClusterDataplaneV2PtrOutput) ToVMwareClusterDataplaneV2PtrOutput()
 
 func (o VMwareClusterDataplaneV2PtrOutput) ToVMwareClusterDataplaneV2PtrOutputWithContext(ctx context.Context) VMwareClusterDataplaneV2PtrOutput {
 	return o
-}
-
-func (o VMwareClusterDataplaneV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterDataplaneV2] {
-	return pulumix.Output[*VMwareClusterDataplaneV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterDataplaneV2PtrOutput) Elem() VMwareClusterDataplaneV2Output {
@@ -16243,12 +14034,6 @@ func (i VMwareClusterFleetArgs) ToVMwareClusterFleetOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterFleetOutput)
 }
 
-func (i VMwareClusterFleetArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterFleet] {
-	return pulumix.Output[VMwareClusterFleet]{
-		OutputState: i.ToVMwareClusterFleetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterFleetArrayInput is an input type that accepts VMwareClusterFleetArray and VMwareClusterFleetArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterFleetArrayInput` via:
 //
@@ -16274,12 +14059,6 @@ func (i VMwareClusterFleetArray) ToVMwareClusterFleetArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterFleetArrayOutput)
 }
 
-func (i VMwareClusterFleetArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterFleet] {
-	return pulumix.Output[[]VMwareClusterFleet]{
-		OutputState: i.ToVMwareClusterFleetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterFleetOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterFleetOutput) ElementType() reflect.Type {
@@ -16292,12 +14071,6 @@ func (o VMwareClusterFleetOutput) ToVMwareClusterFleetOutput() VMwareClusterFlee
 
 func (o VMwareClusterFleetOutput) ToVMwareClusterFleetOutputWithContext(ctx context.Context) VMwareClusterFleetOutput {
 	return o
-}
-
-func (o VMwareClusterFleetOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterFleet] {
-	return pulumix.Output[VMwareClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -16320,12 +14093,6 @@ func (o VMwareClusterFleetArrayOutput) ToVMwareClusterFleetArrayOutput() VMwareC
 
 func (o VMwareClusterFleetArrayOutput) ToVMwareClusterFleetArrayOutputWithContext(ctx context.Context) VMwareClusterFleetArrayOutput {
 	return o
-}
-
-func (o VMwareClusterFleetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterFleet] {
-	return pulumix.Output[[]VMwareClusterFleet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterFleetArrayOutput) Index(i pulumi.IntInput) VMwareClusterFleetOutput {
@@ -16387,12 +14154,6 @@ func (i VMwareClusterLoadBalancerArgs) ToVMwareClusterLoadBalancerOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerOutput)
 }
 
-func (i VMwareClusterLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancer] {
-	return pulumix.Output[VMwareClusterLoadBalancer]{
-		OutputState: i.ToVMwareClusterLoadBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterLoadBalancerArgs) ToVMwareClusterLoadBalancerPtrOutput() VMwareClusterLoadBalancerPtrOutput {
 	return i.ToVMwareClusterLoadBalancerPtrOutputWithContext(context.Background())
 }
@@ -16434,12 +14195,6 @@ func (i *vmwareClusterLoadBalancerPtrType) ToVMwareClusterLoadBalancerPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerPtrOutput)
 }
 
-func (i *vmwareClusterLoadBalancerPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancer] {
-	return pulumix.Output[*VMwareClusterLoadBalancer]{
-		OutputState: i.ToVMwareClusterLoadBalancerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerOutput) ElementType() reflect.Type {
@@ -16462,12 +14217,6 @@ func (o VMwareClusterLoadBalancerOutput) ToVMwareClusterLoadBalancerPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterLoadBalancer) *VMwareClusterLoadBalancer {
 		return &v
 	}).(VMwareClusterLoadBalancerPtrOutput)
-}
-
-func (o VMwareClusterLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancer] {
-	return pulumix.Output[VMwareClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for F5 Big IP typed load balancers.
@@ -16506,12 +14255,6 @@ func (o VMwareClusterLoadBalancerPtrOutput) ToVMwareClusterLoadBalancerPtrOutput
 
 func (o VMwareClusterLoadBalancerPtrOutput) ToVMwareClusterLoadBalancerPtrOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerPtrOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancer] {
-	return pulumix.Output[*VMwareClusterLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerPtrOutput) Elem() VMwareClusterLoadBalancerOutput {
@@ -16613,12 +14356,6 @@ func (i VMwareClusterLoadBalancerF5ConfigArgs) ToVMwareClusterLoadBalancerF5Conf
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerF5ConfigOutput)
 }
 
-func (i VMwareClusterLoadBalancerF5ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerF5Config] {
-	return pulumix.Output[VMwareClusterLoadBalancerF5Config]{
-		OutputState: i.ToVMwareClusterLoadBalancerF5ConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterLoadBalancerF5ConfigArgs) ToVMwareClusterLoadBalancerF5ConfigPtrOutput() VMwareClusterLoadBalancerF5ConfigPtrOutput {
 	return i.ToVMwareClusterLoadBalancerF5ConfigPtrOutputWithContext(context.Background())
 }
@@ -16660,12 +14397,6 @@ func (i *vmwareClusterLoadBalancerF5ConfigPtrType) ToVMwareClusterLoadBalancerF5
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerF5ConfigPtrOutput)
 }
 
-func (i *vmwareClusterLoadBalancerF5ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerF5Config] {
-	return pulumix.Output[*VMwareClusterLoadBalancerF5Config]{
-		OutputState: i.ToVMwareClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerF5ConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerF5ConfigOutput) ElementType() reflect.Type {
@@ -16688,12 +14419,6 @@ func (o VMwareClusterLoadBalancerF5ConfigOutput) ToVMwareClusterLoadBalancerF5Co
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterLoadBalancerF5Config) *VMwareClusterLoadBalancerF5Config {
 		return &v
 	}).(VMwareClusterLoadBalancerF5ConfigPtrOutput)
-}
-
-func (o VMwareClusterLoadBalancerF5ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerF5Config] {
-	return pulumix.Output[VMwareClusterLoadBalancerF5Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The load balancer's IP address.
@@ -16725,12 +14450,6 @@ func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) ToVMwareClusterLoadBalancerF
 
 func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) ToVMwareClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerF5ConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerF5Config] {
-	return pulumix.Output[*VMwareClusterLoadBalancerF5Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) Elem() VMwareClusterLoadBalancerF5ConfigOutput {
@@ -16828,12 +14547,6 @@ func (i VMwareClusterLoadBalancerManualLbConfigArgs) ToVMwareClusterLoadBalancer
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerManualLbConfigOutput)
 }
 
-func (i VMwareClusterLoadBalancerManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerManualLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterLoadBalancerManualLbConfigArgs) ToVMwareClusterLoadBalancerManualLbConfigPtrOutput() VMwareClusterLoadBalancerManualLbConfigPtrOutput {
 	return i.ToVMwareClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
 }
@@ -16875,12 +14588,6 @@ func (i *vmwareClusterLoadBalancerManualLbConfigPtrType) ToVMwareClusterLoadBala
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-func (i *vmwareClusterLoadBalancerManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerManualLbConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerManualLbConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerManualLbConfigOutput) ElementType() reflect.Type {
@@ -16903,12 +14610,6 @@ func (o VMwareClusterLoadBalancerManualLbConfigOutput) ToVMwareClusterLoadBalanc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterLoadBalancerManualLbConfig) *VMwareClusterLoadBalancerManualLbConfig {
 		return &v
 	}).(VMwareClusterLoadBalancerManualLbConfigPtrOutput)
-}
-
-func (o VMwareClusterLoadBalancerManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // NodePort for control plane service. The Kubernetes API server in the admin
@@ -16947,12 +14648,6 @@ func (o VMwareClusterLoadBalancerManualLbConfigPtrOutput) ToVMwareClusterLoadBal
 
 func (o VMwareClusterLoadBalancerManualLbConfigPtrOutput) ToVMwareClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerManualLbConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerManualLbConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerManualLbConfigPtrOutput) Elem() VMwareClusterLoadBalancerManualLbConfigOutput {
@@ -17048,12 +14743,6 @@ func (i VMwareClusterLoadBalancerMetalLbConfigArgs) ToVMwareClusterLoadBalancerM
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerMetalLbConfigOutput)
 }
 
-func (i VMwareClusterLoadBalancerMetalLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerMetalLbConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerMetalLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterLoadBalancerMetalLbConfigArgs) ToVMwareClusterLoadBalancerMetalLbConfigPtrOutput() VMwareClusterLoadBalancerMetalLbConfigPtrOutput {
 	return i.ToVMwareClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Background())
 }
@@ -17095,12 +14784,6 @@ func (i *vmwareClusterLoadBalancerMetalLbConfigPtrType) ToVMwareClusterLoadBalan
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerMetalLbConfigPtrOutput)
 }
 
-func (i *vmwareClusterLoadBalancerMetalLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerMetalLbConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerMetalLbConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerMetalLbConfigOutput) ElementType() reflect.Type {
@@ -17125,12 +14808,6 @@ func (o VMwareClusterLoadBalancerMetalLbConfigOutput) ToVMwareClusterLoadBalance
 	}).(VMwareClusterLoadBalancerMetalLbConfigPtrOutput)
 }
 
-func (o VMwareClusterLoadBalancerMetalLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AddressPools is a list of non-overlapping IP pools used by load balancer
 // typed services. All addresses must be routable to load balancer nodes.
 // IngressVIP must be included in the pools.
@@ -17153,12 +14830,6 @@ func (o VMwareClusterLoadBalancerMetalLbConfigPtrOutput) ToVMwareClusterLoadBala
 
 func (o VMwareClusterLoadBalancerMetalLbConfigPtrOutput) ToVMwareClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerMetalLbConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerMetalLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerMetalLbConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerMetalLbConfigPtrOutput) Elem() VMwareClusterLoadBalancerMetalLbConfigOutput {
@@ -17241,12 +14912,6 @@ func (i VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs) ToVMwareClusterLo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput)
 }
 
-func (i VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[VMwareClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: i.ToVMwareClusterLoadBalancerMetalLbConfigAddressPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayInput is an input type that accepts VMwareClusterLoadBalancerMetalLbConfigAddressPoolArray and VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayInput` via:
 //
@@ -17272,12 +14937,6 @@ func (i VMwareClusterLoadBalancerMetalLbConfigAddressPoolArray) ToVMwareClusterL
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput)
 }
 
-func (i VMwareClusterLoadBalancerMetalLbConfigAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[[]VMwareClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: i.ToVMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) ElementType() reflect.Type {
@@ -17290,12 +14949,6 @@ func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToVMwareCluster
 
 func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToVMwareClusterLoadBalancerMetalLbConfigAddressPoolOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[VMwareClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address
@@ -17336,12 +14989,6 @@ func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToVMwareCl
 
 func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToVMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterLoadBalancerMetalLbConfigAddressPool] {
-	return pulumix.Output[[]VMwareClusterLoadBalancerMetalLbConfigAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrayOutput) Index(i pulumi.IntInput) VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput {
@@ -17391,12 +15038,6 @@ func (i VMwareClusterLoadBalancerVipConfigArgs) ToVMwareClusterLoadBalancerVipCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerVipConfigOutput)
 }
 
-func (i VMwareClusterLoadBalancerVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerVipConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerVipConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterLoadBalancerVipConfigArgs) ToVMwareClusterLoadBalancerVipConfigPtrOutput() VMwareClusterLoadBalancerVipConfigPtrOutput {
 	return i.ToVMwareClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
 }
@@ -17438,12 +15079,6 @@ func (i *vmwareClusterLoadBalancerVipConfigPtrType) ToVMwareClusterLoadBalancerV
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterLoadBalancerVipConfigPtrOutput)
 }
 
-func (i *vmwareClusterLoadBalancerVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerVipConfig]{
-		OutputState: i.ToVMwareClusterLoadBalancerVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterLoadBalancerVipConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterLoadBalancerVipConfigOutput) ElementType() reflect.Type {
@@ -17466,12 +15101,6 @@ func (o VMwareClusterLoadBalancerVipConfigOutput) ToVMwareClusterLoadBalancerVip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterLoadBalancerVipConfig) *VMwareClusterLoadBalancerVipConfig {
 		return &v
 	}).(VMwareClusterLoadBalancerVipConfigPtrOutput)
-}
-
-func (o VMwareClusterLoadBalancerVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterLoadBalancerVipConfig] {
-	return pulumix.Output[VMwareClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The VIP which you previously set aside for the Kubernetes API of this cluster.
@@ -17498,12 +15127,6 @@ func (o VMwareClusterLoadBalancerVipConfigPtrOutput) ToVMwareClusterLoadBalancer
 
 func (o VMwareClusterLoadBalancerVipConfigPtrOutput) ToVMwareClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) VMwareClusterLoadBalancerVipConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterLoadBalancerVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterLoadBalancerVipConfig] {
-	return pulumix.Output[*VMwareClusterLoadBalancerVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterLoadBalancerVipConfigPtrOutput) Elem() VMwareClusterLoadBalancerVipConfigOutput {
@@ -17611,12 +15234,6 @@ func (i VMwareClusterNetworkConfigArgs) ToVMwareClusterNetworkConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigOutput)
 }
 
-func (i VMwareClusterNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigArgs) ToVMwareClusterNetworkConfigPtrOutput() VMwareClusterNetworkConfigPtrOutput {
 	return i.ToVMwareClusterNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -17658,12 +15275,6 @@ func (i *vmwareClusterNetworkConfigPtrType) ToVMwareClusterNetworkConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigOutput) ElementType() reflect.Type {
@@ -17686,12 +15297,6 @@ func (o VMwareClusterNetworkConfigOutput) ToVMwareClusterNetworkConfigPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterNetworkConfig) *VMwareClusterNetworkConfig {
 		return &v
 	}).(VMwareClusterNetworkConfigPtrOutput)
-}
-
-func (o VMwareClusterNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for control plane V2 mode.
@@ -17751,12 +15356,6 @@ func (o VMwareClusterNetworkConfigPtrOutput) ToVMwareClusterNetworkConfigPtrOutp
 
 func (o VMwareClusterNetworkConfigPtrOutput) ToVMwareClusterNetworkConfigPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigPtrOutput) Elem() VMwareClusterNetworkConfigOutput {
@@ -17882,12 +15481,6 @@ func (i VMwareClusterNetworkConfigControlPlaneV2ConfigArgs) ToVMwareClusterNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigOutput)
 }
 
-func (i VMwareClusterNetworkConfigControlPlaneV2ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2Config] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2Config]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigControlPlaneV2ConfigArgs) ToVMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput() VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput {
 	return i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutputWithContext(context.Background())
 }
@@ -17929,12 +15522,6 @@ func (i *vmwareClusterNetworkConfigControlPlaneV2ConfigPtrType) ToVMwareClusterN
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigControlPlaneV2ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2Config] {
-	return pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2Config]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigControlPlaneV2ConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ElementType() reflect.Type {
@@ -17959,12 +15546,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ToVMwareClusterNet
 	}).(VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput)
 }
 
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2Config] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2Config]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Static IP addresses for the control plane nodes.
 // Structure is documented below.
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ControlPlaneIpBlock() VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput {
@@ -17985,12 +15566,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) ToVMwareCluster
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) ToVMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2Config] {
-	return pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) Elem() VMwareClusterNetworkConfigControlPlaneV2ConfigOutput {
@@ -18057,12 +15632,6 @@ func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput)
 }
 
-func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs) ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput() VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput {
 	return i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutputWithContext(context.Background())
 }
@@ -18104,12 +15673,6 @@ func (i *vmwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock] {
-	return pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput) ElementType() reflect.Type {
@@ -18132,12 +15695,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock) *VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
 		return &v
 	}).(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput)
-}
-
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network gateway used by the VMware User Cluster.
@@ -18170,12 +15727,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutp
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput) ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock] {
-	return pulumix.Output[*VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput) Elem() VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockOutput {
@@ -18256,12 +15807,6 @@ func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput)
 }
 
-func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayInput is an input type that accepts VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArray and VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayInput` via:
 //
@@ -18287,12 +15832,6 @@ func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArray
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput)
 }
 
-func (i VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp]{
-		OutputState: i.ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput) ElementType() reflect.Type {
@@ -18305,12 +15844,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutpu
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput) ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp] {
-	return pulumix.Output[VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
@@ -18335,12 +15868,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArray
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput) ToVMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrayOutput) Index(i pulumi.IntInput) VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpOutput {
@@ -18384,12 +15911,6 @@ func (i VMwareClusterNetworkConfigDhcpIpConfigArgs) ToVMwareClusterNetworkConfig
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigDhcpIpConfigOutput)
 }
 
-func (i VMwareClusterNetworkConfigDhcpIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigDhcpIpConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigDhcpIpConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigDhcpIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigDhcpIpConfigArgs) ToVMwareClusterNetworkConfigDhcpIpConfigPtrOutput() VMwareClusterNetworkConfigDhcpIpConfigPtrOutput {
 	return i.ToVMwareClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(context.Background())
 }
@@ -18431,12 +15952,6 @@ func (i *vmwareClusterNetworkConfigDhcpIpConfigPtrType) ToVMwareClusterNetworkCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigDhcpIpConfigPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigDhcpIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigDhcpIpConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigDhcpIpConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigDhcpIpConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigDhcpIpConfigOutput) ElementType() reflect.Type {
@@ -18461,12 +15976,6 @@ func (o VMwareClusterNetworkConfigDhcpIpConfigOutput) ToVMwareClusterNetworkConf
 	}).(VMwareClusterNetworkConfigDhcpIpConfigPtrOutput)
 }
 
-func (o VMwareClusterNetworkConfigDhcpIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigDhcpIpConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigDhcpIpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // enabled is a flag to mark if DHCP IP allocation is
 // used for VMware user clusters.
 func (o VMwareClusterNetworkConfigDhcpIpConfigOutput) Enabled() pulumi.BoolOutput {
@@ -18485,12 +15994,6 @@ func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) ToVMwareClusterNetworkC
 
 func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) ToVMwareClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigDhcpIpConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigDhcpIpConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigDhcpIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) Elem() VMwareClusterNetworkConfigDhcpIpConfigOutput {
@@ -18559,12 +16062,6 @@ func (i VMwareClusterNetworkConfigHostConfigArgs) ToVMwareClusterNetworkConfigHo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigHostConfigOutput)
 }
 
-func (i VMwareClusterNetworkConfigHostConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigHostConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigHostConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigHostConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigHostConfigArgs) ToVMwareClusterNetworkConfigHostConfigPtrOutput() VMwareClusterNetworkConfigHostConfigPtrOutput {
 	return i.ToVMwareClusterNetworkConfigHostConfigPtrOutputWithContext(context.Background())
 }
@@ -18606,12 +16103,6 @@ func (i *vmwareClusterNetworkConfigHostConfigPtrType) ToVMwareClusterNetworkConf
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigHostConfigPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigHostConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigHostConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigHostConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigHostConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigHostConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigHostConfigOutput) ElementType() reflect.Type {
@@ -18634,12 +16125,6 @@ func (o VMwareClusterNetworkConfigHostConfigOutput) ToVMwareClusterNetworkConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterNetworkConfigHostConfig) *VMwareClusterNetworkConfigHostConfig {
 		return &v
 	}).(VMwareClusterNetworkConfigHostConfigPtrOutput)
-}
-
-func (o VMwareClusterNetworkConfigHostConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigHostConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigHostConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DNS search domains.
@@ -18671,12 +16156,6 @@ func (o VMwareClusterNetworkConfigHostConfigPtrOutput) ToVMwareClusterNetworkCon
 
 func (o VMwareClusterNetworkConfigHostConfigPtrOutput) ToVMwareClusterNetworkConfigHostConfigPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigHostConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigHostConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigHostConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigHostConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigHostConfigPtrOutput) Elem() VMwareClusterNetworkConfigHostConfigOutput {
@@ -18756,12 +16235,6 @@ func (i VMwareClusterNetworkConfigStaticIpConfigArgs) ToVMwareClusterNetworkConf
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigOutput)
 }
 
-func (i VMwareClusterNetworkConfigStaticIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterNetworkConfigStaticIpConfigArgs) ToVMwareClusterNetworkConfigStaticIpConfigPtrOutput() VMwareClusterNetworkConfigStaticIpConfigPtrOutput {
 	return i.ToVMwareClusterNetworkConfigStaticIpConfigPtrOutputWithContext(context.Background())
 }
@@ -18803,12 +16276,6 @@ func (i *vmwareClusterNetworkConfigStaticIpConfigPtrType) ToVMwareClusterNetwork
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigPtrOutput)
 }
 
-func (i *vmwareClusterNetworkConfigStaticIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigStaticIpConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigStaticIpConfig]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigStaticIpConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigStaticIpConfigOutput) ElementType() reflect.Type {
@@ -18833,12 +16300,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigOutput) ToVMwareClusterNetworkCo
 	}).(VMwareClusterNetworkConfigStaticIpConfigPtrOutput)
 }
 
-func (o VMwareClusterNetworkConfigStaticIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfig] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents the configuration values for static IP allocation to nodes.
 // Structure is documented below.
 func (o VMwareClusterNetworkConfigStaticIpConfigOutput) IpBlocks() VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
@@ -18859,12 +16320,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigPtrOutput) ToVMwareClusterNetwor
 
 func (o VMwareClusterNetworkConfigStaticIpConfigPtrOutput) ToVMwareClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigStaticIpConfigPtrOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigStaticIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterNetworkConfigStaticIpConfig] {
-	return pulumix.Output[*VMwareClusterNetworkConfigStaticIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigStaticIpConfigPtrOutput) Elem() VMwareClusterNetworkConfigStaticIpConfigOutput {
@@ -18931,12 +16386,6 @@ func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs) ToVMwareClusterNetw
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput)
 }
 
-func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlock] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlock]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayInput is an input type that accepts VMwareClusterNetworkConfigStaticIpConfigIpBlockArray and VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayInput` via:
 //
@@ -18962,12 +16411,6 @@ func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockArray) ToVMwareClusterNet
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput)
 }
 
-func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlock] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlock]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput) ElementType() reflect.Type {
@@ -18980,12 +16423,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput) ToVMwareClusterNe
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput) ToVMwareClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlock] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network gateway used by the VMware User Cluster.
@@ -19018,12 +16455,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ToVMwareClus
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ToVMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlock] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) Index(i pulumi.IntInput) VMwareClusterNetworkConfigStaticIpConfigIpBlockOutput {
@@ -19069,12 +16500,6 @@ func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs) ToVMwareClusterNe
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput)
 }
 
-func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlockIp] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlockIp]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput is an input type that accepts VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArray and VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput` via:
 //
@@ -19100,12 +16525,6 @@ func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArray) ToVMwareClusterN
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput)
 }
 
-func (i VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlockIp] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlockIp]{
-		OutputState: i.ToVMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ElementType() reflect.Type {
@@ -19118,12 +16537,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVMwareCluster
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlockIp] {
-	return pulumix.Output[VMwareClusterNetworkConfigStaticIpConfigIpBlockIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
@@ -19148,12 +16561,6 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ToVMwareCl
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ToVMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(ctx context.Context) VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
 	return o
-}
-
-func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlockIp] {
-	return pulumix.Output[[]VMwareClusterNetworkConfigStaticIpConfigIpBlockIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) Index(i pulumi.IntInput) VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
@@ -19213,12 +16620,6 @@ func (i VMwareClusterStatusArgs) ToVMwareClusterStatusOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStatusOutput)
 }
 
-func (i VMwareClusterStatusArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStatus] {
-	return pulumix.Output[VMwareClusterStatus]{
-		OutputState: i.ToVMwareClusterStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterStatusArrayInput is an input type that accepts VMwareClusterStatusArray and VMwareClusterStatusArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterStatusArrayInput` via:
 //
@@ -19244,12 +16645,6 @@ func (i VMwareClusterStatusArray) ToVMwareClusterStatusArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStatusArrayOutput)
 }
 
-func (i VMwareClusterStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterStatus] {
-	return pulumix.Output[[]VMwareClusterStatus]{
-		OutputState: i.ToVMwareClusterStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterStatusOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterStatusOutput) ElementType() reflect.Type {
@@ -19262,12 +16657,6 @@ func (o VMwareClusterStatusOutput) ToVMwareClusterStatusOutput() VMwareClusterSt
 
 func (o VMwareClusterStatusOutput) ToVMwareClusterStatusOutputWithContext(ctx context.Context) VMwareClusterStatusOutput {
 	return o
-}
-
-func (o VMwareClusterStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStatus] {
-	return pulumix.Output[VMwareClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -19299,12 +16688,6 @@ func (o VMwareClusterStatusArrayOutput) ToVMwareClusterStatusArrayOutput() VMwar
 
 func (o VMwareClusterStatusArrayOutput) ToVMwareClusterStatusArrayOutputWithContext(ctx context.Context) VMwareClusterStatusArrayOutput {
 	return o
-}
-
-func (o VMwareClusterStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterStatus] {
-	return pulumix.Output[[]VMwareClusterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterStatusArrayOutput) Index(i pulumi.IntInput) VMwareClusterStatusOutput {
@@ -19374,12 +16757,6 @@ func (i VMwareClusterStatusConditionArgs) ToVMwareClusterStatusConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStatusConditionOutput)
 }
 
-func (i VMwareClusterStatusConditionArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStatusCondition] {
-	return pulumix.Output[VMwareClusterStatusCondition]{
-		OutputState: i.ToVMwareClusterStatusConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterStatusConditionArrayInput is an input type that accepts VMwareClusterStatusConditionArray and VMwareClusterStatusConditionArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterStatusConditionArrayInput` via:
 //
@@ -19405,12 +16782,6 @@ func (i VMwareClusterStatusConditionArray) ToVMwareClusterStatusConditionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStatusConditionArrayOutput)
 }
 
-func (i VMwareClusterStatusConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterStatusCondition] {
-	return pulumix.Output[[]VMwareClusterStatusCondition]{
-		OutputState: i.ToVMwareClusterStatusConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterStatusConditionOutput) ElementType() reflect.Type {
@@ -19423,12 +16794,6 @@ func (o VMwareClusterStatusConditionOutput) ToVMwareClusterStatusConditionOutput
 
 func (o VMwareClusterStatusConditionOutput) ToVMwareClusterStatusConditionOutputWithContext(ctx context.Context) VMwareClusterStatusConditionOutput {
 	return o
-}
-
-func (o VMwareClusterStatusConditionOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStatusCondition] {
-	return pulumix.Output[VMwareClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -19476,12 +16841,6 @@ func (o VMwareClusterStatusConditionArrayOutput) ToVMwareClusterStatusConditionA
 	return o
 }
 
-func (o VMwareClusterStatusConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterStatusCondition] {
-	return pulumix.Output[[]VMwareClusterStatusCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VMwareClusterStatusConditionArrayOutput) Index(i pulumi.IntInput) VMwareClusterStatusConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareClusterStatusCondition {
 		return vs[0].([]VMwareClusterStatusCondition)[vs[1].(int)]
@@ -19521,12 +16880,6 @@ func (i VMwareClusterStorageArgs) ToVMwareClusterStorageOutput() VMwareClusterSt
 
 func (i VMwareClusterStorageArgs) ToVMwareClusterStorageOutputWithContext(ctx context.Context) VMwareClusterStorageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStorageOutput)
-}
-
-func (i VMwareClusterStorageArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStorage] {
-	return pulumix.Output[VMwareClusterStorage]{
-		OutputState: i.ToVMwareClusterStorageOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VMwareClusterStorageArgs) ToVMwareClusterStoragePtrOutput() VMwareClusterStoragePtrOutput {
@@ -19570,12 +16923,6 @@ func (i *vmwareClusterStoragePtrType) ToVMwareClusterStoragePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterStoragePtrOutput)
 }
 
-func (i *vmwareClusterStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterStorage] {
-	return pulumix.Output[*VMwareClusterStorage]{
-		OutputState: i.ToVMwareClusterStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterStorageOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterStorageOutput) ElementType() reflect.Type {
@@ -19600,12 +16947,6 @@ func (o VMwareClusterStorageOutput) ToVMwareClusterStoragePtrOutputWithContext(c
 	}).(VMwareClusterStoragePtrOutput)
 }
 
-func (o VMwareClusterStorageOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterStorage] {
-	return pulumix.Output[VMwareClusterStorage]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not to deploy vSphere CSI components in the VMware User Cluster.
 // Enabled by default.
 func (o VMwareClusterStorageOutput) VsphereCsiDisabled() pulumi.BoolOutput {
@@ -19624,12 +16965,6 @@ func (o VMwareClusterStoragePtrOutput) ToVMwareClusterStoragePtrOutput() VMwareC
 
 func (o VMwareClusterStoragePtrOutput) ToVMwareClusterStoragePtrOutputWithContext(ctx context.Context) VMwareClusterStoragePtrOutput {
 	return o
-}
-
-func (o VMwareClusterStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterStorage] {
-	return pulumix.Output[*VMwareClusterStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterStoragePtrOutput) Elem() VMwareClusterStorageOutput {
@@ -19686,12 +17021,6 @@ func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterUpgradePolicyOutput)
 }
 
-func (i VMwareClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterUpgradePolicy] {
-	return pulumix.Output[VMwareClusterUpgradePolicy]{
-		OutputState: i.ToVMwareClusterUpgradePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput {
 	return i.ToVMwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
 }
@@ -19733,12 +17062,6 @@ func (i *vmwareClusterUpgradePolicyPtrType) ToVMwareClusterUpgradePolicyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterUpgradePolicyPtrOutput)
 }
 
-func (i *vmwareClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterUpgradePolicy] {
-	return pulumix.Output[*VMwareClusterUpgradePolicy]{
-		OutputState: i.ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterUpgradePolicyOutput) ElementType() reflect.Type {
@@ -19763,12 +17086,6 @@ func (o VMwareClusterUpgradePolicyOutput) ToVMwareClusterUpgradePolicyPtrOutputW
 	}).(VMwareClusterUpgradePolicyPtrOutput)
 }
 
-func (o VMwareClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterUpgradePolicy] {
-	return pulumix.Output[VMwareClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Controls whether the upgrade applies to the control plane only.
 func (o VMwareClusterUpgradePolicyOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMwareClusterUpgradePolicy) *bool { return v.ControlPlaneOnly }).(pulumi.BoolPtrOutput)
@@ -19786,12 +17103,6 @@ func (o VMwareClusterUpgradePolicyPtrOutput) ToVMwareClusterUpgradePolicyPtrOutp
 
 func (o VMwareClusterUpgradePolicyPtrOutput) ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyPtrOutput {
 	return o
-}
-
-func (o VMwareClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterUpgradePolicy] {
-	return pulumix.Output[*VMwareClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterUpgradePolicyPtrOutput) Elem() VMwareClusterUpgradePolicyOutput {
@@ -19863,12 +17174,6 @@ func (i VMwareClusterValidationCheckArgs) ToVMwareClusterValidationCheckOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckOutput)
 }
 
-func (i VMwareClusterValidationCheckArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheck] {
-	return pulumix.Output[VMwareClusterValidationCheck]{
-		OutputState: i.ToVMwareClusterValidationCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterValidationCheckArrayInput is an input type that accepts VMwareClusterValidationCheckArray and VMwareClusterValidationCheckArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterValidationCheckArrayInput` via:
 //
@@ -19894,12 +17199,6 @@ func (i VMwareClusterValidationCheckArray) ToVMwareClusterValidationCheckArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckArrayOutput)
 }
 
-func (i VMwareClusterValidationCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheck] {
-	return pulumix.Output[[]VMwareClusterValidationCheck]{
-		OutputState: i.ToVMwareClusterValidationCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterValidationCheckOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterValidationCheckOutput) ElementType() reflect.Type {
@@ -19912,12 +17211,6 @@ func (o VMwareClusterValidationCheckOutput) ToVMwareClusterValidationCheckOutput
 
 func (o VMwareClusterValidationCheckOutput) ToVMwareClusterValidationCheckOutputWithContext(ctx context.Context) VMwareClusterValidationCheckOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheck] {
-	return pulumix.Output[VMwareClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -19951,12 +17244,6 @@ func (o VMwareClusterValidationCheckArrayOutput) ToVMwareClusterValidationCheckA
 
 func (o VMwareClusterValidationCheckArrayOutput) ToVMwareClusterValidationCheckArrayOutputWithContext(ctx context.Context) VMwareClusterValidationCheckArrayOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheck] {
-	return pulumix.Output[[]VMwareClusterValidationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterValidationCheckArrayOutput) Index(i pulumi.IntInput) VMwareClusterValidationCheckOutput {
@@ -20002,12 +17289,6 @@ func (i VMwareClusterValidationCheckStatusArgs) ToVMwareClusterValidationCheckSt
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckStatusOutput)
 }
 
-func (i VMwareClusterValidationCheckStatusArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheckStatus] {
-	return pulumix.Output[VMwareClusterValidationCheckStatus]{
-		OutputState: i.ToVMwareClusterValidationCheckStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterValidationCheckStatusArrayInput is an input type that accepts VMwareClusterValidationCheckStatusArray and VMwareClusterValidationCheckStatusArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterValidationCheckStatusArrayInput` via:
 //
@@ -20033,12 +17314,6 @@ func (i VMwareClusterValidationCheckStatusArray) ToVMwareClusterValidationCheckS
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckStatusArrayOutput)
 }
 
-func (i VMwareClusterValidationCheckStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheckStatus] {
-	return pulumix.Output[[]VMwareClusterValidationCheckStatus]{
-		OutputState: i.ToVMwareClusterValidationCheckStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterValidationCheckStatusOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterValidationCheckStatusOutput) ElementType() reflect.Type {
@@ -20051,12 +17326,6 @@ func (o VMwareClusterValidationCheckStatusOutput) ToVMwareClusterValidationCheck
 
 func (o VMwareClusterValidationCheckStatusOutput) ToVMwareClusterValidationCheckStatusOutputWithContext(ctx context.Context) VMwareClusterValidationCheckStatusOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheckStatus] {
-	return pulumix.Output[VMwareClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -20080,12 +17349,6 @@ func (o VMwareClusterValidationCheckStatusArrayOutput) ToVMwareClusterValidation
 
 func (o VMwareClusterValidationCheckStatusArrayOutput) ToVMwareClusterValidationCheckStatusArrayOutputWithContext(ctx context.Context) VMwareClusterValidationCheckStatusArrayOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheckStatus] {
-	return pulumix.Output[[]VMwareClusterValidationCheckStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterValidationCheckStatusArrayOutput) Index(i pulumi.IntInput) VMwareClusterValidationCheckStatusOutput {
@@ -20151,12 +17414,6 @@ func (i VMwareClusterValidationCheckStatusResultArgs) ToVMwareClusterValidationC
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckStatusResultOutput)
 }
 
-func (i VMwareClusterValidationCheckStatusResultArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheckStatusResult] {
-	return pulumix.Output[VMwareClusterValidationCheckStatusResult]{
-		OutputState: i.ToVMwareClusterValidationCheckStatusResultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterValidationCheckStatusResultArrayInput is an input type that accepts VMwareClusterValidationCheckStatusResultArray and VMwareClusterValidationCheckStatusResultArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterValidationCheckStatusResultArrayInput` via:
 //
@@ -20182,12 +17439,6 @@ func (i VMwareClusterValidationCheckStatusResultArray) ToVMwareClusterValidation
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterValidationCheckStatusResultArrayOutput)
 }
 
-func (i VMwareClusterValidationCheckStatusResultArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]VMwareClusterValidationCheckStatusResult]{
-		OutputState: i.ToVMwareClusterValidationCheckStatusResultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterValidationCheckStatusResultOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterValidationCheckStatusResultOutput) ElementType() reflect.Type {
@@ -20200,12 +17451,6 @@ func (o VMwareClusterValidationCheckStatusResultOutput) ToVMwareClusterValidatio
 
 func (o VMwareClusterValidationCheckStatusResultOutput) ToVMwareClusterValidationCheckStatusResultOutputWithContext(ctx context.Context) VMwareClusterValidationCheckStatusResultOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterValidationCheckStatusResult] {
-	return pulumix.Output[VMwareClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -20249,12 +17494,6 @@ func (o VMwareClusterValidationCheckStatusResultArrayOutput) ToVMwareClusterVali
 
 func (o VMwareClusterValidationCheckStatusResultArrayOutput) ToVMwareClusterValidationCheckStatusResultArrayOutputWithContext(ctx context.Context) VMwareClusterValidationCheckStatusResultArrayOutput {
 	return o
-}
-
-func (o VMwareClusterValidationCheckStatusResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterValidationCheckStatusResult] {
-	return pulumix.Output[[]VMwareClusterValidationCheckStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterValidationCheckStatusResultArrayOutput) Index(i pulumi.IntInput) VMwareClusterValidationCheckStatusResultOutput {
@@ -20342,12 +17581,6 @@ func (i VMwareClusterVcenterArgs) ToVMwareClusterVcenterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterOutput)
 }
 
-func (i VMwareClusterVcenterArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterVcenter] {
-	return pulumix.Output[VMwareClusterVcenter]{
-		OutputState: i.ToVMwareClusterVcenterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareClusterVcenterArrayInput is an input type that accepts VMwareClusterVcenterArray and VMwareClusterVcenterArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterVcenterArrayInput` via:
 //
@@ -20373,12 +17606,6 @@ func (i VMwareClusterVcenterArray) ToVMwareClusterVcenterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterArrayOutput)
 }
 
-func (i VMwareClusterVcenterArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterVcenter] {
-	return pulumix.Output[[]VMwareClusterVcenter]{
-		OutputState: i.ToVMwareClusterVcenterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareClusterVcenterOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterVcenterOutput) ElementType() reflect.Type {
@@ -20391,12 +17618,6 @@ func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterOutput() VMwareCluster
 
 func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterOutputWithContext(ctx context.Context) VMwareClusterVcenterOutput {
 	return o
-}
-
-func (o VMwareClusterVcenterOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterVcenter] {
-	return pulumix.Output[VMwareClusterVcenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The load balancer's IP address.
@@ -20460,12 +17681,6 @@ func (o VMwareClusterVcenterArrayOutput) ToVMwareClusterVcenterArrayOutput() VMw
 
 func (o VMwareClusterVcenterArrayOutput) ToVMwareClusterVcenterArrayOutputWithContext(ctx context.Context) VMwareClusterVcenterArrayOutput {
 	return o
-}
-
-func (o VMwareClusterVcenterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareClusterVcenter] {
-	return pulumix.Output[[]VMwareClusterVcenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareClusterVcenterArrayOutput) Index(i pulumi.IntInput) VMwareClusterVcenterOutput {
@@ -20563,12 +17778,6 @@ func (i VMwareNodePoolConfigArgs) ToVMwareNodePoolConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigOutput)
 }
 
-func (i VMwareNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfig] {
-	return pulumix.Output[VMwareNodePoolConfig]{
-		OutputState: i.ToVMwareNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareNodePoolConfigArgs) ToVMwareNodePoolConfigPtrOutput() VMwareNodePoolConfigPtrOutput {
 	return i.ToVMwareNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -20610,12 +17819,6 @@ func (i *vmwareNodePoolConfigPtrType) ToVMwareNodePoolConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigPtrOutput)
 }
 
-func (i *vmwareNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePoolConfig] {
-	return pulumix.Output[*VMwareNodePoolConfig]{
-		OutputState: i.ToVMwareNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolConfigOutput) ElementType() reflect.Type {
@@ -20638,12 +17841,6 @@ func (o VMwareNodePoolConfigOutput) ToVMwareNodePoolConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareNodePoolConfig) *VMwareNodePoolConfig {
 		return &v
 	}).(VMwareNodePoolConfigPtrOutput)
-}
-
-func (o VMwareNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfig] {
-	return pulumix.Output[VMwareNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // VMware disk size to be used during creation.
@@ -20718,12 +17915,6 @@ func (o VMwareNodePoolConfigPtrOutput) ToVMwareNodePoolConfigPtrOutput() VMwareN
 
 func (o VMwareNodePoolConfigPtrOutput) ToVMwareNodePoolConfigPtrOutputWithContext(ctx context.Context) VMwareNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePoolConfig] {
-	return pulumix.Output[*VMwareNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolConfigPtrOutput) Elem() VMwareNodePoolConfigOutput {
@@ -20893,12 +18084,6 @@ func (i VMwareNodePoolConfigTaintArgs) ToVMwareNodePoolConfigTaintOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigTaintOutput)
 }
 
-func (i VMwareNodePoolConfigTaintArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigTaint] {
-	return pulumix.Output[VMwareNodePoolConfigTaint]{
-		OutputState: i.ToVMwareNodePoolConfigTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolConfigTaintArrayInput is an input type that accepts VMwareNodePoolConfigTaintArray and VMwareNodePoolConfigTaintArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolConfigTaintArrayInput` via:
 //
@@ -20924,12 +18109,6 @@ func (i VMwareNodePoolConfigTaintArray) ToVMwareNodePoolConfigTaintArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigTaintArrayOutput)
 }
 
-func (i VMwareNodePoolConfigTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigTaint] {
-	return pulumix.Output[[]VMwareNodePoolConfigTaint]{
-		OutputState: i.ToVMwareNodePoolConfigTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolConfigTaintOutput) ElementType() reflect.Type {
@@ -20942,12 +18121,6 @@ func (o VMwareNodePoolConfigTaintOutput) ToVMwareNodePoolConfigTaintOutput() VMw
 
 func (o VMwareNodePoolConfigTaintOutput) ToVMwareNodePoolConfigTaintOutputWithContext(ctx context.Context) VMwareNodePoolConfigTaintOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigTaintOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigTaint] {
-	return pulumix.Output[VMwareNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Available taint effects.
@@ -20980,12 +18153,6 @@ func (o VMwareNodePoolConfigTaintArrayOutput) ToVMwareNodePoolConfigTaintArrayOu
 
 func (o VMwareNodePoolConfigTaintArrayOutput) ToVMwareNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) VMwareNodePoolConfigTaintArrayOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigTaint] {
-	return pulumix.Output[[]VMwareNodePoolConfigTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolConfigTaintOutput {
@@ -21041,12 +18208,6 @@ func (i VMwareNodePoolConfigVsphereConfigArgs) ToVMwareNodePoolConfigVsphereConf
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigOutput)
 }
 
-func (i VMwareNodePoolConfigVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigVsphereConfig] {
-	return pulumix.Output[VMwareNodePoolConfigVsphereConfig]{
-		OutputState: i.ToVMwareNodePoolConfigVsphereConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolConfigVsphereConfigArrayInput is an input type that accepts VMwareNodePoolConfigVsphereConfigArray and VMwareNodePoolConfigVsphereConfigArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolConfigVsphereConfigArrayInput` via:
 //
@@ -21072,12 +18233,6 @@ func (i VMwareNodePoolConfigVsphereConfigArray) ToVMwareNodePoolConfigVsphereCon
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigArrayOutput)
 }
 
-func (i VMwareNodePoolConfigVsphereConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigVsphereConfig] {
-	return pulumix.Output[[]VMwareNodePoolConfigVsphereConfig]{
-		OutputState: i.ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolConfigVsphereConfigOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolConfigVsphereConfigOutput) ElementType() reflect.Type {
@@ -21090,12 +18245,6 @@ func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereCo
 
 func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereConfigOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigVsphereConfig] {
-	return pulumix.Output[VMwareNodePoolConfigVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -21125,12 +18274,6 @@ func (o VMwareNodePoolConfigVsphereConfigArrayOutput) ToVMwareNodePoolConfigVsph
 
 func (o VMwareNodePoolConfigVsphereConfigArrayOutput) ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigArrayOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigVsphereConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigVsphereConfig] {
-	return pulumix.Output[[]VMwareNodePoolConfigVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolConfigVsphereConfigArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolConfigVsphereConfigOutput {
@@ -21184,12 +18327,6 @@ func (i VMwareNodePoolConfigVsphereConfigTagArgs) ToVMwareNodePoolConfigVsphereC
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigTagOutput)
 }
 
-func (i VMwareNodePoolConfigVsphereConfigTagArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigVsphereConfigTag] {
-	return pulumix.Output[VMwareNodePoolConfigVsphereConfigTag]{
-		OutputState: i.ToVMwareNodePoolConfigVsphereConfigTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolConfigVsphereConfigTagArrayInput is an input type that accepts VMwareNodePoolConfigVsphereConfigTagArray and VMwareNodePoolConfigVsphereConfigTagArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolConfigVsphereConfigTagArrayInput` via:
 //
@@ -21215,12 +18352,6 @@ func (i VMwareNodePoolConfigVsphereConfigTagArray) ToVMwareNodePoolConfigVsphere
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigTagArrayOutput)
 }
 
-func (i VMwareNodePoolConfigVsphereConfigTagArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigVsphereConfigTag] {
-	return pulumix.Output[[]VMwareNodePoolConfigVsphereConfigTag]{
-		OutputState: i.ToVMwareNodePoolConfigVsphereConfigTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolConfigVsphereConfigTagOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolConfigVsphereConfigTagOutput) ElementType() reflect.Type {
@@ -21233,12 +18364,6 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) ToVMwareNodePoolConfigVspher
 
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) ToVMwareNodePoolConfigVsphereConfigTagOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigTagOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigVsphereConfigTagOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolConfigVsphereConfigTag] {
-	return pulumix.Output[VMwareNodePoolConfigVsphereConfigTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -21267,12 +18392,6 @@ func (o VMwareNodePoolConfigVsphereConfigTagArrayOutput) ToVMwareNodePoolConfigV
 
 func (o VMwareNodePoolConfigVsphereConfigTagArrayOutput) ToVMwareNodePoolConfigVsphereConfigTagArrayOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigTagArrayOutput {
 	return o
-}
-
-func (o VMwareNodePoolConfigVsphereConfigTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolConfigVsphereConfigTag] {
-	return pulumix.Output[[]VMwareNodePoolConfigVsphereConfigTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolConfigVsphereConfigTagArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolConfigVsphereConfigTagOutput {
@@ -21318,12 +18437,6 @@ func (i VMwareNodePoolNodePoolAutoscalingArgs) ToVMwareNodePoolNodePoolAutoscali
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolNodePoolAutoscalingOutput)
 }
 
-func (i VMwareNodePoolNodePoolAutoscalingArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolNodePoolAutoscaling] {
-	return pulumix.Output[VMwareNodePoolNodePoolAutoscaling]{
-		OutputState: i.ToVMwareNodePoolNodePoolAutoscalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VMwareNodePoolNodePoolAutoscalingArgs) ToVMwareNodePoolNodePoolAutoscalingPtrOutput() VMwareNodePoolNodePoolAutoscalingPtrOutput {
 	return i.ToVMwareNodePoolNodePoolAutoscalingPtrOutputWithContext(context.Background())
 }
@@ -21365,12 +18478,6 @@ func (i *vmwareNodePoolNodePoolAutoscalingPtrType) ToVMwareNodePoolNodePoolAutos
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolNodePoolAutoscalingPtrOutput)
 }
 
-func (i *vmwareNodePoolNodePoolAutoscalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePoolNodePoolAutoscaling] {
-	return pulumix.Output[*VMwareNodePoolNodePoolAutoscaling]{
-		OutputState: i.ToVMwareNodePoolNodePoolAutoscalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolNodePoolAutoscalingOutput) ElementType() reflect.Type {
@@ -21395,12 +18502,6 @@ func (o VMwareNodePoolNodePoolAutoscalingOutput) ToVMwareNodePoolNodePoolAutosca
 	}).(VMwareNodePoolNodePoolAutoscalingPtrOutput)
 }
 
-func (o VMwareNodePoolNodePoolAutoscalingOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolNodePoolAutoscaling] {
-	return pulumix.Output[VMwareNodePoolNodePoolAutoscaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of replicas in the NodePool.
 func (o VMwareNodePoolNodePoolAutoscalingOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v VMwareNodePoolNodePoolAutoscaling) int { return v.MaxReplicas }).(pulumi.IntOutput)
@@ -21423,12 +18524,6 @@ func (o VMwareNodePoolNodePoolAutoscalingPtrOutput) ToVMwareNodePoolNodePoolAuto
 
 func (o VMwareNodePoolNodePoolAutoscalingPtrOutput) ToVMwareNodePoolNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) VMwareNodePoolNodePoolAutoscalingPtrOutput {
 	return o
-}
-
-func (o VMwareNodePoolNodePoolAutoscalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePoolNodePoolAutoscaling] {
-	return pulumix.Output[*VMwareNodePoolNodePoolAutoscaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolNodePoolAutoscalingPtrOutput) Elem() VMwareNodePoolNodePoolAutoscalingOutput {
@@ -21512,12 +18607,6 @@ func (i VMwareNodePoolStatusArgs) ToVMwareNodePoolStatusOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolStatusOutput)
 }
 
-func (i VMwareNodePoolStatusArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolStatus] {
-	return pulumix.Output[VMwareNodePoolStatus]{
-		OutputState: i.ToVMwareNodePoolStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolStatusArrayInput is an input type that accepts VMwareNodePoolStatusArray and VMwareNodePoolStatusArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolStatusArrayInput` via:
 //
@@ -21543,12 +18632,6 @@ func (i VMwareNodePoolStatusArray) ToVMwareNodePoolStatusArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolStatusArrayOutput)
 }
 
-func (i VMwareNodePoolStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolStatus] {
-	return pulumix.Output[[]VMwareNodePoolStatus]{
-		OutputState: i.ToVMwareNodePoolStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolStatusOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolStatusOutput) ElementType() reflect.Type {
@@ -21561,12 +18644,6 @@ func (o VMwareNodePoolStatusOutput) ToVMwareNodePoolStatusOutput() VMwareNodePoo
 
 func (o VMwareNodePoolStatusOutput) ToVMwareNodePoolStatusOutputWithContext(ctx context.Context) VMwareNodePoolStatusOutput {
 	return o
-}
-
-func (o VMwareNodePoolStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolStatus] {
-	return pulumix.Output[VMwareNodePoolStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -21598,12 +18675,6 @@ func (o VMwareNodePoolStatusArrayOutput) ToVMwareNodePoolStatusArrayOutput() VMw
 
 func (o VMwareNodePoolStatusArrayOutput) ToVMwareNodePoolStatusArrayOutputWithContext(ctx context.Context) VMwareNodePoolStatusArrayOutput {
 	return o
-}
-
-func (o VMwareNodePoolStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolStatus] {
-	return pulumix.Output[[]VMwareNodePoolStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolStatusArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolStatusOutput {
@@ -21673,12 +18744,6 @@ func (i VMwareNodePoolStatusConditionArgs) ToVMwareNodePoolStatusConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolStatusConditionOutput)
 }
 
-func (i VMwareNodePoolStatusConditionArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolStatusCondition] {
-	return pulumix.Output[VMwareNodePoolStatusCondition]{
-		OutputState: i.ToVMwareNodePoolStatusConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolStatusConditionArrayInput is an input type that accepts VMwareNodePoolStatusConditionArray and VMwareNodePoolStatusConditionArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolStatusConditionArrayInput` via:
 //
@@ -21704,12 +18769,6 @@ func (i VMwareNodePoolStatusConditionArray) ToVMwareNodePoolStatusConditionArray
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolStatusConditionArrayOutput)
 }
 
-func (i VMwareNodePoolStatusConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolStatusCondition] {
-	return pulumix.Output[[]VMwareNodePoolStatusCondition]{
-		OutputState: i.ToVMwareNodePoolStatusConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolStatusConditionOutput) ElementType() reflect.Type {
@@ -21722,12 +18781,6 @@ func (o VMwareNodePoolStatusConditionOutput) ToVMwareNodePoolStatusConditionOutp
 
 func (o VMwareNodePoolStatusConditionOutput) ToVMwareNodePoolStatusConditionOutputWithContext(ctx context.Context) VMwareNodePoolStatusConditionOutput {
 	return o
-}
-
-func (o VMwareNodePoolStatusConditionOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareNodePoolStatusCondition] {
-	return pulumix.Output[VMwareNodePoolStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -21773,12 +18826,6 @@ func (o VMwareNodePoolStatusConditionArrayOutput) ToVMwareNodePoolStatusConditio
 
 func (o VMwareNodePoolStatusConditionArrayOutput) ToVMwareNodePoolStatusConditionArrayOutputWithContext(ctx context.Context) VMwareNodePoolStatusConditionArrayOutput {
 	return o
-}
-
-func (o VMwareNodePoolStatusConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMwareNodePoolStatusCondition] {
-	return pulumix.Output[[]VMwareNodePoolStatusCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolStatusConditionArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolStatusConditionOutput {

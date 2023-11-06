@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## get the public key to encrypt the secret with
@@ -123,12 +122,6 @@ func (o GetKMSSecretAsymmetricResultOutput) ToGetKMSSecretAsymmetricResultOutput
 
 func (o GetKMSSecretAsymmetricResultOutput) ToGetKMSSecretAsymmetricResultOutputWithContext(ctx context.Context) GetKMSSecretAsymmetricResultOutput {
 	return o
-}
-
-func (o GetKMSSecretAsymmetricResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSSecretAsymmetricResult] {
-	return pulumix.Output[GetKMSSecretAsymmetricResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetKMSSecretAsymmetricResultOutput) Ciphertext() pulumi.StringOutput {

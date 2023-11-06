@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // TargetServer configuration. TargetServers are used to decouple a proxy TargetEndpoint HTTPTargetConnections from concrete URLs for backend services.
@@ -341,12 +340,6 @@ func (i *TargetServer) ToTargetServerOutputWithContext(ctx context.Context) Targ
 	return pulumi.ToOutputWithContext(ctx, i).(TargetServerOutput)
 }
 
-func (i *TargetServer) ToOutput(ctx context.Context) pulumix.Output[*TargetServer] {
-	return pulumix.Output[*TargetServer]{
-		OutputState: i.ToTargetServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetServerArrayInput is an input type that accepts TargetServerArray and TargetServerArrayOutput values.
 // You can construct a concrete instance of `TargetServerArrayInput` via:
 //
@@ -370,12 +363,6 @@ func (i TargetServerArray) ToTargetServerArrayOutput() TargetServerArrayOutput {
 
 func (i TargetServerArray) ToTargetServerArrayOutputWithContext(ctx context.Context) TargetServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetServerArrayOutput)
-}
-
-func (i TargetServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetServer] {
-	return pulumix.Output[[]*TargetServer]{
-		OutputState: i.ToTargetServerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetServerMapInput is an input type that accepts TargetServerMap and TargetServerMapOutput values.
@@ -403,12 +390,6 @@ func (i TargetServerMap) ToTargetServerMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TargetServerMapOutput)
 }
 
-func (i TargetServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetServer] {
-	return pulumix.Output[map[string]*TargetServer]{
-		OutputState: i.ToTargetServerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetServerOutput struct{ *pulumi.OutputState }
 
 func (TargetServerOutput) ElementType() reflect.Type {
@@ -421,12 +402,6 @@ func (o TargetServerOutput) ToTargetServerOutput() TargetServerOutput {
 
 func (o TargetServerOutput) ToTargetServerOutputWithContext(ctx context.Context) TargetServerOutput {
 	return o
-}
-
-func (o TargetServerOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetServer] {
-	return pulumix.Output[*TargetServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description of this TargetServer.
@@ -488,12 +463,6 @@ func (o TargetServerArrayOutput) ToTargetServerArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o TargetServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetServer] {
-	return pulumix.Output[[]*TargetServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetServerArrayOutput) Index(i pulumi.IntInput) TargetServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetServer {
 		return vs[0].([]*TargetServer)[vs[1].(int)]
@@ -512,12 +481,6 @@ func (o TargetServerMapOutput) ToTargetServerMapOutput() TargetServerMapOutput {
 
 func (o TargetServerMapOutput) ToTargetServerMapOutputWithContext(ctx context.Context) TargetServerMapOutput {
 	return o
-}
-
-func (o TargetServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetServer] {
-	return pulumix.Output[map[string]*TargetServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetServerMapOutput) MapIndex(k pulumi.StringInput) TargetServerOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
@@ -146,12 +145,6 @@ func (o GetAccountIdTokenResultOutput) ToGetAccountIdTokenResultOutput() GetAcco
 
 func (o GetAccountIdTokenResultOutput) ToGetAccountIdTokenResultOutputWithContext(ctx context.Context) GetAccountIdTokenResultOutput {
 	return o
-}
-
-func (o GetAccountIdTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountIdTokenResult] {
-	return pulumix.Output[GetAccountIdTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountIdTokenResultOutput) Delegates() pulumi.StringArrayOutput {

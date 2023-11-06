@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
@@ -375,12 +374,6 @@ func (i *DatascanIamBinding) ToDatascanIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingOutput)
 }
 
-func (i *DatascanIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamBinding] {
-	return pulumix.Output[*DatascanIamBinding]{
-		OutputState: i.ToDatascanIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatascanIamBindingArrayInput is an input type that accepts DatascanIamBindingArray and DatascanIamBindingArrayOutput values.
 // You can construct a concrete instance of `DatascanIamBindingArrayInput` via:
 //
@@ -404,12 +397,6 @@ func (i DatascanIamBindingArray) ToDatascanIamBindingArrayOutput() DatascanIamBi
 
 func (i DatascanIamBindingArray) ToDatascanIamBindingArrayOutputWithContext(ctx context.Context) DatascanIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingArrayOutput)
-}
-
-func (i DatascanIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamBinding] {
-	return pulumix.Output[[]*DatascanIamBinding]{
-		OutputState: i.ToDatascanIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatascanIamBindingMapInput is an input type that accepts DatascanIamBindingMap and DatascanIamBindingMapOutput values.
@@ -437,12 +424,6 @@ func (i DatascanIamBindingMap) ToDatascanIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingMapOutput)
 }
 
-func (i DatascanIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamBinding] {
-	return pulumix.Output[map[string]*DatascanIamBinding]{
-		OutputState: i.ToDatascanIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatascanIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DatascanIamBindingOutput) ElementType() reflect.Type {
@@ -455,12 +436,6 @@ func (o DatascanIamBindingOutput) ToDatascanIamBindingOutput() DatascanIamBindin
 
 func (o DatascanIamBindingOutput) ToDatascanIamBindingOutputWithContext(ctx context.Context) DatascanIamBindingOutput {
 	return o
-}
-
-func (o DatascanIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamBinding] {
-	return pulumix.Output[*DatascanIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatascanIamBindingOutput) Condition() DatascanIamBindingConditionPtrOutput {
@@ -525,12 +500,6 @@ func (o DatascanIamBindingArrayOutput) ToDatascanIamBindingArrayOutputWithContex
 	return o
 }
 
-func (o DatascanIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamBinding] {
-	return pulumix.Output[[]*DatascanIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatascanIamBindingArrayOutput) Index(i pulumi.IntInput) DatascanIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatascanIamBinding {
 		return vs[0].([]*DatascanIamBinding)[vs[1].(int)]
@@ -549,12 +518,6 @@ func (o DatascanIamBindingMapOutput) ToDatascanIamBindingMapOutput() DatascanIam
 
 func (o DatascanIamBindingMapOutput) ToDatascanIamBindingMapOutputWithContext(ctx context.Context) DatascanIamBindingMapOutput {
 	return o
-}
-
-func (o DatascanIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamBinding] {
-	return pulumix.Output[map[string]*DatascanIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatascanIamBindingMapOutput) MapIndex(k pulumi.StringInput) DatascanIamBindingOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
@@ -338,12 +337,6 @@ func (i *AccessPolicyIamBinding) ToAccessPolicyIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingOutput)
 }
 
-func (i *AccessPolicyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBinding] {
-	return pulumix.Output[*AccessPolicyIamBinding]{
-		OutputState: i.ToAccessPolicyIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessPolicyIamBindingArrayInput is an input type that accepts AccessPolicyIamBindingArray and AccessPolicyIamBindingArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIamBindingArrayInput` via:
 //
@@ -367,12 +360,6 @@ func (i AccessPolicyIamBindingArray) ToAccessPolicyIamBindingArrayOutput() Acces
 
 func (i AccessPolicyIamBindingArray) ToAccessPolicyIamBindingArrayOutputWithContext(ctx context.Context) AccessPolicyIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingArrayOutput)
-}
-
-func (i AccessPolicyIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicyIamBinding] {
-	return pulumix.Output[[]*AccessPolicyIamBinding]{
-		OutputState: i.ToAccessPolicyIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessPolicyIamBindingMapInput is an input type that accepts AccessPolicyIamBindingMap and AccessPolicyIamBindingMapOutput values.
@@ -400,12 +387,6 @@ func (i AccessPolicyIamBindingMap) ToAccessPolicyIamBindingMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingMapOutput)
 }
 
-func (i AccessPolicyIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicyIamBinding] {
-	return pulumix.Output[map[string]*AccessPolicyIamBinding]{
-		OutputState: i.ToAccessPolicyIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIamBindingOutput) ElementType() reflect.Type {
@@ -418,12 +399,6 @@ func (o AccessPolicyIamBindingOutput) ToAccessPolicyIamBindingOutput() AccessPol
 
 func (o AccessPolicyIamBindingOutput) ToAccessPolicyIamBindingOutputWithContext(ctx context.Context) AccessPolicyIamBindingOutput {
 	return o
-}
-
-func (o AccessPolicyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBinding] {
-	return pulumix.Output[*AccessPolicyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamBindingOutput) Condition() AccessPolicyIamBindingConditionPtrOutput {
@@ -477,12 +452,6 @@ func (o AccessPolicyIamBindingArrayOutput) ToAccessPolicyIamBindingArrayOutputWi
 	return o
 }
 
-func (o AccessPolicyIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicyIamBinding] {
-	return pulumix.Output[[]*AccessPolicyIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessPolicyIamBindingArrayOutput) Index(i pulumi.IntInput) AccessPolicyIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPolicyIamBinding {
 		return vs[0].([]*AccessPolicyIamBinding)[vs[1].(int)]
@@ -501,12 +470,6 @@ func (o AccessPolicyIamBindingMapOutput) ToAccessPolicyIamBindingMapOutput() Acc
 
 func (o AccessPolicyIamBindingMapOutput) ToAccessPolicyIamBindingMapOutputWithContext(ctx context.Context) AccessPolicyIamBindingMapOutput {
 	return o
-}
-
-func (o AccessPolicyIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicyIamBinding] {
-	return pulumix.Output[map[string]*AccessPolicyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamBindingMapOutput) MapIndex(k pulumi.StringInput) AccessPolicyIamBindingOutput {

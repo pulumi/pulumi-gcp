@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
@@ -325,12 +324,6 @@ func (i *InstanceIAMPolicy) ToInstanceIAMPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyOutput)
 }
 
-func (i *InstanceIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMPolicy] {
-	return pulumix.Output[*InstanceIAMPolicy]{
-		OutputState: i.ToInstanceIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceIAMPolicyArrayInput is an input type that accepts InstanceIAMPolicyArray and InstanceIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `InstanceIAMPolicyArrayInput` via:
 //
@@ -354,12 +347,6 @@ func (i InstanceIAMPolicyArray) ToInstanceIAMPolicyArrayOutput() InstanceIAMPoli
 
 func (i InstanceIAMPolicyArray) ToInstanceIAMPolicyArrayOutputWithContext(ctx context.Context) InstanceIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyArrayOutput)
-}
-
-func (i InstanceIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIAMPolicy] {
-	return pulumix.Output[[]*InstanceIAMPolicy]{
-		OutputState: i.ToInstanceIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceIAMPolicyMapInput is an input type that accepts InstanceIAMPolicyMap and InstanceIAMPolicyMapOutput values.
@@ -387,12 +374,6 @@ func (i InstanceIAMPolicyMap) ToInstanceIAMPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyMapOutput)
 }
 
-func (i InstanceIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIAMPolicy] {
-	return pulumix.Output[map[string]*InstanceIAMPolicy]{
-		OutputState: i.ToInstanceIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyOutput) ElementType() reflect.Type {
@@ -405,12 +386,6 @@ func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyOutput() InstanceIAMPolicyOu
 
 func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyOutputWithContext(ctx context.Context) InstanceIAMPolicyOutput {
 	return o
-}
-
-func (o InstanceIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMPolicy] {
-	return pulumix.Output[*InstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the instance's IAM policy.
@@ -458,12 +433,6 @@ func (o InstanceIAMPolicyArrayOutput) ToInstanceIAMPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o InstanceIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIAMPolicy] {
-	return pulumix.Output[[]*InstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceIAMPolicyArrayOutput) Index(i pulumi.IntInput) InstanceIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMPolicy {
 		return vs[0].([]*InstanceIAMPolicy)[vs[1].(int)]
@@ -482,12 +451,6 @@ func (o InstanceIAMPolicyMapOutput) ToInstanceIAMPolicyMapOutput() InstanceIAMPo
 
 func (o InstanceIAMPolicyMapOutput) ToInstanceIAMPolicyMapOutputWithContext(ctx context.Context) InstanceIAMPolicyMapOutput {
 	return o
-}
-
-func (o InstanceIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIAMPolicy] {
-	return pulumix.Output[map[string]*InstanceIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMPolicyOutput {

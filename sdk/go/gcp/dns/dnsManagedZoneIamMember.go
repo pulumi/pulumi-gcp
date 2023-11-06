@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *DnsManagedZoneIamMember) ToDnsManagedZoneIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberOutput)
 }
 
-func (i *DnsManagedZoneIamMember) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamMember] {
-	return pulumix.Output[*DnsManagedZoneIamMember]{
-		OutputState: i.ToDnsManagedZoneIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DnsManagedZoneIamMemberArrayInput is an input type that accepts DnsManagedZoneIamMemberArray and DnsManagedZoneIamMemberArrayOutput values.
 // You can construct a concrete instance of `DnsManagedZoneIamMemberArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i DnsManagedZoneIamMemberArray) ToDnsManagedZoneIamMemberArrayOutput() Dns
 
 func (i DnsManagedZoneIamMemberArray) ToDnsManagedZoneIamMemberArrayOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberArrayOutput)
-}
-
-func (i DnsManagedZoneIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamMember] {
-	return pulumix.Output[[]*DnsManagedZoneIamMember]{
-		OutputState: i.ToDnsManagedZoneIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DnsManagedZoneIamMemberMapInput is an input type that accepts DnsManagedZoneIamMemberMap and DnsManagedZoneIamMemberMapOutput values.
@@ -424,12 +411,6 @@ func (i DnsManagedZoneIamMemberMap) ToDnsManagedZoneIamMemberMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberMapOutput)
 }
 
-func (i DnsManagedZoneIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamMember] {
-	return pulumix.Output[map[string]*DnsManagedZoneIamMember]{
-		OutputState: i.ToDnsManagedZoneIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnsManagedZoneIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DnsManagedZoneIamMemberOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o DnsManagedZoneIamMemberOutput) ToDnsManagedZoneIamMemberOutput() DnsMana
 
 func (o DnsManagedZoneIamMemberOutput) ToDnsManagedZoneIamMemberOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberOutput {
 	return o
-}
-
-func (o DnsManagedZoneIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamMember] {
-	return pulumix.Output[*DnsManagedZoneIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsManagedZoneIamMemberOutput) Condition() DnsManagedZoneIamMemberConditionPtrOutput {
@@ -507,12 +482,6 @@ func (o DnsManagedZoneIamMemberArrayOutput) ToDnsManagedZoneIamMemberArrayOutput
 	return o
 }
 
-func (o DnsManagedZoneIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamMember] {
-	return pulumix.Output[[]*DnsManagedZoneIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsManagedZoneIamMemberArrayOutput) Index(i pulumi.IntInput) DnsManagedZoneIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsManagedZoneIamMember {
 		return vs[0].([]*DnsManagedZoneIamMember)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o DnsManagedZoneIamMemberMapOutput) ToDnsManagedZoneIamMemberMapOutput() D
 
 func (o DnsManagedZoneIamMemberMapOutput) ToDnsManagedZoneIamMemberMapOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberMapOutput {
 	return o
-}
-
-func (o DnsManagedZoneIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamMember] {
-	return pulumix.Output[map[string]*DnsManagedZoneIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsManagedZoneIamMemberMapOutput) MapIndex(k pulumi.StringInput) DnsManagedZoneIamMemberOutput {

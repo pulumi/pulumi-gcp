@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
@@ -108,12 +107,6 @@ func (o LookupDatasetIamPolicyResultOutput) ToLookupDatasetIamPolicyResultOutput
 
 func (o LookupDatasetIamPolicyResultOutput) ToLookupDatasetIamPolicyResultOutputWithContext(ctx context.Context) LookupDatasetIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupDatasetIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatasetIamPolicyResult] {
-	return pulumix.Output[LookupDatasetIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDatasetIamPolicyResultOutput) DatasetId() pulumi.StringOutput {

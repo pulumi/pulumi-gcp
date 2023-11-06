@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery Data Policy DataPolicy. Each of these resources serves a different use case:
@@ -357,12 +356,6 @@ func (i *DataPolicyIamPolicy) ToDataPolicyIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamPolicyOutput)
 }
 
-func (i *DataPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamPolicy] {
-	return pulumix.Output[*DataPolicyIamPolicy]{
-		OutputState: i.ToDataPolicyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataPolicyIamPolicyArrayInput is an input type that accepts DataPolicyIamPolicyArray and DataPolicyIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DataPolicyIamPolicyArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i DataPolicyIamPolicyArray) ToDataPolicyIamPolicyArrayOutput() DataPolicyI
 
 func (i DataPolicyIamPolicyArray) ToDataPolicyIamPolicyArrayOutputWithContext(ctx context.Context) DataPolicyIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamPolicyArrayOutput)
-}
-
-func (i DataPolicyIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataPolicyIamPolicy] {
-	return pulumix.Output[[]*DataPolicyIamPolicy]{
-		OutputState: i.ToDataPolicyIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataPolicyIamPolicyMapInput is an input type that accepts DataPolicyIamPolicyMap and DataPolicyIamPolicyMapOutput values.
@@ -419,12 +406,6 @@ func (i DataPolicyIamPolicyMap) ToDataPolicyIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamPolicyMapOutput)
 }
 
-func (i DataPolicyIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataPolicyIamPolicy] {
-	return pulumix.Output[map[string]*DataPolicyIamPolicy]{
-		OutputState: i.ToDataPolicyIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o DataPolicyIamPolicyOutput) ToDataPolicyIamPolicyOutput() DataPolicyIamPo
 
 func (o DataPolicyIamPolicyOutput) ToDataPolicyIamPolicyOutputWithContext(ctx context.Context) DataPolicyIamPolicyOutput {
 	return o
-}
-
-func (o DataPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamPolicy] {
-	return pulumix.Output[*DataPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamPolicyOutput) DataPolicyId() pulumi.StringOutput {
@@ -498,12 +473,6 @@ func (o DataPolicyIamPolicyArrayOutput) ToDataPolicyIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o DataPolicyIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataPolicyIamPolicy] {
-	return pulumix.Output[[]*DataPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataPolicyIamPolicyArrayOutput) Index(i pulumi.IntInput) DataPolicyIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataPolicyIamPolicy {
 		return vs[0].([]*DataPolicyIamPolicy)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o DataPolicyIamPolicyMapOutput) ToDataPolicyIamPolicyMapOutput() DataPolic
 
 func (o DataPolicyIamPolicyMapOutput) ToDataPolicyIamPolicyMapOutputWithContext(ctx context.Context) DataPolicyIamPolicyMapOutput {
 	return o
-}
-
-func (o DataPolicyIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataPolicyIamPolicy] {
-	return pulumix.Output[map[string]*DataPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DataPolicyIamPolicyOutput {

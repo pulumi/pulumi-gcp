@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -77,12 +76,6 @@ func (i EnvironmentConfigArgs) ToEnvironmentConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigOutput)
 }
 
-func (i EnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfig] {
-	return pulumix.Output[EnvironmentConfig]{
-		OutputState: i.ToEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
 	return i.ToEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -124,12 +117,6 @@ func (i *environmentConfigPtrType) ToEnvironmentConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPtrOutput)
 }
 
-func (i *environmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfig] {
-	return pulumix.Output[*EnvironmentConfig]{
-		OutputState: i.ToEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigOutput) ElementType() reflect.Type {
@@ -152,12 +139,6 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfig) *EnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPtrOutput)
-}
-
-func (o EnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfig] {
-	return pulumix.Output[EnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
@@ -246,12 +227,6 @@ func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutput() EnvironmentCo
 
 func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfig] {
-	return pulumix.Output[*EnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
@@ -448,12 +423,6 @@ func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDatabaseConfigOutput)
 }
 
-func (i EnvironmentConfigDatabaseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[EnvironmentConfigDatabaseConfig]{
-		OutputState: i.ToEnvironmentConfigDatabaseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput {
 	return i.ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(context.Background())
 }
@@ -495,12 +464,6 @@ func (i *environmentConfigDatabaseConfigPtrType) ToEnvironmentConfigDatabaseConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
-func (i *environmentConfigDatabaseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[*EnvironmentConfigDatabaseConfig]{
-		OutputState: i.ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigDatabaseConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigDatabaseConfigOutput) ElementType() reflect.Type {
@@ -525,12 +488,6 @@ func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfig
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
-func (o EnvironmentConfigDatabaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[EnvironmentConfigDatabaseConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -547,12 +504,6 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) ToEnvironmentConfigDatabaseCon
 
 func (o EnvironmentConfigDatabaseConfigPtrOutput) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigDatabaseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[*EnvironmentConfigDatabaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigDatabaseConfigPtrOutput) Elem() EnvironmentConfigDatabaseConfigOutput {
@@ -605,12 +556,6 @@ func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigEncryptionConfigOutput)
 }
 
-func (i EnvironmentConfigEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[EnvironmentConfigEncryptionConfig]{
-		OutputState: i.ToEnvironmentConfigEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput {
 	return i.ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -652,12 +597,6 @@ func (i *environmentConfigEncryptionConfigPtrType) ToEnvironmentConfigEncryption
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
-func (i *environmentConfigEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[*EnvironmentConfigEncryptionConfig]{
-		OutputState: i.ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigEncryptionConfigOutput) ElementType() reflect.Type {
@@ -682,12 +621,6 @@ func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionCo
 	}).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
-func (o EnvironmentConfigEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[EnvironmentConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -704,12 +637,6 @@ func (o EnvironmentConfigEncryptionConfigPtrOutput) ToEnvironmentConfigEncryptio
 
 func (o EnvironmentConfigEncryptionConfigPtrOutput) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[*EnvironmentConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigEncryptionConfigPtrOutput) Elem() EnvironmentConfigEncryptionConfigOutput {
@@ -766,12 +693,6 @@ func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWi
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMaintenanceWindowOutput)
 }
 
-func (i EnvironmentConfigMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[EnvironmentConfigMaintenanceWindow]{
-		OutputState: i.ToEnvironmentConfigMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigMaintenanceWindowArgs) ToEnvironmentConfigMaintenanceWindowPtrOutput() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return i.ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -813,12 +734,6 @@ func (i *environmentConfigMaintenanceWindowPtrType) ToEnvironmentConfigMaintenan
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
 
-func (i *environmentConfigMaintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[*EnvironmentConfigMaintenanceWindow]{
-		OutputState: i.ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -841,12 +756,6 @@ func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenance
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigMaintenanceWindow) *EnvironmentConfigMaintenanceWindow {
 		return &v
 	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
-}
-
-func (o EnvironmentConfigMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[EnvironmentConfigMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
@@ -873,12 +782,6 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToEnvironmentConfigMaintena
 
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[*EnvironmentConfigMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) Elem() EnvironmentConfigMaintenanceWindowOutput {
@@ -951,12 +854,6 @@ func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfig
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigOutput)
 }
 
-func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: i.ToEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
 	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
 }
@@ -998,12 +895,6 @@ func (i *environmentConfigMasterAuthorizedNetworksConfigPtrType) ToEnvironmentCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
-func (i *environmentConfigMasterAuthorizedNetworksConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[*EnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: i.ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
@@ -1028,12 +919,6 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConf
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
-func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfig) []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
@@ -1056,12 +941,6 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ToEnvironmentC
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[*EnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Elem() EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
@@ -1125,12 +1004,6 @@ func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToEnvironm
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
-func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: i.ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray and EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput values.
 // You can construct a concrete instance of `EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput` via:
 //
@@ -1156,12 +1029,6 @@ func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToEnviron
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: i.ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
@@ -1174,12 +1041,6 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToEnviro
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
 	return o
-}
-
-func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
@@ -1202,12 +1063,6 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToE
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o
-}
-
-func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
@@ -1267,12 +1122,6 @@ func (i EnvironmentConfigNodeConfigArgs) ToEnvironmentConfigNodeConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigOutput)
 }
 
-func (i EnvironmentConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigNodeConfig] {
-	return pulumix.Output[EnvironmentConfigNodeConfig]{
-		OutputState: i.ToEnvironmentConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigNodeConfigArgs) ToEnvironmentConfigNodeConfigPtrOutput() EnvironmentConfigNodeConfigPtrOutput {
 	return i.ToEnvironmentConfigNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -1314,12 +1163,6 @@ func (i *environmentConfigNodeConfigPtrType) ToEnvironmentConfigNodeConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
-func (i *environmentConfigNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigNodeConfig] {
-	return pulumix.Output[*EnvironmentConfigNodeConfig]{
-		OutputState: i.ToEnvironmentConfigNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -1342,12 +1185,6 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfig {
 		return &v
 	}).(EnvironmentConfigNodeConfigPtrOutput)
-}
-
-func (o EnvironmentConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigNodeConfig] {
-	return pulumix.Output[EnvironmentConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -1408,12 +1245,6 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ToEnvironmentConfigNodeConfigPtrOu
 
 func (o EnvironmentConfigNodeConfigPtrOutput) ToEnvironmentConfigNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigNodeConfig] {
-	return pulumix.Output[*EnvironmentConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfigOutput {
@@ -1564,12 +1395,6 @@ func (i EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToEnvironmentConfigNo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
-func (i EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[EnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: i.ToEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToEnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
 	return i.ToEnvironmentConfigNodeConfigIpAllocationPolicyPtrOutputWithContext(context.Background())
 }
@@ -1611,12 +1436,6 @@ func (i *environmentConfigNodeConfigIpAllocationPolicyPtrType) ToEnvironmentConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
-func (i *environmentConfigNodeConfigIpAllocationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[*EnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: i.ToEnvironmentConfigNodeConfigIpAllocationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigNodeConfigIpAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ElementType() reflect.Type {
@@ -1639,12 +1458,6 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigNodeConfigIpAllocationPolicy) *EnvironmentConfigNodeConfigIpAllocationPolicy {
 		return &v
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
-}
-
-func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[EnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
@@ -1679,12 +1492,6 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ToEnvironmentCon
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ToEnvironmentConfigNodeConfigIpAllocationPolicyPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[*EnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) Elem() EnvironmentConfigNodeConfigIpAllocationPolicyOutput {
@@ -1787,12 +1594,6 @@ func (i EnvironmentConfigPrivateEnvironmentConfigArgs) ToEnvironmentConfigPrivat
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
-func (i EnvironmentConfigPrivateEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[EnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: i.ToEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigPrivateEnvironmentConfigArgs) ToEnvironmentConfigPrivateEnvironmentConfigPtrOutput() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
 	return i.ToEnvironmentConfigPrivateEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -1834,12 +1635,6 @@ func (i *environmentConfigPrivateEnvironmentConfigPtrType) ToEnvironmentConfigPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
-func (i *environmentConfigPrivateEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[*EnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: i.ToEnvironmentConfigPrivateEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigPrivateEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigPrivateEnvironmentConfigOutput) ElementType() reflect.Type {
@@ -1862,12 +1657,6 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigPrivateEnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
-}
-
-func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[EnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
@@ -1914,12 +1703,6 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ToEnvironmentConfigP
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ToEnvironmentConfigPrivateEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[*EnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentConfigPrivateEnvironmentConfigOutput {
@@ -2035,12 +1818,6 @@ func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigOutput)
 }
 
-func (i EnvironmentConfigRecoveryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[EnvironmentConfigRecoveryConfig]{
-		OutputState: i.ToEnvironmentConfigRecoveryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput {
 	return i.ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(context.Background())
 }
@@ -2082,12 +1859,6 @@ func (i *environmentConfigRecoveryConfigPtrType) ToEnvironmentConfigRecoveryConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
-func (i *environmentConfigRecoveryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[*EnvironmentConfigRecoveryConfig]{
-		OutputState: i.ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigRecoveryConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigRecoveryConfigOutput) ElementType() reflect.Type {
@@ -2112,12 +1883,6 @@ func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfig
 	}).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
-func (o EnvironmentConfigRecoveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[EnvironmentConfigRecoveryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfig() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 		return v.ScheduledSnapshotsConfig
@@ -2136,12 +1901,6 @@ func (o EnvironmentConfigRecoveryConfigPtrOutput) ToEnvironmentConfigRecoveryCon
 
 func (o EnvironmentConfigRecoveryConfigPtrOutput) ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigRecoveryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[*EnvironmentConfigRecoveryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigRecoveryConfigPtrOutput) Elem() EnvironmentConfigRecoveryConfigOutput {
@@ -2200,12 +1959,6 @@ func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironme
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
 }
 
-func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
 	return i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
 }
@@ -2247,12 +2000,6 @@ func (i *environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType) ToEnvir
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
 }
 
-func (i *environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
@@ -2275,12 +2022,6 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnviron
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 		return &v
 	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
-}
-
-func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
@@ -2313,12 +2054,6 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ToEnvi
 
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Elem() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
@@ -2410,12 +2145,6 @@ func (i EnvironmentConfigSoftwareConfigArgs) ToEnvironmentConfigSoftwareConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigOutput)
 }
 
-func (i EnvironmentConfigSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[EnvironmentConfigSoftwareConfig]{
-		OutputState: i.ToEnvironmentConfigSoftwareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigSoftwareConfigArgs) ToEnvironmentConfigSoftwareConfigPtrOutput() EnvironmentConfigSoftwareConfigPtrOutput {
 	return i.ToEnvironmentConfigSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -2457,12 +2186,6 @@ func (i *environmentConfigSoftwareConfigPtrType) ToEnvironmentConfigSoftwareConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
-func (i *environmentConfigSoftwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[*EnvironmentConfigSoftwareConfig]{
-		OutputState: i.ToEnvironmentConfigSoftwareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigOutput) ElementType() reflect.Type {
@@ -2485,12 +2208,6 @@ func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfig {
 		return &v
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
-}
-
-func (o EnvironmentConfigSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[EnvironmentConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
@@ -2535,12 +2252,6 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) ToEnvironmentConfigSoftwareCon
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) ToEnvironmentConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigSoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[*EnvironmentConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) Elem() EnvironmentConfigSoftwareConfigOutput {
@@ -2647,12 +2358,6 @@ func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnviro
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
 }
 
-func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[EnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
 	return i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
 }
@@ -2694,12 +2399,6 @@ func (i *environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType) ToEn
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
 }
 
-func (i *environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ElementType() reflect.Type {
@@ -2724,12 +2423,6 @@ func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvi
 	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
 }
 
-func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[EnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2746,12 +2439,6 @@ func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ToE
 
 func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Elem() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
@@ -2804,12 +2491,6 @@ func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfig
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerConfigOutput)
 }
 
-func (i EnvironmentConfigWebServerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerConfig] {
-	return pulumix.Output[EnvironmentConfigWebServerConfig]{
-		OutputState: i.ToEnvironmentConfigWebServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput {
 	return i.ToEnvironmentConfigWebServerConfigPtrOutputWithContext(context.Background())
 }
@@ -2851,12 +2532,6 @@ func (i *environmentConfigWebServerConfigPtrType) ToEnvironmentConfigWebServerCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
-func (i *environmentConfigWebServerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWebServerConfig] {
-	return pulumix.Output[*EnvironmentConfigWebServerConfig]{
-		OutputState: i.ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWebServerConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWebServerConfigOutput) ElementType() reflect.Type {
@@ -2881,12 +2556,6 @@ func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConf
 	}).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
-func (o EnvironmentConfigWebServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerConfig] {
-	return pulumix.Output[EnvironmentConfigWebServerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -2903,12 +2572,6 @@ func (o EnvironmentConfigWebServerConfigPtrOutput) ToEnvironmentConfigWebServerC
 
 func (o EnvironmentConfigWebServerConfigPtrOutput) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWebServerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWebServerConfig] {
-	return pulumix.Output[*EnvironmentConfigWebServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWebServerConfigPtrOutput) Elem() EnvironmentConfigWebServerConfigOutput {
@@ -2961,12 +2624,6 @@ func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigW
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlOutput)
 }
 
-func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[EnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: i.ToEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return i.ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(context.Background())
 }
@@ -3008,12 +2665,6 @@ func (i *environmentConfigWebServerNetworkAccessControlPtrType) ToEnvironmentCon
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
-func (i *environmentConfigWebServerNetworkAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[*EnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: i.ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWebServerNetworkAccessControlOutput) ElementType() reflect.Type {
@@ -3038,12 +2689,6 @@ func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfi
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
-func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[EnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControl) []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
 		return v.AllowedIpRanges
@@ -3062,12 +2707,6 @@ func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToEnvironmentCo
 
 func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[*EnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) Elem() EnvironmentConfigWebServerNetworkAccessControlOutput {
@@ -3122,12 +2761,6 @@ func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToEnvi
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
 }
 
-func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: i.ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput values.
 // You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput` via:
 //
@@ -3153,12 +2786,6 @@ func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToEnv
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 }
 
-func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: i.ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ElementType() reflect.Type {
@@ -3171,12 +2798,6 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToEn
 
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
 	return o
-}
-
-func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringPtrOutput {
@@ -3199,12 +2820,6 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o
-}
-
-func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) Index(i pulumi.IntInput) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
@@ -3250,12 +2865,6 @@ func (i EnvironmentConfigWorkloadsConfigArgs) ToEnvironmentConfigWorkloadsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigOutput)
 }
 
-func (i EnvironmentConfigWorkloadsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfig]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWorkloadsConfigArgs) ToEnvironmentConfigWorkloadsConfigPtrOutput() EnvironmentConfigWorkloadsConfigPtrOutput {
 	return i.ToEnvironmentConfigWorkloadsConfigPtrOutputWithContext(context.Background())
 }
@@ -3297,12 +2906,6 @@ func (i *environmentConfigWorkloadsConfigPtrType) ToEnvironmentConfigWorkloadsCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigPtrOutput)
 }
 
-func (i *environmentConfigWorkloadsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfig]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWorkloadsConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWorkloadsConfigOutput) ElementType() reflect.Type {
@@ -3325,12 +2928,6 @@ func (o EnvironmentConfigWorkloadsConfigOutput) ToEnvironmentConfigWorkloadsConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfig {
 		return &v
 	}).(EnvironmentConfigWorkloadsConfigPtrOutput)
-}
-
-func (o EnvironmentConfigWorkloadsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigOutput) Scheduler() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
@@ -3367,12 +2964,6 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) ToEnvironmentConfigWorkloadsC
 
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) ToEnvironmentConfigWorkloadsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWorkloadsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) Elem() EnvironmentConfigWorkloadsConfigOutput {
@@ -3458,12 +3049,6 @@ func (i EnvironmentConfigWorkloadsConfigSchedulerArgs) ToEnvironmentConfigWorklo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigSchedulerOutput)
 }
 
-func (i EnvironmentConfigWorkloadsConfigSchedulerArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigSchedulerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWorkloadsConfigSchedulerArgs) ToEnvironmentConfigWorkloadsConfigSchedulerPtrOutput() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return i.ToEnvironmentConfigWorkloadsConfigSchedulerPtrOutputWithContext(context.Background())
 }
@@ -3505,12 +3090,6 @@ func (i *environmentConfigWorkloadsConfigSchedulerPtrType) ToEnvironmentConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
 }
 
-func (i *environmentConfigWorkloadsConfigSchedulerPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigSchedulerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWorkloadsConfigSchedulerOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWorkloadsConfigSchedulerOutput) ElementType() reflect.Type {
@@ -3533,12 +3112,6 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) ToEnvironmentConfigWork
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigScheduler) *EnvironmentConfigWorkloadsConfigScheduler {
 		return &v
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
-}
-
-func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) Count() pulumi.IntPtrOutput {
@@ -3569,12 +3142,6 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) ToEnvironmentConfigW
 
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) ToEnvironmentConfigWorkloadsConfigSchedulerPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Elem() EnvironmentConfigWorkloadsConfigSchedulerOutput {
@@ -3658,12 +3225,6 @@ func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorklo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigTriggererOutput)
 }
 
-func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
 	return i.ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(context.Background())
 }
@@ -3705,12 +3266,6 @@ func (i *environmentConfigWorkloadsConfigTriggererPtrType) ToEnvironmentConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
 }
 
-func (i *environmentConfigWorkloadsConfigTriggererPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWorkloadsConfigTriggererOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWorkloadsConfigTriggererOutput) ElementType() reflect.Type {
@@ -3733,12 +3288,6 @@ func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWork
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigTriggerer) *EnvironmentConfigWorkloadsConfigTriggerer {
 		return &v
 	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
-}
-
-func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
@@ -3765,12 +3314,6 @@ func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ToEnvironmentConfigW
 
 func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Elem() EnvironmentConfigWorkloadsConfigTriggererOutput {
@@ -3845,12 +3388,6 @@ func (i EnvironmentConfigWorkloadsConfigWebServerArgs) ToEnvironmentConfigWorklo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigWebServerOutput)
 }
 
-func (i EnvironmentConfigWorkloadsConfigWebServerArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigWebServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWorkloadsConfigWebServerArgs) ToEnvironmentConfigWorkloadsConfigWebServerPtrOutput() EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
 	return i.ToEnvironmentConfigWorkloadsConfigWebServerPtrOutputWithContext(context.Background())
 }
@@ -3892,12 +3429,6 @@ func (i *environmentConfigWorkloadsConfigWebServerPtrType) ToEnvironmentConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigWebServerPtrOutput)
 }
 
-func (i *environmentConfigWorkloadsConfigWebServerPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigWebServerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWorkloadsConfigWebServerOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWorkloadsConfigWebServerOutput) ElementType() reflect.Type {
@@ -3920,12 +3451,6 @@ func (o EnvironmentConfigWorkloadsConfigWebServerOutput) ToEnvironmentConfigWork
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigWebServer) *EnvironmentConfigWorkloadsConfigWebServer {
 		return &v
 	}).(EnvironmentConfigWorkloadsConfigWebServerPtrOutput)
-}
-
-func (o EnvironmentConfigWorkloadsConfigWebServerOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigWebServerOutput) Cpu() pulumi.Float64PtrOutput {
@@ -3952,12 +3477,6 @@ func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) ToEnvironmentConfigW
 
 func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) ToEnvironmentConfigWorkloadsConfigWebServerPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) Elem() EnvironmentConfigWorkloadsConfigWebServerOutput {
@@ -4036,12 +3555,6 @@ func (i EnvironmentConfigWorkloadsConfigWorkerArgs) ToEnvironmentConfigWorkloads
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigWorkerOutput)
 }
 
-func (i EnvironmentConfigWorkloadsConfigWorkerArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigWorkerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentConfigWorkloadsConfigWorkerArgs) ToEnvironmentConfigWorkloadsConfigWorkerPtrOutput() EnvironmentConfigWorkloadsConfigWorkerPtrOutput {
 	return i.ToEnvironmentConfigWorkloadsConfigWorkerPtrOutputWithContext(context.Background())
 }
@@ -4083,12 +3596,6 @@ func (i *environmentConfigWorkloadsConfigWorkerPtrType) ToEnvironmentConfigWorkl
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigWorkerPtrOutput)
 }
 
-func (i *environmentConfigWorkloadsConfigWorkerPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: i.ToEnvironmentConfigWorkloadsConfigWorkerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentConfigWorkloadsConfigWorkerOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigWorkloadsConfigWorkerOutput) ElementType() reflect.Type {
@@ -4111,12 +3618,6 @@ func (o EnvironmentConfigWorkloadsConfigWorkerOutput) ToEnvironmentConfigWorkloa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigWorker) *EnvironmentConfigWorkloadsConfigWorker {
 		return &v
 	}).(EnvironmentConfigWorkloadsConfigWorkerPtrOutput)
-}
-
-func (o EnvironmentConfigWorkloadsConfigWorkerOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[EnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) Cpu() pulumi.Float64PtrOutput {
@@ -4151,12 +3652,6 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) ToEnvironmentConfigWork
 
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) ToEnvironmentConfigWorkloadsConfigWorkerPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigWorkerPtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[*EnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) Elem() EnvironmentConfigWorkloadsConfigWorkerOutput {
@@ -4277,12 +3772,6 @@ func (i GetEnvironmentConfigArgs) ToGetEnvironmentConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigOutput)
 }
 
-func (i GetEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfig] {
-	return pulumix.Output[GetEnvironmentConfig]{
-		OutputState: i.ToGetEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigArrayInput is an input type that accepts GetEnvironmentConfigArray and GetEnvironmentConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigArrayInput` via:
 //
@@ -4308,12 +3797,6 @@ func (i GetEnvironmentConfigArray) ToGetEnvironmentConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfig] {
-	return pulumix.Output[[]GetEnvironmentConfig]{
-		OutputState: i.ToGetEnvironmentConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigOutput) ElementType() reflect.Type {
@@ -4326,12 +3809,6 @@ func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutput() GetEnvironmen
 
 func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfig] {
-	return pulumix.Output[GetEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigOutput) AirflowUri() pulumi.StringOutput {
@@ -4422,12 +3899,6 @@ func (o GetEnvironmentConfigArrayOutput) ToGetEnvironmentConfigArrayOutputWithCo
 	return o
 }
 
-func (o GetEnvironmentConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfig] {
-	return pulumix.Output[[]GetEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfig {
 		return vs[0].([]GetEnvironmentConfig)[vs[1].(int)]
@@ -4465,12 +3936,6 @@ func (i GetEnvironmentConfigDatabaseConfigArgs) ToGetEnvironmentConfigDatabaseCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDatabaseConfigOutput)
 }
 
-func (i GetEnvironmentConfigDatabaseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[GetEnvironmentConfigDatabaseConfig]{
-		OutputState: i.ToGetEnvironmentConfigDatabaseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigDatabaseConfigArrayInput is an input type that accepts GetEnvironmentConfigDatabaseConfigArray and GetEnvironmentConfigDatabaseConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigDatabaseConfigArrayInput` via:
 //
@@ -4496,12 +3961,6 @@ func (i GetEnvironmentConfigDatabaseConfigArray) ToGetEnvironmentConfigDatabaseC
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDatabaseConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigDatabaseConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigDatabaseConfig]{
-		OutputState: i.ToGetEnvironmentConfigDatabaseConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigDatabaseConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigDatabaseConfigOutput) ElementType() reflect.Type {
@@ -4514,12 +3973,6 @@ func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabase
 
 func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabaseConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDatabaseConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigDatabaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[GetEnvironmentConfigDatabaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
@@ -4538,12 +3991,6 @@ func (o GetEnvironmentConfigDatabaseConfigArrayOutput) ToGetEnvironmentConfigDat
 
 func (o GetEnvironmentConfigDatabaseConfigArrayOutput) ToGetEnvironmentConfigDatabaseConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigDatabaseConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigDatabaseConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigDatabaseConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigDatabaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigDatabaseConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigDatabaseConfigOutput {
@@ -4583,12 +4030,6 @@ func (i GetEnvironmentConfigEncryptionConfigArgs) ToGetEnvironmentConfigEncrypti
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigEncryptionConfigOutput)
 }
 
-func (i GetEnvironmentConfigEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[GetEnvironmentConfigEncryptionConfig]{
-		OutputState: i.ToGetEnvironmentConfigEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigEncryptionConfigArrayInput is an input type that accepts GetEnvironmentConfigEncryptionConfigArray and GetEnvironmentConfigEncryptionConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigEncryptionConfigArrayInput` via:
 //
@@ -4614,12 +4055,6 @@ func (i GetEnvironmentConfigEncryptionConfigArray) ToGetEnvironmentConfigEncrypt
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigEncryptionConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigEncryptionConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigEncryptionConfig]{
-		OutputState: i.ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigEncryptionConfigOutput) ElementType() reflect.Type {
@@ -4632,12 +4067,6 @@ func (o GetEnvironmentConfigEncryptionConfigOutput) ToGetEnvironmentConfigEncryp
 
 func (o GetEnvironmentConfigEncryptionConfigOutput) ToGetEnvironmentConfigEncryptionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[GetEnvironmentConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
@@ -4656,12 +4085,6 @@ func (o GetEnvironmentConfigEncryptionConfigArrayOutput) ToGetEnvironmentConfigE
 
 func (o GetEnvironmentConfigEncryptionConfigArrayOutput) ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigEncryptionConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigEncryptionConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigEncryptionConfigOutput {
@@ -4705,12 +4128,6 @@ func (i GetEnvironmentConfigMaintenanceWindowArgs) ToGetEnvironmentConfigMainten
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMaintenanceWindowOutput)
 }
 
-func (i GetEnvironmentConfigMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[GetEnvironmentConfigMaintenanceWindow]{
-		OutputState: i.ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigMaintenanceWindowArrayInput is an input type that accepts GetEnvironmentConfigMaintenanceWindowArray and GetEnvironmentConfigMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigMaintenanceWindowArrayInput` via:
 //
@@ -4736,12 +4153,6 @@ func (i GetEnvironmentConfigMaintenanceWindowArray) ToGetEnvironmentConfigMainte
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMaintenanceWindowArrayOutput)
 }
 
-func (i GetEnvironmentConfigMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[[]GetEnvironmentConfigMaintenanceWindow]{
-		OutputState: i.ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -4754,12 +4165,6 @@ func (o GetEnvironmentConfigMaintenanceWindowOutput) ToGetEnvironmentConfigMaint
 
 func (o GetEnvironmentConfigMaintenanceWindowOutput) ToGetEnvironmentConfigMaintenanceWindowOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[GetEnvironmentConfigMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
@@ -4786,12 +4191,6 @@ func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) ToGetEnvironmentConfig
 
 func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) ToGetEnvironmentConfigMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMaintenanceWindowArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMaintenanceWindow] {
-	return pulumix.Output[[]GetEnvironmentConfigMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMaintenanceWindowOutput {
@@ -4833,12 +4232,6 @@ func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToGetEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput)
 }
 
-func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigArray and GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput` via:
 //
@@ -4864,12 +4257,6 @@ func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArray) ToGetEnvironmen
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
@@ -4882,12 +4269,6 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToGetEnvironme
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
@@ -4912,12 +4293,6 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ToGetEnvi
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
@@ -4959,12 +4334,6 @@ func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToGetEn
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
-func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray and GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput` via:
 //
@@ -4990,12 +4359,6 @@ func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToGetE
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
@@ -5008,12 +4371,6 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToGet
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
@@ -5036,12 +4393,6 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) 
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock] {
-	return pulumix.Output[[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
@@ -5101,12 +4452,6 @@ func (i GetEnvironmentConfigNodeConfigArgs) ToGetEnvironmentConfigNodeConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigOutput)
 }
 
-func (i GetEnvironmentConfigNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigNodeConfig] {
-	return pulumix.Output[GetEnvironmentConfigNodeConfig]{
-		OutputState: i.ToGetEnvironmentConfigNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigNodeConfigArrayInput is an input type that accepts GetEnvironmentConfigNodeConfigArray and GetEnvironmentConfigNodeConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigNodeConfigArrayInput` via:
 //
@@ -5132,12 +4477,6 @@ func (i GetEnvironmentConfigNodeConfigArray) ToGetEnvironmentConfigNodeConfigArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigNodeConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigNodeConfig]{
-		OutputState: i.ToGetEnvironmentConfigNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigNodeConfigOutput) ElementType() reflect.Type {
@@ -5150,12 +4489,6 @@ func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOu
 
 func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigNodeConfig] {
-	return pulumix.Output[GetEnvironmentConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
@@ -5218,12 +4551,6 @@ func (o GetEnvironmentConfigNodeConfigArrayOutput) ToGetEnvironmentConfigNodeCon
 	return o
 }
 
-func (o GetEnvironmentConfigNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigNodeConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigNodeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEnvironmentConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigNodeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigNodeConfig {
 		return vs[0].([]GetEnvironmentConfigNodeConfig)[vs[1].(int)]
@@ -5269,12 +4596,6 @@ func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToGetEnvironmentCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
-func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[GetEnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: i.ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput is an input type that accepts GetEnvironmentConfigNodeConfigIpAllocationPolicyArray and GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput` via:
 //
@@ -5300,12 +4621,6 @@ func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArray) ToGetEnvironmentC
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput)
 }
 
-func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[[]GetEnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: i.ToGetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ElementType() reflect.Type {
@@ -5318,12 +4633,6 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToGetEnvironment
 
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[GetEnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
@@ -5358,12 +4667,6 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) ToGetEnviro
 
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigNodeConfigIpAllocationPolicy] {
-	return pulumix.Output[[]GetEnvironmentConfigNodeConfigIpAllocationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
@@ -5417,12 +4720,6 @@ func (i GetEnvironmentConfigPrivateEnvironmentConfigArgs) ToGetEnvironmentConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
-func (i GetEnvironmentConfigPrivateEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[GetEnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: i.ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigPrivateEnvironmentConfigArrayInput is an input type that accepts GetEnvironmentConfigPrivateEnvironmentConfigArray and GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigPrivateEnvironmentConfigArrayInput` via:
 //
@@ -5448,12 +4745,6 @@ func (i GetEnvironmentConfigPrivateEnvironmentConfigArray) ToGetEnvironmentConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigPrivateEnvironmentConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: i.ToGetEnvironmentConfigPrivateEnvironmentConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigPrivateEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigPrivateEnvironmentConfigOutput) ElementType() reflect.Type {
@@ -5466,12 +4757,6 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConf
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigPrivateEnvironmentConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[GetEnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
@@ -5524,12 +4809,6 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput) ToGetEnvironmen
 	return o
 }
 
-func (o GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigPrivateEnvironmentConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigPrivateEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigPrivateEnvironmentConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigPrivateEnvironmentConfig {
 		return vs[0].([]GetEnvironmentConfigPrivateEnvironmentConfig)[vs[1].(int)]
@@ -5567,12 +4846,6 @@ func (i GetEnvironmentConfigRecoveryConfigArgs) ToGetEnvironmentConfigRecoveryCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigOutput)
 }
 
-func (i GetEnvironmentConfigRecoveryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[GetEnvironmentConfigRecoveryConfig]{
-		OutputState: i.ToGetEnvironmentConfigRecoveryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigRecoveryConfigArrayInput is an input type that accepts GetEnvironmentConfigRecoveryConfigArray and GetEnvironmentConfigRecoveryConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigArrayInput` via:
 //
@@ -5598,12 +4871,6 @@ func (i GetEnvironmentConfigRecoveryConfigArray) ToGetEnvironmentConfigRecoveryC
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigRecoveryConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigRecoveryConfig]{
-		OutputState: i.ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigRecoveryConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigRecoveryConfigOutput) ElementType() reflect.Type {
@@ -5616,12 +4883,6 @@ func (o GetEnvironmentConfigRecoveryConfigOutput) ToGetEnvironmentConfigRecovery
 
 func (o GetEnvironmentConfigRecoveryConfigOutput) ToGetEnvironmentConfigRecoveryConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigRecoveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[GetEnvironmentConfigRecoveryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfigs() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
@@ -5642,12 +4903,6 @@ func (o GetEnvironmentConfigRecoveryConfigArrayOutput) ToGetEnvironmentConfigRec
 
 func (o GetEnvironmentConfigRecoveryConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigRecoveryConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigRecoveryConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigRecoveryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigRecoveryConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigRecoveryConfigOutput {
@@ -5693,12 +4948,6 @@ func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToGetEnv
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
 }
 
-func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: i.ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput is an input type that accepts GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray and GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput` via:
 //
@@ -5724,12 +4973,6 @@ func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray) ToGetEn
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: i.ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
@@ -5742,12 +4985,6 @@ func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToGetE
 
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
@@ -5780,12 +5017,6 @@ func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) T
 
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
@@ -5837,12 +5068,6 @@ func (i GetEnvironmentConfigSoftwareConfigArgs) ToGetEnvironmentConfigSoftwareCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigOutput)
 }
 
-func (i GetEnvironmentConfigSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[GetEnvironmentConfigSoftwareConfig]{
-		OutputState: i.ToGetEnvironmentConfigSoftwareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigSoftwareConfigArrayInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArray and GetEnvironmentConfigSoftwareConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigSoftwareConfigArrayInput` via:
 //
@@ -5868,12 +5093,6 @@ func (i GetEnvironmentConfigSoftwareConfigArray) ToGetEnvironmentConfigSoftwareC
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigSoftwareConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigSoftwareConfig]{
-		OutputState: i.ToGetEnvironmentConfigSoftwareConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigSoftwareConfigOutput) ElementType() reflect.Type {
@@ -5886,12 +5105,6 @@ func (o GetEnvironmentConfigSoftwareConfigOutput) ToGetEnvironmentConfigSoftware
 
 func (o GetEnvironmentConfigSoftwareConfigOutput) ToGetEnvironmentConfigSoftwareConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[GetEnvironmentConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
@@ -5938,12 +5151,6 @@ func (o GetEnvironmentConfigSoftwareConfigArrayOutput) ToGetEnvironmentConfigSof
 	return o
 }
 
-func (o GetEnvironmentConfigSoftwareConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigSoftwareConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigSoftwareConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEnvironmentConfigSoftwareConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigSoftwareConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigSoftwareConfig {
 		return vs[0].([]GetEnvironmentConfigSoftwareConfig)[vs[1].(int)]
@@ -5981,12 +5188,6 @@ func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
 }
 
-func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: i.ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput is an input type that accepts GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray and GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput` via:
 //
@@ -6012,12 +5213,6 @@ func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray) ToGe
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput)
 }
 
-func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: i.ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ElementType() reflect.Type {
@@ -6030,12 +5225,6 @@ func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToG
 
 func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
@@ -6054,12 +5243,6 @@ func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput
 
 func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration] {
-	return pulumix.Output[[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
@@ -6099,12 +5282,6 @@ func (i GetEnvironmentConfigWebServerConfigArgs) ToGetEnvironmentConfigWebServer
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerConfigOutput)
 }
 
-func (i GetEnvironmentConfigWebServerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerConfig] {
-	return pulumix.Output[GetEnvironmentConfigWebServerConfig]{
-		OutputState: i.ToGetEnvironmentConfigWebServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWebServerConfigArrayInput is an input type that accepts GetEnvironmentConfigWebServerConfigArray and GetEnvironmentConfigWebServerConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWebServerConfigArrayInput` via:
 //
@@ -6130,12 +5307,6 @@ func (i GetEnvironmentConfigWebServerConfigArray) ToGetEnvironmentConfigWebServe
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigWebServerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerConfig]{
-		OutputState: i.ToGetEnvironmentConfigWebServerConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWebServerConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWebServerConfigOutput) ElementType() reflect.Type {
@@ -6148,12 +5319,6 @@ func (o GetEnvironmentConfigWebServerConfigOutput) ToGetEnvironmentConfigWebServ
 
 func (o GetEnvironmentConfigWebServerConfigOutput) ToGetEnvironmentConfigWebServerConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerConfig] {
-	return pulumix.Output[GetEnvironmentConfigWebServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
@@ -6172,12 +5337,6 @@ func (o GetEnvironmentConfigWebServerConfigArrayOutput) ToGetEnvironmentConfigWe
 
 func (o GetEnvironmentConfigWebServerConfigArrayOutput) ToGetEnvironmentConfigWebServerConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWebServerConfigOutput {
@@ -6217,12 +5376,6 @@ func (i GetEnvironmentConfigWebServerNetworkAccessControlArgs) ToGetEnvironmentC
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlOutput)
 }
 
-func (i GetEnvironmentConfigWebServerNetworkAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: i.ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWebServerNetworkAccessControlArrayInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlArray and GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWebServerNetworkAccessControlArrayInput` via:
 //
@@ -6248,12 +5401,6 @@ func (i GetEnvironmentConfigWebServerNetworkAccessControlArray) ToGetEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput)
 }
 
-func (i GetEnvironmentConfigWebServerNetworkAccessControlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: i.ToGetEnvironmentConfigWebServerNetworkAccessControlArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWebServerNetworkAccessControlOutput) ElementType() reflect.Type {
@@ -6266,12 +5413,6 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToGetEnvironmen
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
@@ -6292,12 +5433,6 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput) ToGetEnvir
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControl] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWebServerNetworkAccessControlOutput {
@@ -6339,12 +5474,6 @@ func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
 }
 
-func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: i.ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray and GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput` via:
 //
@@ -6370,12 +5499,6 @@ func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) To
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 }
 
-func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: i.ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ElementType() reflect.Type {
@@ -6388,12 +5511,6 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) T
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringOutput {
@@ -6416,12 +5533,6 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutp
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange] {
-	return pulumix.Output[[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
@@ -6467,12 +5578,6 @@ func (i GetEnvironmentConfigWorkloadsConfigArgs) ToGetEnvironmentConfigWorkloads
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfig]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWorkloadsConfigArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigArray and GetEnvironmentConfigWorkloadsConfigArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigArrayInput` via:
 //
@@ -6498,12 +5603,6 @@ func (i GetEnvironmentConfigWorkloadsConfigArray) ToGetEnvironmentConfigWorkload
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigArrayOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfig]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWorkloadsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWorkloadsConfigOutput) ElementType() reflect.Type {
@@ -6516,12 +5615,6 @@ func (o GetEnvironmentConfigWorkloadsConfigOutput) ToGetEnvironmentConfigWorkloa
 
 func (o GetEnvironmentConfigWorkloadsConfigOutput) ToGetEnvironmentConfigWorkloadsConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigOutput) Schedulers() GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput {
@@ -6560,12 +5653,6 @@ func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) ToGetEnvironmentConfigWo
 
 func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) ToGetEnvironmentConfigWorkloadsConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfig] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigOutput {
@@ -6611,12 +5698,6 @@ func (i GetEnvironmentConfigWorkloadsConfigSchedulerArgs) ToGetEnvironmentConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigSchedulerOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigSchedulerArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigSchedulerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigSchedulerArray and GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput` via:
 //
@@ -6642,12 +5723,6 @@ func (i GetEnvironmentConfigWorkloadsConfigSchedulerArray) ToGetEnvironmentConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigSchedulerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigSchedulerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWorkloadsConfigSchedulerOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWorkloadsConfigSchedulerOutput) ElementType() reflect.Type {
@@ -6660,12 +5735,6 @@ func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) ToGetEnvironmentConf
 
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) ToGetEnvironmentConfigWorkloadsConfigSchedulerOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigSchedulerOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) Count() pulumi.IntOutput {
@@ -6696,12 +5765,6 @@ func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) ToGetEnvironmen
 
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) ToGetEnvironmentConfigWorkloadsConfigSchedulerArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigScheduler] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigScheduler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigSchedulerOutput {
@@ -6745,12 +5808,6 @@ func (i GetEnvironmentConfigWorkloadsConfigTriggererArgs) ToGetEnvironmentConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigTriggererOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigTriggererArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWorkloadsConfigTriggererArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigTriggererArray and GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigTriggererArrayInput` via:
 //
@@ -6776,12 +5833,6 @@ func (i GetEnvironmentConfigWorkloadsConfigTriggererArray) ToGetEnvironmentConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigTriggererArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWorkloadsConfigTriggererOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWorkloadsConfigTriggererOutput) ElementType() reflect.Type {
@@ -6794,12 +5845,6 @@ func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToGetEnvironmentConf
 
 func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
@@ -6826,12 +5871,6 @@ func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ToGetEnvironmen
 
 func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigTriggerer] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigTriggerer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigTriggererOutput {
@@ -6875,12 +5914,6 @@ func (i GetEnvironmentConfigWorkloadsConfigWebServerArgs) ToGetEnvironmentConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigWebServerOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigWebServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigWebServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWorkloadsConfigWebServerArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigWebServerArray and GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigWebServerArrayInput` via:
 //
@@ -6906,12 +5939,6 @@ func (i GetEnvironmentConfigWorkloadsConfigWebServerArray) ToGetEnvironmentConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigWebServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigWebServerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWorkloadsConfigWebServerOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWorkloadsConfigWebServerOutput) ElementType() reflect.Type {
@@ -6924,12 +5951,6 @@ func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) ToGetEnvironmentConf
 
 func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) ToGetEnvironmentConfigWorkloadsConfigWebServerOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigWebServerOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) Cpu() pulumi.Float64Output {
@@ -6956,12 +5977,6 @@ func (o GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput) ToGetEnvironmen
 
 func (o GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput) ToGetEnvironmentConfigWorkloadsConfigWebServerArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWebServer] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWebServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigWebServerOutput {
@@ -7009,12 +6024,6 @@ func (i GetEnvironmentConfigWorkloadsConfigWorkerArgs) ToGetEnvironmentConfigWor
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigWorkerOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigWorkerArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigWorkerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEnvironmentConfigWorkloadsConfigWorkerArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigWorkerArray and GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput values.
 // You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigWorkerArrayInput` via:
 //
@@ -7040,12 +6049,6 @@ func (i GetEnvironmentConfigWorkloadsConfigWorkerArray) ToGetEnvironmentConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput)
 }
 
-func (i GetEnvironmentConfigWorkloadsConfigWorkerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: i.ToGetEnvironmentConfigWorkloadsConfigWorkerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEnvironmentConfigWorkloadsConfigWorkerOutput struct{ *pulumi.OutputState }
 
 func (GetEnvironmentConfigWorkloadsConfigWorkerOutput) ElementType() reflect.Type {
@@ -7058,12 +6061,6 @@ func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) ToGetEnvironmentConfigW
 
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) ToGetEnvironmentConfigWorkloadsConfigWorkerOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigWorkerOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[GetEnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) Cpu() pulumi.Float64Output {
@@ -7098,12 +6095,6 @@ func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) ToGetEnvironmentCo
 
 func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) ToGetEnvironmentConfigWorkloadsConfigWorkerArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput {
 	return o
-}
-
-func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWorker] {
-	return pulumix.Output[[]GetEnvironmentConfigWorkloadsConfigWorker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigWorkerOutput {
@@ -7149,12 +6140,6 @@ func (i GetImageVersionsImageVersionArgs) ToGetImageVersionsImageVersionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageVersionsImageVersionOutput)
 }
 
-func (i GetImageVersionsImageVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetImageVersionsImageVersion] {
-	return pulumix.Output[GetImageVersionsImageVersion]{
-		OutputState: i.ToGetImageVersionsImageVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetImageVersionsImageVersionArrayInput is an input type that accepts GetImageVersionsImageVersionArray and GetImageVersionsImageVersionArrayOutput values.
 // You can construct a concrete instance of `GetImageVersionsImageVersionArrayInput` via:
 //
@@ -7180,12 +6165,6 @@ func (i GetImageVersionsImageVersionArray) ToGetImageVersionsImageVersionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageVersionsImageVersionArrayOutput)
 }
 
-func (i GetImageVersionsImageVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetImageVersionsImageVersion] {
-	return pulumix.Output[[]GetImageVersionsImageVersion]{
-		OutputState: i.ToGetImageVersionsImageVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetImageVersionsImageVersionOutput struct{ *pulumi.OutputState }
 
 func (GetImageVersionsImageVersionOutput) ElementType() reflect.Type {
@@ -7198,12 +6177,6 @@ func (o GetImageVersionsImageVersionOutput) ToGetImageVersionsImageVersionOutput
 
 func (o GetImageVersionsImageVersionOutput) ToGetImageVersionsImageVersionOutputWithContext(ctx context.Context) GetImageVersionsImageVersionOutput {
 	return o
-}
-
-func (o GetImageVersionsImageVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageVersionsImageVersion] {
-	return pulumix.Output[GetImageVersionsImageVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
@@ -7228,12 +6201,6 @@ func (o GetImageVersionsImageVersionArrayOutput) ToGetImageVersionsImageVersionA
 
 func (o GetImageVersionsImageVersionArrayOutput) ToGetImageVersionsImageVersionArrayOutputWithContext(ctx context.Context) GetImageVersionsImageVersionArrayOutput {
 	return o
-}
-
-func (o GetImageVersionsImageVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetImageVersionsImageVersion] {
-	return pulumix.Output[[]GetImageVersionsImageVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetImageVersionsImageVersionArrayOutput) Index(i pulumi.IntInput) GetImageVersionsImageVersionOutput {

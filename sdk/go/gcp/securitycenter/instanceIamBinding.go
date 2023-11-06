@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Data Fusion instance.
@@ -429,12 +428,6 @@ func (i *InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingOutput)
 }
 
-func (i *InstanceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBinding] {
-	return pulumix.Output[*InstanceIamBinding]{
-		OutputState: i.ToInstanceIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceIamBindingArrayInput is an input type that accepts InstanceIamBindingArray and InstanceIamBindingArrayOutput values.
 // You can construct a concrete instance of `InstanceIamBindingArrayInput` via:
 //
@@ -458,12 +451,6 @@ func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutput() InstanceIamBi
 
 func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutputWithContext(ctx context.Context) InstanceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingArrayOutput)
-}
-
-func (i InstanceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamBinding] {
-	return pulumix.Output[[]*InstanceIamBinding]{
-		OutputState: i.ToInstanceIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceIamBindingMapInput is an input type that accepts InstanceIamBindingMap and InstanceIamBindingMapOutput values.
@@ -491,12 +478,6 @@ func (i InstanceIamBindingMap) ToInstanceIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingMapOutput)
 }
 
-func (i InstanceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamBinding] {
-	return pulumix.Output[map[string]*InstanceIamBinding]{
-		OutputState: i.ToInstanceIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingOutput) ElementType() reflect.Type {
@@ -509,12 +490,6 @@ func (o InstanceIamBindingOutput) ToInstanceIamBindingOutput() InstanceIamBindin
 
 func (o InstanceIamBindingOutput) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
 	return o
-}
-
-func (o InstanceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBinding] {
-	return pulumix.Output[*InstanceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamBindingOutput) Condition() InstanceIamBindingConditionPtrOutput {
@@ -563,12 +538,6 @@ func (o InstanceIamBindingArrayOutput) ToInstanceIamBindingArrayOutputWithContex
 	return o
 }
 
-func (o InstanceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamBinding] {
-	return pulumix.Output[[]*InstanceIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceIamBindingArrayOutput) Index(i pulumi.IntInput) InstanceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamBinding {
 		return vs[0].([]*InstanceIamBinding)[vs[1].(int)]
@@ -587,12 +556,6 @@ func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutput() InstanceIam
 
 func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutputWithContext(ctx context.Context) InstanceIamBindingMapOutput {
 	return o
-}
-
-func (o InstanceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamBinding] {
-	return pulumix.Output[map[string]*InstanceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIamBindingOutput {

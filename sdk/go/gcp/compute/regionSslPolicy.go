@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Regional SSL policy. SSL policies give you the ability to control the
@@ -353,12 +352,6 @@ func (i *RegionSslPolicy) ToRegionSslPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslPolicyOutput)
 }
 
-func (i *RegionSslPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicy] {
-	return pulumix.Output[*RegionSslPolicy]{
-		OutputState: i.ToRegionSslPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionSslPolicyArrayInput is an input type that accepts RegionSslPolicyArray and RegionSslPolicyArrayOutput values.
 // You can construct a concrete instance of `RegionSslPolicyArrayInput` via:
 //
@@ -382,12 +375,6 @@ func (i RegionSslPolicyArray) ToRegionSslPolicyArrayOutput() RegionSslPolicyArra
 
 func (i RegionSslPolicyArray) ToRegionSslPolicyArrayOutputWithContext(ctx context.Context) RegionSslPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslPolicyArrayOutput)
-}
-
-func (i RegionSslPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSslPolicy] {
-	return pulumix.Output[[]*RegionSslPolicy]{
-		OutputState: i.ToRegionSslPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionSslPolicyMapInput is an input type that accepts RegionSslPolicyMap and RegionSslPolicyMapOutput values.
@@ -415,12 +402,6 @@ func (i RegionSslPolicyMap) ToRegionSslPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslPolicyMapOutput)
 }
 
-func (i RegionSslPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSslPolicy] {
-	return pulumix.Output[map[string]*RegionSslPolicy]{
-		OutputState: i.ToRegionSslPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionSslPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSslPolicyOutput) ElementType() reflect.Type {
@@ -433,12 +414,6 @@ func (o RegionSslPolicyOutput) ToRegionSslPolicyOutput() RegionSslPolicyOutput {
 
 func (o RegionSslPolicyOutput) ToRegionSslPolicyOutputWithContext(ctx context.Context) RegionSslPolicyOutput {
 	return o
-}
-
-func (o RegionSslPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicy] {
-	return pulumix.Output[*RegionSslPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -537,12 +512,6 @@ func (o RegionSslPolicyArrayOutput) ToRegionSslPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RegionSslPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSslPolicy] {
-	return pulumix.Output[[]*RegionSslPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionSslPolicyArrayOutput) Index(i pulumi.IntInput) RegionSslPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionSslPolicy {
 		return vs[0].([]*RegionSslPolicy)[vs[1].(int)]
@@ -561,12 +530,6 @@ func (o RegionSslPolicyMapOutput) ToRegionSslPolicyMapOutput() RegionSslPolicyMa
 
 func (o RegionSslPolicyMapOutput) ToRegionSslPolicyMapOutputWithContext(ctx context.Context) RegionSslPolicyMapOutput {
 	return o
-}
-
-func (o RegionSslPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSslPolicy] {
-	return pulumix.Output[map[string]*RegionSslPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionSslPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionSslPolicyOutput {

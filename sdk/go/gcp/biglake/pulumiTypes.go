@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i DatabaseHiveOptionsArgs) ToDatabaseHiveOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseHiveOptionsOutput)
 }
 
-func (i DatabaseHiveOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseHiveOptions] {
-	return pulumix.Output[DatabaseHiveOptions]{
-		OutputState: i.ToDatabaseHiveOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseHiveOptionsArgs) ToDatabaseHiveOptionsPtrOutput() DatabaseHiveOptionsPtrOutput {
 	return i.ToDatabaseHiveOptionsPtrOutputWithContext(context.Background())
 }
@@ -106,12 +99,6 @@ func (i *databaseHiveOptionsPtrType) ToDatabaseHiveOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseHiveOptionsPtrOutput)
 }
 
-func (i *databaseHiveOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseHiveOptions] {
-	return pulumix.Output[*DatabaseHiveOptions]{
-		OutputState: i.ToDatabaseHiveOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseHiveOptionsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseHiveOptionsOutput) ElementType() reflect.Type {
@@ -134,12 +121,6 @@ func (o DatabaseHiveOptionsOutput) ToDatabaseHiveOptionsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseHiveOptions) *DatabaseHiveOptions {
 		return &v
 	}).(DatabaseHiveOptionsPtrOutput)
-}
-
-func (o DatabaseHiveOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseHiveOptions] {
-	return pulumix.Output[DatabaseHiveOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage folder URI where the database data is stored, starting with "gs://".
@@ -168,12 +149,6 @@ func (o DatabaseHiveOptionsPtrOutput) ToDatabaseHiveOptionsPtrOutput() DatabaseH
 
 func (o DatabaseHiveOptionsPtrOutput) ToDatabaseHiveOptionsPtrOutputWithContext(ctx context.Context) DatabaseHiveOptionsPtrOutput {
 	return o
-}
-
-func (o DatabaseHiveOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseHiveOptions] {
-	return pulumix.Output[*DatabaseHiveOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseHiveOptionsPtrOutput) Elem() DatabaseHiveOptionsOutput {
@@ -257,12 +232,6 @@ func (i TableHiveOptionsArgs) ToTableHiveOptionsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsOutput)
 }
 
-func (i TableHiveOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptions] {
-	return pulumix.Output[TableHiveOptions]{
-		OutputState: i.ToTableHiveOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TableHiveOptionsArgs) ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput {
 	return i.ToTableHiveOptionsPtrOutputWithContext(context.Background())
 }
@@ -304,12 +273,6 @@ func (i *tableHiveOptionsPtrType) ToTableHiveOptionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsPtrOutput)
 }
 
-func (i *tableHiveOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptions] {
-	return pulumix.Output[*TableHiveOptions]{
-		OutputState: i.ToTableHiveOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableHiveOptionsOutput struct{ *pulumi.OutputState }
 
 func (TableHiveOptionsOutput) ElementType() reflect.Type {
@@ -332,12 +295,6 @@ func (o TableHiveOptionsOutput) ToTableHiveOptionsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableHiveOptions) *TableHiveOptions {
 		return &v
 	}).(TableHiveOptionsPtrOutput)
-}
-
-func (o TableHiveOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptions] {
-	return pulumix.Output[TableHiveOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Stores user supplied Hive table parameters. An object containing a
@@ -370,12 +327,6 @@ func (o TableHiveOptionsPtrOutput) ToTableHiveOptionsPtrOutput() TableHiveOption
 
 func (o TableHiveOptionsPtrOutput) ToTableHiveOptionsPtrOutputWithContext(ctx context.Context) TableHiveOptionsPtrOutput {
 	return o
-}
-
-func (o TableHiveOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptions] {
-	return pulumix.Output[*TableHiveOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableHiveOptionsPtrOutput) Elem() TableHiveOptionsOutput {
@@ -462,12 +413,6 @@ func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescript
 	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorOutput)
 }
 
-func (i TableHiveOptionsStorageDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptionsStorageDescriptor] {
-	return pulumix.Output[TableHiveOptionsStorageDescriptor]{
-		OutputState: i.ToTableHiveOptionsStorageDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput {
 	return i.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(context.Background())
 }
@@ -509,12 +454,6 @@ func (i *tableHiveOptionsStorageDescriptorPtrType) ToTableHiveOptionsStorageDesc
 	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorPtrOutput)
 }
 
-func (i *tableHiveOptionsStorageDescriptorPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptionsStorageDescriptor] {
-	return pulumix.Output[*TableHiveOptionsStorageDescriptor]{
-		OutputState: i.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableHiveOptionsStorageDescriptorOutput struct{ *pulumi.OutputState }
 
 func (TableHiveOptionsStorageDescriptorOutput) ElementType() reflect.Type {
@@ -537,12 +476,6 @@ func (o TableHiveOptionsStorageDescriptorOutput) ToTableHiveOptionsStorageDescri
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableHiveOptionsStorageDescriptor) *TableHiveOptionsStorageDescriptor {
 		return &v
 	}).(TableHiveOptionsStorageDescriptorPtrOutput)
-}
-
-func (o TableHiveOptionsStorageDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptionsStorageDescriptor] {
-	return pulumix.Output[TableHiveOptionsStorageDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Java class name of the input format.
@@ -572,12 +505,6 @@ func (o TableHiveOptionsStorageDescriptorPtrOutput) ToTableHiveOptionsStorageDes
 
 func (o TableHiveOptionsStorageDescriptorPtrOutput) ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorPtrOutput {
 	return o
-}
-
-func (o TableHiveOptionsStorageDescriptorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptionsStorageDescriptor] {
-	return pulumix.Output[*TableHiveOptionsStorageDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableHiveOptionsStorageDescriptorPtrOutput) Elem() TableHiveOptionsStorageDescriptorOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -420,12 +419,6 @@ func (i *AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionOutput)
 }
 
-func (i *AccessLevelCondition) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCondition] {
-	return pulumix.Output[*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelConditionArrayInput is an input type that accepts AccessLevelConditionArray and AccessLevelConditionArrayOutput values.
 // You can construct a concrete instance of `AccessLevelConditionArrayInput` via:
 //
@@ -449,12 +442,6 @@ func (i AccessLevelConditionArray) ToAccessLevelConditionArrayOutput() AccessLev
 
 func (i AccessLevelConditionArray) ToAccessLevelConditionArrayOutputWithContext(ctx context.Context) AccessLevelConditionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionArrayOutput)
-}
-
-func (i AccessLevelConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevelCondition] {
-	return pulumix.Output[[]*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelConditionMapInput is an input type that accepts AccessLevelConditionMap and AccessLevelConditionMapOutput values.
@@ -482,12 +469,6 @@ func (i AccessLevelConditionMap) ToAccessLevelConditionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionMapOutput)
 }
 
-func (i AccessLevelConditionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevelCondition] {
-	return pulumix.Output[map[string]*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelConditionOutput) ElementType() reflect.Type {
@@ -500,12 +481,6 @@ func (o AccessLevelConditionOutput) ToAccessLevelConditionOutput() AccessLevelCo
 
 func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
 	return o
-}
-
-func (o AccessLevelConditionOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCondition] {
-	return pulumix.Output[*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Access Level to add this condition to.
@@ -585,12 +560,6 @@ func (o AccessLevelConditionArrayOutput) ToAccessLevelConditionArrayOutputWithCo
 	return o
 }
 
-func (o AccessLevelConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevelCondition] {
-	return pulumix.Output[[]*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessLevelCondition {
 		return vs[0].([]*AccessLevelCondition)[vs[1].(int)]
@@ -609,12 +578,6 @@ func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutput() AccessL
 
 func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutputWithContext(ctx context.Context) AccessLevelConditionMapOutput {
 	return o
-}
-
-func (o AccessLevelConditionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevelCondition] {
-	return pulumix.Output[map[string]*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelConditionMapOutput) MapIndex(k pulumi.StringInput) AccessLevelConditionOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsOutput)
 }
 
-func (i ConfigBlockingFunctionsArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctions] {
-	return pulumix.Output[ConfigBlockingFunctions]{
-		OutputState: i.ToConfigBlockingFunctionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput {
 	return i.ToConfigBlockingFunctionsPtrOutputWithContext(context.Background())
 }
@@ -102,12 +95,6 @@ func (i *configBlockingFunctionsPtrType) ToConfigBlockingFunctionsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsPtrOutput)
 }
 
-func (i *configBlockingFunctionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigBlockingFunctions] {
-	return pulumix.Output[*ConfigBlockingFunctions]{
-		OutputState: i.ToConfigBlockingFunctionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigBlockingFunctionsOutput struct{ *pulumi.OutputState }
 
 func (ConfigBlockingFunctionsOutput) ElementType() reflect.Type {
@@ -130,12 +117,6 @@ func (o ConfigBlockingFunctionsOutput) ToConfigBlockingFunctionsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigBlockingFunctions) *ConfigBlockingFunctions {
 		return &v
 	}).(ConfigBlockingFunctionsPtrOutput)
-}
-
-func (o ConfigBlockingFunctionsOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctions] {
-	return pulumix.Output[ConfigBlockingFunctions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
@@ -164,12 +145,6 @@ func (o ConfigBlockingFunctionsPtrOutput) ToConfigBlockingFunctionsPtrOutput() C
 
 func (o ConfigBlockingFunctionsPtrOutput) ToConfigBlockingFunctionsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsPtrOutput {
 	return o
-}
-
-func (o ConfigBlockingFunctionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigBlockingFunctions] {
-	return pulumix.Output[*ConfigBlockingFunctions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigBlockingFunctionsPtrOutput) Elem() ConfigBlockingFunctionsOutput {
@@ -245,12 +220,6 @@ func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFu
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsForwardInboundCredentialsOutput)
 }
 
-func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctionsForwardInboundCredentials] {
-	return pulumix.Output[ConfigBlockingFunctionsForwardInboundCredentials]{
-		OutputState: i.ToConfigBlockingFunctionsForwardInboundCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
 	return i.ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(context.Background())
 }
@@ -292,12 +261,6 @@ func (i *configBlockingFunctionsForwardInboundCredentialsPtrType) ToConfigBlocki
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
 }
 
-func (i *configBlockingFunctionsForwardInboundCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigBlockingFunctionsForwardInboundCredentials] {
-	return pulumix.Output[*ConfigBlockingFunctionsForwardInboundCredentials]{
-		OutputState: i.ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigBlockingFunctionsForwardInboundCredentialsOutput struct{ *pulumi.OutputState }
 
 func (ConfigBlockingFunctionsForwardInboundCredentialsOutput) ElementType() reflect.Type {
@@ -320,12 +283,6 @@ func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToConfigBlocking
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigBlockingFunctionsForwardInboundCredentials) *ConfigBlockingFunctionsForwardInboundCredentials {
 		return &v
 	}).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
-}
-
-func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctionsForwardInboundCredentials] {
-	return pulumix.Output[ConfigBlockingFunctionsForwardInboundCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to pass the user's OAuth identity provider's access token.
@@ -355,12 +312,6 @@ func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ToConfigBlock
 
 func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
 	return o
-}
-
-func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigBlockingFunctionsForwardInboundCredentials] {
-	return pulumix.Output[*ConfigBlockingFunctionsForwardInboundCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) Elem() ConfigBlockingFunctionsForwardInboundCredentialsOutput {
@@ -446,12 +397,6 @@ func (i ConfigBlockingFunctionsTriggerArgs) ToConfigBlockingFunctionsTriggerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsTriggerOutput)
 }
 
-func (i ConfigBlockingFunctionsTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctionsTrigger] {
-	return pulumix.Output[ConfigBlockingFunctionsTrigger]{
-		OutputState: i.ToConfigBlockingFunctionsTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigBlockingFunctionsTriggerArrayInput is an input type that accepts ConfigBlockingFunctionsTriggerArray and ConfigBlockingFunctionsTriggerArrayOutput values.
 // You can construct a concrete instance of `ConfigBlockingFunctionsTriggerArrayInput` via:
 //
@@ -477,12 +422,6 @@ func (i ConfigBlockingFunctionsTriggerArray) ToConfigBlockingFunctionsTriggerArr
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsTriggerArrayOutput)
 }
 
-func (i ConfigBlockingFunctionsTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigBlockingFunctionsTrigger] {
-	return pulumix.Output[[]ConfigBlockingFunctionsTrigger]{
-		OutputState: i.ToConfigBlockingFunctionsTriggerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigBlockingFunctionsTriggerOutput struct{ *pulumi.OutputState }
 
 func (ConfigBlockingFunctionsTriggerOutput) ElementType() reflect.Type {
@@ -495,12 +434,6 @@ func (o ConfigBlockingFunctionsTriggerOutput) ToConfigBlockingFunctionsTriggerOu
 
 func (o ConfigBlockingFunctionsTriggerOutput) ToConfigBlockingFunctionsTriggerOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerOutput {
 	return o
-}
-
-func (o ConfigBlockingFunctionsTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigBlockingFunctionsTrigger] {
-	return pulumix.Output[ConfigBlockingFunctionsTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier for this object. Format specified above.
@@ -531,12 +464,6 @@ func (o ConfigBlockingFunctionsTriggerArrayOutput) ToConfigBlockingFunctionsTrig
 
 func (o ConfigBlockingFunctionsTriggerArrayOutput) ToConfigBlockingFunctionsTriggerArrayOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerArrayOutput {
 	return o
-}
-
-func (o ConfigBlockingFunctionsTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigBlockingFunctionsTrigger] {
-	return pulumix.Output[[]ConfigBlockingFunctionsTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigBlockingFunctionsTriggerArrayOutput) Index(i pulumi.IntInput) ConfigBlockingFunctionsTriggerOutput {
@@ -580,12 +507,6 @@ func (i ConfigQuotaArgs) ToConfigQuotaOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaOutput)
 }
 
-func (i ConfigQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigQuota] {
-	return pulumix.Output[ConfigQuota]{
-		OutputState: i.ToConfigQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigQuotaArgs) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
 	return i.ToConfigQuotaPtrOutputWithContext(context.Background())
 }
@@ -627,12 +548,6 @@ func (i *configQuotaPtrType) ToConfigQuotaPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaPtrOutput)
 }
 
-func (i *configQuotaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigQuota] {
-	return pulumix.Output[*ConfigQuota]{
-		OutputState: i.ToConfigQuotaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigQuotaOutput struct{ *pulumi.OutputState }
 
 func (ConfigQuotaOutput) ElementType() reflect.Type {
@@ -657,12 +572,6 @@ func (o ConfigQuotaOutput) ToConfigQuotaPtrOutputWithContext(ctx context.Context
 	}).(ConfigQuotaPtrOutput)
 }
 
-func (o ConfigQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigQuota] {
-	return pulumix.Output[ConfigQuota]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 // Structure is documented below.
 func (o ConfigQuotaOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPtrOutput {
@@ -681,12 +590,6 @@ func (o ConfigQuotaPtrOutput) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
 
 func (o ConfigQuotaPtrOutput) ToConfigQuotaPtrOutputWithContext(ctx context.Context) ConfigQuotaPtrOutput {
 	return o
-}
-
-func (o ConfigQuotaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigQuota] {
-	return pulumix.Output[*ConfigQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigQuotaPtrOutput) Elem() ConfigQuotaOutput {
@@ -751,12 +654,6 @@ func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaSignUpQuotaConfigOutput)
 }
 
-func (i ConfigQuotaSignUpQuotaConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigQuotaSignUpQuotaConfig] {
-	return pulumix.Output[ConfigQuotaSignUpQuotaConfig]{
-		OutputState: i.ToConfigQuotaSignUpQuotaConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput {
 	return i.ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(context.Background())
 }
@@ -798,12 +695,6 @@ func (i *configQuotaSignUpQuotaConfigPtrType) ToConfigQuotaSignUpQuotaConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaSignUpQuotaConfigPtrOutput)
 }
 
-func (i *configQuotaSignUpQuotaConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigQuotaSignUpQuotaConfig] {
-	return pulumix.Output[*ConfigQuotaSignUpQuotaConfig]{
-		OutputState: i.ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigQuotaSignUpQuotaConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigQuotaSignUpQuotaConfigOutput) ElementType() reflect.Type {
@@ -826,12 +717,6 @@ func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigQuotaSignUpQuotaConfig) *ConfigQuotaSignUpQuotaConfig {
 		return &v
 	}).(ConfigQuotaSignUpQuotaConfigPtrOutput)
-}
-
-func (o ConfigQuotaSignUpQuotaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigQuotaSignUpQuotaConfig] {
-	return pulumix.Output[ConfigQuotaSignUpQuotaConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A sign up APIs quota that customers can override temporarily.
@@ -861,12 +746,6 @@ func (o ConfigQuotaSignUpQuotaConfigPtrOutput) ToConfigQuotaSignUpQuotaConfigPtr
 
 func (o ConfigQuotaSignUpQuotaConfigPtrOutput) ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput {
 	return o
-}
-
-func (o ConfigQuotaSignUpQuotaConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigQuotaSignUpQuotaConfig] {
-	return pulumix.Output[*ConfigQuotaSignUpQuotaConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigQuotaSignUpQuotaConfigPtrOutput) Elem() ConfigQuotaSignUpQuotaConfigOutput {
@@ -968,12 +847,6 @@ func (i ConfigSignInArgs) ToConfigSignInOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInOutput)
 }
 
-func (i ConfigSignInArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigSignIn] {
-	return pulumix.Output[ConfigSignIn]{
-		OutputState: i.ToConfigSignInOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigSignInArgs) ToConfigSignInPtrOutput() ConfigSignInPtrOutput {
 	return i.ToConfigSignInPtrOutputWithContext(context.Background())
 }
@@ -1015,12 +888,6 @@ func (i *configSignInPtrType) ToConfigSignInPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInPtrOutput)
 }
 
-func (i *configSignInPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignIn] {
-	return pulumix.Output[*ConfigSignIn]{
-		OutputState: i.ToConfigSignInPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSignInOutput struct{ *pulumi.OutputState }
 
 func (ConfigSignInOutput) ElementType() reflect.Type {
@@ -1043,12 +910,6 @@ func (o ConfigSignInOutput) ToConfigSignInPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigSignIn) *ConfigSignIn {
 		return &v
 	}).(ConfigSignInPtrOutput)
-}
-
-func (o ConfigSignInOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigSignIn] {
-	return pulumix.Output[ConfigSignIn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow more than one account to have the same email.
@@ -1093,12 +954,6 @@ func (o ConfigSignInPtrOutput) ToConfigSignInPtrOutput() ConfigSignInPtrOutput {
 
 func (o ConfigSignInPtrOutput) ToConfigSignInPtrOutputWithContext(ctx context.Context) ConfigSignInPtrOutput {
 	return o
-}
-
-func (o ConfigSignInPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignIn] {
-	return pulumix.Output[*ConfigSignIn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSignInPtrOutput) Elem() ConfigSignInOutput {
@@ -1203,12 +1058,6 @@ func (i ConfigSignInAnonymousArgs) ToConfigSignInAnonymousOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInAnonymousOutput)
 }
 
-func (i ConfigSignInAnonymousArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInAnonymous] {
-	return pulumix.Output[ConfigSignInAnonymous]{
-		OutputState: i.ToConfigSignInAnonymousOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigSignInAnonymousArgs) ToConfigSignInAnonymousPtrOutput() ConfigSignInAnonymousPtrOutput {
 	return i.ToConfigSignInAnonymousPtrOutputWithContext(context.Background())
 }
@@ -1250,12 +1099,6 @@ func (i *configSignInAnonymousPtrType) ToConfigSignInAnonymousPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInAnonymousPtrOutput)
 }
 
-func (i *configSignInAnonymousPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInAnonymous] {
-	return pulumix.Output[*ConfigSignInAnonymous]{
-		OutputState: i.ToConfigSignInAnonymousPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSignInAnonymousOutput struct{ *pulumi.OutputState }
 
 func (ConfigSignInAnonymousOutput) ElementType() reflect.Type {
@@ -1280,12 +1123,6 @@ func (o ConfigSignInAnonymousOutput) ToConfigSignInAnonymousPtrOutputWithContext
 	}).(ConfigSignInAnonymousPtrOutput)
 }
 
-func (o ConfigSignInAnonymousOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInAnonymous] {
-	return pulumix.Output[ConfigSignInAnonymous]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether anonymous user auth is enabled for the project or not.
 //
 // <a name="nestedHashConfig"></a>The `hashConfig` block contains:
@@ -1305,12 +1142,6 @@ func (o ConfigSignInAnonymousPtrOutput) ToConfigSignInAnonymousPtrOutput() Confi
 
 func (o ConfigSignInAnonymousPtrOutput) ToConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ConfigSignInAnonymousPtrOutput {
 	return o
-}
-
-func (o ConfigSignInAnonymousPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInAnonymous] {
-	return pulumix.Output[*ConfigSignInAnonymous]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSignInAnonymousPtrOutput) Elem() ConfigSignInAnonymousOutput {
@@ -1376,12 +1207,6 @@ func (i ConfigSignInEmailArgs) ToConfigSignInEmailOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInEmailOutput)
 }
 
-func (i ConfigSignInEmailArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInEmail] {
-	return pulumix.Output[ConfigSignInEmail]{
-		OutputState: i.ToConfigSignInEmailOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigSignInEmailArgs) ToConfigSignInEmailPtrOutput() ConfigSignInEmailPtrOutput {
 	return i.ToConfigSignInEmailPtrOutputWithContext(context.Background())
 }
@@ -1423,12 +1248,6 @@ func (i *configSignInEmailPtrType) ToConfigSignInEmailPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInEmailPtrOutput)
 }
 
-func (i *configSignInEmailPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInEmail] {
-	return pulumix.Output[*ConfigSignInEmail]{
-		OutputState: i.ToConfigSignInEmailPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSignInEmailOutput struct{ *pulumi.OutputState }
 
 func (ConfigSignInEmailOutput) ElementType() reflect.Type {
@@ -1451,12 +1270,6 @@ func (o ConfigSignInEmailOutput) ToConfigSignInEmailPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigSignInEmail) *ConfigSignInEmail {
 		return &v
 	}).(ConfigSignInEmailPtrOutput)
-}
-
-func (o ConfigSignInEmailOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInEmail] {
-	return pulumix.Output[ConfigSignInEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether email auth is enabled for the project or not.
@@ -1483,12 +1296,6 @@ func (o ConfigSignInEmailPtrOutput) ToConfigSignInEmailPtrOutput() ConfigSignInE
 
 func (o ConfigSignInEmailPtrOutput) ToConfigSignInEmailPtrOutputWithContext(ctx context.Context) ConfigSignInEmailPtrOutput {
 	return o
-}
-
-func (o ConfigSignInEmailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInEmail] {
-	return pulumix.Output[*ConfigSignInEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSignInEmailPtrOutput) Elem() ConfigSignInEmailOutput {
@@ -1582,12 +1389,6 @@ func (i ConfigSignInHashConfigArgs) ToConfigSignInHashConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInHashConfigOutput)
 }
 
-func (i ConfigSignInHashConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInHashConfig] {
-	return pulumix.Output[ConfigSignInHashConfig]{
-		OutputState: i.ToConfigSignInHashConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigSignInHashConfigArrayInput is an input type that accepts ConfigSignInHashConfigArray and ConfigSignInHashConfigArrayOutput values.
 // You can construct a concrete instance of `ConfigSignInHashConfigArrayInput` via:
 //
@@ -1613,12 +1414,6 @@ func (i ConfigSignInHashConfigArray) ToConfigSignInHashConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInHashConfigArrayOutput)
 }
 
-func (i ConfigSignInHashConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigSignInHashConfig] {
-	return pulumix.Output[[]ConfigSignInHashConfig]{
-		OutputState: i.ToConfigSignInHashConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSignInHashConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigSignInHashConfigOutput) ElementType() reflect.Type {
@@ -1631,12 +1426,6 @@ func (o ConfigSignInHashConfigOutput) ToConfigSignInHashConfigOutput() ConfigSig
 
 func (o ConfigSignInHashConfigOutput) ToConfigSignInHashConfigOutputWithContext(ctx context.Context) ConfigSignInHashConfigOutput {
 	return o
-}
-
-func (o ConfigSignInHashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInHashConfig] {
-	return pulumix.Output[ConfigSignInHashConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1683,12 +1472,6 @@ func (o ConfigSignInHashConfigArrayOutput) ToConfigSignInHashConfigArrayOutputWi
 	return o
 }
 
-func (o ConfigSignInHashConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigSignInHashConfig] {
-	return pulumix.Output[[]ConfigSignInHashConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigSignInHashConfigArrayOutput) Index(i pulumi.IntInput) ConfigSignInHashConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigSignInHashConfig {
 		return vs[0].([]ConfigSignInHashConfig)[vs[1].(int)]
@@ -1732,12 +1515,6 @@ func (i ConfigSignInPhoneNumberArgs) ToConfigSignInPhoneNumberOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInPhoneNumberOutput)
 }
 
-func (i ConfigSignInPhoneNumberArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInPhoneNumber] {
-	return pulumix.Output[ConfigSignInPhoneNumber]{
-		OutputState: i.ToConfigSignInPhoneNumberOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigSignInPhoneNumberArgs) ToConfigSignInPhoneNumberPtrOutput() ConfigSignInPhoneNumberPtrOutput {
 	return i.ToConfigSignInPhoneNumberPtrOutputWithContext(context.Background())
 }
@@ -1779,12 +1556,6 @@ func (i *configSignInPhoneNumberPtrType) ToConfigSignInPhoneNumberPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSignInPhoneNumberPtrOutput)
 }
 
-func (i *configSignInPhoneNumberPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInPhoneNumber] {
-	return pulumix.Output[*ConfigSignInPhoneNumber]{
-		OutputState: i.ToConfigSignInPhoneNumberPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSignInPhoneNumberOutput struct{ *pulumi.OutputState }
 
 func (ConfigSignInPhoneNumberOutput) ElementType() reflect.Type {
@@ -1809,12 +1580,6 @@ func (o ConfigSignInPhoneNumberOutput) ToConfigSignInPhoneNumberPtrOutputWithCon
 	}).(ConfigSignInPhoneNumberPtrOutput)
 }
 
-func (o ConfigSignInPhoneNumberOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigSignInPhoneNumber] {
-	return pulumix.Output[ConfigSignInPhoneNumber]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether phone number auth is enabled for the project or not.
 func (o ConfigSignInPhoneNumberOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigSignInPhoneNumber) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -1837,12 +1602,6 @@ func (o ConfigSignInPhoneNumberPtrOutput) ToConfigSignInPhoneNumberPtrOutput() C
 
 func (o ConfigSignInPhoneNumberPtrOutput) ToConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ConfigSignInPhoneNumberPtrOutput {
 	return o
-}
-
-func (o ConfigSignInPhoneNumberPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSignInPhoneNumber] {
-	return pulumix.Output[*ConfigSignInPhoneNumber]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSignInPhoneNumberPtrOutput) Elem() ConfigSignInPhoneNumberOutput {
@@ -1922,12 +1681,6 @@ func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigOutput)
 }
 
-func (i InboundSamlConfigIdpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigIdpConfig] {
-	return pulumix.Output[InboundSamlConfigIdpConfig]{
-		OutputState: i.ToInboundSamlConfigIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput {
 	return i.ToInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
 }
@@ -1969,12 +1722,6 @@ func (i *inboundSamlConfigIdpConfigPtrType) ToInboundSamlConfigIdpConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigPtrOutput)
 }
 
-func (i *inboundSamlConfigIdpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfigIdpConfig] {
-	return pulumix.Output[*InboundSamlConfigIdpConfig]{
-		OutputState: i.ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
@@ -1997,12 +1744,6 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigIdpConfig) *InboundSamlConfigIdpConfig {
 		return &v
 	}).(InboundSamlConfigIdpConfigPtrOutput)
-}
-
-func (o InboundSamlConfigIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigIdpConfig] {
-	return pulumix.Output[InboundSamlConfigIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -2040,12 +1781,6 @@ func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutp
 
 func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
 	return o
-}
-
-func (o InboundSamlConfigIdpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfigIdpConfig] {
-	return pulumix.Output[*InboundSamlConfigIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOutput {
@@ -2132,12 +1867,6 @@ func (i InboundSamlConfigIdpConfigIdpCertificateArgs) ToInboundSamlConfigIdpConf
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigIdpCertificateOutput)
 }
 
-func (i InboundSamlConfigIdpConfigIdpCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[InboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: i.ToInboundSamlConfigIdpConfigIdpCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InboundSamlConfigIdpConfigIdpCertificateArrayInput is an input type that accepts InboundSamlConfigIdpConfigIdpCertificateArray and InboundSamlConfigIdpConfigIdpCertificateArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigIdpConfigIdpCertificateArrayInput` via:
 //
@@ -2163,12 +1892,6 @@ func (i InboundSamlConfigIdpConfigIdpCertificateArray) ToInboundSamlConfigIdpCon
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-func (i InboundSamlConfigIdpConfigIdpCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]InboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[[]InboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: i.ToInboundSamlConfigIdpConfigIdpCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InboundSamlConfigIdpConfigIdpCertificateOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigIdpCertificateOutput) ElementType() reflect.Type {
@@ -2181,12 +1904,6 @@ func (o InboundSamlConfigIdpConfigIdpCertificateOutput) ToInboundSamlConfigIdpCo
 
 func (o InboundSamlConfigIdpConfigIdpCertificateOutput) ToInboundSamlConfigIdpConfigIdpCertificateOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigIdpCertificateOutput {
 	return o
-}
-
-func (o InboundSamlConfigIdpConfigIdpCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[InboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IdP's x509 certificate.
@@ -2206,12 +1923,6 @@ func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToInboundSamlConfig
 
 func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToInboundSamlConfigIdpConfigIdpCertificateArrayOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o
-}
-
-func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[[]InboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntInput) InboundSamlConfigIdpConfigIdpCertificateOutput {
@@ -2269,12 +1980,6 @@ func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigOutput)
 }
 
-func (i InboundSamlConfigSpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigSpConfig] {
-	return pulumix.Output[InboundSamlConfigSpConfig]{
-		OutputState: i.ToInboundSamlConfigSpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput {
 	return i.ToInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
 }
@@ -2316,12 +2021,6 @@ func (i *inboundSamlConfigSpConfigPtrType) ToInboundSamlConfigSpConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigPtrOutput)
 }
 
-func (i *inboundSamlConfigSpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfigSpConfig] {
-	return pulumix.Output[*InboundSamlConfigSpConfig]{
-		OutputState: i.ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
@@ -2344,12 +2043,6 @@ func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigSpConfig) *InboundSamlConfigSpConfig {
 		return &v
 	}).(InboundSamlConfigSpConfigPtrOutput)
-}
-
-func (o InboundSamlConfigSpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigSpConfig] {
-	return pulumix.Output[InboundSamlConfigSpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -2383,12 +2076,6 @@ func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutput
 
 func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
 	return o
-}
-
-func (o InboundSamlConfigSpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfigSpConfig] {
-	return pulumix.Output[*InboundSamlConfigSpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) Elem() InboundSamlConfigSpConfigOutput {
@@ -2468,12 +2155,6 @@ func (i InboundSamlConfigSpConfigSpCertificateArgs) ToInboundSamlConfigSpConfigS
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigSpCertificateOutput)
 }
 
-func (i InboundSamlConfigSpConfigSpCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[InboundSamlConfigSpConfigSpCertificate]{
-		OutputState: i.ToInboundSamlConfigSpConfigSpCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InboundSamlConfigSpConfigSpCertificateArrayInput is an input type that accepts InboundSamlConfigSpConfigSpCertificateArray and InboundSamlConfigSpConfigSpCertificateArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigSpConfigSpCertificateArrayInput` via:
 //
@@ -2499,12 +2180,6 @@ func (i InboundSamlConfigSpConfigSpCertificateArray) ToInboundSamlConfigSpConfig
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
-func (i InboundSamlConfigSpConfigSpCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]InboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[[]InboundSamlConfigSpConfigSpCertificate]{
-		OutputState: i.ToInboundSamlConfigSpConfigSpCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InboundSamlConfigSpConfigSpCertificateOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigSpCertificateOutput) ElementType() reflect.Type {
@@ -2517,12 +2192,6 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 
 func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfigSpCertificateOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigSpCertificateOutput {
 	return o
-}
-
-func (o InboundSamlConfigSpConfigSpCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[InboundSamlConfigSpConfigSpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IdP's x509 certificate.
@@ -2542,12 +2211,6 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) ToInboundSamlConfigSp
 
 func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) ToInboundSamlConfigSpConfigSpCertificateArrayOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o
-}
-
-func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[[]InboundSamlConfigSpConfigSpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInput) InboundSamlConfigSpConfigSpCertificateOutput {
@@ -2615,12 +2278,6 @@ func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInOutput)
 }
 
-func (i ProjectDefaultConfigSignInArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignIn] {
-	return pulumix.Output[ProjectDefaultConfigSignIn]{
-		OutputState: i.ToProjectDefaultConfigSignInOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput {
 	return i.ToProjectDefaultConfigSignInPtrOutputWithContext(context.Background())
 }
@@ -2662,12 +2319,6 @@ func (i *projectDefaultConfigSignInPtrType) ToProjectDefaultConfigSignInPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPtrOutput)
 }
 
-func (i *projectDefaultConfigSignInPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignIn] {
-	return pulumix.Output[*ProjectDefaultConfigSignIn]{
-		OutputState: i.ToProjectDefaultConfigSignInPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultConfigSignInOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigSignInOutput) ElementType() reflect.Type {
@@ -2690,12 +2341,6 @@ func (o ProjectDefaultConfigSignInOutput) ToProjectDefaultConfigSignInPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignIn {
 		return &v
 	}).(ProjectDefaultConfigSignInPtrOutput)
-}
-
-func (o ProjectDefaultConfigSignInOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignIn] {
-	return pulumix.Output[ProjectDefaultConfigSignIn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow more than one account to have the same email.
@@ -2740,12 +2385,6 @@ func (o ProjectDefaultConfigSignInPtrOutput) ToProjectDefaultConfigSignInPtrOutp
 
 func (o ProjectDefaultConfigSignInPtrOutput) ToProjectDefaultConfigSignInPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPtrOutput {
 	return o
-}
-
-func (o ProjectDefaultConfigSignInPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignIn] {
-	return pulumix.Output[*ProjectDefaultConfigSignIn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectDefaultConfigSignInPtrOutput) Elem() ProjectDefaultConfigSignInOutput {
@@ -2850,12 +2489,6 @@ func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAno
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInAnonymousOutput)
 }
 
-func (i ProjectDefaultConfigSignInAnonymousArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInAnonymous] {
-	return pulumix.Output[ProjectDefaultConfigSignInAnonymous]{
-		OutputState: i.ToProjectDefaultConfigSignInAnonymousOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput {
 	return i.ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(context.Background())
 }
@@ -2897,12 +2530,6 @@ func (i *projectDefaultConfigSignInAnonymousPtrType) ToProjectDefaultConfigSignI
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInAnonymousPtrOutput)
 }
 
-func (i *projectDefaultConfigSignInAnonymousPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInAnonymous] {
-	return pulumix.Output[*ProjectDefaultConfigSignInAnonymous]{
-		OutputState: i.ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultConfigSignInAnonymousOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigSignInAnonymousOutput) ElementType() reflect.Type {
@@ -2927,12 +2554,6 @@ func (o ProjectDefaultConfigSignInAnonymousOutput) ToProjectDefaultConfigSignInA
 	}).(ProjectDefaultConfigSignInAnonymousPtrOutput)
 }
 
-func (o ProjectDefaultConfigSignInAnonymousOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInAnonymous] {
-	return pulumix.Output[ProjectDefaultConfigSignInAnonymous]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether anonymous user auth is enabled for the project or not.
 //
 // <a name="nestedHashConfig"></a>The `hashConfig` block contains:
@@ -2952,12 +2573,6 @@ func (o ProjectDefaultConfigSignInAnonymousPtrOutput) ToProjectDefaultConfigSign
 
 func (o ProjectDefaultConfigSignInAnonymousPtrOutput) ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput {
 	return o
-}
-
-func (o ProjectDefaultConfigSignInAnonymousPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInAnonymous] {
-	return pulumix.Output[*ProjectDefaultConfigSignInAnonymous]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectDefaultConfigSignInAnonymousPtrOutput) Elem() ProjectDefaultConfigSignInAnonymousOutput {
@@ -3023,12 +2638,6 @@ func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInEmailOutput)
 }
 
-func (i ProjectDefaultConfigSignInEmailArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInEmail] {
-	return pulumix.Output[ProjectDefaultConfigSignInEmail]{
-		OutputState: i.ToProjectDefaultConfigSignInEmailOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput {
 	return i.ToProjectDefaultConfigSignInEmailPtrOutputWithContext(context.Background())
 }
@@ -3070,12 +2679,6 @@ func (i *projectDefaultConfigSignInEmailPtrType) ToProjectDefaultConfigSignInEma
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInEmailPtrOutput)
 }
 
-func (i *projectDefaultConfigSignInEmailPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInEmail] {
-	return pulumix.Output[*ProjectDefaultConfigSignInEmail]{
-		OutputState: i.ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultConfigSignInEmailOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigSignInEmailOutput) ElementType() reflect.Type {
@@ -3098,12 +2701,6 @@ func (o ProjectDefaultConfigSignInEmailOutput) ToProjectDefaultConfigSignInEmail
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignInEmail) *ProjectDefaultConfigSignInEmail {
 		return &v
 	}).(ProjectDefaultConfigSignInEmailPtrOutput)
-}
-
-func (o ProjectDefaultConfigSignInEmailOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInEmail] {
-	return pulumix.Output[ProjectDefaultConfigSignInEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether email auth is enabled for the project or not.
@@ -3130,12 +2727,6 @@ func (o ProjectDefaultConfigSignInEmailPtrOutput) ToProjectDefaultConfigSignInEm
 
 func (o ProjectDefaultConfigSignInEmailPtrOutput) ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailPtrOutput {
 	return o
-}
-
-func (o ProjectDefaultConfigSignInEmailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInEmail] {
-	return pulumix.Output[*ProjectDefaultConfigSignInEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectDefaultConfigSignInEmailPtrOutput) Elem() ProjectDefaultConfigSignInEmailOutput {
@@ -3229,12 +2820,6 @@ func (i ProjectDefaultConfigSignInHashConfigArgs) ToProjectDefaultConfigSignInHa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInHashConfigOutput)
 }
 
-func (i ProjectDefaultConfigSignInHashConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInHashConfig] {
-	return pulumix.Output[ProjectDefaultConfigSignInHashConfig]{
-		OutputState: i.ToProjectDefaultConfigSignInHashConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectDefaultConfigSignInHashConfigArrayInput is an input type that accepts ProjectDefaultConfigSignInHashConfigArray and ProjectDefaultConfigSignInHashConfigArrayOutput values.
 // You can construct a concrete instance of `ProjectDefaultConfigSignInHashConfigArrayInput` via:
 //
@@ -3260,12 +2845,6 @@ func (i ProjectDefaultConfigSignInHashConfigArray) ToProjectDefaultConfigSignInH
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInHashConfigArrayOutput)
 }
 
-func (i ProjectDefaultConfigSignInHashConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ProjectDefaultConfigSignInHashConfig] {
-	return pulumix.Output[[]ProjectDefaultConfigSignInHashConfig]{
-		OutputState: i.ToProjectDefaultConfigSignInHashConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultConfigSignInHashConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigSignInHashConfigOutput) ElementType() reflect.Type {
@@ -3278,12 +2857,6 @@ func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignIn
 
 func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignInHashConfigOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInHashConfigOutput {
 	return o
-}
-
-func (o ProjectDefaultConfigSignInHashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInHashConfig] {
-	return pulumix.Output[ProjectDefaultConfigSignInHashConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3330,12 +2903,6 @@ func (o ProjectDefaultConfigSignInHashConfigArrayOutput) ToProjectDefaultConfigS
 	return o
 }
 
-func (o ProjectDefaultConfigSignInHashConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProjectDefaultConfigSignInHashConfig] {
-	return pulumix.Output[[]ProjectDefaultConfigSignInHashConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectDefaultConfigSignInHashConfigArrayOutput) Index(i pulumi.IntInput) ProjectDefaultConfigSignInHashConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectDefaultConfigSignInHashConfig {
 		return vs[0].([]ProjectDefaultConfigSignInHashConfig)[vs[1].(int)]
@@ -3379,12 +2946,6 @@ func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInP
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPhoneNumberOutput)
 }
 
-func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInPhoneNumber] {
-	return pulumix.Output[ProjectDefaultConfigSignInPhoneNumber]{
-		OutputState: i.ToProjectDefaultConfigSignInPhoneNumberOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
 	return i.ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(context.Background())
 }
@@ -3426,12 +2987,6 @@ func (i *projectDefaultConfigSignInPhoneNumberPtrType) ToProjectDefaultConfigSig
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
 }
 
-func (i *projectDefaultConfigSignInPhoneNumberPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInPhoneNumber] {
-	return pulumix.Output[*ProjectDefaultConfigSignInPhoneNumber]{
-		OutputState: i.ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectDefaultConfigSignInPhoneNumberOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigSignInPhoneNumberOutput) ElementType() reflect.Type {
@@ -3456,12 +3011,6 @@ func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToProjectDefaultConfigSignI
 	}).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
 }
 
-func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectDefaultConfigSignInPhoneNumber] {
-	return pulumix.Output[ProjectDefaultConfigSignInPhoneNumber]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether phone number auth is enabled for the project or not.
 func (o ProjectDefaultConfigSignInPhoneNumberOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInPhoneNumber) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3484,12 +3033,6 @@ func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) ToProjectDefaultConfigSi
 
 func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput {
 	return o
-}
-
-func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfigSignInPhoneNumber] {
-	return pulumix.Output[*ProjectDefaultConfigSignInPhoneNumber]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) Elem() ProjectDefaultConfigSignInPhoneNumberOutput {
@@ -3569,12 +3112,6 @@ func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfig
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
-func (i TenantInboundSamlConfigIdpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigIdpConfig] {
-	return pulumix.Output[TenantInboundSamlConfigIdpConfig]{
-		OutputState: i.ToTenantInboundSamlConfigIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput {
 	return i.ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
 }
@@ -3616,12 +3153,6 @@ func (i *tenantInboundSamlConfigIdpConfigPtrType) ToTenantInboundSamlConfigIdpCo
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
 
-func (i *tenantInboundSamlConfigIdpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantInboundSamlConfigIdpConfig] {
-	return pulumix.Output[*TenantInboundSamlConfigIdpConfig]{
-		OutputState: i.ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantInboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
@@ -3644,12 +3175,6 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigIdpConfig) *TenantInboundSamlConfigIdpConfig {
 		return &v
 	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
-}
-
-func (o TenantInboundSamlConfigIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigIdpConfig] {
-	return pulumix.Output[TenantInboundSamlConfigIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -3687,12 +3212,6 @@ func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpC
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantInboundSamlConfigIdpConfig] {
-	return pulumix.Output[*TenantInboundSamlConfigIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfigIdpConfigOutput {
@@ -3779,12 +3298,6 @@ func (i TenantInboundSamlConfigIdpConfigIdpCertificateArgs) ToTenantInboundSamlC
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigIdpCertificateOutput)
 }
 
-func (i TenantInboundSamlConfigIdpConfigIdpCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[TenantInboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: i.ToTenantInboundSamlConfigIdpConfigIdpCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput is an input type that accepts TenantInboundSamlConfigIdpConfigIdpCertificateArray and TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput` via:
 //
@@ -3810,12 +3323,6 @@ func (i TenantInboundSamlConfigIdpConfigIdpCertificateArray) ToTenantInboundSaml
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-func (i TenantInboundSamlConfigIdpConfigIdpCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]TenantInboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[[]TenantInboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: i.ToTenantInboundSamlConfigIdpConfigIdpCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantInboundSamlConfigIdpConfigIdpCertificateOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ElementType() reflect.Type {
@@ -3828,12 +3335,6 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ToTenantInboundSam
 
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ToTenantInboundSamlConfigIdpConfigIdpCertificateOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigIdpCertificateOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[TenantInboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The x509 certificate
@@ -3853,12 +3354,6 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToTenantInbou
 
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToTenantInboundSamlConfigIdpConfigIdpCertificateArrayOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TenantInboundSamlConfigIdpConfigIdpCertificate] {
-	return pulumix.Output[[]TenantInboundSamlConfigIdpConfigIdpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntInput) TenantInboundSamlConfigIdpConfigIdpCertificateOutput {
@@ -3916,12 +3411,6 @@ func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigOutput)
 }
 
-func (i TenantInboundSamlConfigSpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigSpConfig] {
-	return pulumix.Output[TenantInboundSamlConfigSpConfig]{
-		OutputState: i.ToTenantInboundSamlConfigSpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput {
 	return i.ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
 }
@@ -3963,12 +3452,6 @@ func (i *tenantInboundSamlConfigSpConfigPtrType) ToTenantInboundSamlConfigSpConf
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
 
-func (i *tenantInboundSamlConfigSpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantInboundSamlConfigSpConfig] {
-	return pulumix.Output[*TenantInboundSamlConfigSpConfig]{
-		OutputState: i.ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantInboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
@@ -3991,12 +3474,6 @@ func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigSpConfig) *TenantInboundSamlConfigSpConfig {
 		return &v
 	}).(TenantInboundSamlConfigSpConfigPtrOutput)
-}
-
-func (o TenantInboundSamlConfigSpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigSpConfig] {
-	return pulumix.Output[TenantInboundSamlConfigSpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -4032,12 +3509,6 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpCon
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantInboundSamlConfigSpConfig] {
-	return pulumix.Output[*TenantInboundSamlConfigSpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) Elem() TenantInboundSamlConfigSpConfigOutput {
@@ -4117,12 +3588,6 @@ func (i TenantInboundSamlConfigSpConfigSpCertificateArgs) ToTenantInboundSamlCon
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigSpCertificateOutput)
 }
 
-func (i TenantInboundSamlConfigSpConfigSpCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[TenantInboundSamlConfigSpConfigSpCertificate]{
-		OutputState: i.ToTenantInboundSamlConfigSpConfigSpCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TenantInboundSamlConfigSpConfigSpCertificateArrayInput is an input type that accepts TenantInboundSamlConfigSpConfigSpCertificateArray and TenantInboundSamlConfigSpConfigSpCertificateArrayOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigSpConfigSpCertificateArrayInput` via:
 //
@@ -4148,12 +3613,6 @@ func (i TenantInboundSamlConfigSpConfigSpCertificateArray) ToTenantInboundSamlCo
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
-func (i TenantInboundSamlConfigSpConfigSpCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]TenantInboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[[]TenantInboundSamlConfigSpConfigSpCertificate]{
-		OutputState: i.ToTenantInboundSamlConfigSpConfigSpCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantInboundSamlConfigSpConfigSpCertificateOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigSpCertificateOutput) ElementType() reflect.Type {
@@ -4166,12 +3625,6 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlC
 
 func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlConfigSpConfigSpCertificateOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigSpCertificateOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[TenantInboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[TenantInboundSamlConfigSpConfigSpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The x509 certificate
@@ -4191,12 +3644,6 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) ToTenantInbound
 
 func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) ToTenantInboundSamlConfigSpConfigSpCertificateArrayOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TenantInboundSamlConfigSpConfigSpCertificate] {
-	return pulumix.Output[[]TenantInboundSamlConfigSpConfigSpCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInput) TenantInboundSamlConfigSpConfigSpCertificateOutput {

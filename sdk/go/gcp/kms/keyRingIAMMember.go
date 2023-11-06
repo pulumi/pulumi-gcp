@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
@@ -478,12 +477,6 @@ func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberOutput)
 }
 
-func (i *KeyRingIAMMember) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMMember] {
-	return pulumix.Output[*KeyRingIAMMember]{
-		OutputState: i.ToKeyRingIAMMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyRingIAMMemberArrayInput is an input type that accepts KeyRingIAMMemberArray and KeyRingIAMMemberArrayOutput values.
 // You can construct a concrete instance of `KeyRingIAMMemberArrayInput` via:
 //
@@ -507,12 +500,6 @@ func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberA
 
 func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutputWithContext(ctx context.Context) KeyRingIAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberArrayOutput)
-}
-
-func (i KeyRingIAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingIAMMember] {
-	return pulumix.Output[[]*KeyRingIAMMember]{
-		OutputState: i.ToKeyRingIAMMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeyRingIAMMemberMapInput is an input type that accepts KeyRingIAMMemberMap and KeyRingIAMMemberMapOutput values.
@@ -540,12 +527,6 @@ func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberMapOutput)
 }
 
-func (i KeyRingIAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingIAMMember] {
-	return pulumix.Output[map[string]*KeyRingIAMMember]{
-		OutputState: i.ToKeyRingIAMMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyRingIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberOutput) ElementType() reflect.Type {
@@ -558,12 +539,6 @@ func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutpu
 
 func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.Context) KeyRingIAMMemberOutput {
 	return o
-}
-
-func (o KeyRingIAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMMember] {
-	return pulumix.Output[*KeyRingIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -619,12 +594,6 @@ func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutputWithContext(ct
 	return o
 }
 
-func (o KeyRingIAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingIAMMember] {
-	return pulumix.Output[[]*KeyRingIAMMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyRingIAMMemberArrayOutput) Index(i pulumi.IntInput) KeyRingIAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMMember {
 		return vs[0].([]*KeyRingIAMMember)[vs[1].(int)]
@@ -643,12 +612,6 @@ func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutput() KeyRingIAMMembe
 
 func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutputWithContext(ctx context.Context) KeyRingIAMMemberMapOutput {
 	return o
-}
-
-func (o KeyRingIAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingIAMMember] {
-	return pulumix.Output[map[string]*KeyRingIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyRingIAMMemberMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMMemberOutput {

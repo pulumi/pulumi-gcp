@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupPeeredDnsDomain(ctx *pulumi.Context, args *LookupPeeredDnsDomainArgs, opts ...pulumi.InvokeOption) (*LookupPeeredDnsDomainResult, error) {
@@ -80,12 +79,6 @@ func (o LookupPeeredDnsDomainResultOutput) ToLookupPeeredDnsDomainResultOutput()
 
 func (o LookupPeeredDnsDomainResultOutput) ToLookupPeeredDnsDomainResultOutputWithContext(ctx context.Context) LookupPeeredDnsDomainResultOutput {
 	return o
-}
-
-func (o LookupPeeredDnsDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeredDnsDomainResult] {
-	return pulumix.Output[LookupPeeredDnsDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupPeeredDnsDomainResultOutput) DnsSuffix() pulumi.StringOutput {

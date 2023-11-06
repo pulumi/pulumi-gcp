@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
@@ -369,12 +368,6 @@ func (i *QueueIamMember) ToQueueIamMemberOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberOutput)
 }
 
-func (i *QueueIamMember) ToOutput(ctx context.Context) pulumix.Output[*QueueIamMember] {
-	return pulumix.Output[*QueueIamMember]{
-		OutputState: i.ToQueueIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueueIamMemberArrayInput is an input type that accepts QueueIamMemberArray and QueueIamMemberArrayOutput values.
 // You can construct a concrete instance of `QueueIamMemberArrayInput` via:
 //
@@ -398,12 +391,6 @@ func (i QueueIamMemberArray) ToQueueIamMemberArrayOutput() QueueIamMemberArrayOu
 
 func (i QueueIamMemberArray) ToQueueIamMemberArrayOutputWithContext(ctx context.Context) QueueIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberArrayOutput)
-}
-
-func (i QueueIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamMember] {
-	return pulumix.Output[[]*QueueIamMember]{
-		OutputState: i.ToQueueIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QueueIamMemberMapInput is an input type that accepts QueueIamMemberMap and QueueIamMemberMapOutput values.
@@ -431,12 +418,6 @@ func (i QueueIamMemberMap) ToQueueIamMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberMapOutput)
 }
 
-func (i QueueIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamMember] {
-	return pulumix.Output[map[string]*QueueIamMember]{
-		OutputState: i.ToQueueIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueueIamMemberOutput struct{ *pulumi.OutputState }
 
 func (QueueIamMemberOutput) ElementType() reflect.Type {
@@ -449,12 +430,6 @@ func (o QueueIamMemberOutput) ToQueueIamMemberOutput() QueueIamMemberOutput {
 
 func (o QueueIamMemberOutput) ToQueueIamMemberOutputWithContext(ctx context.Context) QueueIamMemberOutput {
 	return o
-}
-
-func (o QueueIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamMember] {
-	return pulumix.Output[*QueueIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueIamMemberOutput) Condition() QueueIamMemberConditionPtrOutput {
@@ -519,12 +494,6 @@ func (o QueueIamMemberArrayOutput) ToQueueIamMemberArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o QueueIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamMember] {
-	return pulumix.Output[[]*QueueIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueueIamMemberArrayOutput) Index(i pulumi.IntInput) QueueIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QueueIamMember {
 		return vs[0].([]*QueueIamMember)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o QueueIamMemberMapOutput) ToQueueIamMemberMapOutput() QueueIamMemberMapOu
 
 func (o QueueIamMemberMapOutput) ToQueueIamMemberMapOutputWithContext(ctx context.Context) QueueIamMemberMapOutput {
 	return o
-}
-
-func (o QueueIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamMember] {
-	return pulumix.Output[map[string]*QueueIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueIamMemberMapOutput) MapIndex(k pulumi.StringInput) QueueIamMemberOutput {

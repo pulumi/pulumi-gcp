@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
@@ -607,12 +606,6 @@ func (i *EdgeCacheOrigin) ToEdgeCacheOriginOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOutput)
 }
 
-func (i *EdgeCacheOrigin) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOrigin] {
-	return pulumix.Output[*EdgeCacheOrigin]{
-		OutputState: i.ToEdgeCacheOriginOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdgeCacheOriginArrayInput is an input type that accepts EdgeCacheOriginArray and EdgeCacheOriginArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginArrayInput` via:
 //
@@ -636,12 +629,6 @@ func (i EdgeCacheOriginArray) ToEdgeCacheOriginArrayOutput() EdgeCacheOriginArra
 
 func (i EdgeCacheOriginArray) ToEdgeCacheOriginArrayOutputWithContext(ctx context.Context) EdgeCacheOriginArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginArrayOutput)
-}
-
-func (i EdgeCacheOriginArray) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheOrigin] {
-	return pulumix.Output[[]*EdgeCacheOrigin]{
-		OutputState: i.ToEdgeCacheOriginArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EdgeCacheOriginMapInput is an input type that accepts EdgeCacheOriginMap and EdgeCacheOriginMapOutput values.
@@ -669,12 +656,6 @@ func (i EdgeCacheOriginMap) ToEdgeCacheOriginMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginMapOutput)
 }
 
-func (i EdgeCacheOriginMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheOrigin] {
-	return pulumix.Output[map[string]*EdgeCacheOrigin]{
-		OutputState: i.ToEdgeCacheOriginMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeCacheOriginOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOutput) ElementType() reflect.Type {
@@ -687,12 +668,6 @@ func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutput() EdgeCacheOriginOutput {
 
 func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutputWithContext(ctx context.Context) EdgeCacheOriginOutput {
 	return o
-}
-
-func (o EdgeCacheOriginOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOrigin] {
-	return pulumix.Output[*EdgeCacheOrigin]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable AWS Signature Version 4 origin authentication.
@@ -818,12 +793,6 @@ func (o EdgeCacheOriginArrayOutput) ToEdgeCacheOriginArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o EdgeCacheOriginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeCacheOrigin] {
-	return pulumix.Output[[]*EdgeCacheOrigin]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdgeCacheOriginArrayOutput) Index(i pulumi.IntInput) EdgeCacheOriginOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheOrigin {
 		return vs[0].([]*EdgeCacheOrigin)[vs[1].(int)]
@@ -842,12 +811,6 @@ func (o EdgeCacheOriginMapOutput) ToEdgeCacheOriginMapOutput() EdgeCacheOriginMa
 
 func (o EdgeCacheOriginMapOutput) ToEdgeCacheOriginMapOutputWithContext(ctx context.Context) EdgeCacheOriginMapOutput {
 	return o
-}
-
-func (o EdgeCacheOriginMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeCacheOrigin] {
-	return pulumix.Output[map[string]*EdgeCacheOrigin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdgeCacheOriginMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheOriginOutput {

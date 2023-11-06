@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // TrustConfig represents a resource that represents your Public Key Infrastructure (PKI) configuration in Certificate Manager for use in mutual TLS authentication scenarios.
@@ -287,12 +286,6 @@ func (i *TrustConfig) ToTrustConfigOutputWithContext(ctx context.Context) TrustC
 	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigOutput)
 }
 
-func (i *TrustConfig) ToOutput(ctx context.Context) pulumix.Output[*TrustConfig] {
-	return pulumix.Output[*TrustConfig]{
-		OutputState: i.ToTrustConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrustConfigArrayInput is an input type that accepts TrustConfigArray and TrustConfigArrayOutput values.
 // You can construct a concrete instance of `TrustConfigArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i TrustConfigArray) ToTrustConfigArrayOutput() TrustConfigArrayOutput {
 
 func (i TrustConfigArray) ToTrustConfigArrayOutputWithContext(ctx context.Context) TrustConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigArrayOutput)
-}
-
-func (i TrustConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrustConfig] {
-	return pulumix.Output[[]*TrustConfig]{
-		OutputState: i.ToTrustConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TrustConfigMapInput is an input type that accepts TrustConfigMap and TrustConfigMapOutput values.
@@ -349,12 +336,6 @@ func (i TrustConfigMap) ToTrustConfigMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigMapOutput)
 }
 
-func (i TrustConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrustConfig] {
-	return pulumix.Output[map[string]*TrustConfig]{
-		OutputState: i.ToTrustConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrustConfigOutput struct{ *pulumi.OutputState }
 
 func (TrustConfigOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o TrustConfigOutput) ToTrustConfigOutput() TrustConfigOutput {
 
 func (o TrustConfigOutput) ToTrustConfigOutputWithContext(ctx context.Context) TrustConfigOutput {
 	return o
-}
-
-func (o TrustConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustConfig] {
-	return pulumix.Output[*TrustConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of a TrustConfig.
@@ -438,12 +413,6 @@ func (o TrustConfigArrayOutput) ToTrustConfigArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TrustConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrustConfig] {
-	return pulumix.Output[[]*TrustConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrustConfigArrayOutput) Index(i pulumi.IntInput) TrustConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrustConfig {
 		return vs[0].([]*TrustConfig)[vs[1].(int)]
@@ -462,12 +431,6 @@ func (o TrustConfigMapOutput) ToTrustConfigMapOutput() TrustConfigMapOutput {
 
 func (o TrustConfigMapOutput) ToTrustConfigMapOutputWithContext(ctx context.Context) TrustConfigMapOutput {
 	return o
-}
-
-func (o TrustConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrustConfig] {
-	return pulumix.Output[map[string]*TrustConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustConfigMapOutput) MapIndex(k pulumi.StringInput) TrustConfigOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
@@ -338,12 +337,6 @@ func (i *ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) Cons
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreOutput)
 }
 
-func (i *ConsentStore) ToOutput(ctx context.Context) pulumix.Output[*ConsentStore] {
-	return pulumix.Output[*ConsentStore]{
-		OutputState: i.ToConsentStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConsentStoreArrayInput is an input type that accepts ConsentStoreArray and ConsentStoreArrayOutput values.
 // You can construct a concrete instance of `ConsentStoreArrayInput` via:
 //
@@ -367,12 +360,6 @@ func (i ConsentStoreArray) ToConsentStoreArrayOutput() ConsentStoreArrayOutput {
 
 func (i ConsentStoreArray) ToConsentStoreArrayOutputWithContext(ctx context.Context) ConsentStoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreArrayOutput)
-}
-
-func (i ConsentStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStore] {
-	return pulumix.Output[[]*ConsentStore]{
-		OutputState: i.ToConsentStoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConsentStoreMapInput is an input type that accepts ConsentStoreMap and ConsentStoreMapOutput values.
@@ -400,12 +387,6 @@ func (i ConsentStoreMap) ToConsentStoreMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreMapOutput)
 }
 
-func (i ConsentStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStore] {
-	return pulumix.Output[map[string]*ConsentStore]{
-		OutputState: i.ToConsentStoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsentStoreOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreOutput) ElementType() reflect.Type {
@@ -418,12 +399,6 @@ func (o ConsentStoreOutput) ToConsentStoreOutput() ConsentStoreOutput {
 
 func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput {
 	return o
-}
-
-func (o ConsentStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStore] {
-	return pulumix.Output[*ConsentStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
@@ -477,12 +452,6 @@ func (o ConsentStoreArrayOutput) ToConsentStoreArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ConsentStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStore] {
-	return pulumix.Output[[]*ConsentStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConsentStoreArrayOutput) Index(i pulumi.IntInput) ConsentStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsentStore {
 		return vs[0].([]*ConsentStore)[vs[1].(int)]
@@ -501,12 +470,6 @@ func (o ConsentStoreMapOutput) ToConsentStoreMapOutput() ConsentStoreMapOutput {
 
 func (o ConsentStoreMapOutput) ToConsentStoreMapOutputWithContext(ctx context.Context) ConsentStoreMapOutput {
 	return o
-}
-
-func (o ConsentStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStore] {
-	return pulumix.Output[map[string]*ConsentStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreOutput {

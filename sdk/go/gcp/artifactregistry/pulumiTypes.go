@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i RepositoryCleanupPolicyArgs) ToRepositoryCleanupPolicyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyOutput)
 }
 
-func (i RepositoryCleanupPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicy] {
-	return pulumix.Output[RepositoryCleanupPolicy]{
-		OutputState: i.ToRepositoryCleanupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryCleanupPolicyArrayInput is an input type that accepts RepositoryCleanupPolicyArray and RepositoryCleanupPolicyArrayOutput values.
 // You can construct a concrete instance of `RepositoryCleanupPolicyArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i RepositoryCleanupPolicyArray) ToRepositoryCleanupPolicyArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyArrayOutput)
 }
 
-func (i RepositoryCleanupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryCleanupPolicy] {
-	return pulumix.Output[[]RepositoryCleanupPolicy]{
-		OutputState: i.ToRepositoryCleanupPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryCleanupPolicyOutput struct{ *pulumi.OutputState }
 
 func (RepositoryCleanupPolicyOutput) ElementType() reflect.Type {
@@ -102,12 +89,6 @@ func (o RepositoryCleanupPolicyOutput) ToRepositoryCleanupPolicyOutput() Reposit
 
 func (o RepositoryCleanupPolicyOutput) ToRepositoryCleanupPolicyOutputWithContext(ctx context.Context) RepositoryCleanupPolicyOutput {
 	return o
-}
-
-func (o RepositoryCleanupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicy] {
-	return pulumix.Output[RepositoryCleanupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryCleanupPolicyOutput) Action() pulumi.StringPtrOutput {
@@ -141,12 +122,6 @@ func (o RepositoryCleanupPolicyArrayOutput) ToRepositoryCleanupPolicyArrayOutput
 
 func (o RepositoryCleanupPolicyArrayOutput) ToRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) RepositoryCleanupPolicyArrayOutput {
 	return o
-}
-
-func (o RepositoryCleanupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryCleanupPolicy] {
-	return pulumix.Output[[]RepositoryCleanupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryCleanupPolicyOutput {
@@ -196,12 +171,6 @@ func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyCondition
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyConditionOutput)
 }
 
-func (i RepositoryCleanupPolicyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicyCondition] {
-	return pulumix.Output[RepositoryCleanupPolicyCondition]{
-		OutputState: i.ToRepositoryCleanupPolicyConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput {
 	return i.ToRepositoryCleanupPolicyConditionPtrOutputWithContext(context.Background())
 }
@@ -243,12 +212,6 @@ func (i *repositoryCleanupPolicyConditionPtrType) ToRepositoryCleanupPolicyCondi
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyConditionPtrOutput)
 }
 
-func (i *repositoryCleanupPolicyConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryCleanupPolicyCondition] {
-	return pulumix.Output[*RepositoryCleanupPolicyCondition]{
-		OutputState: i.ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryCleanupPolicyConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryCleanupPolicyConditionOutput) ElementType() reflect.Type {
@@ -271,12 +234,6 @@ func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryCleanupPolicyCondition) *RepositoryCleanupPolicyCondition {
 		return &v
 	}).(RepositoryCleanupPolicyConditionPtrOutput)
-}
-
-func (o RepositoryCleanupPolicyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicyCondition] {
-	return pulumix.Output[RepositoryCleanupPolicyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringPtrOutput {
@@ -315,12 +272,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) ToRepositoryCleanupPolicyCond
 
 func (o RepositoryCleanupPolicyConditionPtrOutput) ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionPtrOutput {
 	return o
-}
-
-func (o RepositoryCleanupPolicyConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryCleanupPolicyCondition] {
-	return pulumix.Output[*RepositoryCleanupPolicyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryCleanupPolicyConditionPtrOutput) Elem() RepositoryCleanupPolicyConditionOutput {
@@ -420,12 +371,6 @@ func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyMostRecentVersionsOutput)
 }
 
-func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicyMostRecentVersions] {
-	return pulumix.Output[RepositoryCleanupPolicyMostRecentVersions]{
-		OutputState: i.ToRepositoryCleanupPolicyMostRecentVersionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
 	return i.ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
 }
@@ -467,12 +412,6 @@ func (i *repositoryCleanupPolicyMostRecentVersionsPtrType) ToRepositoryCleanupPo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
 }
 
-func (i *repositoryCleanupPolicyMostRecentVersionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryCleanupPolicyMostRecentVersions] {
-	return pulumix.Output[*RepositoryCleanupPolicyMostRecentVersions]{
-		OutputState: i.ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryCleanupPolicyMostRecentVersionsOutput struct{ *pulumi.OutputState }
 
 func (RepositoryCleanupPolicyMostRecentVersionsOutput) ElementType() reflect.Type {
@@ -497,12 +436,6 @@ func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPoli
 	}).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
 }
 
-func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryCleanupPolicyMostRecentVersions] {
-	return pulumix.Output[RepositoryCleanupPolicyMostRecentVersions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryCleanupPolicyMostRecentVersionsOutput) KeepCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyMostRecentVersions) *int { return v.KeepCount }).(pulumi.IntPtrOutput)
 }
@@ -523,12 +456,6 @@ func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ToRepositoryCleanupP
 
 func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
 	return o
-}
-
-func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryCleanupPolicyMostRecentVersions] {
-	return pulumix.Output[*RepositoryCleanupPolicyMostRecentVersions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) Elem() RepositoryCleanupPolicyMostRecentVersionsOutput {
@@ -592,12 +519,6 @@ func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryDockerConfigOutput)
 }
 
-func (i RepositoryDockerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryDockerConfig] {
-	return pulumix.Output[RepositoryDockerConfig]{
-		OutputState: i.ToRepositoryDockerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput {
 	return i.ToRepositoryDockerConfigPtrOutputWithContext(context.Background())
 }
@@ -639,12 +560,6 @@ func (i *repositoryDockerConfigPtrType) ToRepositoryDockerConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryDockerConfigPtrOutput)
 }
 
-func (i *repositoryDockerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryDockerConfig] {
-	return pulumix.Output[*RepositoryDockerConfig]{
-		OutputState: i.ToRepositoryDockerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryDockerConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryDockerConfigOutput) ElementType() reflect.Type {
@@ -669,12 +584,6 @@ func (o RepositoryDockerConfigOutput) ToRepositoryDockerConfigPtrOutputWithConte
 	}).(RepositoryDockerConfigPtrOutput)
 }
 
-func (o RepositoryDockerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryDockerConfig] {
-	return pulumix.Output[RepositoryDockerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 func (o RepositoryDockerConfigOutput) ImmutableTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RepositoryDockerConfig) *bool { return v.ImmutableTags }).(pulumi.BoolPtrOutput)
@@ -692,12 +601,6 @@ func (o RepositoryDockerConfigPtrOutput) ToRepositoryDockerConfigPtrOutput() Rep
 
 func (o RepositoryDockerConfigPtrOutput) ToRepositoryDockerConfigPtrOutputWithContext(ctx context.Context) RepositoryDockerConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryDockerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryDockerConfig] {
-	return pulumix.Output[*RepositoryDockerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryDockerConfigPtrOutput) Elem() RepositoryDockerConfigOutput {
@@ -755,12 +658,6 @@ func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionOutput)
 }
 
-func (i RepositoryIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamBindingCondition] {
-	return pulumix.Output[RepositoryIamBindingCondition]{
-		OutputState: i.ToRepositoryIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
 	return i.ToRepositoryIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -802,12 +699,6 @@ func (i *repositoryIamBindingConditionPtrType) ToRepositoryIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionPtrOutput)
 }
 
-func (i *repositoryIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBindingCondition] {
-	return pulumix.Output[*RepositoryIamBindingCondition]{
-		OutputState: i.ToRepositoryIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingConditionOutput) ElementType() reflect.Type {
@@ -830,12 +721,6 @@ func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamBindingCondition) *RepositoryIamBindingCondition {
 		return &v
 	}).(RepositoryIamBindingConditionPtrOutput)
-}
-
-func (o RepositoryIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamBindingCondition] {
-	return pulumix.Output[RepositoryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -862,12 +747,6 @@ func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionP
 
 func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o RepositoryIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBindingCondition] {
-	return pulumix.Output[*RepositoryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingConditionOutput {
@@ -942,12 +821,6 @@ func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionOutput)
 }
 
-func (i RepositoryIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamMemberCondition] {
-	return pulumix.Output[RepositoryIamMemberCondition]{
-		OutputState: i.ToRepositoryIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
 	return i.ToRepositoryIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -989,12 +862,6 @@ func (i *repositoryIamMemberConditionPtrType) ToRepositoryIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionPtrOutput)
 }
 
-func (i *repositoryIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMemberCondition] {
-	return pulumix.Output[*RepositoryIamMemberCondition]{
-		OutputState: i.ToRepositoryIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1017,12 +884,6 @@ func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamMemberCondition) *RepositoryIamMemberCondition {
 		return &v
 	}).(RepositoryIamMemberConditionPtrOutput)
-}
-
-func (o RepositoryIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryIamMemberCondition] {
-	return pulumix.Output[RepositoryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1049,12 +910,6 @@ func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtr
 
 func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o RepositoryIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMemberCondition] {
-	return pulumix.Output[*RepositoryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditionOutput {
@@ -1137,12 +992,6 @@ func (i RepositoryMavenConfigArgs) ToRepositoryMavenConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMavenConfigOutput)
 }
 
-func (i RepositoryMavenConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryMavenConfig] {
-	return pulumix.Output[RepositoryMavenConfig]{
-		OutputState: i.ToRepositoryMavenConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryMavenConfigArgs) ToRepositoryMavenConfigPtrOutput() RepositoryMavenConfigPtrOutput {
 	return i.ToRepositoryMavenConfigPtrOutputWithContext(context.Background())
 }
@@ -1184,12 +1033,6 @@ func (i *repositoryMavenConfigPtrType) ToRepositoryMavenConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMavenConfigPtrOutput)
 }
 
-func (i *repositoryMavenConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryMavenConfig] {
-	return pulumix.Output[*RepositoryMavenConfig]{
-		OutputState: i.ToRepositoryMavenConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryMavenConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryMavenConfigOutput) ElementType() reflect.Type {
@@ -1212,12 +1055,6 @@ func (o RepositoryMavenConfigOutput) ToRepositoryMavenConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryMavenConfig) *RepositoryMavenConfig {
 		return &v
 	}).(RepositoryMavenConfigPtrOutput)
-}
-
-func (o RepositoryMavenConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryMavenConfig] {
-	return pulumix.Output[RepositoryMavenConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The repository with this flag will allow publishing the same
@@ -1245,12 +1082,6 @@ func (o RepositoryMavenConfigPtrOutput) ToRepositoryMavenConfigPtrOutput() Repos
 
 func (o RepositoryMavenConfigPtrOutput) ToRepositoryMavenConfigPtrOutputWithContext(ctx context.Context) RepositoryMavenConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryMavenConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryMavenConfig] {
-	return pulumix.Output[*RepositoryMavenConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryMavenConfigPtrOutput) Elem() RepositoryMavenConfigOutput {
@@ -1343,12 +1174,6 @@ func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfig
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigOutput)
 }
 
-func (i RepositoryRemoteRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfig]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput {
 	return i.ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1390,12 +1215,6 @@ func (i *repositoryRemoteRepositoryConfigPtrType) ToRepositoryRemoteRepositoryCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPtrOutput)
 }
 
-func (i *repositoryRemoteRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfig]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryRemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryRemoteRepositoryConfigOutput) ElementType() reflect.Type {
@@ -1418,12 +1237,6 @@ func (o RepositoryRemoteRepositoryConfigOutput) ToRepositoryRemoteRepositoryConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfig {
 		return &v
 	}).(RepositoryRemoteRepositoryConfigPtrOutput)
-}
-
-func (o RepositoryRemoteRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the remote source.
@@ -1475,12 +1288,6 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) ToRepositoryRemoteRepositoryC
 
 func (o RepositoryRemoteRepositoryConfigPtrOutput) ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryRemoteRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRemoteRepositoryConfigPtrOutput) Elem() RepositoryRemoteRepositoryConfigOutput {
@@ -1584,12 +1391,6 @@ func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemote
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput)
 }
 
-func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
 	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(context.Background())
 }
@@ -1631,12 +1432,6 @@ func (i *repositoryRemoteRepositoryConfigDockerRepositoryPtrType) ToRepositoryRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
 }
 
-func (i *repositoryRemoteRepositoryConfigDockerRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryRemoteRepositoryConfigDockerRepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ElementType() reflect.Type {
@@ -1661,12 +1456,6 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
 }
 
-func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Address of the remote repository.
 // Default value is `DOCKER_HUB`.
 // Possible values are: `DOCKER_HUB`.
@@ -1686,12 +1475,6 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ToRepositoryR
 
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
 	return o
-}
-
-func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
@@ -1753,12 +1536,6 @@ func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteR
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput)
 }
 
-func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
 	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(context.Background())
 }
@@ -1800,12 +1577,6 @@ func (i *repositoryRemoteRepositoryConfigMavenRepositoryPtrType) ToRepositoryRem
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
 }
 
-func (i *repositoryRemoteRepositoryConfigMavenRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryRemoteRepositoryConfigMavenRepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ElementType() reflect.Type {
@@ -1830,12 +1601,6 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemot
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
 }
 
-func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Address of the remote repository.
 // Default value is `MAVEN_CENTRAL`.
 // Possible values are: `MAVEN_CENTRAL`.
@@ -1855,12 +1620,6 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ToRepositoryRe
 
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
 	return o
-}
-
-func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
@@ -1922,12 +1681,6 @@ func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRep
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput)
 }
 
-func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
 	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(context.Background())
 }
@@ -1969,12 +1722,6 @@ func (i *repositoryRemoteRepositoryConfigNpmRepositoryPtrType) ToRepositoryRemot
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
 }
 
-func (i *repositoryRemoteRepositoryConfigNpmRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryRemoteRepositoryConfigNpmRepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ElementType() reflect.Type {
@@ -1999,12 +1746,6 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteR
 	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
 }
 
-func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Address of the remote repository.
 // Default value is `NPMJS`.
 // Possible values are: `NPMJS`.
@@ -2024,12 +1765,6 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ToRepositoryRemo
 
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
 	return o
-}
-
-func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
@@ -2091,12 +1826,6 @@ func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemote
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput)
 }
 
-func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
 	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(context.Background())
 }
@@ -2138,12 +1867,6 @@ func (i *repositoryRemoteRepositoryConfigPythonRepositoryPtrType) ToRepositoryRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
 }
 
-func (i *repositoryRemoteRepositoryConfigPythonRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: i.ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryRemoteRepositoryConfigPythonRepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ElementType() reflect.Type {
@@ -2168,12 +1891,6 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
 }
 
-func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[RepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Address of the remote repository.
 // Default value is `PYPI`.
 // Possible values are: `PYPI`.
@@ -2193,12 +1910,6 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ToRepositoryR
 
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
 	return o
-}
-
-func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[*RepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
@@ -2260,12 +1971,6 @@ func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConf
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigOutput)
 }
 
-func (i RepositoryVirtualRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[RepositoryVirtualRepositoryConfig]{
-		OutputState: i.ToRepositoryVirtualRepositoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput {
 	return i.ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -2307,12 +2012,6 @@ func (i *repositoryVirtualRepositoryConfigPtrType) ToRepositoryVirtualRepository
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigPtrOutput)
 }
 
-func (i *repositoryVirtualRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[*RepositoryVirtualRepositoryConfig]{
-		OutputState: i.ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryVirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryVirtualRepositoryConfigOutput) ElementType() reflect.Type {
@@ -2337,12 +2036,6 @@ func (o RepositoryVirtualRepositoryConfigOutput) ToRepositoryVirtualRepositoryCo
 	}).(RepositoryVirtualRepositoryConfigPtrOutput)
 }
 
-func (o RepositoryVirtualRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[RepositoryVirtualRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Policies that configure the upstream artifacts distributed by the Virtual
 // Repository. Upstream policies cannot be set on a standard repository.
 // Structure is documented below.
@@ -2364,12 +2057,6 @@ func (o RepositoryVirtualRepositoryConfigPtrOutput) ToRepositoryVirtualRepositor
 
 func (o RepositoryVirtualRepositoryConfigPtrOutput) ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryVirtualRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[*RepositoryVirtualRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryVirtualRepositoryConfigPtrOutput) Elem() RepositoryVirtualRepositoryConfigOutput {
@@ -2437,12 +2124,6 @@ func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToRepositoryVirtual
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
 }
 
-func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[RepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: i.ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput is an input type that accepts RepositoryVirtualRepositoryConfigUpstreamPolicyArray and RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput values.
 // You can construct a concrete instance of `RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput` via:
 //
@@ -2468,12 +2149,6 @@ func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToRepositoryVirtua
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
 }
 
-func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[[]RepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: i.ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryVirtualRepositoryConfigUpstreamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ElementType() reflect.Type {
@@ -2486,12 +2161,6 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToRepositoryVirtu
 
 func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
 	return o
-}
-
-func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[RepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-provided ID of the upstream policy.
@@ -2522,12 +2191,6 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToRepository
 
 func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
 	return o
-}
-
-func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[[]RepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
@@ -2573,12 +2236,6 @@ func (i GetRepositoryCleanupPolicyArgs) ToGetRepositoryCleanupPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyOutput)
 }
 
-func (i GetRepositoryCleanupPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicy] {
-	return pulumix.Output[GetRepositoryCleanupPolicy]{
-		OutputState: i.ToGetRepositoryCleanupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryCleanupPolicyArrayInput is an input type that accepts GetRepositoryCleanupPolicyArray and GetRepositoryCleanupPolicyArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryCleanupPolicyArrayInput` via:
 //
@@ -2604,12 +2261,6 @@ func (i GetRepositoryCleanupPolicyArray) ToGetRepositoryCleanupPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyArrayOutput)
 }
 
-func (i GetRepositoryCleanupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicy] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicy]{
-		OutputState: i.ToGetRepositoryCleanupPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryCleanupPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryCleanupPolicyOutput) ElementType() reflect.Type {
@@ -2622,12 +2273,6 @@ func (o GetRepositoryCleanupPolicyOutput) ToGetRepositoryCleanupPolicyOutput() G
 
 func (o GetRepositoryCleanupPolicyOutput) ToGetRepositoryCleanupPolicyOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicy] {
-	return pulumix.Output[GetRepositoryCleanupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyOutput) Action() pulumi.StringOutput {
@@ -2660,12 +2305,6 @@ func (o GetRepositoryCleanupPolicyArrayOutput) ToGetRepositoryCleanupPolicyArray
 
 func (o GetRepositoryCleanupPolicyArrayOutput) ToGetRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyArrayOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicy] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyOutput {
@@ -2715,12 +2354,6 @@ func (i GetRepositoryCleanupPolicyConditionArgs) ToGetRepositoryCleanupPolicyCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyConditionOutput)
 }
 
-func (i GetRepositoryCleanupPolicyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicyCondition] {
-	return pulumix.Output[GetRepositoryCleanupPolicyCondition]{
-		OutputState: i.ToGetRepositoryCleanupPolicyConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryCleanupPolicyConditionArrayInput is an input type that accepts GetRepositoryCleanupPolicyConditionArray and GetRepositoryCleanupPolicyConditionArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryCleanupPolicyConditionArrayInput` via:
 //
@@ -2746,12 +2379,6 @@ func (i GetRepositoryCleanupPolicyConditionArray) ToGetRepositoryCleanupPolicyCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyConditionArrayOutput)
 }
 
-func (i GetRepositoryCleanupPolicyConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicyCondition] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicyCondition]{
-		OutputState: i.ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryCleanupPolicyConditionOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryCleanupPolicyConditionOutput) ElementType() reflect.Type {
@@ -2764,12 +2391,6 @@ func (o GetRepositoryCleanupPolicyConditionOutput) ToGetRepositoryCleanupPolicyC
 
 func (o GetRepositoryCleanupPolicyConditionOutput) ToGetRepositoryCleanupPolicyConditionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicyCondition] {
-	return pulumix.Output[GetRepositoryCleanupPolicyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringOutput {
@@ -2808,12 +2429,6 @@ func (o GetRepositoryCleanupPolicyConditionArrayOutput) ToGetRepositoryCleanupPo
 
 func (o GetRepositoryCleanupPolicyConditionArrayOutput) ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionArrayOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicyCondition] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyConditionArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyConditionOutput {
@@ -2855,12 +2470,6 @@ func (i GetRepositoryCleanupPolicyMostRecentVersionArgs) ToGetRepositoryCleanupP
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyMostRecentVersionOutput)
 }
 
-func (i GetRepositoryCleanupPolicyMostRecentVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicyMostRecentVersion] {
-	return pulumix.Output[GetRepositoryCleanupPolicyMostRecentVersion]{
-		OutputState: i.ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryCleanupPolicyMostRecentVersionArrayInput is an input type that accepts GetRepositoryCleanupPolicyMostRecentVersionArray and GetRepositoryCleanupPolicyMostRecentVersionArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryCleanupPolicyMostRecentVersionArrayInput` via:
 //
@@ -2886,12 +2495,6 @@ func (i GetRepositoryCleanupPolicyMostRecentVersionArray) ToGetRepositoryCleanup
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyMostRecentVersionArrayOutput)
 }
 
-func (i GetRepositoryCleanupPolicyMostRecentVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicyMostRecentVersion] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicyMostRecentVersion]{
-		OutputState: i.ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryCleanupPolicyMostRecentVersionOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryCleanupPolicyMostRecentVersionOutput) ElementType() reflect.Type {
@@ -2904,12 +2507,6 @@ func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToGetRepositoryCleanu
 
 func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryCleanupPolicyMostRecentVersion] {
-	return pulumix.Output[GetRepositoryCleanupPolicyMostRecentVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) KeepCount() pulumi.IntOutput {
@@ -2932,12 +2529,6 @@ func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ToGetRepositoryC
 
 func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
 	return o
-}
-
-func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryCleanupPolicyMostRecentVersion] {
-	return pulumix.Output[[]GetRepositoryCleanupPolicyMostRecentVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyMostRecentVersionOutput {
@@ -2977,12 +2568,6 @@ func (i GetRepositoryDockerConfigArgs) ToGetRepositoryDockerConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryDockerConfigOutput)
 }
 
-func (i GetRepositoryDockerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryDockerConfig] {
-	return pulumix.Output[GetRepositoryDockerConfig]{
-		OutputState: i.ToGetRepositoryDockerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryDockerConfigArrayInput is an input type that accepts GetRepositoryDockerConfigArray and GetRepositoryDockerConfigArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryDockerConfigArrayInput` via:
 //
@@ -3008,12 +2593,6 @@ func (i GetRepositoryDockerConfigArray) ToGetRepositoryDockerConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryDockerConfigArrayOutput)
 }
 
-func (i GetRepositoryDockerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryDockerConfig] {
-	return pulumix.Output[[]GetRepositoryDockerConfig]{
-		OutputState: i.ToGetRepositoryDockerConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryDockerConfigOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryDockerConfigOutput) ElementType() reflect.Type {
@@ -3026,12 +2605,6 @@ func (o GetRepositoryDockerConfigOutput) ToGetRepositoryDockerConfigOutput() Get
 
 func (o GetRepositoryDockerConfigOutput) ToGetRepositoryDockerConfigOutputWithContext(ctx context.Context) GetRepositoryDockerConfigOutput {
 	return o
-}
-
-func (o GetRepositoryDockerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryDockerConfig] {
-	return pulumix.Output[GetRepositoryDockerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryDockerConfigOutput) ImmutableTags() pulumi.BoolOutput {
@@ -3050,12 +2623,6 @@ func (o GetRepositoryDockerConfigArrayOutput) ToGetRepositoryDockerConfigArrayOu
 
 func (o GetRepositoryDockerConfigArrayOutput) ToGetRepositoryDockerConfigArrayOutputWithContext(ctx context.Context) GetRepositoryDockerConfigArrayOutput {
 	return o
-}
-
-func (o GetRepositoryDockerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryDockerConfig] {
-	return pulumix.Output[[]GetRepositoryDockerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryDockerConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryDockerConfigOutput {
@@ -3097,12 +2664,6 @@ func (i GetRepositoryMavenConfigArgs) ToGetRepositoryMavenConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryMavenConfigOutput)
 }
 
-func (i GetRepositoryMavenConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryMavenConfig] {
-	return pulumix.Output[GetRepositoryMavenConfig]{
-		OutputState: i.ToGetRepositoryMavenConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryMavenConfigArrayInput is an input type that accepts GetRepositoryMavenConfigArray and GetRepositoryMavenConfigArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryMavenConfigArrayInput` via:
 //
@@ -3128,12 +2689,6 @@ func (i GetRepositoryMavenConfigArray) ToGetRepositoryMavenConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryMavenConfigArrayOutput)
 }
 
-func (i GetRepositoryMavenConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryMavenConfig] {
-	return pulumix.Output[[]GetRepositoryMavenConfig]{
-		OutputState: i.ToGetRepositoryMavenConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryMavenConfigOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryMavenConfigOutput) ElementType() reflect.Type {
@@ -3146,12 +2701,6 @@ func (o GetRepositoryMavenConfigOutput) ToGetRepositoryMavenConfigOutput() GetRe
 
 func (o GetRepositoryMavenConfigOutput) ToGetRepositoryMavenConfigOutputWithContext(ctx context.Context) GetRepositoryMavenConfigOutput {
 	return o
-}
-
-func (o GetRepositoryMavenConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryMavenConfig] {
-	return pulumix.Output[GetRepositoryMavenConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryMavenConfigOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
@@ -3174,12 +2723,6 @@ func (o GetRepositoryMavenConfigArrayOutput) ToGetRepositoryMavenConfigArrayOutp
 
 func (o GetRepositoryMavenConfigArrayOutput) ToGetRepositoryMavenConfigArrayOutputWithContext(ctx context.Context) GetRepositoryMavenConfigArrayOutput {
 	return o
-}
-
-func (o GetRepositoryMavenConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryMavenConfig] {
-	return pulumix.Output[[]GetRepositoryMavenConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryMavenConfigOutput {
@@ -3227,12 +2770,6 @@ func (i GetRepositoryRemoteRepositoryConfigArgs) ToGetRepositoryRemoteRepository
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfig]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryRemoteRepositoryConfigArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigArray and GetRepositoryRemoteRepositoryConfigArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigArrayInput` via:
 //
@@ -3258,12 +2795,6 @@ func (i GetRepositoryRemoteRepositoryConfigArray) ToGetRepositoryRemoteRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigArrayOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfig]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryRemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryRemoteRepositoryConfigOutput) ElementType() reflect.Type {
@@ -3276,12 +2807,6 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) ToGetRepositoryRemoteReposito
 
 func (o GetRepositoryRemoteRepositoryConfigOutput) ToGetRepositoryRemoteRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringOutput {
@@ -3326,12 +2851,6 @@ func (o GetRepositoryRemoteRepositoryConfigArrayOutput) ToGetRepositoryRemoteRep
 	return o
 }
 
-func (o GetRepositoryRemoteRepositoryConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfig] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetRepositoryRemoteRepositoryConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfig {
 		return vs[0].([]GetRepositoryRemoteRepositoryConfig)[vs[1].(int)]
@@ -3369,12 +2888,6 @@ func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToGetRepository
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigDockerRepositoryArray and GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput` via:
 //
@@ -3400,12 +2913,6 @@ func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArray) ToGetRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ElementType() reflect.Type {
@@ -3418,12 +2925,6 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetReposito
 
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringOutput {
@@ -3442,12 +2943,6 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ToGetRep
 
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigDockerRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigDockerRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
@@ -3487,12 +2982,6 @@ func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToGetRepositoryR
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigMavenRepositoryArray and GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput` via:
 //
@@ -3518,12 +3007,6 @@ func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArray) ToGetRepository
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ElementType() reflect.Type {
@@ -3536,12 +3019,6 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositor
 
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringOutput {
@@ -3560,12 +3037,6 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ToGetRepo
 
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigMavenRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigMavenRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
@@ -3605,12 +3076,6 @@ func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToGetRepositoryRem
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNpmRepositoryArray and GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput` via:
 //
@@ -3636,12 +3101,6 @@ func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArray) ToGetRepositoryRe
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ElementType() reflect.Type {
@@ -3654,12 +3113,6 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryR
 
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringOutput {
@@ -3678,12 +3131,6 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ToGetReposi
 
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigNpmRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigNpmRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
@@ -3723,12 +3170,6 @@ func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToGetRepository
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigPythonRepositoryArray and GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput` via:
 //
@@ -3754,12 +3195,6 @@ func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArray) ToGetRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput)
 }
 
-func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ElementType() reflect.Type {
@@ -3772,12 +3207,6 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetReposito
 
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[GetRepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringOutput {
@@ -3796,12 +3225,6 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ToGetRep
 
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
 	return o
-}
-
-func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryRemoteRepositoryConfigPythonRepository] {
-	return pulumix.Output[[]GetRepositoryRemoteRepositoryConfigPythonRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
@@ -3841,12 +3264,6 @@ func (i GetRepositoryVirtualRepositoryConfigArgs) ToGetRepositoryVirtualReposito
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigOutput)
 }
 
-func (i GetRepositoryVirtualRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[GetRepositoryVirtualRepositoryConfig]{
-		OutputState: i.ToGetRepositoryVirtualRepositoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryVirtualRepositoryConfigArrayInput is an input type that accepts GetRepositoryVirtualRepositoryConfigArray and GetRepositoryVirtualRepositoryConfigArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigArrayInput` via:
 //
@@ -3872,12 +3289,6 @@ func (i GetRepositoryVirtualRepositoryConfigArray) ToGetRepositoryVirtualReposit
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigArrayOutput)
 }
 
-func (i GetRepositoryVirtualRepositoryConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[[]GetRepositoryVirtualRepositoryConfig]{
-		OutputState: i.ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryVirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryVirtualRepositoryConfigOutput) ElementType() reflect.Type {
@@ -3890,12 +3301,6 @@ func (o GetRepositoryVirtualRepositoryConfigOutput) ToGetRepositoryVirtualReposi
 
 func (o GetRepositoryVirtualRepositoryConfigOutput) ToGetRepositoryVirtualRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigOutput {
 	return o
-}
-
-func (o GetRepositoryVirtualRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[GetRepositoryVirtualRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryVirtualRepositoryConfigOutput) UpstreamPolicies() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
@@ -3916,12 +3321,6 @@ func (o GetRepositoryVirtualRepositoryConfigArrayOutput) ToGetRepositoryVirtualR
 
 func (o GetRepositoryVirtualRepositoryConfigArrayOutput) ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigArrayOutput {
 	return o
-}
-
-func (o GetRepositoryVirtualRepositoryConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryVirtualRepositoryConfig] {
-	return pulumix.Output[[]GetRepositoryVirtualRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryVirtualRepositoryConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryVirtualRepositoryConfigOutput {
@@ -3965,12 +3364,6 @@ func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToGetRepositoryV
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
 }
 
-func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[GetRepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: i.ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput is an input type that accepts GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray and GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput values.
 // You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput` via:
 //
@@ -3996,12 +3389,6 @@ func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToGetRepository
 	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
 }
 
-func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: i.ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ElementType() reflect.Type {
@@ -4014,12 +3401,6 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToGetRepositor
 
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
 	return o
-}
-
-func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[GetRepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Id() pulumi.StringOutput {
@@ -4046,12 +3427,6 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToGetRepo
 
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
 	return o
-}
-
-func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy] {
-	return pulumix.Output[[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulumi.IntInput) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
@@ -346,12 +345,6 @@ func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyOutput)
 }
 
-func (i *EntryGroupIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamPolicy] {
-	return pulumix.Output[*EntryGroupIamPolicy]{
-		OutputState: i.ToEntryGroupIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EntryGroupIamPolicyArrayInput is an input type that accepts EntryGroupIamPolicyArray and EntryGroupIamPolicyArrayOutput values.
 // You can construct a concrete instance of `EntryGroupIamPolicyArrayInput` via:
 //
@@ -375,12 +368,6 @@ func (i EntryGroupIamPolicyArray) ToEntryGroupIamPolicyArrayOutput() EntryGroupI
 
 func (i EntryGroupIamPolicyArray) ToEntryGroupIamPolicyArrayOutputWithContext(ctx context.Context) EntryGroupIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyArrayOutput)
-}
-
-func (i EntryGroupIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamPolicy] {
-	return pulumix.Output[[]*EntryGroupIamPolicy]{
-		OutputState: i.ToEntryGroupIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EntryGroupIamPolicyMapInput is an input type that accepts EntryGroupIamPolicyMap and EntryGroupIamPolicyMapOutput values.
@@ -408,12 +395,6 @@ func (i EntryGroupIamPolicyMap) ToEntryGroupIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyMapOutput)
 }
 
-func (i EntryGroupIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamPolicy] {
-	return pulumix.Output[map[string]*EntryGroupIamPolicy]{
-		OutputState: i.ToEntryGroupIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamPolicyOutput) ElementType() reflect.Type {
@@ -426,12 +407,6 @@ func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutput() EntryGroupIamPo
 
 func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutputWithContext(ctx context.Context) EntryGroupIamPolicyOutput {
 	return o
-}
-
-func (o EntryGroupIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamPolicy] {
-	return pulumix.Output[*EntryGroupIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -486,12 +461,6 @@ func (o EntryGroupIamPolicyArrayOutput) ToEntryGroupIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o EntryGroupIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamPolicy] {
-	return pulumix.Output[[]*EntryGroupIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntryGroupIamPolicyArrayOutput) Index(i pulumi.IntInput) EntryGroupIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntryGroupIamPolicy {
 		return vs[0].([]*EntryGroupIamPolicy)[vs[1].(int)]
@@ -510,12 +479,6 @@ func (o EntryGroupIamPolicyMapOutput) ToEntryGroupIamPolicyMapOutput() EntryGrou
 
 func (o EntryGroupIamPolicyMapOutput) ToEntryGroupIamPolicyMapOutputWithContext(ctx context.Context) EntryGroupIamPolicyMapOutput {
 	return o
-}
-
-func (o EntryGroupIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamPolicy] {
-	return pulumix.Output[map[string]*EntryGroupIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntryGroupIamPolicyMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamPolicyOutput {

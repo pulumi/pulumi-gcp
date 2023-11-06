@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the email address of a folder's Access Approval service account.
@@ -120,12 +119,6 @@ func (o GetFolderServiceAccountResultOutput) ToGetFolderServiceAccountResultOutp
 
 func (o GetFolderServiceAccountResultOutput) ToGetFolderServiceAccountResultOutputWithContext(ctx context.Context) GetFolderServiceAccountResultOutput {
 	return o
-}
-
-func (o GetFolderServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFolderServiceAccountResult] {
-	return pulumix.Output[GetFolderServiceAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address of the service account. This value is

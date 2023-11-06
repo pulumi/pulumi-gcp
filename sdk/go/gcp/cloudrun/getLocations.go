@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Cloud Run locations available for a project.
@@ -106,12 +105,6 @@ func (o GetLocationsResultOutput) ToGetLocationsResultOutput() GetLocationsResul
 
 func (o GetLocationsResultOutput) ToGetLocationsResultOutputWithContext(ctx context.Context) GetLocationsResultOutput {
 	return o
-}
-
-func (o GetLocationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLocationsResult] {
-	return pulumix.Output[GetLocationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

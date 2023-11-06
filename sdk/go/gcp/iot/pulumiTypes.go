@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -67,12 +66,6 @@ func (i DeviceConfigArgs) ToDeviceConfigOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigOutput)
 }
 
-func (i DeviceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceConfig] {
-	return pulumix.Output[DeviceConfig]{
-		OutputState: i.ToDeviceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceConfigArrayInput is an input type that accepts DeviceConfigArray and DeviceConfigArrayOutput values.
 // You can construct a concrete instance of `DeviceConfigArrayInput` via:
 //
@@ -98,12 +91,6 @@ func (i DeviceConfigArray) ToDeviceConfigArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigArrayOutput)
 }
 
-func (i DeviceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceConfig] {
-	return pulumix.Output[[]DeviceConfig]{
-		OutputState: i.ToDeviceConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceConfigOutput struct{ *pulumi.OutputState }
 
 func (DeviceConfigOutput) ElementType() reflect.Type {
@@ -116,12 +103,6 @@ func (o DeviceConfigOutput) ToDeviceConfigOutput() DeviceConfigOutput {
 
 func (o DeviceConfigOutput) ToDeviceConfigOutputWithContext(ctx context.Context) DeviceConfigOutput {
 	return o
-}
-
-func (o DeviceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceConfig] {
-	return pulumix.Output[DeviceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device state data.
@@ -160,12 +141,6 @@ func (o DeviceConfigArrayOutput) ToDeviceConfigArrayOutput() DeviceConfigArrayOu
 
 func (o DeviceConfigArrayOutput) ToDeviceConfigArrayOutputWithContext(ctx context.Context) DeviceConfigArrayOutput {
 	return o
-}
-
-func (o DeviceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceConfig] {
-	return pulumix.Output[[]DeviceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceConfigArrayOutput) Index(i pulumi.IntInput) DeviceConfigOutput {
@@ -213,12 +188,6 @@ func (i DeviceCredentialArgs) ToDeviceCredentialOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialOutput)
 }
 
-func (i DeviceCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceCredential] {
-	return pulumix.Output[DeviceCredential]{
-		OutputState: i.ToDeviceCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceCredentialArrayInput is an input type that accepts DeviceCredentialArray and DeviceCredentialArrayOutput values.
 // You can construct a concrete instance of `DeviceCredentialArrayInput` via:
 //
@@ -244,12 +213,6 @@ func (i DeviceCredentialArray) ToDeviceCredentialArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialArrayOutput)
 }
 
-func (i DeviceCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceCredential] {
-	return pulumix.Output[[]DeviceCredential]{
-		OutputState: i.ToDeviceCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceCredentialOutput struct{ *pulumi.OutputState }
 
 func (DeviceCredentialOutput) ElementType() reflect.Type {
@@ -262,12 +225,6 @@ func (o DeviceCredentialOutput) ToDeviceCredentialOutput() DeviceCredentialOutpu
 
 func (o DeviceCredentialOutput) ToDeviceCredentialOutputWithContext(ctx context.Context) DeviceCredentialOutput {
 	return o
-}
-
-func (o DeviceCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceCredential] {
-	return pulumix.Output[DeviceCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this credential becomes invalid.
@@ -293,12 +250,6 @@ func (o DeviceCredentialArrayOutput) ToDeviceCredentialArrayOutput() DeviceCrede
 
 func (o DeviceCredentialArrayOutput) ToDeviceCredentialArrayOutputWithContext(ctx context.Context) DeviceCredentialArrayOutput {
 	return o
-}
-
-func (o DeviceCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceCredential] {
-	return pulumix.Output[[]DeviceCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceCredentialArrayOutput) Index(i pulumi.IntInput) DeviceCredentialOutput {
@@ -346,12 +297,6 @@ func (i DeviceCredentialPublicKeyArgs) ToDeviceCredentialPublicKeyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialPublicKeyOutput)
 }
 
-func (i DeviceCredentialPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceCredentialPublicKey] {
-	return pulumix.Output[DeviceCredentialPublicKey]{
-		OutputState: i.ToDeviceCredentialPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceCredentialPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (DeviceCredentialPublicKeyOutput) ElementType() reflect.Type {
@@ -364,12 +309,6 @@ func (o DeviceCredentialPublicKeyOutput) ToDeviceCredentialPublicKeyOutput() Dev
 
 func (o DeviceCredentialPublicKeyOutput) ToDeviceCredentialPublicKeyOutputWithContext(ctx context.Context) DeviceCredentialPublicKeyOutput {
 	return o
-}
-
-func (o DeviceCredentialPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceCredentialPublicKey] {
-	return pulumix.Output[DeviceCredentialPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The format of the key.
@@ -438,12 +377,6 @@ func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceGatewayConfigOutput)
 }
 
-func (i DeviceGatewayConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceGatewayConfig] {
-	return pulumix.Output[DeviceGatewayConfig]{
-		OutputState: i.ToDeviceGatewayConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput {
 	return i.ToDeviceGatewayConfigPtrOutputWithContext(context.Background())
 }
@@ -485,12 +418,6 @@ func (i *deviceGatewayConfigPtrType) ToDeviceGatewayConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceGatewayConfigPtrOutput)
 }
 
-func (i *deviceGatewayConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceGatewayConfig] {
-	return pulumix.Output[*DeviceGatewayConfig]{
-		OutputState: i.ToDeviceGatewayConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceGatewayConfigOutput struct{ *pulumi.OutputState }
 
 func (DeviceGatewayConfigOutput) ElementType() reflect.Type {
@@ -513,12 +440,6 @@ func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceGatewayConfig) *DeviceGatewayConfig {
 		return &v
 	}).(DeviceGatewayConfigPtrOutput)
-}
-
-func (o DeviceGatewayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceGatewayConfig] {
-	return pulumix.Output[DeviceGatewayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the device is a gateway.
@@ -558,12 +479,6 @@ func (o DeviceGatewayConfigPtrOutput) ToDeviceGatewayConfigPtrOutput() DeviceGat
 
 func (o DeviceGatewayConfigPtrOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
 	return o
-}
-
-func (o DeviceGatewayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceGatewayConfig] {
-	return pulumix.Output[*DeviceGatewayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceGatewayConfigPtrOutput) Elem() DeviceGatewayConfigOutput {
@@ -662,12 +577,6 @@ func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusOutput)
 }
 
-func (i DeviceLastErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceLastErrorStatus] {
-	return pulumix.Output[DeviceLastErrorStatus]{
-		OutputState: i.ToDeviceLastErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceLastErrorStatusArrayInput is an input type that accepts DeviceLastErrorStatusArray and DeviceLastErrorStatusArrayOutput values.
 // You can construct a concrete instance of `DeviceLastErrorStatusArrayInput` via:
 //
@@ -693,12 +602,6 @@ func (i DeviceLastErrorStatusArray) ToDeviceLastErrorStatusArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusArrayOutput)
 }
 
-func (i DeviceLastErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLastErrorStatus] {
-	return pulumix.Output[[]DeviceLastErrorStatus]{
-		OutputState: i.ToDeviceLastErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceLastErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (DeviceLastErrorStatusOutput) ElementType() reflect.Type {
@@ -711,12 +614,6 @@ func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutput() DeviceLastE
 
 func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutputWithContext(ctx context.Context) DeviceLastErrorStatusOutput {
 	return o
-}
-
-func (o DeviceLastErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceLastErrorStatus] {
-	return pulumix.Output[DeviceLastErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of messages that carry the error details.
@@ -746,12 +643,6 @@ func (o DeviceLastErrorStatusArrayOutput) ToDeviceLastErrorStatusArrayOutput() D
 
 func (o DeviceLastErrorStatusArrayOutput) ToDeviceLastErrorStatusArrayOutputWithContext(ctx context.Context) DeviceLastErrorStatusArrayOutput {
 	return o
-}
-
-func (o DeviceLastErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLastErrorStatus] {
-	return pulumix.Output[[]DeviceLastErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceLastErrorStatusArrayOutput) Index(i pulumi.IntInput) DeviceLastErrorStatusOutput {
@@ -797,12 +688,6 @@ func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
 }
 
-func (i DeviceStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceStateType] {
-	return pulumix.Output[DeviceStateType]{
-		OutputState: i.ToDeviceStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceStateTypeArrayInput is an input type that accepts DeviceStateTypeArray and DeviceStateTypeArrayOutput values.
 // You can construct a concrete instance of `DeviceStateTypeArrayInput` via:
 //
@@ -828,12 +713,6 @@ func (i DeviceStateTypeArray) ToDeviceStateTypeArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeArrayOutput)
 }
 
-func (i DeviceStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceStateType] {
-	return pulumix.Output[[]DeviceStateType]{
-		OutputState: i.ToDeviceStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceStateTypeOutput struct{ *pulumi.OutputState }
 
 func (DeviceStateTypeOutput) ElementType() reflect.Type {
@@ -846,12 +725,6 @@ func (o DeviceStateTypeOutput) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
 
 func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
 	return o
-}
-
-func (o DeviceStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceStateType] {
-	return pulumix.Output[DeviceStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device state data.
@@ -876,12 +749,6 @@ func (o DeviceStateTypeArrayOutput) ToDeviceStateTypeArrayOutput() DeviceStateTy
 
 func (o DeviceStateTypeArrayOutput) ToDeviceStateTypeArrayOutputWithContext(ctx context.Context) DeviceStateTypeArrayOutput {
 	return o
-}
-
-func (o DeviceStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceStateType] {
-	return pulumix.Output[[]DeviceStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceStateTypeArrayOutput) Index(i pulumi.IntInput) DeviceStateTypeOutput {
@@ -923,12 +790,6 @@ func (i RegistryCredentialArgs) ToRegistryCredentialOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialOutput)
 }
 
-func (i RegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryCredential] {
-	return pulumix.Output[RegistryCredential]{
-		OutputState: i.ToRegistryCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegistryCredentialArrayInput is an input type that accepts RegistryCredentialArray and RegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `RegistryCredentialArrayInput` via:
 //
@@ -954,12 +815,6 @@ func (i RegistryCredentialArray) ToRegistryCredentialArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialArrayOutput)
 }
 
-func (i RegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistryCredential] {
-	return pulumix.Output[[]RegistryCredential]{
-		OutputState: i.ToRegistryCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (RegistryCredentialOutput) ElementType() reflect.Type {
@@ -972,12 +827,6 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutput() RegistryCredentia
 
 func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx context.Context) RegistryCredentialOutput {
 	return o
-}
-
-func (o RegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryCredential] {
-	return pulumix.Output[RegistryCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A public key certificate format and data.
@@ -997,12 +846,6 @@ func (o RegistryCredentialArrayOutput) ToRegistryCredentialArrayOutput() Registr
 
 func (o RegistryCredentialArrayOutput) ToRegistryCredentialArrayOutputWithContext(ctx context.Context) RegistryCredentialArrayOutput {
 	return o
-}
-
-func (o RegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryCredential] {
-	return pulumix.Output[[]RegistryCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredentialOutput {
@@ -1056,12 +899,6 @@ func (i RegistryEventNotificationConfigItemArgs) ToRegistryEventNotificationConf
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEventNotificationConfigItemOutput)
 }
 
-func (i RegistryEventNotificationConfigItemArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryEventNotificationConfigItem] {
-	return pulumix.Output[RegistryEventNotificationConfigItem]{
-		OutputState: i.ToRegistryEventNotificationConfigItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegistryEventNotificationConfigItemArrayInput is an input type that accepts RegistryEventNotificationConfigItemArray and RegistryEventNotificationConfigItemArrayOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemArrayInput` via:
 //
@@ -1087,12 +924,6 @@ func (i RegistryEventNotificationConfigItemArray) ToRegistryEventNotificationCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEventNotificationConfigItemArrayOutput)
 }
 
-func (i RegistryEventNotificationConfigItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistryEventNotificationConfigItem] {
-	return pulumix.Output[[]RegistryEventNotificationConfigItem]{
-		OutputState: i.ToRegistryEventNotificationConfigItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryEventNotificationConfigItemOutput struct{ *pulumi.OutputState }
 
 func (RegistryEventNotificationConfigItemOutput) ElementType() reflect.Type {
@@ -1105,12 +936,6 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 
 func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationConfigItemOutputWithContext(ctx context.Context) RegistryEventNotificationConfigItemOutput {
 	return o
-}
-
-func (o RegistryEventNotificationConfigItemOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryEventNotificationConfigItem] {
-	return pulumix.Output[RegistryEventNotificationConfigItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PubSub topic name to publish device events.
@@ -1139,12 +964,6 @@ func (o RegistryEventNotificationConfigItemArrayOutput) ToRegistryEventNotificat
 
 func (o RegistryEventNotificationConfigItemArrayOutput) ToRegistryEventNotificationConfigItemArrayOutputWithContext(ctx context.Context) RegistryEventNotificationConfigItemArrayOutput {
 	return o
-}
-
-func (o RegistryEventNotificationConfigItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryEventNotificationConfigItem] {
-	return pulumix.Output[[]RegistryEventNotificationConfigItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput) RegistryEventNotificationConfigItemOutput {
@@ -1188,12 +1007,6 @@ func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamBindingConditionOutput)
 }
 
-func (i RegistryIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryIamBindingCondition] {
-	return pulumix.Output[RegistryIamBindingCondition]{
-		OutputState: i.ToRegistryIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput {
 	return i.ToRegistryIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1235,12 +1048,6 @@ func (i *registryIamBindingConditionPtrType) ToRegistryIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamBindingConditionPtrOutput)
 }
 
-func (i *registryIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamBindingCondition] {
-	return pulumix.Output[*RegistryIamBindingCondition]{
-		OutputState: i.ToRegistryIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RegistryIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1263,12 +1070,6 @@ func (o RegistryIamBindingConditionOutput) ToRegistryIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryIamBindingCondition) *RegistryIamBindingCondition {
 		return &v
 	}).(RegistryIamBindingConditionPtrOutput)
-}
-
-func (o RegistryIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryIamBindingCondition] {
-	return pulumix.Output[RegistryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1295,12 +1096,6 @@ func (o RegistryIamBindingConditionPtrOutput) ToRegistryIamBindingConditionPtrOu
 
 func (o RegistryIamBindingConditionPtrOutput) ToRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) RegistryIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o RegistryIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamBindingCondition] {
-	return pulumix.Output[*RegistryIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryIamBindingConditionPtrOutput) Elem() RegistryIamBindingConditionOutput {
@@ -1375,12 +1170,6 @@ func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberConditionOutput)
 }
 
-func (i RegistryIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryIamMemberCondition] {
-	return pulumix.Output[RegistryIamMemberCondition]{
-		OutputState: i.ToRegistryIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput {
 	return i.ToRegistryIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1422,12 +1211,6 @@ func (i *registryIamMemberConditionPtrType) ToRegistryIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberConditionPtrOutput)
 }
 
-func (i *registryIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamMemberCondition] {
-	return pulumix.Output[*RegistryIamMemberCondition]{
-		OutputState: i.ToRegistryIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RegistryIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1450,12 +1233,6 @@ func (o RegistryIamMemberConditionOutput) ToRegistryIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryIamMemberCondition) *RegistryIamMemberCondition {
 		return &v
 	}).(RegistryIamMemberConditionPtrOutput)
-}
-
-func (o RegistryIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryIamMemberCondition] {
-	return pulumix.Output[RegistryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1482,12 +1259,6 @@ func (o RegistryIamMemberConditionPtrOutput) ToRegistryIamMemberConditionPtrOutp
 
 func (o RegistryIamMemberConditionPtrOutput) ToRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) RegistryIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o RegistryIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamMemberCondition] {
-	return pulumix.Output[*RegistryIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryIamMemberConditionPtrOutput) Elem() RegistryIamMemberConditionOutput {

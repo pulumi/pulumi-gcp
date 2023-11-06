@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Organization security policies are used to control incoming/outgoing traffic.
@@ -234,12 +233,6 @@ func (i *OrganizationSecurityPolicy) ToOrganizationSecurityPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyOutput)
 }
 
-func (i *OrganizationSecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicy] {
-	return pulumix.Output[*OrganizationSecurityPolicy]{
-		OutputState: i.ToOrganizationSecurityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationSecurityPolicyArrayInput is an input type that accepts OrganizationSecurityPolicyArray and OrganizationSecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyArrayInput` via:
 //
@@ -263,12 +256,6 @@ func (i OrganizationSecurityPolicyArray) ToOrganizationSecurityPolicyArrayOutput
 
 func (i OrganizationSecurityPolicyArray) ToOrganizationSecurityPolicyArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyArrayOutput)
-}
-
-func (i OrganizationSecurityPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicy] {
-	return pulumix.Output[[]*OrganizationSecurityPolicy]{
-		OutputState: i.ToOrganizationSecurityPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationSecurityPolicyMapInput is an input type that accepts OrganizationSecurityPolicyMap and OrganizationSecurityPolicyMapOutput values.
@@ -296,12 +283,6 @@ func (i OrganizationSecurityPolicyMap) ToOrganizationSecurityPolicyMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyMapOutput)
 }
 
-func (i OrganizationSecurityPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicy] {
-	return pulumix.Output[map[string]*OrganizationSecurityPolicy]{
-		OutputState: i.ToOrganizationSecurityPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyOutput) ElementType() reflect.Type {
@@ -314,12 +295,6 @@ func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutput() O
 
 func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutputWithContext(ctx context.Context) OrganizationSecurityPolicyOutput {
 	return o
-}
-
-func (o OrganizationSecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicy] {
-	return pulumix.Output[*OrganizationSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A textual description for the organization security policy.
@@ -374,12 +349,6 @@ func (o OrganizationSecurityPolicyArrayOutput) ToOrganizationSecurityPolicyArray
 	return o
 }
 
-func (o OrganizationSecurityPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicy] {
-	return pulumix.Output[[]*OrganizationSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationSecurityPolicyArrayOutput) Index(i pulumi.IntInput) OrganizationSecurityPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSecurityPolicy {
 		return vs[0].([]*OrganizationSecurityPolicy)[vs[1].(int)]
@@ -398,12 +367,6 @@ func (o OrganizationSecurityPolicyMapOutput) ToOrganizationSecurityPolicyMapOutp
 
 func (o OrganizationSecurityPolicyMapOutput) ToOrganizationSecurityPolicyMapOutputWithContext(ctx context.Context) OrganizationSecurityPolicyMapOutput {
 	return o
-}
-
-func (o OrganizationSecurityPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicy] {
-	return pulumix.Output[map[string]*OrganizationSecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationSecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) OrganizationSecurityPolicyOutput {

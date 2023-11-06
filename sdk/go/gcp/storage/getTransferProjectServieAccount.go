@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve Storage Transfer service account for this project
@@ -105,12 +104,6 @@ func (o GetTransferProjectServieAccountResultOutput) ToGetTransferProjectServieA
 
 func (o GetTransferProjectServieAccountResultOutput) ToGetTransferProjectServieAccountResultOutputWithContext(ctx context.Context) GetTransferProjectServieAccountResultOutput {
 	return o
-}
-
-func (o GetTransferProjectServieAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransferProjectServieAccountResult] {
-	return pulumix.Output[GetTransferProjectServieAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email address of the default service account used by Storage Transfer Jobs running in this project.

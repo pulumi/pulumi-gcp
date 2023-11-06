@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the customer-managed encryption key (CMEK) settings associated with a project.
@@ -138,12 +137,6 @@ func (o GetProjectCmekSettingsResultOutput) ToGetProjectCmekSettingsResultOutput
 
 func (o GetProjectCmekSettingsResultOutput) ToGetProjectCmekSettingsResultOutputWithContext(ctx context.Context) GetProjectCmekSettingsResultOutput {
 	return o
-}
-
-func (o GetProjectCmekSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectCmekSettingsResult] {
-	return pulumix.Output[GetProjectCmekSettingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

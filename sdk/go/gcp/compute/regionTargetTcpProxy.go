@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a RegionTargetTcpProxy resource, which is used by one or more
@@ -287,12 +286,6 @@ func (i *RegionTargetTcpProxy) ToRegionTargetTcpProxyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetTcpProxyOutput)
 }
 
-func (i *RegionTargetTcpProxy) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetTcpProxy] {
-	return pulumix.Output[*RegionTargetTcpProxy]{
-		OutputState: i.ToRegionTargetTcpProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionTargetTcpProxyArrayInput is an input type that accepts RegionTargetTcpProxyArray and RegionTargetTcpProxyArrayOutput values.
 // You can construct a concrete instance of `RegionTargetTcpProxyArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i RegionTargetTcpProxyArray) ToRegionTargetTcpProxyArrayOutput() RegionTar
 
 func (i RegionTargetTcpProxyArray) ToRegionTargetTcpProxyArrayOutputWithContext(ctx context.Context) RegionTargetTcpProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetTcpProxyArrayOutput)
-}
-
-func (i RegionTargetTcpProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetTcpProxy] {
-	return pulumix.Output[[]*RegionTargetTcpProxy]{
-		OutputState: i.ToRegionTargetTcpProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionTargetTcpProxyMapInput is an input type that accepts RegionTargetTcpProxyMap and RegionTargetTcpProxyMapOutput values.
@@ -349,12 +336,6 @@ func (i RegionTargetTcpProxyMap) ToRegionTargetTcpProxyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetTcpProxyMapOutput)
 }
 
-func (i RegionTargetTcpProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetTcpProxy] {
-	return pulumix.Output[map[string]*RegionTargetTcpProxy]{
-		OutputState: i.ToRegionTargetTcpProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionTargetTcpProxyOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetTcpProxyOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutput() RegionTargetT
 
 func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutputWithContext(ctx context.Context) RegionTargetTcpProxyOutput {
 	return o
-}
-
-func (o RegionTargetTcpProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetTcpProxy] {
-	return pulumix.Output[*RegionTargetTcpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the BackendService resource.
@@ -453,12 +428,6 @@ func (o RegionTargetTcpProxyArrayOutput) ToRegionTargetTcpProxyArrayOutputWithCo
 	return o
 }
 
-func (o RegionTargetTcpProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetTcpProxy] {
-	return pulumix.Output[[]*RegionTargetTcpProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionTargetTcpProxyArrayOutput) Index(i pulumi.IntInput) RegionTargetTcpProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionTargetTcpProxy {
 		return vs[0].([]*RegionTargetTcpProxy)[vs[1].(int)]
@@ -477,12 +446,6 @@ func (o RegionTargetTcpProxyMapOutput) ToRegionTargetTcpProxyMapOutput() RegionT
 
 func (o RegionTargetTcpProxyMapOutput) ToRegionTargetTcpProxyMapOutputWithContext(ctx context.Context) RegionTargetTcpProxyMapOutput {
 	return o
-}
-
-func (o RegionTargetTcpProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetTcpProxy] {
-	return pulumix.Output[map[string]*RegionTargetTcpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionTargetTcpProxyMapOutput) MapIndex(k pulumi.StringInput) RegionTargetTcpProxyOutput {

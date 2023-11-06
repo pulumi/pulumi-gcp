@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The RecaptchaEnterprise Key resource
@@ -387,12 +386,6 @@ func (i *EnterpriseKey) ToEnterpriseKeyOutputWithContext(ctx context.Context) En
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyOutput)
 }
 
-func (i *EnterpriseKey) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKey] {
-	return pulumix.Output[*EnterpriseKey]{
-		OutputState: i.ToEnterpriseKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnterpriseKeyArrayInput is an input type that accepts EnterpriseKeyArray and EnterpriseKeyArrayOutput values.
 // You can construct a concrete instance of `EnterpriseKeyArrayInput` via:
 //
@@ -416,12 +409,6 @@ func (i EnterpriseKeyArray) ToEnterpriseKeyArrayOutput() EnterpriseKeyArrayOutpu
 
 func (i EnterpriseKeyArray) ToEnterpriseKeyArrayOutputWithContext(ctx context.Context) EnterpriseKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyArrayOutput)
-}
-
-func (i EnterpriseKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseKey] {
-	return pulumix.Output[[]*EnterpriseKey]{
-		OutputState: i.ToEnterpriseKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnterpriseKeyMapInput is an input type that accepts EnterpriseKeyMap and EnterpriseKeyMapOutput values.
@@ -449,12 +436,6 @@ func (i EnterpriseKeyMap) ToEnterpriseKeyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyMapOutput)
 }
 
-func (i EnterpriseKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseKey] {
-	return pulumix.Output[map[string]*EnterpriseKey]{
-		OutputState: i.ToEnterpriseKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseKeyOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyOutput) ElementType() reflect.Type {
@@ -467,12 +448,6 @@ func (o EnterpriseKeyOutput) ToEnterpriseKeyOutput() EnterpriseKeyOutput {
 
 func (o EnterpriseKeyOutput) ToEnterpriseKeyOutputWithContext(ctx context.Context) EnterpriseKeyOutput {
 	return o
-}
-
-func (o EnterpriseKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKey] {
-	return pulumix.Output[*EnterpriseKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings for keys that can be used by Android apps.
@@ -536,12 +511,6 @@ func (o EnterpriseKeyArrayOutput) ToEnterpriseKeyArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o EnterpriseKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseKey] {
-	return pulumix.Output[[]*EnterpriseKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnterpriseKeyArrayOutput) Index(i pulumi.IntInput) EnterpriseKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseKey {
 		return vs[0].([]*EnterpriseKey)[vs[1].(int)]
@@ -560,12 +529,6 @@ func (o EnterpriseKeyMapOutput) ToEnterpriseKeyMapOutput() EnterpriseKeyMapOutpu
 
 func (o EnterpriseKeyMapOutput) ToEnterpriseKeyMapOutputWithContext(ctx context.Context) EnterpriseKeyMapOutput {
 	return o
-}
-
-func (o EnterpriseKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseKey] {
-	return pulumix.Output[map[string]*EnterpriseKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnterpriseKeyMapOutput) MapIndex(k pulumi.StringInput) EnterpriseKeyOutput {

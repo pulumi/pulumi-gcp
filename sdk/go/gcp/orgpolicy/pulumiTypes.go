@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -63,12 +62,6 @@ func (i PolicySpecArgs) ToPolicySpecOutputWithContext(ctx context.Context) Polic
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecOutput)
 }
 
-func (i PolicySpecArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySpec] {
-	return pulumix.Output[PolicySpec]{
-		OutputState: i.ToPolicySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicySpecArgs) ToPolicySpecPtrOutput() PolicySpecPtrOutput {
 	return i.ToPolicySpecPtrOutputWithContext(context.Background())
 }
@@ -110,12 +103,6 @@ func (i *policySpecPtrType) ToPolicySpecPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecPtrOutput)
 }
 
-func (i *policySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicySpec] {
-	return pulumix.Output[*PolicySpec]{
-		OutputState: i.ToPolicySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicySpecOutput struct{ *pulumi.OutputState }
 
 func (PolicySpecOutput) ElementType() reflect.Type {
@@ -138,12 +125,6 @@ func (o PolicySpecOutput) ToPolicySpecPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicySpec) *PolicySpec {
 		return &v
 	}).(PolicySpecPtrOutput)
-}
-
-func (o PolicySpecOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySpec] {
-	return pulumix.Output[PolicySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -183,12 +164,6 @@ func (o PolicySpecPtrOutput) ToPolicySpecPtrOutput() PolicySpecPtrOutput {
 
 func (o PolicySpecPtrOutput) ToPolicySpecPtrOutputWithContext(ctx context.Context) PolicySpecPtrOutput {
 	return o
-}
-
-func (o PolicySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySpec] {
-	return pulumix.Output[*PolicySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySpecPtrOutput) Elem() PolicySpecOutput {
@@ -300,12 +275,6 @@ func (i PolicySpecRuleArgs) ToPolicySpecRuleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleOutput)
 }
 
-func (i PolicySpecRuleArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRule] {
-	return pulumix.Output[PolicySpecRule]{
-		OutputState: i.ToPolicySpecRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicySpecRuleArrayInput is an input type that accepts PolicySpecRuleArray and PolicySpecRuleArrayOutput values.
 // You can construct a concrete instance of `PolicySpecRuleArrayInput` via:
 //
@@ -331,12 +300,6 @@ func (i PolicySpecRuleArray) ToPolicySpecRuleArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleArrayOutput)
 }
 
-func (i PolicySpecRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicySpecRule] {
-	return pulumix.Output[[]PolicySpecRule]{
-		OutputState: i.ToPolicySpecRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicySpecRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicySpecRuleOutput) ElementType() reflect.Type {
@@ -349,12 +312,6 @@ func (o PolicySpecRuleOutput) ToPolicySpecRuleOutput() PolicySpecRuleOutput {
 
 func (o PolicySpecRuleOutput) ToPolicySpecRuleOutputWithContext(ctx context.Context) PolicySpecRuleOutput {
 	return o
-}
-
-func (o PolicySpecRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRule] {
-	return pulumix.Output[PolicySpecRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
@@ -394,12 +351,6 @@ func (o PolicySpecRuleArrayOutput) ToPolicySpecRuleArrayOutput() PolicySpecRuleA
 
 func (o PolicySpecRuleArrayOutput) ToPolicySpecRuleArrayOutputWithContext(ctx context.Context) PolicySpecRuleArrayOutput {
 	return o
-}
-
-func (o PolicySpecRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicySpecRule] {
-	return pulumix.Output[[]PolicySpecRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySpecRuleArrayOutput) Index(i pulumi.IntInput) PolicySpecRuleOutput {
@@ -453,12 +404,6 @@ func (i PolicySpecRuleConditionArgs) ToPolicySpecRuleConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleConditionOutput)
 }
 
-func (i PolicySpecRuleConditionArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRuleCondition] {
-	return pulumix.Output[PolicySpecRuleCondition]{
-		OutputState: i.ToPolicySpecRuleConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicySpecRuleConditionArgs) ToPolicySpecRuleConditionPtrOutput() PolicySpecRuleConditionPtrOutput {
 	return i.ToPolicySpecRuleConditionPtrOutputWithContext(context.Background())
 }
@@ -500,12 +445,6 @@ func (i *policySpecRuleConditionPtrType) ToPolicySpecRuleConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleConditionPtrOutput)
 }
 
-func (i *policySpecRuleConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicySpecRuleCondition] {
-	return pulumix.Output[*PolicySpecRuleCondition]{
-		OutputState: i.ToPolicySpecRuleConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicySpecRuleConditionOutput struct{ *pulumi.OutputState }
 
 func (PolicySpecRuleConditionOutput) ElementType() reflect.Type {
@@ -528,12 +467,6 @@ func (o PolicySpecRuleConditionOutput) ToPolicySpecRuleConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicySpecRuleCondition) *PolicySpecRuleCondition {
 		return &v
 	}).(PolicySpecRuleConditionPtrOutput)
-}
-
-func (o PolicySpecRuleConditionOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRuleCondition] {
-	return pulumix.Output[PolicySpecRuleCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -568,12 +501,6 @@ func (o PolicySpecRuleConditionPtrOutput) ToPolicySpecRuleConditionPtrOutput() P
 
 func (o PolicySpecRuleConditionPtrOutput) ToPolicySpecRuleConditionPtrOutputWithContext(ctx context.Context) PolicySpecRuleConditionPtrOutput {
 	return o
-}
-
-func (o PolicySpecRuleConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySpecRuleCondition] {
-	return pulumix.Output[*PolicySpecRuleCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySpecRuleConditionPtrOutput) Elem() PolicySpecRuleConditionOutput {
@@ -663,12 +590,6 @@ func (i PolicySpecRuleValuesArgs) ToPolicySpecRuleValuesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleValuesOutput)
 }
 
-func (i PolicySpecRuleValuesArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRuleValues] {
-	return pulumix.Output[PolicySpecRuleValues]{
-		OutputState: i.ToPolicySpecRuleValuesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicySpecRuleValuesArgs) ToPolicySpecRuleValuesPtrOutput() PolicySpecRuleValuesPtrOutput {
 	return i.ToPolicySpecRuleValuesPtrOutputWithContext(context.Background())
 }
@@ -710,12 +631,6 @@ func (i *policySpecRuleValuesPtrType) ToPolicySpecRuleValuesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySpecRuleValuesPtrOutput)
 }
 
-func (i *policySpecRuleValuesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicySpecRuleValues] {
-	return pulumix.Output[*PolicySpecRuleValues]{
-		OutputState: i.ToPolicySpecRuleValuesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicySpecRuleValuesOutput struct{ *pulumi.OutputState }
 
 func (PolicySpecRuleValuesOutput) ElementType() reflect.Type {
@@ -740,12 +655,6 @@ func (o PolicySpecRuleValuesOutput) ToPolicySpecRuleValuesPtrOutputWithContext(c
 	}).(PolicySpecRuleValuesPtrOutput)
 }
 
-func (o PolicySpecRuleValuesOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySpecRuleValues] {
-	return pulumix.Output[PolicySpecRuleValues]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of values allowed at this resource.
 func (o PolicySpecRuleValuesOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicySpecRuleValues) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
@@ -768,12 +677,6 @@ func (o PolicySpecRuleValuesPtrOutput) ToPolicySpecRuleValuesPtrOutput() PolicyS
 
 func (o PolicySpecRuleValuesPtrOutput) ToPolicySpecRuleValuesPtrOutputWithContext(ctx context.Context) PolicySpecRuleValuesPtrOutput {
 	return o
-}
-
-func (o PolicySpecRuleValuesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySpecRuleValues] {
-	return pulumix.Output[*PolicySpecRuleValues]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySpecRuleValuesPtrOutput) Elem() PolicySpecRuleValuesOutput {

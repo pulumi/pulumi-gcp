@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
@@ -375,12 +374,6 @@ func (i *ApiConfigIamMember) ToApiConfigIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberOutput)
 }
 
-func (i *ApiConfigIamMember) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamMember] {
-	return pulumix.Output[*ApiConfigIamMember]{
-		OutputState: i.ToApiConfigIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigIamMemberArrayInput is an input type that accepts ApiConfigIamMemberArray and ApiConfigIamMemberArrayOutput values.
 // You can construct a concrete instance of `ApiConfigIamMemberArrayInput` via:
 //
@@ -404,12 +397,6 @@ func (i ApiConfigIamMemberArray) ToApiConfigIamMemberArrayOutput() ApiConfigIamM
 
 func (i ApiConfigIamMemberArray) ToApiConfigIamMemberArrayOutputWithContext(ctx context.Context) ApiConfigIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberArrayOutput)
-}
-
-func (i ApiConfigIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiConfigIamMember] {
-	return pulumix.Output[[]*ApiConfigIamMember]{
-		OutputState: i.ToApiConfigIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiConfigIamMemberMapInput is an input type that accepts ApiConfigIamMemberMap and ApiConfigIamMemberMapOutput values.
@@ -437,12 +424,6 @@ func (i ApiConfigIamMemberMap) ToApiConfigIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberMapOutput)
 }
 
-func (i ApiConfigIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiConfigIamMember] {
-	return pulumix.Output[map[string]*ApiConfigIamMember]{
-		OutputState: i.ToApiConfigIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamMemberOutput) ElementType() reflect.Type {
@@ -455,12 +436,6 @@ func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberOutput() ApiConfigIamMembe
 
 func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberOutputWithContext(ctx context.Context) ApiConfigIamMemberOutput {
 	return o
-}
-
-func (o ApiConfigIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamMember] {
-	return pulumix.Output[*ApiConfigIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API to attach the config to.
@@ -525,12 +500,6 @@ func (o ApiConfigIamMemberArrayOutput) ToApiConfigIamMemberArrayOutputWithContex
 	return o
 }
 
-func (o ApiConfigIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiConfigIamMember] {
-	return pulumix.Output[[]*ApiConfigIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiConfigIamMemberArrayOutput) Index(i pulumi.IntInput) ApiConfigIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiConfigIamMember {
 		return vs[0].([]*ApiConfigIamMember)[vs[1].(int)]
@@ -549,12 +518,6 @@ func (o ApiConfigIamMemberMapOutput) ToApiConfigIamMemberMapOutput() ApiConfigIa
 
 func (o ApiConfigIamMemberMapOutput) ToApiConfigIamMemberMapOutputWithContext(ctx context.Context) ApiConfigIamMemberMapOutput {
 	return o
-}
-
-func (o ApiConfigIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiConfigIamMember] {
-	return pulumix.Output[map[string]*ApiConfigIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigIamMemberMapOutput) MapIndex(k pulumi.StringInput) ApiConfigIamMemberOutput {

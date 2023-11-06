@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -63,12 +62,6 @@ func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceCloneOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceCloneOutput)
 }
 
-func (i DatabaseInstanceCloneArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceClone] {
-	return pulumix.Output[DatabaseInstanceClone]{
-		OutputState: i.ToDatabaseInstanceCloneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput {
 	return i.ToDatabaseInstanceClonePtrOutputWithContext(context.Background())
 }
@@ -110,12 +103,6 @@ func (i *databaseInstanceClonePtrType) ToDatabaseInstanceClonePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceClonePtrOutput)
 }
 
-func (i *databaseInstanceClonePtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceClone] {
-	return pulumix.Output[*DatabaseInstanceClone]{
-		OutputState: i.ToDatabaseInstanceClonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceCloneOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceCloneOutput) ElementType() reflect.Type {
@@ -138,12 +125,6 @@ func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceClone) *DatabaseInstanceClone {
 		return &v
 	}).(DatabaseInstanceClonePtrOutput)
-}
-
-func (o DatabaseInstanceCloneOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceClone] {
-	return pulumix.Output[DatabaseInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -180,12 +161,6 @@ func (o DatabaseInstanceClonePtrOutput) ToDatabaseInstanceClonePtrOutput() Datab
 
 func (o DatabaseInstanceClonePtrOutput) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceClonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceClone] {
-	return pulumix.Output[*DatabaseInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceClonePtrOutput) Elem() DatabaseInstanceCloneOutput {
@@ -275,12 +250,6 @@ func (i DatabaseInstanceIpAddressArgs) ToDatabaseInstanceIpAddressOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceIpAddressOutput)
 }
 
-func (i DatabaseInstanceIpAddressArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceIpAddress] {
-	return pulumix.Output[DatabaseInstanceIpAddress]{
-		OutputState: i.ToDatabaseInstanceIpAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInstanceIpAddressArrayInput is an input type that accepts DatabaseInstanceIpAddressArray and DatabaseInstanceIpAddressArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceIpAddressArrayInput` via:
 //
@@ -306,12 +275,6 @@ func (i DatabaseInstanceIpAddressArray) ToDatabaseInstanceIpAddressArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceIpAddressArrayOutput)
 }
 
-func (i DatabaseInstanceIpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceIpAddress] {
-	return pulumix.Output[[]DatabaseInstanceIpAddress]{
-		OutputState: i.ToDatabaseInstanceIpAddressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceIpAddressOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceIpAddressOutput) ElementType() reflect.Type {
@@ -324,12 +287,6 @@ func (o DatabaseInstanceIpAddressOutput) ToDatabaseInstanceIpAddressOutput() Dat
 
 func (o DatabaseInstanceIpAddressOutput) ToDatabaseInstanceIpAddressOutputWithContext(ctx context.Context) DatabaseInstanceIpAddressOutput {
 	return o
-}
-
-func (o DatabaseInstanceIpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceIpAddress] {
-	return pulumix.Output[DatabaseInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceIpAddressOutput) IpAddress() pulumi.StringPtrOutput {
@@ -356,12 +313,6 @@ func (o DatabaseInstanceIpAddressArrayOutput) ToDatabaseInstanceIpAddressArrayOu
 
 func (o DatabaseInstanceIpAddressArrayOutput) ToDatabaseInstanceIpAddressArrayOutputWithContext(ctx context.Context) DatabaseInstanceIpAddressArrayOutput {
 	return o
-}
-
-func (o DatabaseInstanceIpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceIpAddress] {
-	return pulumix.Output[[]DatabaseInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceIpAddressOutput {
@@ -463,12 +414,6 @@ func (i DatabaseInstanceReplicaConfigurationArgs) ToDatabaseInstanceReplicaConfi
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicaConfigurationOutput)
 }
 
-func (i DatabaseInstanceReplicaConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[DatabaseInstanceReplicaConfiguration]{
-		OutputState: i.ToDatabaseInstanceReplicaConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceReplicaConfigurationArgs) ToDatabaseInstanceReplicaConfigurationPtrOutput() DatabaseInstanceReplicaConfigurationPtrOutput {
 	return i.ToDatabaseInstanceReplicaConfigurationPtrOutputWithContext(context.Background())
 }
@@ -510,12 +455,6 @@ func (i *databaseInstanceReplicaConfigurationPtrType) ToDatabaseInstanceReplicaC
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicaConfigurationPtrOutput)
 }
 
-func (i *databaseInstanceReplicaConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[*DatabaseInstanceReplicaConfiguration]{
-		OutputState: i.ToDatabaseInstanceReplicaConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceReplicaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceReplicaConfigurationOutput) ElementType() reflect.Type {
@@ -538,12 +477,6 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ToDatabaseInstanceReplicaCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceReplicaConfiguration) *DatabaseInstanceReplicaConfiguration {
 		return &v
 	}).(DatabaseInstanceReplicaConfigurationPtrOutput)
-}
-
-func (o DatabaseInstanceReplicaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[DatabaseInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PEM representation of the trusted CA's x509
@@ -623,12 +556,6 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ToDatabaseInstanceReplica
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ToDatabaseInstanceReplicaConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicaConfigurationPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceReplicaConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[*DatabaseInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Elem() DatabaseInstanceReplicaConfigurationOutput {
@@ -804,12 +731,6 @@ func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBacku
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceRestoreBackupContextOutput)
 }
 
-func (i DatabaseInstanceRestoreBackupContextArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[DatabaseInstanceRestoreBackupContext]{
-		OutputState: i.ToDatabaseInstanceRestoreBackupContextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput {
 	return i.ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(context.Background())
 }
@@ -851,12 +772,6 @@ func (i *databaseInstanceRestoreBackupContextPtrType) ToDatabaseInstanceRestoreB
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceRestoreBackupContextPtrOutput)
 }
 
-func (i *databaseInstanceRestoreBackupContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[*DatabaseInstanceRestoreBackupContext]{
-		OutputState: i.ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
@@ -879,12 +794,6 @@ func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBac
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceRestoreBackupContext) *DatabaseInstanceRestoreBackupContext {
 		return &v
 	}).(DatabaseInstanceRestoreBackupContextPtrOutput)
-}
-
-func (o DatabaseInstanceRestoreBackupContextOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[DatabaseInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the backup run to restore from.
@@ -915,12 +824,6 @@ func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToDatabaseInstanceRestore
 
 func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[*DatabaseInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceRestoreBackupContextPtrOutput) Elem() DatabaseInstanceRestoreBackupContextOutput {
@@ -1007,12 +910,6 @@ func (i DatabaseInstanceServerCaCertArgs) ToDatabaseInstanceServerCaCertOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertOutput)
 }
 
-func (i DatabaseInstanceServerCaCertArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceServerCaCert] {
-	return pulumix.Output[DatabaseInstanceServerCaCert]{
-		OutputState: i.ToDatabaseInstanceServerCaCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInstanceServerCaCertArrayInput is an input type that accepts DatabaseInstanceServerCaCertArray and DatabaseInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceServerCaCertArrayInput` via:
 //
@@ -1038,12 +935,6 @@ func (i DatabaseInstanceServerCaCertArray) ToDatabaseInstanceServerCaCertArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertArrayOutput)
 }
 
-func (i DatabaseInstanceServerCaCertArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceServerCaCert] {
-	return pulumix.Output[[]DatabaseInstanceServerCaCert]{
-		OutputState: i.ToDatabaseInstanceServerCaCertArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceServerCaCertOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceServerCaCertOutput) ElementType() reflect.Type {
@@ -1056,12 +947,6 @@ func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertOutput
 
 func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertOutput {
 	return o
-}
-
-func (o DatabaseInstanceServerCaCertOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceServerCaCert] {
-	return pulumix.Output[DatabaseInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceServerCaCertOutput) Cert() pulumi.StringPtrOutput {
@@ -1098,12 +983,6 @@ func (o DatabaseInstanceServerCaCertArrayOutput) ToDatabaseInstanceServerCaCertA
 
 func (o DatabaseInstanceServerCaCertArrayOutput) ToDatabaseInstanceServerCaCertArrayOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertArrayOutput {
 	return o
-}
-
-func (o DatabaseInstanceServerCaCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceServerCaCert] {
-	return pulumix.Output[[]DatabaseInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceServerCaCertOutput {
@@ -1237,12 +1116,6 @@ func (i DatabaseInstanceSettingsArgs) ToDatabaseInstanceSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsOutput)
 }
 
-func (i DatabaseInstanceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettings] {
-	return pulumix.Output[DatabaseInstanceSettings]{
-		OutputState: i.ToDatabaseInstanceSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsArgs) ToDatabaseInstanceSettingsPtrOutput() DatabaseInstanceSettingsPtrOutput {
 	return i.ToDatabaseInstanceSettingsPtrOutputWithContext(context.Background())
 }
@@ -1284,12 +1157,6 @@ func (i *databaseInstanceSettingsPtrType) ToDatabaseInstanceSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPtrOutput)
 }
 
-func (i *databaseInstanceSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettings] {
-	return pulumix.Output[*DatabaseInstanceSettings]{
-		OutputState: i.ToDatabaseInstanceSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsOutput) ElementType() reflect.Type {
@@ -1312,12 +1179,6 @@ func (o DatabaseInstanceSettingsOutput) ToDatabaseInstanceSettingsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettings) *DatabaseInstanceSettings {
 		return &v
 	}).(DatabaseInstanceSettingsPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettings] {
-	return pulumix.Output[DatabaseInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This specifies when the instance should be
@@ -1477,12 +1338,6 @@ func (o DatabaseInstanceSettingsPtrOutput) ToDatabaseInstanceSettingsPtrOutput()
 
 func (o DatabaseInstanceSettingsPtrOutput) ToDatabaseInstanceSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettings] {
-	return pulumix.Output[*DatabaseInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Elem() DatabaseInstanceSettingsOutput {
@@ -1794,12 +1649,6 @@ func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsActiveDirectoryConfigOutput)
 }
 
-func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsActiveDirectoryConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsActiveDirectoryConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsActiveDirectoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
 	return i.ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1841,12 +1690,6 @@ func (i *databaseInstanceSettingsActiveDirectoryConfigPtrType) ToDatabaseInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
 }
 
-func (i *databaseInstanceSettingsActiveDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsActiveDirectoryConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsActiveDirectoryConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsActiveDirectoryConfigOutput) ElementType() reflect.Type {
@@ -1871,12 +1714,6 @@ func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceS
 	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
 }
 
-func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsActiveDirectoryConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain name for the active directory (e.g., mydomain.com).
 // Can only be used with SQL Server.
 func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
@@ -1895,12 +1732,6 @@ func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ToDatabaseInstan
 
 func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsActiveDirectoryConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Elem() DatabaseInstanceSettingsActiveDirectoryConfigOutput {
@@ -1957,12 +1788,6 @@ func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsAdvancedMachineFeaturesOutput)
 }
 
-func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsAdvancedMachineFeatures] {
-	return pulumix.Output[DatabaseInstanceSettingsAdvancedMachineFeatures]{
-		OutputState: i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
 	return i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
 }
@@ -2004,12 +1829,6 @@ func (i *databaseInstanceSettingsAdvancedMachineFeaturesPtrType) ToDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
-func (i *databaseInstanceSettingsAdvancedMachineFeaturesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsAdvancedMachineFeatures] {
-	return pulumix.Output[*DatabaseInstanceSettingsAdvancedMachineFeatures]{
-		OutputState: i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
@@ -2034,12 +1853,6 @@ func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToDatabaseInstanc
 	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
-func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsAdvancedMachineFeatures] {
-	return pulumix.Output[DatabaseInstanceSettingsAdvancedMachineFeatures]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
 func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsAdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
@@ -2057,12 +1870,6 @@ func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ToDatabaseInst
 
 func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsAdvancedMachineFeatures] {
-	return pulumix.Output[*DatabaseInstanceSettingsAdvancedMachineFeatures]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) Elem() DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
@@ -2146,12 +1953,6 @@ func (i DatabaseInstanceSettingsBackupConfigurationArgs) ToDatabaseInstanceSetti
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationOutput)
 }
 
-func (i DatabaseInstanceSettingsBackupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsBackupConfiguration] {
-	return pulumix.Output[DatabaseInstanceSettingsBackupConfiguration]{
-		OutputState: i.ToDatabaseInstanceSettingsBackupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsBackupConfigurationArgs) ToDatabaseInstanceSettingsBackupConfigurationPtrOutput() DatabaseInstanceSettingsBackupConfigurationPtrOutput {
 	return i.ToDatabaseInstanceSettingsBackupConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2193,12 +1994,6 @@ func (i *databaseInstanceSettingsBackupConfigurationPtrType) ToDatabaseInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 
-func (i *databaseInstanceSettingsBackupConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsBackupConfiguration] {
-	return pulumix.Output[*DatabaseInstanceSettingsBackupConfiguration]{
-		OutputState: i.ToDatabaseInstanceSettingsBackupConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsBackupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsBackupConfigurationOutput) ElementType() reflect.Type {
@@ -2221,12 +2016,6 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToDatabaseInstanceSet
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsBackupConfiguration) *DatabaseInstanceSettingsBackupConfiguration {
 		return &v
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsBackupConfiguration] {
-	return pulumix.Output[DatabaseInstanceSettingsBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup retention settings. The configuration is detailed below.
@@ -2280,12 +2069,6 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) ToDatabaseInstance
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) ToDatabaseInstanceSettingsBackupConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsBackupConfiguration] {
-	return pulumix.Output[*DatabaseInstanceSettingsBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationOutput {
@@ -2409,12 +2192,6 @@ func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput)
 }
 
-func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings] {
-	return pulumix.Output[DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings]{
-		OutputState: i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
 	return i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(context.Background())
 }
@@ -2456,12 +2233,6 @@ func (i *databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
 
-func (i *databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings] {
-	return pulumix.Output[*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings]{
-		OutputState: i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ElementType() reflect.Type {
@@ -2484,12 +2255,6 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
 		return &v
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings] {
-	return pulumix.Output[DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
@@ -2519,12 +2284,6 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOut
 
 func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings] {
-	return pulumix.Output[*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
@@ -2593,12 +2352,6 @@ func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsD
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDataCacheConfigOutput)
 }
 
-func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDataCacheConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsDataCacheConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsDataCacheConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
 	return i.ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(context.Background())
 }
@@ -2640,12 +2393,6 @@ func (i *databaseInstanceSettingsDataCacheConfigPtrType) ToDatabaseInstanceSetti
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
 }
 
-func (i *databaseInstanceSettingsDataCacheConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsDataCacheConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsDataCacheConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsDataCacheConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsDataCacheConfigOutput) ElementType() reflect.Type {
@@ -2670,12 +2417,6 @@ func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
 }
 
-func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDataCacheConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether data cache is enabled for the instance. Defaults to `false`
 // Can only be used with MYSQL.
 func (o DatabaseInstanceSettingsDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
@@ -2694,12 +2435,6 @@ func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) ToDatabaseInstanceSett
 
 func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsDataCacheConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) Elem() DatabaseInstanceSettingsDataCacheConfigOutput {
@@ -2760,12 +2495,6 @@ func (i DatabaseInstanceSettingsDatabaseFlagArgs) ToDatabaseInstanceSettingsData
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDatabaseFlagOutput)
 }
 
-func (i DatabaseInstanceSettingsDatabaseFlagArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDatabaseFlag] {
-	return pulumix.Output[DatabaseInstanceSettingsDatabaseFlag]{
-		OutputState: i.ToDatabaseInstanceSettingsDatabaseFlagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInstanceSettingsDatabaseFlagArrayInput is an input type that accepts DatabaseInstanceSettingsDatabaseFlagArray and DatabaseInstanceSettingsDatabaseFlagArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsDatabaseFlagArrayInput` via:
 //
@@ -2791,12 +2520,6 @@ func (i DatabaseInstanceSettingsDatabaseFlagArray) ToDatabaseInstanceSettingsDat
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-func (i DatabaseInstanceSettingsDatabaseFlagArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsDatabaseFlag] {
-	return pulumix.Output[[]DatabaseInstanceSettingsDatabaseFlag]{
-		OutputState: i.ToDatabaseInstanceSettingsDatabaseFlagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsDatabaseFlagOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsDatabaseFlagOutput) ElementType() reflect.Type {
@@ -2809,12 +2532,6 @@ func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToDatabaseInstanceSettingsDa
 
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToDatabaseInstanceSettingsDatabaseFlagOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDatabaseFlagOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDatabaseFlag] {
-	return pulumix.Output[DatabaseInstanceSettingsDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the flag.
@@ -2839,12 +2556,6 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) ToDatabaseInstanceSetti
 
 func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) ToDatabaseInstanceSettingsDatabaseFlagArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsDatabaseFlag] {
-	return pulumix.Output[[]DatabaseInstanceSettingsDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsDatabaseFlagOutput {
@@ -2894,12 +2605,6 @@ func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDenyMaintenancePeriodOutput)
 }
 
-func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDenyMaintenancePeriod] {
-	return pulumix.Output[DatabaseInstanceSettingsDenyMaintenancePeriod]{
-		OutputState: i.ToDatabaseInstanceSettingsDenyMaintenancePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
 	return i.ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(context.Background())
 }
@@ -2941,12 +2646,6 @@ func (i *databaseInstanceSettingsDenyMaintenancePeriodPtrType) ToDatabaseInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
-func (i *databaseInstanceSettingsDenyMaintenancePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsDenyMaintenancePeriod] {
-	return pulumix.Output[*DatabaseInstanceSettingsDenyMaintenancePeriod]{
-		OutputState: i.ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ElementType() reflect.Type {
@@ -2969,12 +2668,6 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsDenyMaintenancePeriod) *DatabaseInstanceSettingsDenyMaintenancePeriod {
 		return &v
 	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsDenyMaintenancePeriod] {
-	return pulumix.Output[DatabaseInstanceSettingsDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 // "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
@@ -3004,12 +2697,6 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ToDatabaseInstan
 
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsDenyMaintenancePeriod] {
-	return pulumix.Output[*DatabaseInstanceSettingsDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Elem() DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
@@ -3105,12 +2792,6 @@ func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsIn
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsInsightsConfigOutput)
 }
 
-func (i DatabaseInstanceSettingsInsightsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsInsightsConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsInsightsConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsInsightsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput {
 	return i.ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(context.Background())
 }
@@ -3152,12 +2833,6 @@ func (i *databaseInstanceSettingsInsightsConfigPtrType) ToDatabaseInstanceSettin
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
 
-func (i *databaseInstanceSettingsInsightsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsInsightsConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsInsightsConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsInsightsConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsInsightsConfigOutput) ElementType() reflect.Type {
@@ -3180,12 +2855,6 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettings
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsInsightsConfig) *DatabaseInstanceSettingsInsightsConfig {
 		return &v
 	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsInsightsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsInsightsConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True if Query Insights feature is enabled.
@@ -3227,12 +2896,6 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToDatabaseInstanceSetti
 
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsInsightsConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) Elem() DatabaseInstanceSettingsInsightsConfigOutput {
@@ -3362,12 +3025,6 @@ func (i DatabaseInstanceSettingsIpConfigurationArgs) ToDatabaseInstanceSettingsI
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationOutput)
 }
 
-func (i DatabaseInstanceSettingsIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfiguration] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfiguration]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsIpConfigurationArgs) ToDatabaseInstanceSettingsIpConfigurationPtrOutput() DatabaseInstanceSettingsIpConfigurationPtrOutput {
 	return i.ToDatabaseInstanceSettingsIpConfigurationPtrOutputWithContext(context.Background())
 }
@@ -3409,12 +3066,6 @@ func (i *databaseInstanceSettingsIpConfigurationPtrType) ToDatabaseInstanceSetti
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
-func (i *databaseInstanceSettingsIpConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsIpConfiguration] {
-	return pulumix.Output[*DatabaseInstanceSettingsIpConfiguration]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsIpConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationOutput) ElementType() reflect.Type {
@@ -3437,12 +3088,6 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsIpConfiguration) *DatabaseInstanceSettingsIpConfiguration {
 		return &v
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfiguration] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -3502,12 +3147,6 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ToDatabaseInstanceSett
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ToDatabaseInstanceSettingsIpConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsIpConfiguration] {
-	return pulumix.Output[*DatabaseInstanceSettingsIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanceSettingsIpConfigurationOutput {
@@ -3641,12 +3280,6 @@ func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs) ToDatabase
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput)
 }
 
-func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray and DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput` via:
 //
@@ -3672,12 +3305,6 @@ func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray) ToDatabas
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
-func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ElementType() reflect.Type {
@@ -3690,12 +3317,6 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ToDataba
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ToDatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The [RFC 3339](https://tools.ietf.org/html/rfc3339)
@@ -3728,12 +3349,6 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) ToD
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) ToDatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput {
@@ -3779,12 +3394,6 @@ func (i DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ToDatabaseInstance
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigOutput)
 }
 
-func (i DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfigurationPscConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfigurationPscConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigArray and DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput` via:
 //
@@ -3810,12 +3419,6 @@ func (i DatabaseInstanceSettingsIpConfigurationPscConfigArray) ToDatabaseInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
-func (i DatabaseInstanceSettingsIpConfigurationPscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationPscConfig] {
-	return pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationPscConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ElementType() reflect.Type {
@@ -3828,12 +3431,6 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToDatabaseInstan
 
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsIpConfigurationPscConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
@@ -3858,12 +3455,6 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ToDatabaseI
 
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationPscConfig] {
-	return pulumix.Output[[]DatabaseInstanceSettingsIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
@@ -3925,12 +3516,6 @@ func (i DatabaseInstanceSettingsLocationPreferenceArgs) ToDatabaseInstanceSettin
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsLocationPreferenceOutput)
 }
 
-func (i DatabaseInstanceSettingsLocationPreferenceArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsLocationPreference] {
-	return pulumix.Output[DatabaseInstanceSettingsLocationPreference]{
-		OutputState: i.ToDatabaseInstanceSettingsLocationPreferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsLocationPreferenceArgs) ToDatabaseInstanceSettingsLocationPreferencePtrOutput() DatabaseInstanceSettingsLocationPreferencePtrOutput {
 	return i.ToDatabaseInstanceSettingsLocationPreferencePtrOutputWithContext(context.Background())
 }
@@ -3972,12 +3557,6 @@ func (i *databaseInstanceSettingsLocationPreferencePtrType) ToDatabaseInstanceSe
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 
-func (i *databaseInstanceSettingsLocationPreferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsLocationPreference] {
-	return pulumix.Output[*DatabaseInstanceSettingsLocationPreference]{
-		OutputState: i.ToDatabaseInstanceSettingsLocationPreferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsLocationPreferenceOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsLocationPreferenceOutput) ElementType() reflect.Type {
@@ -4000,12 +3579,6 @@ func (o DatabaseInstanceSettingsLocationPreferenceOutput) ToDatabaseInstanceSett
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsLocationPreference) *DatabaseInstanceSettingsLocationPreference {
 		return &v
 	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
-}
-
-func (o DatabaseInstanceSettingsLocationPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsLocationPreference] {
-	return pulumix.Output[DatabaseInstanceSettingsLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A GAE application whose zone to remain
@@ -4041,12 +3614,6 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) ToDatabaseInstanceS
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) ToDatabaseInstanceSettingsLocationPreferencePtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsLocationPreferencePtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsLocationPreference] {
-	return pulumix.Output[*DatabaseInstanceSettingsLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Elem() DatabaseInstanceSettingsLocationPreferenceOutput {
@@ -4142,12 +3709,6 @@ func (i DatabaseInstanceSettingsMaintenanceWindowArgs) ToDatabaseInstanceSetting
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsMaintenanceWindowOutput)
 }
 
-func (i DatabaseInstanceSettingsMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsMaintenanceWindow] {
-	return pulumix.Output[DatabaseInstanceSettingsMaintenanceWindow]{
-		OutputState: i.ToDatabaseInstanceSettingsMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsMaintenanceWindowArgs) ToDatabaseInstanceSettingsMaintenanceWindowPtrOutput() DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
 	return i.ToDatabaseInstanceSettingsMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -4189,12 +3750,6 @@ func (i *databaseInstanceSettingsMaintenanceWindowPtrType) ToDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 
-func (i *databaseInstanceSettingsMaintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsMaintenanceWindow] {
-	return pulumix.Output[*DatabaseInstanceSettingsMaintenanceWindow]{
-		OutputState: i.ToDatabaseInstanceSettingsMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -4217,12 +3772,6 @@ func (o DatabaseInstanceSettingsMaintenanceWindowOutput) ToDatabaseInstanceSetti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsMaintenanceWindow) *DatabaseInstanceSettingsMaintenanceWindow {
 		return &v
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsMaintenanceWindow] {
-	return pulumix.Output[DatabaseInstanceSettingsMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of week (`1-7`), starting on Monday
@@ -4255,12 +3804,6 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ToDatabaseInstanceSe
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ToDatabaseInstanceSettingsMaintenanceWindowPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsMaintenanceWindow] {
-	return pulumix.Output[*DatabaseInstanceSettingsMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Elem() DatabaseInstanceSettingsMaintenanceWindowOutput {
@@ -4365,12 +3908,6 @@ func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstance
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPasswordValidationPolicyOutput)
 }
 
-func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsPasswordValidationPolicy] {
-	return pulumix.Output[DatabaseInstanceSettingsPasswordValidationPolicy]{
-		OutputState: i.ToDatabaseInstanceSettingsPasswordValidationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
 	return i.ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(context.Background())
 }
@@ -4412,12 +3949,6 @@ func (i *databaseInstanceSettingsPasswordValidationPolicyPtrType) ToDatabaseInst
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
 }
 
-func (i *databaseInstanceSettingsPasswordValidationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsPasswordValidationPolicy] {
-	return pulumix.Output[*DatabaseInstanceSettingsPasswordValidationPolicy]{
-		OutputState: i.ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsPasswordValidationPolicyOutput) ElementType() reflect.Type {
@@ -4440,12 +3971,6 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToDatabaseInstan
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsPasswordValidationPolicy) *DatabaseInstanceSettingsPasswordValidationPolicy {
 		return &v
 	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsPasswordValidationPolicy] {
-	return pulumix.Output[DatabaseInstanceSettingsPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
@@ -4493,12 +4018,6 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ToDatabaseIns
 
 func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsPasswordValidationPolicy] {
-	return pulumix.Output[*DatabaseInstanceSettingsPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) Elem() DatabaseInstanceSettingsPasswordValidationPolicyOutput {
@@ -4615,12 +4134,6 @@ func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSett
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsSqlServerAuditConfigOutput)
 }
 
-func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsSqlServerAuditConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsSqlServerAuditConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsSqlServerAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
 	return i.ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(context.Background())
 }
@@ -4662,12 +4175,6 @@ func (i *databaseInstanceSettingsSqlServerAuditConfigPtrType) ToDatabaseInstance
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
 }
 
-func (i *databaseInstanceSettingsSqlServerAuditConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsSqlServerAuditConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsSqlServerAuditConfig]{
-		OutputState: i.ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseInstanceSettingsSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsSqlServerAuditConfigOutput) ElementType() reflect.Type {
@@ -4690,12 +4197,6 @@ func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsSqlServerAuditConfig) *DatabaseInstanceSettingsSqlServerAuditConfig {
 		return &v
 	}).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
-}
-
-func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceSettingsSqlServerAuditConfig] {
-	return pulumix.Output[DatabaseInstanceSettingsSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the destination bucket (e.g., gs://mybucket).
@@ -4725,12 +4226,6 @@ func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ToDatabaseInstanc
 
 func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
 	return o
-}
-
-func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceSettingsSqlServerAuditConfig] {
-	return pulumix.Output[*DatabaseInstanceSettingsSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) Elem() DatabaseInstanceSettingsSqlServerAuditConfigOutput {
@@ -4820,12 +4315,6 @@ func (i UserPasswordPolicyArgs) ToUserPasswordPolicyOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyOutput)
 }
 
-func (i UserPasswordPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[UserPasswordPolicy] {
-	return pulumix.Output[UserPasswordPolicy]{
-		OutputState: i.ToUserPasswordPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserPasswordPolicyArgs) ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput {
 	return i.ToUserPasswordPolicyPtrOutputWithContext(context.Background())
 }
@@ -4867,12 +4356,6 @@ func (i *userPasswordPolicyPtrType) ToUserPasswordPolicyPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyPtrOutput)
 }
 
-func (i *userPasswordPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserPasswordPolicy] {
-	return pulumix.Output[*UserPasswordPolicy]{
-		OutputState: i.ToUserPasswordPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserPasswordPolicyOutput struct{ *pulumi.OutputState }
 
 func (UserPasswordPolicyOutput) ElementType() reflect.Type {
@@ -4895,12 +4378,6 @@ func (o UserPasswordPolicyOutput) ToUserPasswordPolicyPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPasswordPolicy) *UserPasswordPolicy {
 		return &v
 	}).(UserPasswordPolicyPtrOutput)
-}
-
-func (o UserPasswordPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[UserPasswordPolicy] {
-	return pulumix.Output[UserPasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of failed attempts allowed before the user get locked.
@@ -4939,12 +4416,6 @@ func (o UserPasswordPolicyPtrOutput) ToUserPasswordPolicyPtrOutput() UserPasswor
 
 func (o UserPasswordPolicyPtrOutput) ToUserPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPasswordPolicyPtrOutput {
 	return o
-}
-
-func (o UserPasswordPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserPasswordPolicy] {
-	return pulumix.Output[*UserPasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPasswordPolicyPtrOutput) Elem() UserPasswordPolicyOutput {
@@ -5043,12 +4514,6 @@ func (i UserPasswordPolicyStatusArgs) ToUserPasswordPolicyStatusOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyStatusOutput)
 }
 
-func (i UserPasswordPolicyStatusArgs) ToOutput(ctx context.Context) pulumix.Output[UserPasswordPolicyStatus] {
-	return pulumix.Output[UserPasswordPolicyStatus]{
-		OutputState: i.ToUserPasswordPolicyStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserPasswordPolicyStatusArrayInput is an input type that accepts UserPasswordPolicyStatusArray and UserPasswordPolicyStatusArrayOutput values.
 // You can construct a concrete instance of `UserPasswordPolicyStatusArrayInput` via:
 //
@@ -5074,12 +4539,6 @@ func (i UserPasswordPolicyStatusArray) ToUserPasswordPolicyStatusArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyStatusArrayOutput)
 }
 
-func (i UserPasswordPolicyStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]UserPasswordPolicyStatus] {
-	return pulumix.Output[[]UserPasswordPolicyStatus]{
-		OutputState: i.ToUserPasswordPolicyStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserPasswordPolicyStatusOutput struct{ *pulumi.OutputState }
 
 func (UserPasswordPolicyStatusOutput) ElementType() reflect.Type {
@@ -5092,12 +4551,6 @@ func (o UserPasswordPolicyStatusOutput) ToUserPasswordPolicyStatusOutput() UserP
 
 func (o UserPasswordPolicyStatusOutput) ToUserPasswordPolicyStatusOutputWithContext(ctx context.Context) UserPasswordPolicyStatusOutput {
 	return o
-}
-
-func (o UserPasswordPolicyStatusOutput) ToOutput(ctx context.Context) pulumix.Output[UserPasswordPolicyStatus] {
-	return pulumix.Output[UserPasswordPolicyStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, user does not have login privileges.
@@ -5122,12 +4575,6 @@ func (o UserPasswordPolicyStatusArrayOutput) ToUserPasswordPolicyStatusArrayOutp
 
 func (o UserPasswordPolicyStatusArrayOutput) ToUserPasswordPolicyStatusArrayOutputWithContext(ctx context.Context) UserPasswordPolicyStatusArrayOutput {
 	return o
-}
-
-func (o UserPasswordPolicyStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserPasswordPolicyStatus] {
-	return pulumix.Output[[]UserPasswordPolicyStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPasswordPolicyStatusArrayOutput) Index(i pulumi.IntInput) UserPasswordPolicyStatusOutput {
@@ -5169,12 +4616,6 @@ func (i UserSqlServerUserDetailArgs) ToUserSqlServerUserDetailOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailOutput)
 }
 
-func (i UserSqlServerUserDetailArgs) ToOutput(ctx context.Context) pulumix.Output[UserSqlServerUserDetail] {
-	return pulumix.Output[UserSqlServerUserDetail]{
-		OutputState: i.ToUserSqlServerUserDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserSqlServerUserDetailArrayInput is an input type that accepts UserSqlServerUserDetailArray and UserSqlServerUserDetailArrayOutput values.
 // You can construct a concrete instance of `UserSqlServerUserDetailArrayInput` via:
 //
@@ -5200,12 +4641,6 @@ func (i UserSqlServerUserDetailArray) ToUserSqlServerUserDetailArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailArrayOutput)
 }
 
-func (i UserSqlServerUserDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]UserSqlServerUserDetail] {
-	return pulumix.Output[[]UserSqlServerUserDetail]{
-		OutputState: i.ToUserSqlServerUserDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserSqlServerUserDetailOutput struct{ *pulumi.OutputState }
 
 func (UserSqlServerUserDetailOutput) ElementType() reflect.Type {
@@ -5218,12 +4653,6 @@ func (o UserSqlServerUserDetailOutput) ToUserSqlServerUserDetailOutput() UserSql
 
 func (o UserSqlServerUserDetailOutput) ToUserSqlServerUserDetailOutputWithContext(ctx context.Context) UserSqlServerUserDetailOutput {
 	return o
-}
-
-func (o UserSqlServerUserDetailOutput) ToOutput(ctx context.Context) pulumix.Output[UserSqlServerUserDetail] {
-	return pulumix.Output[UserSqlServerUserDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserSqlServerUserDetailOutput) Disabled() pulumi.BoolPtrOutput {
@@ -5246,12 +4675,6 @@ func (o UserSqlServerUserDetailArrayOutput) ToUserSqlServerUserDetailArrayOutput
 
 func (o UserSqlServerUserDetailArrayOutput) ToUserSqlServerUserDetailArrayOutputWithContext(ctx context.Context) UserSqlServerUserDetailArrayOutput {
 	return o
-}
-
-func (o UserSqlServerUserDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserSqlServerUserDetail] {
-	return pulumix.Output[[]UserSqlServerUserDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserSqlServerUserDetailArrayOutput) Index(i pulumi.IntInput) UserSqlServerUserDetailOutput {
@@ -5309,12 +4732,6 @@ func (i GetCaCertsCertArgs) ToGetCaCertsCertOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertsCertOutput)
 }
 
-func (i GetCaCertsCertArgs) ToOutput(ctx context.Context) pulumix.Output[GetCaCertsCert] {
-	return pulumix.Output[GetCaCertsCert]{
-		OutputState: i.ToGetCaCertsCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCaCertsCertArrayInput is an input type that accepts GetCaCertsCertArray and GetCaCertsCertArrayOutput values.
 // You can construct a concrete instance of `GetCaCertsCertArrayInput` via:
 //
@@ -5340,12 +4757,6 @@ func (i GetCaCertsCertArray) ToGetCaCertsCertArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertsCertArrayOutput)
 }
 
-func (i GetCaCertsCertArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCaCertsCert] {
-	return pulumix.Output[[]GetCaCertsCert]{
-		OutputState: i.ToGetCaCertsCertArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCaCertsCertOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertsCertOutput) ElementType() reflect.Type {
@@ -5358,12 +4769,6 @@ func (o GetCaCertsCertOutput) ToGetCaCertsCertOutput() GetCaCertsCertOutput {
 
 func (o GetCaCertsCertOutput) ToGetCaCertsCertOutputWithContext(ctx context.Context) GetCaCertsCertOutput {
 	return o
-}
-
-func (o GetCaCertsCertOutput) ToOutput(ctx context.Context) pulumix.Output[GetCaCertsCert] {
-	return pulumix.Output[GetCaCertsCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CA certificate used to connect to the SQL instance via SSL.
@@ -5403,12 +4808,6 @@ func (o GetCaCertsCertArrayOutput) ToGetCaCertsCertArrayOutput() GetCaCertsCertA
 
 func (o GetCaCertsCertArrayOutput) ToGetCaCertsCertArrayOutputWithContext(ctx context.Context) GetCaCertsCertArrayOutput {
 	return o
-}
-
-func (o GetCaCertsCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCaCertsCert] {
-	return pulumix.Output[[]GetCaCertsCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput {
@@ -5454,12 +4853,6 @@ func (i GetDatabaseInstanceCloneArgs) ToGetDatabaseInstanceCloneOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceCloneOutput)
 }
 
-func (i GetDatabaseInstanceCloneArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceClone] {
-	return pulumix.Output[GetDatabaseInstanceClone]{
-		OutputState: i.ToGetDatabaseInstanceCloneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceCloneArrayInput is an input type that accepts GetDatabaseInstanceCloneArray and GetDatabaseInstanceCloneArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceCloneArrayInput` via:
 //
@@ -5485,12 +4878,6 @@ func (i GetDatabaseInstanceCloneArray) ToGetDatabaseInstanceCloneArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceCloneArrayOutput)
 }
 
-func (i GetDatabaseInstanceCloneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceClone] {
-	return pulumix.Output[[]GetDatabaseInstanceClone]{
-		OutputState: i.ToGetDatabaseInstanceCloneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceCloneOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceCloneOutput) ElementType() reflect.Type {
@@ -5503,12 +4890,6 @@ func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutput() GetDa
 
 func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceCloneOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceClone] {
-	return pulumix.Output[GetDatabaseInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
@@ -5539,12 +4920,6 @@ func (o GetDatabaseInstanceCloneArrayOutput) ToGetDatabaseInstanceCloneArrayOutp
 
 func (o GetDatabaseInstanceCloneArrayOutput) ToGetDatabaseInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceCloneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceClone] {
-	return pulumix.Output[[]GetDatabaseInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceCloneOutput {
@@ -5588,12 +4963,6 @@ func (i GetDatabaseInstanceIpAddressArgs) ToGetDatabaseInstanceIpAddressOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceIpAddressOutput)
 }
 
-func (i GetDatabaseInstanceIpAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceIpAddress] {
-	return pulumix.Output[GetDatabaseInstanceIpAddress]{
-		OutputState: i.ToGetDatabaseInstanceIpAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstanceIpAddressArray and GetDatabaseInstanceIpAddressArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceIpAddressArrayInput` via:
 //
@@ -5619,12 +4988,6 @@ func (i GetDatabaseInstanceIpAddressArray) ToGetDatabaseInstanceIpAddressArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceIpAddressArrayOutput)
 }
 
-func (i GetDatabaseInstanceIpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceIpAddress] {
-	return pulumix.Output[[]GetDatabaseInstanceIpAddress]{
-		OutputState: i.ToGetDatabaseInstanceIpAddressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceIpAddressOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceIpAddressOutput) ElementType() reflect.Type {
@@ -5637,12 +5000,6 @@ func (o GetDatabaseInstanceIpAddressOutput) ToGetDatabaseInstanceIpAddressOutput
 
 func (o GetDatabaseInstanceIpAddressOutput) ToGetDatabaseInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstanceIpAddressOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceIpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceIpAddress] {
-	return pulumix.Output[GetDatabaseInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceIpAddressOutput) IpAddress() pulumi.StringOutput {
@@ -5669,12 +5026,6 @@ func (o GetDatabaseInstanceIpAddressArrayOutput) ToGetDatabaseInstanceIpAddressA
 
 func (o GetDatabaseInstanceIpAddressArrayOutput) ToGetDatabaseInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceIpAddressArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceIpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceIpAddress] {
-	return pulumix.Output[[]GetDatabaseInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceIpAddressOutput {
@@ -5734,12 +5085,6 @@ func (i GetDatabaseInstanceReplicaConfigurationArgs) ToGetDatabaseInstanceReplic
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceReplicaConfigurationOutput)
 }
 
-func (i GetDatabaseInstanceReplicaConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceReplicaConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceReplicaConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceReplicaConfigurationArrayInput is an input type that accepts GetDatabaseInstanceReplicaConfigurationArray and GetDatabaseInstanceReplicaConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceReplicaConfigurationArrayInput` via:
 //
@@ -5765,12 +5110,6 @@ func (i GetDatabaseInstanceReplicaConfigurationArray) ToGetDatabaseInstanceRepli
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceReplicaConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstanceReplicaConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceReplicaConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceReplicaConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceReplicaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceReplicaConfigurationOutput) ElementType() reflect.Type {
@@ -5783,12 +5122,6 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) ToGetDatabaseInstanceRepl
 
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ToGetDatabaseInstanceReplicaConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstanceReplicaConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceReplicaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
@@ -5849,12 +5182,6 @@ func (o GetDatabaseInstanceReplicaConfigurationArrayOutput) ToGetDatabaseInstanc
 	return o
 }
 
-func (o GetDatabaseInstanceReplicaConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceReplicaConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstanceReplicaConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceReplicaConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceReplicaConfiguration {
 		return vs[0].([]GetDatabaseInstanceReplicaConfiguration)[vs[1].(int)]
@@ -5898,12 +5225,6 @@ func (i GetDatabaseInstanceRestoreBackupContextArgs) ToGetDatabaseInstanceRestor
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceRestoreBackupContextOutput)
 }
 
-func (i GetDatabaseInstanceRestoreBackupContextArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[GetDatabaseInstanceRestoreBackupContext]{
-		OutputState: i.ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceRestoreBackupContextArrayInput is an input type that accepts GetDatabaseInstanceRestoreBackupContextArray and GetDatabaseInstanceRestoreBackupContextArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceRestoreBackupContextArrayInput` via:
 //
@@ -5929,12 +5250,6 @@ func (i GetDatabaseInstanceRestoreBackupContextArray) ToGetDatabaseInstanceResto
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceRestoreBackupContextArrayOutput)
 }
 
-func (i GetDatabaseInstanceRestoreBackupContextArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[[]GetDatabaseInstanceRestoreBackupContext]{
-		OutputState: i.ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
@@ -5947,12 +5262,6 @@ func (o GetDatabaseInstanceRestoreBackupContextOutput) ToGetDatabaseInstanceRest
 
 func (o GetDatabaseInstanceRestoreBackupContextOutput) ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceRestoreBackupContextOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[GetDatabaseInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceRestoreBackupContextOutput) BackupRunId() pulumi.IntOutput {
@@ -5980,12 +5289,6 @@ func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstanc
 
 func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceRestoreBackupContext] {
-	return pulumix.Output[[]GetDatabaseInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceRestoreBackupContextOutput {
@@ -6033,12 +5336,6 @@ func (i GetDatabaseInstanceServerCaCertArgs) ToGetDatabaseInstanceServerCaCertOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceServerCaCertOutput)
 }
 
-func (i GetDatabaseInstanceServerCaCertArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceServerCaCert] {
-	return pulumix.Output[GetDatabaseInstanceServerCaCert]{
-		OutputState: i.ToGetDatabaseInstanceServerCaCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceServerCaCertArrayInput is an input type that accepts GetDatabaseInstanceServerCaCertArray and GetDatabaseInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceServerCaCertArrayInput` via:
 //
@@ -6064,12 +5361,6 @@ func (i GetDatabaseInstanceServerCaCertArray) ToGetDatabaseInstanceServerCaCertA
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceServerCaCertArrayOutput)
 }
 
-func (i GetDatabaseInstanceServerCaCertArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceServerCaCert] {
-	return pulumix.Output[[]GetDatabaseInstanceServerCaCert]{
-		OutputState: i.ToGetDatabaseInstanceServerCaCertArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceServerCaCertOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceServerCaCertOutput) ElementType() reflect.Type {
@@ -6082,12 +5373,6 @@ func (o GetDatabaseInstanceServerCaCertOutput) ToGetDatabaseInstanceServerCaCert
 
 func (o GetDatabaseInstanceServerCaCertOutput) ToGetDatabaseInstanceServerCaCertOutputWithContext(ctx context.Context) GetDatabaseInstanceServerCaCertOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceServerCaCertOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceServerCaCert] {
-	return pulumix.Output[GetDatabaseInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceServerCaCertOutput) Cert() pulumi.StringOutput {
@@ -6122,12 +5407,6 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) ToGetDatabaseInstanceServerC
 
 func (o GetDatabaseInstanceServerCaCertArrayOutput) ToGetDatabaseInstanceServerCaCertArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceServerCaCertArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceServerCaCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceServerCaCert] {
-	return pulumix.Output[[]GetDatabaseInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceServerCaCertOutput {
@@ -6219,12 +5498,6 @@ func (i GetDatabaseInstanceSettingArgs) ToGetDatabaseInstanceSettingOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingOutput)
 }
 
-func (i GetDatabaseInstanceSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSetting] {
-	return pulumix.Output[GetDatabaseInstanceSetting]{
-		OutputState: i.ToGetDatabaseInstanceSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingArrayInput is an input type that accepts GetDatabaseInstanceSettingArray and GetDatabaseInstanceSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingArrayInput` via:
 //
@@ -6250,12 +5523,6 @@ func (i GetDatabaseInstanceSettingArray) ToGetDatabaseInstanceSettingArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSetting] {
-	return pulumix.Output[[]GetDatabaseInstanceSetting]{
-		OutputState: i.ToGetDatabaseInstanceSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingOutput) ElementType() reflect.Type {
@@ -6268,12 +5535,6 @@ func (o GetDatabaseInstanceSettingOutput) ToGetDatabaseInstanceSettingOutput() G
 
 func (o GetDatabaseInstanceSettingOutput) ToGetDatabaseInstanceSettingOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSetting] {
-	return pulumix.Output[GetDatabaseInstanceSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
@@ -6420,12 +5681,6 @@ func (o GetDatabaseInstanceSettingArrayOutput) ToGetDatabaseInstanceSettingArray
 	return o
 }
 
-func (o GetDatabaseInstanceSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSetting] {
-	return pulumix.Output[[]GetDatabaseInstanceSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSetting {
 		return vs[0].([]GetDatabaseInstanceSetting)[vs[1].(int)]
@@ -6463,12 +5718,6 @@ func (i GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingActiveDirectoryConfigOutput)
 }
 
-func (i GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingActiveDirectoryConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArray and GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput` via:
 //
@@ -6494,12 +5743,6 @@ func (i GetDatabaseInstanceSettingActiveDirectoryConfigArray) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingActiveDirectoryConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingActiveDirectoryConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ElementType() reflect.Type {
@@ -6512,12 +5755,6 @@ func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInst
 
 func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
@@ -6536,12 +5773,6 @@ func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabas
 
 func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
@@ -6581,12 +5812,6 @@ func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArgs) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingAdvancedMachineFeatureOutput)
 }
 
-func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[GetDatabaseInstanceSettingAdvancedMachineFeature]{
-		OutputState: i.ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput is an input type that accepts GetDatabaseInstanceSettingAdvancedMachineFeatureArray and GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput` via:
 //
@@ -6612,12 +5837,6 @@ func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArray) ToGetDatabaseInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingAdvancedMachineFeature]{
-		OutputState: i.ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ElementType() reflect.Type {
@@ -6630,12 +5849,6 @@ func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseIns
 
 func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[GetDatabaseInstanceSettingAdvancedMachineFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
@@ -6654,12 +5867,6 @@ func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDataba
 
 func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingAdvancedMachineFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
@@ -6711,12 +5918,6 @@ func (i GetDatabaseInstanceSettingBackupConfigurationArgs) ToGetDatabaseInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationOutput)
 }
 
-func (i GetDatabaseInstanceSettingBackupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingBackupConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceSettingBackupConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceSettingBackupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingBackupConfigurationArrayInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationArray and GetDatabaseInstanceSettingBackupConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationArrayInput` via:
 //
@@ -6742,12 +5943,6 @@ func (i GetDatabaseInstanceSettingBackupConfigurationArray) ToGetDatabaseInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingBackupConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingBackupConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingBackupConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceSettingBackupConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingBackupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingBackupConfigurationOutput) ElementType() reflect.Type {
@@ -6760,12 +5955,6 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstan
 
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstanceSettingBackupConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingBackupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingBackupConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceSettingBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BackupRetentionSettings() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
@@ -6812,12 +6001,6 @@ func (o GetDatabaseInstanceSettingBackupConfigurationArrayOutput) ToGetDatabaseI
 	return o
 }
 
-func (o GetDatabaseInstanceSettingBackupConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingBackupConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstanceSettingBackupConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingBackupConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingBackupConfiguration {
 		return vs[0].([]GetDatabaseInstanceSettingBackupConfiguration)[vs[1].(int)]
@@ -6857,12 +6040,6 @@ func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
 }
 
-func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: i.ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray and GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput` via:
 //
@@ -6888,12 +6065,6 @@ func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: i.ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ElementType() reflect.Type {
@@ -6906,12 +6077,6 @@ func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutpu
 
 func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetainedBackups() pulumi.IntOutput {
@@ -6938,12 +6103,6 @@ func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray
 
 func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
@@ -6983,12 +6142,6 @@ func (i GetDatabaseInstanceSettingDataCacheConfigArgs) ToGetDatabaseInstanceSett
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDataCacheConfigOutput)
 }
 
-func (i GetDatabaseInstanceSettingDataCacheConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDataCacheConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingDataCacheConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingDataCacheConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingDataCacheConfigArray and GetDatabaseInstanceSettingDataCacheConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingDataCacheConfigArrayInput` via:
 //
@@ -7014,12 +6167,6 @@ func (i GetDatabaseInstanceSettingDataCacheConfigArray) ToGetDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDataCacheConfigArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingDataCacheConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDataCacheConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDataCacheConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingDataCacheConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingDataCacheConfigOutput) ElementType() reflect.Type {
@@ -7032,12 +6179,6 @@ func (o GetDatabaseInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstanceSe
 
 func (o GetDatabaseInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDataCacheConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDataCacheConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolOutput {
@@ -7056,12 +6197,6 @@ func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInsta
 
 func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDataCacheConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingDataCacheConfigOutput {
@@ -7105,12 +6240,6 @@ func (i GetDatabaseInstanceSettingDatabaseFlagArgs) ToGetDatabaseInstanceSetting
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDatabaseFlagOutput)
 }
 
-func (i GetDatabaseInstanceSettingDatabaseFlagArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDatabaseFlag] {
-	return pulumix.Output[GetDatabaseInstanceSettingDatabaseFlag]{
-		OutputState: i.ToGetDatabaseInstanceSettingDatabaseFlagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingDatabaseFlagArrayInput is an input type that accepts GetDatabaseInstanceSettingDatabaseFlagArray and GetDatabaseInstanceSettingDatabaseFlagArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingDatabaseFlagArrayInput` via:
 //
@@ -7136,12 +6265,6 @@ func (i GetDatabaseInstanceSettingDatabaseFlagArray) ToGetDatabaseInstanceSettin
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingDatabaseFlagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDatabaseFlag] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDatabaseFlag]{
-		OutputState: i.ToGetDatabaseInstanceSettingDatabaseFlagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingDatabaseFlagOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingDatabaseFlagOutput) ElementType() reflect.Type {
@@ -7154,12 +6277,6 @@ func (o GetDatabaseInstanceSettingDatabaseFlagOutput) ToGetDatabaseInstanceSetti
 
 func (o GetDatabaseInstanceSettingDatabaseFlagOutput) ToGetDatabaseInstanceSettingDatabaseFlagOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDatabaseFlagOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDatabaseFlagOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDatabaseFlag] {
-	return pulumix.Output[GetDatabaseInstanceSettingDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the instance.
@@ -7183,12 +6300,6 @@ func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) ToGetDatabaseInstance
 
 func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) ToGetDatabaseInstanceSettingDatabaseFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDatabaseFlag] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingDatabaseFlagOutput {
@@ -7232,12 +6343,6 @@ func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArgs) ToGetDatabaseInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput)
 }
 
-func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[GetDatabaseInstanceSettingDenyMaintenancePeriod]{
-		OutputState: i.ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput is an input type that accepts GetDatabaseInstanceSettingDenyMaintenancePeriodArray and GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput` via:
 //
@@ -7263,12 +6368,6 @@ func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArray) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDenyMaintenancePeriod]{
-		OutputState: i.ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ElementType() reflect.Type {
@@ -7281,12 +6380,6 @@ func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInst
 
 func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[GetDatabaseInstanceSettingDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
@@ -7313,12 +6406,6 @@ func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabas
 
 func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
@@ -7366,12 +6453,6 @@ func (i GetDatabaseInstanceSettingInsightsConfigArgs) ToGetDatabaseInstanceSetti
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingInsightsConfigOutput)
 }
 
-func (i GetDatabaseInstanceSettingInsightsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingInsightsConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingInsightsConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingInsightsConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArray and GetDatabaseInstanceSettingInsightsConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingInsightsConfigArrayInput` via:
 //
@@ -7397,12 +6478,6 @@ func (i GetDatabaseInstanceSettingInsightsConfigArray) ToGetDatabaseInstanceSett
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingInsightsConfigArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingInsightsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingInsightsConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingInsightsConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingInsightsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingInsightsConfigOutput) ElementType() reflect.Type {
@@ -7415,12 +6490,6 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSet
 
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingInsightsConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
@@ -7455,12 +6524,6 @@ func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstan
 
 func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingInsightsConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingInsightsConfigOutput {
@@ -7512,12 +6575,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationArgs) ToGetDatabaseInstanceSett
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingIpConfigurationArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationArray and GetDatabaseInstanceSettingIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationArrayInput` via:
 //
@@ -7543,12 +6600,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationArray) ToGetDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfiguration]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingIpConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingIpConfigurationOutput) ElementType() reflect.Type {
@@ -7561,12 +6612,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) ToGetDatabaseInstanceSe
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) ToGetDatabaseInstanceSettingIpConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfiguration] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) AllocatedIpRange() pulumi.StringOutput {
@@ -7617,12 +6662,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationArrayOutput) ToGetDatabaseInsta
 	return o
 }
 
-func (o GetDatabaseInstanceSettingIpConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstanceSettingIpConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingIpConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingIpConfiguration {
 		return vs[0].([]GetDatabaseInstanceSettingIpConfiguration)[vs[1].(int)]
@@ -7666,12 +6705,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToGetDat
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray and GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput` via:
 //
@@ -7697,12 +6730,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray) ToGetDa
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ElementType() reflect.Type {
@@ -7715,12 +6742,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetD
 
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput) ExpirationTime() pulumi.StringOutput {
@@ -7748,12 +6769,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) T
 
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput {
@@ -7795,12 +6810,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ToGetDatabaseIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfigurationPscConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigArray and GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput` via:
 //
@@ -7826,12 +6835,6 @@ func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArray) ToGetDatabaseIn
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationPscConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ElementType() reflect.Type {
@@ -7844,12 +6847,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseI
 
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
@@ -7872,12 +6869,6 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetData
 
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
@@ -7921,12 +6912,6 @@ func (i GetDatabaseInstanceSettingLocationPreferenceArgs) ToGetDatabaseInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingLocationPreferenceOutput)
 }
 
-func (i GetDatabaseInstanceSettingLocationPreferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingLocationPreference] {
-	return pulumix.Output[GetDatabaseInstanceSettingLocationPreference]{
-		OutputState: i.ToGetDatabaseInstanceSettingLocationPreferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingLocationPreferenceArrayInput is an input type that accepts GetDatabaseInstanceSettingLocationPreferenceArray and GetDatabaseInstanceSettingLocationPreferenceArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingLocationPreferenceArrayInput` via:
 //
@@ -7952,12 +6937,6 @@ func (i GetDatabaseInstanceSettingLocationPreferenceArray) ToGetDatabaseInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingLocationPreferenceArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingLocationPreferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingLocationPreference] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingLocationPreference]{
-		OutputState: i.ToGetDatabaseInstanceSettingLocationPreferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingLocationPreferenceOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingLocationPreferenceOutput) ElementType() reflect.Type {
@@ -7970,12 +6949,6 @@ func (o GetDatabaseInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstanc
 
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstanceSettingLocationPreferenceOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingLocationPreferenceOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingLocationPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingLocationPreference] {
-	return pulumix.Output[GetDatabaseInstanceSettingLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) FollowGaeApplication() pulumi.StringOutput {
@@ -8002,12 +6975,6 @@ func (o GetDatabaseInstanceSettingLocationPreferenceArrayOutput) ToGetDatabaseIn
 
 func (o GetDatabaseInstanceSettingLocationPreferenceArrayOutput) ToGetDatabaseInstanceSettingLocationPreferenceArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingLocationPreferenceArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingLocationPreferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingLocationPreference] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingLocationPreferenceArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingLocationPreferenceOutput {
@@ -8051,12 +7018,6 @@ func (i GetDatabaseInstanceSettingMaintenanceWindowArgs) ToGetDatabaseInstanceSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingMaintenanceWindowOutput)
 }
 
-func (i GetDatabaseInstanceSettingMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[GetDatabaseInstanceSettingMaintenanceWindow]{
-		OutputState: i.ToGetDatabaseInstanceSettingMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingMaintenanceWindowArrayInput is an input type that accepts GetDatabaseInstanceSettingMaintenanceWindowArray and GetDatabaseInstanceSettingMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingMaintenanceWindowArrayInput` via:
 //
@@ -8082,12 +7043,6 @@ func (i GetDatabaseInstanceSettingMaintenanceWindowArray) ToGetDatabaseInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingMaintenanceWindow]{
-		OutputState: i.ToGetDatabaseInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -8100,12 +7055,6 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstance
 
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstanceSettingMaintenanceWindowOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingMaintenanceWindowOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[GetDatabaseInstanceSettingMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingMaintenanceWindowOutput) Day() pulumi.IntOutput {
@@ -8132,12 +7081,6 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) ToGetDatabaseIns
 
 func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) ToGetDatabaseInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingMaintenanceWindowArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingMaintenanceWindowOutput {
@@ -8187,12 +7130,6 @@ func (i GetDatabaseInstanceSettingPasswordValidationPolicyArgs) ToGetDatabaseIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPasswordValidationPolicyOutput)
 }
 
-func (i GetDatabaseInstanceSettingPasswordValidationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[GetDatabaseInstanceSettingPasswordValidationPolicy]{
-		OutputState: i.ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput is an input type that accepts GetDatabaseInstanceSettingPasswordValidationPolicyArray and GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput` via:
 //
@@ -8218,12 +7155,6 @@ func (i GetDatabaseInstanceSettingPasswordValidationPolicyArray) ToGetDatabaseIn
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingPasswordValidationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingPasswordValidationPolicy]{
-		OutputState: i.ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ElementType() reflect.Type {
@@ -8236,12 +7167,6 @@ func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseI
 
 func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[GetDatabaseInstanceSettingPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) Complexity() pulumi.StringOutput {
@@ -8280,12 +7205,6 @@ func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ToGetData
 
 func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
@@ -8329,12 +7248,6 @@ func (i GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingSqlServerAuditConfigOutput)
 }
 
-func (i GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingSqlServerAuditConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingSqlServerAuditConfigArray and GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput` via:
 //
@@ -8360,12 +7273,6 @@ func (i GetDatabaseInstanceSettingSqlServerAuditConfigArray) ToGetDatabaseInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput)
 }
 
-func (i GetDatabaseInstanceSettingSqlServerAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingSqlServerAuditConfig]{
-		OutputState: i.ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstanceSettingSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ElementType() reflect.Type {
@@ -8378,12 +7285,6 @@ func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInsta
 
 func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[GetDatabaseInstanceSettingSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
@@ -8410,12 +7311,6 @@ func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabase
 
 func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[[]GetDatabaseInstanceSettingSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
@@ -8509,12 +7404,6 @@ func (i GetDatabaseInstancesInstanceArgs) ToGetDatabaseInstancesInstanceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceOutput)
 }
 
-func (i GetDatabaseInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstance] {
-	return pulumix.Output[GetDatabaseInstancesInstance]{
-		OutputState: i.ToGetDatabaseInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceArrayInput is an input type that accepts GetDatabaseInstancesInstanceArray and GetDatabaseInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceArrayInput` via:
 //
@@ -8540,12 +7429,6 @@ func (i GetDatabaseInstancesInstanceArray) ToGetDatabaseInstancesInstanceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstance] {
-	return pulumix.Output[[]GetDatabaseInstancesInstance]{
-		OutputState: i.ToGetDatabaseInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceOutput) ElementType() reflect.Type {
@@ -8558,12 +7441,6 @@ func (o GetDatabaseInstancesInstanceOutput) ToGetDatabaseInstancesInstanceOutput
 
 func (o GetDatabaseInstancesInstanceOutput) ToGetDatabaseInstancesInstanceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstance] {
-	return pulumix.Output[GetDatabaseInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
@@ -8689,12 +7566,6 @@ func (o GetDatabaseInstancesInstanceArrayOutput) ToGetDatabaseInstancesInstanceA
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstance] {
-	return pulumix.Output[[]GetDatabaseInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstance {
 		return vs[0].([]GetDatabaseInstancesInstance)[vs[1].(int)]
@@ -8738,12 +7609,6 @@ func (i GetDatabaseInstancesInstanceCloneArgs) ToGetDatabaseInstancesInstanceClo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceCloneOutput)
 }
 
-func (i GetDatabaseInstancesInstanceCloneArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceClone] {
-	return pulumix.Output[GetDatabaseInstancesInstanceClone]{
-		OutputState: i.ToGetDatabaseInstancesInstanceCloneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceCloneArrayInput is an input type that accepts GetDatabaseInstancesInstanceCloneArray and GetDatabaseInstancesInstanceCloneArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceCloneArrayInput` via:
 //
@@ -8769,12 +7634,6 @@ func (i GetDatabaseInstancesInstanceCloneArray) ToGetDatabaseInstancesInstanceCl
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceCloneArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceCloneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceClone] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceClone]{
-		OutputState: i.ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceCloneOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceCloneOutput) ElementType() reflect.Type {
@@ -8787,12 +7646,6 @@ func (o GetDatabaseInstancesInstanceCloneOutput) ToGetDatabaseInstancesInstanceC
 
 func (o GetDatabaseInstancesInstanceCloneOutput) ToGetDatabaseInstancesInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceCloneOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceClone] {
-	return pulumix.Output[GetDatabaseInstancesInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
@@ -8823,12 +7676,6 @@ func (o GetDatabaseInstancesInstanceCloneArrayOutput) ToGetDatabaseInstancesInst
 
 func (o GetDatabaseInstancesInstanceCloneArrayOutput) ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceCloneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceClone] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceClone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceCloneOutput {
@@ -8872,12 +7719,6 @@ func (i GetDatabaseInstancesInstanceIpAddressArgs) ToGetDatabaseInstancesInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceIpAddressOutput)
 }
 
-func (i GetDatabaseInstancesInstanceIpAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceIpAddress] {
-	return pulumix.Output[GetDatabaseInstancesInstanceIpAddress]{
-		OutputState: i.ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstancesInstanceIpAddressArray and GetDatabaseInstancesInstanceIpAddressArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceIpAddressArrayInput` via:
 //
@@ -8903,12 +7744,6 @@ func (i GetDatabaseInstancesInstanceIpAddressArray) ToGetDatabaseInstancesInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceIpAddressArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceIpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceIpAddress] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceIpAddress]{
-		OutputState: i.ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceIpAddressOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceIpAddressOutput) ElementType() reflect.Type {
@@ -8921,12 +7756,6 @@ func (o GetDatabaseInstancesInstanceIpAddressOutput) ToGetDatabaseInstancesInsta
 
 func (o GetDatabaseInstancesInstanceIpAddressOutput) ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceIpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceIpAddress] {
-	return pulumix.Output[GetDatabaseInstancesInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceIpAddressOutput) IpAddress() pulumi.StringOutput {
@@ -8953,12 +7782,6 @@ func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) ToGetDatabaseInstances
 
 func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceIpAddress] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceIpAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceIpAddressOutput {
@@ -9018,12 +7841,6 @@ func (i GetDatabaseInstancesInstanceReplicaConfigurationArgs) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicaConfigurationOutput)
 }
 
-func (i GetDatabaseInstancesInstanceReplicaConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceReplicaConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceReplicaConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceReplicaConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceReplicaConfigurationArray and GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceReplicaConfigurationArrayInput` via:
 //
@@ -9049,12 +7866,6 @@ func (i GetDatabaseInstancesInstanceReplicaConfigurationArray) ToGetDatabaseInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceReplicaConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceReplicaConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceReplicaConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceReplicaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceReplicaConfigurationOutput) ElementType() reflect.Type {
@@ -9067,12 +7878,6 @@ func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToGetDatabaseIns
 
 func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicaConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceReplicaConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
@@ -9133,12 +7938,6 @@ func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) ToGetDataba
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceReplicaConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceReplicaConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceReplicaConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceReplicaConfiguration {
 		return vs[0].([]GetDatabaseInstancesInstanceReplicaConfiguration)[vs[1].(int)]
@@ -9182,12 +7981,6 @@ func (i GetDatabaseInstancesInstanceRestoreBackupContextArgs) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceRestoreBackupContextOutput)
 }
 
-func (i GetDatabaseInstancesInstanceRestoreBackupContextArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceRestoreBackupContext] {
-	return pulumix.Output[GetDatabaseInstancesInstanceRestoreBackupContext]{
-		OutputState: i.ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceRestoreBackupContextArrayInput is an input type that accepts GetDatabaseInstancesInstanceRestoreBackupContextArray and GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceRestoreBackupContextArrayInput` via:
 //
@@ -9213,12 +8006,6 @@ func (i GetDatabaseInstancesInstanceRestoreBackupContextArray) ToGetDatabaseInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceRestoreBackupContextArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceRestoreBackupContext] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceRestoreBackupContext]{
-		OutputState: i.ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
@@ -9231,12 +8018,6 @@ func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) ToGetDatabaseIns
 
 func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceRestoreBackupContext] {
-	return pulumix.Output[GetDatabaseInstancesInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) BackupRunId() pulumi.IntOutput {
@@ -9264,12 +8045,6 @@ func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ToGetDataba
 
 func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceRestoreBackupContext] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceRestoreBackupContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceRestoreBackupContextOutput {
@@ -9317,12 +8092,6 @@ func (i GetDatabaseInstancesInstanceServerCaCertArgs) ToGetDatabaseInstancesInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceServerCaCertOutput)
 }
 
-func (i GetDatabaseInstancesInstanceServerCaCertArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceServerCaCert] {
-	return pulumix.Output[GetDatabaseInstancesInstanceServerCaCert]{
-		OutputState: i.ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceServerCaCertArrayInput is an input type that accepts GetDatabaseInstancesInstanceServerCaCertArray and GetDatabaseInstancesInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceServerCaCertArrayInput` via:
 //
@@ -9348,12 +8117,6 @@ func (i GetDatabaseInstancesInstanceServerCaCertArray) ToGetDatabaseInstancesIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceServerCaCertArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceServerCaCertArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceServerCaCert] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceServerCaCert]{
-		OutputState: i.ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceServerCaCertOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceServerCaCertOutput) ElementType() reflect.Type {
@@ -9366,12 +8129,6 @@ func (o GetDatabaseInstancesInstanceServerCaCertOutput) ToGetDatabaseInstancesIn
 
 func (o GetDatabaseInstancesInstanceServerCaCertOutput) ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceServerCaCertOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceServerCaCert] {
-	return pulumix.Output[GetDatabaseInstancesInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceServerCaCertOutput) Cert() pulumi.StringOutput {
@@ -9406,12 +8163,6 @@ func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) ToGetDatabaseInstan
 
 func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceServerCaCert] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceServerCaCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceServerCaCertOutput {
@@ -9505,12 +8256,6 @@ func (i GetDatabaseInstancesInstanceSettingArgs) ToGetDatabaseInstancesInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSetting] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSetting]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingArray and GetDatabaseInstancesInstanceSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingArrayInput` via:
 //
@@ -9536,12 +8281,6 @@ func (i GetDatabaseInstancesInstanceSettingArray) ToGetDatabaseInstancesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSetting] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSetting]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingOutput) ElementType() reflect.Type {
@@ -9554,12 +8293,6 @@ func (o GetDatabaseInstancesInstanceSettingOutput) ToGetDatabaseInstancesInstanc
 
 func (o GetDatabaseInstancesInstanceSettingOutput) ToGetDatabaseInstancesInstanceSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSetting] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
@@ -9709,12 +8442,6 @@ func (o GetDatabaseInstancesInstanceSettingArrayOutput) ToGetDatabaseInstancesIn
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSetting] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSetting {
 		return vs[0].([]GetDatabaseInstancesInstanceSetting)[vs[1].(int)]
@@ -9752,12 +8479,6 @@ func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ToGetDatab
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingActiveDirectoryConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray and GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput` via:
 //
@@ -9783,12 +8504,6 @@ func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray) ToGetData
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ElementType() reflect.Type {
@@ -9801,12 +8516,6 @@ func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToGetDat
 
 func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
@@ -9825,12 +8534,6 @@ func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ToG
 
 func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
@@ -9870,12 +8573,6 @@ func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs) ToGetData
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingAdvancedMachineFeature]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray and GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput` via:
 //
@@ -9901,12 +8598,6 @@ func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray) ToGetDat
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ElementType() reflect.Type {
@@ -9919,12 +8610,6 @@ func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ToGetDa
 
 func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingAdvancedMachineFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
@@ -9943,12 +8628,6 @@ func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) To
 
 func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
@@ -10000,12 +8679,6 @@ func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArgs) ToGetDatabas
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationArray and GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput` via:
 //
@@ -10031,12 +8704,6 @@ func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArray) ToGetDataba
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingBackupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ElementType() reflect.Type {
@@ -10049,12 +8716,6 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ToGetDatab
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) BackupRetentionSettings() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
@@ -10105,12 +8766,6 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) ToGet
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingBackupConfiguration {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingBackupConfiguration)[vs[1].(int)]
@@ -10150,12 +8805,6 @@ func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray and GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput` via:
 //
@@ -10181,12 +8830,6 @@ func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ElementType() reflect.Type {
@@ -10199,12 +8842,6 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetainedBackups() pulumi.IntOutput {
@@ -10231,12 +8868,6 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
@@ -10276,12 +8907,6 @@ func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArgs) ToGetDatabaseIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDataCacheConfigOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDataCacheConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDataCacheConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDataCacheConfigArray and GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput` via:
 //
@@ -10307,12 +8932,6 @@ func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArray) ToGetDatabaseIn
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDataCacheConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDataCacheConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingDataCacheConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ElementType() reflect.Type {
@@ -10325,12 +8944,6 @@ func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ToGetDatabaseI
 
 func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDataCacheConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolOutput {
@@ -10349,12 +8962,6 @@ func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ToGetData
 
 func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDataCacheConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDataCacheConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
@@ -10396,12 +9003,6 @@ func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArgs) ToGetDatabaseInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDatabaseFlag] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDatabaseFlag]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDatabaseFlagArray and GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput` via:
 //
@@ -10427,12 +9028,6 @@ func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArray) ToGetDatabaseInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDatabaseFlag] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDatabaseFlag]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingDatabaseFlagOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ElementType() reflect.Type {
@@ -10445,12 +9040,6 @@ func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ToGetDatabaseInst
 
 func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDatabaseFlag] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) Name() pulumi.StringOutput {
@@ -10473,12 +9062,6 @@ func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ToGetDatabas
 
 func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDatabaseFlag] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDatabaseFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
@@ -10522,12 +9105,6 @@ func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs) ToGetDatab
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray and GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput` via:
 //
@@ -10553,12 +9130,6 @@ func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray) ToGetData
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ElementType() reflect.Type {
@@ -10571,12 +9142,6 @@ func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ToGetDat
 
 func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
@@ -10603,12 +9168,6 @@ func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ToG
 
 func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
@@ -10656,12 +9215,6 @@ func (i GetDatabaseInstancesInstanceSettingInsightsConfigArgs) ToGetDatabaseInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingInsightsConfigOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingInsightsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingInsightsConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingInsightsConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingInsightsConfigArray and GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput` via:
 //
@@ -10687,12 +9240,6 @@ func (i GetDatabaseInstancesInstanceSettingInsightsConfigArray) ToGetDatabaseIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingInsightsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingInsightsConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingInsightsConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingInsightsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ElementType() reflect.Type {
@@ -10705,12 +9252,6 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToGetDatabaseIn
 
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingInsightsConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
@@ -10745,12 +9286,6 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ToGetDatab
 
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingInsightsConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingInsightsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
@@ -10802,12 +9337,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ToGetDatabaseIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationArray and GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput` via:
 //
@@ -10833,12 +9362,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationArray) ToGetDatabaseIn
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfiguration]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingIpConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ElementType() reflect.Type {
@@ -10851,12 +9374,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ToGetDatabaseI
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfiguration] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) AllocatedIpRange() pulumi.StringOutput {
@@ -10907,12 +9424,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) ToGetData
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfiguration] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfiguration {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfiguration)[vs[1].(int)]
@@ -10954,12 +9465,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray and GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput` via:
 //
@@ -10985,12 +9490,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ElementType() reflect.Type {
@@ -11003,12 +9502,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutpu
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ExpirationTime() pulumi.StringOutput {
@@ -11037,12 +9530,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
@@ -11084,12 +9571,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ToGetDa
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput` via:
 //
@@ -11115,12 +9596,6 @@ func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray) ToGetD
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ElementType() reflect.Type {
@@ -11133,12 +9608,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ToGet
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
@@ -11163,12 +9632,6 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) 
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
@@ -11214,12 +9677,6 @@ func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArgs) ToGetDatabase
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingLocationPreference] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingLocationPreference]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingLocationPreferenceArray and GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput` via:
 //
@@ -11245,12 +9702,6 @@ func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArray) ToGetDatabas
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingLocationPreference] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingLocationPreference]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingLocationPreferenceOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ElementType() reflect.Type {
@@ -11263,12 +9714,6 @@ func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ToGetDataba
 
 func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingLocationPreference] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) FollowGaeApplication() pulumi.StringOutput {
@@ -11296,12 +9741,6 @@ func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ToGetD
 
 func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingLocationPreference] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingLocationPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
@@ -11345,12 +9784,6 @@ func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs) ToGetDatabaseI
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingMaintenanceWindow]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingMaintenanceWindowArray and GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput` via:
 //
@@ -11376,12 +9809,6 @@ func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArray) ToGetDatabase
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingMaintenanceWindow]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -11394,12 +9821,6 @@ func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ToGetDatabas
 
 func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) Day() pulumi.IntOutput {
@@ -11426,12 +9847,6 @@ func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ToGetDa
 
 func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingMaintenanceWindow] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
@@ -11481,12 +9896,6 @@ func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs) ToGetDa
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingPasswordValidationPolicy]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray and GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput` via:
 //
@@ -11512,12 +9921,6 @@ func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray) ToGetD
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ElementType() reflect.Type {
@@ -11530,12 +9933,6 @@ func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ToGet
 
 func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) Complexity() pulumi.StringOutput {
@@ -11582,12 +9979,6 @@ func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) 
 	return o
 }
 
-func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)[vs[1].(int)]
@@ -11629,12 +10020,6 @@ func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs) ToGetDataba
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingSqlServerAuditConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray and GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput` via:
 //
@@ -11660,12 +10045,6 @@ func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray) ToGetDatab
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput)
 }
 
-func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig]{
-		OutputState: i.ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ElementType() reflect.Type {
@@ -11678,12 +10057,6 @@ func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ToGetData
 
 func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[GetDatabaseInstancesInstanceSettingSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
@@ -11710,12 +10083,6 @@ func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ToGe
 
 func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
 	return o
-}
-
-func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig] {
-	return pulumix.Output[[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
@@ -11775,12 +10142,6 @@ func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseOutput)
 }
 
-func (i GetDatabasesDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabasesDatabase] {
-	return pulumix.Output[GetDatabasesDatabase]{
-		OutputState: i.ToGetDatabasesDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDatabasesDatabaseArrayInput is an input type that accepts GetDatabasesDatabaseArray and GetDatabasesDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetDatabasesDatabaseArrayInput` via:
 //
@@ -11806,12 +10167,6 @@ func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseArrayOutput)
 }
 
-func (i GetDatabasesDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabasesDatabase] {
-	return pulumix.Output[[]GetDatabasesDatabase]{
-		OutputState: i.ToGetDatabasesDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDatabasesDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GetDatabasesDatabaseOutput) ElementType() reflect.Type {
@@ -11824,12 +10179,6 @@ func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutput() GetDatabasesD
 
 func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutputWithContext(ctx context.Context) GetDatabasesDatabaseOutput {
 	return o
-}
-
-func (o GetDatabasesDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabasesDatabase] {
-	return pulumix.Output[GetDatabasesDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabasesDatabaseOutput) Charset() pulumi.StringOutput {
@@ -11876,12 +10225,6 @@ func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutput() Get
 
 func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetDatabasesDatabaseArrayOutput {
 	return o
-}
-
-func (o GetDatabasesDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDatabasesDatabase] {
-	return pulumix.Output[[]GetDatabasesDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetDatabasesDatabaseOutput {
@@ -11935,12 +10278,6 @@ func (i GetTiersTierArgs) ToGetTiersTierOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetTiersTierOutput)
 }
 
-func (i GetTiersTierArgs) ToOutput(ctx context.Context) pulumix.Output[GetTiersTier] {
-	return pulumix.Output[GetTiersTier]{
-		OutputState: i.ToGetTiersTierOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTiersTierArrayInput is an input type that accepts GetTiersTierArray and GetTiersTierArrayOutput values.
 // You can construct a concrete instance of `GetTiersTierArrayInput` via:
 //
@@ -11966,12 +10303,6 @@ func (i GetTiersTierArray) ToGetTiersTierArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTiersTierArrayOutput)
 }
 
-func (i GetTiersTierArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTiersTier] {
-	return pulumix.Output[[]GetTiersTier]{
-		OutputState: i.ToGetTiersTierArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTiersTierOutput struct{ *pulumi.OutputState }
 
 func (GetTiersTierOutput) ElementType() reflect.Type {
@@ -11984,12 +10315,6 @@ func (o GetTiersTierOutput) ToGetTiersTierOutput() GetTiersTierOutput {
 
 func (o GetTiersTierOutput) ToGetTiersTierOutputWithContext(ctx context.Context) GetTiersTierOutput {
 	return o
-}
-
-func (o GetTiersTierOutput) ToOutput(ctx context.Context) pulumix.Output[GetTiersTier] {
-	return pulumix.Output[GetTiersTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum disk size of this tier in bytes.
@@ -12024,12 +10349,6 @@ func (o GetTiersTierArrayOutput) ToGetTiersTierArrayOutput() GetTiersTierArrayOu
 
 func (o GetTiersTierArrayOutput) ToGetTiersTierArrayOutputWithContext(ctx context.Context) GetTiersTierArrayOutput {
 	return o
-}
-
-func (o GetTiersTierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTiersTier] {
-	return pulumix.Output[[]GetTiersTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTiersTierArrayOutput) Index(i pulumi.IntInput) GetTiersTierOutput {

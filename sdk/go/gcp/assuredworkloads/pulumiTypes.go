@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsOutput() WorkloadKmsSettin
 
 func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsOutputWithContext(ctx context.Context) WorkloadKmsSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadKmsSettingsOutput)
-}
-
-func (i WorkloadKmsSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadKmsSettings] {
-	return pulumix.Output[WorkloadKmsSettings]{
-		OutputState: i.ToWorkloadKmsSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsPtrOutput() WorkloadKmsSettingsPtrOutput {
@@ -98,12 +91,6 @@ func (i *workloadKmsSettingsPtrType) ToWorkloadKmsSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadKmsSettingsPtrOutput)
 }
 
-func (i *workloadKmsSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadKmsSettings] {
-	return pulumix.Output[*WorkloadKmsSettings]{
-		OutputState: i.ToWorkloadKmsSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadKmsSettingsOutput struct{ *pulumi.OutputState }
 
 func (WorkloadKmsSettingsOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o WorkloadKmsSettingsOutput) ToWorkloadKmsSettingsPtrOutputWithContext(ctx
 	}).(WorkloadKmsSettingsPtrOutput)
 }
 
-func (o WorkloadKmsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadKmsSettings] {
-	return pulumix.Output[WorkloadKmsSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o WorkloadKmsSettingsOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadKmsSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
@@ -156,12 +137,6 @@ func (o WorkloadKmsSettingsPtrOutput) ToWorkloadKmsSettingsPtrOutput() WorkloadK
 
 func (o WorkloadKmsSettingsPtrOutput) ToWorkloadKmsSettingsPtrOutputWithContext(ctx context.Context) WorkloadKmsSettingsPtrOutput {
 	return o
-}
-
-func (o WorkloadKmsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadKmsSettings] {
-	return pulumix.Output[*WorkloadKmsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadKmsSettingsPtrOutput) Elem() WorkloadKmsSettingsOutput {
@@ -231,12 +206,6 @@ func (i WorkloadResourceArgs) ToWorkloadResourceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceOutput)
 }
 
-func (i WorkloadResourceArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadResource] {
-	return pulumix.Output[WorkloadResource]{
-		OutputState: i.ToWorkloadResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkloadResourceArrayInput is an input type that accepts WorkloadResourceArray and WorkloadResourceArrayOutput values.
 // You can construct a concrete instance of `WorkloadResourceArrayInput` via:
 //
@@ -262,12 +231,6 @@ func (i WorkloadResourceArray) ToWorkloadResourceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceArrayOutput)
 }
 
-func (i WorkloadResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResource] {
-	return pulumix.Output[[]WorkloadResource]{
-		OutputState: i.ToWorkloadResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadResourceOutput struct{ *pulumi.OutputState }
 
 func (WorkloadResourceOutput) ElementType() reflect.Type {
@@ -280,12 +243,6 @@ func (o WorkloadResourceOutput) ToWorkloadResourceOutput() WorkloadResourceOutpu
 
 func (o WorkloadResourceOutput) ToWorkloadResourceOutputWithContext(ctx context.Context) WorkloadResourceOutput {
 	return o
-}
-
-func (o WorkloadResourceOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadResource] {
-	return pulumix.Output[WorkloadResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
@@ -310,12 +267,6 @@ func (o WorkloadResourceArrayOutput) ToWorkloadResourceArrayOutput() WorkloadRes
 
 func (o WorkloadResourceArrayOutput) ToWorkloadResourceArrayOutputWithContext(ctx context.Context) WorkloadResourceArrayOutput {
 	return o
-}
-
-func (o WorkloadResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResource] {
-	return pulumix.Output[[]WorkloadResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadResourceArrayOutput) Index(i pulumi.IntInput) WorkloadResourceOutput {
@@ -361,12 +312,6 @@ func (i WorkloadResourceSettingArgs) ToWorkloadResourceSettingOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceSettingOutput)
 }
 
-func (i WorkloadResourceSettingArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadResourceSetting] {
-	return pulumix.Output[WorkloadResourceSetting]{
-		OutputState: i.ToWorkloadResourceSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkloadResourceSettingArrayInput is an input type that accepts WorkloadResourceSettingArray and WorkloadResourceSettingArrayOutput values.
 // You can construct a concrete instance of `WorkloadResourceSettingArrayInput` via:
 //
@@ -392,12 +337,6 @@ func (i WorkloadResourceSettingArray) ToWorkloadResourceSettingArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceSettingArrayOutput)
 }
 
-func (i WorkloadResourceSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResourceSetting] {
-	return pulumix.Output[[]WorkloadResourceSetting]{
-		OutputState: i.ToWorkloadResourceSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadResourceSettingOutput struct{ *pulumi.OutputState }
 
 func (WorkloadResourceSettingOutput) ElementType() reflect.Type {
@@ -410,12 +349,6 @@ func (o WorkloadResourceSettingOutput) ToWorkloadResourceSettingOutput() Workloa
 
 func (o WorkloadResourceSettingOutput) ToWorkloadResourceSettingOutputWithContext(ctx context.Context) WorkloadResourceSettingOutput {
 	return o
-}
-
-func (o WorkloadResourceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadResourceSetting] {
-	return pulumix.Output[WorkloadResourceSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
@@ -440,12 +373,6 @@ func (o WorkloadResourceSettingArrayOutput) ToWorkloadResourceSettingArrayOutput
 
 func (o WorkloadResourceSettingArrayOutput) ToWorkloadResourceSettingArrayOutputWithContext(ctx context.Context) WorkloadResourceSettingArrayOutput {
 	return o
-}
-
-func (o WorkloadResourceSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResourceSetting] {
-	return pulumix.Output[[]WorkloadResourceSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadResourceSettingArrayOutput) Index(i pulumi.IntInput) WorkloadResourceSettingOutput {

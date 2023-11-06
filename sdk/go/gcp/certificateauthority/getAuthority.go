@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Google CAS Certificate Authority.
@@ -142,12 +141,6 @@ func (o LookupAuthorityResultOutput) ToLookupAuthorityResultOutput() LookupAutho
 
 func (o LookupAuthorityResultOutput) ToLookupAuthorityResultOutputWithContext(ctx context.Context) LookupAuthorityResultOutput {
 	return o
-}
-
-func (o LookupAuthorityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorityResult] {
-	return pulumix.Output[LookupAuthorityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAuthorityResultOutput) AccessUrls() GetAuthorityAccessUrlArrayOutput {

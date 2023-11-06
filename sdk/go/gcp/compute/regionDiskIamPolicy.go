@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
@@ -346,12 +345,6 @@ func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyOutput)
 }
 
-func (i *RegionDiskIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamPolicy] {
-	return pulumix.Output[*RegionDiskIamPolicy]{
-		OutputState: i.ToRegionDiskIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionDiskIamPolicyArrayInput is an input type that accepts RegionDiskIamPolicyArray and RegionDiskIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RegionDiskIamPolicyArrayInput` via:
 //
@@ -375,12 +368,6 @@ func (i RegionDiskIamPolicyArray) ToRegionDiskIamPolicyArrayOutput() RegionDiskI
 
 func (i RegionDiskIamPolicyArray) ToRegionDiskIamPolicyArrayOutputWithContext(ctx context.Context) RegionDiskIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyArrayOutput)
-}
-
-func (i RegionDiskIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskIamPolicy] {
-	return pulumix.Output[[]*RegionDiskIamPolicy]{
-		OutputState: i.ToRegionDiskIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionDiskIamPolicyMapInput is an input type that accepts RegionDiskIamPolicyMap and RegionDiskIamPolicyMapOutput values.
@@ -408,12 +395,6 @@ func (i RegionDiskIamPolicyMap) ToRegionDiskIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyMapOutput)
 }
 
-func (i RegionDiskIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskIamPolicy] {
-	return pulumix.Output[map[string]*RegionDiskIamPolicy]{
-		OutputState: i.ToRegionDiskIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionDiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyOutput) ElementType() reflect.Type {
@@ -426,12 +407,6 @@ func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutput() RegionDiskIamPo
 
 func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutputWithContext(ctx context.Context) RegionDiskIamPolicyOutput {
 	return o
-}
-
-func (o RegionDiskIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamPolicy] {
-	return pulumix.Output[*RegionDiskIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -486,12 +461,6 @@ func (o RegionDiskIamPolicyArrayOutput) ToRegionDiskIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o RegionDiskIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskIamPolicy] {
-	return pulumix.Output[[]*RegionDiskIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionDiskIamPolicyArrayOutput) Index(i pulumi.IntInput) RegionDiskIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskIamPolicy {
 		return vs[0].([]*RegionDiskIamPolicy)[vs[1].(int)]
@@ -510,12 +479,6 @@ func (o RegionDiskIamPolicyMapOutput) ToRegionDiskIamPolicyMapOutput() RegionDis
 
 func (o RegionDiskIamPolicyMapOutput) ToRegionDiskIamPolicyMapOutputWithContext(ctx context.Context) RegionDiskIamPolicyMapOutput {
 	return o
-}
-
-func (o RegionDiskIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskIamPolicy] {
-	return pulumix.Output[map[string]*RegionDiskIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionDiskIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamPolicyOutput {

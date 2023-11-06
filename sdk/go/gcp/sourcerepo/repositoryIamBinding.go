@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
@@ -357,12 +356,6 @@ func (i *RepositoryIamBinding) ToRepositoryIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingOutput)
 }
 
-func (i *RepositoryIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBinding] {
-	return pulumix.Output[*RepositoryIamBinding]{
-		OutputState: i.ToRepositoryIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryIamBindingArrayInput is an input type that accepts RepositoryIamBindingArray and RepositoryIamBindingArrayOutput values.
 // You can construct a concrete instance of `RepositoryIamBindingArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i RepositoryIamBindingArray) ToRepositoryIamBindingArrayOutput() Repositor
 
 func (i RepositoryIamBindingArray) ToRepositoryIamBindingArrayOutputWithContext(ctx context.Context) RepositoryIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingArrayOutput)
-}
-
-func (i RepositoryIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamBinding] {
-	return pulumix.Output[[]*RepositoryIamBinding]{
-		OutputState: i.ToRepositoryIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryIamBindingMapInput is an input type that accepts RepositoryIamBindingMap and RepositoryIamBindingMapOutput values.
@@ -419,12 +406,6 @@ func (i RepositoryIamBindingMap) ToRepositoryIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingMapOutput)
 }
 
-func (i RepositoryIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamBinding] {
-	return pulumix.Output[map[string]*RepositoryIamBinding]{
-		OutputState: i.ToRepositoryIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o RepositoryIamBindingOutput) ToRepositoryIamBindingOutput() RepositoryIam
 
 func (o RepositoryIamBindingOutput) ToRepositoryIamBindingOutputWithContext(ctx context.Context) RepositoryIamBindingOutput {
 	return o
-}
-
-func (o RepositoryIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamBinding] {
-	return pulumix.Output[*RepositoryIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingOutput) Condition() RepositoryIamBindingConditionPtrOutput {
@@ -501,12 +476,6 @@ func (o RepositoryIamBindingArrayOutput) ToRepositoryIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o RepositoryIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryIamBinding] {
-	return pulumix.Output[[]*RepositoryIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryIamBindingArrayOutput) Index(i pulumi.IntInput) RepositoryIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryIamBinding {
 		return vs[0].([]*RepositoryIamBinding)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o RepositoryIamBindingMapOutput) ToRepositoryIamBindingMapOutput() Reposit
 
 func (o RepositoryIamBindingMapOutput) ToRepositoryIamBindingMapOutputWithContext(ctx context.Context) RepositoryIamBindingMapOutput {
 	return o
-}
-
-func (o RepositoryIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryIamBinding] {
-	return pulumix.Output[map[string]*RepositoryIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryIamBindingMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamBindingOutput {

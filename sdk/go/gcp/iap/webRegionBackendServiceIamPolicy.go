@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
@@ -472,12 +471,6 @@ func (i *WebRegionBackendServiceIamPolicy) ToWebRegionBackendServiceIamPolicyOut
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamPolicyOutput)
 }
 
-func (i *WebRegionBackendServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[*WebRegionBackendServiceIamPolicy]{
-		OutputState: i.ToWebRegionBackendServiceIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebRegionBackendServiceIamPolicyArrayInput is an input type that accepts WebRegionBackendServiceIamPolicyArray and WebRegionBackendServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `WebRegionBackendServiceIamPolicyArrayInput` via:
 //
@@ -501,12 +494,6 @@ func (i WebRegionBackendServiceIamPolicyArray) ToWebRegionBackendServiceIamPolic
 
 func (i WebRegionBackendServiceIamPolicyArray) ToWebRegionBackendServiceIamPolicyArrayOutputWithContext(ctx context.Context) WebRegionBackendServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamPolicyArrayOutput)
-}
-
-func (i WebRegionBackendServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[[]*WebRegionBackendServiceIamPolicy]{
-		OutputState: i.ToWebRegionBackendServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebRegionBackendServiceIamPolicyMapInput is an input type that accepts WebRegionBackendServiceIamPolicyMap and WebRegionBackendServiceIamPolicyMapOutput values.
@@ -534,12 +521,6 @@ func (i WebRegionBackendServiceIamPolicyMap) ToWebRegionBackendServiceIamPolicyM
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamPolicyMapOutput)
 }
 
-func (i WebRegionBackendServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[map[string]*WebRegionBackendServiceIamPolicy]{
-		OutputState: i.ToWebRegionBackendServiceIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebRegionBackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebRegionBackendServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -552,12 +533,6 @@ func (o WebRegionBackendServiceIamPolicyOutput) ToWebRegionBackendServiceIamPoli
 
 func (o WebRegionBackendServiceIamPolicyOutput) ToWebRegionBackendServiceIamPolicyOutputWithContext(ctx context.Context) WebRegionBackendServiceIamPolicyOutput {
 	return o
-}
-
-func (o WebRegionBackendServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[*WebRegionBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -612,12 +587,6 @@ func (o WebRegionBackendServiceIamPolicyArrayOutput) ToWebRegionBackendServiceIa
 	return o
 }
 
-func (o WebRegionBackendServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[[]*WebRegionBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebRegionBackendServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) WebRegionBackendServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebRegionBackendServiceIamPolicy {
 		return vs[0].([]*WebRegionBackendServiceIamPolicy)[vs[1].(int)]
@@ -636,12 +605,6 @@ func (o WebRegionBackendServiceIamPolicyMapOutput) ToWebRegionBackendServiceIamP
 
 func (o WebRegionBackendServiceIamPolicyMapOutput) ToWebRegionBackendServiceIamPolicyMapOutputWithContext(ctx context.Context) WebRegionBackendServiceIamPolicyMapOutput {
 	return o
-}
-
-func (o WebRegionBackendServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebRegionBackendServiceIamPolicy] {
-	return pulumix.Output[map[string]*WebRegionBackendServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebRegionBackendServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebRegionBackendServiceIamPolicyOutput {

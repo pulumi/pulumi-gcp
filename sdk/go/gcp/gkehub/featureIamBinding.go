@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Feature. Each of these resources serves a different use case:
@@ -369,12 +368,6 @@ func (i *FeatureIamBinding) ToFeatureIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingOutput)
 }
 
-func (i *FeatureIamBinding) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBinding] {
-	return pulumix.Output[*FeatureIamBinding]{
-		OutputState: i.ToFeatureIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureIamBindingArrayInput is an input type that accepts FeatureIamBindingArray and FeatureIamBindingArrayOutput values.
 // You can construct a concrete instance of `FeatureIamBindingArrayInput` via:
 //
@@ -398,12 +391,6 @@ func (i FeatureIamBindingArray) ToFeatureIamBindingArrayOutput() FeatureIamBindi
 
 func (i FeatureIamBindingArray) ToFeatureIamBindingArrayOutputWithContext(ctx context.Context) FeatureIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingArrayOutput)
-}
-
-func (i FeatureIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureIamBinding] {
-	return pulumix.Output[[]*FeatureIamBinding]{
-		OutputState: i.ToFeatureIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureIamBindingMapInput is an input type that accepts FeatureIamBindingMap and FeatureIamBindingMapOutput values.
@@ -431,12 +418,6 @@ func (i FeatureIamBindingMap) ToFeatureIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingMapOutput)
 }
 
-func (i FeatureIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureIamBinding] {
-	return pulumix.Output[map[string]*FeatureIamBinding]{
-		OutputState: i.ToFeatureIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureIamBindingOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamBindingOutput) ElementType() reflect.Type {
@@ -449,12 +430,6 @@ func (o FeatureIamBindingOutput) ToFeatureIamBindingOutput() FeatureIamBindingOu
 
 func (o FeatureIamBindingOutput) ToFeatureIamBindingOutputWithContext(ctx context.Context) FeatureIamBindingOutput {
 	return o
-}
-
-func (o FeatureIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBinding] {
-	return pulumix.Output[*FeatureIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamBindingOutput) Condition() FeatureIamBindingConditionPtrOutput {
@@ -519,12 +494,6 @@ func (o FeatureIamBindingArrayOutput) ToFeatureIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o FeatureIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureIamBinding] {
-	return pulumix.Output[[]*FeatureIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureIamBindingArrayOutput) Index(i pulumi.IntInput) FeatureIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FeatureIamBinding {
 		return vs[0].([]*FeatureIamBinding)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o FeatureIamBindingMapOutput) ToFeatureIamBindingMapOutput() FeatureIamBin
 
 func (o FeatureIamBindingMapOutput) ToFeatureIamBindingMapOutputWithContext(ctx context.Context) FeatureIamBindingMapOutput {
 	return o
-}
-
-func (o FeatureIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureIamBinding] {
-	return pulumix.Output[map[string]*FeatureIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamBindingMapOutput) MapIndex(k pulumi.StringInput) FeatureIamBindingOutput {

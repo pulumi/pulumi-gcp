@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ConnectionProfileAlloydbArgs) ToConnectionProfileAlloydbOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbOutput)
 }
 
-func (i ConnectionProfileAlloydbArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydb] {
-	return pulumix.Output[ConnectionProfileAlloydb]{
-		OutputState: i.ToConnectionProfileAlloydbOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbArgs) ToConnectionProfileAlloydbPtrOutput() ConnectionProfileAlloydbPtrOutput {
 	return i.ToConnectionProfileAlloydbPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *connectionProfileAlloydbPtrType) ToConnectionProfileAlloydbPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbPtrOutput)
 }
 
-func (i *connectionProfileAlloydbPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydb] {
-	return pulumix.Output[*ConnectionProfileAlloydb]{
-		OutputState: i.ToConnectionProfileAlloydbPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ConnectionProfileAlloydbOutput) ToConnectionProfileAlloydbPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydb) *ConnectionProfileAlloydb {
 		return &v
 	}).(ConnectionProfileAlloydbPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydb] {
-	return pulumix.Output[ConnectionProfileAlloydb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The AlloyDB cluster ID that this connection profile is associated with.
@@ -159,12 +140,6 @@ func (o ConnectionProfileAlloydbPtrOutput) ToConnectionProfileAlloydbPtrOutput()
 
 func (o ConnectionProfileAlloydbPtrOutput) ToConnectionProfileAlloydbPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydb] {
-	return pulumix.Output[*ConnectionProfileAlloydb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbPtrOutput) Elem() ConnectionProfileAlloydbOutput {
@@ -249,12 +224,6 @@ func (i ConnectionProfileAlloydbSettingsArgs) ToConnectionProfileAlloydbSettings
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsArgs) ToConnectionProfileAlloydbSettingsPtrOutput() ConnectionProfileAlloydbSettingsPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPtrOutputWithContext(context.Background())
 }
@@ -296,12 +265,6 @@ func (i *connectionProfileAlloydbSettingsPtrType) ToConnectionProfileAlloydbSett
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsOutput) ElementType() reflect.Type {
@@ -324,12 +287,6 @@ func (o ConnectionProfileAlloydbSettingsOutput) ToConnectionProfileAlloydbSettin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettings) *ConnectionProfileAlloydbSettings {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. Initial user to setup during cluster creation.
@@ -371,12 +328,6 @@ func (o ConnectionProfileAlloydbSettingsPtrOutput) ToConnectionProfileAlloydbSet
 
 func (o ConnectionProfileAlloydbSettingsPtrOutput) ToConnectionProfileAlloydbSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPtrOutput) Elem() ConnectionProfileAlloydbSettingsOutput {
@@ -477,12 +428,6 @@ func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToConnectionProfileAllo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsInitialUserOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsInitialUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToConnectionProfileAlloydbSettingsInitialUserPtrOutput() ConnectionProfileAlloydbSettingsInitialUserPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(context.Background())
 }
@@ -524,12 +469,6 @@ func (i *connectionProfileAlloydbSettingsInitialUserPtrType) ToConnectionProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsInitialUserPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsInitialUserPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsInitialUserOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsInitialUserOutput) ElementType() reflect.Type {
@@ -552,12 +491,6 @@ func (o ConnectionProfileAlloydbSettingsInitialUserOutput) ToConnectionProfileAl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettingsInitialUser) *ConnectionProfileAlloydbSettingsInitialUser {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsInitialUserPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsInitialUserOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The initial password for the user.
@@ -589,12 +522,6 @@ func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToConnectionProfil
 
 func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsInitialUserPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) Elem() ConnectionProfileAlloydbSettingsInitialUserOutput {
@@ -692,12 +619,6 @@ func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(context.Background())
 }
@@ -739,12 +660,6 @@ func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrType) ToConne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ElementType() reflect.Type {
@@ -767,12 +682,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ToConnect
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettingsPrimaryInstanceSettings) *ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
@@ -818,12 +727,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToConn
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) Elem() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput {
@@ -921,12 +824,6 @@ func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(context.Background())
 }
@@ -968,12 +865,6 @@ func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtr
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) ElementType() reflect.Type {
@@ -998,12 +889,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutp
 	}).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput)
 }
 
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of CPU's in the VM instance.
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -1021,12 +906,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrO
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) Elem() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput {
@@ -1102,12 +981,6 @@ func (i ConnectionProfileCloudsqlArgs) ToConnectionProfileCloudsqlOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlOutput)
 }
 
-func (i ConnectionProfileCloudsqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsql] {
-	return pulumix.Output[ConnectionProfileCloudsql]{
-		OutputState: i.ToConnectionProfileCloudsqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlArgs) ToConnectionProfileCloudsqlPtrOutput() ConnectionProfileCloudsqlPtrOutput {
 	return i.ToConnectionProfileCloudsqlPtrOutputWithContext(context.Background())
 }
@@ -1149,12 +1022,6 @@ func (i *connectionProfileCloudsqlPtrType) ToConnectionProfileCloudsqlPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsql] {
-	return pulumix.Output[*ConnectionProfileCloudsql]{
-		OutputState: i.ToConnectionProfileCloudsqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlOutput) ElementType() reflect.Type {
@@ -1177,12 +1044,6 @@ func (o ConnectionProfileCloudsqlOutput) ToConnectionProfileCloudsqlPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsql) *ConnectionProfileCloudsql {
 		return &v
 	}).(ConnectionProfileCloudsqlPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsql] {
-	return pulumix.Output[ConnectionProfileCloudsql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1221,12 +1082,6 @@ func (o ConnectionProfileCloudsqlPtrOutput) ToConnectionProfileCloudsqlPtrOutput
 
 func (o ConnectionProfileCloudsqlPtrOutput) ToConnectionProfileCloudsqlPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsql] {
-	return pulumix.Output[*ConnectionProfileCloudsql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlPtrOutput) Elem() ConnectionProfileCloudsqlOutput {
@@ -1398,12 +1253,6 @@ func (i ConnectionProfileCloudsqlSettingsArgs) ToConnectionProfileCloudsqlSettin
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettings]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlSettingsArgs) ToConnectionProfileCloudsqlSettingsPtrOutput() ConnectionProfileCloudsqlSettingsPtrOutput {
 	return i.ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(context.Background())
 }
@@ -1445,12 +1294,6 @@ func (i *connectionProfileCloudsqlSettingsPtrType) ToConnectionProfileCloudsqlSe
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettings]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsOutput) ElementType() reflect.Type {
@@ -1473,12 +1316,6 @@ func (o ConnectionProfileCloudsqlSettingsOutput) ToConnectionProfileCloudsqlSett
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsqlSettings) *ConnectionProfileCloudsqlSettings {
 		return &v
 	}).(ConnectionProfileCloudsqlSettingsPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
@@ -1589,12 +1426,6 @@ func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToConnectionProfileCloudsqlS
 
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) Elem() ConnectionProfileCloudsqlSettingsOutput {
@@ -1835,12 +1666,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToConnectionProfileClouds
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToConnectionProfileCloudsqlSettingsIpConfigPtrOutput() ConnectionProfileCloudsqlSettingsIpConfigPtrOutput {
 	return i.ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(context.Background())
 }
@@ -1882,12 +1707,6 @@ func (i *connectionProfileCloudsqlSettingsIpConfigPtrType) ToConnectionProfileCl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlSettingsIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsIpConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsIpConfigOutput) ElementType() reflect.Type {
@@ -1910,12 +1729,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigOutput) ToConnectionProfileClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsqlSettingsIpConfig) *ConnectionProfileCloudsqlSettingsIpConfig {
 		return &v
 	}).(ConnectionProfileCloudsqlSettingsIpConfigPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP.
@@ -1954,12 +1767,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToConnectionProfileC
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) Elem() ConnectionProfileCloudsqlSettingsIpConfigOutput {
@@ -2059,12 +1866,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs) ToConnec
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayInput is an input type that accepts ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray and ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayInput` via:
 //
@@ -2090,12 +1891,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray) ToConne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ElementType() reflect.Type {
@@ -2108,12 +1903,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToConn
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when this access control entry expires in RFC 3339 format.
@@ -2148,12 +1937,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) T
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput {
@@ -2209,12 +1992,6 @@ func (i ConnectionProfileErrorArgs) ToConnectionProfileErrorOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileErrorOutput)
 }
 
-func (i ConnectionProfileErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileError] {
-	return pulumix.Output[ConnectionProfileError]{
-		OutputState: i.ToConnectionProfileErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionProfileErrorArrayInput is an input type that accepts ConnectionProfileErrorArray and ConnectionProfileErrorArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileErrorArrayInput` via:
 //
@@ -2240,12 +2017,6 @@ func (i ConnectionProfileErrorArray) ToConnectionProfileErrorArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileErrorArrayOutput)
 }
 
-func (i ConnectionProfileErrorArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileError] {
-	return pulumix.Output[[]ConnectionProfileError]{
-		OutputState: i.ToConnectionProfileErrorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileErrorOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileErrorOutput) ElementType() reflect.Type {
@@ -2258,12 +2029,6 @@ func (o ConnectionProfileErrorOutput) ToConnectionProfileErrorOutput() Connectio
 
 func (o ConnectionProfileErrorOutput) ToConnectionProfileErrorOutputWithContext(ctx context.Context) ConnectionProfileErrorOutput {
 	return o
-}
-
-func (o ConnectionProfileErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileError] {
-	return pulumix.Output[ConnectionProfileError]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -2296,12 +2061,6 @@ func (o ConnectionProfileErrorArrayOutput) ToConnectionProfileErrorArrayOutput()
 
 func (o ConnectionProfileErrorArrayOutput) ToConnectionProfileErrorArrayOutputWithContext(ctx context.Context) ConnectionProfileErrorArrayOutput {
 	return o
-}
-
-func (o ConnectionProfileErrorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileError] {
-	return pulumix.Output[[]ConnectionProfileError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileErrorArrayOutput) Index(i pulumi.IntInput) ConnectionProfileErrorOutput {
@@ -2375,12 +2134,6 @@ func (i ConnectionProfileMysqlArgs) ToConnectionProfileMysqlOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlOutput)
 }
 
-func (i ConnectionProfileMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysql] {
-	return pulumix.Output[ConnectionProfileMysql]{
-		OutputState: i.ToConnectionProfileMysqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlArgs) ToConnectionProfileMysqlPtrOutput() ConnectionProfileMysqlPtrOutput {
 	return i.ToConnectionProfileMysqlPtrOutputWithContext(context.Background())
 }
@@ -2422,12 +2175,6 @@ func (i *connectionProfileMysqlPtrType) ToConnectionProfileMysqlPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlPtrOutput)
 }
 
-func (i *connectionProfileMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysql] {
-	return pulumix.Output[*ConnectionProfileMysql]{
-		OutputState: i.ToConnectionProfileMysqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlOutput) ElementType() reflect.Type {
@@ -2450,12 +2197,6 @@ func (o ConnectionProfileMysqlOutput) ToConnectionProfileMysqlPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysql) *ConnectionProfileMysql {
 		return &v
 	}).(ConnectionProfileMysqlPtrOutput)
-}
-
-func (o ConnectionProfileMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysql] {
-	return pulumix.Output[ConnectionProfileMysql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2509,12 +2250,6 @@ func (o ConnectionProfileMysqlPtrOutput) ToConnectionProfileMysqlPtrOutput() Con
 
 func (o ConnectionProfileMysqlPtrOutput) ToConnectionProfileMysqlPtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysql] {
-	return pulumix.Output[*ConnectionProfileMysql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlPtrOutput) Elem() ConnectionProfileMysqlOutput {
@@ -2660,12 +2395,6 @@ func (i ConnectionProfileMysqlSslArgs) ToConnectionProfileMysqlSslOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlSslOutput)
 }
 
-func (i ConnectionProfileMysqlSslArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlSsl] {
-	return pulumix.Output[ConnectionProfileMysqlSsl]{
-		OutputState: i.ToConnectionProfileMysqlSslOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlSslArgs) ToConnectionProfileMysqlSslPtrOutput() ConnectionProfileMysqlSslPtrOutput {
 	return i.ToConnectionProfileMysqlSslPtrOutputWithContext(context.Background())
 }
@@ -2707,12 +2436,6 @@ func (i *connectionProfileMysqlSslPtrType) ToConnectionProfileMysqlSslPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlSslPtrOutput)
 }
 
-func (i *connectionProfileMysqlSslPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlSsl] {
-	return pulumix.Output[*ConnectionProfileMysqlSsl]{
-		OutputState: i.ToConnectionProfileMysqlSslPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlSslOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlSslOutput) ElementType() reflect.Type {
@@ -2735,12 +2458,6 @@ func (o ConnectionProfileMysqlSslOutput) ToConnectionProfileMysqlSslPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysqlSsl) *ConnectionProfileMysqlSsl {
 		return &v
 	}).(ConnectionProfileMysqlSslPtrOutput)
-}
-
-func (o ConnectionProfileMysqlSslOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlSsl] {
-	return pulumix.Output[ConnectionProfileMysqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -2782,12 +2499,6 @@ func (o ConnectionProfileMysqlSslPtrOutput) ToConnectionProfileMysqlSslPtrOutput
 
 func (o ConnectionProfileMysqlSslPtrOutput) ToConnectionProfileMysqlSslPtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlSslPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlSslPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlSsl] {
-	return pulumix.Output[*ConnectionProfileMysqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlSslPtrOutput) Elem() ConnectionProfileMysqlSslOutput {
@@ -2918,12 +2629,6 @@ func (i ConnectionProfilePostgresqlArgs) ToConnectionProfilePostgresqlOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlOutput)
 }
 
-func (i ConnectionProfilePostgresqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresql] {
-	return pulumix.Output[ConnectionProfilePostgresql]{
-		OutputState: i.ToConnectionProfilePostgresqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePostgresqlArgs) ToConnectionProfilePostgresqlPtrOutput() ConnectionProfilePostgresqlPtrOutput {
 	return i.ToConnectionProfilePostgresqlPtrOutputWithContext(context.Background())
 }
@@ -2965,12 +2670,6 @@ func (i *connectionProfilePostgresqlPtrType) ToConnectionProfilePostgresqlPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlPtrOutput)
 }
 
-func (i *connectionProfilePostgresqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresql] {
-	return pulumix.Output[*ConnectionProfilePostgresql]{
-		OutputState: i.ToConnectionProfilePostgresqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePostgresqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePostgresqlOutput) ElementType() reflect.Type {
@@ -2993,12 +2692,6 @@ func (o ConnectionProfilePostgresqlOutput) ToConnectionProfilePostgresqlPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresql) *ConnectionProfilePostgresql {
 		return &v
 	}).(ConnectionProfilePostgresqlPtrOutput)
-}
-
-func (o ConnectionProfilePostgresqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresql] {
-	return pulumix.Output[ConnectionProfilePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -3058,12 +2751,6 @@ func (o ConnectionProfilePostgresqlPtrOutput) ToConnectionProfilePostgresqlPtrOu
 
 func (o ConnectionProfilePostgresqlPtrOutput) ToConnectionProfilePostgresqlPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePostgresqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresql] {
-	return pulumix.Output[*ConnectionProfilePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePostgresqlPtrOutput) Elem() ConnectionProfilePostgresqlOutput {
@@ -3220,12 +2907,6 @@ func (i ConnectionProfilePostgresqlSslArgs) ToConnectionProfilePostgresqlSslOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlSslOutput)
 }
 
-func (i ConnectionProfilePostgresqlSslArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[ConnectionProfilePostgresqlSsl]{
-		OutputState: i.ToConnectionProfilePostgresqlSslOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePostgresqlSslArgs) ToConnectionProfilePostgresqlSslPtrOutput() ConnectionProfilePostgresqlSslPtrOutput {
 	return i.ToConnectionProfilePostgresqlSslPtrOutputWithContext(context.Background())
 }
@@ -3267,12 +2948,6 @@ func (i *connectionProfilePostgresqlSslPtrType) ToConnectionProfilePostgresqlSsl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlSslPtrOutput)
 }
 
-func (i *connectionProfilePostgresqlSslPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[*ConnectionProfilePostgresqlSsl]{
-		OutputState: i.ToConnectionProfilePostgresqlSslPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePostgresqlSslOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePostgresqlSslOutput) ElementType() reflect.Type {
@@ -3295,12 +2970,6 @@ func (o ConnectionProfilePostgresqlSslOutput) ToConnectionProfilePostgresqlSslPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlSsl) *ConnectionProfilePostgresqlSsl {
 		return &v
 	}).(ConnectionProfilePostgresqlSslPtrOutput)
-}
-
-func (o ConnectionProfilePostgresqlSslOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[ConnectionProfilePostgresqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -3342,12 +3011,6 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) ToConnectionProfilePostgresqlSs
 
 func (o ConnectionProfilePostgresqlSslPtrOutput) ToConnectionProfilePostgresqlSslPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlSslPtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePostgresqlSslPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[*ConnectionProfilePostgresqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePostgresqlSslPtrOutput) Elem() ConnectionProfilePostgresqlSslOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This represents the rollout state. This is part of the game server
@@ -301,12 +300,6 @@ func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutOutput)
 }
 
-func (i *GameServerDeploymentRollout) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeploymentRollout] {
-	return pulumix.Output[*GameServerDeploymentRollout]{
-		OutputState: i.ToGameServerDeploymentRolloutOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerDeploymentRolloutArrayInput is an input type that accepts GameServerDeploymentRolloutArray and GameServerDeploymentRolloutArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutArrayInput` via:
 //
@@ -330,12 +323,6 @@ func (i GameServerDeploymentRolloutArray) ToGameServerDeploymentRolloutArrayOutp
 
 func (i GameServerDeploymentRolloutArray) ToGameServerDeploymentRolloutArrayOutputWithContext(ctx context.Context) GameServerDeploymentRolloutArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutArrayOutput)
-}
-
-func (i GameServerDeploymentRolloutArray) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerDeploymentRollout] {
-	return pulumix.Output[[]*GameServerDeploymentRollout]{
-		OutputState: i.ToGameServerDeploymentRolloutArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GameServerDeploymentRolloutMapInput is an input type that accepts GameServerDeploymentRolloutMap and GameServerDeploymentRolloutMapOutput values.
@@ -363,12 +350,6 @@ func (i GameServerDeploymentRolloutMap) ToGameServerDeploymentRolloutMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutMapOutput)
 }
 
-func (i GameServerDeploymentRolloutMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerDeploymentRollout] {
-	return pulumix.Output[map[string]*GameServerDeploymentRollout]{
-		OutputState: i.ToGameServerDeploymentRolloutMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerDeploymentRolloutOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutOutput) ElementType() reflect.Type {
@@ -381,12 +362,6 @@ func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutput()
 
 func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutputWithContext(ctx context.Context) GameServerDeploymentRolloutOutput {
 	return o
-}
-
-func (o GameServerDeploymentRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeploymentRollout] {
-	return pulumix.Output[*GameServerDeploymentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field points to the game server config that is
@@ -440,12 +415,6 @@ func (o GameServerDeploymentRolloutArrayOutput) ToGameServerDeploymentRolloutArr
 	return o
 }
 
-func (o GameServerDeploymentRolloutArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerDeploymentRollout] {
-	return pulumix.Output[[]*GameServerDeploymentRollout]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GameServerDeploymentRolloutArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentRolloutOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerDeploymentRollout {
 		return vs[0].([]*GameServerDeploymentRollout)[vs[1].(int)]
@@ -464,12 +433,6 @@ func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOu
 
 func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOutputWithContext(ctx context.Context) GameServerDeploymentRolloutMapOutput {
 	return o
-}
-
-func (o GameServerDeploymentRolloutMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerDeploymentRollout] {
-	return pulumix.Output[map[string]*GameServerDeploymentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerDeploymentRolloutMapOutput) MapIndex(k pulumi.StringInput) GameServerDeploymentRolloutOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mute Findings is a volume management feature in Security Command Center
@@ -272,12 +271,6 @@ func (i *MuteConfig) ToMuteConfigOutputWithContext(ctx context.Context) MuteConf
 	return pulumi.ToOutputWithContext(ctx, i).(MuteConfigOutput)
 }
 
-func (i *MuteConfig) ToOutput(ctx context.Context) pulumix.Output[*MuteConfig] {
-	return pulumix.Output[*MuteConfig]{
-		OutputState: i.ToMuteConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MuteConfigArrayInput is an input type that accepts MuteConfigArray and MuteConfigArrayOutput values.
 // You can construct a concrete instance of `MuteConfigArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i MuteConfigArray) ToMuteConfigArrayOutput() MuteConfigArrayOutput {
 
 func (i MuteConfigArray) ToMuteConfigArrayOutputWithContext(ctx context.Context) MuteConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MuteConfigArrayOutput)
-}
-
-func (i MuteConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*MuteConfig] {
-	return pulumix.Output[[]*MuteConfig]{
-		OutputState: i.ToMuteConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MuteConfigMapInput is an input type that accepts MuteConfigMap and MuteConfigMapOutput values.
@@ -334,12 +321,6 @@ func (i MuteConfigMap) ToMuteConfigMapOutputWithContext(ctx context.Context) Mut
 	return pulumi.ToOutputWithContext(ctx, i).(MuteConfigMapOutput)
 }
 
-func (i MuteConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MuteConfig] {
-	return pulumix.Output[map[string]*MuteConfig]{
-		OutputState: i.ToMuteConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MuteConfigOutput struct{ *pulumi.OutputState }
 
 func (MuteConfigOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o MuteConfigOutput) ToMuteConfigOutput() MuteConfigOutput {
 
 func (o MuteConfigOutput) ToMuteConfigOutputWithContext(ctx context.Context) MuteConfigOutput {
 	return o
-}
-
-func (o MuteConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*MuteConfig] {
-	return pulumix.Output[*MuteConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the mute config was created. This field is set by
@@ -430,12 +405,6 @@ func (o MuteConfigArrayOutput) ToMuteConfigArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MuteConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MuteConfig] {
-	return pulumix.Output[[]*MuteConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MuteConfigArrayOutput) Index(i pulumi.IntInput) MuteConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MuteConfig {
 		return vs[0].([]*MuteConfig)[vs[1].(int)]
@@ -454,12 +423,6 @@ func (o MuteConfigMapOutput) ToMuteConfigMapOutput() MuteConfigMapOutput {
 
 func (o MuteConfigMapOutput) ToMuteConfigMapOutputWithContext(ctx context.Context) MuteConfigMapOutput {
 	return o
-}
-
-func (o MuteConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MuteConfig] {
-	return pulumix.Output[map[string]*MuteConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MuteConfigMapOutput) MapIndex(k pulumi.StringInput) MuteConfigOutput {

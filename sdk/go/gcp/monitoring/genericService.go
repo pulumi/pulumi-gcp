@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Service is a discrete, autonomous, and network-accessible unit,
@@ -289,12 +288,6 @@ func (i *GenericService) ToGenericServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceOutput)
 }
 
-func (i *GenericService) ToOutput(ctx context.Context) pulumix.Output[*GenericService] {
-	return pulumix.Output[*GenericService]{
-		OutputState: i.ToGenericServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GenericServiceArrayInput is an input type that accepts GenericServiceArray and GenericServiceArrayOutput values.
 // You can construct a concrete instance of `GenericServiceArrayInput` via:
 //
@@ -318,12 +311,6 @@ func (i GenericServiceArray) ToGenericServiceArrayOutput() GenericServiceArrayOu
 
 func (i GenericServiceArray) ToGenericServiceArrayOutputWithContext(ctx context.Context) GenericServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceArrayOutput)
-}
-
-func (i GenericServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*GenericService] {
-	return pulumix.Output[[]*GenericService]{
-		OutputState: i.ToGenericServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GenericServiceMapInput is an input type that accepts GenericServiceMap and GenericServiceMapOutput values.
@@ -351,12 +338,6 @@ func (i GenericServiceMap) ToGenericServiceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceMapOutput)
 }
 
-func (i GenericServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GenericService] {
-	return pulumix.Output[map[string]*GenericService]{
-		OutputState: i.ToGenericServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GenericServiceOutput struct{ *pulumi.OutputState }
 
 func (GenericServiceOutput) ElementType() reflect.Type {
@@ -369,12 +350,6 @@ func (o GenericServiceOutput) ToGenericServiceOutput() GenericServiceOutput {
 
 func (o GenericServiceOutput) ToGenericServiceOutputWithContext(ctx context.Context) GenericServiceOutput {
 	return o
-}
-
-func (o GenericServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*GenericService] {
-	return pulumix.Output[*GenericService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A well-known service type, defined by its service type and service labels.
@@ -440,12 +415,6 @@ func (o GenericServiceArrayOutput) ToGenericServiceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GenericServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GenericService] {
-	return pulumix.Output[[]*GenericService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GenericServiceArrayOutput) Index(i pulumi.IntInput) GenericServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GenericService {
 		return vs[0].([]*GenericService)[vs[1].(int)]
@@ -464,12 +433,6 @@ func (o GenericServiceMapOutput) ToGenericServiceMapOutput() GenericServiceMapOu
 
 func (o GenericServiceMapOutput) ToGenericServiceMapOutputWithContext(ctx context.Context) GenericServiceMapOutput {
 	return o
-}
-
-func (o GenericServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GenericService] {
-	return pulumix.Output[map[string]*GenericService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GenericServiceMapOutput) MapIndex(k pulumi.StringInput) GenericServiceOutput {

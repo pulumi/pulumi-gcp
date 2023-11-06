@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
@@ -375,12 +374,6 @@ func (i *RuntimeIamBinding) ToRuntimeIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingOutput)
 }
 
-func (i *RuntimeIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamBinding] {
-	return pulumix.Output[*RuntimeIamBinding]{
-		OutputState: i.ToRuntimeIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RuntimeIamBindingArrayInput is an input type that accepts RuntimeIamBindingArray and RuntimeIamBindingArrayOutput values.
 // You can construct a concrete instance of `RuntimeIamBindingArrayInput` via:
 //
@@ -404,12 +397,6 @@ func (i RuntimeIamBindingArray) ToRuntimeIamBindingArrayOutput() RuntimeIamBindi
 
 func (i RuntimeIamBindingArray) ToRuntimeIamBindingArrayOutputWithContext(ctx context.Context) RuntimeIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingArrayOutput)
-}
-
-func (i RuntimeIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RuntimeIamBinding] {
-	return pulumix.Output[[]*RuntimeIamBinding]{
-		OutputState: i.ToRuntimeIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RuntimeIamBindingMapInput is an input type that accepts RuntimeIamBindingMap and RuntimeIamBindingMapOutput values.
@@ -437,12 +424,6 @@ func (i RuntimeIamBindingMap) ToRuntimeIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingMapOutput)
 }
 
-func (i RuntimeIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuntimeIamBinding] {
-	return pulumix.Output[map[string]*RuntimeIamBinding]{
-		OutputState: i.ToRuntimeIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuntimeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RuntimeIamBindingOutput) ElementType() reflect.Type {
@@ -455,12 +436,6 @@ func (o RuntimeIamBindingOutput) ToRuntimeIamBindingOutput() RuntimeIamBindingOu
 
 func (o RuntimeIamBindingOutput) ToRuntimeIamBindingOutputWithContext(ctx context.Context) RuntimeIamBindingOutput {
 	return o
-}
-
-func (o RuntimeIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamBinding] {
-	return pulumix.Output[*RuntimeIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeIamBindingOutput) Condition() RuntimeIamBindingConditionPtrOutput {
@@ -525,12 +500,6 @@ func (o RuntimeIamBindingArrayOutput) ToRuntimeIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o RuntimeIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RuntimeIamBinding] {
-	return pulumix.Output[[]*RuntimeIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuntimeIamBindingArrayOutput) Index(i pulumi.IntInput) RuntimeIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuntimeIamBinding {
 		return vs[0].([]*RuntimeIamBinding)[vs[1].(int)]
@@ -549,12 +518,6 @@ func (o RuntimeIamBindingMapOutput) ToRuntimeIamBindingMapOutput() RuntimeIamBin
 
 func (o RuntimeIamBindingMapOutput) ToRuntimeIamBindingMapOutputWithContext(ctx context.Context) RuntimeIamBindingMapOutput {
 	return o
-}
-
-func (o RuntimeIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuntimeIamBinding] {
-	return pulumix.Output[map[string]*RuntimeIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeIamBindingMapOutput) MapIndex(k pulumi.StringInput) RuntimeIamBindingOutput {

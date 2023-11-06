@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
@@ -370,12 +369,6 @@ func (i *LakeIamMember) ToLakeIamMemberOutputWithContext(ctx context.Context) La
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberOutput)
 }
 
-func (i *LakeIamMember) ToOutput(ctx context.Context) pulumix.Output[*LakeIamMember] {
-	return pulumix.Output[*LakeIamMember]{
-		OutputState: i.ToLakeIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LakeIamMemberArrayInput is an input type that accepts LakeIamMemberArray and LakeIamMemberArrayOutput values.
 // You can construct a concrete instance of `LakeIamMemberArrayInput` via:
 //
@@ -399,12 +392,6 @@ func (i LakeIamMemberArray) ToLakeIamMemberArrayOutput() LakeIamMemberArrayOutpu
 
 func (i LakeIamMemberArray) ToLakeIamMemberArrayOutputWithContext(ctx context.Context) LakeIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberArrayOutput)
-}
-
-func (i LakeIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*LakeIamMember] {
-	return pulumix.Output[[]*LakeIamMember]{
-		OutputState: i.ToLakeIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LakeIamMemberMapInput is an input type that accepts LakeIamMemberMap and LakeIamMemberMapOutput values.
@@ -432,12 +419,6 @@ func (i LakeIamMemberMap) ToLakeIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberMapOutput)
 }
 
-func (i LakeIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LakeIamMember] {
-	return pulumix.Output[map[string]*LakeIamMember]{
-		OutputState: i.ToLakeIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LakeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (LakeIamMemberOutput) ElementType() reflect.Type {
@@ -450,12 +431,6 @@ func (o LakeIamMemberOutput) ToLakeIamMemberOutput() LakeIamMemberOutput {
 
 func (o LakeIamMemberOutput) ToLakeIamMemberOutputWithContext(ctx context.Context) LakeIamMemberOutput {
 	return o
-}
-
-func (o LakeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeIamMember] {
-	return pulumix.Output[*LakeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LakeIamMemberOutput) Condition() LakeIamMemberConditionPtrOutput {
@@ -519,12 +494,6 @@ func (o LakeIamMemberArrayOutput) ToLakeIamMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o LakeIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LakeIamMember] {
-	return pulumix.Output[[]*LakeIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LakeIamMemberArrayOutput) Index(i pulumi.IntInput) LakeIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LakeIamMember {
 		return vs[0].([]*LakeIamMember)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o LakeIamMemberMapOutput) ToLakeIamMemberMapOutput() LakeIamMemberMapOutpu
 
 func (o LakeIamMemberMapOutput) ToLakeIamMemberMapOutputWithContext(ctx context.Context) LakeIamMemberMapOutput {
 	return o
-}
-
-func (o LakeIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LakeIamMember] {
-	return pulumix.Output[map[string]*LakeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LakeIamMemberMapOutput) MapIndex(k pulumi.StringInput) LakeIamMemberOutput {

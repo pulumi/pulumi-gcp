@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for lake
@@ -115,12 +114,6 @@ func (o LookupLakeIamPolicyResultOutput) ToLookupLakeIamPolicyResultOutput() Loo
 
 func (o LookupLakeIamPolicyResultOutput) ToLookupLakeIamPolicyResultOutputWithContext(ctx context.Context) LookupLakeIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupLakeIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLakeIamPolicyResult] {
-	return pulumix.Output[LookupLakeIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

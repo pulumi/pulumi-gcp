@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve default service account for this project
@@ -107,12 +106,6 @@ func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOu
 
 func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOutputWithContext(ctx context.Context) GetDefaultServiceAccountResultOutput {
 	return o
-}
-
-func (o GetDefaultServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDefaultServiceAccountResult] {
-	return pulumix.Output[GetDefaultServiceAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for the service account.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DNS record set within Google Cloud DNS
@@ -130,12 +129,6 @@ func (o LookupRecordSetResultOutput) ToLookupRecordSetResultOutput() LookupRecor
 
 func (o LookupRecordSetResultOutput) ToLookupRecordSetResultOutputWithContext(ctx context.Context) LookupRecordSetResultOutput {
 	return o
-}
-
-func (o LookupRecordSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRecordSetResult] {
-	return pulumix.Output[LookupRecordSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRecordSetResultOutput) Id() pulumi.StringOutput {

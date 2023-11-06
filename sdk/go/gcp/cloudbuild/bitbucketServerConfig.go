@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // BitbucketServerConfig represents the configuration for a Bitbucket Server.
@@ -366,12 +365,6 @@ func (i *BitbucketServerConfig) ToBitbucketServerConfigOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigOutput)
 }
 
-func (i *BitbucketServerConfig) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfig] {
-	return pulumix.Output[*BitbucketServerConfig]{
-		OutputState: i.ToBitbucketServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BitbucketServerConfigArrayInput is an input type that accepts BitbucketServerConfigArray and BitbucketServerConfigArrayOutput values.
 // You can construct a concrete instance of `BitbucketServerConfigArrayInput` via:
 //
@@ -395,12 +388,6 @@ func (i BitbucketServerConfigArray) ToBitbucketServerConfigArrayOutput() Bitbuck
 
 func (i BitbucketServerConfigArray) ToBitbucketServerConfigArrayOutputWithContext(ctx context.Context) BitbucketServerConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigArrayOutput)
-}
-
-func (i BitbucketServerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*BitbucketServerConfig] {
-	return pulumix.Output[[]*BitbucketServerConfig]{
-		OutputState: i.ToBitbucketServerConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BitbucketServerConfigMapInput is an input type that accepts BitbucketServerConfigMap and BitbucketServerConfigMapOutput values.
@@ -428,12 +415,6 @@ func (i BitbucketServerConfigMap) ToBitbucketServerConfigMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigMapOutput)
 }
 
-func (i BitbucketServerConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BitbucketServerConfig] {
-	return pulumix.Output[map[string]*BitbucketServerConfig]{
-		OutputState: i.ToBitbucketServerConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BitbucketServerConfigOutput struct{ *pulumi.OutputState }
 
 func (BitbucketServerConfigOutput) ElementType() reflect.Type {
@@ -446,12 +427,6 @@ func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutput() BitbucketSe
 
 func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutputWithContext(ctx context.Context) BitbucketServerConfigOutput {
 	return o
-}
-
-func (o BitbucketServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfig] {
-	return pulumix.Output[*BitbucketServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
@@ -538,12 +513,6 @@ func (o BitbucketServerConfigArrayOutput) ToBitbucketServerConfigArrayOutputWith
 	return o
 }
 
-func (o BitbucketServerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BitbucketServerConfig] {
-	return pulumix.Output[[]*BitbucketServerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BitbucketServerConfigArrayOutput) Index(i pulumi.IntInput) BitbucketServerConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BitbucketServerConfig {
 		return vs[0].([]*BitbucketServerConfig)[vs[1].(int)]
@@ -562,12 +531,6 @@ func (o BitbucketServerConfigMapOutput) ToBitbucketServerConfigMapOutput() Bitbu
 
 func (o BitbucketServerConfigMapOutput) ToBitbucketServerConfigMapOutputWithContext(ctx context.Context) BitbucketServerConfigMapOutput {
 	return o
-}
-
-func (o BitbucketServerConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BitbucketServerConfig] {
-	return pulumix.Output[map[string]*BitbucketServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BitbucketServerConfigMapOutput) MapIndex(k pulumi.StringInput) BitbucketServerConfigOutput {

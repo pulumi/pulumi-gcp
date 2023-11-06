@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This message configures which resources and services to monitor for availability.
@@ -567,12 +566,6 @@ func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
 }
 
-func (i *UptimeCheckConfig) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UptimeCheckConfigArrayInput is an input type that accepts UptimeCheckConfigArray and UptimeCheckConfigArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigArrayInput` via:
 //
@@ -596,12 +589,6 @@ func (i UptimeCheckConfigArray) ToUptimeCheckConfigArrayOutput() UptimeCheckConf
 
 func (i UptimeCheckConfigArray) ToUptimeCheckConfigArrayOutputWithContext(ctx context.Context) UptimeCheckConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigArrayOutput)
-}
-
-func (i UptimeCheckConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheckConfig] {
-	return pulumix.Output[[]*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UptimeCheckConfigMapInput is an input type that accepts UptimeCheckConfigMap and UptimeCheckConfigMapOutput values.
@@ -629,12 +616,6 @@ func (i UptimeCheckConfigMap) ToUptimeCheckConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMapOutput)
 }
 
-func (i UptimeCheckConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheckConfig] {
-	return pulumix.Output[map[string]*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UptimeCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigOutput) ElementType() reflect.Type {
@@ -647,12 +628,6 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutput() UptimeCheckConfigOu
 
 func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return o
-}
-
-func (o UptimeCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -749,12 +724,6 @@ func (o UptimeCheckConfigArrayOutput) ToUptimeCheckConfigArrayOutputWithContext(
 	return o
 }
 
-func (o UptimeCheckConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheckConfig] {
-	return pulumix.Output[[]*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UptimeCheckConfigArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UptimeCheckConfig {
 		return vs[0].([]*UptimeCheckConfig)[vs[1].(int)]
@@ -773,12 +742,6 @@ func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutput() UptimeCheckCo
 
 func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutputWithContext(ctx context.Context) UptimeCheckConfigMapOutput {
 	return o
-}
-
-func (o UptimeCheckConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheckConfig] {
-	return pulumix.Output[map[string]*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UptimeCheckConfigMapOutput) MapIndex(k pulumi.StringInput) UptimeCheckConfigOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access a Network Endpoint Group's attributes.
@@ -138,12 +137,6 @@ func (o LookupNetworkEndpointGroupResultOutput) ToLookupNetworkEndpointGroupResu
 
 func (o LookupNetworkEndpointGroupResultOutput) ToLookupNetworkEndpointGroupResultOutputWithContext(ctx context.Context) LookupNetworkEndpointGroupResultOutput {
 	return o
-}
-
-func (o LookupNetworkEndpointGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkEndpointGroupResult] {
-	return pulumix.Output[LookupNetworkEndpointGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The NEG default port.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for appengineservice
@@ -117,12 +116,6 @@ func (o LookupAppEngineServiceIamPolicyResultOutput) ToLookupAppEngineServiceIam
 
 func (o LookupAppEngineServiceIamPolicyResultOutput) ToLookupAppEngineServiceIamPolicyResultOutputWithContext(ctx context.Context) LookupAppEngineServiceIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupAppEngineServiceIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppEngineServiceIamPolicyResult] {
-	return pulumix.Output[LookupAppEngineServiceIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAppEngineServiceIamPolicyResultOutput) AppId() pulumi.StringOutput {

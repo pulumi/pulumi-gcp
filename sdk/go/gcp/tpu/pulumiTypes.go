@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i NodeNetworkEndpointArgs) ToNodeNetworkEndpointOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkEndpointOutput)
 }
 
-func (i NodeNetworkEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[NodeNetworkEndpoint] {
-	return pulumix.Output[NodeNetworkEndpoint]{
-		OutputState: i.ToNodeNetworkEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeNetworkEndpointArrayInput is an input type that accepts NodeNetworkEndpointArray and NodeNetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `NodeNetworkEndpointArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i NodeNetworkEndpointArray) ToNodeNetworkEndpointArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkEndpointArrayOutput)
 }
 
-func (i NodeNetworkEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeNetworkEndpoint] {
-	return pulumix.Output[[]NodeNetworkEndpoint]{
-		OutputState: i.ToNodeNetworkEndpointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeNetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkEndpointOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutput() NodeNetworkEndp
 
 func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutputWithContext(ctx context.Context) NodeNetworkEndpointOutput {
 	return o
-}
-
-func (o NodeNetworkEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[NodeNetworkEndpoint] {
-	return pulumix.Output[NodeNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -136,12 +117,6 @@ func (o NodeNetworkEndpointArrayOutput) ToNodeNetworkEndpointArrayOutput() NodeN
 
 func (o NodeNetworkEndpointArrayOutput) ToNodeNetworkEndpointArrayOutputWithContext(ctx context.Context) NodeNetworkEndpointArrayOutput {
 	return o
-}
-
-func (o NodeNetworkEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeNetworkEndpoint] {
-	return pulumix.Output[[]NodeNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeNetworkEndpointArrayOutput) Index(i pulumi.IntInput) NodeNetworkEndpointOutput {
@@ -181,12 +156,6 @@ func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigOutput() NodeSchedulingC
 
 func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigOutputWithContext(ctx context.Context) NodeSchedulingConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSchedulingConfigOutput)
-}
-
-func (i NodeSchedulingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NodeSchedulingConfig] {
-	return pulumix.Output[NodeSchedulingConfig]{
-		OutputState: i.ToNodeSchedulingConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigPtrOutput() NodeSchedulingConfigPtrOutput {
@@ -230,12 +199,6 @@ func (i *nodeSchedulingConfigPtrType) ToNodeSchedulingConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSchedulingConfigPtrOutput)
 }
 
-func (i *nodeSchedulingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeSchedulingConfig] {
-	return pulumix.Output[*NodeSchedulingConfig]{
-		OutputState: i.ToNodeSchedulingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeSchedulingConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeSchedulingConfigOutput) ElementType() reflect.Type {
@@ -260,12 +223,6 @@ func (o NodeSchedulingConfigOutput) ToNodeSchedulingConfigPtrOutputWithContext(c
 	}).(NodeSchedulingConfigPtrOutput)
 }
 
-func (o NodeSchedulingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NodeSchedulingConfig] {
-	return pulumix.Output[NodeSchedulingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the TPU instance is preemptible.
 func (o NodeSchedulingConfigOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
@@ -283,12 +240,6 @@ func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutput() NodeSch
 
 func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutputWithContext(ctx context.Context) NodeSchedulingConfigPtrOutput {
 	return o
-}
-
-func (o NodeSchedulingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeSchedulingConfig] {
-	return pulumix.Output[*NodeSchedulingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeSchedulingConfigPtrOutput) Elem() NodeSchedulingConfigOutput {

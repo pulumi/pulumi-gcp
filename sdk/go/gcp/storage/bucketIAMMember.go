@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -468,12 +467,6 @@ func (i *BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberOutput)
 }
 
-func (i *BucketIAMMember) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMMember] {
-	return pulumix.Output[*BucketIAMMember]{
-		OutputState: i.ToBucketIAMMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketIAMMemberArrayInput is an input type that accepts BucketIAMMemberArray and BucketIAMMemberArrayOutput values.
 // You can construct a concrete instance of `BucketIAMMemberArrayInput` via:
 //
@@ -497,12 +490,6 @@ func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutput() BucketIAMMemberArra
 
 func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutputWithContext(ctx context.Context) BucketIAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberArrayOutput)
-}
-
-func (i BucketIAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMMember] {
-	return pulumix.Output[[]*BucketIAMMember]{
-		OutputState: i.ToBucketIAMMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BucketIAMMemberMapInput is an input type that accepts BucketIAMMemberMap and BucketIAMMemberMapOutput values.
@@ -530,12 +517,6 @@ func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberMapOutput)
 }
 
-func (i BucketIAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMMember] {
-	return pulumix.Output[map[string]*BucketIAMMember]{
-		OutputState: i.ToBucketIAMMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberOutput) ElementType() reflect.Type {
@@ -548,12 +529,6 @@ func (o BucketIAMMemberOutput) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
 
 func (o BucketIAMMemberOutput) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
 	return o
-}
-
-func (o BucketIAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMMember] {
-	return pulumix.Output[*BucketIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -609,12 +584,6 @@ func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o BucketIAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMMember] {
-	return pulumix.Output[[]*BucketIAMMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BucketIAMMemberArrayOutput) Index(i pulumi.IntInput) BucketIAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMMember {
 		return vs[0].([]*BucketIAMMember)[vs[1].(int)]
@@ -633,12 +602,6 @@ func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutput() BucketIAMMemberMa
 
 func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutputWithContext(ctx context.Context) BucketIAMMemberMapOutput {
 	return o
-}
-
-func (o BucketIAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMMember] {
-	return pulumix.Output[map[string]*BucketIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketIAMMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIAMMemberOutput {

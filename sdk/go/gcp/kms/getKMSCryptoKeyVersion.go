@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
@@ -134,12 +133,6 @@ func (o GetKMSCryptoKeyVersionResultOutput) ToGetKMSCryptoKeyVersionResultOutput
 
 func (o GetKMSCryptoKeyVersionResultOutput) ToGetKMSCryptoKeyVersionResultOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionResultOutput {
 	return o
-}
-
-func (o GetKMSCryptoKeyVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyVersionResult] {
-	return pulumix.Output[GetKMSCryptoKeyVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.

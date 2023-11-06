@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An `Environment Reference` in Apigee.
@@ -184,12 +183,6 @@ func (i *EnvReferences) ToEnvReferencesOutputWithContext(ctx context.Context) En
 	return pulumi.ToOutputWithContext(ctx, i).(EnvReferencesOutput)
 }
 
-func (i *EnvReferences) ToOutput(ctx context.Context) pulumix.Output[*EnvReferences] {
-	return pulumix.Output[*EnvReferences]{
-		OutputState: i.ToEnvReferencesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvReferencesArrayInput is an input type that accepts EnvReferencesArray and EnvReferencesArrayOutput values.
 // You can construct a concrete instance of `EnvReferencesArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i EnvReferencesArray) ToEnvReferencesArrayOutput() EnvReferencesArrayOutpu
 
 func (i EnvReferencesArray) ToEnvReferencesArrayOutputWithContext(ctx context.Context) EnvReferencesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvReferencesArrayOutput)
-}
-
-func (i EnvReferencesArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvReferences] {
-	return pulumix.Output[[]*EnvReferences]{
-		OutputState: i.ToEnvReferencesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvReferencesMapInput is an input type that accepts EnvReferencesMap and EnvReferencesMapOutput values.
@@ -246,12 +233,6 @@ func (i EnvReferencesMap) ToEnvReferencesMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvReferencesMapOutput)
 }
 
-func (i EnvReferencesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvReferences] {
-	return pulumix.Output[map[string]*EnvReferences]{
-		OutputState: i.ToEnvReferencesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvReferencesOutput struct{ *pulumi.OutputState }
 
 func (EnvReferencesOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o EnvReferencesOutput) ToEnvReferencesOutput() EnvReferencesOutput {
 
 func (o EnvReferencesOutput) ToEnvReferencesOutputWithContext(ctx context.Context) EnvReferencesOutput {
 	return o
-}
-
-func (o EnvReferencesOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvReferences] {
-	return pulumix.Output[*EnvReferences]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A human-readable description of this reference.
@@ -314,12 +289,6 @@ func (o EnvReferencesArrayOutput) ToEnvReferencesArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o EnvReferencesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvReferences] {
-	return pulumix.Output[[]*EnvReferences]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvReferencesArrayOutput) Index(i pulumi.IntInput) EnvReferencesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvReferences {
 		return vs[0].([]*EnvReferences)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o EnvReferencesMapOutput) ToEnvReferencesMapOutput() EnvReferencesMapOutpu
 
 func (o EnvReferencesMapOutput) ToEnvReferencesMapOutputWithContext(ctx context.Context) EnvReferencesMapOutput {
 	return o
-}
-
-func (o EnvReferencesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvReferences] {
-	return pulumix.Output[map[string]*EnvReferences]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvReferencesMapOutput) MapIndex(k pulumi.StringInput) EnvReferencesOutput {

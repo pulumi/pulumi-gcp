@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i FieldIndexConfigArgs) ToFieldIndexConfigOutput() FieldIndexConfigOutput 
 
 func (i FieldIndexConfigArgs) ToFieldIndexConfigOutputWithContext(ctx context.Context) FieldIndexConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigOutput)
-}
-
-func (i FieldIndexConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfig] {
-	return pulumix.Output[FieldIndexConfig]{
-		OutputState: i.ToFieldIndexConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FieldIndexConfigArgs) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *fieldIndexConfigPtrType) ToFieldIndexConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigPtrOutput)
 }
 
-func (i *fieldIndexConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FieldIndexConfig] {
-	return pulumix.Output[*FieldIndexConfig]{
-		OutputState: i.ToFieldIndexConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldIndexConfigOutput struct{ *pulumi.OutputState }
 
 func (FieldIndexConfigOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o FieldIndexConfigOutput) ToFieldIndexConfigPtrOutputWithContext(ctx conte
 	}).(FieldIndexConfigPtrOutput)
 }
 
-func (o FieldIndexConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfig] {
-	return pulumix.Output[FieldIndexConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The indexes to configure on the field. Order or array contains must be specified.
 // Structure is documented below.
 func (o FieldIndexConfigOutput) Indexes() FieldIndexConfigIndexArrayOutput {
@@ -150,12 +131,6 @@ func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutput() FieldIndexConfi
 
 func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
 	return o
-}
-
-func (o FieldIndexConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldIndexConfig] {
-	return pulumix.Output[*FieldIndexConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldIndexConfigPtrOutput) Elem() FieldIndexConfigOutput {
@@ -236,12 +211,6 @@ func (i FieldIndexConfigIndexArgs) ToFieldIndexConfigIndexOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexOutput)
 }
 
-func (i FieldIndexConfigIndexArgs) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfigIndex] {
-	return pulumix.Output[FieldIndexConfigIndex]{
-		OutputState: i.ToFieldIndexConfigIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FieldIndexConfigIndexArrayInput is an input type that accepts FieldIndexConfigIndexArray and FieldIndexConfigIndexArrayOutput values.
 // You can construct a concrete instance of `FieldIndexConfigIndexArrayInput` via:
 //
@@ -267,12 +236,6 @@ func (i FieldIndexConfigIndexArray) ToFieldIndexConfigIndexArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexArrayOutput)
 }
 
-func (i FieldIndexConfigIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]FieldIndexConfigIndex] {
-	return pulumix.Output[[]FieldIndexConfigIndex]{
-		OutputState: i.ToFieldIndexConfigIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldIndexConfigIndexOutput struct{ *pulumi.OutputState }
 
 func (FieldIndexConfigIndexOutput) ElementType() reflect.Type {
@@ -285,12 +248,6 @@ func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutput() FieldIndexC
 
 func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutputWithContext(ctx context.Context) FieldIndexConfigIndexOutput {
 	return o
-}
-
-func (o FieldIndexConfigIndexOutput) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfigIndex] {
-	return pulumix.Output[FieldIndexConfigIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -328,12 +285,6 @@ func (o FieldIndexConfigIndexArrayOutput) ToFieldIndexConfigIndexArrayOutput() F
 
 func (o FieldIndexConfigIndexArrayOutput) ToFieldIndexConfigIndexArrayOutputWithContext(ctx context.Context) FieldIndexConfigIndexArrayOutput {
 	return o
-}
-
-func (o FieldIndexConfigIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FieldIndexConfigIndex] {
-	return pulumix.Output[[]FieldIndexConfigIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldIndexConfigIndexArrayOutput) Index(i pulumi.IntInput) FieldIndexConfigIndexOutput {
@@ -377,12 +328,6 @@ func (i FieldTtlConfigArgs) ToFieldTtlConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigOutput)
 }
 
-func (i FieldTtlConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FieldTtlConfig] {
-	return pulumix.Output[FieldTtlConfig]{
-		OutputState: i.ToFieldTtlConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FieldTtlConfigArgs) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
 	return i.ToFieldTtlConfigPtrOutputWithContext(context.Background())
 }
@@ -424,12 +369,6 @@ func (i *fieldTtlConfigPtrType) ToFieldTtlConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigPtrOutput)
 }
 
-func (i *fieldTtlConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FieldTtlConfig] {
-	return pulumix.Output[*FieldTtlConfig]{
-		OutputState: i.ToFieldTtlConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldTtlConfigOutput struct{ *pulumi.OutputState }
 
 func (FieldTtlConfigOutput) ElementType() reflect.Type {
@@ -454,12 +393,6 @@ func (o FieldTtlConfigOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.C
 	}).(FieldTtlConfigPtrOutput)
 }
 
-func (o FieldTtlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FieldTtlConfig] {
-	return pulumix.Output[FieldTtlConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // (Output)
 // The state of the TTL configuration.
 func (o FieldTtlConfigOutput) State() pulumi.StringPtrOutput {
@@ -478,12 +411,6 @@ func (o FieldTtlConfigPtrOutput) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOu
 
 func (o FieldTtlConfigPtrOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.Context) FieldTtlConfigPtrOutput {
 	return o
-}
-
-func (o FieldTtlConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldTtlConfig] {
-	return pulumix.Output[*FieldTtlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldTtlConfigPtrOutput) Elem() FieldTtlConfigOutput {
@@ -560,12 +487,6 @@ func (i IndexFieldArgs) ToIndexFieldOutputWithContext(ctx context.Context) Index
 	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldOutput)
 }
 
-func (i IndexFieldArgs) ToOutput(ctx context.Context) pulumix.Output[IndexField] {
-	return pulumix.Output[IndexField]{
-		OutputState: i.ToIndexFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IndexFieldArrayInput is an input type that accepts IndexFieldArray and IndexFieldArrayOutput values.
 // You can construct a concrete instance of `IndexFieldArrayInput` via:
 //
@@ -591,12 +512,6 @@ func (i IndexFieldArray) ToIndexFieldArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldArrayOutput)
 }
 
-func (i IndexFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]IndexField] {
-	return pulumix.Output[[]IndexField]{
-		OutputState: i.ToIndexFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IndexFieldOutput struct{ *pulumi.OutputState }
 
 func (IndexFieldOutput) ElementType() reflect.Type {
@@ -609,12 +524,6 @@ func (o IndexFieldOutput) ToIndexFieldOutput() IndexFieldOutput {
 
 func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) IndexFieldOutput {
 	return o
-}
-
-func (o IndexFieldOutput) ToOutput(ctx context.Context) pulumix.Output[IndexField] {
-	return pulumix.Output[IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -650,12 +559,6 @@ func (o IndexFieldArrayOutput) ToIndexFieldArrayOutput() IndexFieldArrayOutput {
 
 func (o IndexFieldArrayOutput) ToIndexFieldArrayOutputWithContext(ctx context.Context) IndexFieldArrayOutput {
 	return o
-}
-
-func (o IndexFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IndexField] {
-	return pulumix.Output[[]IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {

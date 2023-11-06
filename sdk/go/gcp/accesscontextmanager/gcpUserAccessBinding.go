@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
@@ -159,12 +158,6 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingOutput)
 }
 
-func (i *GcpUserAccessBinding) ToOutput(ctx context.Context) pulumix.Output[*GcpUserAccessBinding] {
-	return pulumix.Output[*GcpUserAccessBinding]{
-		OutputState: i.ToGcpUserAccessBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GcpUserAccessBindingArrayInput is an input type that accepts GcpUserAccessBindingArray and GcpUserAccessBindingArrayOutput values.
 // You can construct a concrete instance of `GcpUserAccessBindingArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i GcpUserAccessBindingArray) ToGcpUserAccessBindingArrayOutput() GcpUserAc
 
 func (i GcpUserAccessBindingArray) ToGcpUserAccessBindingArrayOutputWithContext(ctx context.Context) GcpUserAccessBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingArrayOutput)
-}
-
-func (i GcpUserAccessBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpUserAccessBinding] {
-	return pulumix.Output[[]*GcpUserAccessBinding]{
-		OutputState: i.ToGcpUserAccessBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GcpUserAccessBindingMapInput is an input type that accepts GcpUserAccessBindingMap and GcpUserAccessBindingMapOutput values.
@@ -221,12 +208,6 @@ func (i GcpUserAccessBindingMap) ToGcpUserAccessBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingMapOutput)
 }
 
-func (i GcpUserAccessBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpUserAccessBinding] {
-	return pulumix.Output[map[string]*GcpUserAccessBinding]{
-		OutputState: i.ToGcpUserAccessBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GcpUserAccessBindingOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutput() GcpUserAccess
 
 func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput {
 	return o
-}
-
-func (o GcpUserAccessBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpUserAccessBinding] {
-	return pulumix.Output[*GcpUserAccessBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
@@ -283,12 +258,6 @@ func (o GcpUserAccessBindingArrayOutput) ToGcpUserAccessBindingArrayOutputWithCo
 	return o
 }
 
-func (o GcpUserAccessBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpUserAccessBinding] {
-	return pulumix.Output[[]*GcpUserAccessBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GcpUserAccessBindingArrayOutput) Index(i pulumi.IntInput) GcpUserAccessBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpUserAccessBinding {
 		return vs[0].([]*GcpUserAccessBinding)[vs[1].(int)]
@@ -307,12 +276,6 @@ func (o GcpUserAccessBindingMapOutput) ToGcpUserAccessBindingMapOutput() GcpUser
 
 func (o GcpUserAccessBindingMapOutput) ToGcpUserAccessBindingMapOutputWithContext(ctx context.Context) GcpUserAccessBindingMapOutput {
 	return o
-}
-
-func (o GcpUserAccessBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpUserAccessBinding] {
-	return pulumix.Output[map[string]*GcpUserAccessBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcpUserAccessBindingMapOutput) MapIndex(k pulumi.StringInput) GcpUserAccessBindingOutput {

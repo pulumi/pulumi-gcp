@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
@@ -357,12 +356,6 @@ func (i *DatascanIamPolicy) ToDatascanIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamPolicyOutput)
 }
 
-func (i *DatascanIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamPolicy] {
-	return pulumix.Output[*DatascanIamPolicy]{
-		OutputState: i.ToDatascanIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatascanIamPolicyArrayInput is an input type that accepts DatascanIamPolicyArray and DatascanIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DatascanIamPolicyArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i DatascanIamPolicyArray) ToDatascanIamPolicyArrayOutput() DatascanIamPoli
 
 func (i DatascanIamPolicyArray) ToDatascanIamPolicyArrayOutputWithContext(ctx context.Context) DatascanIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamPolicyArrayOutput)
-}
-
-func (i DatascanIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamPolicy] {
-	return pulumix.Output[[]*DatascanIamPolicy]{
-		OutputState: i.ToDatascanIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatascanIamPolicyMapInput is an input type that accepts DatascanIamPolicyMap and DatascanIamPolicyMapOutput values.
@@ -419,12 +406,6 @@ func (i DatascanIamPolicyMap) ToDatascanIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamPolicyMapOutput)
 }
 
-func (i DatascanIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamPolicy] {
-	return pulumix.Output[map[string]*DatascanIamPolicy]{
-		OutputState: i.ToDatascanIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatascanIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatascanIamPolicyOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o DatascanIamPolicyOutput) ToDatascanIamPolicyOutput() DatascanIamPolicyOu
 
 func (o DatascanIamPolicyOutput) ToDatascanIamPolicyOutputWithContext(ctx context.Context) DatascanIamPolicyOutput {
 	return o
-}
-
-func (o DatascanIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamPolicy] {
-	return pulumix.Output[*DatascanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatascanIamPolicyOutput) DataScanId() pulumi.StringOutput {
@@ -498,12 +473,6 @@ func (o DatascanIamPolicyArrayOutput) ToDatascanIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o DatascanIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamPolicy] {
-	return pulumix.Output[[]*DatascanIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatascanIamPolicyArrayOutput) Index(i pulumi.IntInput) DatascanIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatascanIamPolicy {
 		return vs[0].([]*DatascanIamPolicy)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o DatascanIamPolicyMapOutput) ToDatascanIamPolicyMapOutput() DatascanIamPo
 
 func (o DatascanIamPolicyMapOutput) ToDatascanIamPolicyMapOutputWithContext(ctx context.Context) DatascanIamPolicyMapOutput {
 	return o
-}
-
-func (o DatascanIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamPolicy] {
-	return pulumix.Output[map[string]*DatascanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatascanIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DatascanIamPolicyOutput {

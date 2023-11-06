@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // BGP information that must be configured into the routing stack to
@@ -733,12 +732,6 @@ func (i *RouterPeer) ToRouterPeerOutputWithContext(ctx context.Context) RouterPe
 	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerOutput)
 }
 
-func (i *RouterPeer) ToOutput(ctx context.Context) pulumix.Output[*RouterPeer] {
-	return pulumix.Output[*RouterPeer]{
-		OutputState: i.ToRouterPeerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouterPeerArrayInput is an input type that accepts RouterPeerArray and RouterPeerArrayOutput values.
 // You can construct a concrete instance of `RouterPeerArrayInput` via:
 //
@@ -762,12 +755,6 @@ func (i RouterPeerArray) ToRouterPeerArrayOutput() RouterPeerArrayOutput {
 
 func (i RouterPeerArray) ToRouterPeerArrayOutputWithContext(ctx context.Context) RouterPeerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerArrayOutput)
-}
-
-func (i RouterPeerArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouterPeer] {
-	return pulumix.Output[[]*RouterPeer]{
-		OutputState: i.ToRouterPeerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterPeerMapInput is an input type that accepts RouterPeerMap and RouterPeerMapOutput values.
@@ -795,12 +782,6 @@ func (i RouterPeerMap) ToRouterPeerMapOutputWithContext(ctx context.Context) Rou
 	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerMapOutput)
 }
 
-func (i RouterPeerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterPeer] {
-	return pulumix.Output[map[string]*RouterPeer]{
-		OutputState: i.ToRouterPeerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterPeerOutput struct{ *pulumi.OutputState }
 
 func (RouterPeerOutput) ElementType() reflect.Type {
@@ -813,12 +794,6 @@ func (o RouterPeerOutput) ToRouterPeerOutput() RouterPeerOutput {
 
 func (o RouterPeerOutput) ToRouterPeerOutputWithContext(ctx context.Context) RouterPeerOutput {
 	return o
-}
-
-func (o RouterPeerOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterPeer] {
-	return pulumix.Output[*RouterPeer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
@@ -966,12 +941,6 @@ func (o RouterPeerArrayOutput) ToRouterPeerArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RouterPeerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouterPeer] {
-	return pulumix.Output[[]*RouterPeer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouterPeerArrayOutput) Index(i pulumi.IntInput) RouterPeerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterPeer {
 		return vs[0].([]*RouterPeer)[vs[1].(int)]
@@ -990,12 +959,6 @@ func (o RouterPeerMapOutput) ToRouterPeerMapOutput() RouterPeerMapOutput {
 
 func (o RouterPeerMapOutput) ToRouterPeerMapOutputWithContext(ctx context.Context) RouterPeerMapOutput {
 	return o
-}
-
-func (o RouterPeerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterPeer] {
-	return pulumix.Output[map[string]*RouterPeer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterPeerMapOutput) MapIndex(k pulumi.StringInput) RouterPeerOutput {

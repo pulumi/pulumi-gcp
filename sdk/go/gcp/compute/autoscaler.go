@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Autoscaler resource.
@@ -450,12 +449,6 @@ func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) Autoscal
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerOutput)
 }
 
-func (i *Autoscaler) ToOutput(ctx context.Context) pulumix.Output[*Autoscaler] {
-	return pulumix.Output[*Autoscaler]{
-		OutputState: i.ToAutoscalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AutoscalerArrayInput is an input type that accepts AutoscalerArray and AutoscalerArrayOutput values.
 // You can construct a concrete instance of `AutoscalerArrayInput` via:
 //
@@ -479,12 +472,6 @@ func (i AutoscalerArray) ToAutoscalerArrayOutput() AutoscalerArrayOutput {
 
 func (i AutoscalerArray) ToAutoscalerArrayOutputWithContext(ctx context.Context) AutoscalerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerArrayOutput)
-}
-
-func (i AutoscalerArray) ToOutput(ctx context.Context) pulumix.Output[[]*Autoscaler] {
-	return pulumix.Output[[]*Autoscaler]{
-		OutputState: i.ToAutoscalerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AutoscalerMapInput is an input type that accepts AutoscalerMap and AutoscalerMapOutput values.
@@ -512,12 +499,6 @@ func (i AutoscalerMap) ToAutoscalerMapOutputWithContext(ctx context.Context) Aut
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerMapOutput)
 }
 
-func (i AutoscalerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Autoscaler] {
-	return pulumix.Output[map[string]*Autoscaler]{
-		OutputState: i.ToAutoscalerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
@@ -530,12 +511,6 @@ func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {
 
 func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
 	return o
-}
-
-func (o AutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[*Autoscaler] {
-	return pulumix.Output[*Autoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration parameters for the autoscaling algorithm. You can
@@ -602,12 +577,6 @@ func (o AutoscalerArrayOutput) ToAutoscalerArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AutoscalerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Autoscaler] {
-	return pulumix.Output[[]*Autoscaler]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AutoscalerArrayOutput) Index(i pulumi.IntInput) AutoscalerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Autoscaler {
 		return vs[0].([]*Autoscaler)[vs[1].(int)]
@@ -626,12 +595,6 @@ func (o AutoscalerMapOutput) ToAutoscalerMapOutput() AutoscalerMapOutput {
 
 func (o AutoscalerMapOutput) ToAutoscalerMapOutputWithContext(ctx context.Context) AutoscalerMapOutput {
 	return o
-}
-
-func (o AutoscalerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Autoscaler] {
-	return pulumix.Output[map[string]*Autoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalerMapOutput) MapIndex(k pulumi.StringInput) AutoscalerOutput {

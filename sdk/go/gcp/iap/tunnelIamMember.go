@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy Tunnel. Each of these resources serves a different use case:
@@ -470,12 +469,6 @@ func (i *TunnelIamMember) ToTunnelIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberOutput)
 }
 
-func (i *TunnelIamMember) ToOutput(ctx context.Context) pulumix.Output[*TunnelIamMember] {
-	return pulumix.Output[*TunnelIamMember]{
-		OutputState: i.ToTunnelIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TunnelIamMemberArrayInput is an input type that accepts TunnelIamMemberArray and TunnelIamMemberArrayOutput values.
 // You can construct a concrete instance of `TunnelIamMemberArrayInput` via:
 //
@@ -499,12 +492,6 @@ func (i TunnelIamMemberArray) ToTunnelIamMemberArrayOutput() TunnelIamMemberArra
 
 func (i TunnelIamMemberArray) ToTunnelIamMemberArrayOutputWithContext(ctx context.Context) TunnelIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberArrayOutput)
-}
-
-func (i TunnelIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelIamMember] {
-	return pulumix.Output[[]*TunnelIamMember]{
-		OutputState: i.ToTunnelIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TunnelIamMemberMapInput is an input type that accepts TunnelIamMemberMap and TunnelIamMemberMapOutput values.
@@ -532,12 +519,6 @@ func (i TunnelIamMemberMap) ToTunnelIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberMapOutput)
 }
 
-func (i TunnelIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelIamMember] {
-	return pulumix.Output[map[string]*TunnelIamMember]{
-		OutputState: i.ToTunnelIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TunnelIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamMemberOutput) ElementType() reflect.Type {
@@ -550,12 +531,6 @@ func (o TunnelIamMemberOutput) ToTunnelIamMemberOutput() TunnelIamMemberOutput {
 
 func (o TunnelIamMemberOutput) ToTunnelIamMemberOutputWithContext(ctx context.Context) TunnelIamMemberOutput {
 	return o
-}
-
-func (o TunnelIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TunnelIamMember] {
-	return pulumix.Output[*TunnelIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -612,12 +587,6 @@ func (o TunnelIamMemberArrayOutput) ToTunnelIamMemberArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o TunnelIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelIamMember] {
-	return pulumix.Output[[]*TunnelIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TunnelIamMemberArrayOutput) Index(i pulumi.IntInput) TunnelIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelIamMember {
 		return vs[0].([]*TunnelIamMember)[vs[1].(int)]
@@ -636,12 +605,6 @@ func (o TunnelIamMemberMapOutput) ToTunnelIamMemberMapOutput() TunnelIamMemberMa
 
 func (o TunnelIamMemberMapOutput) ToTunnelIamMemberMapOutputWithContext(ctx context.Context) TunnelIamMemberMapOutput {
 	return o
-}
-
-func (o TunnelIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelIamMember] {
-	return pulumix.Output[map[string]*TunnelIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TunnelIamMemberMapOutput) MapIndex(k pulumi.StringInput) TunnelIamMemberOutput {

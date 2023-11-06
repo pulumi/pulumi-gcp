@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoOu
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoOutput)
 }
 
-func (i GameServerClusterConnectionInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerClusterConnectionInfo] {
-	return pulumix.Output[GameServerClusterConnectionInfo]{
-		OutputState: i.ToGameServerClusterConnectionInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput {
 	return i.ToGameServerClusterConnectionInfoPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *gameServerClusterConnectionInfoPtrType) ToGameServerClusterConnectionIn
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoPtrOutput)
 }
 
-func (i *gameServerClusterConnectionInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GameServerClusterConnectionInfo] {
-	return pulumix.Output[*GameServerClusterConnectionInfo]{
-		OutputState: i.ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerClusterConnectionInfoOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoOutput) ElementType() reflect.Type {
@@ -132,12 +119,6 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
 		return &v
 	}).(GameServerClusterConnectionInfoPtrOutput)
-}
-
-func (o GameServerClusterConnectionInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerClusterConnectionInfo] {
-	return pulumix.Output[GameServerClusterConnectionInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference of the GKE cluster where the game servers are installed.
@@ -167,12 +148,6 @@ func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionI
 
 func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
 	return o
-}
-
-func (o GameServerClusterConnectionInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerClusterConnectionInfo] {
-	return pulumix.Output[*GameServerClusterConnectionInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnectionInfoOutput {
@@ -259,12 +234,6 @@ func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClus
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
-func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerClusterConnectionInfoGkeClusterReference] {
-	return pulumix.Output[GameServerClusterConnectionInfoGkeClusterReference]{
-		OutputState: i.ToGameServerClusterConnectionInfoGkeClusterReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
 	return i.ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(context.Background())
 }
@@ -306,12 +275,6 @@ func (i *gameServerClusterConnectionInfoGkeClusterReferencePtrType) ToGameServer
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
 }
 
-func (i *gameServerClusterConnectionInfoGkeClusterReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GameServerClusterConnectionInfoGkeClusterReference] {
-	return pulumix.Output[*GameServerClusterConnectionInfoGkeClusterReference]{
-		OutputState: i.ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerClusterConnectionInfoGkeClusterReferenceOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoGkeClusterReferenceOutput) ElementType() reflect.Type {
@@ -334,12 +297,6 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfoGkeClusterReference) *GameServerClusterConnectionInfoGkeClusterReference {
 		return &v
 	}).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerClusterConnectionInfoGkeClusterReference] {
-	return pulumix.Output[GameServerClusterConnectionInfoGkeClusterReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The full or partial name of a GKE cluster, using one of the following
@@ -368,12 +325,6 @@ func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToGameServe
 
 func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
 	return o
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerClusterConnectionInfoGkeClusterReference] {
-	return pulumix.Output[*GameServerClusterConnectionInfoGkeClusterReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Elem() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
@@ -458,12 +409,6 @@ func (i GameServerConfigFleetConfigArgs) ToGameServerConfigFleetConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigFleetConfigOutput)
 }
 
-func (i GameServerConfigFleetConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigFleetConfig] {
-	return pulumix.Output[GameServerConfigFleetConfig]{
-		OutputState: i.ToGameServerConfigFleetConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerConfigFleetConfigArrayInput is an input type that accepts GameServerConfigFleetConfigArray and GameServerConfigFleetConfigArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigFleetConfigArrayInput` via:
 //
@@ -489,12 +434,6 @@ func (i GameServerConfigFleetConfigArray) ToGameServerConfigFleetConfigArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigFleetConfigArrayOutput)
 }
 
-func (i GameServerConfigFleetConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigFleetConfig] {
-	return pulumix.Output[[]GameServerConfigFleetConfig]{
-		OutputState: i.ToGameServerConfigFleetConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerConfigFleetConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigFleetConfigOutput) ElementType() reflect.Type {
@@ -507,12 +446,6 @@ func (o GameServerConfigFleetConfigOutput) ToGameServerConfigFleetConfigOutput()
 
 func (o GameServerConfigFleetConfigOutput) ToGameServerConfigFleetConfigOutputWithContext(ctx context.Context) GameServerConfigFleetConfigOutput {
 	return o
-}
-
-func (o GameServerConfigFleetConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigFleetConfig] {
-	return pulumix.Output[GameServerConfigFleetConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fleet spec, which is sent to Agones to configure fleet.
@@ -545,12 +478,6 @@ func (o GameServerConfigFleetConfigArrayOutput) ToGameServerConfigFleetConfigArr
 
 func (o GameServerConfigFleetConfigArrayOutput) ToGameServerConfigFleetConfigArrayOutputWithContext(ctx context.Context) GameServerConfigFleetConfigArrayOutput {
 	return o
-}
-
-func (o GameServerConfigFleetConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigFleetConfig] {
-	return pulumix.Output[[]GameServerConfigFleetConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerConfigFleetConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigFleetConfigOutput {
@@ -616,12 +543,6 @@ func (i GameServerConfigScalingConfigArgs) ToGameServerConfigScalingConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigOutput)
 }
 
-func (i GameServerConfigScalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfig] {
-	return pulumix.Output[GameServerConfigScalingConfig]{
-		OutputState: i.ToGameServerConfigScalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerConfigScalingConfigArrayInput is an input type that accepts GameServerConfigScalingConfigArray and GameServerConfigScalingConfigArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigArrayInput` via:
 //
@@ -647,12 +568,6 @@ func (i GameServerConfigScalingConfigArray) ToGameServerConfigScalingConfigArray
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigArrayOutput)
 }
 
-func (i GameServerConfigScalingConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfig] {
-	return pulumix.Output[[]GameServerConfigScalingConfig]{
-		OutputState: i.ToGameServerConfigScalingConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerConfigScalingConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigOutput) ElementType() reflect.Type {
@@ -665,12 +580,6 @@ func (o GameServerConfigScalingConfigOutput) ToGameServerConfigScalingConfigOutp
 
 func (o GameServerConfigScalingConfigOutput) ToGameServerConfigScalingConfigOutputWithContext(ctx context.Context) GameServerConfigScalingConfigOutput {
 	return o
-}
-
-func (o GameServerConfigScalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfig] {
-	return pulumix.Output[GameServerConfigScalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fleet autoscaler spec, which is sent to Agones.
@@ -711,12 +620,6 @@ func (o GameServerConfigScalingConfigArrayOutput) ToGameServerConfigScalingConfi
 
 func (o GameServerConfigScalingConfigArrayOutput) ToGameServerConfigScalingConfigArrayOutputWithContext(ctx context.Context) GameServerConfigScalingConfigArrayOutput {
 	return o
-}
-
-func (o GameServerConfigScalingConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfig] {
-	return pulumix.Output[[]GameServerConfigScalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerConfigScalingConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigOutput {
@@ -782,12 +685,6 @@ func (i GameServerConfigScalingConfigScheduleArgs) ToGameServerConfigScalingConf
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigScheduleOutput)
 }
 
-func (i GameServerConfigScalingConfigScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfigSchedule] {
-	return pulumix.Output[GameServerConfigScalingConfigSchedule]{
-		OutputState: i.ToGameServerConfigScalingConfigScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerConfigScalingConfigScheduleArrayInput is an input type that accepts GameServerConfigScalingConfigScheduleArray and GameServerConfigScalingConfigScheduleArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigScheduleArrayInput` via:
 //
@@ -813,12 +710,6 @@ func (i GameServerConfigScalingConfigScheduleArray) ToGameServerConfigScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigScheduleArrayOutput)
 }
 
-func (i GameServerConfigScalingConfigScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfigSchedule] {
-	return pulumix.Output[[]GameServerConfigScalingConfigSchedule]{
-		OutputState: i.ToGameServerConfigScalingConfigScheduleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerConfigScalingConfigScheduleOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigScheduleOutput) ElementType() reflect.Type {
@@ -831,12 +722,6 @@ func (o GameServerConfigScalingConfigScheduleOutput) ToGameServerConfigScalingCo
 
 func (o GameServerConfigScalingConfigScheduleOutput) ToGameServerConfigScalingConfigScheduleOutputWithContext(ctx context.Context) GameServerConfigScalingConfigScheduleOutput {
 	return o
-}
-
-func (o GameServerConfigScalingConfigScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfigSchedule] {
-	return pulumix.Output[GameServerConfigScalingConfigSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The duration for the cron job event. The duration of the event is effective
@@ -879,12 +764,6 @@ func (o GameServerConfigScalingConfigScheduleArrayOutput) ToGameServerConfigScal
 	return o
 }
 
-func (o GameServerConfigScalingConfigScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfigSchedule] {
-	return pulumix.Output[[]GameServerConfigScalingConfigSchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GameServerConfigScalingConfigScheduleArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigScheduleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfigScalingConfigSchedule {
 		return vs[0].([]GameServerConfigScalingConfigSchedule)[vs[1].(int)]
@@ -924,12 +803,6 @@ func (i GameServerConfigScalingConfigSelectorArgs) ToGameServerConfigScalingConf
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigSelectorOutput)
 }
 
-func (i GameServerConfigScalingConfigSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfigSelector] {
-	return pulumix.Output[GameServerConfigScalingConfigSelector]{
-		OutputState: i.ToGameServerConfigScalingConfigSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerConfigScalingConfigSelectorArrayInput is an input type that accepts GameServerConfigScalingConfigSelectorArray and GameServerConfigScalingConfigSelectorArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigSelectorArrayInput` via:
 //
@@ -955,12 +828,6 @@ func (i GameServerConfigScalingConfigSelectorArray) ToGameServerConfigScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigSelectorArrayOutput)
 }
 
-func (i GameServerConfigScalingConfigSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfigSelector] {
-	return pulumix.Output[[]GameServerConfigScalingConfigSelector]{
-		OutputState: i.ToGameServerConfigScalingConfigSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerConfigScalingConfigSelectorOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigSelectorOutput) ElementType() reflect.Type {
@@ -973,12 +840,6 @@ func (o GameServerConfigScalingConfigSelectorOutput) ToGameServerConfigScalingCo
 
 func (o GameServerConfigScalingConfigSelectorOutput) ToGameServerConfigScalingConfigSelectorOutputWithContext(ctx context.Context) GameServerConfigScalingConfigSelectorOutput {
 	return o
-}
-
-func (o GameServerConfigScalingConfigSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerConfigScalingConfigSelector] {
-	return pulumix.Output[GameServerConfigScalingConfigSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of labels to group by.
@@ -998,12 +859,6 @@ func (o GameServerConfigScalingConfigSelectorArrayOutput) ToGameServerConfigScal
 
 func (o GameServerConfigScalingConfigSelectorArrayOutput) ToGameServerConfigScalingConfigSelectorArrayOutputWithContext(ctx context.Context) GameServerConfigScalingConfigSelectorArrayOutput {
 	return o
-}
-
-func (o GameServerConfigScalingConfigSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GameServerConfigScalingConfigSelector] {
-	return pulumix.Output[[]GameServerConfigScalingConfigSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerConfigScalingConfigSelectorArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigSelectorOutput {
@@ -1051,12 +906,6 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGameServerDep
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideOutput)
 }
 
-func (i GameServerDeploymentRolloutGameServerConfigOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: i.ToGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GameServerDeploymentRolloutGameServerConfigOverrideArrayInput is an input type that accepts GameServerDeploymentRolloutGameServerConfigOverrideArray and GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutGameServerConfigOverrideArrayInput` via:
 //
@@ -1082,12 +931,6 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideArray) ToGameServerDe
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
 }
 
-func (i GameServerDeploymentRolloutGameServerConfigOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]GameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[[]GameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: i.ToGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerDeploymentRolloutGameServerConfigOverrideOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideOutput) ElementType() reflect.Type {
@@ -1100,12 +943,6 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGameServerD
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx context.Context) GameServerDeploymentRolloutGameServerConfigOverrideOutput {
 	return o
-}
-
-func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Version of the configuration.
@@ -1133,12 +970,6 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGameSe
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx context.Context) GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
 	return o
-}
-
-func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[[]GameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentRolloutGameServerConfigOverrideOutput {
@@ -1178,12 +1009,6 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) T
 
 func (i GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx context.Context) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
-}
-
-func (i GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: i.ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput {
@@ -1227,12 +1052,6 @@ func (i *gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
 
-func (i *gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[*GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: i.ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ElementType() reflect.Type {
@@ -1257,12 +1076,6 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
 
-func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of realms to match against.
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) Realms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
@@ -1280,12 +1093,6 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutp
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput {
 	return o
-}
-
-func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[*GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) Elem() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
@@ -1345,12 +1152,6 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGetGameSer
 	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideOutput)
 }
 
-func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideArray and GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput` via:
 //
@@ -1376,12 +1177,6 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArray) ToGetGameSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
 }
 
-func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGameServerDeploymentRolloutGameServerConfigOverrideOutput struct{ *pulumi.OutputState }
 
 func (GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ElementType() reflect.Type {
@@ -1394,12 +1189,6 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGetGameS
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
 	return o
-}
-
-func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Version of the configuration.
@@ -1426,12 +1215,6 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGet
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
 	return o
-}
-
-func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverride] {
-	return pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) Index(i pulumi.IntInput) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
@@ -1473,12 +1256,6 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs
 	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 }
 
-func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray and GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput` via:
 //
@@ -1504,12 +1281,6 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArra
 	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput)
 }
 
-func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput struct{ *pulumi.OutputState }
 
 func (GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ElementType() reflect.Type {
@@ -1522,12 +1293,6 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutp
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
 	return o
-}
-
-func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of realms to match against.
@@ -1547,12 +1312,6 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArra
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
 	return o
-}
-
-func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector] {
-	return pulumix.Output[[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) Index(i pulumi.IntInput) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {

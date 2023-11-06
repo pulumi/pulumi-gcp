@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides available node types for Compute Engine sole-tenant nodes in a zone
@@ -119,12 +118,6 @@ func (o GetNodeTypesResultOutput) ToGetNodeTypesResultOutput() GetNodeTypesResul
 
 func (o GetNodeTypesResultOutput) ToGetNodeTypesResultOutputWithContext(ctx context.Context) GetNodeTypesResultOutput {
 	return o
-}
-
-func (o GetNodeTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeTypesResult] {
-	return pulumix.Output[GetNodeTypesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

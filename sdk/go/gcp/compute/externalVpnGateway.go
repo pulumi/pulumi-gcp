@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a VPN gateway managed outside of GCP.
@@ -384,12 +383,6 @@ func (i *ExternalVpnGateway) ToExternalVpnGatewayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayOutput)
 }
 
-func (i *ExternalVpnGateway) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGateway] {
-	return pulumix.Output[*ExternalVpnGateway]{
-		OutputState: i.ToExternalVpnGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExternalVpnGatewayArrayInput is an input type that accepts ExternalVpnGatewayArray and ExternalVpnGatewayArrayOutput values.
 // You can construct a concrete instance of `ExternalVpnGatewayArrayInput` via:
 //
@@ -413,12 +406,6 @@ func (i ExternalVpnGatewayArray) ToExternalVpnGatewayArrayOutput() ExternalVpnGa
 
 func (i ExternalVpnGatewayArray) ToExternalVpnGatewayArrayOutputWithContext(ctx context.Context) ExternalVpnGatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayArrayOutput)
-}
-
-func (i ExternalVpnGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalVpnGateway] {
-	return pulumix.Output[[]*ExternalVpnGateway]{
-		OutputState: i.ToExternalVpnGatewayArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExternalVpnGatewayMapInput is an input type that accepts ExternalVpnGatewayMap and ExternalVpnGatewayMapOutput values.
@@ -446,12 +433,6 @@ func (i ExternalVpnGatewayMap) ToExternalVpnGatewayMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayMapOutput)
 }
 
-func (i ExternalVpnGatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalVpnGateway] {
-	return pulumix.Output[map[string]*ExternalVpnGateway]{
-		OutputState: i.ToExternalVpnGatewayMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayOutput) ElementType() reflect.Type {
@@ -464,12 +445,6 @@ func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutput() ExternalVpnGatewa
 
 func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutputWithContext(ctx context.Context) ExternalVpnGatewayOutput {
 	return o
-}
-
-func (o ExternalVpnGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGateway] {
-	return pulumix.Output[*ExternalVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of this resource.
@@ -538,12 +513,6 @@ func (o ExternalVpnGatewayArrayOutput) ToExternalVpnGatewayArrayOutputWithContex
 	return o
 }
 
-func (o ExternalVpnGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalVpnGateway] {
-	return pulumix.Output[[]*ExternalVpnGateway]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExternalVpnGatewayArrayOutput) Index(i pulumi.IntInput) ExternalVpnGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalVpnGateway {
 		return vs[0].([]*ExternalVpnGateway)[vs[1].(int)]
@@ -562,12 +531,6 @@ func (o ExternalVpnGatewayMapOutput) ToExternalVpnGatewayMapOutput() ExternalVpn
 
 func (o ExternalVpnGatewayMapOutput) ToExternalVpnGatewayMapOutputWithContext(ctx context.Context) ExternalVpnGatewayMapOutput {
 	return o
-}
-
-func (o ExternalVpnGatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalVpnGateway] {
-	return pulumix.Output[map[string]*ExternalVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) ExternalVpnGatewayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the rollout state.
@@ -115,12 +114,6 @@ func (o LookupGameServerDeploymentRolloutResultOutput) ToLookupGameServerDeploym
 
 func (o LookupGameServerDeploymentRolloutResultOutput) ToLookupGameServerDeploymentRolloutResultOutputWithContext(ctx context.Context) LookupGameServerDeploymentRolloutResultOutput {
 	return o
-}
-
-func (o LookupGameServerDeploymentRolloutResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGameServerDeploymentRolloutResult] {
-	return pulumix.Output[LookupGameServerDeploymentRolloutResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field points to the game server config that is

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access IP ranges in your firewall rules.
@@ -101,12 +100,6 @@ func (o GetLBIPRangesResultOutput) ToGetLBIPRangesResultOutput() GetLBIPRangesRe
 
 func (o GetLBIPRangesResultOutput) ToGetLBIPRangesResultOutputWithContext(ctx context.Context) GetLBIPRangesResultOutput {
 	return o
-}
-
-func (o GetLBIPRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLBIPRangesResult] {
-	return pulumix.Output[GetLBIPRangesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used

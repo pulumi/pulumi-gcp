@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Tags TagValue. Each of these resources serves a different use case:
@@ -326,12 +325,6 @@ func (i *TagValueIamPolicy) ToTagValueIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamPolicyOutput)
 }
 
-func (i *TagValueIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamPolicy] {
-	return pulumix.Output[*TagValueIamPolicy]{
-		OutputState: i.ToTagValueIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagValueIamPolicyArrayInput is an input type that accepts TagValueIamPolicyArray and TagValueIamPolicyArrayOutput values.
 // You can construct a concrete instance of `TagValueIamPolicyArrayInput` via:
 //
@@ -355,12 +348,6 @@ func (i TagValueIamPolicyArray) ToTagValueIamPolicyArrayOutput() TagValueIamPoli
 
 func (i TagValueIamPolicyArray) ToTagValueIamPolicyArrayOutputWithContext(ctx context.Context) TagValueIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamPolicyArrayOutput)
-}
-
-func (i TagValueIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagValueIamPolicy] {
-	return pulumix.Output[[]*TagValueIamPolicy]{
-		OutputState: i.ToTagValueIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagValueIamPolicyMapInput is an input type that accepts TagValueIamPolicyMap and TagValueIamPolicyMapOutput values.
@@ -388,12 +375,6 @@ func (i TagValueIamPolicyMap) ToTagValueIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamPolicyMapOutput)
 }
 
-func (i TagValueIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagValueIamPolicy] {
-	return pulumix.Output[map[string]*TagValueIamPolicy]{
-		OutputState: i.ToTagValueIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagValueIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamPolicyOutput) ElementType() reflect.Type {
@@ -406,12 +387,6 @@ func (o TagValueIamPolicyOutput) ToTagValueIamPolicyOutput() TagValueIamPolicyOu
 
 func (o TagValueIamPolicyOutput) ToTagValueIamPolicyOutputWithContext(ctx context.Context) TagValueIamPolicyOutput {
 	return o
-}
-
-func (o TagValueIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamPolicy] {
-	return pulumix.Output[*TagValueIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -456,12 +431,6 @@ func (o TagValueIamPolicyArrayOutput) ToTagValueIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o TagValueIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagValueIamPolicy] {
-	return pulumix.Output[[]*TagValueIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagValueIamPolicyArrayOutput) Index(i pulumi.IntInput) TagValueIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagValueIamPolicy {
 		return vs[0].([]*TagValueIamPolicy)[vs[1].(int)]
@@ -480,12 +449,6 @@ func (o TagValueIamPolicyMapOutput) ToTagValueIamPolicyMapOutput() TagValueIamPo
 
 func (o TagValueIamPolicyMapOutput) ToTagValueIamPolicyMapOutputWithContext(ctx context.Context) TagValueIamPolicyMapOutput {
 	return o
-}
-
-func (o TagValueIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagValueIamPolicy] {
-	return pulumix.Output[map[string]*TagValueIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagValueIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TagValueIamPolicyOutput {

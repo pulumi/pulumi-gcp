@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Google Compute Engine Regional Instance Group Manager API creates and manages pools
@@ -632,12 +631,6 @@ func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerOutput)
 }
 
-func (i *RegionInstanceGroupManager) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManager] {
-	return pulumix.Output[*RegionInstanceGroupManager]{
-		OutputState: i.ToRegionInstanceGroupManagerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionInstanceGroupManagerArrayInput is an input type that accepts RegionInstanceGroupManagerArray and RegionInstanceGroupManagerArrayOutput values.
 // You can construct a concrete instance of `RegionInstanceGroupManagerArrayInput` via:
 //
@@ -661,12 +654,6 @@ func (i RegionInstanceGroupManagerArray) ToRegionInstanceGroupManagerArrayOutput
 
 func (i RegionInstanceGroupManagerArray) ToRegionInstanceGroupManagerArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerArrayOutput)
-}
-
-func (i RegionInstanceGroupManagerArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceGroupManager] {
-	return pulumix.Output[[]*RegionInstanceGroupManager]{
-		OutputState: i.ToRegionInstanceGroupManagerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionInstanceGroupManagerMapInput is an input type that accepts RegionInstanceGroupManagerMap and RegionInstanceGroupManagerMapOutput values.
@@ -694,12 +681,6 @@ func (i RegionInstanceGroupManagerMap) ToRegionInstanceGroupManagerMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerMapOutput)
 }
 
-func (i RegionInstanceGroupManagerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceGroupManager] {
-	return pulumix.Output[map[string]*RegionInstanceGroupManager]{
-		OutputState: i.ToRegionInstanceGroupManagerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionInstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceGroupManagerOutput) ElementType() reflect.Type {
@@ -712,12 +693,6 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutput() R
 
 func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput {
 	return o
-}
-
-func (o RegionInstanceGroupManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManager] {
-	return pulumix.Output[*RegionInstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 // )
@@ -910,12 +885,6 @@ func (o RegionInstanceGroupManagerArrayOutput) ToRegionInstanceGroupManagerArray
 	return o
 }
 
-func (o RegionInstanceGroupManagerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceGroupManager] {
-	return pulumix.Output[[]*RegionInstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionInstanceGroupManagerArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionInstanceGroupManager {
 		return vs[0].([]*RegionInstanceGroupManager)[vs[1].(int)]
@@ -934,12 +903,6 @@ func (o RegionInstanceGroupManagerMapOutput) ToRegionInstanceGroupManagerMapOutp
 
 func (o RegionInstanceGroupManagerMapOutput) ToRegionInstanceGroupManagerMapOutputWithContext(ctx context.Context) RegionInstanceGroupManagerMapOutput {
 	return o
-}
-
-func (o RegionInstanceGroupManagerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceGroupManager] {
-	return pulumix.Output[map[string]*RegionInstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionInstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) RegionInstanceGroupManagerOutput {

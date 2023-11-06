@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i PipelineScheduleInfoArgs) ToPipelineScheduleInfoOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleInfoOutput)
 }
 
-func (i PipelineScheduleInfoArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineScheduleInfo] {
-	return pulumix.Output[PipelineScheduleInfo]{
-		OutputState: i.ToPipelineScheduleInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineScheduleInfoArgs) ToPipelineScheduleInfoPtrOutput() PipelineScheduleInfoPtrOutput {
 	return i.ToPipelineScheduleInfoPtrOutputWithContext(context.Background())
 }
@@ -106,12 +99,6 @@ func (i *pipelineScheduleInfoPtrType) ToPipelineScheduleInfoPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleInfoPtrOutput)
 }
 
-func (i *pipelineScheduleInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineScheduleInfo] {
-	return pulumix.Output[*PipelineScheduleInfo]{
-		OutputState: i.ToPipelineScheduleInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineScheduleInfoOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleInfoOutput) ElementType() reflect.Type {
@@ -134,12 +121,6 @@ func (o PipelineScheduleInfoOutput) ToPipelineScheduleInfoPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineScheduleInfo) *PipelineScheduleInfo {
 		return &v
 	}).(PipelineScheduleInfoPtrOutput)
-}
-
-func (o PipelineScheduleInfoOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineScheduleInfo] {
-	return pulumix.Output[PipelineScheduleInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -171,12 +152,6 @@ func (o PipelineScheduleInfoPtrOutput) ToPipelineScheduleInfoPtrOutput() Pipelin
 
 func (o PipelineScheduleInfoPtrOutput) ToPipelineScheduleInfoPtrOutputWithContext(ctx context.Context) PipelineScheduleInfoPtrOutput {
 	return o
-}
-
-func (o PipelineScheduleInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineScheduleInfo] {
-	return pulumix.Output[*PipelineScheduleInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineScheduleInfoPtrOutput) Elem() PipelineScheduleInfoOutput {
@@ -266,12 +241,6 @@ func (i PipelineWorkloadArgs) ToPipelineWorkloadOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadOutput)
 }
 
-func (i PipelineWorkloadArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkload] {
-	return pulumix.Output[PipelineWorkload]{
-		OutputState: i.ToPipelineWorkloadOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadArgs) ToPipelineWorkloadPtrOutput() PipelineWorkloadPtrOutput {
 	return i.ToPipelineWorkloadPtrOutputWithContext(context.Background())
 }
@@ -313,12 +282,6 @@ func (i *pipelineWorkloadPtrType) ToPipelineWorkloadPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadPtrOutput)
 }
 
-func (i *pipelineWorkloadPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkload] {
-	return pulumix.Output[*PipelineWorkload]{
-		OutputState: i.ToPipelineWorkloadPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadOutput) ElementType() reflect.Type {
@@ -341,12 +304,6 @@ func (o PipelineWorkloadOutput) ToPipelineWorkloadPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkload) *PipelineWorkload {
 		return &v
 	}).(PipelineWorkloadPtrOutput)
-}
-
-func (o PipelineWorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkload] {
-	return pulumix.Output[PipelineWorkload]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
@@ -379,12 +336,6 @@ func (o PipelineWorkloadPtrOutput) ToPipelineWorkloadPtrOutput() PipelineWorkloa
 
 func (o PipelineWorkloadPtrOutput) ToPipelineWorkloadPtrOutputWithContext(ctx context.Context) PipelineWorkloadPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkload] {
-	return pulumix.Output[*PipelineWorkload]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadPtrOutput) Elem() PipelineWorkloadOutput {
@@ -470,12 +421,6 @@ func (i PipelineWorkloadDataflowFlexTemplateRequestArgs) ToPipelineWorkloadDataf
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestOutput)
 }
 
-func (i PipelineWorkloadDataflowFlexTemplateRequestArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequest] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequest]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowFlexTemplateRequestArgs) ToPipelineWorkloadDataflowFlexTemplateRequestPtrOutput() PipelineWorkloadDataflowFlexTemplateRequestPtrOutput {
 	return i.ToPipelineWorkloadDataflowFlexTemplateRequestPtrOutputWithContext(context.Background())
 }
@@ -517,12 +462,6 @@ func (i *pipelineWorkloadDataflowFlexTemplateRequestPtrType) ToPipelineWorkloadD
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowFlexTemplateRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequest] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequest]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowFlexTemplateRequestOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowFlexTemplateRequestOutput) ElementType() reflect.Type {
@@ -545,12 +484,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestOutput) ToPipelineWorkloadDat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowFlexTemplateRequest) *PipelineWorkloadDataflowFlexTemplateRequest {
 		return &v
 	}).(PipelineWorkloadDataflowFlexTemplateRequestPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequest] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Parameter to launch a job from a Flex Template.
@@ -589,12 +522,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestPtrOutput) ToPipelineWorkload
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestPtrOutput) ToPipelineWorkloadDataflowFlexTemplateRequestPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowFlexTemplateRequestPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequest] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestPtrOutput) Elem() PipelineWorkloadDataflowFlexTemplateRequestOutput {
@@ -716,12 +643,6 @@ func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs) ToPipeli
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput)
 }
 
-func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs) ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput() PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput {
 	return i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutputWithContext(context.Background())
 }
@@ -763,12 +684,6 @@ func (i *pipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrType) ToPi
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput) ElementType() reflect.Type {
@@ -791,12 +706,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput) ToPipe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter) *PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
 		return &v
 	}).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
@@ -861,12 +770,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput) ToP
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput) ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterPtrOutput) Elem() PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterOutput {
@@ -1059,12 +962,6 @@ func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArg
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutput)
 }
 
-func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs) ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput() PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput {
 	return i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -1106,12 +1003,6 @@ func (i *pipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPt
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment]{
-		OutputState: i.ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutput) ElementType() reflect.Type {
@@ -1134,12 +1025,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment) *PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment {
 		return &v
 	}).(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment] {
-	return pulumix.Output[PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional experiment flags for the job.
@@ -1270,12 +1155,6 @@ func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtr
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput) ToPipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment] {
-	return pulumix.Output[*PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentPtrOutput) Elem() PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentOutput {
@@ -1507,12 +1386,6 @@ func (i PipelineWorkloadDataflowLaunchTemplateRequestArgs) ToPipelineWorkloadDat
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestOutput)
 }
 
-func (i PipelineWorkloadDataflowLaunchTemplateRequestArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequest] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequest]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowLaunchTemplateRequestArgs) ToPipelineWorkloadDataflowLaunchTemplateRequestPtrOutput() PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput {
 	return i.ToPipelineWorkloadDataflowLaunchTemplateRequestPtrOutputWithContext(context.Background())
 }
@@ -1554,12 +1427,6 @@ func (i *pipelineWorkloadDataflowLaunchTemplateRequestPtrType) ToPipelineWorkloa
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowLaunchTemplateRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequest] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequest]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowLaunchTemplateRequestOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowLaunchTemplateRequestOutput) ElementType() reflect.Type {
@@ -1582,12 +1449,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestOutput) ToPipelineWorkloadD
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowLaunchTemplateRequest) *PipelineWorkloadDataflowLaunchTemplateRequest {
 		return &v
 	}).(PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequest] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
@@ -1631,12 +1492,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) ToPipelineWorklo
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) ToPipelineWorkloadDataflowLaunchTemplateRequestPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequest] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) Elem() PipelineWorkloadDataflowLaunchTemplateRequestOutput {
@@ -1758,12 +1613,6 @@ func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs) ToPip
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput)
 }
 
-func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs) ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput() PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput {
 	return i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutputWithContext(context.Background())
 }
@@ -1805,12 +1654,6 @@ func (i *pipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput) ElementType() reflect.Type {
@@ -1833,12 +1676,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput) ToP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters) *PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters {
 		return &v
 	}).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The runtime environment for the job.
@@ -1888,12 +1725,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput) 
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput) ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrOutput) Elem() PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersOutput {
@@ -2061,12 +1892,6 @@ func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutput)
 }
 
-func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs) ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput() PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput {
 	return i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -2108,12 +1933,6 @@ func (i *pipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmen
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput)
 }
 
-func (i *pipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment]{
-		OutputState: i.ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutput) ElementType() reflect.Type {
@@ -2136,12 +1955,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment) *PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment {
 		return &v
 	}).(PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput)
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment] {
-	return pulumix.Output[PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional experiment flags for the job.
@@ -2272,12 +2085,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput) ToPipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutputWithContext(ctx context.Context) PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput {
 	return o
-}
-
-func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment] {
-	return pulumix.Output[*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrOutput) Elem() PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub Listing. Each of these resources serves a different use case:
@@ -396,12 +395,6 @@ func (i *ListingIamBinding) ToListingIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingOutput)
 }
 
-func (i *ListingIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ListingIamBinding] {
-	return pulumix.Output[*ListingIamBinding]{
-		OutputState: i.ToListingIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListingIamBindingArrayInput is an input type that accepts ListingIamBindingArray and ListingIamBindingArrayOutput values.
 // You can construct a concrete instance of `ListingIamBindingArrayInput` via:
 //
@@ -425,12 +418,6 @@ func (i ListingIamBindingArray) ToListingIamBindingArrayOutput() ListingIamBindi
 
 func (i ListingIamBindingArray) ToListingIamBindingArrayOutputWithContext(ctx context.Context) ListingIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingArrayOutput)
-}
-
-func (i ListingIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamBinding] {
-	return pulumix.Output[[]*ListingIamBinding]{
-		OutputState: i.ToListingIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListingIamBindingMapInput is an input type that accepts ListingIamBindingMap and ListingIamBindingMapOutput values.
@@ -458,12 +445,6 @@ func (i ListingIamBindingMap) ToListingIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingMapOutput)
 }
 
-func (i ListingIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamBinding] {
-	return pulumix.Output[map[string]*ListingIamBinding]{
-		OutputState: i.ToListingIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListingIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ListingIamBindingOutput) ElementType() reflect.Type {
@@ -476,12 +457,6 @@ func (o ListingIamBindingOutput) ToListingIamBindingOutput() ListingIamBindingOu
 
 func (o ListingIamBindingOutput) ToListingIamBindingOutputWithContext(ctx context.Context) ListingIamBindingOutput {
 	return o
-}
-
-func (o ListingIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingIamBinding] {
-	return pulumix.Output[*ListingIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListingIamBindingOutput) Condition() ListingIamBindingConditionPtrOutput {
@@ -552,12 +527,6 @@ func (o ListingIamBindingArrayOutput) ToListingIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o ListingIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamBinding] {
-	return pulumix.Output[[]*ListingIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ListingIamBindingArrayOutput) Index(i pulumi.IntInput) ListingIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListingIamBinding {
 		return vs[0].([]*ListingIamBinding)[vs[1].(int)]
@@ -576,12 +545,6 @@ func (o ListingIamBindingMapOutput) ToListingIamBindingMapOutput() ListingIamBin
 
 func (o ListingIamBindingMapOutput) ToListingIamBindingMapOutputWithContext(ctx context.Context) ListingIamBindingMapOutput {
 	return o
-}
-
-func (o ListingIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamBinding] {
-	return pulumix.Output[map[string]*ListingIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListingIamBindingMapOutput) MapIndex(k pulumi.StringInput) ListingIamBindingOutput {

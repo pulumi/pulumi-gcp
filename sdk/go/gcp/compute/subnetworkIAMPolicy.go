@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
@@ -492,12 +491,6 @@ func (i *SubnetworkIAMPolicy) ToSubnetworkIAMPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMPolicyOutput)
 }
 
-func (i *SubnetworkIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIAMPolicy] {
-	return pulumix.Output[*SubnetworkIAMPolicy]{
-		OutputState: i.ToSubnetworkIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetworkIAMPolicyArrayInput is an input type that accepts SubnetworkIAMPolicyArray and SubnetworkIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `SubnetworkIAMPolicyArrayInput` via:
 //
@@ -521,12 +514,6 @@ func (i SubnetworkIAMPolicyArray) ToSubnetworkIAMPolicyArrayOutput() SubnetworkI
 
 func (i SubnetworkIAMPolicyArray) ToSubnetworkIAMPolicyArrayOutputWithContext(ctx context.Context) SubnetworkIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMPolicyArrayOutput)
-}
-
-func (i SubnetworkIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetworkIAMPolicy] {
-	return pulumix.Output[[]*SubnetworkIAMPolicy]{
-		OutputState: i.ToSubnetworkIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubnetworkIAMPolicyMapInput is an input type that accepts SubnetworkIAMPolicyMap and SubnetworkIAMPolicyMapOutput values.
@@ -554,12 +541,6 @@ func (i SubnetworkIAMPolicyMap) ToSubnetworkIAMPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMPolicyMapOutput)
 }
 
-func (i SubnetworkIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetworkIAMPolicy] {
-	return pulumix.Output[map[string]*SubnetworkIAMPolicy]{
-		OutputState: i.ToSubnetworkIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetworkIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMPolicyOutput) ElementType() reflect.Type {
@@ -572,12 +553,6 @@ func (o SubnetworkIAMPolicyOutput) ToSubnetworkIAMPolicyOutput() SubnetworkIAMPo
 
 func (o SubnetworkIAMPolicyOutput) ToSubnetworkIAMPolicyOutputWithContext(ctx context.Context) SubnetworkIAMPolicyOutput {
 	return o
-}
-
-func (o SubnetworkIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIAMPolicy] {
-	return pulumix.Output[*SubnetworkIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -636,12 +611,6 @@ func (o SubnetworkIAMPolicyArrayOutput) ToSubnetworkIAMPolicyArrayOutputWithCont
 	return o
 }
 
-func (o SubnetworkIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetworkIAMPolicy] {
-	return pulumix.Output[[]*SubnetworkIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubnetworkIAMPolicyArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetworkIAMPolicy {
 		return vs[0].([]*SubnetworkIAMPolicy)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o SubnetworkIAMPolicyMapOutput) ToSubnetworkIAMPolicyMapOutput() Subnetwor
 
 func (o SubnetworkIAMPolicyMapOutput) ToSubnetworkIAMPolicyMapOutputWithContext(ctx context.Context) SubnetworkIAMPolicyMapOutput {
 	return o
-}
-
-func (o SubnetworkIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetworkIAMPolicy] {
-	return pulumix.Output[map[string]*SubnetworkIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetworkIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMPolicyOutput {

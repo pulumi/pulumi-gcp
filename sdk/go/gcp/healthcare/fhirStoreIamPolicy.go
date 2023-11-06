@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
@@ -324,12 +323,6 @@ func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyOutput)
 }
 
-func (i *FhirStoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamPolicy] {
-	return pulumix.Output[*FhirStoreIamPolicy]{
-		OutputState: i.ToFhirStoreIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreIamPolicyArrayInput is an input type that accepts FhirStoreIamPolicyArray and FhirStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `FhirStoreIamPolicyArrayInput` via:
 //
@@ -353,12 +346,6 @@ func (i FhirStoreIamPolicyArray) ToFhirStoreIamPolicyArrayOutput() FhirStoreIamP
 
 func (i FhirStoreIamPolicyArray) ToFhirStoreIamPolicyArrayOutputWithContext(ctx context.Context) FhirStoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyArrayOutput)
-}
-
-func (i FhirStoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamPolicy] {
-	return pulumix.Output[[]*FhirStoreIamPolicy]{
-		OutputState: i.ToFhirStoreIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FhirStoreIamPolicyMapInput is an input type that accepts FhirStoreIamPolicyMap and FhirStoreIamPolicyMapOutput values.
@@ -386,12 +373,6 @@ func (i FhirStoreIamPolicyMap) ToFhirStoreIamPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyMapOutput)
 }
 
-func (i FhirStoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamPolicy] {
-	return pulumix.Output[map[string]*FhirStoreIamPolicy]{
-		OutputState: i.ToFhirStoreIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamPolicyOutput) ElementType() reflect.Type {
@@ -404,12 +385,6 @@ func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyOutput() FhirStoreIamPolic
 
 func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyOutputWithContext(ctx context.Context) FhirStoreIamPolicyOutput {
 	return o
-}
-
-func (o FhirStoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamPolicy] {
-	return pulumix.Output[*FhirStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the FHIR store's IAM policy.
@@ -454,12 +429,6 @@ func (o FhirStoreIamPolicyArrayOutput) ToFhirStoreIamPolicyArrayOutputWithContex
 	return o
 }
 
-func (o FhirStoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamPolicy] {
-	return pulumix.Output[[]*FhirStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) FhirStoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamPolicy {
 		return vs[0].([]*FhirStoreIamPolicy)[vs[1].(int)]
@@ -478,12 +447,6 @@ func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutput() FhirStoreIa
 
 func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutputWithContext(ctx context.Context) FhirStoreIamPolicyMapOutput {
 	return o
-}
-
-func (o FhirStoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamPolicy] {
-	return pulumix.Output[map[string]*FhirStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamPolicyOutput {

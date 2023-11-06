@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for job
@@ -117,12 +116,6 @@ func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutput() Looku
 
 func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutputWithContext(ctx context.Context) LookupJobIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupJobIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobIamPolicyResult] {
-	return pulumix.Output[LookupJobIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

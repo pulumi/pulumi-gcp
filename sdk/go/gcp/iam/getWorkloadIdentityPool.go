@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a IAM workload identity pool from Google Cloud by its id.
@@ -116,12 +115,6 @@ func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResu
 
 func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolResultOutput {
 	return o
-}
-
-func (o LookupWorkloadIdentityPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadIdentityPoolResult] {
-	return pulumix.Output[LookupWorkloadIdentityPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupWorkloadIdentityPoolResultOutput) Description() pulumi.StringOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Eventarc GoogleChannelConfig resource
@@ -231,12 +230,6 @@ func (i *GoogleChannelConfig) ToGoogleChannelConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleChannelConfigOutput)
 }
 
-func (i *GoogleChannelConfig) ToOutput(ctx context.Context) pulumix.Output[*GoogleChannelConfig] {
-	return pulumix.Output[*GoogleChannelConfig]{
-		OutputState: i.ToGoogleChannelConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleChannelConfigArrayInput is an input type that accepts GoogleChannelConfigArray and GoogleChannelConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleChannelConfigArrayInput` via:
 //
@@ -260,12 +253,6 @@ func (i GoogleChannelConfigArray) ToGoogleChannelConfigArrayOutput() GoogleChann
 
 func (i GoogleChannelConfigArray) ToGoogleChannelConfigArrayOutputWithContext(ctx context.Context) GoogleChannelConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleChannelConfigArrayOutput)
-}
-
-func (i GoogleChannelConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*GoogleChannelConfig] {
-	return pulumix.Output[[]*GoogleChannelConfig]{
-		OutputState: i.ToGoogleChannelConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GoogleChannelConfigMapInput is an input type that accepts GoogleChannelConfigMap and GoogleChannelConfigMapOutput values.
@@ -293,12 +280,6 @@ func (i GoogleChannelConfigMap) ToGoogleChannelConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleChannelConfigMapOutput)
 }
 
-func (i GoogleChannelConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GoogleChannelConfig] {
-	return pulumix.Output[map[string]*GoogleChannelConfig]{
-		OutputState: i.ToGoogleChannelConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleChannelConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleChannelConfigOutput) ElementType() reflect.Type {
@@ -311,12 +292,6 @@ func (o GoogleChannelConfigOutput) ToGoogleChannelConfigOutput() GoogleChannelCo
 
 func (o GoogleChannelConfigOutput) ToGoogleChannelConfigOutputWithContext(ctx context.Context) GoogleChannelConfigOutput {
 	return o
-}
-
-func (o GoogleChannelConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleChannelConfig] {
-	return pulumix.Output[*GoogleChannelConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -360,12 +335,6 @@ func (o GoogleChannelConfigArrayOutput) ToGoogleChannelConfigArrayOutputWithCont
 	return o
 }
 
-func (o GoogleChannelConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GoogleChannelConfig] {
-	return pulumix.Output[[]*GoogleChannelConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleChannelConfigArrayOutput) Index(i pulumi.IntInput) GoogleChannelConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GoogleChannelConfig {
 		return vs[0].([]*GoogleChannelConfig)[vs[1].(int)]
@@ -384,12 +353,6 @@ func (o GoogleChannelConfigMapOutput) ToGoogleChannelConfigMapOutput() GoogleCha
 
 func (o GoogleChannelConfigMapOutput) ToGoogleChannelConfigMapOutputWithContext(ctx context.Context) GoogleChannelConfigMapOutput {
 	return o
-}
-
-func (o GoogleChannelConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GoogleChannelConfig] {
-	return pulumix.Output[map[string]*GoogleChannelConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleChannelConfigMapOutput) MapIndex(k pulumi.StringInput) GoogleChannelConfigOutput {

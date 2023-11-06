@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
@@ -250,12 +249,6 @@ func (i *DnsAuthorization) ToDnsAuthorizationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DnsAuthorizationOutput)
 }
 
-func (i *DnsAuthorization) ToOutput(ctx context.Context) pulumix.Output[*DnsAuthorization] {
-	return pulumix.Output[*DnsAuthorization]{
-		OutputState: i.ToDnsAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DnsAuthorizationArrayInput is an input type that accepts DnsAuthorizationArray and DnsAuthorizationArrayOutput values.
 // You can construct a concrete instance of `DnsAuthorizationArrayInput` via:
 //
@@ -279,12 +272,6 @@ func (i DnsAuthorizationArray) ToDnsAuthorizationArrayOutput() DnsAuthorizationA
 
 func (i DnsAuthorizationArray) ToDnsAuthorizationArrayOutputWithContext(ctx context.Context) DnsAuthorizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsAuthorizationArrayOutput)
-}
-
-func (i DnsAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DnsAuthorization] {
-	return pulumix.Output[[]*DnsAuthorization]{
-		OutputState: i.ToDnsAuthorizationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DnsAuthorizationMapInput is an input type that accepts DnsAuthorizationMap and DnsAuthorizationMapOutput values.
@@ -312,12 +299,6 @@ func (i DnsAuthorizationMap) ToDnsAuthorizationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DnsAuthorizationMapOutput)
 }
 
-func (i DnsAuthorizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsAuthorization] {
-	return pulumix.Output[map[string]*DnsAuthorization]{
-		OutputState: i.ToDnsAuthorizationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnsAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (DnsAuthorizationOutput) ElementType() reflect.Type {
@@ -330,12 +311,6 @@ func (o DnsAuthorizationOutput) ToDnsAuthorizationOutput() DnsAuthorizationOutpu
 
 func (o DnsAuthorizationOutput) ToDnsAuthorizationOutputWithContext(ctx context.Context) DnsAuthorizationOutput {
 	return o
-}
-
-func (o DnsAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsAuthorization] {
-	return pulumix.Output[*DnsAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description of the resource.
@@ -392,12 +367,6 @@ func (o DnsAuthorizationArrayOutput) ToDnsAuthorizationArrayOutputWithContext(ct
 	return o
 }
 
-func (o DnsAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DnsAuthorization] {
-	return pulumix.Output[[]*DnsAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsAuthorizationArrayOutput) Index(i pulumi.IntInput) DnsAuthorizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsAuthorization {
 		return vs[0].([]*DnsAuthorization)[vs[1].(int)]
@@ -416,12 +385,6 @@ func (o DnsAuthorizationMapOutput) ToDnsAuthorizationMapOutput() DnsAuthorizatio
 
 func (o DnsAuthorizationMapOutput) ToDnsAuthorizationMapOutputWithContext(ctx context.Context) DnsAuthorizationMapOutput {
 	return o
-}
-
-func (o DnsAuthorizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsAuthorization] {
-	return pulumix.Output[map[string]*DnsAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsAuthorizationMapOutput) MapIndex(k pulumi.StringInput) DnsAuthorizationOutput {

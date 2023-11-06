@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An intent represents a user's intent to interact with a conversational agent.
@@ -349,12 +348,6 @@ func (i *CxIntent) ToCxIntentOutputWithContext(ctx context.Context) CxIntentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentOutput)
 }
 
-func (i *CxIntent) ToOutput(ctx context.Context) pulumix.Output[*CxIntent] {
-	return pulumix.Output[*CxIntent]{
-		OutputState: i.ToCxIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxIntentArrayInput is an input type that accepts CxIntentArray and CxIntentArrayOutput values.
 // You can construct a concrete instance of `CxIntentArrayInput` via:
 //
@@ -378,12 +371,6 @@ func (i CxIntentArray) ToCxIntentArrayOutput() CxIntentArrayOutput {
 
 func (i CxIntentArray) ToCxIntentArrayOutputWithContext(ctx context.Context) CxIntentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentArrayOutput)
-}
-
-func (i CxIntentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxIntent] {
-	return pulumix.Output[[]*CxIntent]{
-		OutputState: i.ToCxIntentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxIntentMapInput is an input type that accepts CxIntentMap and CxIntentMapOutput values.
@@ -411,12 +398,6 @@ func (i CxIntentMap) ToCxIntentMapOutputWithContext(ctx context.Context) CxInten
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentMapOutput)
 }
 
-func (i CxIntentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxIntent] {
-	return pulumix.Output[map[string]*CxIntent]{
-		OutputState: i.ToCxIntentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxIntentOutput struct{ *pulumi.OutputState }
 
 func (CxIntentOutput) ElementType() reflect.Type {
@@ -429,12 +410,6 @@ func (o CxIntentOutput) ToCxIntentOutput() CxIntentOutput {
 
 func (o CxIntentOutput) ToCxIntentOutputWithContext(ctx context.Context) CxIntentOutput {
 	return o
-}
-
-func (o CxIntentOutput) ToOutput(ctx context.Context) pulumix.Output[*CxIntent] {
-	return pulumix.Output[*CxIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -514,12 +489,6 @@ func (o CxIntentArrayOutput) ToCxIntentArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CxIntentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxIntent] {
-	return pulumix.Output[[]*CxIntent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxIntentArrayOutput) Index(i pulumi.IntInput) CxIntentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxIntent {
 		return vs[0].([]*CxIntent)[vs[1].(int)]
@@ -538,12 +507,6 @@ func (o CxIntentMapOutput) ToCxIntentMapOutput() CxIntentMapOutput {
 
 func (o CxIntentMapOutput) ToCxIntentMapOutputWithContext(ctx context.Context) CxIntentMapOutput {
 	return o
-}
-
-func (o CxIntentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxIntent] {
-	return pulumix.Output[map[string]*CxIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxIntentMapOutput) MapIndex(k pulumi.StringInput) CxIntentOutput {

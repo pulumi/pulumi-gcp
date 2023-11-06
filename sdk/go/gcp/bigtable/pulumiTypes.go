@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgeOutput)
 }
 
-func (i GCPolicyMaxAgeArgs) ToOutput(ctx context.Context) pulumix.Output[GCPolicyMaxAge] {
-	return pulumix.Output[GCPolicyMaxAge]{
-		OutputState: i.ToGCPolicyMaxAgeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput {
 	return i.ToGCPolicyMaxAgePtrOutputWithContext(context.Background())
 }
@@ -106,12 +99,6 @@ func (i *gcpolicyMaxAgePtrType) ToGCPolicyMaxAgePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgePtrOutput)
 }
 
-func (i *gcpolicyMaxAgePtrType) ToOutput(ctx context.Context) pulumix.Output[*GCPolicyMaxAge] {
-	return pulumix.Output[*GCPolicyMaxAge]{
-		OutputState: i.ToGCPolicyMaxAgePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GCPolicyMaxAgeOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxAgeOutput) ElementType() reflect.Type {
@@ -134,12 +121,6 @@ func (o GCPolicyMaxAgeOutput) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GCPolicyMaxAge) *GCPolicyMaxAge {
 		return &v
 	}).(GCPolicyMaxAgePtrOutput)
-}
-
-func (o GCPolicyMaxAgeOutput) ToOutput(ctx context.Context) pulumix.Output[GCPolicyMaxAge] {
-	return pulumix.Output[GCPolicyMaxAge]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of days before applying GC policy.
@@ -168,12 +149,6 @@ func (o GCPolicyMaxAgePtrOutput) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOu
 
 func (o GCPolicyMaxAgePtrOutput) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.Context) GCPolicyMaxAgePtrOutput {
 	return o
-}
-
-func (o GCPolicyMaxAgePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GCPolicyMaxAge] {
-	return pulumix.Output[*GCPolicyMaxAge]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GCPolicyMaxAgePtrOutput) Elem() GCPolicyMaxAgeOutput {
@@ -249,12 +224,6 @@ func (i GCPolicyMaxVersionArgs) ToGCPolicyMaxVersionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxVersionOutput)
 }
 
-func (i GCPolicyMaxVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GCPolicyMaxVersion] {
-	return pulumix.Output[GCPolicyMaxVersion]{
-		OutputState: i.ToGCPolicyMaxVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GCPolicyMaxVersionArrayInput is an input type that accepts GCPolicyMaxVersionArray and GCPolicyMaxVersionArrayOutput values.
 // You can construct a concrete instance of `GCPolicyMaxVersionArrayInput` via:
 //
@@ -280,12 +249,6 @@ func (i GCPolicyMaxVersionArray) ToGCPolicyMaxVersionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxVersionArrayOutput)
 }
 
-func (i GCPolicyMaxVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GCPolicyMaxVersion] {
-	return pulumix.Output[[]GCPolicyMaxVersion]{
-		OutputState: i.ToGCPolicyMaxVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GCPolicyMaxVersionOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxVersionOutput) ElementType() reflect.Type {
@@ -298,12 +261,6 @@ func (o GCPolicyMaxVersionOutput) ToGCPolicyMaxVersionOutput() GCPolicyMaxVersio
 
 func (o GCPolicyMaxVersionOutput) ToGCPolicyMaxVersionOutputWithContext(ctx context.Context) GCPolicyMaxVersionOutput {
 	return o
-}
-
-func (o GCPolicyMaxVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GCPolicyMaxVersion] {
-	return pulumix.Output[GCPolicyMaxVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of version before applying the GC policy.
@@ -326,12 +283,6 @@ func (o GCPolicyMaxVersionArrayOutput) ToGCPolicyMaxVersionArrayOutput() GCPolic
 
 func (o GCPolicyMaxVersionArrayOutput) ToGCPolicyMaxVersionArrayOutputWithContext(ctx context.Context) GCPolicyMaxVersionArrayOutput {
 	return o
-}
-
-func (o GCPolicyMaxVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GCPolicyMaxVersion] {
-	return pulumix.Output[[]GCPolicyMaxVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersionOutput {
@@ -419,12 +370,6 @@ func (i InstanceClusterArgs) ToInstanceClusterOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterOutput)
 }
 
-func (i InstanceClusterArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceCluster] {
-	return pulumix.Output[InstanceCluster]{
-		OutputState: i.ToInstanceClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceClusterArrayInput is an input type that accepts InstanceClusterArray and InstanceClusterArrayOutput values.
 // You can construct a concrete instance of `InstanceClusterArrayInput` via:
 //
@@ -450,12 +395,6 @@ func (i InstanceClusterArray) ToInstanceClusterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterArrayOutput)
 }
 
-func (i InstanceClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceCluster] {
-	return pulumix.Output[[]InstanceCluster]{
-		OutputState: i.ToInstanceClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceClusterOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterOutput) ElementType() reflect.Type {
@@ -468,12 +407,6 @@ func (o InstanceClusterOutput) ToInstanceClusterOutput() InstanceClusterOutput {
 
 func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
 	return o
-}
-
-func (o InstanceClusterOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceCluster] {
-	return pulumix.Output[InstanceCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
@@ -533,12 +466,6 @@ func (o InstanceClusterArrayOutput) ToInstanceClusterArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o InstanceClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceCluster] {
-	return pulumix.Output[[]InstanceCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCluster {
 		return vs[0].([]InstanceCluster)[vs[1].(int)]
@@ -594,12 +521,6 @@ func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfig
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAutoscalingConfigOutput)
 }
 
-func (i InstanceClusterAutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceClusterAutoscalingConfig] {
-	return pulumix.Output[InstanceClusterAutoscalingConfig]{
-		OutputState: i.ToInstanceClusterAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput {
 	return i.ToInstanceClusterAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -641,12 +562,6 @@ func (i *instanceClusterAutoscalingConfigPtrType) ToInstanceClusterAutoscalingCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAutoscalingConfigPtrOutput)
 }
 
-func (i *instanceClusterAutoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterAutoscalingConfig] {
-	return pulumix.Output[*InstanceClusterAutoscalingConfig]{
-		OutputState: i.ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceClusterAutoscalingConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterAutoscalingConfigOutput) ElementType() reflect.Type {
@@ -669,12 +584,6 @@ func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceClusterAutoscalingConfig) *InstanceClusterAutoscalingConfig {
 		return &v
 	}).(InstanceClusterAutoscalingConfigPtrOutput)
-}
-
-func (o InstanceClusterAutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceClusterAutoscalingConfig] {
-	return pulumix.Output[InstanceClusterAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
@@ -711,12 +620,6 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) ToInstanceClusterAutoscalingC
 
 func (o InstanceClusterAutoscalingConfigPtrOutput) ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o InstanceClusterAutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterAutoscalingConfig] {
-	return pulumix.Output[*InstanceClusterAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceClusterAutoscalingConfigPtrOutput) Elem() InstanceClusterAutoscalingConfigOutput {
@@ -806,12 +709,6 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput)
 }
 
-func (i InstanceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
-	return pulumix.Output[InstanceIamBindingCondition]{
-		OutputState: i.ToInstanceIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
 	return i.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -853,12 +750,6 @@ func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
 }
 
-func (i *instanceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
-	return pulumix.Output[*InstanceIamBindingCondition]{
-		OutputState: i.ToInstanceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -881,12 +772,6 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
 		return &v
 	}).(InstanceIamBindingConditionPtrOutput)
-}
-
-func (o InstanceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
-	return pulumix.Output[InstanceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -913,12 +798,6 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 
 func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
-	return pulumix.Output[*InstanceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
@@ -993,12 +872,6 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput)
 }
 
-func (i InstanceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
-	return pulumix.Output[InstanceIamMemberCondition]{
-		OutputState: i.ToInstanceIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
 	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1040,12 +913,6 @@ func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
 }
 
-func (i *instanceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
-	return pulumix.Output[*InstanceIamMemberCondition]{
-		OutputState: i.ToInstanceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1068,12 +935,6 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
 		return &v
 	}).(InstanceIamMemberConditionPtrOutput)
-}
-
-func (o InstanceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
-	return pulumix.Output[InstanceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1100,12 +961,6 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 
 func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
-	return pulumix.Output[*InstanceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
@@ -1178,12 +1033,6 @@ func (i TableColumnFamilyArgs) ToTableColumnFamilyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TableColumnFamilyOutput)
 }
 
-func (i TableColumnFamilyArgs) ToOutput(ctx context.Context) pulumix.Output[TableColumnFamily] {
-	return pulumix.Output[TableColumnFamily]{
-		OutputState: i.ToTableColumnFamilyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableColumnFamilyArrayInput is an input type that accepts TableColumnFamilyArray and TableColumnFamilyArrayOutput values.
 // You can construct a concrete instance of `TableColumnFamilyArrayInput` via:
 //
@@ -1209,12 +1058,6 @@ func (i TableColumnFamilyArray) ToTableColumnFamilyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TableColumnFamilyArrayOutput)
 }
 
-func (i TableColumnFamilyArray) ToOutput(ctx context.Context) pulumix.Output[[]TableColumnFamily] {
-	return pulumix.Output[[]TableColumnFamily]{
-		OutputState: i.ToTableColumnFamilyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableColumnFamilyOutput struct{ *pulumi.OutputState }
 
 func (TableColumnFamilyOutput) ElementType() reflect.Type {
@@ -1227,12 +1070,6 @@ func (o TableColumnFamilyOutput) ToTableColumnFamilyOutput() TableColumnFamilyOu
 
 func (o TableColumnFamilyOutput) ToTableColumnFamilyOutputWithContext(ctx context.Context) TableColumnFamilyOutput {
 	return o
-}
-
-func (o TableColumnFamilyOutput) ToOutput(ctx context.Context) pulumix.Output[TableColumnFamily] {
-	return pulumix.Output[TableColumnFamily]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column family.
@@ -1252,12 +1089,6 @@ func (o TableColumnFamilyArrayOutput) ToTableColumnFamilyArrayOutput() TableColu
 
 func (o TableColumnFamilyArrayOutput) ToTableColumnFamilyArrayOutputWithContext(ctx context.Context) TableColumnFamilyArrayOutput {
 	return o
-}
-
-func (o TableColumnFamilyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TableColumnFamily] {
-	return pulumix.Output[[]TableColumnFamily]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableColumnFamilyArrayOutput) Index(i pulumi.IntInput) TableColumnFamilyOutput {
@@ -1301,12 +1132,6 @@ func (i TableIamBindingConditionArgs) ToTableIamBindingConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingConditionOutput)
 }
 
-func (i TableIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TableIamBindingCondition] {
-	return pulumix.Output[TableIamBindingCondition]{
-		OutputState: i.ToTableIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TableIamBindingConditionArgs) ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput {
 	return i.ToTableIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1348,12 +1173,6 @@ func (i *tableIamBindingConditionPtrType) ToTableIamBindingConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingConditionPtrOutput)
 }
 
-func (i *tableIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableIamBindingCondition] {
-	return pulumix.Output[*TableIamBindingCondition]{
-		OutputState: i.ToTableIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TableIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1376,12 +1195,6 @@ func (o TableIamBindingConditionOutput) ToTableIamBindingConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableIamBindingCondition) *TableIamBindingCondition {
 		return &v
 	}).(TableIamBindingConditionPtrOutput)
-}
-
-func (o TableIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TableIamBindingCondition] {
-	return pulumix.Output[TableIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1408,12 +1221,6 @@ func (o TableIamBindingConditionPtrOutput) ToTableIamBindingConditionPtrOutput()
 
 func (o TableIamBindingConditionPtrOutput) ToTableIamBindingConditionPtrOutputWithContext(ctx context.Context) TableIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o TableIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableIamBindingCondition] {
-	return pulumix.Output[*TableIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamBindingConditionPtrOutput) Elem() TableIamBindingConditionOutput {
@@ -1488,12 +1295,6 @@ func (i TableIamMemberConditionArgs) ToTableIamMemberConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberConditionOutput)
 }
 
-func (i TableIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TableIamMemberCondition] {
-	return pulumix.Output[TableIamMemberCondition]{
-		OutputState: i.ToTableIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TableIamMemberConditionArgs) ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput {
 	return i.ToTableIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1535,12 +1336,6 @@ func (i *tableIamMemberConditionPtrType) ToTableIamMemberConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberConditionPtrOutput)
 }
 
-func (i *tableIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableIamMemberCondition] {
-	return pulumix.Output[*TableIamMemberCondition]{
-		OutputState: i.ToTableIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1563,12 +1358,6 @@ func (o TableIamMemberConditionOutput) ToTableIamMemberConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableIamMemberCondition) *TableIamMemberCondition {
 		return &v
 	}).(TableIamMemberConditionPtrOutput)
-}
-
-func (o TableIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TableIamMemberCondition] {
-	return pulumix.Output[TableIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1595,12 +1384,6 @@ func (o TableIamMemberConditionPtrOutput) ToTableIamMemberConditionPtrOutput() T
 
 func (o TableIamMemberConditionPtrOutput) ToTableIamMemberConditionPtrOutputWithContext(ctx context.Context) TableIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o TableIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableIamMemberCondition] {
-	return pulumix.Output[*TableIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamMemberConditionPtrOutput) Elem() TableIamMemberConditionOutput {

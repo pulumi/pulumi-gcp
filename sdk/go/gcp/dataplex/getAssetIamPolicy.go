@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for asset
@@ -123,12 +122,6 @@ func (o LookupAssetIamPolicyResultOutput) ToLookupAssetIamPolicyResultOutput() L
 
 func (o LookupAssetIamPolicyResultOutput) ToLookupAssetIamPolicyResultOutputWithContext(ctx context.Context) LookupAssetIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupAssetIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssetIamPolicyResult] {
-	return pulumix.Output[LookupAssetIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAssetIamPolicyResultOutput) Asset() pulumi.StringOutput {

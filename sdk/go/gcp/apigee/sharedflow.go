@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // You can combine policies and resources into a shared flow that you can consume from multiple API proxies, and even from other shared flows. Although it's like a proxy, a shared flow has no endpoint. It can be used only from an API proxy or shared flow that's in the same organization as the shared flow itself.
@@ -198,12 +197,6 @@ func (i *Sharedflow) ToSharedflowOutputWithContext(ctx context.Context) Sharedfl
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowOutput)
 }
 
-func (i *Sharedflow) ToOutput(ctx context.Context) pulumix.Output[*Sharedflow] {
-	return pulumix.Output[*Sharedflow]{
-		OutputState: i.ToSharedflowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedflowArrayInput is an input type that accepts SharedflowArray and SharedflowArrayOutput values.
 // You can construct a concrete instance of `SharedflowArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i SharedflowArray) ToSharedflowArrayOutput() SharedflowArrayOutput {
 
 func (i SharedflowArray) ToSharedflowArrayOutputWithContext(ctx context.Context) SharedflowArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowArrayOutput)
-}
-
-func (i SharedflowArray) ToOutput(ctx context.Context) pulumix.Output[[]*Sharedflow] {
-	return pulumix.Output[[]*Sharedflow]{
-		OutputState: i.ToSharedflowArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SharedflowMapInput is an input type that accepts SharedflowMap and SharedflowMapOutput values.
@@ -260,12 +247,6 @@ func (i SharedflowMap) ToSharedflowMapOutputWithContext(ctx context.Context) Sha
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowMapOutput)
 }
 
-func (i SharedflowMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Sharedflow] {
-	return pulumix.Output[map[string]*Sharedflow]{
-		OutputState: i.ToSharedflowMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedflowOutput struct{ *pulumi.OutputState }
 
 func (SharedflowOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o SharedflowOutput) ToSharedflowOutput() SharedflowOutput {
 
 func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) SharedflowOutput {
 	return o
-}
-
-func (o SharedflowOutput) ToOutput(ctx context.Context) pulumix.Output[*Sharedflow] {
-	return pulumix.Output[*Sharedflow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to the config zip bundle.
@@ -344,12 +319,6 @@ func (o SharedflowArrayOutput) ToSharedflowArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SharedflowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Sharedflow] {
-	return pulumix.Output[[]*Sharedflow]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedflowArrayOutput) Index(i pulumi.IntInput) SharedflowOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Sharedflow {
 		return vs[0].([]*Sharedflow)[vs[1].(int)]
@@ -368,12 +337,6 @@ func (o SharedflowMapOutput) ToSharedflowMapOutput() SharedflowMapOutput {
 
 func (o SharedflowMapOutput) ToSharedflowMapOutputWithContext(ctx context.Context) SharedflowMapOutput {
 	return o
-}
-
-func (o SharedflowMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Sharedflow] {
-	return pulumix.Output[map[string]*Sharedflow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedflowMapOutput) MapIndex(k pulumi.StringInput) SharedflowOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionOu
 
 func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingConditionOutput)
-}
-
-func (i ConsentStoreIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConsentStoreIamBindingCondition] {
-	return pulumix.Output[ConsentStoreIamBindingCondition]{
-		OutputState: i.ToConsentStoreIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput {
@@ -96,12 +89,6 @@ func (i *consentStoreIamBindingConditionPtrType) ToConsentStoreIamBindingConditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingConditionPtrOutput)
 }
 
-func (i *consentStoreIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamBindingCondition] {
-	return pulumix.Output[*ConsentStoreIamBindingCondition]{
-		OutputState: i.ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsentStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamBindingConditionOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingCondition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStoreIamBindingCondition) *ConsentStoreIamBindingCondition {
 		return &v
 	}).(ConsentStoreIamBindingConditionPtrOutput)
-}
-
-func (o ConsentStoreIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentStoreIamBindingCondition] {
-	return pulumix.Output[ConsentStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -156,12 +137,6 @@ func (o ConsentStoreIamBindingConditionPtrOutput) ToConsentStoreIamBindingCondit
 
 func (o ConsentStoreIamBindingConditionPtrOutput) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o ConsentStoreIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamBindingCondition] {
-	return pulumix.Output[*ConsentStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreIamBindingConditionPtrOutput) Elem() ConsentStoreIamBindingConditionOutput {
@@ -236,12 +211,6 @@ func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberConditionOutput)
 }
 
-func (i ConsentStoreIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConsentStoreIamMemberCondition] {
-	return pulumix.Output[ConsentStoreIamMemberCondition]{
-		OutputState: i.ToConsentStoreIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput {
 	return i.ToConsentStoreIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -283,12 +252,6 @@ func (i *consentStoreIamMemberConditionPtrType) ToConsentStoreIamMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberConditionPtrOutput)
 }
 
-func (i *consentStoreIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamMemberCondition] {
-	return pulumix.Output[*ConsentStoreIamMemberCondition]{
-		OutputState: i.ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsentStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamMemberConditionOutput) ElementType() reflect.Type {
@@ -311,12 +274,6 @@ func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStoreIamMemberCondition) *ConsentStoreIamMemberCondition {
 		return &v
 	}).(ConsentStoreIamMemberConditionPtrOutput)
-}
-
-func (o ConsentStoreIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentStoreIamMemberCondition] {
-	return pulumix.Output[ConsentStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -343,12 +300,6 @@ func (o ConsentStoreIamMemberConditionPtrOutput) ToConsentStoreIamMemberConditio
 
 func (o ConsentStoreIamMemberConditionPtrOutput) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o ConsentStoreIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamMemberCondition] {
-	return pulumix.Output[*ConsentStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreIamMemberConditionPtrOutput) Elem() ConsentStoreIamMemberConditionOutput {
@@ -423,12 +374,6 @@ func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionOutput)
 }
 
-func (i DatasetIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetIamBindingCondition] {
-	return pulumix.Output[DatasetIamBindingCondition]{
-		OutputState: i.ToDatasetIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput {
 	return i.ToDatasetIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -470,12 +415,6 @@ func (i *datasetIamBindingConditionPtrType) ToDatasetIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionPtrOutput)
 }
 
-func (i *datasetIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamBindingCondition] {
-	return pulumix.Output[*DatasetIamBindingCondition]{
-		OutputState: i.ToDatasetIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingConditionOutput) ElementType() reflect.Type {
@@ -498,12 +437,6 @@ func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamBindingCondition) *DatasetIamBindingCondition {
 		return &v
 	}).(DatasetIamBindingConditionPtrOutput)
-}
-
-func (o DatasetIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetIamBindingCondition] {
-	return pulumix.Output[DatasetIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -530,12 +463,6 @@ func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutp
 
 func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o DatasetIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamBindingCondition] {
-	return pulumix.Output[*DatasetIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOutput {
@@ -610,12 +537,6 @@ func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionOutput)
 }
 
-func (i DatasetIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetIamMemberCondition] {
-	return pulumix.Output[DatasetIamMemberCondition]{
-		OutputState: i.ToDatasetIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput {
 	return i.ToDatasetIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -657,12 +578,6 @@ func (i *datasetIamMemberConditionPtrType) ToDatasetIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionPtrOutput)
 }
 
-func (i *datasetIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamMemberCondition] {
-	return pulumix.Output[*DatasetIamMemberCondition]{
-		OutputState: i.ToDatasetIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberConditionOutput) ElementType() reflect.Type {
@@ -685,12 +600,6 @@ func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamMemberCondition) *DatasetIamMemberCondition {
 		return &v
 	}).(DatasetIamMemberConditionPtrOutput)
-}
-
-func (o DatasetIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetIamMemberCondition] {
-	return pulumix.Output[DatasetIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -717,12 +626,6 @@ func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutput
 
 func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o DatasetIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamMemberCondition] {
-	return pulumix.Output[*DatasetIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutput {
@@ -797,12 +700,6 @@ func (i DicomStoreIamBindingConditionArgs) ToDicomStoreIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingConditionOutput)
 }
 
-func (i DicomStoreIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DicomStoreIamBindingCondition] {
-	return pulumix.Output[DicomStoreIamBindingCondition]{
-		OutputState: i.ToDicomStoreIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DicomStoreIamBindingConditionArgs) ToDicomStoreIamBindingConditionPtrOutput() DicomStoreIamBindingConditionPtrOutput {
 	return i.ToDicomStoreIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -844,12 +741,6 @@ func (i *dicomStoreIamBindingConditionPtrType) ToDicomStoreIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingConditionPtrOutput)
 }
 
-func (i *dicomStoreIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamBindingCondition] {
-	return pulumix.Output[*DicomStoreIamBindingCondition]{
-		OutputState: i.ToDicomStoreIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamBindingConditionOutput) ElementType() reflect.Type {
@@ -872,12 +763,6 @@ func (o DicomStoreIamBindingConditionOutput) ToDicomStoreIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamBindingCondition) *DicomStoreIamBindingCondition {
 		return &v
 	}).(DicomStoreIamBindingConditionPtrOutput)
-}
-
-func (o DicomStoreIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DicomStoreIamBindingCondition] {
-	return pulumix.Output[DicomStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -904,12 +789,6 @@ func (o DicomStoreIamBindingConditionPtrOutput) ToDicomStoreIamBindingConditionP
 
 func (o DicomStoreIamBindingConditionPtrOutput) ToDicomStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) DicomStoreIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o DicomStoreIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamBindingCondition] {
-	return pulumix.Output[*DicomStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Elem() DicomStoreIamBindingConditionOutput {
@@ -984,12 +863,6 @@ func (i DicomStoreIamMemberConditionArgs) ToDicomStoreIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberConditionOutput)
 }
 
-func (i DicomStoreIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DicomStoreIamMemberCondition] {
-	return pulumix.Output[DicomStoreIamMemberCondition]{
-		OutputState: i.ToDicomStoreIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DicomStoreIamMemberConditionArgs) ToDicomStoreIamMemberConditionPtrOutput() DicomStoreIamMemberConditionPtrOutput {
 	return i.ToDicomStoreIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1031,12 +904,6 @@ func (i *dicomStoreIamMemberConditionPtrType) ToDicomStoreIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberConditionPtrOutput)
 }
 
-func (i *dicomStoreIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamMemberCondition] {
-	return pulumix.Output[*DicomStoreIamMemberCondition]{
-		OutputState: i.ToDicomStoreIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1059,12 +926,6 @@ func (o DicomStoreIamMemberConditionOutput) ToDicomStoreIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamMemberCondition) *DicomStoreIamMemberCondition {
 		return &v
 	}).(DicomStoreIamMemberConditionPtrOutput)
-}
-
-func (o DicomStoreIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DicomStoreIamMemberCondition] {
-	return pulumix.Output[DicomStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1091,12 +952,6 @@ func (o DicomStoreIamMemberConditionPtrOutput) ToDicomStoreIamMemberConditionPtr
 
 func (o DicomStoreIamMemberConditionPtrOutput) ToDicomStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o DicomStoreIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamMemberCondition] {
-	return pulumix.Output[*DicomStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Elem() DicomStoreIamMemberConditionOutput {
@@ -1179,12 +1034,6 @@ func (i DicomStoreNotificationConfigArgs) ToDicomStoreNotificationConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreNotificationConfigOutput)
 }
 
-func (i DicomStoreNotificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DicomStoreNotificationConfig] {
-	return pulumix.Output[DicomStoreNotificationConfig]{
-		OutputState: i.ToDicomStoreNotificationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DicomStoreNotificationConfigArgs) ToDicomStoreNotificationConfigPtrOutput() DicomStoreNotificationConfigPtrOutput {
 	return i.ToDicomStoreNotificationConfigPtrOutputWithContext(context.Background())
 }
@@ -1226,12 +1075,6 @@ func (i *dicomStoreNotificationConfigPtrType) ToDicomStoreNotificationConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreNotificationConfigPtrOutput)
 }
 
-func (i *dicomStoreNotificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreNotificationConfig] {
-	return pulumix.Output[*DicomStoreNotificationConfig]{
-		OutputState: i.ToDicomStoreNotificationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreNotificationConfigOutput) ElementType() reflect.Type {
@@ -1256,12 +1099,6 @@ func (o DicomStoreNotificationConfigOutput) ToDicomStoreNotificationConfigPtrOut
 	}).(DicomStoreNotificationConfigPtrOutput)
 }
 
-func (o DicomStoreNotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DicomStoreNotificationConfig] {
-	return pulumix.Output[DicomStoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -1284,12 +1121,6 @@ func (o DicomStoreNotificationConfigPtrOutput) ToDicomStoreNotificationConfigPtr
 
 func (o DicomStoreNotificationConfigPtrOutput) ToDicomStoreNotificationConfigPtrOutputWithContext(ctx context.Context) DicomStoreNotificationConfigPtrOutput {
 	return o
-}
-
-func (o DicomStoreNotificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreNotificationConfig] {
-	return pulumix.Output[*DicomStoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreNotificationConfigPtrOutput) Elem() DicomStoreNotificationConfigOutput {
@@ -1352,12 +1183,6 @@ func (i DicomStoreStreamConfigArgs) ToDicomStoreStreamConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigOutput)
 }
 
-func (i DicomStoreStreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DicomStoreStreamConfig] {
-	return pulumix.Output[DicomStoreStreamConfig]{
-		OutputState: i.ToDicomStoreStreamConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DicomStoreStreamConfigArrayInput is an input type that accepts DicomStoreStreamConfigArray and DicomStoreStreamConfigArrayOutput values.
 // You can construct a concrete instance of `DicomStoreStreamConfigArrayInput` via:
 //
@@ -1383,12 +1208,6 @@ func (i DicomStoreStreamConfigArray) ToDicomStoreStreamConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigArrayOutput)
 }
 
-func (i DicomStoreStreamConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]DicomStoreStreamConfig] {
-	return pulumix.Output[[]DicomStoreStreamConfig]{
-		OutputState: i.ToDicomStoreStreamConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreStreamConfigOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreStreamConfigOutput) ElementType() reflect.Type {
@@ -1401,12 +1220,6 @@ func (o DicomStoreStreamConfigOutput) ToDicomStoreStreamConfigOutput() DicomStor
 
 func (o DicomStoreStreamConfigOutput) ToDicomStoreStreamConfigOutputWithContext(ctx context.Context) DicomStoreStreamConfigOutput {
 	return o
-}
-
-func (o DicomStoreStreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DicomStoreStreamConfig] {
-	return pulumix.Output[DicomStoreStreamConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
@@ -1427,12 +1240,6 @@ func (o DicomStoreStreamConfigArrayOutput) ToDicomStoreStreamConfigArrayOutput()
 
 func (o DicomStoreStreamConfigArrayOutput) ToDicomStoreStreamConfigArrayOutputWithContext(ctx context.Context) DicomStoreStreamConfigArrayOutput {
 	return o
-}
-
-func (o DicomStoreStreamConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DicomStoreStreamConfig] {
-	return pulumix.Output[[]DicomStoreStreamConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreStreamConfigArrayOutput) Index(i pulumi.IntInput) DicomStoreStreamConfigOutput {
@@ -1474,12 +1281,6 @@ func (i DicomStoreStreamConfigBigqueryDestinationArgs) ToDicomStoreStreamConfigB
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreStreamConfigBigqueryDestinationOutput)
 }
 
-func (i DicomStoreStreamConfigBigqueryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[DicomStoreStreamConfigBigqueryDestination] {
-	return pulumix.Output[DicomStoreStreamConfigBigqueryDestination]{
-		OutputState: i.ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreStreamConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreStreamConfigBigqueryDestinationOutput) ElementType() reflect.Type {
@@ -1492,12 +1293,6 @@ func (o DicomStoreStreamConfigBigqueryDestinationOutput) ToDicomStoreStreamConfi
 
 func (o DicomStoreStreamConfigBigqueryDestinationOutput) ToDicomStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) DicomStoreStreamConfigBigqueryDestinationOutput {
 	return o
-}
-
-func (o DicomStoreStreamConfigBigqueryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[DicomStoreStreamConfigBigqueryDestination] {
-	return pulumix.Output[DicomStoreStreamConfigBigqueryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
@@ -1538,12 +1333,6 @@ func (i FhirStoreIamBindingConditionArgs) ToFhirStoreIamBindingConditionOutput()
 
 func (i FhirStoreIamBindingConditionArgs) ToFhirStoreIamBindingConditionOutputWithContext(ctx context.Context) FhirStoreIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingConditionOutput)
-}
-
-func (i FhirStoreIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreIamBindingCondition] {
-	return pulumix.Output[FhirStoreIamBindingCondition]{
-		OutputState: i.ToFhirStoreIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FhirStoreIamBindingConditionArgs) ToFhirStoreIamBindingConditionPtrOutput() FhirStoreIamBindingConditionPtrOutput {
@@ -1587,12 +1376,6 @@ func (i *fhirStoreIamBindingConditionPtrType) ToFhirStoreIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingConditionPtrOutput)
 }
 
-func (i *fhirStoreIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamBindingCondition] {
-	return pulumix.Output[*FhirStoreIamBindingCondition]{
-		OutputState: i.ToFhirStoreIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1615,12 +1398,6 @@ func (o FhirStoreIamBindingConditionOutput) ToFhirStoreIamBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamBindingCondition) *FhirStoreIamBindingCondition {
 		return &v
 	}).(FhirStoreIamBindingConditionPtrOutput)
-}
-
-func (o FhirStoreIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreIamBindingCondition] {
-	return pulumix.Output[FhirStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1647,12 +1424,6 @@ func (o FhirStoreIamBindingConditionPtrOutput) ToFhirStoreIamBindingConditionPtr
 
 func (o FhirStoreIamBindingConditionPtrOutput) ToFhirStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o FhirStoreIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamBindingCondition] {
-	return pulumix.Output[*FhirStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Elem() FhirStoreIamBindingConditionOutput {
@@ -1727,12 +1498,6 @@ func (i FhirStoreIamMemberConditionArgs) ToFhirStoreIamMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberConditionOutput)
 }
 
-func (i FhirStoreIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreIamMemberCondition] {
-	return pulumix.Output[FhirStoreIamMemberCondition]{
-		OutputState: i.ToFhirStoreIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirStoreIamMemberConditionArgs) ToFhirStoreIamMemberConditionPtrOutput() FhirStoreIamMemberConditionPtrOutput {
 	return i.ToFhirStoreIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1774,12 +1539,6 @@ func (i *fhirStoreIamMemberConditionPtrType) ToFhirStoreIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberConditionPtrOutput)
 }
 
-func (i *fhirStoreIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMemberCondition] {
-	return pulumix.Output[*FhirStoreIamMemberCondition]{
-		OutputState: i.ToFhirStoreIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1802,12 +1561,6 @@ func (o FhirStoreIamMemberConditionOutput) ToFhirStoreIamMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamMemberCondition) *FhirStoreIamMemberCondition {
 		return &v
 	}).(FhirStoreIamMemberConditionPtrOutput)
-}
-
-func (o FhirStoreIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreIamMemberCondition] {
-	return pulumix.Output[FhirStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1834,12 +1587,6 @@ func (o FhirStoreIamMemberConditionPtrOutput) ToFhirStoreIamMemberConditionPtrOu
 
 func (o FhirStoreIamMemberConditionPtrOutput) ToFhirStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o FhirStoreIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMemberCondition] {
-	return pulumix.Output[*FhirStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Elem() FhirStoreIamMemberConditionOutput {
@@ -1946,12 +1693,6 @@ func (i FhirStoreNotificationConfigArgs) ToFhirStoreNotificationConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigOutput)
 }
 
-func (i FhirStoreNotificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreNotificationConfig] {
-	return pulumix.Output[FhirStoreNotificationConfig]{
-		OutputState: i.ToFhirStoreNotificationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirStoreNotificationConfigArgs) ToFhirStoreNotificationConfigPtrOutput() FhirStoreNotificationConfigPtrOutput {
 	return i.ToFhirStoreNotificationConfigPtrOutputWithContext(context.Background())
 }
@@ -1993,12 +1734,6 @@ func (i *fhirStoreNotificationConfigPtrType) ToFhirStoreNotificationConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigPtrOutput)
 }
 
-func (i *fhirStoreNotificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreNotificationConfig] {
-	return pulumix.Output[*FhirStoreNotificationConfig]{
-		OutputState: i.ToFhirStoreNotificationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreNotificationConfigArrayInput is an input type that accepts FhirStoreNotificationConfigArray and FhirStoreNotificationConfigArrayOutput values.
 // You can construct a concrete instance of `FhirStoreNotificationConfigArrayInput` via:
 //
@@ -2024,12 +1759,6 @@ func (i FhirStoreNotificationConfigArray) ToFhirStoreNotificationConfigArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigArrayOutput)
 }
 
-func (i FhirStoreNotificationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]FhirStoreNotificationConfig] {
-	return pulumix.Output[[]FhirStoreNotificationConfig]{
-		OutputState: i.ToFhirStoreNotificationConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreNotificationConfigOutput) ElementType() reflect.Type {
@@ -2052,12 +1781,6 @@ func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreNotificationConfig) *FhirStoreNotificationConfig {
 		return &v
 	}).(FhirStoreNotificationConfigPtrOutput)
-}
-
-func (o FhirStoreNotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreNotificationConfig] {
-	return pulumix.Output[FhirStoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -2100,12 +1823,6 @@ func (o FhirStoreNotificationConfigPtrOutput) ToFhirStoreNotificationConfigPtrOu
 
 func (o FhirStoreNotificationConfigPtrOutput) ToFhirStoreNotificationConfigPtrOutputWithContext(ctx context.Context) FhirStoreNotificationConfigPtrOutput {
 	return o
-}
-
-func (o FhirStoreNotificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreNotificationConfig] {
-	return pulumix.Output[*FhirStoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreNotificationConfigPtrOutput) Elem() FhirStoreNotificationConfigOutput {
@@ -2175,12 +1892,6 @@ func (o FhirStoreNotificationConfigArrayOutput) ToFhirStoreNotificationConfigArr
 	return o
 }
 
-func (o FhirStoreNotificationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FhirStoreNotificationConfig] {
-	return pulumix.Output[[]FhirStoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreNotificationConfigArrayOutput) Index(i pulumi.IntInput) FhirStoreNotificationConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreNotificationConfig {
 		return vs[0].([]FhirStoreNotificationConfig)[vs[1].(int)]
@@ -2238,12 +1949,6 @@ func (i FhirStoreStreamConfigArgs) ToFhirStoreStreamConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigOutput)
 }
 
-func (i FhirStoreStreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfig] {
-	return pulumix.Output[FhirStoreStreamConfig]{
-		OutputState: i.ToFhirStoreStreamConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreStreamConfigArrayInput is an input type that accepts FhirStoreStreamConfigArray and FhirStoreStreamConfigArrayOutput values.
 // You can construct a concrete instance of `FhirStoreStreamConfigArrayInput` via:
 //
@@ -2269,12 +1974,6 @@ func (i FhirStoreStreamConfigArray) ToFhirStoreStreamConfigArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigArrayOutput)
 }
 
-func (i FhirStoreStreamConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]FhirStoreStreamConfig] {
-	return pulumix.Output[[]FhirStoreStreamConfig]{
-		OutputState: i.ToFhirStoreStreamConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreStreamConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreStreamConfigOutput) ElementType() reflect.Type {
@@ -2287,12 +1986,6 @@ func (o FhirStoreStreamConfigOutput) ToFhirStoreStreamConfigOutput() FhirStoreSt
 
 func (o FhirStoreStreamConfigOutput) ToFhirStoreStreamConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigOutput {
 	return o
-}
-
-func (o FhirStoreStreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfig] {
-	return pulumix.Output[FhirStoreStreamConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination BigQuery structure that contains both the dataset location and corresponding schema config.
@@ -2324,12 +2017,6 @@ func (o FhirStoreStreamConfigArrayOutput) ToFhirStoreStreamConfigArrayOutput() F
 
 func (o FhirStoreStreamConfigArrayOutput) ToFhirStoreStreamConfigArrayOutputWithContext(ctx context.Context) FhirStoreStreamConfigArrayOutput {
 	return o
-}
-
-func (o FhirStoreStreamConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FhirStoreStreamConfig] {
-	return pulumix.Output[[]FhirStoreStreamConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreStreamConfigArrayOutput) Index(i pulumi.IntInput) FhirStoreStreamConfigOutput {
@@ -2377,12 +2064,6 @@ func (i FhirStoreStreamConfigBigqueryDestinationArgs) ToFhirStoreStreamConfigBig
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationOutput)
 }
 
-func (i FhirStoreStreamConfigBigqueryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestination] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestination]{
-		OutputState: i.ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreStreamConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreStreamConfigBigqueryDestinationOutput) ElementType() reflect.Type {
@@ -2395,12 +2076,6 @@ func (o FhirStoreStreamConfigBigqueryDestinationOutput) ToFhirStoreStreamConfigB
 
 func (o FhirStoreStreamConfigBigqueryDestinationOutput) ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationOutput {
 	return o
-}
-
-func (o FhirStoreStreamConfigBigqueryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestination] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
@@ -2477,12 +2152,6 @@ func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs) ToFhirStoreStr
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput)
 }
 
-func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfig] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfig]{
-		OutputState: i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ElementType() reflect.Type {
@@ -2495,12 +2164,6 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToFhirStoreS
 
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
 	return o
-}
-
-func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfig] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
@@ -2569,12 +2232,6 @@ func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartition
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput)
 }
 
-func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig]{
-		OutputState: i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
 	return i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(context.Background())
 }
@@ -2616,12 +2273,6 @@ func (i *fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitio
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput)
 }
 
-func (i *fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig] {
-	return pulumix.Output[*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig]{
-		OutputState: i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ElementType() reflect.Type {
@@ -2644,12 +2295,6 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
 		return &v
 	}).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput)
-}
-
-func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig] {
-	return pulumix.Output[FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of milliseconds for which to keep the storage for a partition.
@@ -2679,12 +2324,6 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartition
 
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
 	return o
-}
-
-func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig] {
-	return pulumix.Output[*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) Elem() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
@@ -2753,12 +2392,6 @@ func (i Hl7StoreIamBindingConditionArgs) ToHl7StoreIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingConditionOutput)
 }
 
-func (i Hl7StoreIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreIamBindingCondition] {
-	return pulumix.Output[Hl7StoreIamBindingCondition]{
-		OutputState: i.ToHl7StoreIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Hl7StoreIamBindingConditionArgs) ToHl7StoreIamBindingConditionPtrOutput() Hl7StoreIamBindingConditionPtrOutput {
 	return i.ToHl7StoreIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2800,12 +2433,6 @@ func (i *hl7StoreIamBindingConditionPtrType) ToHl7StoreIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingConditionPtrOutput)
 }
 
-func (i *hl7StoreIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamBindingCondition] {
-	return pulumix.Output[*Hl7StoreIamBindingCondition]{
-		OutputState: i.ToHl7StoreIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingConditionOutput) ElementType() reflect.Type {
@@ -2828,12 +2455,6 @@ func (o Hl7StoreIamBindingConditionOutput) ToHl7StoreIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamBindingCondition) *Hl7StoreIamBindingCondition {
 		return &v
 	}).(Hl7StoreIamBindingConditionPtrOutput)
-}
-
-func (o Hl7StoreIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreIamBindingCondition] {
-	return pulumix.Output[Hl7StoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2860,12 +2481,6 @@ func (o Hl7StoreIamBindingConditionPtrOutput) ToHl7StoreIamBindingConditionPtrOu
 
 func (o Hl7StoreIamBindingConditionPtrOutput) ToHl7StoreIamBindingConditionPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o Hl7StoreIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamBindingCondition] {
-	return pulumix.Output[*Hl7StoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Elem() Hl7StoreIamBindingConditionOutput {
@@ -2940,12 +2555,6 @@ func (i Hl7StoreIamMemberConditionArgs) ToHl7StoreIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberConditionOutput)
 }
 
-func (i Hl7StoreIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreIamMemberCondition] {
-	return pulumix.Output[Hl7StoreIamMemberCondition]{
-		OutputState: i.ToHl7StoreIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Hl7StoreIamMemberConditionArgs) ToHl7StoreIamMemberConditionPtrOutput() Hl7StoreIamMemberConditionPtrOutput {
 	return i.ToHl7StoreIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2987,12 +2596,6 @@ func (i *hl7StoreIamMemberConditionPtrType) ToHl7StoreIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberConditionPtrOutput)
 }
 
-func (i *hl7StoreIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMemberCondition] {
-	return pulumix.Output[*Hl7StoreIamMemberCondition]{
-		OutputState: i.ToHl7StoreIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberConditionOutput) ElementType() reflect.Type {
@@ -3015,12 +2618,6 @@ func (o Hl7StoreIamMemberConditionOutput) ToHl7StoreIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamMemberCondition) *Hl7StoreIamMemberCondition {
 		return &v
 	}).(Hl7StoreIamMemberConditionPtrOutput)
-}
-
-func (o Hl7StoreIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreIamMemberCondition] {
-	return pulumix.Output[Hl7StoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3047,12 +2644,6 @@ func (o Hl7StoreIamMemberConditionPtrOutput) ToHl7StoreIamMemberConditionPtrOutp
 
 func (o Hl7StoreIamMemberConditionPtrOutput) ToHl7StoreIamMemberConditionPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o Hl7StoreIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMemberCondition] {
-	return pulumix.Output[*Hl7StoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Elem() Hl7StoreIamMemberConditionOutput {
@@ -3135,12 +2726,6 @@ func (i Hl7StoreNotificationConfigArgs) ToHl7StoreNotificationConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigOutput)
 }
 
-func (i Hl7StoreNotificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreNotificationConfig] {
-	return pulumix.Output[Hl7StoreNotificationConfig]{
-		OutputState: i.ToHl7StoreNotificationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Hl7StoreNotificationConfigArgs) ToHl7StoreNotificationConfigPtrOutput() Hl7StoreNotificationConfigPtrOutput {
 	return i.ToHl7StoreNotificationConfigPtrOutputWithContext(context.Background())
 }
@@ -3182,12 +2767,6 @@ func (i *hl7StoreNotificationConfigPtrType) ToHl7StoreNotificationConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigPtrOutput)
 }
 
-func (i *hl7StoreNotificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreNotificationConfig] {
-	return pulumix.Output[*Hl7StoreNotificationConfig]{
-		OutputState: i.ToHl7StoreNotificationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreNotificationConfigOutput) ElementType() reflect.Type {
@@ -3212,12 +2791,6 @@ func (o Hl7StoreNotificationConfigOutput) ToHl7StoreNotificationConfigPtrOutputW
 	}).(Hl7StoreNotificationConfigPtrOutput)
 }
 
-func (o Hl7StoreNotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreNotificationConfig] {
-	return pulumix.Output[Hl7StoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
 // PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
 // It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -3240,12 +2813,6 @@ func (o Hl7StoreNotificationConfigPtrOutput) ToHl7StoreNotificationConfigPtrOutp
 
 func (o Hl7StoreNotificationConfigPtrOutput) ToHl7StoreNotificationConfigPtrOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigPtrOutput {
 	return o
-}
-
-func (o Hl7StoreNotificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreNotificationConfig] {
-	return pulumix.Output[*Hl7StoreNotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreNotificationConfigPtrOutput) Elem() Hl7StoreNotificationConfigOutput {
@@ -3338,12 +2905,6 @@ func (i Hl7StoreNotificationConfigsArgs) ToHl7StoreNotificationConfigsOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigsOutput)
 }
 
-func (i Hl7StoreNotificationConfigsArgs) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreNotificationConfigs] {
-	return pulumix.Output[Hl7StoreNotificationConfigs]{
-		OutputState: i.ToHl7StoreNotificationConfigsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hl7StoreNotificationConfigsArrayInput is an input type that accepts Hl7StoreNotificationConfigsArray and Hl7StoreNotificationConfigsArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreNotificationConfigsArrayInput` via:
 //
@@ -3369,12 +2930,6 @@ func (i Hl7StoreNotificationConfigsArray) ToHl7StoreNotificationConfigsArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigsArrayOutput)
 }
 
-func (i Hl7StoreNotificationConfigsArray) ToOutput(ctx context.Context) pulumix.Output[[]Hl7StoreNotificationConfigs] {
-	return pulumix.Output[[]Hl7StoreNotificationConfigs]{
-		OutputState: i.ToHl7StoreNotificationConfigsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreNotificationConfigsOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreNotificationConfigsOutput) ElementType() reflect.Type {
@@ -3387,12 +2942,6 @@ func (o Hl7StoreNotificationConfigsOutput) ToHl7StoreNotificationConfigsOutput()
 
 func (o Hl7StoreNotificationConfigsOutput) ToHl7StoreNotificationConfigsOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsOutput {
 	return o
-}
-
-func (o Hl7StoreNotificationConfigsOutput) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreNotificationConfigs] {
-	return pulumix.Output[Hl7StoreNotificationConfigs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Restricts notifications sent for messages matching a filter. If this is empty, all messages
@@ -3431,12 +2980,6 @@ func (o Hl7StoreNotificationConfigsArrayOutput) ToHl7StoreNotificationConfigsArr
 
 func (o Hl7StoreNotificationConfigsArrayOutput) ToHl7StoreNotificationConfigsArrayOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsArrayOutput {
 	return o
-}
-
-func (o Hl7StoreNotificationConfigsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Hl7StoreNotificationConfigs] {
-	return pulumix.Output[[]Hl7StoreNotificationConfigs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreNotificationConfigsArrayOutput) Index(i pulumi.IntInput) Hl7StoreNotificationConfigsOutput {
@@ -3498,12 +3041,6 @@ func (i Hl7StoreParserConfigArgs) ToHl7StoreParserConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreParserConfigOutput)
 }
 
-func (i Hl7StoreParserConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreParserConfig] {
-	return pulumix.Output[Hl7StoreParserConfig]{
-		OutputState: i.ToHl7StoreParserConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Hl7StoreParserConfigArgs) ToHl7StoreParserConfigPtrOutput() Hl7StoreParserConfigPtrOutput {
 	return i.ToHl7StoreParserConfigPtrOutputWithContext(context.Background())
 }
@@ -3545,12 +3082,6 @@ func (i *hl7StoreParserConfigPtrType) ToHl7StoreParserConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreParserConfigPtrOutput)
 }
 
-func (i *hl7StoreParserConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreParserConfig] {
-	return pulumix.Output[*Hl7StoreParserConfig]{
-		OutputState: i.ToHl7StoreParserConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreParserConfigOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreParserConfigOutput) ElementType() reflect.Type {
@@ -3573,12 +3104,6 @@ func (o Hl7StoreParserConfigOutput) ToHl7StoreParserConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreParserConfig) *Hl7StoreParserConfig {
 		return &v
 	}).(Hl7StoreParserConfigPtrOutput)
-}
-
-func (o Hl7StoreParserConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Hl7StoreParserConfig] {
-	return pulumix.Output[Hl7StoreParserConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether messages with no header are allowed.
@@ -3617,12 +3142,6 @@ func (o Hl7StoreParserConfigPtrOutput) ToHl7StoreParserConfigPtrOutput() Hl7Stor
 
 func (o Hl7StoreParserConfigPtrOutput) ToHl7StoreParserConfigPtrOutputWithContext(ctx context.Context) Hl7StoreParserConfigPtrOutput {
 	return o
-}
-
-func (o Hl7StoreParserConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreParserConfig] {
-	return pulumix.Output[*Hl7StoreParserConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreParserConfigPtrOutput) Elem() Hl7StoreParserConfigOutput {

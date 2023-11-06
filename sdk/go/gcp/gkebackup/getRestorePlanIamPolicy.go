@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for restoreplan
@@ -119,12 +118,6 @@ func (o LookupRestorePlanIamPolicyResultOutput) ToLookupRestorePlanIamPolicyResu
 
 func (o LookupRestorePlanIamPolicyResultOutput) ToLookupRestorePlanIamPolicyResultOutputWithContext(ctx context.Context) LookupRestorePlanIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupRestorePlanIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRestorePlanIamPolicyResult] {
-	return pulumix.Output[LookupRestorePlanIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

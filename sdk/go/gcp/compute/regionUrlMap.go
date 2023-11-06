@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // UrlMaps are used to route requests to a backend service based on rules
@@ -385,12 +384,6 @@ func (i *RegionUrlMap) ToRegionUrlMapOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapOutput)
 }
 
-func (i *RegionUrlMap) ToOutput(ctx context.Context) pulumix.Output[*RegionUrlMap] {
-	return pulumix.Output[*RegionUrlMap]{
-		OutputState: i.ToRegionUrlMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionUrlMapArrayInput is an input type that accepts RegionUrlMapArray and RegionUrlMapArrayOutput values.
 // You can construct a concrete instance of `RegionUrlMapArrayInput` via:
 //
@@ -414,12 +407,6 @@ func (i RegionUrlMapArray) ToRegionUrlMapArrayOutput() RegionUrlMapArrayOutput {
 
 func (i RegionUrlMapArray) ToRegionUrlMapArrayOutputWithContext(ctx context.Context) RegionUrlMapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapArrayOutput)
-}
-
-func (i RegionUrlMapArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionUrlMap] {
-	return pulumix.Output[[]*RegionUrlMap]{
-		OutputState: i.ToRegionUrlMapArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionUrlMapMapInput is an input type that accepts RegionUrlMapMap and RegionUrlMapMapOutput values.
@@ -447,12 +434,6 @@ func (i RegionUrlMapMap) ToRegionUrlMapMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapMapOutput)
 }
 
-func (i RegionUrlMapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionUrlMap] {
-	return pulumix.Output[map[string]*RegionUrlMap]{
-		OutputState: i.ToRegionUrlMapMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionUrlMapOutput struct{ *pulumi.OutputState }
 
 func (RegionUrlMapOutput) ElementType() reflect.Type {
@@ -465,12 +446,6 @@ func (o RegionUrlMapOutput) ToRegionUrlMapOutput() RegionUrlMapOutput {
 
 func (o RegionUrlMapOutput) ToRegionUrlMapOutputWithContext(ctx context.Context) RegionUrlMapOutput {
 	return o
-}
-
-func (o RegionUrlMapOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionUrlMap] {
-	return pulumix.Output[*RegionUrlMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -586,12 +561,6 @@ func (o RegionUrlMapArrayOutput) ToRegionUrlMapArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o RegionUrlMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionUrlMap] {
-	return pulumix.Output[[]*RegionUrlMap]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionUrlMapArrayOutput) Index(i pulumi.IntInput) RegionUrlMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionUrlMap {
 		return vs[0].([]*RegionUrlMap)[vs[1].(int)]
@@ -610,12 +579,6 @@ func (o RegionUrlMapMapOutput) ToRegionUrlMapMapOutput() RegionUrlMapMapOutput {
 
 func (o RegionUrlMapMapOutput) ToRegionUrlMapMapOutputWithContext(ctx context.Context) RegionUrlMapMapOutput {
 	return o
-}
-
-func (o RegionUrlMapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionUrlMap] {
-	return pulumix.Output[map[string]*RegionUrlMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionUrlMapMapOutput) MapIndex(k pulumi.StringInput) RegionUrlMapOutput {

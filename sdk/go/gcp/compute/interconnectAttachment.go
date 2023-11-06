@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an InterconnectAttachment (VLAN attachment) resource. For more
@@ -753,12 +752,6 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
 }
 
-func (i *InterconnectAttachment) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
-	return pulumix.Output[*InterconnectAttachment]{
-		OutputState: i.ToInterconnectAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InterconnectAttachmentArrayInput is an input type that accepts InterconnectAttachmentArray and InterconnectAttachmentArrayOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentArrayInput` via:
 //
@@ -782,12 +775,6 @@ func (i InterconnectAttachmentArray) ToInterconnectAttachmentArrayOutput() Inter
 
 func (i InterconnectAttachmentArray) ToInterconnectAttachmentArrayOutputWithContext(ctx context.Context) InterconnectAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentArrayOutput)
-}
-
-func (i InterconnectAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*InterconnectAttachment] {
-	return pulumix.Output[[]*InterconnectAttachment]{
-		OutputState: i.ToInterconnectAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterconnectAttachmentMapInput is an input type that accepts InterconnectAttachmentMap and InterconnectAttachmentMapOutput values.
@@ -815,12 +802,6 @@ func (i InterconnectAttachmentMap) ToInterconnectAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentMapOutput)
 }
 
-func (i InterconnectAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterconnectAttachment] {
-	return pulumix.Output[map[string]*InterconnectAttachment]{
-		OutputState: i.ToInterconnectAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
@@ -833,12 +814,6 @@ func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() Interconn
 
 func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
 	return o
-}
-
-func (o InterconnectAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
-	return pulumix.Output[*InterconnectAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the VLAN attachment is enabled or disabled.  When using
@@ -1046,12 +1021,6 @@ func (o InterconnectAttachmentArrayOutput) ToInterconnectAttachmentArrayOutputWi
 	return o
 }
 
-func (o InterconnectAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InterconnectAttachment] {
-	return pulumix.Output[[]*InterconnectAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InterconnectAttachmentArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterconnectAttachment {
 		return vs[0].([]*InterconnectAttachment)[vs[1].(int)]
@@ -1070,12 +1039,6 @@ func (o InterconnectAttachmentMapOutput) ToInterconnectAttachmentMapOutput() Int
 
 func (o InterconnectAttachmentMapOutput) ToInterconnectAttachmentMapOutputWithContext(ctx context.Context) InterconnectAttachmentMapOutput {
 	return o
-}
-
-func (o InterconnectAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterconnectAttachment] {
-	return pulumix.Output[map[string]*InterconnectAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InterconnectAttachmentMapOutput) MapIndex(k pulumi.StringInput) InterconnectAttachmentOutput {

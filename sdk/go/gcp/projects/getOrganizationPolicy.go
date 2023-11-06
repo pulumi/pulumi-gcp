@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of Organization policies for a Google Project. For more information see
@@ -113,12 +112,6 @@ func (o LookupOrganizationPolicyResultOutput) ToLookupOrganizationPolicyResultOu
 
 func (o LookupOrganizationPolicyResultOutput) ToLookupOrganizationPolicyResultOutputWithContext(ctx context.Context) LookupOrganizationPolicyResultOutput {
 	return o
-}
-
-func (o LookupOrganizationPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationPolicyResult] {
-	return pulumix.Output[LookupOrganizationPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupOrganizationPolicyResultOutput) BooleanPolicies() GetOrganizationPolicyBooleanPolicyArrayOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
@@ -460,12 +459,6 @@ func (i *MachineImageIamPolicy) ToMachineImageIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyOutput)
 }
 
-func (i *MachineImageIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MachineImageIamPolicy] {
-	return pulumix.Output[*MachineImageIamPolicy]{
-		OutputState: i.ToMachineImageIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineImageIamPolicyArrayInput is an input type that accepts MachineImageIamPolicyArray and MachineImageIamPolicyArrayOutput values.
 // You can construct a concrete instance of `MachineImageIamPolicyArrayInput` via:
 //
@@ -489,12 +482,6 @@ func (i MachineImageIamPolicyArray) ToMachineImageIamPolicyArrayOutput() Machine
 
 func (i MachineImageIamPolicyArray) ToMachineImageIamPolicyArrayOutputWithContext(ctx context.Context) MachineImageIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyArrayOutput)
-}
-
-func (i MachineImageIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImageIamPolicy] {
-	return pulumix.Output[[]*MachineImageIamPolicy]{
-		OutputState: i.ToMachineImageIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MachineImageIamPolicyMapInput is an input type that accepts MachineImageIamPolicyMap and MachineImageIamPolicyMapOutput values.
@@ -522,12 +509,6 @@ func (i MachineImageIamPolicyMap) ToMachineImageIamPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyMapOutput)
 }
 
-func (i MachineImageIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImageIamPolicy] {
-	return pulumix.Output[map[string]*MachineImageIamPolicy]{
-		OutputState: i.ToMachineImageIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamPolicyOutput) ElementType() reflect.Type {
@@ -540,12 +521,6 @@ func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutput() MachineImag
 
 func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutputWithContext(ctx context.Context) MachineImageIamPolicyOutput {
 	return o
-}
-
-func (o MachineImageIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineImageIamPolicy] {
-	return pulumix.Output[*MachineImageIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -596,12 +571,6 @@ func (o MachineImageIamPolicyArrayOutput) ToMachineImageIamPolicyArrayOutputWith
 	return o
 }
 
-func (o MachineImageIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImageIamPolicy] {
-	return pulumix.Output[[]*MachineImageIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineImageIamPolicyArrayOutput) Index(i pulumi.IntInput) MachineImageIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineImageIamPolicy {
 		return vs[0].([]*MachineImageIamPolicy)[vs[1].(int)]
@@ -620,12 +589,6 @@ func (o MachineImageIamPolicyMapOutput) ToMachineImageIamPolicyMapOutput() Machi
 
 func (o MachineImageIamPolicyMapOutput) ToMachineImageIamPolicyMapOutputWithContext(ctx context.Context) MachineImageIamPolicyMapOutput {
 	return o
-}
-
-func (o MachineImageIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImageIamPolicy] {
-	return pulumix.Output[map[string]*MachineImageIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineImageIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MachineImageIamPolicyOutput {

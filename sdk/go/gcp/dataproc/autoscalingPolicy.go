@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes an autoscaling policy for Dataproc cluster autoscaler.
@@ -273,12 +272,6 @@ func (i *AutoscalingPolicy) ToAutoscalingPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyOutput)
 }
 
-func (i *AutoscalingPolicy) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicy] {
-	return pulumix.Output[*AutoscalingPolicy]{
-		OutputState: i.ToAutoscalingPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AutoscalingPolicyArrayInput is an input type that accepts AutoscalingPolicyArray and AutoscalingPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyArrayInput` via:
 //
@@ -302,12 +295,6 @@ func (i AutoscalingPolicyArray) ToAutoscalingPolicyArrayOutput() AutoscalingPoli
 
 func (i AutoscalingPolicyArray) ToAutoscalingPolicyArrayOutputWithContext(ctx context.Context) AutoscalingPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyArrayOutput)
-}
-
-func (i AutoscalingPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicy] {
-	return pulumix.Output[[]*AutoscalingPolicy]{
-		OutputState: i.ToAutoscalingPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AutoscalingPolicyMapInput is an input type that accepts AutoscalingPolicyMap and AutoscalingPolicyMapOutput values.
@@ -335,12 +322,6 @@ func (i AutoscalingPolicyMap) ToAutoscalingPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyMapOutput)
 }
 
-func (i AutoscalingPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicy] {
-	return pulumix.Output[map[string]*AutoscalingPolicy]{
-		OutputState: i.ToAutoscalingPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyOutput) ElementType() reflect.Type {
@@ -353,12 +334,6 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOu
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
 	return o
-}
-
-func (o AutoscalingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicy] {
-	return pulumix.Output[*AutoscalingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Basic algorithm for autoscaling.
@@ -421,12 +396,6 @@ func (o AutoscalingPolicyArrayOutput) ToAutoscalingPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o AutoscalingPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicy] {
-	return pulumix.Output[[]*AutoscalingPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AutoscalingPolicyArrayOutput) Index(i pulumi.IntInput) AutoscalingPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingPolicy {
 		return vs[0].([]*AutoscalingPolicy)[vs[1].(int)]
@@ -445,12 +414,6 @@ func (o AutoscalingPolicyMapOutput) ToAutoscalingPolicyMapOutput() AutoscalingPo
 
 func (o AutoscalingPolicyMapOutput) ToAutoscalingPolicyMapOutputWithContext(ctx context.Context) AutoscalingPolicyMapOutput {
 	return o
-}
-
-func (o AutoscalingPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicy] {
-	return pulumix.Output[map[string]*AutoscalingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyOutput {

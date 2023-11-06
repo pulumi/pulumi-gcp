@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
@@ -364,12 +363,6 @@ func (i *RegionDiskIamBinding) ToRegionDiskIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingOutput)
 }
 
-func (i *RegionDiskIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamBinding] {
-	return pulumix.Output[*RegionDiskIamBinding]{
-		OutputState: i.ToRegionDiskIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionDiskIamBindingArrayInput is an input type that accepts RegionDiskIamBindingArray and RegionDiskIamBindingArrayOutput values.
 // You can construct a concrete instance of `RegionDiskIamBindingArrayInput` via:
 //
@@ -393,12 +386,6 @@ func (i RegionDiskIamBindingArray) ToRegionDiskIamBindingArrayOutput() RegionDis
 
 func (i RegionDiskIamBindingArray) ToRegionDiskIamBindingArrayOutputWithContext(ctx context.Context) RegionDiskIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingArrayOutput)
-}
-
-func (i RegionDiskIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskIamBinding] {
-	return pulumix.Output[[]*RegionDiskIamBinding]{
-		OutputState: i.ToRegionDiskIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionDiskIamBindingMapInput is an input type that accepts RegionDiskIamBindingMap and RegionDiskIamBindingMapOutput values.
@@ -426,12 +413,6 @@ func (i RegionDiskIamBindingMap) ToRegionDiskIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingMapOutput)
 }
 
-func (i RegionDiskIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskIamBinding] {
-	return pulumix.Output[map[string]*RegionDiskIamBinding]{
-		OutputState: i.ToRegionDiskIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionDiskIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamBindingOutput) ElementType() reflect.Type {
@@ -444,12 +425,6 @@ func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingOutput() RegionDiskIam
 
 func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingOutputWithContext(ctx context.Context) RegionDiskIamBindingOutput {
 	return o
-}
-
-func (o RegionDiskIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamBinding] {
-	return pulumix.Output[*RegionDiskIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionDiskIamBindingOutput) Condition() RegionDiskIamBindingConditionPtrOutput {
@@ -513,12 +488,6 @@ func (o RegionDiskIamBindingArrayOutput) ToRegionDiskIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o RegionDiskIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDiskIamBinding] {
-	return pulumix.Output[[]*RegionDiskIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionDiskIamBindingArrayOutput) Index(i pulumi.IntInput) RegionDiskIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskIamBinding {
 		return vs[0].([]*RegionDiskIamBinding)[vs[1].(int)]
@@ -537,12 +506,6 @@ func (o RegionDiskIamBindingMapOutput) ToRegionDiskIamBindingMapOutput() RegionD
 
 func (o RegionDiskIamBindingMapOutput) ToRegionDiskIamBindingMapOutputWithContext(ctx context.Context) RegionDiskIamBindingMapOutput {
 	return o
-}
-
-func (o RegionDiskIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDiskIamBinding] {
-	return pulumix.Output[map[string]*RegionDiskIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionDiskIamBindingMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamBindingOutput {

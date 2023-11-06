@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A policy that can be attached to a resource to specify or schedule actions on that resource.
@@ -517,12 +516,6 @@ func (i *ResourcePolicy) ToResourcePolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyOutput)
 }
 
-func (i *ResourcePolicy) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicy] {
-	return pulumix.Output[*ResourcePolicy]{
-		OutputState: i.ToResourcePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourcePolicyArrayInput is an input type that accepts ResourcePolicyArray and ResourcePolicyArrayOutput values.
 // You can construct a concrete instance of `ResourcePolicyArrayInput` via:
 //
@@ -546,12 +539,6 @@ func (i ResourcePolicyArray) ToResourcePolicyArrayOutput() ResourcePolicyArrayOu
 
 func (i ResourcePolicyArray) ToResourcePolicyArrayOutputWithContext(ctx context.Context) ResourcePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyArrayOutput)
-}
-
-func (i ResourcePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourcePolicy] {
-	return pulumix.Output[[]*ResourcePolicy]{
-		OutputState: i.ToResourcePolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResourcePolicyMapInput is an input type that accepts ResourcePolicyMap and ResourcePolicyMapOutput values.
@@ -579,12 +566,6 @@ func (i ResourcePolicyMap) ToResourcePolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyMapOutput)
 }
 
-func (i ResourcePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourcePolicy] {
-	return pulumix.Output[map[string]*ResourcePolicy]{
-		OutputState: i.ToResourcePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourcePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyOutput) ElementType() reflect.Type {
@@ -597,12 +578,6 @@ func (o ResourcePolicyOutput) ToResourcePolicyOutput() ResourcePolicyOutput {
 
 func (o ResourcePolicyOutput) ToResourcePolicyOutputWithContext(ctx context.Context) ResourcePolicyOutput {
 	return o
-}
-
-func (o ResourcePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicy] {
-	return pulumix.Output[*ResourcePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
@@ -679,12 +654,6 @@ func (o ResourcePolicyArrayOutput) ToResourcePolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ResourcePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourcePolicy] {
-	return pulumix.Output[[]*ResourcePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourcePolicyArrayOutput) Index(i pulumi.IntInput) ResourcePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcePolicy {
 		return vs[0].([]*ResourcePolicy)[vs[1].(int)]
@@ -703,12 +672,6 @@ func (o ResourcePolicyMapOutput) ToResourcePolicyMapOutput() ResourcePolicyMapOu
 
 func (o ResourcePolicyMapOutput) ToResourcePolicyMapOutputWithContext(ctx context.Context) ResourcePolicyMapOutput {
 	return o
-}
-
-func (o ResourcePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourcePolicy] {
-	return pulumix.Output[map[string]*ResourcePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcePolicyMapOutput) MapIndex(k pulumi.StringInput) ResourcePolicyOutput {

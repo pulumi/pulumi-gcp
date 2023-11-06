@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
@@ -380,12 +379,6 @@ func (i *MetastoreServiceIamBinding) ToMetastoreServiceIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingOutput)
 }
 
-func (i *MetastoreServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamBinding] {
-	return pulumix.Output[*MetastoreServiceIamBinding]{
-		OutputState: i.ToMetastoreServiceIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceIamBindingArrayInput is an input type that accepts MetastoreServiceIamBindingArray and MetastoreServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceIamBindingArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i MetastoreServiceIamBindingArray) ToMetastoreServiceIamBindingArrayOutput
 
 func (i MetastoreServiceIamBindingArray) ToMetastoreServiceIamBindingArrayOutputWithContext(ctx context.Context) MetastoreServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingArrayOutput)
-}
-
-func (i MetastoreServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamBinding] {
-	return pulumix.Output[[]*MetastoreServiceIamBinding]{
-		OutputState: i.ToMetastoreServiceIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreServiceIamBindingMapInput is an input type that accepts MetastoreServiceIamBindingMap and MetastoreServiceIamBindingMapOutput values.
@@ -442,12 +429,6 @@ func (i MetastoreServiceIamBindingMap) ToMetastoreServiceIamBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingMapOutput)
 }
 
-func (i MetastoreServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamBinding] {
-	return pulumix.Output[map[string]*MetastoreServiceIamBinding]{
-		OutputState: i.ToMetastoreServiceIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceIamBindingOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o MetastoreServiceIamBindingOutput) ToMetastoreServiceIamBindingOutput() M
 
 func (o MetastoreServiceIamBindingOutput) ToMetastoreServiceIamBindingOutputWithContext(ctx context.Context) MetastoreServiceIamBindingOutput {
 	return o
-}
-
-func (o MetastoreServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamBinding] {
-	return pulumix.Output[*MetastoreServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamBindingOutput) Condition() MetastoreServiceIamBindingConditionPtrOutput {
@@ -531,12 +506,6 @@ func (o MetastoreServiceIamBindingArrayOutput) ToMetastoreServiceIamBindingArray
 	return o
 }
 
-func (o MetastoreServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamBinding] {
-	return pulumix.Output[[]*MetastoreServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreServiceIamBindingArrayOutput) Index(i pulumi.IntInput) MetastoreServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreServiceIamBinding {
 		return vs[0].([]*MetastoreServiceIamBinding)[vs[1].(int)]
@@ -555,12 +524,6 @@ func (o MetastoreServiceIamBindingMapOutput) ToMetastoreServiceIamBindingMapOutp
 
 func (o MetastoreServiceIamBindingMapOutput) ToMetastoreServiceIamBindingMapOutputWithContext(ctx context.Context) MetastoreServiceIamBindingMapOutput {
 	return o
-}
-
-func (o MetastoreServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamBinding] {
-	return pulumix.Output[map[string]*MetastoreServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) MetastoreServiceIamBindingOutput {

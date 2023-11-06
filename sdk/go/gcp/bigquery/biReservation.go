@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a BI Reservation.
@@ -222,12 +221,6 @@ func (i *BiReservation) ToBiReservationOutputWithContext(ctx context.Context) Bi
 	return pulumi.ToOutputWithContext(ctx, i).(BiReservationOutput)
 }
 
-func (i *BiReservation) ToOutput(ctx context.Context) pulumix.Output[*BiReservation] {
-	return pulumix.Output[*BiReservation]{
-		OutputState: i.ToBiReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BiReservationArrayInput is an input type that accepts BiReservationArray and BiReservationArrayOutput values.
 // You can construct a concrete instance of `BiReservationArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i BiReservationArray) ToBiReservationArrayOutput() BiReservationArrayOutpu
 
 func (i BiReservationArray) ToBiReservationArrayOutputWithContext(ctx context.Context) BiReservationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BiReservationArrayOutput)
-}
-
-func (i BiReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]*BiReservation] {
-	return pulumix.Output[[]*BiReservation]{
-		OutputState: i.ToBiReservationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BiReservationMapInput is an input type that accepts BiReservationMap and BiReservationMapOutput values.
@@ -284,12 +271,6 @@ func (i BiReservationMap) ToBiReservationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BiReservationMapOutput)
 }
 
-func (i BiReservationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BiReservation] {
-	return pulumix.Output[map[string]*BiReservation]{
-		OutputState: i.ToBiReservationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BiReservationOutput struct{ *pulumi.OutputState }
 
 func (BiReservationOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o BiReservationOutput) ToBiReservationOutput() BiReservationOutput {
 
 func (o BiReservationOutput) ToBiReservationOutputWithContext(ctx context.Context) BiReservationOutput {
 	return o
-}
-
-func (o BiReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*BiReservation] {
-	return pulumix.Output[*BiReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // LOCATION_DESCRIPTION
@@ -359,12 +334,6 @@ func (o BiReservationArrayOutput) ToBiReservationArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o BiReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BiReservation] {
-	return pulumix.Output[[]*BiReservation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BiReservationArrayOutput) Index(i pulumi.IntInput) BiReservationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BiReservation {
 		return vs[0].([]*BiReservation)[vs[1].(int)]
@@ -383,12 +352,6 @@ func (o BiReservationMapOutput) ToBiReservationMapOutput() BiReservationMapOutpu
 
 func (o BiReservationMapOutput) ToBiReservationMapOutputWithContext(ctx context.Context) BiReservationMapOutput {
 	return o
-}
-
-func (o BiReservationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BiReservation] {
-	return pulumix.Output[map[string]*BiReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BiReservationMapOutput) MapIndex(k pulumi.StringInput) BiReservationOutput {

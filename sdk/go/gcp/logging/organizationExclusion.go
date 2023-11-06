@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an organization-level logging exclusion. For more information see:
@@ -203,12 +202,6 @@ func (i *OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionOutput)
 }
 
-func (i *OrganizationExclusion) ToOutput(ctx context.Context) pulumix.Output[*OrganizationExclusion] {
-	return pulumix.Output[*OrganizationExclusion]{
-		OutputState: i.ToOrganizationExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationExclusionArrayInput is an input type that accepts OrganizationExclusionArray and OrganizationExclusionArrayOutput values.
 // You can construct a concrete instance of `OrganizationExclusionArrayInput` via:
 //
@@ -232,12 +225,6 @@ func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutput() Organiz
 
 func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutputWithContext(ctx context.Context) OrganizationExclusionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionArrayOutput)
-}
-
-func (i OrganizationExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationExclusion] {
-	return pulumix.Output[[]*OrganizationExclusion]{
-		OutputState: i.ToOrganizationExclusionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationExclusionMapInput is an input type that accepts OrganizationExclusionMap and OrganizationExclusionMapOutput values.
@@ -265,12 +252,6 @@ func (i OrganizationExclusionMap) ToOrganizationExclusionMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionMapOutput)
 }
 
-func (i OrganizationExclusionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationExclusion] {
-	return pulumix.Output[map[string]*OrganizationExclusion]{
-		OutputState: i.ToOrganizationExclusionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationExclusionOutput struct{ *pulumi.OutputState }
 
 func (OrganizationExclusionOutput) ElementType() reflect.Type {
@@ -283,12 +264,6 @@ func (o OrganizationExclusionOutput) ToOrganizationExclusionOutput() Organizatio
 
 func (o OrganizationExclusionOutput) ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput {
 	return o
-}
-
-func (o OrganizationExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationExclusion] {
-	return pulumix.Output[*OrganizationExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description.
@@ -333,12 +308,6 @@ func (o OrganizationExclusionArrayOutput) ToOrganizationExclusionArrayOutputWith
 	return o
 }
 
-func (o OrganizationExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationExclusion] {
-	return pulumix.Output[[]*OrganizationExclusion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationExclusionArrayOutput) Index(i pulumi.IntInput) OrganizationExclusionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationExclusion {
 		return vs[0].([]*OrganizationExclusion)[vs[1].(int)]
@@ -357,12 +326,6 @@ func (o OrganizationExclusionMapOutput) ToOrganizationExclusionMapOutput() Organ
 
 func (o OrganizationExclusionMapOutput) ToOrganizationExclusionMapOutputWithContext(ctx context.Context) OrganizationExclusionMapOutput {
 	return o
-}
-
-func (o OrganizationExclusionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationExclusion] {
-	return pulumix.Output[map[string]*OrganizationExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationExclusionMapOutput) MapIndex(k pulumi.StringInput) OrganizationExclusionOutput {

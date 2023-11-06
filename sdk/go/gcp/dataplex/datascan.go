@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a user-visible job which provides the insights for the related data source.
@@ -631,12 +630,6 @@ func (i *Datascan) ToDatascanOutputWithContext(ctx context.Context) DatascanOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanOutput)
 }
 
-func (i *Datascan) ToOutput(ctx context.Context) pulumix.Output[*Datascan] {
-	return pulumix.Output[*Datascan]{
-		OutputState: i.ToDatascanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatascanArrayInput is an input type that accepts DatascanArray and DatascanArrayOutput values.
 // You can construct a concrete instance of `DatascanArrayInput` via:
 //
@@ -660,12 +653,6 @@ func (i DatascanArray) ToDatascanArrayOutput() DatascanArrayOutput {
 
 func (i DatascanArray) ToDatascanArrayOutputWithContext(ctx context.Context) DatascanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanArrayOutput)
-}
-
-func (i DatascanArray) ToOutput(ctx context.Context) pulumix.Output[[]*Datascan] {
-	return pulumix.Output[[]*Datascan]{
-		OutputState: i.ToDatascanArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatascanMapInput is an input type that accepts DatascanMap and DatascanMapOutput values.
@@ -693,12 +680,6 @@ func (i DatascanMap) ToDatascanMapOutputWithContext(ctx context.Context) Datasca
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanMapOutput)
 }
 
-func (i DatascanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Datascan] {
-	return pulumix.Output[map[string]*Datascan]{
-		OutputState: i.ToDatascanMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatascanOutput struct{ *pulumi.OutputState }
 
 func (DatascanOutput) ElementType() reflect.Type {
@@ -711,12 +692,6 @@ func (o DatascanOutput) ToDatascanOutput() DatascanOutput {
 
 func (o DatascanOutput) ToDatascanOutputWithContext(ctx context.Context) DatascanOutput {
 	return o
-}
-
-func (o DatascanOutput) ToOutput(ctx context.Context) pulumix.Output[*Datascan] {
-	return pulumix.Output[*Datascan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the scan was created.
@@ -847,12 +822,6 @@ func (o DatascanArrayOutput) ToDatascanArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DatascanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Datascan] {
-	return pulumix.Output[[]*Datascan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatascanArrayOutput) Index(i pulumi.IntInput) DatascanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Datascan {
 		return vs[0].([]*Datascan)[vs[1].(int)]
@@ -871,12 +840,6 @@ func (o DatascanMapOutput) ToDatascanMapOutput() DatascanMapOutput {
 
 func (o DatascanMapOutput) ToDatascanMapOutputWithContext(ctx context.Context) DatascanMapOutput {
 	return o
-}
-
-func (o DatascanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Datascan] {
-	return pulumix.Output[map[string]*Datascan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatascanMapOutput) MapIndex(k pulumi.StringInput) DatascanOutput {

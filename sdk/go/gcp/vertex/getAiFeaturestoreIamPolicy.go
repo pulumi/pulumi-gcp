@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAiFeaturestoreIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreIamPolicyResult, error) {
@@ -92,12 +91,6 @@ func (o GetAiFeaturestoreIamPolicyResultOutput) ToGetAiFeaturestoreIamPolicyResu
 
 func (o GetAiFeaturestoreIamPolicyResultOutput) ToGetAiFeaturestoreIamPolicyResultOutputWithContext(ctx context.Context) GetAiFeaturestoreIamPolicyResultOutput {
 	return o
-}
-
-func (o GetAiFeaturestoreIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiFeaturestoreIamPolicyResult] {
-	return pulumix.Output[GetAiFeaturestoreIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

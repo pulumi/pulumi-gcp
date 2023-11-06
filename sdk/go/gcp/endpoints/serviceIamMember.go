@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
@@ -279,12 +278,6 @@ func (i *ServiceIamMember) ToServiceIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberOutput)
 }
 
-func (i *ServiceIamMember) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMember] {
-	return pulumix.Output[*ServiceIamMember]{
-		OutputState: i.ToServiceIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceIamMemberArrayInput is an input type that accepts ServiceIamMemberArray and ServiceIamMemberArrayOutput values.
 // You can construct a concrete instance of `ServiceIamMemberArrayInput` via:
 //
@@ -308,12 +301,6 @@ func (i ServiceIamMemberArray) ToServiceIamMemberArrayOutput() ServiceIamMemberA
 
 func (i ServiceIamMemberArray) ToServiceIamMemberArrayOutputWithContext(ctx context.Context) ServiceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberArrayOutput)
-}
-
-func (i ServiceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamMember] {
-	return pulumix.Output[[]*ServiceIamMember]{
-		OutputState: i.ToServiceIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceIamMemberMapInput is an input type that accepts ServiceIamMemberMap and ServiceIamMemberMapOutput values.
@@ -341,12 +328,6 @@ func (i ServiceIamMemberMap) ToServiceIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberMapOutput)
 }
 
-func (i ServiceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamMember] {
-	return pulumix.Output[map[string]*ServiceIamMember]{
-		OutputState: i.ToServiceIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberOutput) ElementType() reflect.Type {
@@ -359,12 +340,6 @@ func (o ServiceIamMemberOutput) ToServiceIamMemberOutput() ServiceIamMemberOutpu
 
 func (o ServiceIamMemberOutput) ToServiceIamMemberOutputWithContext(ctx context.Context) ServiceIamMemberOutput {
 	return o
-}
-
-func (o ServiceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMember] {
-	return pulumix.Output[*ServiceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamMemberOutput) Condition() ServiceIamMemberConditionPtrOutput {
@@ -405,12 +380,6 @@ func (o ServiceIamMemberArrayOutput) ToServiceIamMemberArrayOutputWithContext(ct
 	return o
 }
 
-func (o ServiceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamMember] {
-	return pulumix.Output[[]*ServiceIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceIamMemberArrayOutput) Index(i pulumi.IntInput) ServiceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIamMember {
 		return vs[0].([]*ServiceIamMember)[vs[1].(int)]
@@ -429,12 +398,6 @@ func (o ServiceIamMemberMapOutput) ToServiceIamMemberMapOutput() ServiceIamMembe
 
 func (o ServiceIamMemberMapOutput) ToServiceIamMemberMapOutputWithContext(ctx context.Context) ServiceIamMemberMapOutput {
 	return o
-}
-
-func (o ServiceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamMember] {
-	return pulumix.Output[map[string]*ServiceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) ServiceIamMemberOutput {

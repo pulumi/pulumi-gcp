@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
@@ -396,12 +395,6 @@ func (i *TaskIamBinding) ToTaskIamBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingOutput)
 }
 
-func (i *TaskIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TaskIamBinding] {
-	return pulumix.Output[*TaskIamBinding]{
-		OutputState: i.ToTaskIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TaskIamBindingArrayInput is an input type that accepts TaskIamBindingArray and TaskIamBindingArrayOutput values.
 // You can construct a concrete instance of `TaskIamBindingArrayInput` via:
 //
@@ -425,12 +418,6 @@ func (i TaskIamBindingArray) ToTaskIamBindingArrayOutput() TaskIamBindingArrayOu
 
 func (i TaskIamBindingArray) ToTaskIamBindingArrayOutputWithContext(ctx context.Context) TaskIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingArrayOutput)
-}
-
-func (i TaskIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TaskIamBinding] {
-	return pulumix.Output[[]*TaskIamBinding]{
-		OutputState: i.ToTaskIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TaskIamBindingMapInput is an input type that accepts TaskIamBindingMap and TaskIamBindingMapOutput values.
@@ -458,12 +445,6 @@ func (i TaskIamBindingMap) ToTaskIamBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingMapOutput)
 }
 
-func (i TaskIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaskIamBinding] {
-	return pulumix.Output[map[string]*TaskIamBinding]{
-		OutputState: i.ToTaskIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaskIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TaskIamBindingOutput) ElementType() reflect.Type {
@@ -476,12 +457,6 @@ func (o TaskIamBindingOutput) ToTaskIamBindingOutput() TaskIamBindingOutput {
 
 func (o TaskIamBindingOutput) ToTaskIamBindingOutputWithContext(ctx context.Context) TaskIamBindingOutput {
 	return o
-}
-
-func (o TaskIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskIamBinding] {
-	return pulumix.Output[*TaskIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaskIamBindingOutput) Condition() TaskIamBindingConditionPtrOutput {
@@ -552,12 +527,6 @@ func (o TaskIamBindingArrayOutput) ToTaskIamBindingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TaskIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TaskIamBinding] {
-	return pulumix.Output[[]*TaskIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TaskIamBindingArrayOutput) Index(i pulumi.IntInput) TaskIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaskIamBinding {
 		return vs[0].([]*TaskIamBinding)[vs[1].(int)]
@@ -576,12 +545,6 @@ func (o TaskIamBindingMapOutput) ToTaskIamBindingMapOutput() TaskIamBindingMapOu
 
 func (o TaskIamBindingMapOutput) ToTaskIamBindingMapOutputWithContext(ctx context.Context) TaskIamBindingMapOutput {
 	return o
-}
-
-func (o TaskIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaskIamBinding] {
-	return pulumix.Output[map[string]*TaskIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaskIamBindingMapOutput) MapIndex(k pulumi.StringInput) TaskIamBindingOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a tag value by `parent` key and `shortName`.
@@ -115,12 +114,6 @@ func (o LookupTagValueResultOutput) ToLookupTagValueResultOutput() LookupTagValu
 
 func (o LookupTagValueResultOutput) ToLookupTagValueResultOutputWithContext(ctx context.Context) LookupTagValueResultOutput {
 	return o
-}
-
-func (o LookupTagValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagValueResult] {
-	return pulumix.Output[LookupTagValueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time.

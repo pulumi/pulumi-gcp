@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A resource representing streaming data from a source to a destination.
@@ -1053,12 +1052,6 @@ func (i *Stream) ToStreamOutputWithContext(ctx context.Context) StreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamOutput)
 }
 
-func (i *Stream) ToOutput(ctx context.Context) pulumix.Output[*Stream] {
-	return pulumix.Output[*Stream]{
-		OutputState: i.ToStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StreamArrayInput is an input type that accepts StreamArray and StreamArrayOutput values.
 // You can construct a concrete instance of `StreamArrayInput` via:
 //
@@ -1082,12 +1075,6 @@ func (i StreamArray) ToStreamArrayOutput() StreamArrayOutput {
 
 func (i StreamArray) ToStreamArrayOutputWithContext(ctx context.Context) StreamArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamArrayOutput)
-}
-
-func (i StreamArray) ToOutput(ctx context.Context) pulumix.Output[[]*Stream] {
-	return pulumix.Output[[]*Stream]{
-		OutputState: i.ToStreamArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StreamMapInput is an input type that accepts StreamMap and StreamMapOutput values.
@@ -1115,12 +1102,6 @@ func (i StreamMap) ToStreamMapOutputWithContext(ctx context.Context) StreamMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(StreamMapOutput)
 }
 
-func (i StreamMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Stream] {
-	return pulumix.Output[map[string]*Stream]{
-		OutputState: i.ToStreamMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamOutput struct{ *pulumi.OutputState }
 
 func (StreamOutput) ElementType() reflect.Type {
@@ -1133,12 +1114,6 @@ func (o StreamOutput) ToStreamOutput() StreamOutput {
 
 func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutput {
 	return o
-}
-
-func (o StreamOutput) ToOutput(ctx context.Context) pulumix.Output[*Stream] {
-	return pulumix.Output[*Stream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -1225,12 +1200,6 @@ func (o StreamArrayOutput) ToStreamArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o StreamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Stream] {
-	return pulumix.Output[[]*Stream]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamArrayOutput) Index(i pulumi.IntInput) StreamOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Stream {
 		return vs[0].([]*Stream)[vs[1].(int)]
@@ -1249,12 +1218,6 @@ func (o StreamMapOutput) ToStreamMapOutput() StreamMapOutput {
 
 func (o StreamMapOutput) ToStreamMapOutputWithContext(ctx context.Context) StreamMapOutput {
 	return o
-}
-
-func (o StreamMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Stream] {
-	return pulumix.Output[map[string]*Stream]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamMapOutput) MapIndex(k pulumi.StringInput) StreamOutput {

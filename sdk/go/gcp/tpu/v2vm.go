@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -260,12 +259,6 @@ func (i *V2Vm) ToV2VmOutputWithContext(ctx context.Context) V2VmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2VmOutput)
 }
 
-func (i *V2Vm) ToOutput(ctx context.Context) pulumix.Output[*V2Vm] {
-	return pulumix.Output[*V2Vm]{
-		OutputState: i.ToV2VmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // V2VmArrayInput is an input type that accepts V2VmArray and V2VmArrayOutput values.
 // You can construct a concrete instance of `V2VmArrayInput` via:
 //
@@ -289,12 +282,6 @@ func (i V2VmArray) ToV2VmArrayOutput() V2VmArrayOutput {
 
 func (i V2VmArray) ToV2VmArrayOutputWithContext(ctx context.Context) V2VmArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2VmArrayOutput)
-}
-
-func (i V2VmArray) ToOutput(ctx context.Context) pulumix.Output[[]*V2Vm] {
-	return pulumix.Output[[]*V2Vm]{
-		OutputState: i.ToV2VmArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // V2VmMapInput is an input type that accepts V2VmMap and V2VmMapOutput values.
@@ -322,12 +309,6 @@ func (i V2VmMap) ToV2VmMapOutputWithContext(ctx context.Context) V2VmMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2VmMapOutput)
 }
 
-func (i V2VmMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Vm] {
-	return pulumix.Output[map[string]*V2Vm]{
-		OutputState: i.ToV2VmMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type V2VmOutput struct{ *pulumi.OutputState }
 
 func (V2VmOutput) ElementType() reflect.Type {
@@ -340,12 +321,6 @@ func (o V2VmOutput) ToV2VmOutput() V2VmOutput {
 
 func (o V2VmOutput) ToV2VmOutputWithContext(ctx context.Context) V2VmOutput {
 	return o
-}
-
-func (o V2VmOutput) ToOutput(ctx context.Context) pulumix.Output[*V2Vm] {
-	return pulumix.Output[*V2Vm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
@@ -395,12 +370,6 @@ func (o V2VmArrayOutput) ToV2VmArrayOutputWithContext(ctx context.Context) V2VmA
 	return o
 }
 
-func (o V2VmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*V2Vm] {
-	return pulumix.Output[[]*V2Vm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o V2VmArrayOutput) Index(i pulumi.IntInput) V2VmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *V2Vm {
 		return vs[0].([]*V2Vm)[vs[1].(int)]
@@ -419,12 +388,6 @@ func (o V2VmMapOutput) ToV2VmMapOutput() V2VmMapOutput {
 
 func (o V2VmMapOutput) ToV2VmMapOutputWithContext(ctx context.Context) V2VmMapOutput {
 	return o
-}
-
-func (o V2VmMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Vm] {
-	return pulumix.Output[map[string]*V2Vm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o V2VmMapOutput) MapIndex(k pulumi.StringInput) V2VmOutput {

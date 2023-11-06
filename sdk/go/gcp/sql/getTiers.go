@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
@@ -105,12 +104,6 @@ func (o GetTiersResultOutput) ToGetTiersResultOutput() GetTiersResultOutput {
 
 func (o GetTiersResultOutput) ToGetTiersResultOutputWithContext(ctx context.Context) GetTiersResultOutput {
 	return o
-}
-
-func (o GetTiersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTiersResult] {
-	return pulumix.Output[GetTiersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

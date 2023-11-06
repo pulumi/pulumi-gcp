@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -87,12 +86,6 @@ func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOutput)
 }
 
-func (i GuestPoliciesAssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignment] {
-	return pulumix.Output[GuestPoliciesAssignment]{
-		OutputState: i.ToGuestPoliciesAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
 	return i.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
 }
@@ -134,12 +127,6 @@ func (i *guestPoliciesAssignmentPtrType) ToGuestPoliciesAssignmentPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentPtrOutput)
 }
 
-func (i *guestPoliciesAssignmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesAssignment] {
-	return pulumix.Output[*GuestPoliciesAssignment]{
-		OutputState: i.ToGuestPoliciesAssignmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesAssignmentOutput) ElementType() reflect.Type {
@@ -162,12 +149,6 @@ func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesAssignment) *GuestPoliciesAssignment {
 		return &v
 	}).(GuestPoliciesAssignmentPtrOutput)
-}
-
-func (o GuestPoliciesAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignment] {
-	return pulumix.Output[GuestPoliciesAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
@@ -219,12 +200,6 @@ func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutput() G
 
 func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesAssignment] {
-	return pulumix.Output[*GuestPoliciesAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesAssignmentPtrOutput) Elem() GuestPoliciesAssignmentOutput {
@@ -332,12 +307,6 @@ func (i GuestPoliciesAssignmentGroupLabelArgs) ToGuestPoliciesAssignmentGroupLab
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentGroupLabelOutput)
 }
 
-func (i GuestPoliciesAssignmentGroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignmentGroupLabel] {
-	return pulumix.Output[GuestPoliciesAssignmentGroupLabel]{
-		OutputState: i.ToGuestPoliciesAssignmentGroupLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesAssignmentGroupLabelArrayInput is an input type that accepts GuestPoliciesAssignmentGroupLabelArray and GuestPoliciesAssignmentGroupLabelArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentGroupLabelArrayInput` via:
 //
@@ -363,12 +332,6 @@ func (i GuestPoliciesAssignmentGroupLabelArray) ToGuestPoliciesAssignmentGroupLa
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentGroupLabelArrayOutput)
 }
 
-func (i GuestPoliciesAssignmentGroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesAssignmentGroupLabel] {
-	return pulumix.Output[[]GuestPoliciesAssignmentGroupLabel]{
-		OutputState: i.ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesAssignmentGroupLabelOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesAssignmentGroupLabelOutput) ElementType() reflect.Type {
@@ -381,12 +344,6 @@ func (o GuestPoliciesAssignmentGroupLabelOutput) ToGuestPoliciesAssignmentGroupL
 
 func (o GuestPoliciesAssignmentGroupLabelOutput) ToGuestPoliciesAssignmentGroupLabelOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentGroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignmentGroupLabel] {
-	return pulumix.Output[GuestPoliciesAssignmentGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
@@ -406,12 +363,6 @@ func (o GuestPoliciesAssignmentGroupLabelArrayOutput) ToGuestPoliciesAssignmentG
 
 func (o GuestPoliciesAssignmentGroupLabelArrayOutput) ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentGroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesAssignmentGroupLabel] {
-	return pulumix.Output[[]GuestPoliciesAssignmentGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) GuestPoliciesAssignmentGroupLabelOutput {
@@ -465,12 +416,6 @@ func (i GuestPoliciesAssignmentOsTypeArgs) ToGuestPoliciesAssignmentOsTypeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOsTypeOutput)
 }
 
-func (i GuestPoliciesAssignmentOsTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignmentOsType] {
-	return pulumix.Output[GuestPoliciesAssignmentOsType]{
-		OutputState: i.ToGuestPoliciesAssignmentOsTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesAssignmentOsTypeArrayInput is an input type that accepts GuestPoliciesAssignmentOsTypeArray and GuestPoliciesAssignmentOsTypeArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentOsTypeArrayInput` via:
 //
@@ -496,12 +441,6 @@ func (i GuestPoliciesAssignmentOsTypeArray) ToGuestPoliciesAssignmentOsTypeArray
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOsTypeArrayOutput)
 }
 
-func (i GuestPoliciesAssignmentOsTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesAssignmentOsType] {
-	return pulumix.Output[[]GuestPoliciesAssignmentOsType]{
-		OutputState: i.ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesAssignmentOsTypeOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesAssignmentOsTypeOutput) ElementType() reflect.Type {
@@ -514,12 +453,6 @@ func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutp
 
 func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentOsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesAssignmentOsType] {
-	return pulumix.Output[GuestPoliciesAssignmentOsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -551,12 +484,6 @@ func (o GuestPoliciesAssignmentOsTypeArrayOutput) ToGuestPoliciesAssignmentOsTyp
 
 func (o GuestPoliciesAssignmentOsTypeArrayOutput) ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentOsTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesAssignmentOsType] {
-	return pulumix.Output[[]GuestPoliciesAssignmentOsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesAssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) GuestPoliciesAssignmentOsTypeOutput {
@@ -622,12 +549,6 @@ func (i GuestPoliciesPackageArgs) ToGuestPoliciesPackageOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageOutput)
 }
 
-func (i GuestPoliciesPackageArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackage] {
-	return pulumix.Output[GuestPoliciesPackage]{
-		OutputState: i.ToGuestPoliciesPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesPackageArrayInput is an input type that accepts GuestPoliciesPackageArray and GuestPoliciesPackageArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageArrayInput` via:
 //
@@ -653,12 +574,6 @@ func (i GuestPoliciesPackageArray) ToGuestPoliciesPackageArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageArrayOutput)
 }
 
-func (i GuestPoliciesPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesPackage] {
-	return pulumix.Output[[]GuestPoliciesPackage]{
-		OutputState: i.ToGuestPoliciesPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageOutput) ElementType() reflect.Type {
@@ -671,12 +586,6 @@ func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutput() GuestPolicies
 
 func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutputWithContext(ctx context.Context) GuestPoliciesPackageOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackage] {
-	return pulumix.Output[GuestPoliciesPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
@@ -714,12 +623,6 @@ func (o GuestPoliciesPackageArrayOutput) ToGuestPoliciesPackageArrayOutput() Gue
 
 func (o GuestPoliciesPackageArrayOutput) ToGuestPoliciesPackageArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesPackage] {
-	return pulumix.Output[[]GuestPoliciesPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageArrayOutput) Index(i pulumi.IntInput) GuestPoliciesPackageOutput {
@@ -781,12 +684,6 @@ func (i GuestPoliciesPackageRepositoryArgs) ToGuestPoliciesPackageRepositoryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepository] {
-	return pulumix.Output[GuestPoliciesPackageRepository]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesPackageRepositoryArrayInput is an input type that accepts GuestPoliciesPackageRepositoryArray and GuestPoliciesPackageRepositoryArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryArrayInput` via:
 //
@@ -812,12 +709,6 @@ func (i GuestPoliciesPackageRepositoryArray) ToGuestPoliciesPackageRepositoryArr
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryArrayOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesPackageRepository] {
-	return pulumix.Output[[]GuestPoliciesPackageRepository]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageRepositoryOutput) ElementType() reflect.Type {
@@ -830,12 +721,6 @@ func (o GuestPoliciesPackageRepositoryOutput) ToGuestPoliciesPackageRepositoryOu
 
 func (o GuestPoliciesPackageRepositoryOutput) ToGuestPoliciesPackageRepositoryOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepository] {
-	return pulumix.Output[GuestPoliciesPackageRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Apt Repository.
@@ -874,12 +759,6 @@ func (o GuestPoliciesPackageRepositoryArrayOutput) ToGuestPoliciesPackageReposit
 
 func (o GuestPoliciesPackageRepositoryArrayOutput) ToGuestPoliciesPackageRepositoryArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesPackageRepository] {
-	return pulumix.Output[[]GuestPoliciesPackageRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageRepositoryArrayOutput) Index(i pulumi.IntInput) GuestPoliciesPackageRepositoryOutput {
@@ -943,12 +822,6 @@ func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryA
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryAptOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryAptArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryApt] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryApt]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryAptOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput {
 	return i.ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(context.Background())
 }
@@ -990,12 +863,6 @@ func (i *guestPoliciesPackageRepositoryAptPtrType) ToGuestPoliciesPackageReposit
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryAptPtrOutput)
 }
 
-func (i *guestPoliciesPackageRepositoryAptPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryApt] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryApt]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageRepositoryAptOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageRepositoryAptOutput) ElementType() reflect.Type {
@@ -1018,12 +885,6 @@ func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryApt) *GuestPoliciesPackageRepositoryApt {
 		return &v
 	}).(GuestPoliciesPackageRepositoryAptPtrOutput)
-}
-
-func (o GuestPoliciesPackageRepositoryAptOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryApt] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -1066,12 +927,6 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToGuestPoliciesPackageReposi
 
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryApt] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) Elem() GuestPoliciesPackageRepositoryAptOutput {
@@ -1174,12 +1029,6 @@ func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryG
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryGooOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryGooArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryGoo] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryGoo]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryGooOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput {
 	return i.ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(context.Background())
 }
@@ -1221,12 +1070,6 @@ func (i *guestPoliciesPackageRepositoryGooPtrType) ToGuestPoliciesPackageReposit
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryGooPtrOutput)
 }
 
-func (i *guestPoliciesPackageRepositoryGooPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryGoo] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryGoo]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageRepositoryGooOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageRepositoryGooOutput) ElementType() reflect.Type {
@@ -1251,12 +1094,6 @@ func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositor
 	}).(GuestPoliciesPackageRepositoryGooPtrOutput)
 }
 
-func (o GuestPoliciesPackageRepositoryGooOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryGoo] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryGoo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the repository.
 func (o GuestPoliciesPackageRepositoryGooOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
@@ -1279,12 +1116,6 @@ func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToGuestPoliciesPackageReposi
 
 func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryGoo] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryGoo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageRepositoryGooPtrOutput) Elem() GuestPoliciesPackageRepositoryGooOutput {
@@ -1364,12 +1195,6 @@ func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryY
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryYumOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryYumArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryYum] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryYum]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryYumOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput {
 	return i.ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(context.Background())
 }
@@ -1411,12 +1236,6 @@ func (i *guestPoliciesPackageRepositoryYumPtrType) ToGuestPoliciesPackageReposit
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryYumPtrOutput)
 }
 
-func (i *guestPoliciesPackageRepositoryYumPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryYum] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryYum]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageRepositoryYumOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageRepositoryYumOutput) ElementType() reflect.Type {
@@ -1439,12 +1258,6 @@ func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryYum) *GuestPoliciesPackageRepositoryYum {
 		return &v
 	}).(GuestPoliciesPackageRepositoryYumPtrOutput)
-}
-
-func (o GuestPoliciesPackageRepositoryYumOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryYum] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -1480,12 +1293,6 @@ func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToGuestPoliciesPackageReposi
 
 func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryYum] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageRepositoryYumPtrOutput) Elem() GuestPoliciesPackageRepositoryYumOutput {
@@ -1586,12 +1393,6 @@ func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageReposito
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryZypperOutput)
 }
 
-func (i GuestPoliciesPackageRepositoryZypperArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryZypper] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryZypper]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryZypperOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput {
 	return i.ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(context.Background())
 }
@@ -1633,12 +1434,6 @@ func (i *guestPoliciesPackageRepositoryZypperPtrType) ToGuestPoliciesPackageRepo
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryZypperPtrOutput)
 }
 
-func (i *guestPoliciesPackageRepositoryZypperPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryZypper] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryZypper]{
-		OutputState: i.ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesPackageRepositoryZypperOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPackageRepositoryZypperOutput) ElementType() reflect.Type {
@@ -1661,12 +1456,6 @@ func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageReposi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryZypper) *GuestPoliciesPackageRepositoryZypper {
 		return &v
 	}).(GuestPoliciesPackageRepositoryZypperPtrOutput)
-}
-
-func (o GuestPoliciesPackageRepositoryZypperOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesPackageRepositoryZypper] {
-	return pulumix.Output[GuestPoliciesPackageRepositoryZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -1702,12 +1491,6 @@ func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToGuestPoliciesPackageRep
 
 func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesPackageRepositoryZypper] {
-	return pulumix.Output[*GuestPoliciesPackageRepositoryZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Elem() GuestPoliciesPackageRepositoryZypperOutput {
@@ -1842,12 +1625,6 @@ func (i GuestPoliciesRecipeArgs) ToGuestPoliciesRecipeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeOutput)
 }
 
-func (i GuestPoliciesRecipeArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipe] {
-	return pulumix.Output[GuestPoliciesRecipe]{
-		OutputState: i.ToGuestPoliciesRecipeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesRecipeArrayInput is an input type that accepts GuestPoliciesRecipeArray and GuestPoliciesRecipeArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArrayInput` via:
 //
@@ -1873,12 +1650,6 @@ func (i GuestPoliciesRecipeArray) ToGuestPoliciesRecipeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArrayOutput)
 }
 
-func (i GuestPoliciesRecipeArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipe] {
-	return pulumix.Output[[]GuestPoliciesRecipe]{
-		OutputState: i.ToGuestPoliciesRecipeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeOutput) ElementType() reflect.Type {
@@ -1891,12 +1662,6 @@ func (o GuestPoliciesRecipeOutput) ToGuestPoliciesRecipeOutput() GuestPoliciesRe
 
 func (o GuestPoliciesRecipeOutput) ToGuestPoliciesRecipeOutputWithContext(ctx context.Context) GuestPoliciesRecipeOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipe] {
-	return pulumix.Output[GuestPoliciesRecipe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resources available to be used in the steps in the recipe.
@@ -1955,12 +1720,6 @@ func (o GuestPoliciesRecipeArrayOutput) ToGuestPoliciesRecipeArrayOutput() Guest
 
 func (o GuestPoliciesRecipeArrayOutput) ToGuestPoliciesRecipeArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipe] {
-	return pulumix.Output[[]GuestPoliciesRecipe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeOutput {
@@ -2024,12 +1783,6 @@ func (i GuestPoliciesRecipeArtifactArgs) ToGuestPoliciesRecipeArtifactOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactOutput)
 }
 
-func (i GuestPoliciesRecipeArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifact] {
-	return pulumix.Output[GuestPoliciesRecipeArtifact]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesRecipeArtifactArrayInput is an input type that accepts GuestPoliciesRecipeArtifactArray and GuestPoliciesRecipeArtifactArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactArrayInput` via:
 //
@@ -2055,12 +1808,6 @@ func (i GuestPoliciesRecipeArtifactArray) ToGuestPoliciesRecipeArtifactArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactArrayOutput)
 }
 
-func (i GuestPoliciesRecipeArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeArtifact] {
-	return pulumix.Output[[]GuestPoliciesRecipeArtifact]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeArtifactOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeArtifactOutput) ElementType() reflect.Type {
@@ -2073,12 +1820,6 @@ func (o GuestPoliciesRecipeArtifactOutput) ToGuestPoliciesRecipeArtifactOutput()
 
 func (o GuestPoliciesRecipeArtifactOutput) ToGuestPoliciesRecipeArtifactOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifact] {
-	return pulumix.Output[GuestPoliciesRecipeArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, recipes are subject to validations based on the artifact type:
@@ -2118,12 +1859,6 @@ func (o GuestPoliciesRecipeArtifactArrayOutput) ToGuestPoliciesRecipeArtifactArr
 
 func (o GuestPoliciesRecipeArtifactArrayOutput) ToGuestPoliciesRecipeArtifactArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactArrayOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeArtifact] {
-	return pulumix.Output[[]GuestPoliciesRecipeArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeArtifactArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeArtifactOutput {
@@ -2179,12 +1914,6 @@ func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactGcsOutput)
 }
 
-func (i GuestPoliciesRecipeArtifactGcsArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifactGcs] {
-	return pulumix.Output[GuestPoliciesRecipeArtifactGcs]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput {
 	return i.ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(context.Background())
 }
@@ -2226,12 +1955,6 @@ func (i *guestPoliciesRecipeArtifactGcsPtrType) ToGuestPoliciesRecipeArtifactGcs
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactGcsPtrOutput)
 }
 
-func (i *guestPoliciesRecipeArtifactGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeArtifactGcs] {
-	return pulumix.Output[*GuestPoliciesRecipeArtifactGcs]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeArtifactGcsOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeArtifactGcsOutput) ElementType() reflect.Type {
@@ -2254,12 +1977,6 @@ func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeArtifactGcs) *GuestPoliciesRecipeArtifactGcs {
 		return &v
 	}).(GuestPoliciesRecipeArtifactGcsPtrOutput)
-}
-
-func (o GuestPoliciesRecipeArtifactGcsOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifactGcs] {
-	return pulumix.Output[GuestPoliciesRecipeArtifactGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
@@ -2292,12 +2009,6 @@ func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToGuestPoliciesRecipeArtifactGc
 
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeArtifactGcs] {
-	return pulumix.Output[*GuestPoliciesRecipeArtifactGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Elem() GuestPoliciesRecipeArtifactGcsOutput {
@@ -2384,12 +2095,6 @@ func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemo
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactRemoteOutput)
 }
 
-func (i GuestPoliciesRecipeArtifactRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifactRemote] {
-	return pulumix.Output[GuestPoliciesRecipeArtifactRemote]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput {
 	return i.ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(context.Background())
 }
@@ -2431,12 +2136,6 @@ func (i *guestPoliciesRecipeArtifactRemotePtrType) ToGuestPoliciesRecipeArtifact
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactRemotePtrOutput)
 }
 
-func (i *guestPoliciesRecipeArtifactRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeArtifactRemote] {
-	return pulumix.Output[*GuestPoliciesRecipeArtifactRemote]{
-		OutputState: i.ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeArtifactRemoteOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeArtifactRemoteOutput) ElementType() reflect.Type {
@@ -2459,12 +2158,6 @@ func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeArtifactRemote) *GuestPoliciesRecipeArtifactRemote {
 		return &v
 	}).(GuestPoliciesRecipeArtifactRemotePtrOutput)
-}
-
-func (o GuestPoliciesRecipeArtifactRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeArtifactRemote] {
-	return pulumix.Output[GuestPoliciesRecipeArtifactRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
@@ -2491,12 +2184,6 @@ func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToGuestPoliciesRecipeArtifac
 
 func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeArtifactRemote] {
-	return pulumix.Output[*GuestPoliciesRecipeArtifactRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeArtifactRemotePtrOutput) Elem() GuestPoliciesRecipeArtifactRemoteOutput {
@@ -2602,12 +2289,6 @@ func (i GuestPoliciesRecipeInstallStepArgs) ToGuestPoliciesRecipeInstallStepOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStep] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStep]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesRecipeInstallStepArrayInput is an input type that accepts GuestPoliciesRecipeInstallStepArray and GuestPoliciesRecipeInstallStepArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArrayInput` via:
 //
@@ -2633,12 +2314,6 @@ func (i GuestPoliciesRecipeInstallStepArray) ToGuestPoliciesRecipeInstallStepArr
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArrayOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeInstallStep] {
-	return pulumix.Output[[]GuestPoliciesRecipeInstallStep]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepOutput) ElementType() reflect.Type {
@@ -2651,12 +2326,6 @@ func (o GuestPoliciesRecipeInstallStepOutput) ToGuestPoliciesRecipeInstallStepOu
 
 func (o GuestPoliciesRecipeInstallStepOutput) ToGuestPoliciesRecipeInstallStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStep] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extracts an archive into the specified directory.
@@ -2723,12 +2392,6 @@ func (o GuestPoliciesRecipeInstallStepArrayOutput) ToGuestPoliciesRecipeInstallS
 	return o
 }
 
-func (o GuestPoliciesRecipeInstallStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeInstallStep] {
-	return pulumix.Output[[]GuestPoliciesRecipeInstallStep]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GuestPoliciesRecipeInstallStepArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeInstallStepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipeInstallStep {
 		return vs[0].([]GuestPoliciesRecipeInstallStep)[vs[1].(int)]
@@ -2778,12 +2441,6 @@ func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesReci
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArchiveExtractionOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepArchiveExtraction] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepArchiveExtraction]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepArchiveExtractionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(context.Background())
 }
@@ -2825,12 +2482,6 @@ func (i *guestPoliciesRecipeInstallStepArchiveExtractionPtrType) ToGuestPolicies
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepArchiveExtractionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepArchiveExtraction] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepArchiveExtraction]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepArchiveExtractionOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ElementType() reflect.Type {
@@ -2853,12 +2504,6 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepArchiveExtraction) *GuestPoliciesRecipeInstallStepArchiveExtraction {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
-}
-
-func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepArchiveExtraction] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepArchiveExtraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -2889,12 +2534,6 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToGuestPolicie
 
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepArchiveExtraction] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepArchiveExtraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
@@ -2971,12 +2610,6 @@ func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecip
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepDpkgInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepDpkgInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepDpkgInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepDpkgInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(context.Background())
 }
@@ -3018,12 +2651,6 @@ func (i *guestPoliciesRecipeInstallStepDpkgInstallationPtrType) ToGuestPoliciesR
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepDpkgInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepDpkgInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepDpkgInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepDpkgInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ElementType() reflect.Type {
@@ -3048,12 +2675,6 @@ func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRec
 	}).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
 }
 
-func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepDpkgInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepDpkgInstallation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepDpkgInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -3071,12 +2692,6 @@ func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToGuestPolicies
 
 func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepDpkgInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepDpkgInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
@@ -3156,12 +2771,6 @@ func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstall
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileCopyOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepFileCopy] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepFileCopy]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepFileCopyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(context.Background())
 }
@@ -3203,12 +2812,6 @@ func (i *guestPoliciesRecipeInstallStepFileCopyPtrType) ToGuestPoliciesRecipeIns
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepFileCopyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepFileCopy] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepFileCopy]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepFileCopyOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepFileCopyOutput) ElementType() reflect.Type {
@@ -3231,12 +2834,6 @@ func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInsta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepFileCopy) *GuestPoliciesRecipeInstallStepFileCopy {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
-}
-
-func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepFileCopy] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepFileCopy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -3277,12 +2874,6 @@ func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToGuestPoliciesRecipeIn
 
 func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepFileCopy] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepFileCopy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileCopyOutput {
@@ -3386,12 +2977,6 @@ func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstall
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileExecOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepFileExec] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepFileExec]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepFileExecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(context.Background())
 }
@@ -3433,12 +3018,6 @@ func (i *guestPoliciesRecipeInstallStepFileExecPtrType) ToGuestPoliciesRecipeIns
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepFileExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepFileExec] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepFileExec]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepFileExecOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepFileExecOutput) ElementType() reflect.Type {
@@ -3461,12 +3040,6 @@ func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInsta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepFileExec) *GuestPoliciesRecipeInstallStepFileExec {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
-}
-
-func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepFileExec] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepFileExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of possible return values that the program can return to indicate a success. Defaults to [0].
@@ -3501,12 +3074,6 @@ func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToGuestPoliciesRecipeIn
 
 func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepFileExec] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepFileExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileExecOutput {
@@ -3600,12 +3167,6 @@ func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepMsiInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepMsiInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepMsiInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepMsiInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(context.Background())
 }
@@ -3647,12 +3208,6 @@ func (i *guestPoliciesRecipeInstallStepMsiInstallationPtrType) ToGuestPoliciesRe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepMsiInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepMsiInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepMsiInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepMsiInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepMsiInstallationOutput) ElementType() reflect.Type {
@@ -3675,12 +3230,6 @@ func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesReci
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepMsiInstallation) *GuestPoliciesRecipeInstallStepMsiInstallation {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
-}
-
-func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepMsiInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepMsiInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -3710,12 +3259,6 @@ func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepMsiInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepMsiInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepMsiInstallationOutput {
@@ -3791,12 +3334,6 @@ func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepRpmInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepRpmInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepRpmInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepRpmInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(context.Background())
 }
@@ -3838,12 +3375,6 @@ func (i *guestPoliciesRecipeInstallStepRpmInstallationPtrType) ToGuestPoliciesRe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepRpmInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepRpmInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepRpmInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepRpmInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepRpmInstallationOutput) ElementType() reflect.Type {
@@ -3868,12 +3399,6 @@ func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesReci
 	}).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
 }
 
-func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepRpmInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepRpmInstallation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepRpmInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -3891,12 +3416,6 @@ func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepRpmInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepRpmInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepRpmInstallationOutput {
@@ -3964,12 +3483,6 @@ func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstal
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepScriptRunOutput)
 }
 
-func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepScriptRun] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepScriptRun]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepScriptRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
 	return i.ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(context.Background())
 }
@@ -4011,12 +3524,6 @@ func (i *guestPoliciesRecipeInstallStepScriptRunPtrType) ToGuestPoliciesRecipeIn
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
 }
 
-func (i *guestPoliciesRecipeInstallStepScriptRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepScriptRun] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepScriptRun]{
-		OutputState: i.ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeInstallStepScriptRunOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeInstallStepScriptRunOutput) ElementType() reflect.Type {
@@ -4039,12 +3546,6 @@ func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInst
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepScriptRun) *GuestPoliciesRecipeInstallStepScriptRun {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
-}
-
-func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeInstallStepScriptRun] {
-	return pulumix.Output[GuestPoliciesRecipeInstallStepScriptRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -4076,12 +3577,6 @@ func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToGuestPoliciesRecipeI
 
 func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeInstallStepScriptRun] {
-	return pulumix.Output[*GuestPoliciesRecipeInstallStepScriptRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeInstallStepScriptRunOutput {
@@ -4197,12 +3692,6 @@ func (i GuestPoliciesRecipeUpdateStepArgs) ToGuestPoliciesRecipeUpdateStepOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStep] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStep]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuestPoliciesRecipeUpdateStepArrayInput is an input type that accepts GuestPoliciesRecipeUpdateStepArray and GuestPoliciesRecipeUpdateStepArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArrayInput` via:
 //
@@ -4228,12 +3717,6 @@ func (i GuestPoliciesRecipeUpdateStepArray) ToGuestPoliciesRecipeUpdateStepArray
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArrayOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepArray) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeUpdateStep] {
-	return pulumix.Output[[]GuestPoliciesRecipeUpdateStep]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepOutput) ElementType() reflect.Type {
@@ -4246,12 +3729,6 @@ func (o GuestPoliciesRecipeUpdateStepOutput) ToGuestPoliciesRecipeUpdateStepOutp
 
 func (o GuestPoliciesRecipeUpdateStepOutput) ToGuestPoliciesRecipeUpdateStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStep] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extracts an archive into the specified directory.
@@ -4318,12 +3795,6 @@ func (o GuestPoliciesRecipeUpdateStepArrayOutput) ToGuestPoliciesRecipeUpdateSte
 	return o
 }
 
-func (o GuestPoliciesRecipeUpdateStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GuestPoliciesRecipeUpdateStep] {
-	return pulumix.Output[[]GuestPoliciesRecipeUpdateStep]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GuestPoliciesRecipeUpdateStepArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeUpdateStepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipeUpdateStep {
 		return vs[0].([]GuestPoliciesRecipeUpdateStep)[vs[1].(int)]
@@ -4373,12 +3844,6 @@ func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecip
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepArchiveExtraction] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepArchiveExtraction]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(context.Background())
 }
@@ -4420,12 +3885,6 @@ func (i *guestPoliciesRecipeUpdateStepArchiveExtractionPtrType) ToGuestPoliciesR
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepArchiveExtractionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepArchiveExtraction] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepArchiveExtraction]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepArchiveExtractionOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ElementType() reflect.Type {
@@ -4448,12 +3907,6 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepArchiveExtraction) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
-}
-
-func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepArchiveExtraction] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepArchiveExtraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -4484,12 +3937,6 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToGuestPolicies
 
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepArchiveExtraction] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepArchiveExtraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
@@ -4566,12 +4013,6 @@ func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepDpkgInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepDpkgInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(context.Background())
 }
@@ -4613,12 +4054,6 @@ func (i *guestPoliciesRecipeUpdateStepDpkgInstallationPtrType) ToGuestPoliciesRe
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepDpkgInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepDpkgInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepDpkgInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepDpkgInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ElementType() reflect.Type {
@@ -4643,12 +4078,6 @@ func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesReci
 	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
 }
 
-func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepDpkgInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepDpkgInstallation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepDpkgInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -4666,12 +4095,6 @@ func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepDpkgInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepDpkgInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
@@ -4751,12 +4174,6 @@ func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateSt
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileCopyOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepFileCopy] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepFileCopy]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepFileCopyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(context.Background())
 }
@@ -4798,12 +4215,6 @@ func (i *guestPoliciesRecipeUpdateStepFileCopyPtrType) ToGuestPoliciesRecipeUpda
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepFileCopyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepFileCopy] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepFileCopy]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepFileCopyOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepFileCopyOutput) ElementType() reflect.Type {
@@ -4826,12 +4237,6 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdate
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepFileCopy) *GuestPoliciesRecipeUpdateStepFileCopy {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
-}
-
-func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepFileCopy] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepFileCopy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -4872,12 +4277,6 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToGuestPoliciesRecipeUpd
 
 func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepFileCopy] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepFileCopy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileCopyOutput {
@@ -4981,12 +4380,6 @@ func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateSt
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileExecOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepFileExec] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepFileExec]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepFileExecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(context.Background())
 }
@@ -5028,12 +4421,6 @@ func (i *guestPoliciesRecipeUpdateStepFileExecPtrType) ToGuestPoliciesRecipeUpda
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepFileExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepFileExec] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepFileExec]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepFileExecOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepFileExecOutput) ElementType() reflect.Type {
@@ -5056,12 +4443,6 @@ func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdate
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepFileExec) *GuestPoliciesRecipeUpdateStepFileExec {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
-}
-
-func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepFileExec] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepFileExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of possible return values that the program can return to indicate a success. Defaults to [0].
@@ -5096,12 +4477,6 @@ func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToGuestPoliciesRecipeUpd
 
 func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepFileExec] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepFileExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileExecOutput {
@@ -5195,12 +4570,6 @@ func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeU
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepMsiInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepMsiInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepMsiInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepMsiInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(context.Background())
 }
@@ -5242,12 +4611,6 @@ func (i *guestPoliciesRecipeUpdateStepMsiInstallationPtrType) ToGuestPoliciesRec
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepMsiInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepMsiInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepMsiInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepMsiInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ElementType() reflect.Type {
@@ -5270,12 +4633,6 @@ func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepMsiInstallation) *GuestPoliciesRecipeUpdateStepMsiInstallation {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
-}
-
-func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepMsiInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepMsiInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -5305,12 +4662,6 @@ func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToGuestPoliciesRe
 
 func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepMsiInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepMsiInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
@@ -5386,12 +4737,6 @@ func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeU
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepRpmInstallationOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepRpmInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepRpmInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepRpmInstallationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(context.Background())
 }
@@ -5433,12 +4778,6 @@ func (i *guestPoliciesRecipeUpdateStepRpmInstallationPtrType) ToGuestPoliciesRec
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepRpmInstallationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepRpmInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepRpmInstallation]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepRpmInstallationOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ElementType() reflect.Type {
@@ -5463,12 +4802,6 @@ func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecip
 	}).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
 }
 
-func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepRpmInstallation] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepRpmInstallation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepRpmInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -5486,12 +4819,6 @@ func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToGuestPoliciesRe
 
 func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepRpmInstallation] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepRpmInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
@@ -5559,12 +4886,6 @@ func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateS
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepScriptRunOutput)
 }
 
-func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepScriptRun] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepScriptRun]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepScriptRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
 	return i.ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(context.Background())
 }
@@ -5606,12 +4927,6 @@ func (i *guestPoliciesRecipeUpdateStepScriptRunPtrType) ToGuestPoliciesRecipeUpd
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
 }
 
-func (i *guestPoliciesRecipeUpdateStepScriptRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepScriptRun] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepScriptRun]{
-		OutputState: i.ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestPoliciesRecipeUpdateStepScriptRunOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesRecipeUpdateStepScriptRunOutput) ElementType() reflect.Type {
@@ -5634,12 +4949,6 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepScriptRun) *GuestPoliciesRecipeUpdateStepScriptRun {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
-}
-
-func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToOutput(ctx context.Context) pulumix.Output[GuestPoliciesRecipeUpdateStepScriptRun] {
-	return pulumix.Output[GuestPoliciesRecipeUpdateStepScriptRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -5671,12 +4980,6 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToGuestPoliciesRecipeUp
 
 func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
 	return o
-}
-
-func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPoliciesRecipeUpdateStepScriptRun] {
-	return pulumix.Output[*GuestPoliciesRecipeUpdateStepScriptRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeUpdateStepScriptRunOutput {
@@ -5784,12 +5087,6 @@ func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilter
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilter] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilter]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
 	return i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
 }
@@ -5831,12 +5128,6 @@ func (i *osPolicyAssignmentInstanceFilterPtrType) ToOsPolicyAssignmentInstanceFi
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterPtrOutput)
 }
 
-func (i *osPolicyAssignmentInstanceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentInstanceFilter] {
-	return pulumix.Output[*OsPolicyAssignmentInstanceFilter]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentInstanceFilterOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentInstanceFilterOutput) ElementType() reflect.Type {
@@ -5859,12 +5150,6 @@ func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentInstanceFilter) *OsPolicyAssignmentInstanceFilter {
 		return &v
 	}).(OsPolicyAssignmentInstanceFilterPtrOutput)
-}
-
-func (o OsPolicyAssignmentInstanceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilter] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target all VMs in the project. If true, no other criteria
@@ -5914,12 +5199,6 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceF
 
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentInstanceFilter] {
-	return pulumix.Output[*OsPolicyAssignmentInstanceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) Elem() OsPolicyAssignmentInstanceFilterOutput {
@@ -6018,12 +5297,6 @@ func (i OsPolicyAssignmentInstanceFilterExclusionLabelArgs) ToOsPolicyAssignment
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterExclusionLabelOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterExclusionLabelArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterExclusionLabel] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterExclusionLabel]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterExclusionLabelArray and OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput` via:
 //
@@ -6049,12 +5322,6 @@ func (i OsPolicyAssignmentInstanceFilterExclusionLabelArray) ToOsPolicyAssignmen
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterExclusionLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterExclusionLabel] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterExclusionLabel]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentInstanceFilterExclusionLabelOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ElementType() reflect.Type {
@@ -6067,12 +5334,6 @@ func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOsPolicyAssignme
 
 func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterExclusionLabel] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterExclusionLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Labels are identified by key/value pairs in this map.
@@ -6094,12 +5355,6 @@ func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ToOsPolicyAss
 
 func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterExclusionLabel] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterExclusionLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
@@ -6145,12 +5400,6 @@ func (i OsPolicyAssignmentInstanceFilterInclusionLabelArgs) ToOsPolicyAssignment
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInclusionLabelOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterInclusionLabelArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterInclusionLabel] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterInclusionLabel]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterInclusionLabelArray and OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput` via:
 //
@@ -6176,12 +5425,6 @@ func (i OsPolicyAssignmentInstanceFilterInclusionLabelArray) ToOsPolicyAssignmen
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterInclusionLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterInclusionLabel] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterInclusionLabel]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentInstanceFilterInclusionLabelOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ElementType() reflect.Type {
@@ -6194,12 +5437,6 @@ func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOsPolicyAssignme
 
 func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterInclusionLabel] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterInclusionLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Labels are identified by key/value pairs in this map.
@@ -6221,12 +5458,6 @@ func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ToOsPolicyAss
 
 func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterInclusionLabel] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterInclusionLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
@@ -6278,12 +5509,6 @@ func (i OsPolicyAssignmentInstanceFilterInventoryArgs) ToOsPolicyAssignmentInsta
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInventoryOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterInventoryArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterInventory] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterInventory]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentInstanceFilterInventoryArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterInventoryArray and OsPolicyAssignmentInstanceFilterInventoryArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInventoryArrayInput` via:
 //
@@ -6309,12 +5534,6 @@ func (i OsPolicyAssignmentInstanceFilterInventoryArray) ToOsPolicyAssignmentInst
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterInventoryArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterInventory] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterInventory]{
-		OutputState: i.ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentInstanceFilterInventoryOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentInstanceFilterInventoryOutput) ElementType() reflect.Type {
@@ -6327,12 +5546,6 @@ func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOsPolicyAssignmentIns
 
 func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentInstanceFilterInventory] {
-	return pulumix.Output[OsPolicyAssignmentInstanceFilterInventory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The OS short name
@@ -6360,12 +5573,6 @@ func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOsPolicyAssignme
 
 func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentInstanceFilterInventory] {
-	return pulumix.Output[[]OsPolicyAssignmentInstanceFilterInventory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterInventoryOutput {
@@ -6457,12 +5664,6 @@ func (i OsPolicyAssignmentOsPolicyArgs) ToOsPolicyAssignmentOsPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicy] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicy]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentOsPolicyArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyArray and OsPolicyAssignmentOsPolicyArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentOsPolicyArrayInput` via:
 //
@@ -6488,12 +5689,6 @@ func (i OsPolicyAssignmentOsPolicyArray) ToOsPolicyAssignmentOsPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyArrayOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicy] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicy]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyOutput) ElementType() reflect.Type {
@@ -6506,12 +5701,6 @@ func (o OsPolicyAssignmentOsPolicyOutput) ToOsPolicyAssignmentOsPolicyOutput() O
 
 func (o OsPolicyAssignmentOsPolicyOutput) ToOsPolicyAssignmentOsPolicyOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicy] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This flag determines the OS
@@ -6568,12 +5757,6 @@ func (o OsPolicyAssignmentOsPolicyArrayOutput) ToOsPolicyAssignmentOsPolicyArray
 
 func (o OsPolicyAssignmentOsPolicyArrayOutput) ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicy] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyOutput {
@@ -6639,12 +5822,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupArgs) ToOsPolicyAssignmentOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroup] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroup]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentOsPolicyResourceGroupArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupArray and OsPolicyAssignmentOsPolicyResourceGroupArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupArrayInput` via:
 //
@@ -6670,12 +5847,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupArray) ToOsPolicyAssignmentOsPoli
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupArrayOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroup] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroup]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupOutput) ElementType() reflect.Type {
@@ -6688,12 +5859,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOsPolicyAssignmentOsPol
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroup] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of inventory filters for the resource
@@ -6732,12 +5897,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ToOsPolicyAssignment
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroup] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupOutput {
@@ -6789,12 +5948,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs) ToOsPolicyAs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray and OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput` via:
 //
@@ -6820,12 +5973,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray) ToOsPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ElementType() reflect.Type {
@@ -6838,12 +5985,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOsPolicy
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The OS short name
@@ -6871,12 +6012,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ToOsP
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
@@ -6954,12 +6089,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArgs) ToOsPolicyAssignmen
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceArray and OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput` via:
 //
@@ -6985,12 +6114,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArray) ToOsPolicyAssignme
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupResource] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupResource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ElementType() reflect.Type {
@@ -7003,12 +6126,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOsPolicyAssignm
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exec resource Structure is
@@ -7068,12 +6185,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) ToOsPolicyAs
 	return o
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupResource] {
-	return pulumix.Output[[]OsPolicyAssignmentOsPolicyResourceGroupResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentOsPolicyResourceGroupResource {
 		return vs[0].([]OsPolicyAssignmentOsPolicyResourceGroupResource)[vs[1].(int)]
@@ -7131,12 +6242,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssig
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExec] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExec]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
 }
@@ -7178,12 +6283,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType) ToOsPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExec] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExec]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ElementType() reflect.Type {
@@ -7206,12 +6305,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAss
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExec] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // What to run to bring this resource into the desired
@@ -7247,12 +6340,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ToOsPolicy
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExec] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
@@ -7357,12 +6444,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPoli
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
 }
@@ -7404,12 +6485,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ElementType() reflect.Type {
@@ -7432,12 +6507,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional arguments to pass to the source during
@@ -7487,12 +6556,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToO
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
@@ -7616,12 +6679,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
 }
@@ -7663,12 +6720,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ElementType() reflect.Type {
@@ -7691,12 +6742,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -7739,12 +6784,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
@@ -7842,12 +6881,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
 }
@@ -7889,12 +6922,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ElementType() reflect.Type {
@@ -7917,12 +6944,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -7952,12 +6973,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
@@ -8039,12 +7054,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
 }
@@ -8086,12 +7095,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtr
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ElementType() reflect.Type {
@@ -8114,12 +7117,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -8147,12 +7144,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
@@ -8251,12 +7242,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPol
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
 }
@@ -8298,12 +7283,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ElementType() reflect.Type {
@@ -8326,12 +7305,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional arguments to pass to the source during
@@ -8381,12 +7354,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) To
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
@@ -8510,12 +7477,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
 }
@@ -8557,12 +7518,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ElementType() reflect.Type {
@@ -8585,12 +7540,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -8633,12 +7582,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
@@ -8736,12 +7679,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
 }
@@ -8783,12 +7720,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ElementType() reflect.Type {
@@ -8811,12 +7742,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -8846,12 +7771,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
@@ -8933,12 +7852,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArg
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
 }
@@ -8980,12 +7893,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePt
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ElementType() reflect.Type {
@@ -9008,12 +7915,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -9041,12 +7942,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
@@ -9149,12 +8044,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssig
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
 }
@@ -9196,12 +8085,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType) ToOsPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ElementType() reflect.Type {
@@ -9224,12 +8107,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAss
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A a file with this content. The size of the content
@@ -9281,12 +8158,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ToOsPolicy
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
@@ -9412,12 +8283,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
 }
@@ -9459,12 +8324,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType) ToOsPol
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ElementType() reflect.Type {
@@ -9487,12 +8346,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -9535,12 +8388,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ToOsPo
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
@@ -9638,12 +8485,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPoli
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
 }
@@ -9685,12 +8526,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ElementType() reflect.Type {
@@ -9713,12 +8548,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -9748,12 +8577,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToO
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
@@ -9835,12 +8658,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsP
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
 }
@@ -9882,12 +8699,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ElementType() reflect.Type {
@@ -9910,12 +8721,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -9941,12 +8746,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
@@ -10059,12 +8858,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssign
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkg] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkg]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
 }
@@ -10106,12 +8899,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType) ToOsPolicyAs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ElementType() reflect.Type {
@@ -10134,12 +8921,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkg] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkg]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A package managed by Apt. Structure is
@@ -10217,12 +8998,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ToOsPolicyA
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
@@ -10357,12 +9132,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAss
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
 }
@@ -10404,12 +9173,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ElementType() reflect.Type {
@@ -10434,12 +9197,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) string { return v.Name }).(pulumi.StringOutput)
@@ -10457,12 +9214,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ToOsPoli
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
@@ -10528,12 +9279,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAss
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
 }
@@ -10575,12 +9320,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ElementType() reflect.Type {
@@ -10603,12 +9342,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether dependencies should also be installed. -
@@ -10638,12 +9371,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ToOsPoli
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
@@ -10732,12 +9459,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPol
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
 }
@@ -10779,12 +9500,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ElementType() reflect.Type {
@@ -10807,12 +9522,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -10855,12 +9564,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) To
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
@@ -10958,12 +9661,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
 }
@@ -11005,12 +9702,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ElementType() reflect.Type {
@@ -11033,12 +9724,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -11068,12 +9753,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
@@ -11155,12 +9834,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
 }
@@ -11202,12 +9875,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ElementType() reflect.Type {
@@ -11230,12 +9897,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -11263,12 +9924,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
@@ -11335,12 +9990,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
 }
@@ -11382,12 +10031,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType) ToOsPo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ElementType() reflect.Type {
@@ -11412,12 +10055,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) string { return v.Name }).(pulumi.StringOutput)
@@ -11435,12 +10072,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToOsP
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
@@ -11506,12 +10137,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAss
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
 }
@@ -11553,12 +10178,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ElementType() reflect.Type {
@@ -11581,12 +10200,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional properties to use during installation.
@@ -11616,12 +10229,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToOsPoli
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
@@ -11710,12 +10317,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPol
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
 }
@@ -11757,12 +10358,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ElementType() reflect.Type {
@@ -11785,12 +10380,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -11833,12 +10422,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) To
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
@@ -11936,12 +10519,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
 }
@@ -11983,12 +10560,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ElementType() reflect.Type {
@@ -12011,12 +10582,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -12046,12 +10611,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
@@ -12133,12 +10692,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
 }
@@ -12180,12 +10733,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ElementType() reflect.Type {
@@ -12208,12 +10755,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -12241,12 +10782,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
@@ -12323,12 +10858,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAss
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
 }
@@ -12370,12 +10899,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ElementType() reflect.Type {
@@ -12398,12 +10921,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether dependencies should also be installed. -
@@ -12433,12 +10950,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToOsPoli
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
@@ -12527,12 +11038,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPol
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
 }
@@ -12574,12 +11079,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ElementType() reflect.Type {
@@ -12602,12 +11101,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, files are
@@ -12650,12 +11143,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) To
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
@@ -12753,12 +11240,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOs
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
 }
@@ -12800,12 +11281,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ElementType() reflect.Type {
@@ -12828,12 +11303,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -12863,12 +11332,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
@@ -12950,12 +11413,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
 }
@@ -12997,12 +11454,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ElementType() reflect.Type {
@@ -13025,12 +11476,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SHA256 checksum of the remote file.
@@ -13058,12 +11503,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
@@ -13130,12 +11569,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAss
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
 }
@@ -13177,12 +11610,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ElementType() reflect.Type {
@@ -13207,12 +11634,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) string { return v.Name }).(pulumi.StringOutput)
@@ -13230,12 +11651,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ToOsPoli
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
@@ -13291,12 +11706,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
 }
@@ -13338,12 +11747,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType) ToOsPo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ElementType() reflect.Type {
@@ -13368,12 +11771,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) string { return v.Name }).(pulumi.StringOutput)
@@ -13391,12 +11788,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToOsP
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
@@ -13472,12 +11863,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepository] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepository]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
 }
@@ -13519,12 +11904,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType) ToOsP
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ElementType() reflect.Type {
@@ -13547,12 +11926,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPol
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepository] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Apt Repository. Structure is
@@ -13599,12 +11972,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ToOs
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
@@ -13716,12 +12083,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
 }
@@ -13763,12 +12124,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ElementType() reflect.Type {
@@ -13791,12 +12146,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOs
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of archive files in this repository.
@@ -13839,12 +12188,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) T
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
@@ -13947,12 +12290,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
 }
@@ -13994,12 +12331,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ElementType() reflect.Type {
@@ -14024,12 +12355,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
 }
 
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
@@ -14052,12 +12377,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) T
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
@@ -14141,12 +12460,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
 }
@@ -14188,12 +12501,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ElementType() reflect.Type {
@@ -14216,12 +12523,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOs
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -14259,12 +12560,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) T
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
@@ -14371,12 +12666,6 @@ func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToO
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput)
 }
 
-func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
 	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
 }
@@ -14418,12 +12707,6 @@ func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
 }
 
-func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper]{
-		OutputState: i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ElementType() reflect.Type {
@@ -14446,12 +12729,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
 		return &v
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper] {
-	return pulumix.Output[OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -14489,12 +12766,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper] {
-	return pulumix.Output[*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
@@ -14599,12 +12870,6 @@ func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutOutput)
 }
 
-func (i OsPolicyAssignmentRolloutArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentRollout] {
-	return pulumix.Output[OsPolicyAssignmentRollout]{
-		OutputState: i.ToOsPolicyAssignmentRolloutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
 	return i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
 }
@@ -14646,12 +12911,6 @@ func (i *osPolicyAssignmentRolloutPtrType) ToOsPolicyAssignmentRolloutPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutPtrOutput)
 }
 
-func (i *osPolicyAssignmentRolloutPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentRollout] {
-	return pulumix.Output[*OsPolicyAssignmentRollout]{
-		OutputState: i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentRolloutOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentRolloutOutput) ElementType() reflect.Type {
@@ -14674,12 +12933,6 @@ func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRollout) *OsPolicyAssignmentRollout {
 		return &v
 	}).(OsPolicyAssignmentRolloutPtrOutput)
-}
-
-func (o OsPolicyAssignmentRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentRollout] {
-	return pulumix.Output[OsPolicyAssignmentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number (or percentage) of VMs
@@ -14710,12 +12963,6 @@ func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutput
 
 func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentRolloutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentRollout] {
-	return pulumix.Output[*OsPolicyAssignmentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentRolloutPtrOutput) Elem() OsPolicyAssignmentRolloutOutput {
@@ -14797,12 +13044,6 @@ func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRollo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
 }
 
-func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentRolloutDisruptionBudget] {
-	return pulumix.Output[OsPolicyAssignmentRolloutDisruptionBudget]{
-		OutputState: i.ToOsPolicyAssignmentRolloutDisruptionBudgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
 	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
 }
@@ -14844,12 +13085,6 @@ func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOsPolicyAssignmentR
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
 }
 
-func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentRolloutDisruptionBudget] {
-	return pulumix.Output[*OsPolicyAssignmentRolloutDisruptionBudget]{
-		OutputState: i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
@@ -14872,12 +13107,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRol
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRolloutDisruptionBudget) *OsPolicyAssignmentRolloutDisruptionBudget {
 		return &v
 	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOutput(ctx context.Context) pulumix.Output[OsPolicyAssignmentRolloutDisruptionBudget] {
-	return pulumix.Output[OsPolicyAssignmentRolloutDisruptionBudget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a fixed value.
@@ -14905,12 +13134,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignment
 
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignmentRolloutDisruptionBudget] {
-	return pulumix.Output[*OsPolicyAssignmentRolloutDisruptionBudget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Elem() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
@@ -15003,12 +13226,6 @@ func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterOutput)
 }
 
-func (i PatchDeploymentInstanceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentInstanceFilter] {
-	return pulumix.Output[PatchDeploymentInstanceFilter]{
-		OutputState: i.ToPatchDeploymentInstanceFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput {
 	return i.ToPatchDeploymentInstanceFilterPtrOutputWithContext(context.Background())
 }
@@ -15050,12 +13267,6 @@ func (i *patchDeploymentInstanceFilterPtrType) ToPatchDeploymentInstanceFilterPt
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterPtrOutput)
 }
 
-func (i *patchDeploymentInstanceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentInstanceFilter] {
-	return pulumix.Output[*PatchDeploymentInstanceFilter]{
-		OutputState: i.ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentInstanceFilterOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentInstanceFilterOutput) ElementType() reflect.Type {
@@ -15078,12 +13289,6 @@ func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentInstanceFilter) *PatchDeploymentInstanceFilter {
 		return &v
 	}).(PatchDeploymentInstanceFilterPtrOutput)
-}
-
-func (o PatchDeploymentInstanceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentInstanceFilter] {
-	return pulumix.Output[PatchDeploymentInstanceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -15127,12 +13332,6 @@ func (o PatchDeploymentInstanceFilterPtrOutput) ToPatchDeploymentInstanceFilterP
 
 func (o PatchDeploymentInstanceFilterPtrOutput) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentInstanceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentInstanceFilter] {
-	return pulumix.Output[*PatchDeploymentInstanceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentInstanceFilterPtrOutput) Elem() PatchDeploymentInstanceFilterOutput {
@@ -15236,12 +13435,6 @@ func (i PatchDeploymentInstanceFilterGroupLabelArgs) ToPatchDeploymentInstanceFi
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterGroupLabelOutput)
 }
 
-func (i PatchDeploymentInstanceFilterGroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentInstanceFilterGroupLabel] {
-	return pulumix.Output[PatchDeploymentInstanceFilterGroupLabel]{
-		OutputState: i.ToPatchDeploymentInstanceFilterGroupLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PatchDeploymentInstanceFilterGroupLabelArrayInput is an input type that accepts PatchDeploymentInstanceFilterGroupLabelArray and PatchDeploymentInstanceFilterGroupLabelArrayOutput values.
 // You can construct a concrete instance of `PatchDeploymentInstanceFilterGroupLabelArrayInput` via:
 //
@@ -15267,12 +13460,6 @@ func (i PatchDeploymentInstanceFilterGroupLabelArray) ToPatchDeploymentInstanceF
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterGroupLabelArrayOutput)
 }
 
-func (i PatchDeploymentInstanceFilterGroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]PatchDeploymentInstanceFilterGroupLabel] {
-	return pulumix.Output[[]PatchDeploymentInstanceFilterGroupLabel]{
-		OutputState: i.ToPatchDeploymentInstanceFilterGroupLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentInstanceFilterGroupLabelOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentInstanceFilterGroupLabelOutput) ElementType() reflect.Type {
@@ -15285,12 +13472,6 @@ func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstance
 
 func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstanceFilterGroupLabelOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterGroupLabelOutput {
 	return o
-}
-
-func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentInstanceFilterGroupLabel] {
-	return pulumix.Output[PatchDeploymentInstanceFilterGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
@@ -15312,12 +13493,6 @@ func (o PatchDeploymentInstanceFilterGroupLabelArrayOutput) ToPatchDeploymentIns
 
 func (o PatchDeploymentInstanceFilterGroupLabelArrayOutput) ToPatchDeploymentInstanceFilterGroupLabelArrayOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterGroupLabelArrayOutput {
 	return o
-}
-
-func (o PatchDeploymentInstanceFilterGroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PatchDeploymentInstanceFilterGroupLabel] {
-	return pulumix.Output[[]PatchDeploymentInstanceFilterGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentInstanceFilterGroupLabelArrayOutput) Index(i pulumi.IntInput) PatchDeploymentInstanceFilterGroupLabelOutput {
@@ -15361,12 +13536,6 @@ func (i PatchDeploymentOneTimeScheduleArgs) ToPatchDeploymentOneTimeScheduleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOneTimeScheduleOutput)
 }
 
-func (i PatchDeploymentOneTimeScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentOneTimeSchedule] {
-	return pulumix.Output[PatchDeploymentOneTimeSchedule]{
-		OutputState: i.ToPatchDeploymentOneTimeScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentOneTimeScheduleArgs) ToPatchDeploymentOneTimeSchedulePtrOutput() PatchDeploymentOneTimeSchedulePtrOutput {
 	return i.ToPatchDeploymentOneTimeSchedulePtrOutputWithContext(context.Background())
 }
@@ -15408,12 +13577,6 @@ func (i *patchDeploymentOneTimeSchedulePtrType) ToPatchDeploymentOneTimeSchedule
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOneTimeSchedulePtrOutput)
 }
 
-func (i *patchDeploymentOneTimeSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentOneTimeSchedule] {
-	return pulumix.Output[*PatchDeploymentOneTimeSchedule]{
-		OutputState: i.ToPatchDeploymentOneTimeSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentOneTimeScheduleOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOneTimeScheduleOutput) ElementType() reflect.Type {
@@ -15438,12 +13601,6 @@ func (o PatchDeploymentOneTimeScheduleOutput) ToPatchDeploymentOneTimeSchedulePt
 	}).(PatchDeploymentOneTimeSchedulePtrOutput)
 }
 
-func (o PatchDeploymentOneTimeScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentOneTimeSchedule] {
-	return pulumix.Output[PatchDeploymentOneTimeSchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
 // accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOneTimeScheduleOutput) ExecuteTime() pulumi.StringOutput {
@@ -15462,12 +13619,6 @@ func (o PatchDeploymentOneTimeSchedulePtrOutput) ToPatchDeploymentOneTimeSchedul
 
 func (o PatchDeploymentOneTimeSchedulePtrOutput) ToPatchDeploymentOneTimeSchedulePtrOutputWithContext(ctx context.Context) PatchDeploymentOneTimeSchedulePtrOutput {
 	return o
-}
-
-func (o PatchDeploymentOneTimeSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentOneTimeSchedule] {
-	return pulumix.Output[*PatchDeploymentOneTimeSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentOneTimeSchedulePtrOutput) Elem() PatchDeploymentOneTimeScheduleOutput {
@@ -15572,12 +13723,6 @@ func (i PatchDeploymentPatchConfigArgs) ToPatchDeploymentPatchConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigOutput)
 }
 
-func (i PatchDeploymentPatchConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigArgs) ToPatchDeploymentPatchConfigPtrOutput() PatchDeploymentPatchConfigPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPtrOutputWithContext(context.Background())
 }
@@ -15619,12 +13764,6 @@ func (i *patchDeploymentPatchConfigPtrType) ToPatchDeploymentPatchConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigOutput) ElementType() reflect.Type {
@@ -15647,12 +13786,6 @@ func (o PatchDeploymentPatchConfigOutput) ToPatchDeploymentPatchConfigPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Apt update settings. Use this setting to override the default apt patch rules.
@@ -15720,12 +13853,6 @@ func (o PatchDeploymentPatchConfigPtrOutput) ToPatchDeploymentPatchConfigPtrOutp
 
 func (o PatchDeploymentPatchConfigPtrOutput) ToPatchDeploymentPatchConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPtrOutput) Elem() PatchDeploymentPatchConfigOutput {
@@ -15883,12 +14010,6 @@ func (i PatchDeploymentPatchConfigAptArgs) ToPatchDeploymentPatchConfigAptOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigAptOutput)
 }
 
-func (i PatchDeploymentPatchConfigAptArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigApt] {
-	return pulumix.Output[PatchDeploymentPatchConfigApt]{
-		OutputState: i.ToPatchDeploymentPatchConfigAptOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigAptArgs) ToPatchDeploymentPatchConfigAptPtrOutput() PatchDeploymentPatchConfigAptPtrOutput {
 	return i.ToPatchDeploymentPatchConfigAptPtrOutputWithContext(context.Background())
 }
@@ -15930,12 +14051,6 @@ func (i *patchDeploymentPatchConfigAptPtrType) ToPatchDeploymentPatchConfigAptPt
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigAptPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigAptPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigApt] {
-	return pulumix.Output[*PatchDeploymentPatchConfigApt]{
-		OutputState: i.ToPatchDeploymentPatchConfigAptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigAptOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigAptOutput) ElementType() reflect.Type {
@@ -15958,12 +14073,6 @@ func (o PatchDeploymentPatchConfigAptOutput) ToPatchDeploymentPatchConfigAptPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigApt) *PatchDeploymentPatchConfigApt {
 		return &v
 	}).(PatchDeploymentPatchConfigAptPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigAptOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigApt] {
-	return pulumix.Output[PatchDeploymentPatchConfigApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of packages to exclude from update. These packages will be excluded.
@@ -15996,12 +14105,6 @@ func (o PatchDeploymentPatchConfigAptPtrOutput) ToPatchDeploymentPatchConfigAptP
 
 func (o PatchDeploymentPatchConfigAptPtrOutput) ToPatchDeploymentPatchConfigAptPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigAptPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigAptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigApt] {
-	return pulumix.Output[*PatchDeploymentPatchConfigApt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigAptPtrOutput) Elem() PatchDeploymentPatchConfigAptOutput {
@@ -16080,12 +14183,6 @@ func (i PatchDeploymentPatchConfigGooArgs) ToPatchDeploymentPatchConfigGooOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigGooOutput)
 }
 
-func (i PatchDeploymentPatchConfigGooArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigGoo] {
-	return pulumix.Output[PatchDeploymentPatchConfigGoo]{
-		OutputState: i.ToPatchDeploymentPatchConfigGooOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigGooArgs) ToPatchDeploymentPatchConfigGooPtrOutput() PatchDeploymentPatchConfigGooPtrOutput {
 	return i.ToPatchDeploymentPatchConfigGooPtrOutputWithContext(context.Background())
 }
@@ -16127,12 +14224,6 @@ func (i *patchDeploymentPatchConfigGooPtrType) ToPatchDeploymentPatchConfigGooPt
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigGooPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigGooPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigGoo] {
-	return pulumix.Output[*PatchDeploymentPatchConfigGoo]{
-		OutputState: i.ToPatchDeploymentPatchConfigGooPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigGooOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigGooOutput) ElementType() reflect.Type {
@@ -16157,12 +14248,6 @@ func (o PatchDeploymentPatchConfigGooOutput) ToPatchDeploymentPatchConfigGooPtrO
 	}).(PatchDeploymentPatchConfigGooPtrOutput)
 }
 
-func (o PatchDeploymentPatchConfigGooOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigGoo] {
-	return pulumix.Output[PatchDeploymentPatchConfigGoo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // goo update settings. Use this setting to override the default goo patch rules.
 func (o PatchDeploymentPatchConfigGooOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigGoo) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -16180,12 +14265,6 @@ func (o PatchDeploymentPatchConfigGooPtrOutput) ToPatchDeploymentPatchConfigGooP
 
 func (o PatchDeploymentPatchConfigGooPtrOutput) ToPatchDeploymentPatchConfigGooPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigGooPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigGooPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigGoo] {
-	return pulumix.Output[*PatchDeploymentPatchConfigGoo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigGooPtrOutput) Elem() PatchDeploymentPatchConfigGooOutput {
@@ -16249,12 +14328,6 @@ func (i PatchDeploymentPatchConfigPostStepArgs) ToPatchDeploymentPatchConfigPost
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepOutput)
 }
 
-func (i PatchDeploymentPatchConfigPostStepArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStep] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStep]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPostStepArgs) ToPatchDeploymentPatchConfigPostStepPtrOutput() PatchDeploymentPatchConfigPostStepPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPostStepPtrOutputWithContext(context.Background())
 }
@@ -16296,12 +14369,6 @@ func (i *patchDeploymentPatchConfigPostStepPtrType) ToPatchDeploymentPatchConfig
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPostStepPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStep] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStep]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPostStepOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPostStepOutput) ElementType() reflect.Type {
@@ -16324,12 +14391,6 @@ func (o PatchDeploymentPatchConfigPostStepOutput) ToPatchDeploymentPatchConfigPo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStep {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPostStepOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStep] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -16360,12 +14421,6 @@ func (o PatchDeploymentPatchConfigPostStepPtrOutput) ToPatchDeploymentPatchConfi
 
 func (o PatchDeploymentPatchConfigPostStepPtrOutput) ToPatchDeploymentPatchConfigPostStepPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPostStepPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStep] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPostStepPtrOutput) Elem() PatchDeploymentPatchConfigPostStepOutput {
@@ -16451,12 +14506,6 @@ func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs) ToPatchDeploy
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput)
 }
 
-func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutputWithContext(context.Background())
 }
@@ -16498,12 +14547,6 @@ func (i *patchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrType) ToPatchDe
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) ElementType() reflect.Type {
@@ -16526,12 +14569,6 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) ToPatchDepl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -16571,12 +14608,6 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) ToPatchD
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput {
@@ -16673,12 +14704,6 @@ func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs) ToPa
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput)
 }
 
-func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(context.Background())
 }
@@ -16720,12 +14745,6 @@ func (i *patchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput) ElementType() reflect.Type {
@@ -16748,12 +14767,6 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -16785,12 +14798,6 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput {
@@ -16884,12 +14891,6 @@ func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs) ToPatchDepl
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput)
 }
 
-func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutputWithContext(context.Background())
 }
@@ -16931,12 +14932,6 @@ func (i *patchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrType) ToPatch
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) ElementType() reflect.Type {
@@ -16959,12 +14954,6 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) ToPatchDe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -17004,12 +14993,6 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) ToPatc
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput {
@@ -17106,12 +15089,6 @@ func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput)
 }
 
-func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(context.Background())
 }
@@ -17153,12 +15130,6 @@ func (i *patchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput) ElementType() reflect.Type {
@@ -17181,12 +15152,6 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -17218,12 +15183,6 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutpu
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput {
@@ -17307,12 +15266,6 @@ func (i PatchDeploymentPatchConfigPreStepArgs) ToPatchDeploymentPatchConfigPreSt
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepOutput)
 }
 
-func (i PatchDeploymentPatchConfigPreStepArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStep] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStep]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPreStepArgs) ToPatchDeploymentPatchConfigPreStepPtrOutput() PatchDeploymentPatchConfigPreStepPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPreStepPtrOutputWithContext(context.Background())
 }
@@ -17354,12 +15307,6 @@ func (i *patchDeploymentPatchConfigPreStepPtrType) ToPatchDeploymentPatchConfigP
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPreStepPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStep] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStep]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPreStepOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPreStepOutput) ElementType() reflect.Type {
@@ -17382,12 +15329,6 @@ func (o PatchDeploymentPatchConfigPreStepOutput) ToPatchDeploymentPatchConfigPre
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStep {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPreStepOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStep] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -17418,12 +15359,6 @@ func (o PatchDeploymentPatchConfigPreStepPtrOutput) ToPatchDeploymentPatchConfig
 
 func (o PatchDeploymentPatchConfigPreStepPtrOutput) ToPatchDeploymentPatchConfigPreStepPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPreStepPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStep] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPreStepPtrOutput) Elem() PatchDeploymentPatchConfigPreStepOutput {
@@ -17509,12 +15444,6 @@ func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs) ToPatchDeploym
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput)
 }
 
-func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutputWithContext(context.Background())
 }
@@ -17556,12 +15485,6 @@ func (i *patchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrType) ToPatchDep
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) ElementType() reflect.Type {
@@ -17584,12 +15507,6 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) ToPatchDeplo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -17629,12 +15546,6 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) ToPatchDe
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput {
@@ -17731,12 +15642,6 @@ func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs) ToPat
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput)
 }
 
-func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(context.Background())
 }
@@ -17778,12 +15683,6 @@ func (i *patchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput) ElementType() reflect.Type {
@@ -17806,12 +15705,6 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput) ToP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -17843,12 +15736,6 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) 
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput {
@@ -17942,12 +15829,6 @@ func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs) ToPatchDeplo
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput)
 }
 
-func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutputWithContext(context.Background())
 }
@@ -17989,12 +15870,6 @@ func (i *patchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrType) ToPatchD
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfig]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) ElementType() reflect.Type {
@@ -18017,12 +15892,6 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) ToPatchDep
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfig] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -18062,12 +15931,6 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) ToPatch
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfig] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput {
@@ -18164,12 +16027,6 @@ func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs) ToP
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput)
 }
 
-func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(context.Background())
 }
@@ -18211,12 +16068,6 @@ func (i *patchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject]{
-		OutputState: i.ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput) ElementType() reflect.Type {
@@ -18239,12 +16090,6 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -18276,12 +16121,6 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject] {
-	return pulumix.Output[*PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput {
@@ -18369,12 +16208,6 @@ func (i PatchDeploymentPatchConfigWindowsUpdateArgs) ToPatchDeploymentPatchConfi
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigWindowsUpdateOutput)
 }
 
-func (i PatchDeploymentPatchConfigWindowsUpdateArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigWindowsUpdate] {
-	return pulumix.Output[PatchDeploymentPatchConfigWindowsUpdate]{
-		OutputState: i.ToPatchDeploymentPatchConfigWindowsUpdateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigWindowsUpdateArgs) ToPatchDeploymentPatchConfigWindowsUpdatePtrOutput() PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
 	return i.ToPatchDeploymentPatchConfigWindowsUpdatePtrOutputWithContext(context.Background())
 }
@@ -18416,12 +16249,6 @@ func (i *patchDeploymentPatchConfigWindowsUpdatePtrType) ToPatchDeploymentPatchC
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigWindowsUpdatePtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigWindowsUpdatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigWindowsUpdate] {
-	return pulumix.Output[*PatchDeploymentPatchConfigWindowsUpdate]{
-		OutputState: i.ToPatchDeploymentPatchConfigWindowsUpdatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigWindowsUpdateOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigWindowsUpdateOutput) ElementType() reflect.Type {
@@ -18444,12 +16271,6 @@ func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigWindowsUpdate) *PatchDeploymentPatchConfigWindowsUpdate {
 		return &v
 	}).(PatchDeploymentPatchConfigWindowsUpdatePtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigWindowsUpdate] {
-	return pulumix.Output[PatchDeploymentPatchConfigWindowsUpdate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -18481,12 +16302,6 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) ToPatchDeploymentPatch
 
 func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) ToPatchDeploymentPatchConfigWindowsUpdatePtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigWindowsUpdate] {
-	return pulumix.Output[*PatchDeploymentPatchConfigWindowsUpdate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Elem() PatchDeploymentPatchConfigWindowsUpdateOutput {
@@ -18580,12 +16395,6 @@ func (i PatchDeploymentPatchConfigYumArgs) ToPatchDeploymentPatchConfigYumOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigYumOutput)
 }
 
-func (i PatchDeploymentPatchConfigYumArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigYum] {
-	return pulumix.Output[PatchDeploymentPatchConfigYum]{
-		OutputState: i.ToPatchDeploymentPatchConfigYumOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigYumArgs) ToPatchDeploymentPatchConfigYumPtrOutput() PatchDeploymentPatchConfigYumPtrOutput {
 	return i.ToPatchDeploymentPatchConfigYumPtrOutputWithContext(context.Background())
 }
@@ -18627,12 +16436,6 @@ func (i *patchDeploymentPatchConfigYumPtrType) ToPatchDeploymentPatchConfigYumPt
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigYumPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigYumPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigYum] {
-	return pulumix.Output[*PatchDeploymentPatchConfigYum]{
-		OutputState: i.ToPatchDeploymentPatchConfigYumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigYumOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigYumOutput) ElementType() reflect.Type {
@@ -18655,12 +16458,6 @@ func (o PatchDeploymentPatchConfigYumOutput) ToPatchDeploymentPatchConfigYumPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigYum) *PatchDeploymentPatchConfigYum {
 		return &v
 	}).(PatchDeploymentPatchConfigYumPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigYumOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigYum] {
-	return pulumix.Output[PatchDeploymentPatchConfigYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of packages to exclude from update. These packages will be excluded.
@@ -18697,12 +16494,6 @@ func (o PatchDeploymentPatchConfigYumPtrOutput) ToPatchDeploymentPatchConfigYumP
 
 func (o PatchDeploymentPatchConfigYumPtrOutput) ToPatchDeploymentPatchConfigYumPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigYumPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigYumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigYum] {
-	return pulumix.Output[*PatchDeploymentPatchConfigYum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigYumPtrOutput) Elem() PatchDeploymentPatchConfigYumOutput {
@@ -18812,12 +16603,6 @@ func (i PatchDeploymentPatchConfigZypperArgs) ToPatchDeploymentPatchConfigZypper
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigZypperOutput)
 }
 
-func (i PatchDeploymentPatchConfigZypperArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigZypper] {
-	return pulumix.Output[PatchDeploymentPatchConfigZypper]{
-		OutputState: i.ToPatchDeploymentPatchConfigZypperOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentPatchConfigZypperArgs) ToPatchDeploymentPatchConfigZypperPtrOutput() PatchDeploymentPatchConfigZypperPtrOutput {
 	return i.ToPatchDeploymentPatchConfigZypperPtrOutputWithContext(context.Background())
 }
@@ -18859,12 +16644,6 @@ func (i *patchDeploymentPatchConfigZypperPtrType) ToPatchDeploymentPatchConfigZy
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPatchConfigZypperPtrOutput)
 }
 
-func (i *patchDeploymentPatchConfigZypperPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigZypper] {
-	return pulumix.Output[*PatchDeploymentPatchConfigZypper]{
-		OutputState: i.ToPatchDeploymentPatchConfigZypperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentPatchConfigZypperOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPatchConfigZypperOutput) ElementType() reflect.Type {
@@ -18887,12 +16666,6 @@ func (o PatchDeploymentPatchConfigZypperOutput) ToPatchDeploymentPatchConfigZypp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigZypper) *PatchDeploymentPatchConfigZypper {
 		return &v
 	}).(PatchDeploymentPatchConfigZypperPtrOutput)
-}
-
-func (o PatchDeploymentPatchConfigZypperOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentPatchConfigZypper] {
-	return pulumix.Output[PatchDeploymentPatchConfigZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -18938,12 +16711,6 @@ func (o PatchDeploymentPatchConfigZypperPtrOutput) ToPatchDeploymentPatchConfigZ
 
 func (o PatchDeploymentPatchConfigZypperPtrOutput) ToPatchDeploymentPatchConfigZypperPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigZypperPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentPatchConfigZypperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentPatchConfigZypper] {
-	return pulumix.Output[*PatchDeploymentPatchConfigZypper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentPatchConfigZypperPtrOutput) Elem() PatchDeploymentPatchConfigZypperOutput {
@@ -19100,12 +16867,6 @@ func (i PatchDeploymentRecurringScheduleArgs) ToPatchDeploymentRecurringSchedule
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringSchedule] {
-	return pulumix.Output[PatchDeploymentRecurringSchedule]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleArgs) ToPatchDeploymentRecurringSchedulePtrOutput() PatchDeploymentRecurringSchedulePtrOutput {
 	return i.ToPatchDeploymentRecurringSchedulePtrOutputWithContext(context.Background())
 }
@@ -19147,12 +16908,6 @@ func (i *patchDeploymentRecurringSchedulePtrType) ToPatchDeploymentRecurringSche
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringSchedulePtrOutput)
 }
 
-func (i *patchDeploymentRecurringSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringSchedule] {
-	return pulumix.Output[*PatchDeploymentRecurringSchedule]{
-		OutputState: i.ToPatchDeploymentRecurringSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleOutput) ElementType() reflect.Type {
@@ -19175,12 +16930,6 @@ func (o PatchDeploymentRecurringScheduleOutput) ToPatchDeploymentRecurringSchedu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringSchedule {
 		return &v
 	}).(PatchDeploymentRecurringSchedulePtrOutput)
-}
-
-func (o PatchDeploymentRecurringScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringSchedule] {
-	return pulumix.Output[PatchDeploymentRecurringSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end time at which a recurring patch deployment schedule is no longer active.
@@ -19246,12 +16995,6 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) ToPatchDeploymentRecurringSch
 
 func (o PatchDeploymentRecurringSchedulePtrOutput) ToPatchDeploymentRecurringSchedulePtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringSchedulePtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringSchedule] {
-	return pulumix.Output[*PatchDeploymentRecurringSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringSchedulePtrOutput) Elem() PatchDeploymentRecurringScheduleOutput {
@@ -19398,12 +17141,6 @@ func (i PatchDeploymentRecurringScheduleMonthlyArgs) ToPatchDeploymentRecurringS
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleMonthlyOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleMonthlyArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleMonthly] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleMonthly]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleMonthlyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleMonthlyArgs) ToPatchDeploymentRecurringScheduleMonthlyPtrOutput() PatchDeploymentRecurringScheduleMonthlyPtrOutput {
 	return i.ToPatchDeploymentRecurringScheduleMonthlyPtrOutputWithContext(context.Background())
 }
@@ -19445,12 +17182,6 @@ func (i *patchDeploymentRecurringScheduleMonthlyPtrType) ToPatchDeploymentRecurr
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
 
-func (i *patchDeploymentRecurringScheduleMonthlyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleMonthly] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleMonthly]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleMonthlyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleMonthlyOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleMonthlyOutput) ElementType() reflect.Type {
@@ -19473,12 +17204,6 @@ func (o PatchDeploymentRecurringScheduleMonthlyOutput) ToPatchDeploymentRecurrin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleMonthly) *PatchDeploymentRecurringScheduleMonthly {
 		return &v
 	}).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
-}
-
-func (o PatchDeploymentRecurringScheduleMonthlyOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleMonthly] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleMonthly]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
@@ -19508,12 +17233,6 @@ func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) ToPatchDeploymentRecur
 
 func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) ToPatchDeploymentRecurringScheduleMonthlyPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleMonthlyPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleMonthly] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleMonthly]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) Elem() PatchDeploymentRecurringScheduleMonthlyOutput {
@@ -19588,12 +17307,6 @@ func (i PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs) ToPatchDeploy
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs) ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput() PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput {
 	return i.ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutputWithContext(context.Background())
 }
@@ -19635,12 +17348,6 @@ func (i *patchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrType) ToPatchDe
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput)
 }
 
-func (i *patchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ElementType() reflect.Type {
@@ -19663,12 +17370,6 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToPatchDepl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
 		return &v
 	}).(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput)
-}
-
-func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A day of the week.
@@ -19694,12 +17395,6 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) ToPatchD
 
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) Elem() PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput {
@@ -19780,12 +17475,6 @@ func (i PatchDeploymentRecurringScheduleTimeOfDayArgs) ToPatchDeploymentRecurrin
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleTimeOfDayOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleTimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleTimeOfDay] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleTimeOfDay]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleTimeOfDayArgs) ToPatchDeploymentRecurringScheduleTimeOfDayPtrOutput() PatchDeploymentRecurringScheduleTimeOfDayPtrOutput {
 	return i.ToPatchDeploymentRecurringScheduleTimeOfDayPtrOutputWithContext(context.Background())
 }
@@ -19827,12 +17516,6 @@ func (i *patchDeploymentRecurringScheduleTimeOfDayPtrType) ToPatchDeploymentRecu
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleTimeOfDayPtrOutput)
 }
 
-func (i *patchDeploymentRecurringScheduleTimeOfDayPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleTimeOfDay] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleTimeOfDay]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleTimeOfDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleTimeOfDayOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleTimeOfDayOutput) ElementType() reflect.Type {
@@ -19855,12 +17538,6 @@ func (o PatchDeploymentRecurringScheduleTimeOfDayOutput) ToPatchDeploymentRecurr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleTimeOfDay) *PatchDeploymentRecurringScheduleTimeOfDay {
 		return &v
 	}).(PatchDeploymentRecurringScheduleTimeOfDayPtrOutput)
-}
-
-func (o PatchDeploymentRecurringScheduleTimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleTimeOfDay] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleTimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23.
@@ -19896,12 +17573,6 @@ func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) ToPatchDeploymentRec
 
 func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) ToPatchDeploymentRecurringScheduleTimeOfDayPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleTimeOfDayPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleTimeOfDay] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleTimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) Elem() PatchDeploymentRecurringScheduleTimeOfDayOutput {
@@ -19992,12 +17663,6 @@ func (i PatchDeploymentRecurringScheduleTimeZoneArgs) ToPatchDeploymentRecurring
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleTimeZoneOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleTimeZoneArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleTimeZone] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleTimeZone]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleTimeZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleTimeZoneArgs) ToPatchDeploymentRecurringScheduleTimeZonePtrOutput() PatchDeploymentRecurringScheduleTimeZonePtrOutput {
 	return i.ToPatchDeploymentRecurringScheduleTimeZonePtrOutputWithContext(context.Background())
 }
@@ -20039,12 +17704,6 @@ func (i *patchDeploymentRecurringScheduleTimeZonePtrType) ToPatchDeploymentRecur
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleTimeZonePtrOutput)
 }
 
-func (i *patchDeploymentRecurringScheduleTimeZonePtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleTimeZone] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleTimeZone]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleTimeZonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleTimeZoneOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleTimeZoneOutput) ElementType() reflect.Type {
@@ -20069,12 +17728,6 @@ func (o PatchDeploymentRecurringScheduleTimeZoneOutput) ToPatchDeploymentRecurri
 	}).(PatchDeploymentRecurringScheduleTimeZonePtrOutput)
 }
 
-func (o PatchDeploymentRecurringScheduleTimeZoneOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleTimeZone] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleTimeZone]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 func (o PatchDeploymentRecurringScheduleTimeZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleTimeZone) string { return v.Id }).(pulumi.StringOutput)
@@ -20097,12 +17750,6 @@ func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) ToPatchDeploymentRecu
 
 func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) ToPatchDeploymentRecurringScheduleTimeZonePtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleTimeZonePtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleTimeZone] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleTimeZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) Elem() PatchDeploymentRecurringScheduleTimeZoneOutput {
@@ -20170,12 +17817,6 @@ func (i PatchDeploymentRecurringScheduleWeeklyArgs) ToPatchDeploymentRecurringSc
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleWeeklyOutput)
 }
 
-func (i PatchDeploymentRecurringScheduleWeeklyArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleWeekly] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleWeekly]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleWeeklyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRecurringScheduleWeeklyArgs) ToPatchDeploymentRecurringScheduleWeeklyPtrOutput() PatchDeploymentRecurringScheduleWeeklyPtrOutput {
 	return i.ToPatchDeploymentRecurringScheduleWeeklyPtrOutputWithContext(context.Background())
 }
@@ -20217,12 +17858,6 @@ func (i *patchDeploymentRecurringScheduleWeeklyPtrType) ToPatchDeploymentRecurri
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRecurringScheduleWeeklyPtrOutput)
 }
 
-func (i *patchDeploymentRecurringScheduleWeeklyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleWeekly] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleWeekly]{
-		OutputState: i.ToPatchDeploymentRecurringScheduleWeeklyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRecurringScheduleWeeklyOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRecurringScheduleWeeklyOutput) ElementType() reflect.Type {
@@ -20247,12 +17882,6 @@ func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurring
 	}).(PatchDeploymentRecurringScheduleWeeklyPtrOutput)
 }
 
-func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRecurringScheduleWeekly] {
-	return pulumix.Output[PatchDeploymentRecurringScheduleWeekly]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 // Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyOutput) DayOfWeek() pulumi.StringOutput {
@@ -20271,12 +17900,6 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) ToPatchDeploymentRecurr
 
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) ToPatchDeploymentRecurringScheduleWeeklyPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleWeeklyPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRecurringScheduleWeekly] {
-	return pulumix.Output[*PatchDeploymentRecurringScheduleWeekly]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) Elem() PatchDeploymentRecurringScheduleWeeklyOutput {
@@ -20349,12 +17972,6 @@ func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutOutput)
 }
 
-func (i PatchDeploymentRolloutArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRollout] {
-	return pulumix.Output[PatchDeploymentRollout]{
-		OutputState: i.ToPatchDeploymentRolloutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput {
 	return i.ToPatchDeploymentRolloutPtrOutputWithContext(context.Background())
 }
@@ -20396,12 +18013,6 @@ func (i *patchDeploymentRolloutPtrType) ToPatchDeploymentRolloutPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutPtrOutput)
 }
 
-func (i *patchDeploymentRolloutPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRollout] {
-	return pulumix.Output[*PatchDeploymentRollout]{
-		OutputState: i.ToPatchDeploymentRolloutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRolloutOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRolloutOutput) ElementType() reflect.Type {
@@ -20424,12 +18035,6 @@ func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRollout) *PatchDeploymentRollout {
 		return &v
 	}).(PatchDeploymentRolloutPtrOutput)
-}
-
-func (o PatchDeploymentRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRollout] {
-	return pulumix.Output[PatchDeploymentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
@@ -20460,12 +18065,6 @@ func (o PatchDeploymentRolloutPtrOutput) ToPatchDeploymentRolloutPtrOutput() Pat
 
 func (o PatchDeploymentRolloutPtrOutput) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRolloutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRollout] {
-	return pulumix.Output[*PatchDeploymentRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRolloutPtrOutput) Elem() PatchDeploymentRolloutOutput {
@@ -20541,12 +18140,6 @@ func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisr
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutDisruptionBudgetOutput)
 }
 
-func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRolloutDisruptionBudget] {
-	return pulumix.Output[PatchDeploymentRolloutDisruptionBudget]{
-		OutputState: i.ToPatchDeploymentRolloutDisruptionBudgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
 	return i.ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
 }
@@ -20588,12 +18181,6 @@ func (i *patchDeploymentRolloutDisruptionBudgetPtrType) ToPatchDeploymentRollout
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
 }
 
-func (i *patchDeploymentRolloutDisruptionBudgetPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRolloutDisruptionBudget] {
-	return pulumix.Output[*PatchDeploymentRolloutDisruptionBudget]{
-		OutputState: i.ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
@@ -20618,12 +18205,6 @@ func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDi
 	}).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
 }
 
-func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToOutput(ctx context.Context) pulumix.Output[PatchDeploymentRolloutDisruptionBudget] {
-	return pulumix.Output[PatchDeploymentRolloutDisruptionBudget]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a fixed value.
 func (o PatchDeploymentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentRolloutDisruptionBudget) *int { return v.Fixed }).(pulumi.IntPtrOutput)
@@ -20646,12 +18227,6 @@ func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToPatchDeploymentRollou
 
 func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
 	return o
-}
-
-func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeploymentRolloutDisruptionBudget] {
-	return pulumix.Output[*PatchDeploymentRolloutDisruptionBudget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Elem() PatchDeploymentRolloutDisruptionBudgetOutput {

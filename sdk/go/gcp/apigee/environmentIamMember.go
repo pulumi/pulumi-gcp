@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -355,12 +354,6 @@ func (i *EnvironmentIamMember) ToEnvironmentIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamMemberOutput)
 }
 
-func (i *EnvironmentIamMember) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamMember] {
-	return pulumix.Output[*EnvironmentIamMember]{
-		OutputState: i.ToEnvironmentIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentIamMemberArrayInput is an input type that accepts EnvironmentIamMemberArray and EnvironmentIamMemberArrayOutput values.
 // You can construct a concrete instance of `EnvironmentIamMemberArrayInput` via:
 //
@@ -384,12 +377,6 @@ func (i EnvironmentIamMemberArray) ToEnvironmentIamMemberArrayOutput() Environme
 
 func (i EnvironmentIamMemberArray) ToEnvironmentIamMemberArrayOutputWithContext(ctx context.Context) EnvironmentIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamMemberArrayOutput)
-}
-
-func (i EnvironmentIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamMember] {
-	return pulumix.Output[[]*EnvironmentIamMember]{
-		OutputState: i.ToEnvironmentIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvironmentIamMemberMapInput is an input type that accepts EnvironmentIamMemberMap and EnvironmentIamMemberMapOutput values.
@@ -417,12 +404,6 @@ func (i EnvironmentIamMemberMap) ToEnvironmentIamMemberMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamMemberMapOutput)
 }
 
-func (i EnvironmentIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamMember] {
-	return pulumix.Output[map[string]*EnvironmentIamMember]{
-		OutputState: i.ToEnvironmentIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentIamMemberOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamMemberOutput) ElementType() reflect.Type {
@@ -435,12 +416,6 @@ func (o EnvironmentIamMemberOutput) ToEnvironmentIamMemberOutput() EnvironmentIa
 
 func (o EnvironmentIamMemberOutput) ToEnvironmentIamMemberOutputWithContext(ctx context.Context) EnvironmentIamMemberOutput {
 	return o
-}
-
-func (o EnvironmentIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamMember] {
-	return pulumix.Output[*EnvironmentIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentIamMemberOutput) Condition() EnvironmentIamMemberConditionPtrOutput {
@@ -498,12 +473,6 @@ func (o EnvironmentIamMemberArrayOutput) ToEnvironmentIamMemberArrayOutputWithCo
 	return o
 }
 
-func (o EnvironmentIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamMember] {
-	return pulumix.Output[[]*EnvironmentIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentIamMemberArrayOutput) Index(i pulumi.IntInput) EnvironmentIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvironmentIamMember {
 		return vs[0].([]*EnvironmentIamMember)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o EnvironmentIamMemberMapOutput) ToEnvironmentIamMemberMapOutput() Environ
 
 func (o EnvironmentIamMemberMapOutput) ToEnvironmentIamMemberMapOutputWithContext(ctx context.Context) EnvironmentIamMemberMapOutput {
 	return o
-}
-
-func (o EnvironmentIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamMember] {
-	return pulumix.Output[map[string]*EnvironmentIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentIamMemberMapOutput) MapIndex(k pulumi.StringInput) EnvironmentIamMemberOutput {

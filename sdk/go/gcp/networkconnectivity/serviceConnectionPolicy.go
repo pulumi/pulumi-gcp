@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage Service Connection Policies.
@@ -314,12 +313,6 @@ func (i *ServiceConnectionPolicy) ToServiceConnectionPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyOutput)
 }
 
-func (i *ServiceConnectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicy] {
-	return pulumix.Output[*ServiceConnectionPolicy]{
-		OutputState: i.ToServiceConnectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceConnectionPolicyArrayInput is an input type that accepts ServiceConnectionPolicyArray and ServiceConnectionPolicyArrayOutput values.
 // You can construct a concrete instance of `ServiceConnectionPolicyArrayInput` via:
 //
@@ -343,12 +336,6 @@ func (i ServiceConnectionPolicyArray) ToServiceConnectionPolicyArrayOutput() Ser
 
 func (i ServiceConnectionPolicyArray) ToServiceConnectionPolicyArrayOutputWithContext(ctx context.Context) ServiceConnectionPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyArrayOutput)
-}
-
-func (i ServiceConnectionPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceConnectionPolicy] {
-	return pulumix.Output[[]*ServiceConnectionPolicy]{
-		OutputState: i.ToServiceConnectionPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceConnectionPolicyMapInput is an input type that accepts ServiceConnectionPolicyMap and ServiceConnectionPolicyMapOutput values.
@@ -376,12 +363,6 @@ func (i ServiceConnectionPolicyMap) ToServiceConnectionPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyMapOutput)
 }
 
-func (i ServiceConnectionPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceConnectionPolicy] {
-	return pulumix.Output[map[string]*ServiceConnectionPolicy]{
-		OutputState: i.ToServiceConnectionPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyOutput) ElementType() reflect.Type {
@@ -394,12 +375,6 @@ func (o ServiceConnectionPolicyOutput) ToServiceConnectionPolicyOutput() Service
 
 func (o ServiceConnectionPolicyOutput) ToServiceConnectionPolicyOutputWithContext(ctx context.Context) ServiceConnectionPolicyOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicy] {
-	return pulumix.Output[*ServiceConnectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.
@@ -489,12 +464,6 @@ func (o ServiceConnectionPolicyArrayOutput) ToServiceConnectionPolicyArrayOutput
 	return o
 }
 
-func (o ServiceConnectionPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceConnectionPolicy] {
-	return pulumix.Output[[]*ServiceConnectionPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceConnectionPolicyArrayOutput) Index(i pulumi.IntInput) ServiceConnectionPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceConnectionPolicy {
 		return vs[0].([]*ServiceConnectionPolicy)[vs[1].(int)]
@@ -513,12 +482,6 @@ func (o ServiceConnectionPolicyMapOutput) ToServiceConnectionPolicyMapOutput() S
 
 func (o ServiceConnectionPolicyMapOutput) ToServiceConnectionPolicyMapOutputWithContext(ctx context.Context) ServiceConnectionPolicyMapOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceConnectionPolicy] {
-	return pulumix.Output[map[string]*ServiceConnectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceConnectionPolicyMapOutput) MapIndex(k pulumi.StringInput) ServiceConnectionPolicyOutput {

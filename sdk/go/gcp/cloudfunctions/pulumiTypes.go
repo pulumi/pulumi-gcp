@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i FunctionEventTriggerArgs) ToFunctionEventTriggerOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerOutput)
 }
 
-func (i FunctionEventTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionEventTrigger] {
-	return pulumix.Output[FunctionEventTrigger]{
-		OutputState: i.ToFunctionEventTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionEventTriggerArgs) ToFunctionEventTriggerPtrOutput() FunctionEventTriggerPtrOutput {
 	return i.ToFunctionEventTriggerPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *functionEventTriggerPtrType) ToFunctionEventTriggerPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerPtrOutput)
 }
 
-func (i *functionEventTriggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionEventTrigger] {
-	return pulumix.Output[*FunctionEventTrigger]{
-		OutputState: i.ToFunctionEventTriggerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerOutput) ElementType() reflect.Type {
@@ -136,12 +123,6 @@ func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionEventTrigger) *FunctionEventTrigger {
 		return &v
 	}).(FunctionEventTriggerPtrOutput)
-}
-
-func (o FunctionEventTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionEventTrigger] {
-	return pulumix.Output[FunctionEventTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of event to observe. For example: `"google.storage.object.finalize"`.
@@ -174,12 +155,6 @@ func (o FunctionEventTriggerPtrOutput) ToFunctionEventTriggerPtrOutput() Functio
 
 func (o FunctionEventTriggerPtrOutput) ToFunctionEventTriggerPtrOutputWithContext(ctx context.Context) FunctionEventTriggerPtrOutput {
 	return o
-}
-
-func (o FunctionEventTriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionEventTrigger] {
-	return pulumix.Output[*FunctionEventTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
@@ -258,12 +233,6 @@ func (i FunctionEventTriggerFailurePolicyArgs) ToFunctionEventTriggerFailurePoli
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerFailurePolicyOutput)
 }
 
-func (i FunctionEventTriggerFailurePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[FunctionEventTriggerFailurePolicy]{
-		OutputState: i.ToFunctionEventTriggerFailurePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionEventTriggerFailurePolicyArgs) ToFunctionEventTriggerFailurePolicyPtrOutput() FunctionEventTriggerFailurePolicyPtrOutput {
 	return i.ToFunctionEventTriggerFailurePolicyPtrOutputWithContext(context.Background())
 }
@@ -305,12 +274,6 @@ func (i *functionEventTriggerFailurePolicyPtrType) ToFunctionEventTriggerFailure
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
-func (i *functionEventTriggerFailurePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[*FunctionEventTriggerFailurePolicy]{
-		OutputState: i.ToFunctionEventTriggerFailurePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionEventTriggerFailurePolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerFailurePolicyOutput) ElementType() reflect.Type {
@@ -335,12 +298,6 @@ func (o FunctionEventTriggerFailurePolicyOutput) ToFunctionEventTriggerFailurePo
 	}).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
-func (o FunctionEventTriggerFailurePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[FunctionEventTriggerFailurePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the function should be retried on failure. Defaults to `false`.
 func (o FunctionEventTriggerFailurePolicyOutput) Retry() pulumi.BoolOutput {
 	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
@@ -358,12 +315,6 @@ func (o FunctionEventTriggerFailurePolicyPtrOutput) ToFunctionEventTriggerFailur
 
 func (o FunctionEventTriggerFailurePolicyPtrOutput) ToFunctionEventTriggerFailurePolicyPtrOutputWithContext(ctx context.Context) FunctionEventTriggerFailurePolicyPtrOutput {
 	return o
-}
-
-func (o FunctionEventTriggerFailurePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[*FunctionEventTriggerFailurePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionEventTriggerFailurePolicyPtrOutput) Elem() FunctionEventTriggerFailurePolicyOutput {
@@ -421,12 +372,6 @@ func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingConditionOutput)
 }
 
-func (i FunctionIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionIamBindingCondition] {
-	return pulumix.Output[FunctionIamBindingCondition]{
-		OutputState: i.ToFunctionIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionPtrOutput() FunctionIamBindingConditionPtrOutput {
 	return i.ToFunctionIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -468,12 +413,6 @@ func (i *functionIamBindingConditionPtrType) ToFunctionIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingConditionPtrOutput)
 }
 
-func (i *functionIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamBindingCondition] {
-	return pulumix.Output[*FunctionIamBindingCondition]{
-		OutputState: i.ToFunctionIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingConditionOutput) ElementType() reflect.Type {
@@ -496,12 +435,6 @@ func (o FunctionIamBindingConditionOutput) ToFunctionIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIamBindingCondition) *FunctionIamBindingCondition {
 		return &v
 	}).(FunctionIamBindingConditionPtrOutput)
-}
-
-func (o FunctionIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionIamBindingCondition] {
-	return pulumix.Output[FunctionIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -528,12 +461,6 @@ func (o FunctionIamBindingConditionPtrOutput) ToFunctionIamBindingConditionPtrOu
 
 func (o FunctionIamBindingConditionPtrOutput) ToFunctionIamBindingConditionPtrOutputWithContext(ctx context.Context) FunctionIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o FunctionIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamBindingCondition] {
-	return pulumix.Output[*FunctionIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Elem() FunctionIamBindingConditionOutput {
@@ -608,12 +535,6 @@ func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberConditionOutput)
 }
 
-func (i FunctionIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionIamMemberCondition] {
-	return pulumix.Output[FunctionIamMemberCondition]{
-		OutputState: i.ToFunctionIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionPtrOutput() FunctionIamMemberConditionPtrOutput {
 	return i.ToFunctionIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -655,12 +576,6 @@ func (i *functionIamMemberConditionPtrType) ToFunctionIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberConditionPtrOutput)
 }
 
-func (i *functionIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamMemberCondition] {
-	return pulumix.Output[*FunctionIamMemberCondition]{
-		OutputState: i.ToFunctionIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamMemberConditionOutput) ElementType() reflect.Type {
@@ -683,12 +598,6 @@ func (o FunctionIamMemberConditionOutput) ToFunctionIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIamMemberCondition) *FunctionIamMemberCondition {
 		return &v
 	}).(FunctionIamMemberConditionPtrOutput)
-}
-
-func (o FunctionIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionIamMemberCondition] {
-	return pulumix.Output[FunctionIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -715,12 +624,6 @@ func (o FunctionIamMemberConditionPtrOutput) ToFunctionIamMemberConditionPtrOutp
 
 func (o FunctionIamMemberConditionPtrOutput) ToFunctionIamMemberConditionPtrOutputWithContext(ctx context.Context) FunctionIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o FunctionIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamMemberCondition] {
-	return pulumix.Output[*FunctionIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Elem() FunctionIamMemberConditionOutput {
@@ -805,12 +708,6 @@ func (i FunctionSecretEnvironmentVariableArgs) ToFunctionSecretEnvironmentVariab
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretEnvironmentVariableOutput)
 }
 
-func (i FunctionSecretEnvironmentVariableArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretEnvironmentVariable] {
-	return pulumix.Output[FunctionSecretEnvironmentVariable]{
-		OutputState: i.ToFunctionSecretEnvironmentVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionSecretEnvironmentVariableArrayInput is an input type that accepts FunctionSecretEnvironmentVariableArray and FunctionSecretEnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretEnvironmentVariableArrayInput` via:
 //
@@ -836,12 +733,6 @@ func (i FunctionSecretEnvironmentVariableArray) ToFunctionSecretEnvironmentVaria
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretEnvironmentVariableArrayOutput)
 }
 
-func (i FunctionSecretEnvironmentVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretEnvironmentVariable] {
-	return pulumix.Output[[]FunctionSecretEnvironmentVariable]{
-		OutputState: i.ToFunctionSecretEnvironmentVariableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionSecretEnvironmentVariableOutput struct{ *pulumi.OutputState }
 
 func (FunctionSecretEnvironmentVariableOutput) ElementType() reflect.Type {
@@ -854,12 +745,6 @@ func (o FunctionSecretEnvironmentVariableOutput) ToFunctionSecretEnvironmentVari
 
 func (o FunctionSecretEnvironmentVariableOutput) ToFunctionSecretEnvironmentVariableOutputWithContext(ctx context.Context) FunctionSecretEnvironmentVariableOutput {
 	return o
-}
-
-func (o FunctionSecretEnvironmentVariableOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretEnvironmentVariable] {
-	return pulumix.Output[FunctionSecretEnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the environment variable.
@@ -894,12 +779,6 @@ func (o FunctionSecretEnvironmentVariableArrayOutput) ToFunctionSecretEnvironmen
 
 func (o FunctionSecretEnvironmentVariableArrayOutput) ToFunctionSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) FunctionSecretEnvironmentVariableArrayOutput {
 	return o
-}
-
-func (o FunctionSecretEnvironmentVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretEnvironmentVariable] {
-	return pulumix.Output[[]FunctionSecretEnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionSecretEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) FunctionSecretEnvironmentVariableOutput {
@@ -953,12 +832,6 @@ func (i FunctionSecretVolumeArgs) ToFunctionSecretVolumeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretVolumeOutput)
 }
 
-func (i FunctionSecretVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretVolume] {
-	return pulumix.Output[FunctionSecretVolume]{
-		OutputState: i.ToFunctionSecretVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionSecretVolumeArrayInput is an input type that accepts FunctionSecretVolumeArray and FunctionSecretVolumeArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeArrayInput` via:
 //
@@ -984,12 +857,6 @@ func (i FunctionSecretVolumeArray) ToFunctionSecretVolumeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretVolumeArrayOutput)
 }
 
-func (i FunctionSecretVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretVolume] {
-	return pulumix.Output[[]FunctionSecretVolume]{
-		OutputState: i.ToFunctionSecretVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionSecretVolumeOutput struct{ *pulumi.OutputState }
 
 func (FunctionSecretVolumeOutput) ElementType() reflect.Type {
@@ -1002,12 +869,6 @@ func (o FunctionSecretVolumeOutput) ToFunctionSecretVolumeOutput() FunctionSecre
 
 func (o FunctionSecretVolumeOutput) ToFunctionSecretVolumeOutputWithContext(ctx context.Context) FunctionSecretVolumeOutput {
 	return o
-}
-
-func (o FunctionSecretVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretVolume] {
-	return pulumix.Output[FunctionSecretVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
@@ -1042,12 +903,6 @@ func (o FunctionSecretVolumeArrayOutput) ToFunctionSecretVolumeArrayOutput() Fun
 
 func (o FunctionSecretVolumeArrayOutput) ToFunctionSecretVolumeArrayOutputWithContext(ctx context.Context) FunctionSecretVolumeArrayOutput {
 	return o
-}
-
-func (o FunctionSecretVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretVolume] {
-	return pulumix.Output[[]FunctionSecretVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionSecretVolumeArrayOutput) Index(i pulumi.IntInput) FunctionSecretVolumeOutput {
@@ -1093,12 +948,6 @@ func (i FunctionSecretVolumeVersionArgs) ToFunctionSecretVolumeVersionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretVolumeVersionOutput)
 }
 
-func (i FunctionSecretVolumeVersionArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretVolumeVersion] {
-	return pulumix.Output[FunctionSecretVolumeVersion]{
-		OutputState: i.ToFunctionSecretVolumeVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionSecretVolumeVersionArrayInput is an input type that accepts FunctionSecretVolumeVersionArray and FunctionSecretVolumeVersionArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeVersionArrayInput` via:
 //
@@ -1124,12 +973,6 @@ func (i FunctionSecretVolumeVersionArray) ToFunctionSecretVolumeVersionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSecretVolumeVersionArrayOutput)
 }
 
-func (i FunctionSecretVolumeVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretVolumeVersion] {
-	return pulumix.Output[[]FunctionSecretVolumeVersion]{
-		OutputState: i.ToFunctionSecretVolumeVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionSecretVolumeVersionOutput struct{ *pulumi.OutputState }
 
 func (FunctionSecretVolumeVersionOutput) ElementType() reflect.Type {
@@ -1142,12 +985,6 @@ func (o FunctionSecretVolumeVersionOutput) ToFunctionSecretVolumeVersionOutput()
 
 func (o FunctionSecretVolumeVersionOutput) ToFunctionSecretVolumeVersionOutputWithContext(ctx context.Context) FunctionSecretVolumeVersionOutput {
 	return o
-}
-
-func (o FunctionSecretVolumeVersionOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionSecretVolumeVersion] {
-	return pulumix.Output[FunctionSecretVolumeVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
@@ -1172,12 +1009,6 @@ func (o FunctionSecretVolumeVersionArrayOutput) ToFunctionSecretVolumeVersionArr
 
 func (o FunctionSecretVolumeVersionArrayOutput) ToFunctionSecretVolumeVersionArrayOutputWithContext(ctx context.Context) FunctionSecretVolumeVersionArrayOutput {
 	return o
-}
-
-func (o FunctionSecretVolumeVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionSecretVolumeVersion] {
-	return pulumix.Output[[]FunctionSecretVolumeVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) FunctionSecretVolumeVersionOutput {
@@ -1229,12 +1060,6 @@ func (i FunctionSourceRepositoryArgs) ToFunctionSourceRepositoryOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSourceRepositoryOutput)
 }
 
-func (i FunctionSourceRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionSourceRepository] {
-	return pulumix.Output[FunctionSourceRepository]{
-		OutputState: i.ToFunctionSourceRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionSourceRepositoryArgs) ToFunctionSourceRepositoryPtrOutput() FunctionSourceRepositoryPtrOutput {
 	return i.ToFunctionSourceRepositoryPtrOutputWithContext(context.Background())
 }
@@ -1276,12 +1101,6 @@ func (i *functionSourceRepositoryPtrType) ToFunctionSourceRepositoryPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSourceRepositoryPtrOutput)
 }
 
-func (i *functionSourceRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionSourceRepository] {
-	return pulumix.Output[*FunctionSourceRepository]{
-		OutputState: i.ToFunctionSourceRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionSourceRepositoryOutput struct{ *pulumi.OutputState }
 
 func (FunctionSourceRepositoryOutput) ElementType() reflect.Type {
@@ -1304,12 +1123,6 @@ func (o FunctionSourceRepositoryOutput) ToFunctionSourceRepositoryPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionSourceRepository) *FunctionSourceRepository {
 		return &v
 	}).(FunctionSourceRepositoryPtrOutput)
-}
-
-func (o FunctionSourceRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionSourceRepository] {
-	return pulumix.Output[FunctionSourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringPtrOutput {
@@ -1337,12 +1150,6 @@ func (o FunctionSourceRepositoryPtrOutput) ToFunctionSourceRepositoryPtrOutput()
 
 func (o FunctionSourceRepositoryPtrOutput) ToFunctionSourceRepositoryPtrOutputWithContext(ctx context.Context) FunctionSourceRepositoryPtrOutput {
 	return o
-}
-
-func (o FunctionSourceRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionSourceRepository] {
-	return pulumix.Output[*FunctionSourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionSourceRepositoryPtrOutput) Elem() FunctionSourceRepositoryOutput {
@@ -1423,12 +1230,6 @@ func (i GetFunctionEventTriggerArgs) ToGetFunctionEventTriggerOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerOutput)
 }
 
-func (i GetFunctionEventTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionEventTrigger] {
-	return pulumix.Output[GetFunctionEventTrigger]{
-		OutputState: i.ToGetFunctionEventTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionEventTriggerArrayInput is an input type that accepts GetFunctionEventTriggerArray and GetFunctionEventTriggerArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerArrayInput` via:
 //
@@ -1454,12 +1255,6 @@ func (i GetFunctionEventTriggerArray) ToGetFunctionEventTriggerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerArrayOutput)
 }
 
-func (i GetFunctionEventTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionEventTrigger] {
-	return pulumix.Output[[]GetFunctionEventTrigger]{
-		OutputState: i.ToGetFunctionEventTriggerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerOutput) ElementType() reflect.Type {
@@ -1472,12 +1267,6 @@ func (o GetFunctionEventTriggerOutput) ToGetFunctionEventTriggerOutput() GetFunc
 
 func (o GetFunctionEventTriggerOutput) ToGetFunctionEventTriggerOutputWithContext(ctx context.Context) GetFunctionEventTriggerOutput {
 	return o
-}
-
-func (o GetFunctionEventTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionEventTrigger] {
-	return pulumix.Output[GetFunctionEventTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of event to observe. For example: `"google.storage.object.finalize"`.
@@ -1509,12 +1298,6 @@ func (o GetFunctionEventTriggerArrayOutput) ToGetFunctionEventTriggerArrayOutput
 
 func (o GetFunctionEventTriggerArrayOutput) ToGetFunctionEventTriggerArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerArrayOutput {
 	return o
-}
-
-func (o GetFunctionEventTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionEventTrigger] {
-	return pulumix.Output[[]GetFunctionEventTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionEventTriggerArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerOutput {
@@ -1556,12 +1339,6 @@ func (i GetFunctionEventTriggerFailurePolicyArgs) ToGetFunctionEventTriggerFailu
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerFailurePolicyOutput)
 }
 
-func (i GetFunctionEventTriggerFailurePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[GetFunctionEventTriggerFailurePolicy]{
-		OutputState: i.ToGetFunctionEventTriggerFailurePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionEventTriggerFailurePolicyArrayInput is an input type that accepts GetFunctionEventTriggerFailurePolicyArray and GetFunctionEventTriggerFailurePolicyArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerFailurePolicyArrayInput` via:
 //
@@ -1587,12 +1364,6 @@ func (i GetFunctionEventTriggerFailurePolicyArray) ToGetFunctionEventTriggerFail
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerFailurePolicyArrayOutput)
 }
 
-func (i GetFunctionEventTriggerFailurePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[[]GetFunctionEventTriggerFailurePolicy]{
-		OutputState: i.ToGetFunctionEventTriggerFailurePolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionEventTriggerFailurePolicyOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerFailurePolicyOutput) ElementType() reflect.Type {
@@ -1605,12 +1376,6 @@ func (o GetFunctionEventTriggerFailurePolicyOutput) ToGetFunctionEventTriggerFai
 
 func (o GetFunctionEventTriggerFailurePolicyOutput) ToGetFunctionEventTriggerFailurePolicyOutputWithContext(ctx context.Context) GetFunctionEventTriggerFailurePolicyOutput {
 	return o
-}
-
-func (o GetFunctionEventTriggerFailurePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[GetFunctionEventTriggerFailurePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the function should be retried on failure.
@@ -1630,12 +1395,6 @@ func (o GetFunctionEventTriggerFailurePolicyArrayOutput) ToGetFunctionEventTrigg
 
 func (o GetFunctionEventTriggerFailurePolicyArrayOutput) ToGetFunctionEventTriggerFailurePolicyArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerFailurePolicyArrayOutput {
 	return o
-}
-
-func (o GetFunctionEventTriggerFailurePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionEventTriggerFailurePolicy] {
-	return pulumix.Output[[]GetFunctionEventTriggerFailurePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionEventTriggerFailurePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerFailurePolicyOutput {
@@ -1681,12 +1440,6 @@ func (i GetFunctionSecretEnvironmentVariableArgs) ToGetFunctionSecretEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretEnvironmentVariableOutput)
 }
 
-func (i GetFunctionSecretEnvironmentVariableArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretEnvironmentVariable] {
-	return pulumix.Output[GetFunctionSecretEnvironmentVariable]{
-		OutputState: i.ToGetFunctionSecretEnvironmentVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionSecretEnvironmentVariableArrayInput is an input type that accepts GetFunctionSecretEnvironmentVariableArray and GetFunctionSecretEnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretEnvironmentVariableArrayInput` via:
 //
@@ -1712,12 +1465,6 @@ func (i GetFunctionSecretEnvironmentVariableArray) ToGetFunctionSecretEnvironmen
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretEnvironmentVariableArrayOutput)
 }
 
-func (i GetFunctionSecretEnvironmentVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretEnvironmentVariable] {
-	return pulumix.Output[[]GetFunctionSecretEnvironmentVariable]{
-		OutputState: i.ToGetFunctionSecretEnvironmentVariableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionSecretEnvironmentVariableOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSecretEnvironmentVariableOutput) ElementType() reflect.Type {
@@ -1730,12 +1477,6 @@ func (o GetFunctionSecretEnvironmentVariableOutput) ToGetFunctionSecretEnvironme
 
 func (o GetFunctionSecretEnvironmentVariableOutput) ToGetFunctionSecretEnvironmentVariableOutputWithContext(ctx context.Context) GetFunctionSecretEnvironmentVariableOutput {
 	return o
-}
-
-func (o GetFunctionSecretEnvironmentVariableOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretEnvironmentVariable] {
-	return pulumix.Output[GetFunctionSecretEnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretEnvironmentVariableOutput) Key() pulumi.StringOutput {
@@ -1766,12 +1507,6 @@ func (o GetFunctionSecretEnvironmentVariableArrayOutput) ToGetFunctionSecretEnvi
 
 func (o GetFunctionSecretEnvironmentVariableArrayOutput) ToGetFunctionSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetFunctionSecretEnvironmentVariableArrayOutput {
 	return o
-}
-
-func (o GetFunctionSecretEnvironmentVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretEnvironmentVariable] {
-	return pulumix.Output[[]GetFunctionSecretEnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) GetFunctionSecretEnvironmentVariableOutput {
@@ -1817,12 +1552,6 @@ func (i GetFunctionSecretVolumeArgs) ToGetFunctionSecretVolumeOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretVolumeOutput)
 }
 
-func (i GetFunctionSecretVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretVolume] {
-	return pulumix.Output[GetFunctionSecretVolume]{
-		OutputState: i.ToGetFunctionSecretVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionSecretVolumeArrayInput is an input type that accepts GetFunctionSecretVolumeArray and GetFunctionSecretVolumeArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeArrayInput` via:
 //
@@ -1848,12 +1577,6 @@ func (i GetFunctionSecretVolumeArray) ToGetFunctionSecretVolumeArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretVolumeArrayOutput)
 }
 
-func (i GetFunctionSecretVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretVolume] {
-	return pulumix.Output[[]GetFunctionSecretVolume]{
-		OutputState: i.ToGetFunctionSecretVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionSecretVolumeOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSecretVolumeOutput) ElementType() reflect.Type {
@@ -1866,12 +1589,6 @@ func (o GetFunctionSecretVolumeOutput) ToGetFunctionSecretVolumeOutput() GetFunc
 
 func (o GetFunctionSecretVolumeOutput) ToGetFunctionSecretVolumeOutputWithContext(ctx context.Context) GetFunctionSecretVolumeOutput {
 	return o
-}
-
-func (o GetFunctionSecretVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretVolume] {
-	return pulumix.Output[GetFunctionSecretVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretVolumeOutput) MountPath() pulumi.StringOutput {
@@ -1902,12 +1619,6 @@ func (o GetFunctionSecretVolumeArrayOutput) ToGetFunctionSecretVolumeArrayOutput
 
 func (o GetFunctionSecretVolumeArrayOutput) ToGetFunctionSecretVolumeArrayOutputWithContext(ctx context.Context) GetFunctionSecretVolumeArrayOutput {
 	return o
-}
-
-func (o GetFunctionSecretVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretVolume] {
-	return pulumix.Output[[]GetFunctionSecretVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretVolumeArrayOutput) Index(i pulumi.IntInput) GetFunctionSecretVolumeOutput {
@@ -1949,12 +1660,6 @@ func (i GetFunctionSecretVolumeVersionArgs) ToGetFunctionSecretVolumeVersionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretVolumeVersionOutput)
 }
 
-func (i GetFunctionSecretVolumeVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretVolumeVersion] {
-	return pulumix.Output[GetFunctionSecretVolumeVersion]{
-		OutputState: i.ToGetFunctionSecretVolumeVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionSecretVolumeVersionArrayInput is an input type that accepts GetFunctionSecretVolumeVersionArray and GetFunctionSecretVolumeVersionArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeVersionArrayInput` via:
 //
@@ -1980,12 +1685,6 @@ func (i GetFunctionSecretVolumeVersionArray) ToGetFunctionSecretVolumeVersionArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSecretVolumeVersionArrayOutput)
 }
 
-func (i GetFunctionSecretVolumeVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretVolumeVersion] {
-	return pulumix.Output[[]GetFunctionSecretVolumeVersion]{
-		OutputState: i.ToGetFunctionSecretVolumeVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionSecretVolumeVersionOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSecretVolumeVersionOutput) ElementType() reflect.Type {
@@ -1998,12 +1697,6 @@ func (o GetFunctionSecretVolumeVersionOutput) ToGetFunctionSecretVolumeVersionOu
 
 func (o GetFunctionSecretVolumeVersionOutput) ToGetFunctionSecretVolumeVersionOutputWithContext(ctx context.Context) GetFunctionSecretVolumeVersionOutput {
 	return o
-}
-
-func (o GetFunctionSecretVolumeVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSecretVolumeVersion] {
-	return pulumix.Output[GetFunctionSecretVolumeVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretVolumeVersionOutput) Path() pulumi.StringOutput {
@@ -2026,12 +1719,6 @@ func (o GetFunctionSecretVolumeVersionArrayOutput) ToGetFunctionSecretVolumeVers
 
 func (o GetFunctionSecretVolumeVersionArrayOutput) ToGetFunctionSecretVolumeVersionArrayOutputWithContext(ctx context.Context) GetFunctionSecretVolumeVersionArrayOutput {
 	return o
-}
-
-func (o GetFunctionSecretVolumeVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSecretVolumeVersion] {
-	return pulumix.Output[[]GetFunctionSecretVolumeVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) GetFunctionSecretVolumeVersionOutput {
@@ -2075,12 +1762,6 @@ func (i GetFunctionSourceRepositoryArgs) ToGetFunctionSourceRepositoryOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSourceRepositoryOutput)
 }
 
-func (i GetFunctionSourceRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSourceRepository] {
-	return pulumix.Output[GetFunctionSourceRepository]{
-		OutputState: i.ToGetFunctionSourceRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFunctionSourceRepositoryArrayInput is an input type that accepts GetFunctionSourceRepositoryArray and GetFunctionSourceRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSourceRepositoryArrayInput` via:
 //
@@ -2106,12 +1787,6 @@ func (i GetFunctionSourceRepositoryArray) ToGetFunctionSourceRepositoryArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSourceRepositoryArrayOutput)
 }
 
-func (i GetFunctionSourceRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSourceRepository] {
-	return pulumix.Output[[]GetFunctionSourceRepository]{
-		OutputState: i.ToGetFunctionSourceRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFunctionSourceRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSourceRepositoryOutput) ElementType() reflect.Type {
@@ -2124,12 +1799,6 @@ func (o GetFunctionSourceRepositoryOutput) ToGetFunctionSourceRepositoryOutput()
 
 func (o GetFunctionSourceRepositoryOutput) ToGetFunctionSourceRepositoryOutputWithContext(ctx context.Context) GetFunctionSourceRepositoryOutput {
 	return o
-}
-
-func (o GetFunctionSourceRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetFunctionSourceRepository] {
-	return pulumix.Output[GetFunctionSourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringOutput {
@@ -2153,12 +1822,6 @@ func (o GetFunctionSourceRepositoryArrayOutput) ToGetFunctionSourceRepositoryArr
 
 func (o GetFunctionSourceRepositoryArrayOutput) ToGetFunctionSourceRepositoryArrayOutputWithContext(ctx context.Context) GetFunctionSourceRepositoryArrayOutput {
 	return o
-}
-
-func (o GetFunctionSourceRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFunctionSourceRepository] {
-	return pulumix.Output[[]GetFunctionSourceRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFunctionSourceRepositoryArrayOutput) Index(i pulumi.IntInput) GetFunctionSourceRepositoryOutput {

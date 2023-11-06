@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
@@ -142,12 +141,6 @@ func (o GetV2AcceleratorTypesResultOutput) ToGetV2AcceleratorTypesResultOutput()
 
 func (o GetV2AcceleratorTypesResultOutput) ToGetV2AcceleratorTypesResultOutputWithContext(ctx context.Context) GetV2AcceleratorTypesResultOutput {
 	return o
-}
-
-func (o GetV2AcceleratorTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetV2AcceleratorTypesResult] {
-	return pulumix.Output[GetV2AcceleratorTypesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

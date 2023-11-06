@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
@@ -489,12 +488,6 @@ func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberOutput)
 }
 
-func (i *WebTypeAppEngingIamMember) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamMember] {
-	return pulumix.Output[*WebTypeAppEngingIamMember]{
-		OutputState: i.ToWebTypeAppEngingIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebTypeAppEngingIamMemberArrayInput is an input type that accepts WebTypeAppEngingIamMemberArray and WebTypeAppEngingIamMemberArrayOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamMemberArrayInput` via:
 //
@@ -518,12 +511,6 @@ func (i WebTypeAppEngingIamMemberArray) ToWebTypeAppEngingIamMemberArrayOutput()
 
 func (i WebTypeAppEngingIamMemberArray) ToWebTypeAppEngingIamMemberArrayOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberArrayOutput)
-}
-
-func (i WebTypeAppEngingIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamMember] {
-	return pulumix.Output[[]*WebTypeAppEngingIamMember]{
-		OutputState: i.ToWebTypeAppEngingIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebTypeAppEngingIamMemberMapInput is an input type that accepts WebTypeAppEngingIamMemberMap and WebTypeAppEngingIamMemberMapOutput values.
@@ -551,12 +538,6 @@ func (i WebTypeAppEngingIamMemberMap) ToWebTypeAppEngingIamMemberMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberMapOutput)
 }
 
-func (i WebTypeAppEngingIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamMember] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamMember]{
-		OutputState: i.ToWebTypeAppEngingIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebTypeAppEngingIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberOutput) ElementType() reflect.Type {
@@ -569,12 +550,6 @@ func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberOutput() Web
 
 func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamMember] {
-	return pulumix.Output[*WebTypeAppEngingIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -636,12 +611,6 @@ func (o WebTypeAppEngingIamMemberArrayOutput) ToWebTypeAppEngingIamMemberArrayOu
 	return o
 }
 
-func (o WebTypeAppEngingIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamMember] {
-	return pulumix.Output[[]*WebTypeAppEngingIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebTypeAppEngingIamMemberArrayOutput) Index(i pulumi.IntInput) WebTypeAppEngingIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamMember {
 		return vs[0].([]*WebTypeAppEngingIamMember)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o WebTypeAppEngingIamMemberMapOutput) ToWebTypeAppEngingIamMemberMapOutput
 
 func (o WebTypeAppEngingIamMemberMapOutput) ToWebTypeAppEngingIamMemberMapOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberMapOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamMember] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTypeAppEngingIamMemberMapOutput) MapIndex(k pulumi.StringInput) WebTypeAppEngingIamMemberOutput {

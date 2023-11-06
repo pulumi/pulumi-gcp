@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a folder-level logging bucket config. For more information see
@@ -230,12 +229,6 @@ func (i *FolderBucketConfig) ToFolderBucketConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigOutput)
 }
 
-func (i *FolderBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketConfig] {
-	return pulumix.Output[*FolderBucketConfig]{
-		OutputState: i.ToFolderBucketConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderBucketConfigArrayInput is an input type that accepts FolderBucketConfigArray and FolderBucketConfigArrayOutput values.
 // You can construct a concrete instance of `FolderBucketConfigArrayInput` via:
 //
@@ -259,12 +252,6 @@ func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutput() FolderBucketC
 
 func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutputWithContext(ctx context.Context) FolderBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigArrayOutput)
-}
-
-func (i FolderBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*FolderBucketConfig] {
-	return pulumix.Output[[]*FolderBucketConfig]{
-		OutputState: i.ToFolderBucketConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FolderBucketConfigMapInput is an input type that accepts FolderBucketConfigMap and FolderBucketConfigMapOutput values.
@@ -292,12 +279,6 @@ func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigMapOutput)
 }
 
-func (i FolderBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderBucketConfig] {
-	return pulumix.Output[map[string]*FolderBucketConfig]{
-		OutputState: i.ToFolderBucketConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigOutput) ElementType() reflect.Type {
@@ -310,12 +291,6 @@ func (o FolderBucketConfigOutput) ToFolderBucketConfigOutput() FolderBucketConfi
 
 func (o FolderBucketConfigOutput) ToFolderBucketConfigOutputWithContext(ctx context.Context) FolderBucketConfigOutput {
 	return o
-}
-
-func (o FolderBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketConfig] {
-	return pulumix.Output[*FolderBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -374,12 +349,6 @@ func (o FolderBucketConfigArrayOutput) ToFolderBucketConfigArrayOutputWithContex
 	return o
 }
 
-func (o FolderBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FolderBucketConfig] {
-	return pulumix.Output[[]*FolderBucketConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderBucketConfigArrayOutput) Index(i pulumi.IntInput) FolderBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderBucketConfig {
 		return vs[0].([]*FolderBucketConfig)[vs[1].(int)]
@@ -398,12 +367,6 @@ func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutput() FolderBucke
 
 func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutputWithContext(ctx context.Context) FolderBucketConfigMapOutput {
 	return o
-}
-
-func (o FolderBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderBucketConfig] {
-	return pulumix.Output[map[string]*FolderBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderBucketConfigMapOutput) MapIndex(k pulumi.StringInput) FolderBucketConfigOutput {

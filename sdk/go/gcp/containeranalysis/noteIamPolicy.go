@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
@@ -344,12 +343,6 @@ func (i *NoteIamPolicy) ToNoteIamPolicyOutputWithContext(ctx context.Context) No
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamPolicyOutput)
 }
 
-func (i *NoteIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*NoteIamPolicy] {
-	return pulumix.Output[*NoteIamPolicy]{
-		OutputState: i.ToNoteIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NoteIamPolicyArrayInput is an input type that accepts NoteIamPolicyArray and NoteIamPolicyArrayOutput values.
 // You can construct a concrete instance of `NoteIamPolicyArrayInput` via:
 //
@@ -373,12 +366,6 @@ func (i NoteIamPolicyArray) ToNoteIamPolicyArrayOutput() NoteIamPolicyArrayOutpu
 
 func (i NoteIamPolicyArray) ToNoteIamPolicyArrayOutputWithContext(ctx context.Context) NoteIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamPolicyArrayOutput)
-}
-
-func (i NoteIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamPolicy] {
-	return pulumix.Output[[]*NoteIamPolicy]{
-		OutputState: i.ToNoteIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NoteIamPolicyMapInput is an input type that accepts NoteIamPolicyMap and NoteIamPolicyMapOutput values.
@@ -406,12 +393,6 @@ func (i NoteIamPolicyMap) ToNoteIamPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamPolicyMapOutput)
 }
 
-func (i NoteIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamPolicy] {
-	return pulumix.Output[map[string]*NoteIamPolicy]{
-		OutputState: i.ToNoteIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NoteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NoteIamPolicyOutput) ElementType() reflect.Type {
@@ -424,12 +405,6 @@ func (o NoteIamPolicyOutput) ToNoteIamPolicyOutput() NoteIamPolicyOutput {
 
 func (o NoteIamPolicyOutput) ToNoteIamPolicyOutputWithContext(ctx context.Context) NoteIamPolicyOutput {
 	return o
-}
-
-func (o NoteIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamPolicy] {
-	return pulumix.Output[*NoteIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -480,12 +455,6 @@ func (o NoteIamPolicyArrayOutput) ToNoteIamPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o NoteIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamPolicy] {
-	return pulumix.Output[[]*NoteIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NoteIamPolicyArrayOutput) Index(i pulumi.IntInput) NoteIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NoteIamPolicy {
 		return vs[0].([]*NoteIamPolicy)[vs[1].(int)]
@@ -504,12 +473,6 @@ func (o NoteIamPolicyMapOutput) ToNoteIamPolicyMapOutput() NoteIamPolicyMapOutpu
 
 func (o NoteIamPolicyMapOutput) ToNoteIamPolicyMapOutputWithContext(ctx context.Context) NoteIamPolicyMapOutput {
 	return o
-}
-
-func (o NoteIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamPolicy] {
-	return pulumix.Output[map[string]*NoteIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoteIamPolicyMapOutput) MapIndex(k pulumi.StringInput) NoteIamPolicyOutput {

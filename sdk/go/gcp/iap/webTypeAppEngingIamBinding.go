@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
@@ -489,12 +488,6 @@ func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingOutput)
 }
 
-func (i *WebTypeAppEngingIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[*WebTypeAppEngingIamBinding]{
-		OutputState: i.ToWebTypeAppEngingIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebTypeAppEngingIamBindingArrayInput is an input type that accepts WebTypeAppEngingIamBindingArray and WebTypeAppEngingIamBindingArrayOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamBindingArrayInput` via:
 //
@@ -518,12 +511,6 @@ func (i WebTypeAppEngingIamBindingArray) ToWebTypeAppEngingIamBindingArrayOutput
 
 func (i WebTypeAppEngingIamBindingArray) ToWebTypeAppEngingIamBindingArrayOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingArrayOutput)
-}
-
-func (i WebTypeAppEngingIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[[]*WebTypeAppEngingIamBinding]{
-		OutputState: i.ToWebTypeAppEngingIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebTypeAppEngingIamBindingMapInput is an input type that accepts WebTypeAppEngingIamBindingMap and WebTypeAppEngingIamBindingMapOutput values.
@@ -551,12 +538,6 @@ func (i WebTypeAppEngingIamBindingMap) ToWebTypeAppEngingIamBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingMapOutput)
 }
 
-func (i WebTypeAppEngingIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamBinding]{
-		OutputState: i.ToWebTypeAppEngingIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebTypeAppEngingIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingOutput) ElementType() reflect.Type {
@@ -569,12 +550,6 @@ func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingOutput() W
 
 func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[*WebTypeAppEngingIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -636,12 +611,6 @@ func (o WebTypeAppEngingIamBindingArrayOutput) ToWebTypeAppEngingIamBindingArray
 	return o
 }
 
-func (o WebTypeAppEngingIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[[]*WebTypeAppEngingIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebTypeAppEngingIamBindingArrayOutput) Index(i pulumi.IntInput) WebTypeAppEngingIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamBinding {
 		return vs[0].([]*WebTypeAppEngingIamBinding)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o WebTypeAppEngingIamBindingMapOutput) ToWebTypeAppEngingIamBindingMapOutp
 
 func (o WebTypeAppEngingIamBindingMapOutput) ToWebTypeAppEngingIamBindingMapOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingMapOutput {
 	return o
-}
-
-func (o WebTypeAppEngingIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeAppEngingIamBinding] {
-	return pulumix.Output[map[string]*WebTypeAppEngingIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTypeAppEngingIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebTypeAppEngingIamBindingOutput {

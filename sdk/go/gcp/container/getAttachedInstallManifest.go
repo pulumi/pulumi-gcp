@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available platform versions in a location for a given project.
@@ -121,12 +120,6 @@ func (o GetAttachedInstallManifestResultOutput) ToGetAttachedInstallManifestResu
 
 func (o GetAttachedInstallManifestResultOutput) ToGetAttachedInstallManifestResultOutputWithContext(ctx context.Context) GetAttachedInstallManifestResultOutput {
 	return o
-}
-
-func (o GetAttachedInstallManifestResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAttachedInstallManifestResult] {
-	return pulumix.Output[GetAttachedInstallManifestResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAttachedInstallManifestResultOutput) ClusterId() pulumi.StringOutput {

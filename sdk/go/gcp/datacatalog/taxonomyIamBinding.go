@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
@@ -364,12 +363,6 @@ func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingOutput)
 }
 
-func (i *TaxonomyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamBinding] {
-	return pulumix.Output[*TaxonomyIamBinding]{
-		OutputState: i.ToTaxonomyIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TaxonomyIamBindingArrayInput is an input type that accepts TaxonomyIamBindingArray and TaxonomyIamBindingArrayOutput values.
 // You can construct a concrete instance of `TaxonomyIamBindingArrayInput` via:
 //
@@ -393,12 +386,6 @@ func (i TaxonomyIamBindingArray) ToTaxonomyIamBindingArrayOutput() TaxonomyIamBi
 
 func (i TaxonomyIamBindingArray) ToTaxonomyIamBindingArrayOutputWithContext(ctx context.Context) TaxonomyIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingArrayOutput)
-}
-
-func (i TaxonomyIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamBinding] {
-	return pulumix.Output[[]*TaxonomyIamBinding]{
-		OutputState: i.ToTaxonomyIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TaxonomyIamBindingMapInput is an input type that accepts TaxonomyIamBindingMap and TaxonomyIamBindingMapOutput values.
@@ -426,12 +413,6 @@ func (i TaxonomyIamBindingMap) ToTaxonomyIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingMapOutput)
 }
 
-func (i TaxonomyIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamBinding] {
-	return pulumix.Output[map[string]*TaxonomyIamBinding]{
-		OutputState: i.ToTaxonomyIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamBindingOutput) ElementType() reflect.Type {
@@ -444,12 +425,6 @@ func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutput() TaxonomyIamBindin
 
 func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
 	return o
-}
-
-func (o TaxonomyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamBinding] {
-	return pulumix.Output[*TaxonomyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaxonomyIamBindingOutput) Condition() TaxonomyIamBindingConditionPtrOutput {
@@ -513,12 +488,6 @@ func (o TaxonomyIamBindingArrayOutput) ToTaxonomyIamBindingArrayOutputWithContex
 	return o
 }
 
-func (o TaxonomyIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamBinding] {
-	return pulumix.Output[[]*TaxonomyIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TaxonomyIamBindingArrayOutput) Index(i pulumi.IntInput) TaxonomyIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaxonomyIamBinding {
 		return vs[0].([]*TaxonomyIamBinding)[vs[1].(int)]
@@ -537,12 +506,6 @@ func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutput() TaxonomyIam
 
 func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutputWithContext(ctx context.Context) TaxonomyIamBindingMapOutput {
 	return o
-}
-
-func (o TaxonomyIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamBinding] {
-	return pulumix.Output[map[string]*TaxonomyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaxonomyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamBindingOutput {

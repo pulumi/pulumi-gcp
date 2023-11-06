@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ConnectorSubnetArgs) ToConnectorSubnetOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSubnetOutput)
 }
 
-func (i ConnectorSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSubnet] {
-	return pulumix.Output[ConnectorSubnet]{
-		OutputState: i.ToConnectorSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectorSubnetArgs) ToConnectorSubnetPtrOutput() ConnectorSubnetPtrOutput {
 	return i.ToConnectorSubnetPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *connectorSubnetPtrType) ToConnectorSubnetPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSubnetPtrOutput)
 }
 
-func (i *connectorSubnetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSubnet] {
-	return pulumix.Output[*ConnectorSubnet]{
-		OutputState: i.ToConnectorSubnetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorSubnetOutput struct{ *pulumi.OutputState }
 
 func (ConnectorSubnetOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ConnectorSubnetOutput) ToConnectorSubnetPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorSubnet) *ConnectorSubnet {
 		return &v
 	}).(ConnectorSubnetPtrOutput)
-}
-
-func (o ConnectorSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSubnet] {
-	return pulumix.Output[ConnectorSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
@@ -159,12 +140,6 @@ func (o ConnectorSubnetPtrOutput) ToConnectorSubnetPtrOutput() ConnectorSubnetPt
 
 func (o ConnectorSubnetPtrOutput) ToConnectorSubnetPtrOutputWithContext(ctx context.Context) ConnectorSubnetPtrOutput {
 	return o
-}
-
-func (o ConnectorSubnetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorSubnet] {
-	return pulumix.Output[*ConnectorSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorSubnetPtrOutput) Elem() ConnectorSubnetOutput {
@@ -237,12 +212,6 @@ func (i GetConnectorSubnetArgs) ToGetConnectorSubnetOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorSubnetOutput)
 }
 
-func (i GetConnectorSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectorSubnet] {
-	return pulumix.Output[GetConnectorSubnet]{
-		OutputState: i.ToGetConnectorSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConnectorSubnetArrayInput is an input type that accepts GetConnectorSubnetArray and GetConnectorSubnetArrayOutput values.
 // You can construct a concrete instance of `GetConnectorSubnetArrayInput` via:
 //
@@ -268,12 +237,6 @@ func (i GetConnectorSubnetArray) ToGetConnectorSubnetArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorSubnetArrayOutput)
 }
 
-func (i GetConnectorSubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorSubnet] {
-	return pulumix.Output[[]GetConnectorSubnet]{
-		OutputState: i.ToGetConnectorSubnetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConnectorSubnetOutput struct{ *pulumi.OutputState }
 
 func (GetConnectorSubnetOutput) ElementType() reflect.Type {
@@ -286,12 +249,6 @@ func (o GetConnectorSubnetOutput) ToGetConnectorSubnetOutput() GetConnectorSubne
 
 func (o GetConnectorSubnetOutput) ToGetConnectorSubnetOutputWithContext(ctx context.Context) GetConnectorSubnetOutput {
 	return o
-}
-
-func (o GetConnectorSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorSubnet] {
-	return pulumix.Output[GetConnectorSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the resource.
@@ -317,12 +274,6 @@ func (o GetConnectorSubnetArrayOutput) ToGetConnectorSubnetArrayOutput() GetConn
 
 func (o GetConnectorSubnetArrayOutput) ToGetConnectorSubnetArrayOutputWithContext(ctx context.Context) GetConnectorSubnetArrayOutput {
 	return o
-}
-
-func (o GetConnectorSubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectorSubnet] {
-	return pulumix.Output[[]GetConnectorSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConnectorSubnetArrayOutput) Index(i pulumi.IntInput) GetConnectorSubnetOutput {

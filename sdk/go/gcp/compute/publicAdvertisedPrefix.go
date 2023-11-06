@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a PublicAdvertisedPrefix for use with bring your own IP addresses (BYOIP).
@@ -247,12 +246,6 @@ func (i *PublicAdvertisedPrefix) ToPublicAdvertisedPrefixOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixOutput)
 }
 
-func (i *PublicAdvertisedPrefix) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefix] {
-	return pulumix.Output[*PublicAdvertisedPrefix]{
-		OutputState: i.ToPublicAdvertisedPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PublicAdvertisedPrefixArrayInput is an input type that accepts PublicAdvertisedPrefixArray and PublicAdvertisedPrefixArrayOutput values.
 // You can construct a concrete instance of `PublicAdvertisedPrefixArrayInput` via:
 //
@@ -276,12 +269,6 @@ func (i PublicAdvertisedPrefixArray) ToPublicAdvertisedPrefixArrayOutput() Publi
 
 func (i PublicAdvertisedPrefixArray) ToPublicAdvertisedPrefixArrayOutputWithContext(ctx context.Context) PublicAdvertisedPrefixArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixArrayOutput)
-}
-
-func (i PublicAdvertisedPrefixArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublicAdvertisedPrefix] {
-	return pulumix.Output[[]*PublicAdvertisedPrefix]{
-		OutputState: i.ToPublicAdvertisedPrefixArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PublicAdvertisedPrefixMapInput is an input type that accepts PublicAdvertisedPrefixMap and PublicAdvertisedPrefixMapOutput values.
@@ -309,12 +296,6 @@ func (i PublicAdvertisedPrefixMap) ToPublicAdvertisedPrefixMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixMapOutput)
 }
 
-func (i PublicAdvertisedPrefixMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicAdvertisedPrefix] {
-	return pulumix.Output[map[string]*PublicAdvertisedPrefix]{
-		OutputState: i.ToPublicAdvertisedPrefixMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicAdvertisedPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicAdvertisedPrefixOutput) ElementType() reflect.Type {
@@ -327,12 +308,6 @@ func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutput() PublicAdv
 
 func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixOutput {
 	return o
-}
-
-func (o PublicAdvertisedPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefix] {
-	return pulumix.Output[*PublicAdvertisedPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of this resource.
@@ -387,12 +362,6 @@ func (o PublicAdvertisedPrefixArrayOutput) ToPublicAdvertisedPrefixArrayOutputWi
 	return o
 }
 
-func (o PublicAdvertisedPrefixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublicAdvertisedPrefix] {
-	return pulumix.Output[[]*PublicAdvertisedPrefix]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicAdvertisedPrefixArrayOutput) Index(i pulumi.IntInput) PublicAdvertisedPrefixOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublicAdvertisedPrefix {
 		return vs[0].([]*PublicAdvertisedPrefix)[vs[1].(int)]
@@ -411,12 +380,6 @@ func (o PublicAdvertisedPrefixMapOutput) ToPublicAdvertisedPrefixMapOutput() Pub
 
 func (o PublicAdvertisedPrefixMapOutput) ToPublicAdvertisedPrefixMapOutputWithContext(ctx context.Context) PublicAdvertisedPrefixMapOutput {
 	return o
-}
-
-func (o PublicAdvertisedPrefixMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicAdvertisedPrefix] {
-	return pulumix.Output[map[string]*PublicAdvertisedPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicAdvertisedPrefixMapOutput) MapIndex(k pulumi.StringInput) PublicAdvertisedPrefixOutput {

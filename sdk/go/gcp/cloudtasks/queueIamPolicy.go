@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
@@ -351,12 +350,6 @@ func (i *QueueIamPolicy) ToQueueIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamPolicyOutput)
 }
 
-func (i *QueueIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*QueueIamPolicy] {
-	return pulumix.Output[*QueueIamPolicy]{
-		OutputState: i.ToQueueIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueueIamPolicyArrayInput is an input type that accepts QueueIamPolicyArray and QueueIamPolicyArrayOutput values.
 // You can construct a concrete instance of `QueueIamPolicyArrayInput` via:
 //
@@ -380,12 +373,6 @@ func (i QueueIamPolicyArray) ToQueueIamPolicyArrayOutput() QueueIamPolicyArrayOu
 
 func (i QueueIamPolicyArray) ToQueueIamPolicyArrayOutputWithContext(ctx context.Context) QueueIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamPolicyArrayOutput)
-}
-
-func (i QueueIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamPolicy] {
-	return pulumix.Output[[]*QueueIamPolicy]{
-		OutputState: i.ToQueueIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QueueIamPolicyMapInput is an input type that accepts QueueIamPolicyMap and QueueIamPolicyMapOutput values.
@@ -413,12 +400,6 @@ func (i QueueIamPolicyMap) ToQueueIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamPolicyMapOutput)
 }
 
-func (i QueueIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamPolicy] {
-	return pulumix.Output[map[string]*QueueIamPolicy]{
-		OutputState: i.ToQueueIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueueIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (QueueIamPolicyOutput) ElementType() reflect.Type {
@@ -431,12 +412,6 @@ func (o QueueIamPolicyOutput) ToQueueIamPolicyOutput() QueueIamPolicyOutput {
 
 func (o QueueIamPolicyOutput) ToQueueIamPolicyOutputWithContext(ctx context.Context) QueueIamPolicyOutput {
 	return o
-}
-
-func (o QueueIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamPolicy] {
-	return pulumix.Output[*QueueIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -492,12 +467,6 @@ func (o QueueIamPolicyArrayOutput) ToQueueIamPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o QueueIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamPolicy] {
-	return pulumix.Output[[]*QueueIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueueIamPolicyArrayOutput) Index(i pulumi.IntInput) QueueIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QueueIamPolicy {
 		return vs[0].([]*QueueIamPolicy)[vs[1].(int)]
@@ -516,12 +485,6 @@ func (o QueueIamPolicyMapOutput) ToQueueIamPolicyMapOutput() QueueIamPolicyMapOu
 
 func (o QueueIamPolicyMapOutput) ToQueueIamPolicyMapOutputWithContext(ctx context.Context) QueueIamPolicyMapOutput {
 	return o
-}
-
-func (o QueueIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamPolicy] {
-	return pulumix.Output[map[string]*QueueIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueIamPolicyMapOutput) MapIndex(k pulumi.StringInput) QueueIamPolicyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetInstance resource which defines an endpoint instance
@@ -414,12 +413,6 @@ func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceOutput)
 }
 
-func (i *TargetInstance) ToOutput(ctx context.Context) pulumix.Output[*TargetInstance] {
-	return pulumix.Output[*TargetInstance]{
-		OutputState: i.ToTargetInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetInstanceArrayInput is an input type that accepts TargetInstanceArray and TargetInstanceArrayOutput values.
 // You can construct a concrete instance of `TargetInstanceArrayInput` via:
 //
@@ -443,12 +436,6 @@ func (i TargetInstanceArray) ToTargetInstanceArrayOutput() TargetInstanceArrayOu
 
 func (i TargetInstanceArray) ToTargetInstanceArrayOutputWithContext(ctx context.Context) TargetInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceArrayOutput)
-}
-
-func (i TargetInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetInstance] {
-	return pulumix.Output[[]*TargetInstance]{
-		OutputState: i.ToTargetInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetInstanceMapInput is an input type that accepts TargetInstanceMap and TargetInstanceMapOutput values.
@@ -476,12 +463,6 @@ func (i TargetInstanceMap) ToTargetInstanceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceMapOutput)
 }
 
-func (i TargetInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetInstance] {
-	return pulumix.Output[map[string]*TargetInstance]{
-		OutputState: i.ToTargetInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetInstanceOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
@@ -494,12 +475,6 @@ func (o TargetInstanceOutput) ToTargetInstanceOutput() TargetInstanceOutput {
 
 func (o TargetInstanceOutput) ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput {
 	return o
-}
-
-func (o TargetInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetInstance] {
-	return pulumix.Output[*TargetInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -583,12 +558,6 @@ func (o TargetInstanceArrayOutput) ToTargetInstanceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TargetInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetInstance] {
-	return pulumix.Output[[]*TargetInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetInstanceArrayOutput) Index(i pulumi.IntInput) TargetInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetInstance {
 		return vs[0].([]*TargetInstance)[vs[1].(int)]
@@ -607,12 +576,6 @@ func (o TargetInstanceMapOutput) ToTargetInstanceMapOutput() TargetInstanceMapOu
 
 func (o TargetInstanceMapOutput) ToTargetInstanceMapOutputWithContext(ctx context.Context) TargetInstanceMapOutput {
 	return o
-}
-
-func (o TargetInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetInstance] {
-	return pulumix.Output[map[string]*TargetInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetInstanceMapOutput) MapIndex(k pulumi.StringInput) TargetInstanceOutput {

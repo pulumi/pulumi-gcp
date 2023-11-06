@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Endpoints ServiceConsumers. Each of these resources serves a different use case:
@@ -188,12 +187,6 @@ func (i *ConsumersIamMember) ToConsumersIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberOutput)
 }
 
-func (i *ConsumersIamMember) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamMember] {
-	return pulumix.Output[*ConsumersIamMember]{
-		OutputState: i.ToConsumersIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConsumersIamMemberArrayInput is an input type that accepts ConsumersIamMemberArray and ConsumersIamMemberArrayOutput values.
 // You can construct a concrete instance of `ConsumersIamMemberArrayInput` via:
 //
@@ -217,12 +210,6 @@ func (i ConsumersIamMemberArray) ToConsumersIamMemberArrayOutput() ConsumersIamM
 
 func (i ConsumersIamMemberArray) ToConsumersIamMemberArrayOutputWithContext(ctx context.Context) ConsumersIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberArrayOutput)
-}
-
-func (i ConsumersIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumersIamMember] {
-	return pulumix.Output[[]*ConsumersIamMember]{
-		OutputState: i.ToConsumersIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConsumersIamMemberMapInput is an input type that accepts ConsumersIamMemberMap and ConsumersIamMemberMapOutput values.
@@ -250,12 +237,6 @@ func (i ConsumersIamMemberMap) ToConsumersIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberMapOutput)
 }
 
-func (i ConsumersIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumersIamMember] {
-	return pulumix.Output[map[string]*ConsumersIamMember]{
-		OutputState: i.ToConsumersIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsumersIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ConsumersIamMemberOutput) ElementType() reflect.Type {
@@ -268,12 +249,6 @@ func (o ConsumersIamMemberOutput) ToConsumersIamMemberOutput() ConsumersIamMembe
 
 func (o ConsumersIamMemberOutput) ToConsumersIamMemberOutputWithContext(ctx context.Context) ConsumersIamMemberOutput {
 	return o
-}
-
-func (o ConsumersIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamMember] {
-	return pulumix.Output[*ConsumersIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsumersIamMemberOutput) Condition() ConsumersIamMemberConditionPtrOutput {
@@ -318,12 +293,6 @@ func (o ConsumersIamMemberArrayOutput) ToConsumersIamMemberArrayOutputWithContex
 	return o
 }
 
-func (o ConsumersIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumersIamMember] {
-	return pulumix.Output[[]*ConsumersIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConsumersIamMemberArrayOutput) Index(i pulumi.IntInput) ConsumersIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsumersIamMember {
 		return vs[0].([]*ConsumersIamMember)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o ConsumersIamMemberMapOutput) ToConsumersIamMemberMapOutput() ConsumersIa
 
 func (o ConsumersIamMemberMapOutput) ToConsumersIamMemberMapOutputWithContext(ctx context.Context) ConsumersIamMemberMapOutput {
 	return o
-}
-
-func (o ConsumersIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumersIamMember] {
-	return pulumix.Output[map[string]*ConsumersIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsumersIamMemberMapOutput) MapIndex(k pulumi.StringInput) ConsumersIamMemberOutput {

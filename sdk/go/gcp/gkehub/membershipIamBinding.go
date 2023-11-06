@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
@@ -357,12 +356,6 @@ func (i *MembershipIamBinding) ToMembershipIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingOutput)
 }
 
-func (i *MembershipIamBinding) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBinding] {
-	return pulumix.Output[*MembershipIamBinding]{
-		OutputState: i.ToMembershipIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipIamBindingArrayInput is an input type that accepts MembershipIamBindingArray and MembershipIamBindingArrayOutput values.
 // You can construct a concrete instance of `MembershipIamBindingArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i MembershipIamBindingArray) ToMembershipIamBindingArrayOutput() Membershi
 
 func (i MembershipIamBindingArray) ToMembershipIamBindingArrayOutputWithContext(ctx context.Context) MembershipIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingArrayOutput)
-}
-
-func (i MembershipIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamBinding] {
-	return pulumix.Output[[]*MembershipIamBinding]{
-		OutputState: i.ToMembershipIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembershipIamBindingMapInput is an input type that accepts MembershipIamBindingMap and MembershipIamBindingMapOutput values.
@@ -419,12 +406,6 @@ func (i MembershipIamBindingMap) ToMembershipIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingMapOutput)
 }
 
-func (i MembershipIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamBinding] {
-	return pulumix.Output[map[string]*MembershipIamBinding]{
-		OutputState: i.ToMembershipIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipIamBindingOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamBindingOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o MembershipIamBindingOutput) ToMembershipIamBindingOutput() MembershipIam
 
 func (o MembershipIamBindingOutput) ToMembershipIamBindingOutputWithContext(ctx context.Context) MembershipIamBindingOutput {
 	return o
-}
-
-func (o MembershipIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBinding] {
-	return pulumix.Output[*MembershipIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamBindingOutput) Condition() MembershipIamBindingConditionPtrOutput {
@@ -501,12 +476,6 @@ func (o MembershipIamBindingArrayOutput) ToMembershipIamBindingArrayOutputWithCo
 	return o
 }
 
-func (o MembershipIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamBinding] {
-	return pulumix.Output[[]*MembershipIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipIamBindingArrayOutput) Index(i pulumi.IntInput) MembershipIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MembershipIamBinding {
 		return vs[0].([]*MembershipIamBinding)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o MembershipIamBindingMapOutput) ToMembershipIamBindingMapOutput() Members
 
 func (o MembershipIamBindingMapOutput) ToMembershipIamBindingMapOutputWithContext(ctx context.Context) MembershipIamBindingMapOutput {
 	return o
-}
-
-func (o MembershipIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamBinding] {
-	return pulumix.Output[map[string]*MembershipIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamBindingMapOutput) MapIndex(k pulumi.StringInput) MembershipIamBindingOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DataPolicyDataMaskingPolicyArgs) ToDataPolicyDataMaskingPolicyOutput() D
 
 func (i DataPolicyDataMaskingPolicyArgs) ToDataPolicyDataMaskingPolicyOutputWithContext(ctx context.Context) DataPolicyDataMaskingPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyDataMaskingPolicyOutput)
-}
-
-func (i DataPolicyDataMaskingPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[DataPolicyDataMaskingPolicy] {
-	return pulumix.Output[DataPolicyDataMaskingPolicy]{
-		OutputState: i.ToDataPolicyDataMaskingPolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DataPolicyDataMaskingPolicyArgs) ToDataPolicyDataMaskingPolicyPtrOutput() DataPolicyDataMaskingPolicyPtrOutput {
@@ -96,12 +89,6 @@ func (i *dataPolicyDataMaskingPolicyPtrType) ToDataPolicyDataMaskingPolicyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyDataMaskingPolicyPtrOutput)
 }
 
-func (i *dataPolicyDataMaskingPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyDataMaskingPolicy] {
-	return pulumix.Output[*DataPolicyDataMaskingPolicy]{
-		OutputState: i.ToDataPolicyDataMaskingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyDataMaskingPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyDataMaskingPolicyOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o DataPolicyDataMaskingPolicyOutput) ToDataPolicyDataMaskingPolicyPtrOutpu
 	}).(DataPolicyDataMaskingPolicyPtrOutput)
 }
 
-func (o DataPolicyDataMaskingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[DataPolicyDataMaskingPolicy] {
-	return pulumix.Output[DataPolicyDataMaskingPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
 // Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
 func (o DataPolicyDataMaskingPolicyOutput) PredefinedExpression() pulumi.StringOutput {
@@ -150,12 +131,6 @@ func (o DataPolicyDataMaskingPolicyPtrOutput) ToDataPolicyDataMaskingPolicyPtrOu
 
 func (o DataPolicyDataMaskingPolicyPtrOutput) ToDataPolicyDataMaskingPolicyPtrOutputWithContext(ctx context.Context) DataPolicyDataMaskingPolicyPtrOutput {
 	return o
-}
-
-func (o DataPolicyDataMaskingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyDataMaskingPolicy] {
-	return pulumix.Output[*DataPolicyDataMaskingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyDataMaskingPolicyPtrOutput) Elem() DataPolicyDataMaskingPolicyOutput {
@@ -214,12 +189,6 @@ func (i DataPolicyIamBindingConditionArgs) ToDataPolicyIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamBindingConditionOutput)
 }
 
-func (i DataPolicyIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DataPolicyIamBindingCondition] {
-	return pulumix.Output[DataPolicyIamBindingCondition]{
-		OutputState: i.ToDataPolicyIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataPolicyIamBindingConditionArgs) ToDataPolicyIamBindingConditionPtrOutput() DataPolicyIamBindingConditionPtrOutput {
 	return i.ToDataPolicyIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -261,12 +230,6 @@ func (i *dataPolicyIamBindingConditionPtrType) ToDataPolicyIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamBindingConditionPtrOutput)
 }
 
-func (i *dataPolicyIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamBindingCondition] {
-	return pulumix.Output[*DataPolicyIamBindingCondition]{
-		OutputState: i.ToDataPolicyIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyIamBindingConditionOutput) ElementType() reflect.Type {
@@ -289,12 +252,6 @@ func (o DataPolicyIamBindingConditionOutput) ToDataPolicyIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPolicyIamBindingCondition) *DataPolicyIamBindingCondition {
 		return &v
 	}).(DataPolicyIamBindingConditionPtrOutput)
-}
-
-func (o DataPolicyIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DataPolicyIamBindingCondition] {
-	return pulumix.Output[DataPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -321,12 +278,6 @@ func (o DataPolicyIamBindingConditionPtrOutput) ToDataPolicyIamBindingConditionP
 
 func (o DataPolicyIamBindingConditionPtrOutput) ToDataPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) DataPolicyIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o DataPolicyIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamBindingCondition] {
-	return pulumix.Output[*DataPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamBindingConditionPtrOutput) Elem() DataPolicyIamBindingConditionOutput {
@@ -401,12 +352,6 @@ func (i DataPolicyIamMemberConditionArgs) ToDataPolicyIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamMemberConditionOutput)
 }
 
-func (i DataPolicyIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DataPolicyIamMemberCondition] {
-	return pulumix.Output[DataPolicyIamMemberCondition]{
-		OutputState: i.ToDataPolicyIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataPolicyIamMemberConditionArgs) ToDataPolicyIamMemberConditionPtrOutput() DataPolicyIamMemberConditionPtrOutput {
 	return i.ToDataPolicyIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -448,12 +393,6 @@ func (i *dataPolicyIamMemberConditionPtrType) ToDataPolicyIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamMemberConditionPtrOutput)
 }
 
-func (i *dataPolicyIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamMemberCondition] {
-	return pulumix.Output[*DataPolicyIamMemberCondition]{
-		OutputState: i.ToDataPolicyIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyIamMemberConditionOutput) ElementType() reflect.Type {
@@ -476,12 +415,6 @@ func (o DataPolicyIamMemberConditionOutput) ToDataPolicyIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPolicyIamMemberCondition) *DataPolicyIamMemberCondition {
 		return &v
 	}).(DataPolicyIamMemberConditionPtrOutput)
-}
-
-func (o DataPolicyIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DataPolicyIamMemberCondition] {
-	return pulumix.Output[DataPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -508,12 +441,6 @@ func (o DataPolicyIamMemberConditionPtrOutput) ToDataPolicyIamMemberConditionPtr
 
 func (o DataPolicyIamMemberConditionPtrOutput) ToDataPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) DataPolicyIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o DataPolicyIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamMemberCondition] {
-	return pulumix.Output[*DataPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyIamMemberConditionPtrOutput) Elem() DataPolicyIamMemberConditionOutput {

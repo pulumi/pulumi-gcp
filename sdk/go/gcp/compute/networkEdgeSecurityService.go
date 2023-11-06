@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -239,12 +238,6 @@ func (i *NetworkEdgeSecurityService) ToNetworkEdgeSecurityServiceOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceOutput)
 }
 
-func (i *NetworkEdgeSecurityService) ToOutput(ctx context.Context) pulumix.Output[*NetworkEdgeSecurityService] {
-	return pulumix.Output[*NetworkEdgeSecurityService]{
-		OutputState: i.ToNetworkEdgeSecurityServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkEdgeSecurityServiceArrayInput is an input type that accepts NetworkEdgeSecurityServiceArray and NetworkEdgeSecurityServiceArrayOutput values.
 // You can construct a concrete instance of `NetworkEdgeSecurityServiceArrayInput` via:
 //
@@ -268,12 +261,6 @@ func (i NetworkEdgeSecurityServiceArray) ToNetworkEdgeSecurityServiceArrayOutput
 
 func (i NetworkEdgeSecurityServiceArray) ToNetworkEdgeSecurityServiceArrayOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceArrayOutput)
-}
-
-func (i NetworkEdgeSecurityServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEdgeSecurityService] {
-	return pulumix.Output[[]*NetworkEdgeSecurityService]{
-		OutputState: i.ToNetworkEdgeSecurityServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkEdgeSecurityServiceMapInput is an input type that accepts NetworkEdgeSecurityServiceMap and NetworkEdgeSecurityServiceMapOutput values.
@@ -301,12 +288,6 @@ func (i NetworkEdgeSecurityServiceMap) ToNetworkEdgeSecurityServiceMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceMapOutput)
 }
 
-func (i NetworkEdgeSecurityServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEdgeSecurityService] {
-	return pulumix.Output[map[string]*NetworkEdgeSecurityService]{
-		OutputState: i.ToNetworkEdgeSecurityServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkEdgeSecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (NetworkEdgeSecurityServiceOutput) ElementType() reflect.Type {
@@ -319,12 +300,6 @@ func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutput() N
 
 func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceOutput {
 	return o
-}
-
-func (o NetworkEdgeSecurityServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEdgeSecurityService] {
-	return pulumix.Output[*NetworkEdgeSecurityService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -395,12 +370,6 @@ func (o NetworkEdgeSecurityServiceArrayOutput) ToNetworkEdgeSecurityServiceArray
 	return o
 }
 
-func (o NetworkEdgeSecurityServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEdgeSecurityService] {
-	return pulumix.Output[[]*NetworkEdgeSecurityService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkEdgeSecurityServiceArrayOutput) Index(i pulumi.IntInput) NetworkEdgeSecurityServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkEdgeSecurityService {
 		return vs[0].([]*NetworkEdgeSecurityService)[vs[1].(int)]
@@ -419,12 +388,6 @@ func (o NetworkEdgeSecurityServiceMapOutput) ToNetworkEdgeSecurityServiceMapOutp
 
 func (o NetworkEdgeSecurityServiceMapOutput) ToNetworkEdgeSecurityServiceMapOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceMapOutput {
 	return o
-}
-
-func (o NetworkEdgeSecurityServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEdgeSecurityService] {
-	return pulumix.Output[map[string]*NetworkEdgeSecurityService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkEdgeSecurityServiceMapOutput) MapIndex(k pulumi.StringInput) NetworkEdgeSecurityServiceOutput {

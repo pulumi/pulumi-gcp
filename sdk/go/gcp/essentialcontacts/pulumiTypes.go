@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -119,12 +118,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs) ToDocumentAiWar
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinition] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinition]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayInput is an input type that accepts DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray and DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutput values.
 // You can construct a concrete instance of `DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayInput` via:
 //
@@ -150,12 +143,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray) ToDocumentAiWa
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinition] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinition]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput) ElementType() reflect.Type {
@@ -168,12 +155,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput) ToDocumentAiW
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinition] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property. Not supported by CMEK compliant deployment.
@@ -297,12 +278,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutput) ToDocume
 	return o
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinition] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrayOutput) Index(i pulumi.IntInput) DocumentAiWarehouseDocumentSchemaPropertyDefinitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentAiWarehouseDocumentSchemaPropertyDefinition {
 		return vs[0].([]DocumentAiWarehouseDocumentSchemaPropertyDefinition)[vs[1].(int)]
@@ -336,12 +311,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsAr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput {
@@ -385,12 +354,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput) ElementType() reflect.Type {
@@ -415,12 +378,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOu
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -433,12 +390,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPt
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsOutput {
@@ -492,12 +443,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput {
 	return i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -539,12 +484,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput) ElementType() reflect.Type {
@@ -567,12 +506,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions) *DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions {
 		return &v
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput)
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of possible enum values.
@@ -603,12 +536,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOut
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput {
@@ -672,12 +599,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput {
 	return i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -719,12 +640,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutput) ElementType() reflect.Type {
@@ -749,12 +664,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutpu
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -767,12 +676,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOu
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsOutput {
@@ -812,12 +715,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArg
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput {
@@ -861,12 +758,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPt
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput) ElementType() reflect.Type {
@@ -891,12 +782,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOut
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -909,12 +794,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsOutput {
@@ -954,12 +833,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs) T
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput {
@@ -1003,12 +876,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput) ElementType() reflect.Type {
@@ -1033,12 +900,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput)
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -1051,12 +912,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutp
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsOutput {
@@ -1104,12 +959,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsAr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput {
 	return i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -1151,12 +1000,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput) ElementType() reflect.Type {
@@ -1181,12 +1024,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOu
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the metadata for a schema property.
 // Structure is documented below.
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput) PropertyDefinitions() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutput {
@@ -1207,12 +1044,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPt
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsOutput {
@@ -1335,12 +1166,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayInput is an input type that accepts DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArray and DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutput values.
 // You can construct a concrete instance of `DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayInput` via:
 //
@@ -1366,12 +1191,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput) ElementType() reflect.Type {
@@ -1384,12 +1203,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property. Not supported by CMEK compliant deployment.
@@ -1521,12 +1334,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return o
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrayOutput) Index(i pulumi.IntInput) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition {
 		return vs[0].([]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition)[vs[1].(int)]
@@ -1560,12 +1367,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput {
@@ -1609,12 +1410,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput) ElementType() reflect.Type {
@@ -1639,12 +1434,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -1657,12 +1446,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsOutput {
@@ -1716,12 +1499,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput {
 	return i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -1763,12 +1540,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput) ElementType() reflect.Type {
@@ -1791,12 +1562,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions) *DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions {
 		return &v
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput)
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of possible enum values.
@@ -1827,12 +1592,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput {
@@ -1896,12 +1655,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput {
 	return i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -1943,12 +1696,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutput) ElementType() reflect.Type {
@@ -1973,12 +1720,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -1991,12 +1732,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsOutput {
@@ -2036,12 +1771,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput {
@@ -2085,12 +1814,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput) ElementType() reflect.Type {
@@ -2115,12 +1838,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2133,12 +1850,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsOutput {
@@ -2178,12 +1889,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput {
@@ -2227,12 +1932,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput) ElementType() reflect.Type {
@@ -2257,12 +1956,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2275,12 +1968,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsOutput {
@@ -2330,12 +2017,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayInput is an input type that accepts DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArray and DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput values.
 // You can construct a concrete instance of `DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayInput` via:
 //
@@ -2361,12 +2042,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput) ElementType() reflect.Type {
@@ -2379,12 +2054,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schema name in the source.
@@ -2413,12 +2082,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrayOutput) Index(i pulumi.IntInput) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceOutput {
@@ -2454,12 +2117,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput {
@@ -2503,12 +2160,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput) ElementType() reflect.Type {
@@ -2533,12 +2184,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2551,12 +2196,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsOutput {
@@ -2596,12 +2235,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput {
@@ -2645,12 +2278,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsP
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput) ElementType() reflect.Type {
@@ -2675,12 +2302,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2693,12 +2314,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsOutput {
@@ -2748,12 +2363,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs) ToD
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayInput is an input type that accepts DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray and DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput values.
 // You can construct a concrete instance of `DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayInput` via:
 //
@@ -2779,12 +2388,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray) To
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput)
 }
 
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput) ElementType() reflect.Type {
@@ -2797,12 +2400,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput) T
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schema name in the source.
@@ -2829,12 +2426,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutp
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrayOutput) Index(i pulumi.IntInput) DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceOutput {
@@ -2870,12 +2461,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs) 
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput {
@@ -2919,12 +2504,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput) ElementType() reflect.Type {
@@ -2949,12 +2528,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2967,12 +2540,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOut
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsOutput {
@@ -3012,12 +2579,6 @@ func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsA
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput)
-}
-
-func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput() DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput {
@@ -3061,12 +2622,6 @@ func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput)
 }
 
-func (i *documentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions]{
-		OutputState: i.ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput) ElementType() reflect.Type {
@@ -3091,12 +2646,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsO
 	}).(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput)
 }
 
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -3109,12 +2658,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsP
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput) ToDocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput {
 	return o
-}
-
-func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions] {
-	return pulumix.Output[*DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsPtrOutput) Elem() DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsOutput {

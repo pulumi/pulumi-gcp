@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about a set of projects based on a filter. See the
@@ -110,12 +109,6 @@ func (o GetProjectResultOutput) ToGetProjectResultOutput() GetProjectResultOutpu
 
 func (o GetProjectResultOutput) ToGetProjectResultOutputWithContext(ctx context.Context) GetProjectResultOutput {
 	return o
-}
-
-func (o GetProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectResult] {
-	return pulumix.Output[GetProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectResultOutput) Filter() pulumi.StringOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A TagBinding represents a connection between a TagValue and a cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
@@ -212,12 +211,6 @@ func (i *TagBinding) ToTagBindingOutputWithContext(ctx context.Context) TagBindi
 	return pulumi.ToOutputWithContext(ctx, i).(TagBindingOutput)
 }
 
-func (i *TagBinding) ToOutput(ctx context.Context) pulumix.Output[*TagBinding] {
-	return pulumix.Output[*TagBinding]{
-		OutputState: i.ToTagBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagBindingArrayInput is an input type that accepts TagBindingArray and TagBindingArrayOutput values.
 // You can construct a concrete instance of `TagBindingArrayInput` via:
 //
@@ -241,12 +234,6 @@ func (i TagBindingArray) ToTagBindingArrayOutput() TagBindingArrayOutput {
 
 func (i TagBindingArray) ToTagBindingArrayOutputWithContext(ctx context.Context) TagBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagBindingArrayOutput)
-}
-
-func (i TagBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagBinding] {
-	return pulumix.Output[[]*TagBinding]{
-		OutputState: i.ToTagBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagBindingMapInput is an input type that accepts TagBindingMap and TagBindingMapOutput values.
@@ -274,12 +261,6 @@ func (i TagBindingMap) ToTagBindingMapOutputWithContext(ctx context.Context) Tag
 	return pulumi.ToOutputWithContext(ctx, i).(TagBindingMapOutput)
 }
 
-func (i TagBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagBinding] {
-	return pulumix.Output[map[string]*TagBinding]{
-		OutputState: i.ToTagBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagBindingOutput struct{ *pulumi.OutputState }
 
 func (TagBindingOutput) ElementType() reflect.Type {
@@ -292,12 +273,6 @@ func (o TagBindingOutput) ToTagBindingOutput() TagBindingOutput {
 
 func (o TagBindingOutput) ToTagBindingOutputWithContext(ctx context.Context) TagBindingOutput {
 	return o
-}
-
-func (o TagBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TagBinding] {
-	return pulumix.Output[*TagBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
@@ -331,12 +306,6 @@ func (o TagBindingArrayOutput) ToTagBindingArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TagBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagBinding] {
-	return pulumix.Output[[]*TagBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagBindingArrayOutput) Index(i pulumi.IntInput) TagBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagBinding {
 		return vs[0].([]*TagBinding)[vs[1].(int)]
@@ -355,12 +324,6 @@ func (o TagBindingMapOutput) ToTagBindingMapOutput() TagBindingMapOutput {
 
 func (o TagBindingMapOutput) ToTagBindingMapOutputWithContext(ctx context.Context) TagBindingMapOutput {
 	return o
-}
-
-func (o TagBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagBinding] {
-	return pulumix.Output[map[string]*TagBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagBindingMapOutput) MapIndex(k pulumi.StringInput) TagBindingOutput {

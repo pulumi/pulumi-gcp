@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Spanner database.
@@ -116,12 +115,6 @@ func (o GetDatabaseIamPolicyResultOutput) ToGetDatabaseIamPolicyResultOutput() G
 
 func (o GetDatabaseIamPolicyResultOutput) ToGetDatabaseIamPolicyResultOutputWithContext(ctx context.Context) GetDatabaseIamPolicyResultOutput {
 	return o
-}
-
-func (o GetDatabaseIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseIamPolicyResult] {
-	return pulumix.Output[GetDatabaseIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseIamPolicyResultOutput) Database() pulumi.StringOutput {

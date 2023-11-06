@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
@@ -338,12 +337,6 @@ func (i *AddressGroup) ToAddressGroupOutputWithContext(ctx context.Context) Addr
 	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupOutput)
 }
 
-func (i *AddressGroup) ToOutput(ctx context.Context) pulumix.Output[*AddressGroup] {
-	return pulumix.Output[*AddressGroup]{
-		OutputState: i.ToAddressGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddressGroupArrayInput is an input type that accepts AddressGroupArray and AddressGroupArrayOutput values.
 // You can construct a concrete instance of `AddressGroupArrayInput` via:
 //
@@ -367,12 +360,6 @@ func (i AddressGroupArray) ToAddressGroupArrayOutput() AddressGroupArrayOutput {
 
 func (i AddressGroupArray) ToAddressGroupArrayOutputWithContext(ctx context.Context) AddressGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupArrayOutput)
-}
-
-func (i AddressGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddressGroup] {
-	return pulumix.Output[[]*AddressGroup]{
-		OutputState: i.ToAddressGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AddressGroupMapInput is an input type that accepts AddressGroupMap and AddressGroupMapOutput values.
@@ -400,12 +387,6 @@ func (i AddressGroupMap) ToAddressGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupMapOutput)
 }
 
-func (i AddressGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressGroup] {
-	return pulumix.Output[map[string]*AddressGroup]{
-		OutputState: i.ToAddressGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddressGroupOutput struct{ *pulumi.OutputState }
 
 func (AddressGroupOutput) ElementType() reflect.Type {
@@ -418,12 +399,6 @@ func (o AddressGroupOutput) ToAddressGroupOutput() AddressGroupOutput {
 
 func (o AddressGroupOutput) ToAddressGroupOutputWithContext(ctx context.Context) AddressGroupOutput {
 	return o
-}
-
-func (o AddressGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressGroup] {
-	return pulumix.Output[*AddressGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capacity of the Address Group.
@@ -499,12 +474,6 @@ func (o AddressGroupArrayOutput) ToAddressGroupArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AddressGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddressGroup] {
-	return pulumix.Output[[]*AddressGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AddressGroupArrayOutput) Index(i pulumi.IntInput) AddressGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddressGroup {
 		return vs[0].([]*AddressGroup)[vs[1].(int)]
@@ -523,12 +492,6 @@ func (o AddressGroupMapOutput) ToAddressGroupMapOutput() AddressGroupMapOutput {
 
 func (o AddressGroupMapOutput) ToAddressGroupMapOutputWithContext(ctx context.Context) AddressGroupMapOutput {
 	return o
-}
-
-func (o AddressGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressGroup] {
-	return pulumix.Output[map[string]*AddressGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressGroupMapOutput) MapIndex(k pulumi.StringInput) AddressGroupOutput {

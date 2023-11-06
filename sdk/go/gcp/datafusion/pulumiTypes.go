@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i InstanceAcceleratorArgs) ToInstanceAcceleratorOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorOutput)
 }
 
-func (i InstanceAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceAccelerator] {
-	return pulumix.Output[InstanceAccelerator]{
-		OutputState: i.ToInstanceAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceAcceleratorArrayInput is an input type that accepts InstanceAcceleratorArray and InstanceAcceleratorArrayOutput values.
 // You can construct a concrete instance of `InstanceAcceleratorArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i InstanceAcceleratorArray) ToInstanceAcceleratorArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorArrayOutput)
 }
 
-func (i InstanceAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceAccelerator] {
-	return pulumix.Output[[]InstanceAccelerator]{
-		OutputState: i.ToInstanceAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (InstanceAcceleratorOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o InstanceAcceleratorOutput) ToInstanceAcceleratorOutput() InstanceAcceler
 
 func (o InstanceAcceleratorOutput) ToInstanceAcceleratorOutputWithContext(ctx context.Context) InstanceAcceleratorOutput {
 	return o
-}
-
-func (o InstanceAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceAccelerator] {
-	return pulumix.Output[InstanceAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of an accelator for a CDF instance.
@@ -136,12 +117,6 @@ func (o InstanceAcceleratorArrayOutput) ToInstanceAcceleratorArrayOutput() Insta
 
 func (o InstanceAcceleratorArrayOutput) ToInstanceAcceleratorArrayOutputWithContext(ctx context.Context) InstanceAcceleratorArrayOutput {
 	return o
-}
-
-func (o InstanceAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceAccelerator] {
-	return pulumix.Output[[]InstanceAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceAcceleratorArrayOutput) Index(i pulumi.IntInput) InstanceAcceleratorOutput {
@@ -181,12 +156,6 @@ func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigOutput() InstanceC
 
 func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceCryptoKeyConfigOutput)
-}
-
-func (i InstanceCryptoKeyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceCryptoKeyConfig] {
-	return pulumix.Output[InstanceCryptoKeyConfig]{
-		OutputState: i.ToInstanceCryptoKeyConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput {
@@ -230,12 +199,6 @@ func (i *instanceCryptoKeyConfigPtrType) ToInstanceCryptoKeyConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceCryptoKeyConfigPtrOutput)
 }
 
-func (i *instanceCryptoKeyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceCryptoKeyConfig] {
-	return pulumix.Output[*InstanceCryptoKeyConfig]{
-		OutputState: i.ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceCryptoKeyConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceCryptoKeyConfigOutput) ElementType() reflect.Type {
@@ -260,12 +223,6 @@ func (o InstanceCryptoKeyConfigOutput) ToInstanceCryptoKeyConfigPtrOutputWithCon
 	}).(InstanceCryptoKeyConfigPtrOutput)
 }
 
-func (o InstanceCryptoKeyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceCryptoKeyConfig] {
-	return pulumix.Output[InstanceCryptoKeyConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
 func (o InstanceCryptoKeyConfigOutput) KeyReference() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCryptoKeyConfig) string { return v.KeyReference }).(pulumi.StringOutput)
@@ -283,12 +240,6 @@ func (o InstanceCryptoKeyConfigPtrOutput) ToInstanceCryptoKeyConfigPtrOutput() I
 
 func (o InstanceCryptoKeyConfigPtrOutput) ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigPtrOutput {
 	return o
-}
-
-func (o InstanceCryptoKeyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceCryptoKeyConfig] {
-	return pulumix.Output[*InstanceCryptoKeyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceCryptoKeyConfigPtrOutput) Elem() InstanceCryptoKeyConfigOutput {
@@ -348,12 +299,6 @@ func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceEventPublishConfigOutput)
 }
 
-func (i InstanceEventPublishConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceEventPublishConfig] {
-	return pulumix.Output[InstanceEventPublishConfig]{
-		OutputState: i.ToInstanceEventPublishConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput {
 	return i.ToInstanceEventPublishConfigPtrOutputWithContext(context.Background())
 }
@@ -395,12 +340,6 @@ func (i *instanceEventPublishConfigPtrType) ToInstanceEventPublishConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceEventPublishConfigPtrOutput)
 }
 
-func (i *instanceEventPublishConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceEventPublishConfig] {
-	return pulumix.Output[*InstanceEventPublishConfig]{
-		OutputState: i.ToInstanceEventPublishConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceEventPublishConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceEventPublishConfigOutput) ElementType() reflect.Type {
@@ -425,12 +364,6 @@ func (o InstanceEventPublishConfigOutput) ToInstanceEventPublishConfigPtrOutputW
 	}).(InstanceEventPublishConfigPtrOutput)
 }
 
-func (o InstanceEventPublishConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceEventPublishConfig] {
-	return pulumix.Output[InstanceEventPublishConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option to enable Event Publishing.
 func (o InstanceEventPublishConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceEventPublishConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -453,12 +386,6 @@ func (o InstanceEventPublishConfigPtrOutput) ToInstanceEventPublishConfigPtrOutp
 
 func (o InstanceEventPublishConfigPtrOutput) ToInstanceEventPublishConfigPtrOutputWithContext(ctx context.Context) InstanceEventPublishConfigPtrOutput {
 	return o
-}
-
-func (o InstanceEventPublishConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceEventPublishConfig] {
-	return pulumix.Output[*InstanceEventPublishConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceEventPublishConfigPtrOutput) Elem() InstanceEventPublishConfigOutput {
@@ -534,12 +461,6 @@ func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput)
 }
 
-func (i InstanceNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceNetworkConfig] {
-	return pulumix.Output[InstanceNetworkConfig]{
-		OutputState: i.ToInstanceNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
 	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -581,12 +502,6 @@ func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPtrOutput)
 }
 
-func (i *instanceNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceNetworkConfig] {
-	return pulumix.Output[*InstanceNetworkConfig]{
-		OutputState: i.ToInstanceNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkConfigOutput) ElementType() reflect.Type {
@@ -609,12 +524,6 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfig) *InstanceNetworkConfig {
 		return &v
 	}).(InstanceNetworkConfigPtrOutput)
-}
-
-func (o InstanceNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNetworkConfig] {
-	return pulumix.Output[InstanceNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP range in CIDR notation to use for the managed Data Fusion instance
@@ -642,12 +551,6 @@ func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutput() Insta
 
 func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
 	return o
-}
-
-func (o InstanceNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceNetworkConfig] {
-	return pulumix.Output[*InstanceNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Dataplex Lake resource
@@ -268,12 +267,6 @@ func (i *Lake) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeOutput)
 }
 
-func (i *Lake) ToOutput(ctx context.Context) pulumix.Output[*Lake] {
-	return pulumix.Output[*Lake]{
-		OutputState: i.ToLakeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LakeArrayInput is an input type that accepts LakeArray and LakeArrayOutput values.
 // You can construct a concrete instance of `LakeArrayInput` via:
 //
@@ -297,12 +290,6 @@ func (i LakeArray) ToLakeArrayOutput() LakeArrayOutput {
 
 func (i LakeArray) ToLakeArrayOutputWithContext(ctx context.Context) LakeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeArrayOutput)
-}
-
-func (i LakeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Lake] {
-	return pulumix.Output[[]*Lake]{
-		OutputState: i.ToLakeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LakeMapInput is an input type that accepts LakeMap and LakeMapOutput values.
@@ -330,12 +317,6 @@ func (i LakeMap) ToLakeMapOutputWithContext(ctx context.Context) LakeMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeMapOutput)
 }
 
-func (i LakeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Lake] {
-	return pulumix.Output[map[string]*Lake]{
-		OutputState: i.ToLakeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LakeOutput struct{ *pulumi.OutputState }
 
 func (LakeOutput) ElementType() reflect.Type {
@@ -348,12 +329,6 @@ func (o LakeOutput) ToLakeOutput() LakeOutput {
 
 func (o LakeOutput) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 	return o
-}
-
-func (o LakeOutput) ToOutput(ctx context.Context) pulumix.Output[*Lake] {
-	return pulumix.Output[*Lake]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Aggregated status of the underlying assets of the lake.
@@ -442,12 +417,6 @@ func (o LakeArrayOutput) ToLakeArrayOutputWithContext(ctx context.Context) LakeA
 	return o
 }
 
-func (o LakeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Lake] {
-	return pulumix.Output[[]*Lake]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LakeArrayOutput) Index(i pulumi.IntInput) LakeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Lake {
 		return vs[0].([]*Lake)[vs[1].(int)]
@@ -466,12 +435,6 @@ func (o LakeMapOutput) ToLakeMapOutput() LakeMapOutput {
 
 func (o LakeMapOutput) ToLakeMapOutputWithContext(ctx context.Context) LakeMapOutput {
 	return o
-}
-
-func (o LakeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Lake] {
-	return pulumix.Output[map[string]*Lake]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LakeMapOutput) MapIndex(k pulumi.StringInput) LakeOutput {

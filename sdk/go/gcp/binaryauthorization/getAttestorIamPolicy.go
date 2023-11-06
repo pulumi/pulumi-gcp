@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for attestor
@@ -111,12 +110,6 @@ func (o LookupAttestorIamPolicyResultOutput) ToLookupAttestorIamPolicyResultOutp
 
 func (o LookupAttestorIamPolicyResultOutput) ToLookupAttestorIamPolicyResultOutputWithContext(ctx context.Context) LookupAttestorIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupAttestorIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttestorIamPolicyResult] {
-	return pulumix.Output[LookupAttestorIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAttestorIamPolicyResultOutput) Attestor() pulumi.StringOutput {

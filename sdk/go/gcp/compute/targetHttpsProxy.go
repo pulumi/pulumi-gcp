@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetHttpsProxy resource, which is used by one or more
@@ -420,12 +419,6 @@ func (i *TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyOutput)
 }
 
-func (i *TargetHttpsProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
-	return pulumix.Output[*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetHttpsProxyArrayInput is an input type that accepts TargetHttpsProxyArray and TargetHttpsProxyArrayOutput values.
 // You can construct a concrete instance of `TargetHttpsProxyArrayInput` via:
 //
@@ -449,12 +442,6 @@ func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutput() TargetHttpsProxyA
 
 func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutputWithContext(ctx context.Context) TargetHttpsProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyArrayOutput)
-}
-
-func (i TargetHttpsProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpsProxy] {
-	return pulumix.Output[[]*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetHttpsProxyMapInput is an input type that accepts TargetHttpsProxyMap and TargetHttpsProxyMapOutput values.
@@ -482,12 +469,6 @@ func (i TargetHttpsProxyMap) ToTargetHttpsProxyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyMapOutput)
 }
 
-func (i TargetHttpsProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpsProxy] {
-	return pulumix.Output[map[string]*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetHttpsProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpsProxyOutput) ElementType() reflect.Type {
@@ -500,12 +481,6 @@ func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutput() TargetHttpsProxyOutpu
 
 func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.Context) TargetHttpsProxyOutput {
 	return o
-}
-
-func (o TargetHttpsProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
-	return pulumix.Output[*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the CertificateMap resource uri that identifies a certificate map
@@ -626,12 +601,6 @@ func (o TargetHttpsProxyArrayOutput) ToTargetHttpsProxyArrayOutputWithContext(ct
 	return o
 }
 
-func (o TargetHttpsProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpsProxy] {
-	return pulumix.Output[[]*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetHttpsProxyArrayOutput) Index(i pulumi.IntInput) TargetHttpsProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetHttpsProxy {
 		return vs[0].([]*TargetHttpsProxy)[vs[1].(int)]
@@ -650,12 +619,6 @@ func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutput() TargetHttpsProx
 
 func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutputWithContext(ctx context.Context) TargetHttpsProxyMapOutput {
 	return o
-}
-
-func (o TargetHttpsProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpsProxy] {
-	return pulumix.Output[map[string]*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetHttpsProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpsProxyOutput {

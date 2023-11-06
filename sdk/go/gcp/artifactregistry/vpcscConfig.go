@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -184,12 +183,6 @@ func (i *VpcscConfig) ToVpcscConfigOutputWithContext(ctx context.Context) VpcscC
 	return pulumi.ToOutputWithContext(ctx, i).(VpcscConfigOutput)
 }
 
-func (i *VpcscConfig) ToOutput(ctx context.Context) pulumix.Output[*VpcscConfig] {
-	return pulumix.Output[*VpcscConfig]{
-		OutputState: i.ToVpcscConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VpcscConfigArrayInput is an input type that accepts VpcscConfigArray and VpcscConfigArrayOutput values.
 // You can construct a concrete instance of `VpcscConfigArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i VpcscConfigArray) ToVpcscConfigArrayOutput() VpcscConfigArrayOutput {
 
 func (i VpcscConfigArray) ToVpcscConfigArrayOutputWithContext(ctx context.Context) VpcscConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcscConfigArrayOutput)
-}
-
-func (i VpcscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcscConfig] {
-	return pulumix.Output[[]*VpcscConfig]{
-		OutputState: i.ToVpcscConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VpcscConfigMapInput is an input type that accepts VpcscConfigMap and VpcscConfigMapOutput values.
@@ -246,12 +233,6 @@ func (i VpcscConfigMap) ToVpcscConfigMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VpcscConfigMapOutput)
 }
 
-func (i VpcscConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcscConfig] {
-	return pulumix.Output[map[string]*VpcscConfig]{
-		OutputState: i.ToVpcscConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VpcscConfigOutput struct{ *pulumi.OutputState }
 
 func (VpcscConfigOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o VpcscConfigOutput) ToVpcscConfigOutput() VpcscConfigOutput {
 
 func (o VpcscConfigOutput) ToVpcscConfigOutputWithContext(ctx context.Context) VpcscConfigOutput {
 	return o
-}
-
-func (o VpcscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcscConfig] {
-	return pulumix.Output[*VpcscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the location this config is located in.
@@ -309,12 +284,6 @@ func (o VpcscConfigArrayOutput) ToVpcscConfigArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o VpcscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcscConfig] {
-	return pulumix.Output[[]*VpcscConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VpcscConfigArrayOutput) Index(i pulumi.IntInput) VpcscConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcscConfig {
 		return vs[0].([]*VpcscConfig)[vs[1].(int)]
@@ -333,12 +302,6 @@ func (o VpcscConfigMapOutput) ToVpcscConfigMapOutput() VpcscConfigMapOutput {
 
 func (o VpcscConfigMapOutput) ToVpcscConfigMapOutputWithContext(ctx context.Context) VpcscConfigMapOutput {
 	return o
-}
-
-func (o VpcscConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcscConfig] {
-	return pulumix.Output[map[string]*VpcscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcscConfigMapOutput) MapIndex(k pulumi.StringInput) VpcscConfigOutput {

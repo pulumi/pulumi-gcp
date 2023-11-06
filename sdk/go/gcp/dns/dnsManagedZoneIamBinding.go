@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *DnsManagedZoneIamBinding) ToDnsManagedZoneIamBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingOutput)
 }
 
-func (i *DnsManagedZoneIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamBinding] {
-	return pulumix.Output[*DnsManagedZoneIamBinding]{
-		OutputState: i.ToDnsManagedZoneIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DnsManagedZoneIamBindingArrayInput is an input type that accepts DnsManagedZoneIamBindingArray and DnsManagedZoneIamBindingArrayOutput values.
 // You can construct a concrete instance of `DnsManagedZoneIamBindingArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i DnsManagedZoneIamBindingArray) ToDnsManagedZoneIamBindingArrayOutput() D
 
 func (i DnsManagedZoneIamBindingArray) ToDnsManagedZoneIamBindingArrayOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingArrayOutput)
-}
-
-func (i DnsManagedZoneIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamBinding] {
-	return pulumix.Output[[]*DnsManagedZoneIamBinding]{
-		OutputState: i.ToDnsManagedZoneIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DnsManagedZoneIamBindingMapInput is an input type that accepts DnsManagedZoneIamBindingMap and DnsManagedZoneIamBindingMapOutput values.
@@ -424,12 +411,6 @@ func (i DnsManagedZoneIamBindingMap) ToDnsManagedZoneIamBindingMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingMapOutput)
 }
 
-func (i DnsManagedZoneIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamBinding] {
-	return pulumix.Output[map[string]*DnsManagedZoneIamBinding]{
-		OutputState: i.ToDnsManagedZoneIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnsManagedZoneIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DnsManagedZoneIamBindingOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o DnsManagedZoneIamBindingOutput) ToDnsManagedZoneIamBindingOutput() DnsMa
 
 func (o DnsManagedZoneIamBindingOutput) ToDnsManagedZoneIamBindingOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingOutput {
 	return o
-}
-
-func (o DnsManagedZoneIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamBinding] {
-	return pulumix.Output[*DnsManagedZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsManagedZoneIamBindingOutput) Condition() DnsManagedZoneIamBindingConditionPtrOutput {
@@ -507,12 +482,6 @@ func (o DnsManagedZoneIamBindingArrayOutput) ToDnsManagedZoneIamBindingArrayOutp
 	return o
 }
 
-func (o DnsManagedZoneIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamBinding] {
-	return pulumix.Output[[]*DnsManagedZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsManagedZoneIamBindingArrayOutput) Index(i pulumi.IntInput) DnsManagedZoneIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsManagedZoneIamBinding {
 		return vs[0].([]*DnsManagedZoneIamBinding)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o DnsManagedZoneIamBindingMapOutput) ToDnsManagedZoneIamBindingMapOutput()
 
 func (o DnsManagedZoneIamBindingMapOutput) ToDnsManagedZoneIamBindingMapOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingMapOutput {
 	return o
-}
-
-func (o DnsManagedZoneIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamBinding] {
-	return pulumix.Output[map[string]*DnsManagedZoneIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsManagedZoneIamBindingMapOutput) MapIndex(k pulumi.StringInput) DnsManagedZoneIamBindingOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i DeliveryPipelineConditionArgs) ToDeliveryPipelineConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionOutput)
 }
 
-func (i DeliveryPipelineConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineCondition] {
-	return pulumix.Output[DeliveryPipelineCondition]{
-		OutputState: i.ToDeliveryPipelineConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineConditionArrayInput is an input type that accepts DeliveryPipelineConditionArray and DeliveryPipelineConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i DeliveryPipelineConditionArray) ToDeliveryPipelineConditionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionArrayOutput)
 }
 
-func (i DeliveryPipelineConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineCondition] {
-	return pulumix.Output[[]DeliveryPipelineCondition]{
-		OutputState: i.ToDeliveryPipelineConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineConditionOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineConditionOutput) ElementType() reflect.Type {
@@ -98,12 +85,6 @@ func (o DeliveryPipelineConditionOutput) ToDeliveryPipelineConditionOutput() Del
 
 func (o DeliveryPipelineConditionOutput) ToDeliveryPipelineConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineCondition] {
-	return pulumix.Output[DeliveryPipelineCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionOutput) PipelineReadyConditions() DeliveryPipelineConditionPipelineReadyConditionArrayOutput {
@@ -136,12 +117,6 @@ func (o DeliveryPipelineConditionArrayOutput) ToDeliveryPipelineConditionArrayOu
 
 func (o DeliveryPipelineConditionArrayOutput) ToDeliveryPipelineConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineCondition] {
-	return pulumix.Output[[]DeliveryPipelineCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineConditionOutput {
@@ -185,12 +160,6 @@ func (i DeliveryPipelineConditionPipelineReadyConditionArgs) ToDeliveryPipelineC
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionPipelineReadyConditionOutput)
 }
 
-func (i DeliveryPipelineConditionPipelineReadyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionPipelineReadyCondition] {
-	return pulumix.Output[DeliveryPipelineConditionPipelineReadyCondition]{
-		OutputState: i.ToDeliveryPipelineConditionPipelineReadyConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineConditionPipelineReadyConditionArrayInput is an input type that accepts DeliveryPipelineConditionPipelineReadyConditionArray and DeliveryPipelineConditionPipelineReadyConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionPipelineReadyConditionArrayInput` via:
 //
@@ -216,12 +185,6 @@ func (i DeliveryPipelineConditionPipelineReadyConditionArray) ToDeliveryPipeline
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionPipelineReadyConditionArrayOutput)
 }
 
-func (i DeliveryPipelineConditionPipelineReadyConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionPipelineReadyCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionPipelineReadyCondition]{
-		OutputState: i.ToDeliveryPipelineConditionPipelineReadyConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineConditionPipelineReadyConditionOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineConditionPipelineReadyConditionOutput) ElementType() reflect.Type {
@@ -234,12 +197,6 @@ func (o DeliveryPipelineConditionPipelineReadyConditionOutput) ToDeliveryPipelin
 
 func (o DeliveryPipelineConditionPipelineReadyConditionOutput) ToDeliveryPipelineConditionPipelineReadyConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionPipelineReadyConditionOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionPipelineReadyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionPipelineReadyCondition] {
-	return pulumix.Output[DeliveryPipelineConditionPipelineReadyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionPipelineReadyConditionOutput) Status() pulumi.BoolPtrOutput {
@@ -263,12 +220,6 @@ func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) ToDeliveryPi
 
 func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) ToDeliveryPipelineConditionPipelineReadyConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionPipelineReadyConditionArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionPipelineReadyCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionPipelineReadyCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineConditionPipelineReadyConditionOutput {
@@ -314,12 +265,6 @@ func (i DeliveryPipelineConditionTargetsPresentConditionArgs) ToDeliveryPipeline
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsPresentConditionOutput)
 }
 
-func (i DeliveryPipelineConditionTargetsPresentConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionTargetsPresentCondition] {
-	return pulumix.Output[DeliveryPipelineConditionTargetsPresentCondition]{
-		OutputState: i.ToDeliveryPipelineConditionTargetsPresentConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineConditionTargetsPresentConditionArrayInput is an input type that accepts DeliveryPipelineConditionTargetsPresentConditionArray and DeliveryPipelineConditionTargetsPresentConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionTargetsPresentConditionArrayInput` via:
 //
@@ -345,12 +290,6 @@ func (i DeliveryPipelineConditionTargetsPresentConditionArray) ToDeliveryPipelin
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsPresentConditionArrayOutput)
 }
 
-func (i DeliveryPipelineConditionTargetsPresentConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionTargetsPresentCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionTargetsPresentCondition]{
-		OutputState: i.ToDeliveryPipelineConditionTargetsPresentConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineConditionTargetsPresentConditionOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineConditionTargetsPresentConditionOutput) ElementType() reflect.Type {
@@ -363,12 +302,6 @@ func (o DeliveryPipelineConditionTargetsPresentConditionOutput) ToDeliveryPipeli
 
 func (o DeliveryPipelineConditionTargetsPresentConditionOutput) ToDeliveryPipelineConditionTargetsPresentConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsPresentConditionOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionTargetsPresentConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionTargetsPresentCondition] {
-	return pulumix.Output[DeliveryPipelineConditionTargetsPresentCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionTargetsPresentConditionOutput) MissingTargets() pulumi.StringArrayOutput {
@@ -396,12 +329,6 @@ func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) ToDeliveryP
 
 func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) ToDeliveryPipelineConditionTargetsPresentConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsPresentConditionArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionTargetsPresentCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionTargetsPresentCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineConditionTargetsPresentConditionOutput {
@@ -443,12 +370,6 @@ func (i DeliveryPipelineConditionTargetsTypeConditionArgs) ToDeliveryPipelineCon
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsTypeConditionOutput)
 }
 
-func (i DeliveryPipelineConditionTargetsTypeConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionTargetsTypeCondition] {
-	return pulumix.Output[DeliveryPipelineConditionTargetsTypeCondition]{
-		OutputState: i.ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineConditionTargetsTypeConditionArrayInput is an input type that accepts DeliveryPipelineConditionTargetsTypeConditionArray and DeliveryPipelineConditionTargetsTypeConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionTargetsTypeConditionArrayInput` via:
 //
@@ -474,12 +395,6 @@ func (i DeliveryPipelineConditionTargetsTypeConditionArray) ToDeliveryPipelineCo
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsTypeConditionArrayOutput)
 }
 
-func (i DeliveryPipelineConditionTargetsTypeConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionTargetsTypeCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionTargetsTypeCondition]{
-		OutputState: i.ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineConditionTargetsTypeConditionOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineConditionTargetsTypeConditionOutput) ElementType() reflect.Type {
@@ -492,12 +407,6 @@ func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToDeliveryPipelineC
 
 func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineConditionTargetsTypeCondition] {
-	return pulumix.Output[DeliveryPipelineConditionTargetsTypeCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ErrorDetails() pulumi.StringPtrOutput {
@@ -520,12 +429,6 @@ func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ToDeliveryPipe
 
 func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineConditionTargetsTypeCondition] {
-	return pulumix.Output[[]DeliveryPipelineConditionTargetsTypeCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineConditionTargetsTypeConditionOutput {
@@ -565,12 +468,6 @@ func (i DeliveryPipelineSerialPipelineArgs) ToDeliveryPipelineSerialPipelineOutp
 
 func (i DeliveryPipelineSerialPipelineArgs) ToDeliveryPipelineSerialPipelineOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineOutput)
-}
-
-func (i DeliveryPipelineSerialPipelineArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipeline] {
-	return pulumix.Output[DeliveryPipelineSerialPipeline]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DeliveryPipelineSerialPipelineArgs) ToDeliveryPipelineSerialPipelinePtrOutput() DeliveryPipelineSerialPipelinePtrOutput {
@@ -614,12 +511,6 @@ func (i *deliveryPipelineSerialPipelinePtrType) ToDeliveryPipelineSerialPipeline
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelinePtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelinePtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipeline] {
-	return pulumix.Output[*DeliveryPipelineSerialPipeline]{
-		OutputState: i.ToDeliveryPipelineSerialPipelinePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineOutput) ElementType() reflect.Type {
@@ -644,12 +535,6 @@ func (o DeliveryPipelineSerialPipelineOutput) ToDeliveryPipelineSerialPipelinePt
 	}).(DeliveryPipelineSerialPipelinePtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipeline] {
-	return pulumix.Output[DeliveryPipelineSerialPipeline]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
 func (o DeliveryPipelineSerialPipelineOutput) Stages() DeliveryPipelineSerialPipelineStageArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipeline) []DeliveryPipelineSerialPipelineStage { return v.Stages }).(DeliveryPipelineSerialPipelineStageArrayOutput)
@@ -667,12 +552,6 @@ func (o DeliveryPipelineSerialPipelinePtrOutput) ToDeliveryPipelineSerialPipelin
 
 func (o DeliveryPipelineSerialPipelinePtrOutput) ToDeliveryPipelineSerialPipelinePtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelinePtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipeline] {
-	return pulumix.Output[*DeliveryPipelineSerialPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelinePtrOutput) Elem() DeliveryPipelineSerialPipelineOutput {
@@ -740,12 +619,6 @@ func (i DeliveryPipelineSerialPipelineStageArgs) ToDeliveryPipelineSerialPipelin
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStage] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStage]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineSerialPipelineStageArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageArray and DeliveryPipelineSerialPipelineStageArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageArrayInput` via:
 //
@@ -771,12 +644,6 @@ func (i DeliveryPipelineSerialPipelineStageArray) ToDeliveryPipelineSerialPipeli
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageArrayOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStage] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStage]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageOutput) ElementType() reflect.Type {
@@ -789,12 +656,6 @@ func (o DeliveryPipelineSerialPipelineStageOutput) ToDeliveryPipelineSerialPipel
 
 func (o DeliveryPipelineSerialPipelineStageOutput) ToDeliveryPipelineSerialPipelineStageOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStage] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The deploy parameters to use for the target in this stage.
@@ -833,12 +694,6 @@ func (o DeliveryPipelineSerialPipelineStageArrayOutput) ToDeliveryPipelineSerial
 
 func (o DeliveryPipelineSerialPipelineStageArrayOutput) ToDeliveryPipelineSerialPipelineStageArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStage] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageOutput {
@@ -884,12 +739,6 @@ func (i DeliveryPipelineSerialPipelineStageDeployParameterArgs) ToDeliveryPipeli
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageDeployParameterOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageDeployParameterArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageDeployParameter] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageDeployParameter]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineSerialPipelineStageDeployParameterArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageDeployParameterArray and DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageDeployParameterArrayInput` via:
 //
@@ -915,12 +764,6 @@ func (i DeliveryPipelineSerialPipelineStageDeployParameterArray) ToDeliveryPipel
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageDeployParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStageDeployParameter] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStageDeployParameter]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageDeployParameterOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageDeployParameterOutput) ElementType() reflect.Type {
@@ -933,12 +776,6 @@ func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) ToDeliveryPipe
 
 func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageDeployParameter] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageDeployParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
@@ -965,12 +802,6 @@ func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ToDeliver
 
 func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStageDeployParameter] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStageDeployParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageDeployParameterOutput {
@@ -1016,12 +847,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSeria
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(context.Background())
 }
@@ -1063,12 +888,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyPtrType) ToDeliveryPipelineS
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyOutput) ElementType() reflect.Type {
@@ -1091,12 +910,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategy {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Canary deployment strategy provides progressive percentage based deployments to a Target.
@@ -1125,12 +938,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ToDeliveryPipeline
 
 func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyOutput {
@@ -1204,12 +1011,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelin
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanary] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanary]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(context.Background())
 }
@@ -1251,12 +1052,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryPtrType) ToDeliveryPip
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanary] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanary]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ElementType() reflect.Type {
@@ -1279,12 +1074,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToDeliveryPipel
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanary {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanary] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configures the progressive based deployment for a Target.
@@ -1320,12 +1109,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ToDeliveryPi
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanary] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
@@ -1413,12 +1196,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(context.Background())
 }
@@ -1460,12 +1237,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ElementType() reflect.Type {
@@ -1488,12 +1259,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
@@ -1532,12 +1297,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
@@ -1623,12 +1382,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdep
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(context.Background())
 }
@@ -1670,12 +1423,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostde
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ElementType() reflect.Type {
@@ -1700,12 +1447,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdep
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy) []string {
@@ -1725,12 +1466,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdep
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
@@ -1786,12 +1521,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredepl
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(context.Background())
 }
@@ -1833,12 +1562,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredep
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ElementType() reflect.Type {
@@ -1863,12 +1586,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredepl
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy) []string {
@@ -1888,12 +1605,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredepl
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
@@ -1949,12 +1660,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentA
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(context.Background())
 }
@@ -1996,12 +1701,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ElementType() reflect.Type {
@@ -2026,12 +1725,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentO
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. Configuration for each phase in the canary deployment in the order executed.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) PhaseConfigs() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
@@ -2051,12 +1744,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
@@ -2136,12 +1823,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput` via:
 //
@@ -2167,12 +1848,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ElementType() reflect.Type {
@@ -2185,12 +1860,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Percentage deployment for the phase.
@@ -2251,12 +1920,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return o
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig] {
-	return pulumix.Output[[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
 		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)[vs[1].(int)]
@@ -2294,12 +1957,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput)
-}
-
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
@@ -2343,12 +2000,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ElementType() reflect.Type {
@@ -2373,12 +2024,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy) []string {
@@ -2398,12 +2043,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
@@ -2459,12 +2098,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(context.Background())
 }
@@ -2506,12 +2139,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ElementType() reflect.Type {
@@ -2536,12 +2163,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy) []string {
@@ -2561,12 +2182,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
@@ -2626,12 +2241,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDe
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(context.Background())
 }
@@ -2673,12 +2282,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ElementType() reflect.Type {
@@ -2701,12 +2304,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Run runtime configuration.
@@ -2735,12 +2332,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
@@ -2806,12 +2397,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunAr
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(context.Background())
 }
@@ -2853,12 +2438,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunP
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ElementType() reflect.Type {
@@ -2883,12 +2462,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOu
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) *bool {
@@ -2908,12 +2481,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPt
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
@@ -2973,12 +2540,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(context.Background())
 }
@@ -3020,12 +2581,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernete
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ElementType() reflect.Type {
@@ -3048,12 +2603,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kubernetes Gateway API service mesh configuration.
@@ -3082,12 +2631,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
@@ -3165,12 +2708,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(context.Background())
 }
@@ -3212,12 +2749,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernete
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ElementType() reflect.Type {
@@ -3240,12 +2771,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
@@ -3288,12 +2813,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
@@ -3387,12 +2906,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(context.Background())
 }
@@ -3434,12 +2947,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernete
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ElementType() reflect.Type {
@@ -3462,12 +2969,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
@@ -3503,12 +3004,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
@@ -3592,12 +3087,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipel
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandard] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandard]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(context.Background())
 }
@@ -3639,12 +3128,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyStandardPtrType) ToDeliveryP
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyStandardPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandard] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandard]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyStandardOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ElementType() reflect.Type {
@@ -3667,12 +3150,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandard {
 		return &v
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandard] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
@@ -3706,12 +3183,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ToDelivery
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandard] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
@@ -3787,12 +3258,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDel
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(context.Background())
 }
@@ -3834,12 +3299,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ElementType() reflect.Type {
@@ -3864,12 +3323,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToD
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
@@ -3887,12 +3340,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) 
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
@@ -3948,12 +3395,6 @@ func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeli
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput)
 }
 
-func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
 	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(context.Background())
 }
@@ -3995,12 +3436,6 @@ func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
 }
 
-func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy]{
-		OutputState: i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ElementType() reflect.Type {
@@ -4025,12 +3460,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToDe
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
 }
 
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy] {
-	return pulumix.Output[DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
@@ -4048,12 +3477,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) T
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
 	return o
-}
-
-func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy] {
-	return pulumix.Output[*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
@@ -4109,12 +3532,6 @@ func (i TargetAnthosClusterArgs) ToTargetAnthosClusterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetAnthosClusterOutput)
 }
 
-func (i TargetAnthosClusterArgs) ToOutput(ctx context.Context) pulumix.Output[TargetAnthosCluster] {
-	return pulumix.Output[TargetAnthosCluster]{
-		OutputState: i.ToTargetAnthosClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TargetAnthosClusterArgs) ToTargetAnthosClusterPtrOutput() TargetAnthosClusterPtrOutput {
 	return i.ToTargetAnthosClusterPtrOutputWithContext(context.Background())
 }
@@ -4156,12 +3573,6 @@ func (i *targetAnthosClusterPtrType) ToTargetAnthosClusterPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TargetAnthosClusterPtrOutput)
 }
 
-func (i *targetAnthosClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetAnthosCluster] {
-	return pulumix.Output[*TargetAnthosCluster]{
-		OutputState: i.ToTargetAnthosClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetAnthosClusterOutput struct{ *pulumi.OutputState }
 
 func (TargetAnthosClusterOutput) ElementType() reflect.Type {
@@ -4186,12 +3597,6 @@ func (o TargetAnthosClusterOutput) ToTargetAnthosClusterPtrOutputWithContext(ctx
 	}).(TargetAnthosClusterPtrOutput)
 }
 
-func (o TargetAnthosClusterOutput) ToOutput(ctx context.Context) pulumix.Output[TargetAnthosCluster] {
-	return pulumix.Output[TargetAnthosCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 func (o TargetAnthosClusterOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetAnthosCluster) *string { return v.Membership }).(pulumi.StringPtrOutput)
@@ -4209,12 +3614,6 @@ func (o TargetAnthosClusterPtrOutput) ToTargetAnthosClusterPtrOutput() TargetAnt
 
 func (o TargetAnthosClusterPtrOutput) ToTargetAnthosClusterPtrOutputWithContext(ctx context.Context) TargetAnthosClusterPtrOutput {
 	return o
-}
-
-func (o TargetAnthosClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetAnthosCluster] {
-	return pulumix.Output[*TargetAnthosCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetAnthosClusterPtrOutput) Elem() TargetAnthosClusterOutput {
@@ -4286,12 +3685,6 @@ func (i TargetExecutionConfigArgs) ToTargetExecutionConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigOutput)
 }
 
-func (i TargetExecutionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TargetExecutionConfig] {
-	return pulumix.Output[TargetExecutionConfig]{
-		OutputState: i.ToTargetExecutionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetExecutionConfigArrayInput is an input type that accepts TargetExecutionConfigArray and TargetExecutionConfigArrayOutput values.
 // You can construct a concrete instance of `TargetExecutionConfigArrayInput` via:
 //
@@ -4317,12 +3710,6 @@ func (i TargetExecutionConfigArray) ToTargetExecutionConfigArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigArrayOutput)
 }
 
-func (i TargetExecutionConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetExecutionConfig] {
-	return pulumix.Output[[]TargetExecutionConfig]{
-		OutputState: i.ToTargetExecutionConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetExecutionConfigOutput struct{ *pulumi.OutputState }
 
 func (TargetExecutionConfigOutput) ElementType() reflect.Type {
@@ -4335,12 +3722,6 @@ func (o TargetExecutionConfigOutput) ToTargetExecutionConfigOutput() TargetExecu
 
 func (o TargetExecutionConfigOutput) ToTargetExecutionConfigOutputWithContext(ctx context.Context) TargetExecutionConfigOutput {
 	return o
-}
-
-func (o TargetExecutionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TargetExecutionConfig] {
-	return pulumix.Output[TargetExecutionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -4380,12 +3761,6 @@ func (o TargetExecutionConfigArrayOutput) ToTargetExecutionConfigArrayOutput() T
 
 func (o TargetExecutionConfigArrayOutput) ToTargetExecutionConfigArrayOutputWithContext(ctx context.Context) TargetExecutionConfigArrayOutput {
 	return o
-}
-
-func (o TargetExecutionConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetExecutionConfig] {
-	return pulumix.Output[[]TargetExecutionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetExecutionConfigArrayOutput) Index(i pulumi.IntInput) TargetExecutionConfigOutput {
@@ -4431,12 +3806,6 @@ func (i TargetGkeArgs) ToTargetGkeOutputWithContext(ctx context.Context) TargetG
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGkeOutput)
 }
 
-func (i TargetGkeArgs) ToOutput(ctx context.Context) pulumix.Output[TargetGke] {
-	return pulumix.Output[TargetGke]{
-		OutputState: i.ToTargetGkeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TargetGkeArgs) ToTargetGkePtrOutput() TargetGkePtrOutput {
 	return i.ToTargetGkePtrOutputWithContext(context.Background())
 }
@@ -4478,12 +3847,6 @@ func (i *targetGkePtrType) ToTargetGkePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGkePtrOutput)
 }
 
-func (i *targetGkePtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetGke] {
-	return pulumix.Output[*TargetGke]{
-		OutputState: i.ToTargetGkePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetGkeOutput struct{ *pulumi.OutputState }
 
 func (TargetGkeOutput) ElementType() reflect.Type {
@@ -4508,12 +3871,6 @@ func (o TargetGkeOutput) ToTargetGkePtrOutputWithContext(ctx context.Context) Ta
 	}).(TargetGkePtrOutput)
 }
 
-func (o TargetGkeOutput) ToOutput(ctx context.Context) pulumix.Output[TargetGke] {
-	return pulumix.Output[TargetGke]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 func (o TargetGkeOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetGke) *string { return v.Cluster }).(pulumi.StringPtrOutput)
@@ -4536,12 +3893,6 @@ func (o TargetGkePtrOutput) ToTargetGkePtrOutput() TargetGkePtrOutput {
 
 func (o TargetGkePtrOutput) ToTargetGkePtrOutputWithContext(ctx context.Context) TargetGkePtrOutput {
 	return o
-}
-
-func (o TargetGkePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetGke] {
-	return pulumix.Output[*TargetGke]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetGkePtrOutput) Elem() TargetGkeOutput {
@@ -4607,12 +3958,6 @@ func (i TargetMultiTargetArgs) ToTargetMultiTargetOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TargetMultiTargetOutput)
 }
 
-func (i TargetMultiTargetArgs) ToOutput(ctx context.Context) pulumix.Output[TargetMultiTarget] {
-	return pulumix.Output[TargetMultiTarget]{
-		OutputState: i.ToTargetMultiTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TargetMultiTargetArgs) ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput {
 	return i.ToTargetMultiTargetPtrOutputWithContext(context.Background())
 }
@@ -4654,12 +3999,6 @@ func (i *targetMultiTargetPtrType) ToTargetMultiTargetPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TargetMultiTargetPtrOutput)
 }
 
-func (i *targetMultiTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetMultiTarget] {
-	return pulumix.Output[*TargetMultiTarget]{
-		OutputState: i.ToTargetMultiTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetMultiTargetOutput struct{ *pulumi.OutputState }
 
 func (TargetMultiTargetOutput) ElementType() reflect.Type {
@@ -4684,12 +4023,6 @@ func (o TargetMultiTargetOutput) ToTargetMultiTargetPtrOutputWithContext(ctx con
 	}).(TargetMultiTargetPtrOutput)
 }
 
-func (o TargetMultiTargetOutput) ToOutput(ctx context.Context) pulumix.Output[TargetMultiTarget] {
-	return pulumix.Output[TargetMultiTarget]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The targetIds of this multiTarget.
 func (o TargetMultiTargetOutput) TargetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetMultiTarget) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
@@ -4707,12 +4040,6 @@ func (o TargetMultiTargetPtrOutput) ToTargetMultiTargetPtrOutput() TargetMultiTa
 
 func (o TargetMultiTargetPtrOutput) ToTargetMultiTargetPtrOutputWithContext(ctx context.Context) TargetMultiTargetPtrOutput {
 	return o
-}
-
-func (o TargetMultiTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetMultiTarget] {
-	return pulumix.Output[*TargetMultiTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetMultiTargetPtrOutput) Elem() TargetMultiTargetOutput {
@@ -4768,12 +4095,6 @@ func (i TargetRunArgs) ToTargetRunOutputWithContext(ctx context.Context) TargetR
 	return pulumi.ToOutputWithContext(ctx, i).(TargetRunOutput)
 }
 
-func (i TargetRunArgs) ToOutput(ctx context.Context) pulumix.Output[TargetRun] {
-	return pulumix.Output[TargetRun]{
-		OutputState: i.ToTargetRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TargetRunArgs) ToTargetRunPtrOutput() TargetRunPtrOutput {
 	return i.ToTargetRunPtrOutputWithContext(context.Background())
 }
@@ -4815,12 +4136,6 @@ func (i *targetRunPtrType) ToTargetRunPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetRunPtrOutput)
 }
 
-func (i *targetRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetRun] {
-	return pulumix.Output[*TargetRun]{
-		OutputState: i.ToTargetRunPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetRunOutput struct{ *pulumi.OutputState }
 
 func (TargetRunOutput) ElementType() reflect.Type {
@@ -4845,12 +4160,6 @@ func (o TargetRunOutput) ToTargetRunPtrOutputWithContext(ctx context.Context) Ta
 	}).(TargetRunPtrOutput)
 }
 
-func (o TargetRunOutput) ToOutput(ctx context.Context) pulumix.Output[TargetRun] {
-	return pulumix.Output[TargetRun]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 func (o TargetRunOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetRun) string { return v.Location }).(pulumi.StringOutput)
@@ -4868,12 +4177,6 @@ func (o TargetRunPtrOutput) ToTargetRunPtrOutput() TargetRunPtrOutput {
 
 func (o TargetRunPtrOutput) ToTargetRunPtrOutputWithContext(ctx context.Context) TargetRunPtrOutput {
 	return o
-}
-
-func (o TargetRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetRun] {
-	return pulumix.Output[*TargetRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetRunPtrOutput) Elem() TargetRunOutput {

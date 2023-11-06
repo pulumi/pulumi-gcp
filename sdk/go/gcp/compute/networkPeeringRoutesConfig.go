@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage a network peering's route settings without managing the peering as
@@ -333,12 +332,6 @@ func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigOutput)
 }
 
-func (i *NetworkPeeringRoutesConfig) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[*NetworkPeeringRoutesConfig]{
-		OutputState: i.ToNetworkPeeringRoutesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkPeeringRoutesConfigArrayInput is an input type that accepts NetworkPeeringRoutesConfigArray and NetworkPeeringRoutesConfigArrayOutput values.
 // You can construct a concrete instance of `NetworkPeeringRoutesConfigArrayInput` via:
 //
@@ -362,12 +355,6 @@ func (i NetworkPeeringRoutesConfigArray) ToNetworkPeeringRoutesConfigArrayOutput
 
 func (i NetworkPeeringRoutesConfigArray) ToNetworkPeeringRoutesConfigArrayOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigArrayOutput)
-}
-
-func (i NetworkPeeringRoutesConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[[]*NetworkPeeringRoutesConfig]{
-		OutputState: i.ToNetworkPeeringRoutesConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkPeeringRoutesConfigMapInput is an input type that accepts NetworkPeeringRoutesConfigMap and NetworkPeeringRoutesConfigMapOutput values.
@@ -395,12 +382,6 @@ func (i NetworkPeeringRoutesConfigMap) ToNetworkPeeringRoutesConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigMapOutput)
 }
 
-func (i NetworkPeeringRoutesConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[map[string]*NetworkPeeringRoutesConfig]{
-		OutputState: i.ToNetworkPeeringRoutesConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPeeringRoutesConfigOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringRoutesConfigOutput) ElementType() reflect.Type {
@@ -413,12 +394,6 @@ func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutput() N
 
 func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput {
 	return o
-}
-
-func (o NetworkPeeringRoutesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[*NetworkPeeringRoutesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to export the custom routes to the peer network.
@@ -463,12 +438,6 @@ func (o NetworkPeeringRoutesConfigArrayOutput) ToNetworkPeeringRoutesConfigArray
 	return o
 }
 
-func (o NetworkPeeringRoutesConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[[]*NetworkPeeringRoutesConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkPeeringRoutesConfigArrayOutput) Index(i pulumi.IntInput) NetworkPeeringRoutesConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPeeringRoutesConfig {
 		return vs[0].([]*NetworkPeeringRoutesConfig)[vs[1].(int)]
@@ -487,12 +456,6 @@ func (o NetworkPeeringRoutesConfigMapOutput) ToNetworkPeeringRoutesConfigMapOutp
 
 func (o NetworkPeeringRoutesConfigMapOutput) ToNetworkPeeringRoutesConfigMapOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigMapOutput {
 	return o
-}
-
-func (o NetworkPeeringRoutesConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPeeringRoutesConfig] {
-	return pulumix.Output[map[string]*NetworkPeeringRoutesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkPeeringRoutesConfigMapOutput) MapIndex(k pulumi.StringInput) NetworkPeeringRoutesConfigOutput {

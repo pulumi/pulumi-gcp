@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery dataset. Each of these resources serves a different use case:
@@ -372,12 +371,6 @@ func (i *DatasetIamBinding) ToDatasetIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingOutput)
 }
 
-func (i *DatasetIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamBinding] {
-	return pulumix.Output[*DatasetIamBinding]{
-		OutputState: i.ToDatasetIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatasetIamBindingArrayInput is an input type that accepts DatasetIamBindingArray and DatasetIamBindingArrayOutput values.
 // You can construct a concrete instance of `DatasetIamBindingArrayInput` via:
 //
@@ -401,12 +394,6 @@ func (i DatasetIamBindingArray) ToDatasetIamBindingArrayOutput() DatasetIamBindi
 
 func (i DatasetIamBindingArray) ToDatasetIamBindingArrayOutputWithContext(ctx context.Context) DatasetIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingArrayOutput)
-}
-
-func (i DatasetIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetIamBinding] {
-	return pulumix.Output[[]*DatasetIamBinding]{
-		OutputState: i.ToDatasetIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatasetIamBindingMapInput is an input type that accepts DatasetIamBindingMap and DatasetIamBindingMapOutput values.
@@ -434,12 +421,6 @@ func (i DatasetIamBindingMap) ToDatasetIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingMapOutput)
 }
 
-func (i DatasetIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetIamBinding] {
-	return pulumix.Output[map[string]*DatasetIamBinding]{
-		OutputState: i.ToDatasetIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingOutput) ElementType() reflect.Type {
@@ -452,12 +433,6 @@ func (o DatasetIamBindingOutput) ToDatasetIamBindingOutput() DatasetIamBindingOu
 
 func (o DatasetIamBindingOutput) ToDatasetIamBindingOutputWithContext(ctx context.Context) DatasetIamBindingOutput {
 	return o
-}
-
-func (o DatasetIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamBinding] {
-	return pulumix.Output[*DatasetIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamBindingOutput) Condition() DatasetIamBindingConditionPtrOutput {
@@ -514,12 +489,6 @@ func (o DatasetIamBindingArrayOutput) ToDatasetIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o DatasetIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetIamBinding] {
-	return pulumix.Output[[]*DatasetIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatasetIamBindingArrayOutput) Index(i pulumi.IntInput) DatasetIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetIamBinding {
 		return vs[0].([]*DatasetIamBinding)[vs[1].(int)]
@@ -538,12 +507,6 @@ func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutput() DatasetIamBin
 
 func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutputWithContext(ctx context.Context) DatasetIamBindingMapOutput {
 	return o
-}
-
-func (o DatasetIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetIamBinding] {
-	return pulumix.Output[map[string]*DatasetIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetIamBindingMapOutput) MapIndex(k pulumi.StringInput) DatasetIamBindingOutput {

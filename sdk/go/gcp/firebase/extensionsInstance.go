@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -309,12 +308,6 @@ func (i *ExtensionsInstance) ToExtensionsInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceOutput)
 }
 
-func (i *ExtensionsInstance) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstance] {
-	return pulumix.Output[*ExtensionsInstance]{
-		OutputState: i.ToExtensionsInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtensionsInstanceArrayInput is an input type that accepts ExtensionsInstanceArray and ExtensionsInstanceArrayOutput values.
 // You can construct a concrete instance of `ExtensionsInstanceArrayInput` via:
 //
@@ -338,12 +331,6 @@ func (i ExtensionsInstanceArray) ToExtensionsInstanceArrayOutput() ExtensionsIns
 
 func (i ExtensionsInstanceArray) ToExtensionsInstanceArrayOutputWithContext(ctx context.Context) ExtensionsInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceArrayOutput)
-}
-
-func (i ExtensionsInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExtensionsInstance] {
-	return pulumix.Output[[]*ExtensionsInstance]{
-		OutputState: i.ToExtensionsInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExtensionsInstanceMapInput is an input type that accepts ExtensionsInstanceMap and ExtensionsInstanceMapOutput values.
@@ -371,12 +358,6 @@ func (i ExtensionsInstanceMap) ToExtensionsInstanceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceMapOutput)
 }
 
-func (i ExtensionsInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExtensionsInstance] {
-	return pulumix.Output[map[string]*ExtensionsInstance]{
-		OutputState: i.ToExtensionsInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceOutput) ElementType() reflect.Type {
@@ -389,12 +370,6 @@ func (o ExtensionsInstanceOutput) ToExtensionsInstanceOutput() ExtensionsInstanc
 
 func (o ExtensionsInstanceOutput) ToExtensionsInstanceOutputWithContext(ctx context.Context) ExtensionsInstanceOutput {
 	return o
-}
-
-func (o ExtensionsInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstance] {
-	return pulumix.Output[*ExtensionsInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current Config of the Extension Instance.
@@ -488,12 +463,6 @@ func (o ExtensionsInstanceArrayOutput) ToExtensionsInstanceArrayOutputWithContex
 	return o
 }
 
-func (o ExtensionsInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExtensionsInstance] {
-	return pulumix.Output[[]*ExtensionsInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExtensionsInstanceArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExtensionsInstance {
 		return vs[0].([]*ExtensionsInstance)[vs[1].(int)]
@@ -512,12 +481,6 @@ func (o ExtensionsInstanceMapOutput) ToExtensionsInstanceMapOutput() ExtensionsI
 
 func (o ExtensionsInstanceMapOutput) ToExtensionsInstanceMapOutputWithContext(ctx context.Context) ExtensionsInstanceMapOutput {
 	return o
-}
-
-func (o ExtensionsInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExtensionsInstance] {
-	return pulumix.Output[map[string]*ExtensionsInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceMapOutput) MapIndex(k pulumi.StringInput) ExtensionsInstanceOutput {
