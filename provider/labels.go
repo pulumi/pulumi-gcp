@@ -100,6 +100,7 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		// Rename pulumiLabel fields and obtain paths
 		labelPaths := update(rMap.Get(token).Schema(), &info.Fields)
 		if len(labelPaths) > 0 {
+			info.TransformOutputs = setLabelsFieldsSecret
 			info.TransformFromState = ensureLabelPathsExist(labelPaths)
 		}
 	}
@@ -112,7 +113,7 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 }
 
 // pulumiLabels represents a field added upstream via a custom diff, as terraform_labels.
-// There is a bug: f this field is nil in the Pulumi state, it will never be added to the state,
+// There is a bug: if this field is nil in the Pulumi state, it will never be added to the state,
 // creating a permanent diff.
 // See also: https://github.com/pulumi/pulumi-gcp/issues/1314
 func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTransform {
@@ -127,4 +128,13 @@ func ensureLabelPathsExist(paths []resource.PropertyPath) tfbridge.PropertyTrans
 		}
 		return obj.ObjectValue(), nil
 	}
+}
+
+// If a resource has a `labels` field, the upstream provider will add the new aggregate label fields, `effectiveLabels`
+// and `terraformLabels`. To protect against accidental leaking of secrets via aggregation from resource-level `labels`
+// and provider-level `defaultLabels` fields, at runtime, we set these Outputs to Secret, if present.
+func setLabelsFieldsSecret(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
+	prop["pulumiLabels"] = resource.MakeSecret(prop["pulumiLabels"])
+	prop["effectiveLabels"] = resource.MakeSecret(prop["effectiveLabels"])
+	return prop, nil
 }
