@@ -25,19 +25,27 @@ import (
 )
 
 func TestDNSRecordSet(t *testing.T) {
-	runTest(t, test(t, "test-programs/dns-recordset"))
+	runTest(t, test(t, "test-programs/dns-recordset",
+		providertest.WithDiffValidation(providertest.NoReplacements()),
+	))
 }
 
 func TestPubSubSubscription(t *testing.T) {
-	runTest(t, test(t, "test-programs/pubsub-subscription"))
+	runTest(t, test(t, "test-programs/pubsub-subscription",
+		providertest.WithDiffValidation(providertest.NoReplacements()),
+	))
 }
 
 func TestPubSubTopic(t *testing.T) {
-	runTest(t, test(t, "test-programs/pubsub-topic"))
+	runTest(t, test(t, "test-programs/pubsub-topic",
+		providertest.WithDiffValidation(providertest.NoReplacements()),
+	))
 }
 
 func TestStorageBucket(t *testing.T) {
-	runTest(t, test(t, "test-programs/storage-bucket"))
+	runTest(t, test(t, "test-programs/storage-bucket",
+		providertest.WithDiffValidation(providertest.NoReplacements()),
+	))
 }
 
 func TestStorageBucketObject(t *testing.T) {
@@ -46,7 +54,8 @@ func TestStorageBucketObject(t *testing.T) {
 }
 
 func TestSecretManagerSecret(t *testing.T) {
-	runTest(t, test(t, "test-programs/secretmanager-secret"))
+	runTest(t, test(t, "test-programs/secretmanager-secret",
+		providertest.WithDiffValidation(providertest.NoReplacements())))
 }
 
 func TestSqlUser(t *testing.T) {
@@ -91,7 +100,9 @@ func TestAutoExtractedPrograms(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
-			runTest(t, test(t, filepath.Join("test-programs", tc.program)))
+			runTest(t, test(t, filepath.Join("test-programs", tc.program),
+				providertest.WithDiffValidation(providertest.NoReplacements()),
+			))
 		})
 	}
 }
