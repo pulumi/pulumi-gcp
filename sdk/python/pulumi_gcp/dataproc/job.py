@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,33 +55,88 @@ class JobArgs:
         :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
         """
-        pulumi.set(__self__, "placement", placement)
+        JobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            placement=placement,
+            force_delete=force_delete,
+            hadoop_config=hadoop_config,
+            hive_config=hive_config,
+            labels=labels,
+            pig_config=pig_config,
+            presto_config=presto_config,
+            project=project,
+            pyspark_config=pyspark_config,
+            reference=reference,
+            region=region,
+            scheduling=scheduling,
+            spark_config=spark_config,
+            sparksql_config=sparksql_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
+             force_delete: Optional[pulumi.Input[bool]] = None,
+             hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
+             hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pig_config: Optional[pulumi.Input['JobPigConfigArgs']] = None,
+             presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
+             reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
+             spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
+             sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if placement is None:
+            raise TypeError("Missing 'placement' argument")
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
+        _setter("placement", placement)
         if force_delete is not None:
-            pulumi.set(__self__, "force_delete", force_delete)
+            _setter("force_delete", force_delete)
         if hadoop_config is not None:
-            pulumi.set(__self__, "hadoop_config", hadoop_config)
+            _setter("hadoop_config", hadoop_config)
         if hive_config is not None:
-            pulumi.set(__self__, "hive_config", hive_config)
+            _setter("hive_config", hive_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if pig_config is not None:
-            pulumi.set(__self__, "pig_config", pig_config)
+            _setter("pig_config", pig_config)
         if presto_config is not None:
-            pulumi.set(__self__, "presto_config", presto_config)
+            _setter("presto_config", presto_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pyspark_config is not None:
-            pulumi.set(__self__, "pyspark_config", pyspark_config)
+            _setter("pyspark_config", pyspark_config)
         if reference is not None:
-            pulumi.set(__self__, "reference", reference)
+            _setter("reference", reference)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scheduling is not None:
-            pulumi.set(__self__, "scheduling", scheduling)
+            _setter("scheduling", scheduling)
         if spark_config is not None:
-            pulumi.set(__self__, "spark_config", spark_config)
+            _setter("spark_config", spark_config)
         if sparksql_config is not None:
-            pulumi.set(__self__, "sparksql_config", sparksql_config)
+            _setter("sparksql_config", sparksql_config)
 
     @property
     @pulumi.getter
@@ -308,40 +363,103 @@ class _JobState:
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
         """
+        _JobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            driver_controls_files_uri=driver_controls_files_uri,
+            driver_output_resource_uri=driver_output_resource_uri,
+            force_delete=force_delete,
+            hadoop_config=hadoop_config,
+            hive_config=hive_config,
+            labels=labels,
+            pig_config=pig_config,
+            placement=placement,
+            presto_config=presto_config,
+            project=project,
+            pyspark_config=pyspark_config,
+            reference=reference,
+            region=region,
+            scheduling=scheduling,
+            spark_config=spark_config,
+            sparksql_config=sparksql_config,
+            statuses=statuses,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             driver_controls_files_uri: Optional[pulumi.Input[str]] = None,
+             driver_output_resource_uri: Optional[pulumi.Input[str]] = None,
+             force_delete: Optional[pulumi.Input[bool]] = None,
+             hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
+             hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pig_config: Optional[pulumi.Input['JobPigConfigArgs']] = None,
+             placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
+             presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
+             reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
+             spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
+             sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if driver_controls_files_uri is None and 'driverControlsFilesUri' in kwargs:
+            driver_controls_files_uri = kwargs['driverControlsFilesUri']
+        if driver_output_resource_uri is None and 'driverOutputResourceUri' in kwargs:
+            driver_output_resource_uri = kwargs['driverOutputResourceUri']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if hadoop_config is None and 'hadoopConfig' in kwargs:
+            hadoop_config = kwargs['hadoopConfig']
+        if hive_config is None and 'hiveConfig' in kwargs:
+            hive_config = kwargs['hiveConfig']
+        if pig_config is None and 'pigConfig' in kwargs:
+            pig_config = kwargs['pigConfig']
+        if presto_config is None and 'prestoConfig' in kwargs:
+            presto_config = kwargs['prestoConfig']
+        if pyspark_config is None and 'pysparkConfig' in kwargs:
+            pyspark_config = kwargs['pysparkConfig']
+        if spark_config is None and 'sparkConfig' in kwargs:
+            spark_config = kwargs['sparkConfig']
+        if sparksql_config is None and 'sparksqlConfig' in kwargs:
+            sparksql_config = kwargs['sparksqlConfig']
+
         if driver_controls_files_uri is not None:
-            pulumi.set(__self__, "driver_controls_files_uri", driver_controls_files_uri)
+            _setter("driver_controls_files_uri", driver_controls_files_uri)
         if driver_output_resource_uri is not None:
-            pulumi.set(__self__, "driver_output_resource_uri", driver_output_resource_uri)
+            _setter("driver_output_resource_uri", driver_output_resource_uri)
         if force_delete is not None:
-            pulumi.set(__self__, "force_delete", force_delete)
+            _setter("force_delete", force_delete)
         if hadoop_config is not None:
-            pulumi.set(__self__, "hadoop_config", hadoop_config)
+            _setter("hadoop_config", hadoop_config)
         if hive_config is not None:
-            pulumi.set(__self__, "hive_config", hive_config)
+            _setter("hive_config", hive_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if pig_config is not None:
-            pulumi.set(__self__, "pig_config", pig_config)
+            _setter("pig_config", pig_config)
         if placement is not None:
-            pulumi.set(__self__, "placement", placement)
+            _setter("placement", placement)
         if presto_config is not None:
-            pulumi.set(__self__, "presto_config", presto_config)
+            _setter("presto_config", presto_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pyspark_config is not None:
-            pulumi.set(__self__, "pyspark_config", pyspark_config)
+            _setter("pyspark_config", pyspark_config)
         if reference is not None:
-            pulumi.set(__self__, "reference", reference)
+            _setter("reference", reference)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scheduling is not None:
-            pulumi.set(__self__, "scheduling", scheduling)
+            _setter("scheduling", scheduling)
         if spark_config is not None:
-            pulumi.set(__self__, "spark_config", spark_config)
+            _setter("spark_config", spark_config)
         if sparksql_config is not None:
-            pulumi.set(__self__, "sparksql_config", sparksql_config)
+            _setter("sparksql_config", sparksql_config)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
 
     @property
     @pulumi.getter(name="driverControlsFilesUri")
@@ -725,6 +843,10 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -754,20 +876,70 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["force_delete"] = force_delete
+            if hadoop_config is not None and not isinstance(hadoop_config, JobHadoopConfigArgs):
+                hadoop_config = hadoop_config or {}
+                def _setter(key, value):
+                    hadoop_config[key] = value
+                JobHadoopConfigArgs._configure(_setter, **hadoop_config)
             __props__.__dict__["hadoop_config"] = hadoop_config
+            if hive_config is not None and not isinstance(hive_config, JobHiveConfigArgs):
+                hive_config = hive_config or {}
+                def _setter(key, value):
+                    hive_config[key] = value
+                JobHiveConfigArgs._configure(_setter, **hive_config)
             __props__.__dict__["hive_config"] = hive_config
             __props__.__dict__["labels"] = labels
+            if pig_config is not None and not isinstance(pig_config, JobPigConfigArgs):
+                pig_config = pig_config or {}
+                def _setter(key, value):
+                    pig_config[key] = value
+                JobPigConfigArgs._configure(_setter, **pig_config)
             __props__.__dict__["pig_config"] = pig_config
+            if placement is not None and not isinstance(placement, JobPlacementArgs):
+                placement = placement or {}
+                def _setter(key, value):
+                    placement[key] = value
+                JobPlacementArgs._configure(_setter, **placement)
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
+            if presto_config is not None and not isinstance(presto_config, JobPrestoConfigArgs):
+                presto_config = presto_config or {}
+                def _setter(key, value):
+                    presto_config[key] = value
+                JobPrestoConfigArgs._configure(_setter, **presto_config)
             __props__.__dict__["presto_config"] = presto_config
             __props__.__dict__["project"] = project
+            if pyspark_config is not None and not isinstance(pyspark_config, JobPysparkConfigArgs):
+                pyspark_config = pyspark_config or {}
+                def _setter(key, value):
+                    pyspark_config[key] = value
+                JobPysparkConfigArgs._configure(_setter, **pyspark_config)
             __props__.__dict__["pyspark_config"] = pyspark_config
+            if reference is not None and not isinstance(reference, JobReferenceArgs):
+                reference = reference or {}
+                def _setter(key, value):
+                    reference[key] = value
+                JobReferenceArgs._configure(_setter, **reference)
             __props__.__dict__["reference"] = reference
             __props__.__dict__["region"] = region
+            if scheduling is not None and not isinstance(scheduling, JobSchedulingArgs):
+                scheduling = scheduling or {}
+                def _setter(key, value):
+                    scheduling[key] = value
+                JobSchedulingArgs._configure(_setter, **scheduling)
             __props__.__dict__["scheduling"] = scheduling
+            if spark_config is not None and not isinstance(spark_config, JobSparkConfigArgs):
+                spark_config = spark_config or {}
+                def _setter(key, value):
+                    spark_config[key] = value
+                JobSparkConfigArgs._configure(_setter, **spark_config)
             __props__.__dict__["spark_config"] = spark_config
+            if sparksql_config is not None and not isinstance(sparksql_config, JobSparksqlConfigArgs):
+                sparksql_config = sparksql_config or {}
+                def _setter(key, value):
+                    sparksql_config[key] = value
+                JobSparksqlConfigArgs._configure(_setter, **sparksql_config)
             __props__.__dict__["sparksql_config"] = sparksql_config
             __props__.__dict__["driver_controls_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None

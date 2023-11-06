@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EntryGroupArgs', 'EntryGroup']
@@ -32,15 +32,40 @@ class EntryGroupArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: EntryGroup location region.
         """
-        pulumi.set(__self__, "entry_group_id", entry_group_id)
+        EntryGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry_group_id=entry_group_id,
+            description=description,
+            display_name=display_name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry_group_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entry_group_id is None and 'entryGroupId' in kwargs:
+            entry_group_id = kwargs['entryGroupId']
+        if entry_group_id is None:
+            raise TypeError("Missing 'entry_group_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
+        _setter("entry_group_id", entry_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="entryGroupId")
@@ -131,18 +156,43 @@ class _EntryGroupState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: EntryGroup location region.
         """
+        _EntryGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            entry_group_id=entry_group_id,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             entry_group_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entry_group_id is None and 'entryGroupId' in kwargs:
+            entry_group_id = kwargs['entryGroupId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if entry_group_id is not None:
-            pulumi.set(__self__, "entry_group_id", entry_group_id)
+            _setter("entry_group_id", entry_group_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -338,6 +388,10 @@ class EntryGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EntryGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

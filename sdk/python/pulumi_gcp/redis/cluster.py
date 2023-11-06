@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,20 +45,59 @@ class ClusterArgs:
                Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
                Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         """
-        pulumi.set(__self__, "psc_configs", psc_configs)
-        pulumi.set(__self__, "shard_count", shard_count)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            psc_configs=psc_configs,
+            shard_count=shard_count,
+            authorization_mode=authorization_mode,
+            name=name,
+            project=project,
+            region=region,
+            replica_count=replica_count,
+            transit_encryption_mode=transit_encryption_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             authorization_mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replica_count: Optional[pulumi.Input[int]] = None,
+             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_configs is None:
+            raise TypeError("Missing 'psc_configs' argument")
+        if shard_count is None and 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if shard_count is None:
+            raise TypeError("Missing 'shard_count' argument")
+        if authorization_mode is None and 'authorizationMode' in kwargs:
+            authorization_mode = kwargs['authorizationMode']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
+        _setter("psc_configs", psc_configs)
+        _setter("shard_count", shard_count)
         if authorization_mode is not None:
-            pulumi.set(__self__, "authorization_mode", authorization_mode)
+            _setter("authorization_mode", authorization_mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replica_count is not None:
-            pulumi.set(__self__, "replica_count", replica_count)
+            _setter("replica_count", replica_count)
         if transit_encryption_mode is not None:
-            pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
+            _setter("transit_encryption_mode", transit_encryption_mode)
 
     @property
     @pulumi.getter(name="pscConfigs")
@@ -220,36 +259,95 @@ class _ClusterState:
                Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         :param pulumi.Input[str] uid: System assigned, unique identifier for the cluster.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorization_mode=authorization_mode,
+            create_time=create_time,
+            discovery_endpoints=discovery_endpoints,
+            name=name,
+            project=project,
+            psc_configs=psc_configs,
+            psc_connections=psc_connections,
+            region=region,
+            replica_count=replica_count,
+            shard_count=shard_count,
+            size_gb=size_gb,
+            state=state,
+            state_infos=state_infos,
+            transit_encryption_mode=transit_encryption_mode,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorization_mode: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
+             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replica_count: Optional[pulumi.Input[int]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             size_gb: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
+             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorization_mode is None and 'authorizationMode' in kwargs:
+            authorization_mode = kwargs['authorizationMode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_endpoints is None and 'discoveryEndpoints' in kwargs:
+            discovery_endpoints = kwargs['discoveryEndpoints']
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_connections is None and 'pscConnections' in kwargs:
+            psc_connections = kwargs['pscConnections']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if shard_count is None and 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if size_gb is None and 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if state_infos is None and 'stateInfos' in kwargs:
+            state_infos = kwargs['stateInfos']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         if authorization_mode is not None:
-            pulumi.set(__self__, "authorization_mode", authorization_mode)
+            _setter("authorization_mode", authorization_mode)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if discovery_endpoints is not None:
-            pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+            _setter("discovery_endpoints", discovery_endpoints)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_configs is not None:
-            pulumi.set(__self__, "psc_configs", psc_configs)
+            _setter("psc_configs", psc_configs)
         if psc_connections is not None:
-            pulumi.set(__self__, "psc_connections", psc_connections)
+            _setter("psc_connections", psc_connections)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replica_count is not None:
-            pulumi.set(__self__, "replica_count", replica_count)
+            _setter("replica_count", replica_count)
         if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
+            _setter("shard_count", shard_count)
         if size_gb is not None:
-            pulumi.set(__self__, "size_gb", size_gb)
+            _setter("size_gb", size_gb)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_infos is not None:
-            pulumi.set(__self__, "state_infos", state_infos)
+            _setter("state_infos", state_infos)
         if transit_encryption_mode is not None:
-            pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
+            _setter("transit_encryption_mode", transit_encryption_mode)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="authorizationMode")
@@ -614,6 +712,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

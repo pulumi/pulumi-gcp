@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,21 +46,60 @@ class NoteArgs:
                Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         """
-        pulumi.set(__self__, "attestation_authority", attestation_authority)
+        NoteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attestation_authority=attestation_authority,
+            expiration_time=expiration_time,
+            long_description=long_description,
+            name=name,
+            project=project,
+            related_note_names=related_note_names,
+            related_urls=related_urls,
+            short_description=short_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attestation_authority: Optional[pulumi.Input['NoteAttestationAuthorityArgs']] = None,
+             expiration_time: Optional[pulumi.Input[str]] = None,
+             long_description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+             short_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority is None and 'attestationAuthority' in kwargs:
+            attestation_authority = kwargs['attestationAuthority']
+        if attestation_authority is None:
+            raise TypeError("Missing 'attestation_authority' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if long_description is None and 'longDescription' in kwargs:
+            long_description = kwargs['longDescription']
+        if related_note_names is None and 'relatedNoteNames' in kwargs:
+            related_note_names = kwargs['relatedNoteNames']
+        if related_urls is None and 'relatedUrls' in kwargs:
+            related_urls = kwargs['relatedUrls']
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+
+        _setter("attestation_authority", attestation_authority)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if long_description is not None:
-            pulumi.set(__self__, "long_description", long_description)
+            _setter("long_description", long_description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if related_note_names is not None:
-            pulumi.set(__self__, "related_note_names", related_note_names)
+            _setter("related_note_names", related_note_names)
         if related_urls is not None:
-            pulumi.set(__self__, "related_urls", related_urls)
+            _setter("related_urls", related_urls)
         if short_description is not None:
-            pulumi.set(__self__, "short_description", short_description)
+            _setter("short_description", short_description)
 
     @property
     @pulumi.getter(name="attestationAuthority")
@@ -209,28 +248,75 @@ class _NoteState:
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         :param pulumi.Input[str] update_time: The time this note was last updated.
         """
+        _NoteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attestation_authority=attestation_authority,
+            create_time=create_time,
+            expiration_time=expiration_time,
+            kind=kind,
+            long_description=long_description,
+            name=name,
+            project=project,
+            related_note_names=related_note_names,
+            related_urls=related_urls,
+            short_description=short_description,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attestation_authority: Optional[pulumi.Input['NoteAttestationAuthorityArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             expiration_time: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             long_description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+             short_description: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority is None and 'attestationAuthority' in kwargs:
+            attestation_authority = kwargs['attestationAuthority']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if long_description is None and 'longDescription' in kwargs:
+            long_description = kwargs['longDescription']
+        if related_note_names is None and 'relatedNoteNames' in kwargs:
+            related_note_names = kwargs['relatedNoteNames']
+        if related_urls is None and 'relatedUrls' in kwargs:
+            related_urls = kwargs['relatedUrls']
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if attestation_authority is not None:
-            pulumi.set(__self__, "attestation_authority", attestation_authority)
+            _setter("attestation_authority", attestation_authority)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if long_description is not None:
-            pulumi.set(__self__, "long_description", long_description)
+            _setter("long_description", long_description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if related_note_names is not None:
-            pulumi.set(__self__, "related_note_names", related_note_names)
+            _setter("related_note_names", related_note_names)
         if related_urls is not None:
-            pulumi.set(__self__, "related_urls", related_urls)
+            _setter("related_urls", related_urls)
         if short_description is not None:
-            pulumi.set(__self__, "short_description", short_description)
+            _setter("short_description", short_description)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="attestationAuthority")
@@ -560,6 +646,10 @@ class Note(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NoteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -582,6 +672,11 @@ class Note(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NoteArgs.__new__(NoteArgs)
 
+            if attestation_authority is not None and not isinstance(attestation_authority, NoteAttestationAuthorityArgs):
+                attestation_authority = attestation_authority or {}
+                def _setter(key, value):
+                    attestation_authority[key] = value
+                NoteAttestationAuthorityArgs._configure(_setter, **attestation_authority)
             if attestation_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority'")
             __props__.__dict__["attestation_authority"] = attestation_authority

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -162,37 +162,98 @@ class GlobalForwardingRuleArgs:
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
         """
-        pulumi.set(__self__, "target", target)
+        GlobalForwardingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target=target,
+            allow_psc_global_access=allow_psc_global_access,
+            description=description,
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            ip_version=ip_version,
+            labels=labels,
+            load_balancing_scheme=load_balancing_scheme,
+            metadata_filters=metadata_filters,
+            name=name,
+            network=network,
+            no_automate_dns_zone=no_automate_dns_zone,
+            port_range=port_range,
+            project=project,
+            source_ip_ranges=source_ip_ranges,
+            subnetwork=subnetwork,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target: Optional[pulumi.Input[str]] = None,
+             allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+             metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
+             port_range: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
+        _setter("target", target)
         if allow_psc_global_access is not None:
-            pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+            _setter("allow_psc_global_access", allow_psc_global_access)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load_balancing_scheme is not None:
-            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+            _setter("load_balancing_scheme", load_balancing_scheme)
         if metadata_filters is not None:
-            pulumi.set(__self__, "metadata_filters", metadata_filters)
+            _setter("metadata_filters", metadata_filters)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if no_automate_dns_zone is not None:
-            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
+            _setter("no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if source_ip_ranges is not None:
-            pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+            _setter("source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -658,48 +719,127 @@ class _GlobalForwardingRuleState:
                
                - - -
         """
+        _GlobalForwardingRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_psc_global_access=allow_psc_global_access,
+            base_forwarding_rule=base_forwarding_rule,
+            description=description,
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            ip_version=ip_version,
+            label_fingerprint=label_fingerprint,
+            labels=labels,
+            load_balancing_scheme=load_balancing_scheme,
+            metadata_filters=metadata_filters,
+            name=name,
+            network=network,
+            no_automate_dns_zone=no_automate_dns_zone,
+            port_range=port_range,
+            project=project,
+            psc_connection_id=psc_connection_id,
+            psc_connection_status=psc_connection_status,
+            self_link=self_link,
+            source_ip_ranges=source_ip_ranges,
+            subnetwork=subnetwork,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
+             base_forwarding_rule: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+             metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
+             port_range: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_connection_id: Optional[pulumi.Input[str]] = None,
+             psc_connection_status: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if base_forwarding_rule is None and 'baseForwardingRule' in kwargs:
+            base_forwarding_rule = kwargs['baseForwardingRule']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+        if psc_connection_status is None and 'pscConnectionStatus' in kwargs:
+            psc_connection_status = kwargs['pscConnectionStatus']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
         if allow_psc_global_access is not None:
-            pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+            _setter("allow_psc_global_access", allow_psc_global_access)
         if base_forwarding_rule is not None:
-            pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
+            _setter("base_forwarding_rule", base_forwarding_rule)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if load_balancing_scheme is not None:
-            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+            _setter("load_balancing_scheme", load_balancing_scheme)
         if metadata_filters is not None:
-            pulumi.set(__self__, "metadata_filters", metadata_filters)
+            _setter("metadata_filters", metadata_filters)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if no_automate_dns_zone is not None:
-            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
+            _setter("no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
         if psc_connection_status is not None:
-            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+            _setter("psc_connection_status", psc_connection_status)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if source_ip_ranges is not None:
-            pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+            _setter("source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="allowPscGlobalAccess")
@@ -1486,6 +1626,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalForwardingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

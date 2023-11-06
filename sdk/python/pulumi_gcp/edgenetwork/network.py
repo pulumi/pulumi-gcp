@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkArgs', 'Network']
@@ -35,17 +35,48 @@ class NetworkArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "network_id", network_id)
-        pulumi.set(__self__, "zone", zone)
+        NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            network_id=network_id,
+            zone=zone,
+            description=description,
+            labels=labels,
+            mtu=mtu,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if network_id is None:
+            raise TypeError("Missing 'network_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+
+        _setter("location", location)
+        _setter("network_id", network_id)
+        _setter("zone", zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -171,26 +202,61 @@ class _NetworkState:
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
         :param pulumi.Input[str] zone: The name of the target Distributed Cloud Edge zone.
         """
+        _NetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            labels=labels,
+            location=location,
+            mtu=mtu,
+            name=name,
+            network_id=network_id,
+            project=project,
+            update_time=update_time,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="createTime")
@@ -467,6 +533,10 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

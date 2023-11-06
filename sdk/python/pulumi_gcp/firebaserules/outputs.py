@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -20,8 +20,19 @@ __all__ = [
 class RulesetMetadata(dict):
     def __init__(__self__, *,
                  services: Optional[Sequence[str]] = None):
+        RulesetMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             services: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
 
     @property
     @pulumi.getter
@@ -38,9 +49,24 @@ class RulesetSource(dict):
         :param Sequence['RulesetSourceFileArgs'] files: `File` set constituting the `Source` bundle.
         :param str language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
         """
-        pulumi.set(__self__, "files", files)
+        RulesetSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            files=files,
+            language=language,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             files: Optional[Sequence['outputs.RulesetSourceFile']] = None,
+             language: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if files is None:
+            raise TypeError("Missing 'files' argument")
+
+        _setter("files", files)
         if language is not None:
-            pulumi.set(__self__, "language", language)
+            _setter("language", language)
 
     @property
     @pulumi.getter
@@ -72,10 +98,29 @@ class RulesetSourceFile(dict):
                - - -
         :param str fingerprint: Fingerprint (e.g. github sha) associated with the `File`.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "name", name)
+        RulesetSourceFile._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            name=name,
+            fingerprint=fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[str] = None,
+             name: Optional[str] = None,
+             fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("content", content)
+        _setter("name", name)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GameServerDeploymentArgs', 'GameServerDeployment']
@@ -32,15 +32,38 @@ class GameServerDeploymentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "deployment_id", deployment_id)
+        GameServerDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment_id=deployment_id,
+            description=description,
+            labels=labels,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+
+        _setter("deployment_id", deployment_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="deploymentId")
@@ -134,18 +157,41 @@ class _GameServerDeploymentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _GameServerDeploymentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment_id=deployment_id,
+            description=description,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+
         if deployment_id is not None:
-            pulumi.set(__self__, "deployment_id", deployment_id)
+            _setter("deployment_id", deployment_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="deploymentId")
@@ -342,6 +388,10 @@ class GameServerDeployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GameServerDeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

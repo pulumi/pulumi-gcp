@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -34,16 +34,47 @@ class GatewayArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway for the API.
         """
-        pulumi.set(__self__, "api_config", api_config)
-        pulumi.set(__self__, "gateway_id", gateway_id)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_config=api_config,
+            gateway_id=gateway_id,
+            display_name=display_name,
+            labels=labels,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_config: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if api_config is None:
+            raise TypeError("Missing 'api_config' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
+        _setter("api_config", api_config)
+        _setter("gateway_id", gateway_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="apiConfig")
@@ -150,22 +181,55 @@ class _GatewayState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway for the API.
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_config=api_config,
+            default_hostname=default_hostname,
+            display_name=display_name,
+            gateway_id=gateway_id,
+            labels=labels,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_config: Optional[pulumi.Input[str]] = None,
+             default_hostname: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if default_hostname is None and 'defaultHostname' in kwargs:
+            default_hostname = kwargs['defaultHostname']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+
         if api_config is not None:
-            pulumi.set(__self__, "api_config", api_config)
+            _setter("api_config", api_config)
         if default_hostname is not None:
-            pulumi.set(__self__, "default_hostname", default_hostname)
+            _setter("default_hostname", default_hostname)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="apiConfig")
@@ -421,6 +485,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

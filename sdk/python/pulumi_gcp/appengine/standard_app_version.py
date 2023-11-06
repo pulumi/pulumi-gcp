@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -77,44 +77,129 @@ class StandardAppVersionArgs:
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
-        pulumi.set(__self__, "deployment", deployment)
-        pulumi.set(__self__, "entrypoint", entrypoint)
-        pulumi.set(__self__, "runtime", runtime)
-        pulumi.set(__self__, "service", service)
+        StandardAppVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment=deployment,
+            entrypoint=entrypoint,
+            runtime=runtime,
+            service=service,
+            app_engine_apis=app_engine_apis,
+            automatic_scaling=automatic_scaling,
+            basic_scaling=basic_scaling,
+            delete_service_on_destroy=delete_service_on_destroy,
+            env_variables=env_variables,
+            handlers=handlers,
+            inbound_services=inbound_services,
+            instance_class=instance_class,
+            libraries=libraries,
+            manual_scaling=manual_scaling,
+            noop_on_destroy=noop_on_destroy,
+            project=project,
+            runtime_api_version=runtime_api_version,
+            service_account=service_account,
+            threadsafe=threadsafe,
+            version_id=version_id,
+            vpc_access_connector=vpc_access_connector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment: Optional[pulumi.Input['StandardAppVersionDeploymentArgs']] = None,
+             entrypoint: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             app_engine_apis: Optional[pulumi.Input[bool]] = None,
+             automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
+             basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
+             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
+             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             handlers: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]]] = None,
+             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionLibraryArgs']]]] = None,
+             manual_scaling: Optional[pulumi.Input['StandardAppVersionManualScalingArgs']] = None,
+             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             runtime_api_version: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             threadsafe: Optional[pulumi.Input[bool]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment is None:
+            raise TypeError("Missing 'deployment' argument")
+        if entrypoint is None:
+            raise TypeError("Missing 'entrypoint' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
+        _setter("deployment", deployment)
+        _setter("entrypoint", entrypoint)
+        _setter("runtime", runtime)
+        _setter("service", service)
         if app_engine_apis is not None:
-            pulumi.set(__self__, "app_engine_apis", app_engine_apis)
+            _setter("app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
-            pulumi.set(__self__, "automatic_scaling", automatic_scaling)
+            _setter("automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
-            pulumi.set(__self__, "basic_scaling", basic_scaling)
+            _setter("basic_scaling", basic_scaling)
         if delete_service_on_destroy is not None:
-            pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+            _setter("delete_service_on_destroy", delete_service_on_destroy)
         if env_variables is not None:
-            pulumi.set(__self__, "env_variables", env_variables)
+            _setter("env_variables", env_variables)
         if handlers is not None:
-            pulumi.set(__self__, "handlers", handlers)
+            _setter("handlers", handlers)
         if inbound_services is not None:
-            pulumi.set(__self__, "inbound_services", inbound_services)
+            _setter("inbound_services", inbound_services)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if libraries is not None:
-            pulumi.set(__self__, "libraries", libraries)
+            _setter("libraries", libraries)
         if manual_scaling is not None:
-            pulumi.set(__self__, "manual_scaling", manual_scaling)
+            _setter("manual_scaling", manual_scaling)
         if noop_on_destroy is not None:
-            pulumi.set(__self__, "noop_on_destroy", noop_on_destroy)
+            _setter("noop_on_destroy", noop_on_destroy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if runtime_api_version is not None:
-            pulumi.set(__self__, "runtime_api_version", runtime_api_version)
+            _setter("runtime_api_version", runtime_api_version)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if threadsafe is not None:
-            pulumi.set(__self__, "threadsafe", threadsafe)
+            _setter("threadsafe", threadsafe)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
         if vpc_access_connector is not None:
-            pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+            _setter("vpc_access_connector", vpc_access_connector)
 
     @property
     @pulumi.getter
@@ -451,50 +536,129 @@ class _StandardAppVersionState:
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
+        _StandardAppVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_engine_apis=app_engine_apis,
+            automatic_scaling=automatic_scaling,
+            basic_scaling=basic_scaling,
+            delete_service_on_destroy=delete_service_on_destroy,
+            deployment=deployment,
+            entrypoint=entrypoint,
+            env_variables=env_variables,
+            handlers=handlers,
+            inbound_services=inbound_services,
+            instance_class=instance_class,
+            libraries=libraries,
+            manual_scaling=manual_scaling,
+            name=name,
+            noop_on_destroy=noop_on_destroy,
+            project=project,
+            runtime=runtime,
+            runtime_api_version=runtime_api_version,
+            service=service,
+            service_account=service_account,
+            threadsafe=threadsafe,
+            version_id=version_id,
+            vpc_access_connector=vpc_access_connector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_engine_apis: Optional[pulumi.Input[bool]] = None,
+             automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
+             basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
+             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
+             deployment: Optional[pulumi.Input['StandardAppVersionDeploymentArgs']] = None,
+             entrypoint: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']] = None,
+             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             handlers: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]]] = None,
+             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionLibraryArgs']]]] = None,
+             manual_scaling: Optional[pulumi.Input['StandardAppVersionManualScalingArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             runtime_api_version: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             threadsafe: Optional[pulumi.Input[bool]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if app_engine_apis is not None:
-            pulumi.set(__self__, "app_engine_apis", app_engine_apis)
+            _setter("app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
-            pulumi.set(__self__, "automatic_scaling", automatic_scaling)
+            _setter("automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
-            pulumi.set(__self__, "basic_scaling", basic_scaling)
+            _setter("basic_scaling", basic_scaling)
         if delete_service_on_destroy is not None:
-            pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+            _setter("delete_service_on_destroy", delete_service_on_destroy)
         if deployment is not None:
-            pulumi.set(__self__, "deployment", deployment)
+            _setter("deployment", deployment)
         if entrypoint is not None:
-            pulumi.set(__self__, "entrypoint", entrypoint)
+            _setter("entrypoint", entrypoint)
         if env_variables is not None:
-            pulumi.set(__self__, "env_variables", env_variables)
+            _setter("env_variables", env_variables)
         if handlers is not None:
-            pulumi.set(__self__, "handlers", handlers)
+            _setter("handlers", handlers)
         if inbound_services is not None:
-            pulumi.set(__self__, "inbound_services", inbound_services)
+            _setter("inbound_services", inbound_services)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if libraries is not None:
-            pulumi.set(__self__, "libraries", libraries)
+            _setter("libraries", libraries)
         if manual_scaling is not None:
-            pulumi.set(__self__, "manual_scaling", manual_scaling)
+            _setter("manual_scaling", manual_scaling)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if noop_on_destroy is not None:
-            pulumi.set(__self__, "noop_on_destroy", noop_on_destroy)
+            _setter("noop_on_destroy", noop_on_destroy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if runtime_api_version is not None:
-            pulumi.set(__self__, "runtime_api_version", runtime_api_version)
+            _setter("runtime_api_version", runtime_api_version)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if threadsafe is not None:
-            pulumi.set(__self__, "threadsafe", threadsafe)
+            _setter("threadsafe", threadsafe)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
         if vpc_access_connector is not None:
-            pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+            _setter("vpc_access_connector", vpc_access_connector)
 
     @property
     @pulumi.getter(name="appEngineApis")
@@ -1066,6 +1230,10 @@ class StandardAppVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StandardAppVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1102,12 +1270,32 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__ = StandardAppVersionArgs.__new__(StandardAppVersionArgs)
 
             __props__.__dict__["app_engine_apis"] = app_engine_apis
+            if automatic_scaling is not None and not isinstance(automatic_scaling, StandardAppVersionAutomaticScalingArgs):
+                automatic_scaling = automatic_scaling or {}
+                def _setter(key, value):
+                    automatic_scaling[key] = value
+                StandardAppVersionAutomaticScalingArgs._configure(_setter, **automatic_scaling)
             __props__.__dict__["automatic_scaling"] = automatic_scaling
+            if basic_scaling is not None and not isinstance(basic_scaling, StandardAppVersionBasicScalingArgs):
+                basic_scaling = basic_scaling or {}
+                def _setter(key, value):
+                    basic_scaling[key] = value
+                StandardAppVersionBasicScalingArgs._configure(_setter, **basic_scaling)
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+            if deployment is not None and not isinstance(deployment, StandardAppVersionDeploymentArgs):
+                deployment = deployment or {}
+                def _setter(key, value):
+                    deployment[key] = value
+                StandardAppVersionDeploymentArgs._configure(_setter, **deployment)
             if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__.__dict__["deployment"] = deployment
+            if entrypoint is not None and not isinstance(entrypoint, StandardAppVersionEntrypointArgs):
+                entrypoint = entrypoint or {}
+                def _setter(key, value):
+                    entrypoint[key] = value
+                StandardAppVersionEntrypointArgs._configure(_setter, **entrypoint)
             if entrypoint is None and not opts.urn:
                 raise TypeError("Missing required property 'entrypoint'")
             __props__.__dict__["entrypoint"] = entrypoint
@@ -1116,6 +1304,11 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
             __props__.__dict__["libraries"] = libraries
+            if manual_scaling is not None and not isinstance(manual_scaling, StandardAppVersionManualScalingArgs):
+                manual_scaling = manual_scaling or {}
+                def _setter(key, value):
+                    manual_scaling[key] = value
+                StandardAppVersionManualScalingArgs._configure(_setter, **manual_scaling)
             __props__.__dict__["manual_scaling"] = manual_scaling
             __props__.__dict__["noop_on_destroy"] = noop_on_destroy
             __props__.__dict__["project"] = project
@@ -1129,6 +1322,11 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["version_id"] = version_id
+            if vpc_access_connector is not None and not isinstance(vpc_access_connector, StandardAppVersionVpcAccessConnectorArgs):
+                vpc_access_connector = vpc_access_connector or {}
+                def _setter(key, value):
+                    vpc_access_connector[key] = value
+                StandardAppVersionVpcAccessConnectorArgs._configure(_setter, **vpc_access_connector)
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             __props__.__dict__["name"] = None
         super(StandardAppVersion, __self__).__init__(

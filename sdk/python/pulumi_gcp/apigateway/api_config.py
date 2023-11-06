@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,25 +50,70 @@ class ApiConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "api", api)
+        ApiConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api=api,
+            api_config_id=api_config_id,
+            api_config_id_prefix=api_config_id_prefix,
+            display_name=display_name,
+            gateway_config=gateway_config,
+            grpc_services=grpc_services,
+            labels=labels,
+            managed_service_configs=managed_service_configs,
+            openapi_documents=openapi_documents,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api: Optional[pulumi.Input[str]] = None,
+             api_config_id: Optional[pulumi.Input[str]] = None,
+             api_config_id_prefix: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
+             grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
+             openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+
+        _setter("api", api)
         if api_config_id is not None:
-            pulumi.set(__self__, "api_config_id", api_config_id)
+            _setter("api_config_id", api_config_id)
         if api_config_id_prefix is not None:
-            pulumi.set(__self__, "api_config_id_prefix", api_config_id_prefix)
+            _setter("api_config_id_prefix", api_config_id_prefix)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway_config is not None:
-            pulumi.set(__self__, "gateway_config", gateway_config)
+            _setter("gateway_config", gateway_config)
         if grpc_services is not None:
-            pulumi.set(__self__, "grpc_services", grpc_services)
+            _setter("grpc_services", grpc_services)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if managed_service_configs is not None:
-            pulumi.set(__self__, "managed_service_configs", managed_service_configs)
+            _setter("managed_service_configs", managed_service_configs)
         if openapi_documents is not None:
-            pulumi.set(__self__, "openapi_documents", openapi_documents)
+            _setter("openapi_documents", openapi_documents)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -243,30 +288,79 @@ class _ApiConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
+        _ApiConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api=api,
+            api_config_id=api_config_id,
+            api_config_id_prefix=api_config_id_prefix,
+            display_name=display_name,
+            gateway_config=gateway_config,
+            grpc_services=grpc_services,
+            labels=labels,
+            managed_service_configs=managed_service_configs,
+            name=name,
+            openapi_documents=openapi_documents,
+            project=project,
+            service_config_id=service_config_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api: Optional[pulumi.Input[str]] = None,
+             api_config_id: Optional[pulumi.Input[str]] = None,
+             api_config_id_prefix: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
+             grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_config_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+        if service_config_id is None and 'serviceConfigId' in kwargs:
+            service_config_id = kwargs['serviceConfigId']
+
         if api is not None:
-            pulumi.set(__self__, "api", api)
+            _setter("api", api)
         if api_config_id is not None:
-            pulumi.set(__self__, "api_config_id", api_config_id)
+            _setter("api_config_id", api_config_id)
         if api_config_id_prefix is not None:
-            pulumi.set(__self__, "api_config_id_prefix", api_config_id_prefix)
+            _setter("api_config_id_prefix", api_config_id_prefix)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway_config is not None:
-            pulumi.set(__self__, "gateway_config", gateway_config)
+            _setter("gateway_config", gateway_config)
         if grpc_services is not None:
-            pulumi.set(__self__, "grpc_services", grpc_services)
+            _setter("grpc_services", grpc_services)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if managed_service_configs is not None:
-            pulumi.set(__self__, "managed_service_configs", managed_service_configs)
+            _setter("managed_service_configs", managed_service_configs)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if openapi_documents is not None:
-            pulumi.set(__self__, "openapi_documents", openapi_documents)
+            _setter("openapi_documents", openapi_documents)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_config_id is not None:
-            pulumi.set(__self__, "service_config_id", service_config_id)
+            _setter("service_config_id", service_config_id)
 
     @property
     @pulumi.getter
@@ -574,6 +668,10 @@ class ApiConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -604,6 +702,11 @@ class ApiConfig(pulumi.CustomResource):
             __props__.__dict__["api_config_id"] = api_config_id
             __props__.__dict__["api_config_id_prefix"] = api_config_id_prefix
             __props__.__dict__["display_name"] = display_name
+            if gateway_config is not None and not isinstance(gateway_config, ApiConfigGatewayConfigArgs):
+                gateway_config = gateway_config or {}
+                def _setter(key, value):
+                    gateway_config[key] = value
+                ApiConfigGatewayConfigArgs._configure(_setter, **gateway_config)
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["grpc_services"] = grpc_services
             __props__.__dict__["labels"] = labels

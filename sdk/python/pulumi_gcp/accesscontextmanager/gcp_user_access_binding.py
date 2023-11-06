@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
@@ -26,9 +26,36 @@ class GcpUserAccessBindingArgs:
                
                - - -
         """
-        pulumi.set(__self__, "access_levels", access_levels)
-        pulumi.set(__self__, "group_key", group_key)
-        pulumi.set(__self__, "organization_id", organization_id)
+        GcpUserAccessBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_levels=access_levels,
+            group_key=group_key,
+            organization_id=organization_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_levels: Optional[pulumi.Input[str]] = None,
+             group_key: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if access_levels is None:
+            raise TypeError("Missing 'access_levels' argument")
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if group_key is None:
+            raise TypeError("Missing 'group_key' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
+        _setter("access_levels", access_levels)
+        _setter("group_key", group_key)
+        _setter("organization_id", organization_id)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -87,14 +114,37 @@ class _GcpUserAccessBindingState:
                
                - - -
         """
+        _GcpUserAccessBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_levels=access_levels,
+            group_key=group_key,
+            name=name,
+            organization_id=organization_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_levels: Optional[pulumi.Input[str]] = None,
+             group_key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_levels is None and 'accessLevels' in kwargs:
+            access_levels = kwargs['accessLevels']
+        if group_key is None and 'groupKey' in kwargs:
+            group_key = kwargs['groupKey']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if access_levels is not None:
-            pulumi.set(__self__, "access_levels", access_levels)
+            _setter("access_levels", access_levels)
         if group_key is not None:
-            pulumi.set(__self__, "group_key", group_key)
+            _setter("group_key", group_key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -216,6 +266,10 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GcpUserAccessBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

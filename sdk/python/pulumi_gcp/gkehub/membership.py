@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,20 +42,45 @@ class MembershipArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "membership_id", membership_id)
+        MembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            membership_id=membership_id,
+            authority=authority,
+            description=description,
+            endpoint=endpoint,
+            labels=labels,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             membership_id: Optional[pulumi.Input[str]] = None,
+             authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+
+        _setter("membership_id", membership_id)
         if authority is not None:
-            pulumi.set(__self__, "authority", authority)
+            _setter("authority", authority)
         if description is not None:
             warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="membershipId")
@@ -175,23 +200,48 @@ class _MembershipState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _MembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authority=authority,
+            description=description,
+            endpoint=endpoint,
+            labels=labels,
+            membership_id=membership_id,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+
         if authority is not None:
-            pulumi.set(__self__, "authority", authority)
+            _setter("authority", authority)
         if description is not None:
             warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if membership_id is not None:
-            pulumi.set(__self__, "membership_id", membership_id)
+            _setter("membership_id", membership_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -474,6 +524,10 @@ class Membership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -494,8 +548,18 @@ class Membership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MembershipArgs.__new__(MembershipArgs)
 
+            if authority is not None and not isinstance(authority, MembershipAuthorityArgs):
+                authority = authority or {}
+                def _setter(key, value):
+                    authority[key] = value
+                MembershipAuthorityArgs._configure(_setter, **authority)
             __props__.__dict__["authority"] = authority
             __props__.__dict__["description"] = description
+            if endpoint is not None and not isinstance(endpoint, MembershipEndpointArgs):
+                endpoint = endpoint or {}
+                def _setter(key, value):
+                    endpoint[key] = value
+                MembershipEndpointArgs._configure(_setter, **endpoint)
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
             if membership_id is None and not opts.urn:

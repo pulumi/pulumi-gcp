@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SslCertArgs', 'SslCert']
@@ -26,10 +26,31 @@ class SslCertArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "instance", instance)
+        SslCertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            common_name=common_name,
+            instance=instance,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             common_name: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+
+        _setter("common_name", common_name)
+        _setter("instance", instance)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="commonName")
@@ -102,26 +123,69 @@ class _SslCertState:
         :param pulumi.Input[str] server_ca_cert: The CA cert of the server this client cert was generated from.
         :param pulumi.Input[str] sha1_fingerprint: The SHA1 Fingerprint of the certificate.
         """
+        _SslCertState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            cert_serial_number=cert_serial_number,
+            common_name=common_name,
+            create_time=create_time,
+            expiration_time=expiration_time,
+            instance=instance,
+            private_key=private_key,
+            project=project,
+            server_ca_cert=server_ca_cert,
+            sha1_fingerprint=sha1_fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: Optional[pulumi.Input[str]] = None,
+             cert_serial_number: Optional[pulumi.Input[str]] = None,
+             common_name: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             expiration_time: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             server_ca_cert: Optional[pulumi.Input[str]] = None,
+             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_serial_number is None and 'certSerialNumber' in kwargs:
+            cert_serial_number = kwargs['certSerialNumber']
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if server_ca_cert is None and 'serverCaCert' in kwargs:
+            server_ca_cert = kwargs['serverCaCert']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if cert is not None:
-            pulumi.set(__self__, "cert", cert)
+            _setter("cert", cert)
         if cert_serial_number is not None:
-            pulumi.set(__self__, "cert_serial_number", cert_serial_number)
+            _setter("cert_serial_number", cert_serial_number)
         if common_name is not None:
-            pulumi.set(__self__, "common_name", common_name)
+            _setter("common_name", common_name)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if server_ca_cert is not None:
-            pulumi.set(__self__, "server_ca_cert", server_ca_cert)
+            _setter("server_ca_cert", server_ca_cert)
         if sha1_fingerprint is not None:
-            pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+            _setter("sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter
@@ -341,6 +405,10 @@ class SslCert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SslCertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

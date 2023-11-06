@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SyncAuthorizationArgs', 'SyncAuthorization']
@@ -27,9 +27,24 @@ class SyncAuthorizationArgs:
                
                - - -
         """
-        pulumi.set(__self__, "identities", identities)
+        SyncAuthorizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identities=identities,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identities is None:
+            raise TypeError("Missing 'identities' argument")
+
+        _setter("identities", identities)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -81,12 +96,27 @@ class _SyncAuthorizationState:
                
                - - -
         """
+        _SyncAuthorizationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            identities=identities,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if identities is not None:
-            pulumi.set(__self__, "identities", identities)
+            _setter("identities", identities)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -269,6 +299,10 @@ class SyncAuthorization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SyncAuthorizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,12 +38,29 @@ class ClusterDiscoveryEndpointArgs:
                is created and accessed from.
                Structure is documented below.
         """
+        ClusterDiscoveryEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            port=port,
+            psc_config=psc_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             psc_config: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if psc_config is None and 'pscConfig' in kwargs:
+            psc_config = kwargs['pscConfig']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if psc_config is not None:
-            pulumi.set(__self__, "psc_config", psc_config)
+            _setter("psc_config", psc_config)
 
     @property
     @pulumi.getter
@@ -95,8 +112,19 @@ class ClusterDiscoveryEndpointPscConfigArgs:
                
                - - -
         """
+        ClusterDiscoveryEndpointPscConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
 
     @property
     @pulumi.getter
@@ -126,7 +154,20 @@ class ClusterPscConfigArgs:
                
                - - -
         """
-        pulumi.set(__self__, "network", network)
+        ClusterPscConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
+        _setter("network", network)
 
     @property
     @pulumi.getter
@@ -164,16 +205,41 @@ class ClusterPscConnectionArgs:
         :param pulumi.Input[str] project_id: Output only. The consumer projectId where the forwarding rule is created from.
         :param pulumi.Input[str] psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the service attachment.
         """
+        ClusterPscConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            forwarding_rule=forwarding_rule,
+            network=network,
+            project_id=project_id,
+            psc_connection_id=psc_connection_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             forwarding_rule: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             psc_connection_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if forwarding_rule is None and 'forwardingRule' in kwargs:
+            forwarding_rule = kwargs['forwardingRule']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if forwarding_rule is not None:
-            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+            _setter("forwarding_rule", forwarding_rule)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
 
     @property
     @pulumi.getter
@@ -248,8 +314,21 @@ class ClusterStateInfoArgs:
         :param pulumi.Input['ClusterStateInfoUpdateInfoArgs'] update_info: A nested object resource
                Structure is documented below.
         """
+        ClusterStateInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            update_info=update_info,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             update_info: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if update_info is None and 'updateInfo' in kwargs:
+            update_info = kwargs['updateInfo']
+
         if update_info is not None:
-            pulumi.set(__self__, "update_info", update_info)
+            _setter("update_info", update_info)
 
     @property
     @pulumi.getter(name="updateInfo")
@@ -274,10 +353,27 @@ class ClusterStateInfoUpdateInfoArgs:
         :param pulumi.Input[int] target_replica_count: Target number of replica nodes per shard.
         :param pulumi.Input[int] target_shard_count: Target number of shards for redis cluster.
         """
+        ClusterStateInfoUpdateInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_replica_count=target_replica_count,
+            target_shard_count=target_shard_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_replica_count: Optional[pulumi.Input[int]] = None,
+             target_shard_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_replica_count is None and 'targetReplicaCount' in kwargs:
+            target_replica_count = kwargs['targetReplicaCount']
+        if target_shard_count is None and 'targetShardCount' in kwargs:
+            target_shard_count = kwargs['targetShardCount']
+
         if target_replica_count is not None:
-            pulumi.set(__self__, "target_replica_count", target_replica_count)
+            _setter("target_replica_count", target_replica_count)
         if target_shard_count is not None:
-            pulumi.set(__self__, "target_shard_count", target_shard_count)
+            _setter("target_shard_count", target_shard_count)
 
     @property
     @pulumi.getter(name="targetReplicaCount")
@@ -328,14 +424,37 @@ class InstanceMaintenancePolicyArgs:
                of weekly_window is expected to be one.
                Structure is documented below.
         """
+        InstanceMaintenancePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            update_time=update_time,
+            weekly_maintenance_windows=weekly_maintenance_windows,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if weekly_maintenance_windows is None and 'weeklyMaintenanceWindows' in kwargs:
+            weekly_maintenance_windows = kwargs['weeklyMaintenanceWindows']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if weekly_maintenance_windows is not None:
-            pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+            _setter("weekly_maintenance_windows", weekly_maintenance_windows)
 
     @property
     @pulumi.getter(name="createTime")
@@ -422,10 +541,31 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "start_time", start_time)
+        InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            start_time=start_time,
+            duration=duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
+        _setter("day", day)
+        _setter("start_time", start_time)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
 
     @property
     @pulumi.getter
@@ -493,14 +633,31 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
                An API may allow the value 60 if it allows leap-seconds.
         """
+        InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[pulumi.Input[int]] = None,
+             minutes: Optional[pulumi.Input[int]] = None,
+             nanos: Optional[pulumi.Input[int]] = None,
+             seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -572,12 +729,33 @@ class InstanceMaintenanceScheduleArgs:
         :param pulumi.Input[str] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
+        InstanceMaintenanceScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            schedule_deadline_time=schedule_deadline_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: Optional[pulumi.Input[str]] = None,
+             schedule_deadline_time: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if schedule_deadline_time is None and 'scheduleDeadlineTime' in kwargs:
+            schedule_deadline_time = kwargs['scheduleDeadlineTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if schedule_deadline_time is not None:
-            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+            _setter("schedule_deadline_time", schedule_deadline_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -635,10 +813,23 @@ class InstanceNodeArgs:
         :param pulumi.Input[str] zone: (Output)
                Location of the node.
         """
+        InstanceNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -697,14 +888,39 @@ class InstancePersistenceConfigArgs:
                and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        InstancePersistenceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            persistence_mode=persistence_mode,
+            rdb_next_snapshot_time=rdb_next_snapshot_time,
+            rdb_snapshot_period=rdb_snapshot_period,
+            rdb_snapshot_start_time=rdb_snapshot_start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             persistence_mode: Optional[pulumi.Input[str]] = None,
+             rdb_next_snapshot_time: Optional[pulumi.Input[str]] = None,
+             rdb_snapshot_period: Optional[pulumi.Input[str]] = None,
+             rdb_snapshot_start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if persistence_mode is None and 'persistenceMode' in kwargs:
+            persistence_mode = kwargs['persistenceMode']
+        if rdb_next_snapshot_time is None and 'rdbNextSnapshotTime' in kwargs:
+            rdb_next_snapshot_time = kwargs['rdbNextSnapshotTime']
+        if rdb_snapshot_period is None and 'rdbSnapshotPeriod' in kwargs:
+            rdb_snapshot_period = kwargs['rdbSnapshotPeriod']
+        if rdb_snapshot_start_time is None and 'rdbSnapshotStartTime' in kwargs:
+            rdb_snapshot_start_time = kwargs['rdbSnapshotStartTime']
+
         if persistence_mode is not None:
-            pulumi.set(__self__, "persistence_mode", persistence_mode)
+            _setter("persistence_mode", persistence_mode)
         if rdb_next_snapshot_time is not None:
-            pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
+            _setter("rdb_next_snapshot_time", rdb_next_snapshot_time)
         if rdb_snapshot_period is not None:
-            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+            _setter("rdb_snapshot_period", rdb_snapshot_period)
         if rdb_snapshot_start_time is not None:
-            pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+            _setter("rdb_snapshot_start_time", rdb_snapshot_start_time)
 
     @property
     @pulumi.getter(name="persistenceMode")
@@ -794,16 +1010,43 @@ class InstanceServerCaCertArgs:
         :param pulumi.Input[str] sha1_fingerprint: (Output)
                Sha1 Fingerprint of the certificate.
         """
+        InstanceServerCaCertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            create_time=create_time,
+            expire_time=expire_time,
+            serial_number=serial_number,
+            sha1_fingerprint=sha1_fingerprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             serial_number: Optional[pulumi.Input[str]] = None,
+             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if cert is not None:
-            pulumi.set(__self__, "cert", cert)
+            _setter("cert", cert)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if sha1_fingerprint is not None:
-            pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+            _setter("sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter

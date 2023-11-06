@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,18 +40,55 @@ class RestorePlanArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "backup_plan", backup_plan)
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "restore_config", restore_config)
+        RestorePlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_plan=backup_plan,
+            cluster=cluster,
+            location=location,
+            restore_config=restore_config,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_plan: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if backup_plan is None:
+            raise TypeError("Missing 'backup_plan' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if restore_config is None:
+            raise TypeError("Missing 'restore_config' argument")
+
+        _setter("backup_plan", backup_plan)
+        _setter("cluster", cluster)
+        _setter("location", location)
+        _setter("restore_config", restore_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="backupPlan")
@@ -188,28 +225,65 @@ class _RestorePlanState:
         :param pulumi.Input[str] state_reason: Detailed description of why RestorePlan is in its current state.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
+        _RestorePlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_plan=backup_plan,
+            cluster=cluster,
+            description=description,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            restore_config=restore_config,
+            state=state,
+            state_reason=state_reason,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_plan: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_reason: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if state_reason is None and 'stateReason' in kwargs:
+            state_reason = kwargs['stateReason']
+
         if backup_plan is not None:
-            pulumi.set(__self__, "backup_plan", backup_plan)
+            _setter("backup_plan", backup_plan)
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_config is not None:
-            pulumi.set(__self__, "restore_config", restore_config)
+            _setter("restore_config", restore_config)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_reason is not None:
-            pulumi.set(__self__, "state_reason", state_reason)
+            _setter("state_reason", state_reason)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="backupPlan")
@@ -1049,6 +1123,10 @@ class RestorePlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RestorePlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1084,6 +1162,11 @@ class RestorePlan(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if restore_config is not None and not isinstance(restore_config, RestorePlanRestoreConfigArgs):
+                restore_config = restore_config or {}
+                def _setter(key, value):
+                    restore_config[key] = value
+                RestorePlanRestoreConfigArgs._configure(_setter, **restore_config)
             if restore_config is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_config'")
             __props__.__dict__["restore_config"] = restore_config

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,15 +45,44 @@ class WebRegionBackendServiceIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "web_region_backend_service", web_region_backend_service)
+        WebRegionBackendServiceIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            role=role,
+            web_region_backend_service=web_region_backend_service,
+            condition=condition,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_region_backend_service: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+        if web_region_backend_service is None:
+            raise TypeError("Missing 'web_region_backend_service' argument")
+
+        _setter("members", members)
+        _setter("role", role)
+        _setter("web_region_backend_service", web_region_backend_service)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -172,20 +201,45 @@ class _WebRegionBackendServiceIamBindingState:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
         """
+        _WebRegionBackendServiceIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            members=members,
+            project=project,
+            region=region,
+            role=role,
+            web_region_backend_service=web_region_backend_service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_region_backend_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if web_region_backend_service is not None:
-            pulumi.set(__self__, "web_region_backend_service", web_region_backend_service)
+            _setter("web_region_backend_service", web_region_backend_service)
 
     @property
     @pulumi.getter
@@ -621,6 +675,10 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebRegionBackendServiceIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -641,6 +699,11 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebRegionBackendServiceIamBindingArgs.__new__(WebRegionBackendServiceIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, WebRegionBackendServiceIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                WebRegionBackendServiceIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

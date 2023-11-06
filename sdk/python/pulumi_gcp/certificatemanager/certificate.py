@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,22 +53,49 @@ class CertificateArgs:
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
         """
+        CertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            labels=labels,
+            location=location,
+            managed=managed,
+            name=name,
+            project=project,
+            scope=scope,
+            self_managed=self_managed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if managed is not None:
-            pulumi.set(__self__, "managed", managed)
+            _setter("managed", managed)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if self_managed is not None:
-            pulumi.set(__self__, "self_managed", self_managed)
+            _setter("self_managed", self_managed)
 
     @property
     @pulumi.getter
@@ -225,22 +252,49 @@ class _CertificateState:
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
         """
+        _CertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            labels=labels,
+            location=location,
+            managed=managed,
+            name=name,
+            project=project,
+            scope=scope,
+            self_managed=self_managed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if managed is not None:
-            pulumi.set(__self__, "managed", managed)
+            _setter("managed", managed)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if self_managed is not None:
-            pulumi.set(__self__, "self_managed", self_managed)
+            _setter("self_managed", self_managed)
 
     @property
     @pulumi.getter
@@ -726,6 +780,10 @@ class Certificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -751,10 +809,20 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            if managed is not None and not isinstance(managed, CertificateManagedArgs):
+                managed = managed or {}
+                def _setter(key, value):
+                    managed[key] = value
+                CertificateManagedArgs._configure(_setter, **managed)
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["scope"] = scope
+            if self_managed is not None and not isinstance(self_managed, CertificateSelfManagedArgs):
+                self_managed = self_managed or {}
+                def _setter(key, value):
+                    self_managed[key] = value
+                CertificateSelfManagedArgs._configure(_setter, **self_managed)
             __props__.__dict__["self_managed"] = self_managed
         super(Certificate, __self__).__init__(
             'gcp:certificatemanager/certificate:Certificate',

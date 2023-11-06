@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MeshArgs', 'Mesh']
@@ -35,16 +35,37 @@ class MeshArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        MeshArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            interception_port=interception_port,
+            labels=labels,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             interception_port: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interception_port is None and 'interceptionPort' in kwargs:
+            interception_port = kwargs['interceptionPort']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interception_port is not None:
-            pulumi.set(__self__, "interception_port", interception_port)
+            _setter("interception_port", interception_port)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -145,22 +166,55 @@ class _MeshState:
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the Mesh was updated in UTC.
         """
+        _MeshState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            interception_port=interception_port,
+            labels=labels,
+            name=name,
+            project=project,
+            self_link=self_link,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             interception_port: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if interception_port is None and 'interceptionPort' in kwargs:
+            interception_port = kwargs['interceptionPort']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interception_port is not None:
-            pulumi.set(__self__, "interception_port", interception_port)
+            _setter("interception_port", interception_port)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -402,6 +456,10 @@ class Mesh(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MeshArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

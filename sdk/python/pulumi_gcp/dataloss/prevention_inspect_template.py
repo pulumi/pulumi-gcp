@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,15 +39,42 @@ class PreventionInspectTemplateArgs:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "parent", parent)
+        PreventionInspectTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            description=description,
+            display_name=display_name,
+            inspect_config=inspect_config,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_config is None and 'inspectConfig' in kwargs:
+            inspect_config = kwargs['inspectConfig']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
+        _setter("parent", parent)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_config is not None:
-            pulumi.set(__self__, "inspect_config", inspect_config)
+            _setter("inspect_config", inspect_config)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
 
     @property
     @pulumi.getter
@@ -149,18 +176,45 @@ class _PreventionInspectTemplateState:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
         """
+        _PreventionInspectTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            inspect_config=inspect_config,
+            name=name,
+            parent=parent,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_config is None and 'inspectConfig' in kwargs:
+            inspect_config = kwargs['inspectConfig']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_config is not None:
-            pulumi.set(__self__, "inspect_config", inspect_config)
+            _setter("inspect_config", inspect_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
 
     @property
     @pulumi.getter
@@ -585,6 +639,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PreventionInspectTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -606,6 +664,11 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if inspect_config is not None and not isinstance(inspect_config, PreventionInspectTemplateInspectConfigArgs):
+                inspect_config = inspect_config or {}
+                def _setter(key, value):
+                    inspect_config[key] = value
+                PreventionInspectTemplateInspectConfigArgs._configure(_setter, **inspect_config)
             __props__.__dict__["inspect_config"] = inspect_config
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

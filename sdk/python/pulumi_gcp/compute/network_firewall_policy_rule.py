@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,25 +43,78 @@ class NetworkFirewallPolicyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "firewall_policy", firewall_policy)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "priority", priority)
+        NetworkFirewallPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            direction=direction,
+            firewall_policy=firewall_policy,
+            match=match,
+            priority=priority,
+            description=description,
+            disabled=disabled,
+            enable_logging=enable_logging,
+            project=project,
+            rule_name=rule_name,
+            target_secure_tags=target_secure_tags,
+            target_service_accounts=target_service_accounts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['NetworkFirewallPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
+             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
+        _setter("action", action)
+        _setter("direction", direction)
+        _setter("firewall_policy", firewall_policy)
+        _setter("match", match)
+        _setter("priority", priority)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if target_secure_tags is not None:
-            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+            _setter("target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
-            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+            _setter("target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -242,34 +295,83 @@ class _NetworkFirewallPolicyRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code> may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
+        _NetworkFirewallPolicyRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            description=description,
+            direction=direction,
+            disabled=disabled,
+            enable_logging=enable_logging,
+            firewall_policy=firewall_policy,
+            kind=kind,
+            match=match,
+            priority=priority,
+            project=project,
+            rule_name=rule_name,
+            rule_tuple_count=rule_tuple_count,
+            target_secure_tags=target_secure_tags,
+            target_service_accounts=target_service_accounts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['NetworkFirewallPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             rule_tuple_count: Optional[pulumi.Input[int]] = None,
+             target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
+             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if firewall_policy is not None:
-            pulumi.set(__self__, "firewall_policy", firewall_policy)
+            _setter("firewall_policy", firewall_policy)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if rule_tuple_count is not None:
-            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+            _setter("rule_tuple_count", rule_tuple_count)
         if target_secure_tags is not None:
-            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+            _setter("target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
-            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+            _setter("target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -635,6 +737,10 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkFirewallPolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -673,6 +779,11 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             if firewall_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_policy'")
             __props__.__dict__["firewall_policy"] = firewall_policy
+            if match is not None and not isinstance(match, NetworkFirewallPolicyRuleMatchArgs):
+                match = match or {}
+                def _setter(key, value):
+                    match[key] = value
+                NetworkFirewallPolicyRuleMatchArgs._configure(_setter, **match)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

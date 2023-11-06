@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClientArgs', 'Client']
@@ -26,8 +26,27 @@ class ClientArgs:
                - - -
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
-        pulumi.set(__self__, "brand", brand)
-        pulumi.set(__self__, "display_name", display_name)
+        ClientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            brand=brand,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             brand: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if brand is None:
+            raise TypeError("Missing 'brand' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
+        _setter("brand", brand)
+        _setter("display_name", display_name)
 
     @property
     @pulumi.getter
@@ -79,14 +98,35 @@ class _ClientState:
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        _ClientState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            brand=brand,
+            client_id=client_id,
+            display_name=display_name,
+            secret=secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             brand: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if brand is not None:
-            pulumi.set(__self__, "brand", brand)
+            _setter("brand", brand)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
 
     @property
     @pulumi.getter
@@ -277,6 +317,10 @@ class Client(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

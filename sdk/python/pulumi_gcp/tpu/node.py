@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,26 +59,71 @@ class NodeArgs:
                TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
-        pulumi.set(__self__, "accelerator_type", accelerator_type)
-        pulumi.set(__self__, "tensorflow_version", tensorflow_version)
+        NodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_type=accelerator_type,
+            tensorflow_version=tensorflow_version,
+            cidr_block=cidr_block,
+            description=description,
+            labels=labels,
+            name=name,
+            network=network,
+            project=project,
+            scheduling_config=scheduling_config,
+            use_service_networking=use_service_networking,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             tensorflow_version: Optional[pulumi.Input[str]] = None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
+             use_service_networking: Optional[pulumi.Input[bool]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if tensorflow_version is None:
+            raise TypeError("Missing 'tensorflow_version' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
+        _setter("accelerator_type", accelerator_type)
+        _setter("tensorflow_version", tensorflow_version)
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if scheduling_config is not None:
-            pulumi.set(__self__, "scheduling_config", scheduling_config)
+            _setter("scheduling_config", scheduling_config)
         if use_service_networking is not None:
-            pulumi.set(__self__, "use_service_networking", use_service_networking)
+            _setter("use_service_networking", use_service_networking)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -287,32 +332,81 @@ class _NodeState:
                TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
+        _NodeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_type=accelerator_type,
+            cidr_block=cidr_block,
+            description=description,
+            labels=labels,
+            name=name,
+            network=network,
+            network_endpoints=network_endpoints,
+            project=project,
+            scheduling_config=scheduling_config,
+            service_account=service_account,
+            tensorflow_version=tensorflow_version,
+            use_service_networking=use_service_networking,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             tensorflow_version: Optional[pulumi.Input[str]] = None,
+             use_service_networking: Optional[pulumi.Input[bool]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if network_endpoints is None and 'networkEndpoints' in kwargs:
+            network_endpoints = kwargs['networkEndpoints']
+        if scheduling_config is None and 'schedulingConfig' in kwargs:
+            scheduling_config = kwargs['schedulingConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if tensorflow_version is None and 'tensorflowVersion' in kwargs:
+            tensorflow_version = kwargs['tensorflowVersion']
+        if use_service_networking is None and 'useServiceNetworking' in kwargs:
+            use_service_networking = kwargs['useServiceNetworking']
+
         if accelerator_type is not None:
-            pulumi.set(__self__, "accelerator_type", accelerator_type)
+            _setter("accelerator_type", accelerator_type)
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_endpoints is not None:
-            pulumi.set(__self__, "network_endpoints", network_endpoints)
+            _setter("network_endpoints", network_endpoints)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if scheduling_config is not None:
-            pulumi.set(__self__, "scheduling_config", scheduling_config)
+            _setter("scheduling_config", scheduling_config)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if tensorflow_version is not None:
-            pulumi.set(__self__, "tensorflow_version", tensorflow_version)
+            _setter("tensorflow_version", tensorflow_version)
         if use_service_networking is not None:
-            pulumi.set(__self__, "use_service_networking", use_service_networking)
+            _setter("use_service_networking", use_service_networking)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -710,6 +804,10 @@ class Node(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -744,6 +842,11 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            if scheduling_config is not None and not isinstance(scheduling_config, NodeSchedulingConfigArgs):
+                scheduling_config = scheduling_config or {}
+                def _setter(key, value):
+                    scheduling_config[key] = value
+                NodeSchedulingConfigArgs._configure(_setter, **scheduling_config)
             __props__.__dict__["scheduling_config"] = scheduling_config
             if tensorflow_version is None and not opts.urn:
                 raise TypeError("Missing required property 'tensorflow_version'")

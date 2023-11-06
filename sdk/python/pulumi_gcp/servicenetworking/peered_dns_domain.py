@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PeeredDnsDomainArgs', 'PeeredDnsDomain']
@@ -27,14 +27,39 @@ class PeeredDnsDomainArgs:
         :param pulumi.Input[str] project: The producer project number. If not provided, the provider project is used.
         :param pulumi.Input[str] service: Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
         """
-        pulumi.set(__self__, "dns_suffix", dns_suffix)
-        pulumi.set(__self__, "network", network)
+        PeeredDnsDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_suffix=dns_suffix,
+            network=network,
+            name=name,
+            project=project,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_suffix: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_suffix is None and 'dnsSuffix' in kwargs:
+            dns_suffix = kwargs['dnsSuffix']
+        if dns_suffix is None:
+            raise TypeError("Missing 'dns_suffix' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
+        _setter("dns_suffix", dns_suffix)
+        _setter("network", network)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="dnsSuffix")
@@ -115,18 +140,41 @@ class _PeeredDnsDomainState:
         :param pulumi.Input[str] project: The producer project number. If not provided, the provider project is used.
         :param pulumi.Input[str] service: Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
         """
+        _PeeredDnsDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_suffix=dns_suffix,
+            name=name,
+            network=network,
+            parent=parent,
+            project=project,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_suffix: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_suffix is None and 'dnsSuffix' in kwargs:
+            dns_suffix = kwargs['dnsSuffix']
+
         if dns_suffix is not None:
-            pulumi.set(__self__, "dns_suffix", dns_suffix)
+            _setter("dns_suffix", dns_suffix)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="dnsSuffix")
@@ -292,6 +340,10 @@ class PeeredDnsDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PeeredDnsDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,21 +52,58 @@ class RegionPerInstanceConfigArgs:
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
         """
-        pulumi.set(__self__, "region_instance_group_manager", region_instance_group_manager)
+        RegionPerInstanceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_instance_group_manager=region_instance_group_manager,
+            minimal_action=minimal_action,
+            most_disruptive_allowed_action=most_disruptive_allowed_action,
+            name=name,
+            preserved_state=preserved_state,
+            project=project,
+            region=region,
+            remove_instance_state_on_destroy=remove_instance_state_on_destroy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+             minimal_action: Optional[pulumi.Input[str]] = None,
+             most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preserved_state: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region_instance_group_manager is None and 'regionInstanceGroupManager' in kwargs:
+            region_instance_group_manager = kwargs['regionInstanceGroupManager']
+        if region_instance_group_manager is None:
+            raise TypeError("Missing 'region_instance_group_manager' argument")
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
+        _setter("region_instance_group_manager", region_instance_group_manager)
         if minimal_action is not None:
-            pulumi.set(__self__, "minimal_action", minimal_action)
+            _setter("minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
-            pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
+            _setter("most_disruptive_allowed_action", most_disruptive_allowed_action)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preserved_state is not None:
-            pulumi.set(__self__, "preserved_state", preserved_state)
+            _setter("preserved_state", preserved_state)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if remove_instance_state_on_destroy is not None:
-            pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
+            _setter("remove_instance_state_on_destroy", remove_instance_state_on_destroy)
 
     @property
     @pulumi.getter(name="regionInstanceGroupManager")
@@ -221,22 +258,57 @@ class _RegionPerInstanceConfigState:
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
         """
+        _RegionPerInstanceConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            minimal_action=minimal_action,
+            most_disruptive_allowed_action=most_disruptive_allowed_action,
+            name=name,
+            preserved_state=preserved_state,
+            project=project,
+            region=region,
+            region_instance_group_manager=region_instance_group_manager,
+            remove_instance_state_on_destroy=remove_instance_state_on_destroy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             minimal_action: Optional[pulumi.Input[str]] = None,
+             most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preserved_state: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if minimal_action is None and 'minimalAction' in kwargs:
+            minimal_action = kwargs['minimalAction']
+        if most_disruptive_allowed_action is None and 'mostDisruptiveAllowedAction' in kwargs:
+            most_disruptive_allowed_action = kwargs['mostDisruptiveAllowedAction']
+        if preserved_state is None and 'preservedState' in kwargs:
+            preserved_state = kwargs['preservedState']
+        if region_instance_group_manager is None and 'regionInstanceGroupManager' in kwargs:
+            region_instance_group_manager = kwargs['regionInstanceGroupManager']
+        if remove_instance_state_on_destroy is None and 'removeInstanceStateOnDestroy' in kwargs:
+            remove_instance_state_on_destroy = kwargs['removeInstanceStateOnDestroy']
+
         if minimal_action is not None:
-            pulumi.set(__self__, "minimal_action", minimal_action)
+            _setter("minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
-            pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
+            _setter("most_disruptive_allowed_action", most_disruptive_allowed_action)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preserved_state is not None:
-            pulumi.set(__self__, "preserved_state", preserved_state)
+            _setter("preserved_state", preserved_state)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if region_instance_group_manager is not None:
-            pulumi.set(__self__, "region_instance_group_manager", region_instance_group_manager)
+            _setter("region_instance_group_manager", region_instance_group_manager)
         if remove_instance_state_on_destroy is not None:
-            pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
+            _setter("remove_instance_state_on_destroy", remove_instance_state_on_destroy)
 
     @property
     @pulumi.getter(name="minimalAction")
@@ -604,6 +676,10 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionPerInstanceConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -629,6 +705,11 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             __props__.__dict__["minimal_action"] = minimal_action
             __props__.__dict__["most_disruptive_allowed_action"] = most_disruptive_allowed_action
             __props__.__dict__["name"] = name
+            if preserved_state is not None and not isinstance(preserved_state, RegionPerInstanceConfigPreservedStateArgs):
+                preserved_state = preserved_state or {}
+                def _setter(key, value):
+                    preserved_state[key] = value
+                RegionPerInstanceConfigPreservedStateArgs._configure(_setter, **preserved_state)
             __props__.__dict__["preserved_state"] = preserved_state
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,9 +25,32 @@ class IamAuditConfigArgs:
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
-        pulumi.set(__self__, "audit_log_configs", audit_log_configs)
-        pulumi.set(__self__, "folder", folder)
-        pulumi.set(__self__, "service", service)
+        IamAuditConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_log_configs=audit_log_configs,
+            folder=folder,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+        if audit_log_configs is None:
+            raise TypeError("Missing 'audit_log_configs' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
+        _setter("audit_log_configs", audit_log_configs)
+        _setter("folder", folder)
+        _setter("service", service)
 
     @property
     @pulumi.getter(name="auditLogConfigs")
@@ -80,14 +103,33 @@ class _IamAuditConfigState:
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_folder\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
+        _IamAuditConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_log_configs=audit_log_configs,
+            etag=etag,
+            folder=folder,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+
         if audit_log_configs is not None:
-            pulumi.set(__self__, "audit_log_configs", audit_log_configs)
+            _setter("audit_log_configs", audit_log_configs)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="auditLogConfigs")
@@ -521,6 +563,10 @@ class IamAuditConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamAuditConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

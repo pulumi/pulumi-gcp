@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupArgs', 'Backup']
@@ -41,17 +41,50 @@ class BackupArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "source_file_share", source_file_share)
-        pulumi.set(__self__, "source_instance", source_instance)
+        BackupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            source_file_share=source_file_share,
+            source_instance=source_instance,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             source_file_share: Optional[pulumi.Input[str]] = None,
+             source_instance: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if source_file_share is None and 'sourceFileShare' in kwargs:
+            source_file_share = kwargs['sourceFileShare']
+        if source_file_share is None:
+            raise TypeError("Missing 'source_file_share' argument")
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance is None:
+            raise TypeError("Missing 'source_instance' argument")
+
+        _setter("location", location)
+        _setter("source_file_share", source_file_share)
+        _setter("source_instance", source_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -192,34 +225,87 @@ class _BackupState:
         :param pulumi.Input[str] state: The backup state.
         :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
+        _BackupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_gb=capacity_gb,
+            create_time=create_time,
+            description=description,
+            download_bytes=download_bytes,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            source_file_share=source_file_share,
+            source_instance=source_instance,
+            source_instance_tier=source_instance_tier,
+            state=state,
+            storage_bytes=storage_bytes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_gb: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             download_bytes: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             source_file_share: Optional[pulumi.Input[str]] = None,
+             source_instance: Optional[pulumi.Input[str]] = None,
+             source_instance_tier: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             storage_bytes: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if capacity_gb is None and 'capacityGb' in kwargs:
+            capacity_gb = kwargs['capacityGb']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if download_bytes is None and 'downloadBytes' in kwargs:
+            download_bytes = kwargs['downloadBytes']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if source_file_share is None and 'sourceFileShare' in kwargs:
+            source_file_share = kwargs['sourceFileShare']
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance_tier is None and 'sourceInstanceTier' in kwargs:
+            source_instance_tier = kwargs['sourceInstanceTier']
+        if storage_bytes is None and 'storageBytes' in kwargs:
+            storage_bytes = kwargs['storageBytes']
+
         if capacity_gb is not None:
-            pulumi.set(__self__, "capacity_gb", capacity_gb)
+            _setter("capacity_gb", capacity_gb)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if download_bytes is not None:
-            pulumi.set(__self__, "download_bytes", download_bytes)
+            _setter("download_bytes", download_bytes)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if source_file_share is not None:
-            pulumi.set(__self__, "source_file_share", source_file_share)
+            _setter("source_file_share", source_file_share)
         if source_instance is not None:
-            pulumi.set(__self__, "source_instance", source_instance)
+            _setter("source_instance", source_instance)
         if source_instance_tier is not None:
-            pulumi.set(__self__, "source_instance_tier", source_instance_tier)
+            _setter("source_instance_tier", source_instance_tier)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if storage_bytes is not None:
-            pulumi.set(__self__, "storage_bytes", storage_bytes)
+            _setter("storage_bytes", storage_bytes)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -561,6 +647,10 @@ class Backup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,9 +25,26 @@ class ApplicationUrlDispatchRulesArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "dispatch_rules", dispatch_rules)
+        ApplicationUrlDispatchRulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dispatch_rules=dispatch_rules,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dispatch_rules is None and 'dispatchRules' in kwargs:
+            dispatch_rules = kwargs['dispatchRules']
+        if dispatch_rules is None:
+            raise TypeError("Missing 'dispatch_rules' argument")
+
+        _setter("dispatch_rules", dispatch_rules)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dispatchRules")
@@ -68,10 +85,25 @@ class _ApplicationUrlDispatchRulesState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _ApplicationUrlDispatchRulesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dispatch_rules=dispatch_rules,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dispatch_rules is None and 'dispatchRules' in kwargs:
+            dispatch_rules = kwargs['dispatchRules']
+
         if dispatch_rules is not None:
-            pulumi.set(__self__, "dispatch_rules", dispatch_rules)
+            _setter("dispatch_rules", dispatch_rules)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dispatchRules")
@@ -243,6 +275,10 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationUrlDispatchRulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

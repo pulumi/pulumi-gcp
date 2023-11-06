@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,9 +46,26 @@ class ConfigBlockingFunctionsArgs:
         :param pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs'] forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
                Structure is documented below.
         """
-        pulumi.set(__self__, "triggers", triggers)
+        ConfigBlockingFunctionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            triggers=triggers,
+            forward_inbound_credentials=forward_inbound_credentials,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]]] = None,
+             forward_inbound_credentials: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if triggers is None:
+            raise TypeError("Missing 'triggers' argument")
+        if forward_inbound_credentials is None and 'forwardInboundCredentials' in kwargs:
+            forward_inbound_credentials = kwargs['forwardInboundCredentials']
+
+        _setter("triggers", triggers)
         if forward_inbound_credentials is not None:
-            pulumi.set(__self__, "forward_inbound_credentials", forward_inbound_credentials)
+            _setter("forward_inbound_credentials", forward_inbound_credentials)
 
     @property
     @pulumi.getter
@@ -88,12 +105,33 @@ class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
         :param pulumi.Input[bool] id_token: Whether to pass the user's OIDC identity provider's ID token.
         :param pulumi.Input[bool] refresh_token: Whether to pass the user's OAuth identity provider's refresh token.
         """
+        ConfigBlockingFunctionsForwardInboundCredentialsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_token=access_token,
+            id_token=id_token,
+            refresh_token=refresh_token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_token: Optional[pulumi.Input[bool]] = None,
+             id_token: Optional[pulumi.Input[bool]] = None,
+             refresh_token: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_token is None and 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if id_token is None and 'idToken' in kwargs:
+            id_token = kwargs['idToken']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+
         if access_token is not None:
-            pulumi.set(__self__, "access_token", access_token)
+            _setter("access_token", access_token)
         if id_token is not None:
-            pulumi.set(__self__, "id_token", id_token)
+            _setter("id_token", id_token)
         if refresh_token is not None:
-            pulumi.set(__self__, "refresh_token", refresh_token)
+            _setter("refresh_token", refresh_token)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -144,10 +182,35 @@ class ConfigBlockingFunctionsTriggerArgs:
         :param pulumi.Input[str] update_time: (Output)
                When the trigger was changed.
         """
-        pulumi.set(__self__, "event_type", event_type)
-        pulumi.set(__self__, "function_uri", function_uri)
+        ConfigBlockingFunctionsTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_type=event_type,
+            function_uri=function_uri,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_type: Optional[pulumi.Input[str]] = None,
+             function_uri: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if function_uri is None and 'functionUri' in kwargs:
+            function_uri = kwargs['functionUri']
+        if function_uri is None:
+            raise TypeError("Missing 'function_uri' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
+        _setter("event_type", event_type)
+        _setter("function_uri", function_uri)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="eventType")
@@ -195,8 +258,21 @@ class ConfigQuotaArgs:
         :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
                Structure is documented below.
         """
+        ConfigQuotaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sign_up_quota_config=sign_up_quota_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sign_up_quota_config: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sign_up_quota_config is None and 'signUpQuotaConfig' in kwargs:
+            sign_up_quota_config = kwargs['signUpQuotaConfig']
+
         if sign_up_quota_config is not None:
-            pulumi.set(__self__, "sign_up_quota_config", sign_up_quota_config)
+            _setter("sign_up_quota_config", sign_up_quota_config)
 
     @property
     @pulumi.getter(name="signUpQuotaConfig")
@@ -223,12 +299,31 @@ class ConfigQuotaSignUpQuotaConfigArgs:
         :param pulumi.Input[str] quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
         :param pulumi.Input[str] start_time: When this quota will take affect.
         """
+        ConfigQuotaSignUpQuotaConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            quota=quota,
+            quota_duration=quota_duration,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             quota: Optional[pulumi.Input[int]] = None,
+             quota_duration: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if quota_duration is None and 'quotaDuration' in kwargs:
+            quota_duration = kwargs['quotaDuration']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
         if quota_duration is not None:
-            pulumi.set(__self__, "quota_duration", quota_duration)
+            _setter("quota_duration", quota_duration)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter
@@ -287,16 +382,41 @@ class ConfigSignInArgs:
         :param pulumi.Input['ConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
+        ConfigSignInArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_duplicate_emails=allow_duplicate_emails,
+            anonymous=anonymous,
+            email=email,
+            hash_configs=hash_configs,
+            phone_number=phone_number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_duplicate_emails: Optional[pulumi.Input[bool]] = None,
+             anonymous: Optional[pulumi.Input['ConfigSignInAnonymousArgs']] = None,
+             email: Optional[pulumi.Input['ConfigSignInEmailArgs']] = None,
+             hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]] = None,
+             phone_number: Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_duplicate_emails is None and 'allowDuplicateEmails' in kwargs:
+            allow_duplicate_emails = kwargs['allowDuplicateEmails']
+        if hash_configs is None and 'hashConfigs' in kwargs:
+            hash_configs = kwargs['hashConfigs']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+
         if allow_duplicate_emails is not None:
-            pulumi.set(__self__, "allow_duplicate_emails", allow_duplicate_emails)
+            _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
-            pulumi.set(__self__, "anonymous", anonymous)
+            _setter("anonymous", anonymous)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if hash_configs is not None:
-            pulumi.set(__self__, "hash_configs", hash_configs)
+            _setter("hash_configs", hash_configs)
         if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
+            _setter("phone_number", phone_number)
 
     @property
     @pulumi.getter(name="allowDuplicateEmails")
@@ -373,7 +493,20 @@ class ConfigSignInAnonymousArgs:
                
                <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInAnonymousArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
+        _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -401,9 +534,26 @@ class ConfigSignInEmailArgs:
                password must be provided to sign in. If false, a user may sign in via either
                email/password or email link.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInEmailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            password_required=password_required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             password_required: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if password_required is None and 'passwordRequired' in kwargs:
+            password_required = kwargs['passwordRequired']
+
+        _setter("enabled", enabled)
         if password_required is not None:
-            pulumi.set(__self__, "password_required", password_required)
+            _setter("password_required", password_required)
 
     @property
     @pulumi.getter
@@ -452,16 +602,41 @@ class ConfigSignInHashConfigArgs:
         :param pulumi.Input[str] signer_key: (Output)
                Signer key in base64.
         """
+        ConfigSignInHashConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            memory_cost=memory_cost,
+            rounds=rounds,
+            salt_separator=salt_separator,
+            signer_key=signer_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             memory_cost: Optional[pulumi.Input[int]] = None,
+             rounds: Optional[pulumi.Input[int]] = None,
+             salt_separator: Optional[pulumi.Input[str]] = None,
+             signer_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if memory_cost is None and 'memoryCost' in kwargs:
+            memory_cost = kwargs['memoryCost']
+        if salt_separator is None and 'saltSeparator' in kwargs:
+            salt_separator = kwargs['saltSeparator']
+        if signer_key is None and 'signerKey' in kwargs:
+            signer_key = kwargs['signerKey']
+
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if memory_cost is not None:
-            pulumi.set(__self__, "memory_cost", memory_cost)
+            _setter("memory_cost", memory_cost)
         if rounds is not None:
-            pulumi.set(__self__, "rounds", rounds)
+            _setter("rounds", rounds)
         if salt_separator is not None:
-            pulumi.set(__self__, "salt_separator", salt_separator)
+            _setter("salt_separator", salt_separator)
         if signer_key is not None:
-            pulumi.set(__self__, "signer_key", signer_key)
+            _setter("signer_key", signer_key)
 
     @property
     @pulumi.getter
@@ -538,9 +713,26 @@ class ConfigSignInPhoneNumberArgs:
         :param pulumi.Input[bool] enabled: Whether phone number auth is enabled for the project or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ConfigSignInPhoneNumberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            test_phone_numbers=test_phone_numbers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if test_phone_numbers is None and 'testPhoneNumbers' in kwargs:
+            test_phone_numbers = kwargs['testPhoneNumbers']
+
+        _setter("enabled", enabled)
         if test_phone_numbers is not None:
-            pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
+            _setter("test_phone_numbers", test_phone_numbers)
 
     @property
     @pulumi.getter
@@ -581,11 +773,42 @@ class InboundSamlConfigIdpConfigArgs:
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
         :param pulumi.Input[bool] sign_request: Indicates if outbounding SAMLRequest should be signed.
         """
-        pulumi.set(__self__, "idp_certificates", idp_certificates)
-        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
-        pulumi.set(__self__, "sso_url", sso_url)
+        InboundSamlConfigIdpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idp_certificates=idp_certificates,
+            idp_entity_id=idp_entity_id,
+            sso_url=sso_url,
+            sign_request=sign_request,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]] = None,
+             idp_entity_id: Optional[pulumi.Input[str]] = None,
+             sso_url: Optional[pulumi.Input[str]] = None,
+             sign_request: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idp_certificates is None and 'idpCertificates' in kwargs:
+            idp_certificates = kwargs['idpCertificates']
+        if idp_certificates is None:
+            raise TypeError("Missing 'idp_certificates' argument")
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
+            idp_entity_id = kwargs['idpEntityId']
+        if idp_entity_id is None:
+            raise TypeError("Missing 'idp_entity_id' argument")
+        if sso_url is None and 'ssoUrl' in kwargs:
+            sso_url = kwargs['ssoUrl']
+        if sso_url is None:
+            raise TypeError("Missing 'sso_url' argument")
+        if sign_request is None and 'signRequest' in kwargs:
+            sign_request = kwargs['signRequest']
+
+        _setter("idp_certificates", idp_certificates)
+        _setter("idp_entity_id", idp_entity_id)
+        _setter("sso_url", sso_url)
         if sign_request is not None:
-            pulumi.set(__self__, "sign_request", sign_request)
+            _setter("sign_request", sign_request)
 
     @property
     @pulumi.getter(name="idpCertificates")
@@ -644,8 +867,21 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
         """
         :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
         """
+        InboundSamlConfigIdpConfigIdpCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
@@ -676,12 +912,33 @@ class InboundSamlConfigSpConfigArgs:
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
         """
+        InboundSamlConfigSpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            callback_uri=callback_uri,
+            sp_certificates=sp_certificates,
+            sp_entity_id=sp_entity_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             callback_uri: Optional[pulumi.Input[str]] = None,
+             sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]] = None,
+             sp_entity_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if callback_uri is None and 'callbackUri' in kwargs:
+            callback_uri = kwargs['callbackUri']
+        if sp_certificates is None and 'spCertificates' in kwargs:
+            sp_certificates = kwargs['spCertificates']
+        if sp_entity_id is None and 'spEntityId' in kwargs:
+            sp_entity_id = kwargs['spEntityId']
+
         if callback_uri is not None:
-            pulumi.set(__self__, "callback_uri", callback_uri)
+            _setter("callback_uri", callback_uri)
         if sp_certificates is not None:
-            pulumi.set(__self__, "sp_certificates", sp_certificates)
+            _setter("sp_certificates", sp_certificates)
         if sp_entity_id is not None:
-            pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+            _setter("sp_entity_id", sp_entity_id)
 
     @property
     @pulumi.getter(name="callbackUri")
@@ -732,8 +989,21 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
         """
         :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
         """
+        InboundSamlConfigSpConfigSpCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
@@ -768,16 +1038,41 @@ class ProjectDefaultConfigSignInArgs:
         :param pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
         """
+        ProjectDefaultConfigSignInArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_duplicate_emails=allow_duplicate_emails,
+            anonymous=anonymous,
+            email=email,
+            hash_configs=hash_configs,
+            phone_number=phone_number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_duplicate_emails: Optional[pulumi.Input[bool]] = None,
+             anonymous: Optional[pulumi.Input['ProjectDefaultConfigSignInAnonymousArgs']] = None,
+             email: Optional[pulumi.Input['ProjectDefaultConfigSignInEmailArgs']] = None,
+             hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]]] = None,
+             phone_number: Optional[pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_duplicate_emails is None and 'allowDuplicateEmails' in kwargs:
+            allow_duplicate_emails = kwargs['allowDuplicateEmails']
+        if hash_configs is None and 'hashConfigs' in kwargs:
+            hash_configs = kwargs['hashConfigs']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+
         if allow_duplicate_emails is not None:
-            pulumi.set(__self__, "allow_duplicate_emails", allow_duplicate_emails)
+            _setter("allow_duplicate_emails", allow_duplicate_emails)
         if anonymous is not None:
-            pulumi.set(__self__, "anonymous", anonymous)
+            _setter("anonymous", anonymous)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if hash_configs is not None:
-            pulumi.set(__self__, "hash_configs", hash_configs)
+            _setter("hash_configs", hash_configs)
         if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
+            _setter("phone_number", phone_number)
 
     @property
     @pulumi.getter(name="allowDuplicateEmails")
@@ -854,7 +1149,20 @@ class ProjectDefaultConfigSignInAnonymousArgs:
                
                <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ProjectDefaultConfigSignInAnonymousArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
+        _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -882,10 +1190,25 @@ class ProjectDefaultConfigSignInEmailArgs:
                password must be provided to sign in. If false, a user may sign in via either
                email/password or email link.
         """
+        ProjectDefaultConfigSignInEmailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            password_required=password_required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             password_required: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if password_required is None and 'passwordRequired' in kwargs:
+            password_required = kwargs['passwordRequired']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if password_required is not None:
-            pulumi.set(__self__, "password_required", password_required)
+            _setter("password_required", password_required)
 
     @property
     @pulumi.getter
@@ -934,16 +1257,41 @@ class ProjectDefaultConfigSignInHashConfigArgs:
         :param pulumi.Input[str] signer_key: (Output)
                Signer key in base64.
         """
+        ProjectDefaultConfigSignInHashConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            memory_cost=memory_cost,
+            rounds=rounds,
+            salt_separator=salt_separator,
+            signer_key=signer_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             memory_cost: Optional[pulumi.Input[int]] = None,
+             rounds: Optional[pulumi.Input[int]] = None,
+             salt_separator: Optional[pulumi.Input[str]] = None,
+             signer_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if memory_cost is None and 'memoryCost' in kwargs:
+            memory_cost = kwargs['memoryCost']
+        if salt_separator is None and 'saltSeparator' in kwargs:
+            salt_separator = kwargs['saltSeparator']
+        if signer_key is None and 'signerKey' in kwargs:
+            signer_key = kwargs['signerKey']
+
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if memory_cost is not None:
-            pulumi.set(__self__, "memory_cost", memory_cost)
+            _setter("memory_cost", memory_cost)
         if rounds is not None:
-            pulumi.set(__self__, "rounds", rounds)
+            _setter("rounds", rounds)
         if salt_separator is not None:
-            pulumi.set(__self__, "salt_separator", salt_separator)
+            _setter("salt_separator", salt_separator)
         if signer_key is not None:
-            pulumi.set(__self__, "signer_key", signer_key)
+            _setter("signer_key", signer_key)
 
     @property
     @pulumi.getter
@@ -1020,10 +1368,25 @@ class ProjectDefaultConfigSignInPhoneNumberArgs:
         :param pulumi.Input[bool] enabled: Whether phone number auth is enabled for the project or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
         """
+        ProjectDefaultConfigSignInPhoneNumberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            test_phone_numbers=test_phone_numbers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if test_phone_numbers is None and 'testPhoneNumbers' in kwargs:
+            test_phone_numbers = kwargs['testPhoneNumbers']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if test_phone_numbers is not None:
-            pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
+            _setter("test_phone_numbers", test_phone_numbers)
 
     @property
     @pulumi.getter
@@ -1064,11 +1427,42 @@ class TenantInboundSamlConfigIdpConfigArgs:
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
         :param pulumi.Input[bool] sign_request: Indicates if outbounding SAMLRequest should be signed.
         """
-        pulumi.set(__self__, "idp_certificates", idp_certificates)
-        pulumi.set(__self__, "idp_entity_id", idp_entity_id)
-        pulumi.set(__self__, "sso_url", sso_url)
+        TenantInboundSamlConfigIdpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idp_certificates=idp_certificates,
+            idp_entity_id=idp_entity_id,
+            sso_url=sso_url,
+            sign_request=sign_request,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]] = None,
+             idp_entity_id: Optional[pulumi.Input[str]] = None,
+             sso_url: Optional[pulumi.Input[str]] = None,
+             sign_request: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idp_certificates is None and 'idpCertificates' in kwargs:
+            idp_certificates = kwargs['idpCertificates']
+        if idp_certificates is None:
+            raise TypeError("Missing 'idp_certificates' argument")
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
+            idp_entity_id = kwargs['idpEntityId']
+        if idp_entity_id is None:
+            raise TypeError("Missing 'idp_entity_id' argument")
+        if sso_url is None and 'ssoUrl' in kwargs:
+            sso_url = kwargs['ssoUrl']
+        if sso_url is None:
+            raise TypeError("Missing 'sso_url' argument")
+        if sign_request is None and 'signRequest' in kwargs:
+            sign_request = kwargs['signRequest']
+
+        _setter("idp_certificates", idp_certificates)
+        _setter("idp_entity_id", idp_entity_id)
+        _setter("sso_url", sso_url)
         if sign_request is not None:
-            pulumi.set(__self__, "sign_request", sign_request)
+            _setter("sign_request", sign_request)
 
     @property
     @pulumi.getter(name="idpCertificates")
@@ -1127,8 +1521,21 @@ class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
         """
         :param pulumi.Input[str] x509_certificate: The x509 certificate
         """
+        TenantInboundSamlConfigIdpConfigIdpCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")
@@ -1159,10 +1566,35 @@ class TenantInboundSamlConfigSpConfigArgs:
                
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
-        pulumi.set(__self__, "callback_uri", callback_uri)
-        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        TenantInboundSamlConfigSpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            callback_uri=callback_uri,
+            sp_entity_id=sp_entity_id,
+            sp_certificates=sp_certificates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             callback_uri: Optional[pulumi.Input[str]] = None,
+             sp_entity_id: Optional[pulumi.Input[str]] = None,
+             sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if callback_uri is None and 'callbackUri' in kwargs:
+            callback_uri = kwargs['callbackUri']
+        if callback_uri is None:
+            raise TypeError("Missing 'callback_uri' argument")
+        if sp_entity_id is None and 'spEntityId' in kwargs:
+            sp_entity_id = kwargs['spEntityId']
+        if sp_entity_id is None:
+            raise TypeError("Missing 'sp_entity_id' argument")
+        if sp_certificates is None and 'spCertificates' in kwargs:
+            sp_certificates = kwargs['spCertificates']
+
+        _setter("callback_uri", callback_uri)
+        _setter("sp_entity_id", sp_entity_id)
         if sp_certificates is not None:
-            pulumi.set(__self__, "sp_certificates", sp_certificates)
+            _setter("sp_certificates", sp_certificates)
 
     @property
     @pulumi.getter(name="callbackUri")
@@ -1213,8 +1645,21 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
         """
         :param pulumi.Input[str] x509_certificate: The x509 certificate
         """
+        TenantInboundSamlConfigSpConfigSpCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x509_certificate=x509_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x509_certificate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if x509_certificate is None and 'x509Certificate' in kwargs:
+            x509_certificate = kwargs['x509Certificate']
+
         if x509_certificate is not None:
-            pulumi.set(__self__, "x509_certificate", x509_certificate)
+            _setter("x509_certificate", x509_certificate)
 
     @property
     @pulumi.getter(name="x509Certificate")

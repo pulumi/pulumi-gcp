@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -44,9 +44,24 @@ class GroupGroupKey(dict):
                
                - - -
         """
-        pulumi.set(__self__, "id", id)
+        GroupGroupKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -96,9 +111,24 @@ class GroupMembershipMemberKey(dict):
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
+        GroupMembershipMemberKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -146,9 +176,24 @@ class GroupMembershipPreferredMemberKey(dict):
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
+        GroupMembershipPreferredMemberKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("id", id)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -187,7 +232,20 @@ class GroupMembershipRole(dict):
                
                - - -
         """
-        pulumi.set(__self__, "name", name)
+        GroupMembershipRole._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -220,14 +278,63 @@ class GetGroupMembershipsMembershipResult(dict):
         :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
         :param str type: The type of the membership.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "member_keys", member_keys)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "preferred_member_keys", preferred_member_keys)
-        pulumi.set(__self__, "roles", roles)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "update_time", update_time)
+        GetGroupMembershipsMembershipResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            group=group,
+            member_keys=member_keys,
+            name=name,
+            preferred_member_keys=preferred_member_keys,
+            roles=roles,
+            type=type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             group: Optional[str] = None,
+             member_keys: Optional[Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult']] = None,
+             name: Optional[str] = None,
+             preferred_member_keys: Optional[Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult']] = None,
+             roles: Optional[Sequence['outputs.GetGroupMembershipsMembershipRoleResult']] = None,
+             type: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if member_keys is None and 'memberKeys' in kwargs:
+            member_keys = kwargs['memberKeys']
+        if member_keys is None:
+            raise TypeError("Missing 'member_keys' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if preferred_member_keys is None and 'preferredMemberKeys' in kwargs:
+            preferred_member_keys = kwargs['preferredMemberKeys']
+        if preferred_member_keys is None:
+            raise TypeError("Missing 'preferred_member_keys' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
+        _setter("create_time", create_time)
+        _setter("group", group)
+        _setter("member_keys", member_keys)
+        _setter("name", name)
+        _setter("preferred_member_keys", preferred_member_keys)
+        _setter("roles", roles)
+        _setter("type", type)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -302,8 +409,25 @@ class GetGroupMembershipsMembershipMemberKeyResult(dict):
                such as a Google user or a Google Group.
                If populated, the EntityKey represents an external-identity-mapped group.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace", namespace)
+        GetGroupMembershipsMembershipMemberKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
+        _setter("id", id)
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -341,8 +465,25 @@ class GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
                such as a Google user or a Google Group.
                If populated, the EntityKey represents an external-identity-mapped group.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace", namespace)
+        GetGroupMembershipsMembershipPreferredMemberKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
+        _setter("id", id)
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -373,7 +514,20 @@ class GetGroupMembershipsMembershipRoleResult(dict):
         """
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         """
-        pulumi.set(__self__, "name", name)
+        GetGroupMembershipsMembershipRoleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -406,15 +560,70 @@ class GetGroupsGroupResult(dict):
         :param str name: Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
         :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "group_keys", group_keys)
-        pulumi.set(__self__, "initial_group_config", initial_group_config)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "update_time", update_time)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            group_keys=group_keys,
+            initial_group_config=initial_group_config,
+            labels=labels,
+            name=name,
+            parent=parent,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             display_name: Optional[str] = None,
+             group_keys: Optional[Sequence['outputs.GetGroupsGroupGroupKeyResult']] = None,
+             initial_group_config: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             name: Optional[str] = None,
+             parent: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if group_keys is None and 'groupKeys' in kwargs:
+            group_keys = kwargs['groupKeys']
+        if group_keys is None:
+            raise TypeError("Missing 'group_keys' argument")
+        if initial_group_config is None and 'initialGroupConfig' in kwargs:
+            initial_group_config = kwargs['initialGroupConfig']
+        if initial_group_config is None:
+            raise TypeError("Missing 'initial_group_config' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("display_name", display_name)
+        _setter("group_keys", group_keys)
+        _setter("initial_group_config", initial_group_config)
+        _setter("labels", labels)
+        _setter("name", name)
+        _setter("parent", parent)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -499,8 +708,25 @@ class GetGroupsGroupGroupKeyResult(dict):
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace", namespace)
+        GetGroupsGroupGroupKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
+        _setter("id", id)
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,17 +37,52 @@ class GameServerClusterArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "connection_info", connection_info)
-        pulumi.set(__self__, "realm_id", realm_id)
+        GameServerClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            connection_info=connection_info,
+            realm_id=realm_id,
+            description=description,
+            labels=labels,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             connection_info: Optional[pulumi.Input['GameServerClusterConnectionInfoArgs']] = None,
+             realm_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if connection_info is None and 'connectionInfo' in kwargs:
+            connection_info = kwargs['connectionInfo']
+        if connection_info is None:
+            raise TypeError("Missing 'connection_info' argument")
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+        if realm_id is None:
+            raise TypeError("Missing 'realm_id' argument")
+
+        _setter("cluster_id", cluster_id)
+        _setter("connection_info", connection_info)
+        _setter("realm_id", realm_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -167,22 +202,53 @@ class _GameServerClusterState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
         """
+        _GameServerClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            connection_info=connection_info,
+            description=description,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            realm_id=realm_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             connection_info: Optional[pulumi.Input['GameServerClusterConnectionInfoArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             realm_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if connection_info is None and 'connectionInfo' in kwargs:
+            connection_info = kwargs['connectionInfo']
+        if realm_id is None and 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if connection_info is not None:
-            pulumi.set(__self__, "connection_info", connection_info)
+            _setter("connection_info", connection_info)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if realm_id is not None:
-            pulumi.set(__self__, "realm_id", realm_id)
+            _setter("realm_id", realm_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -385,6 +451,10 @@ class GameServerCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GameServerClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -409,6 +479,11 @@ class GameServerCluster(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            if connection_info is not None and not isinstance(connection_info, GameServerClusterConnectionInfoArgs):
+                connection_info = connection_info or {}
+                def _setter(key, value):
+                    connection_info[key] = value
+                GameServerClusterConnectionInfoArgs._configure(_setter, **connection_info)
             if connection_info is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_info'")
             __props__.__dict__["connection_info"] = connection_info

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewaySecurityPolicyArgs', 'GatewaySecurityPolicy']
@@ -33,16 +33,37 @@ class GatewaySecurityPolicyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
+        GatewaySecurityPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            location=location,
+            name=name,
+            project=project,
+            tls_inspection_policy=tls_inspection_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tls_inspection_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tls_inspection_policy is None and 'tlsInspectionPolicy' in kwargs:
+            tls_inspection_policy = kwargs['tlsInspectionPolicy']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if tls_inspection_policy is not None:
-            pulumi.set(__self__, "tls_inspection_policy", tls_inspection_policy)
+            _setter("tls_inspection_policy", tls_inspection_policy)
 
     @property
     @pulumi.getter
@@ -143,22 +164,55 @@ class _GatewaySecurityPolicyState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        _GatewaySecurityPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            location=location,
+            name=name,
+            project=project,
+            self_link=self_link,
+            tls_inspection_policy=tls_inspection_policy,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             tls_inspection_policy: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if tls_inspection_policy is None and 'tlsInspectionPolicy' in kwargs:
+            tls_inspection_policy = kwargs['tlsInspectionPolicy']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if tls_inspection_policy is not None:
-            pulumi.set(__self__, "tls_inspection_policy", tls_inspection_policy)
+            _setter("tls_inspection_policy", tls_inspection_policy)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -550,6 +604,10 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewaySecurityPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

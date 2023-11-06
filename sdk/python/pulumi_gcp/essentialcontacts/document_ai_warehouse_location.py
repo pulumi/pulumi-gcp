@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DocumentAiWarehouseLocationArgs', 'DocumentAiWarehouseLocation']
@@ -39,14 +39,53 @@ class DocumentAiWarehouseLocationArgs:
                encryption is available. If the kmsKey is left empty, no
                encryption will be enforced.
         """
-        pulumi.set(__self__, "access_control_mode", access_control_mode)
-        pulumi.set(__self__, "database_type", database_type)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project_number", project_number)
+        DocumentAiWarehouseLocationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_control_mode=access_control_mode,
+            database_type=database_type,
+            location=location,
+            project_number=project_number,
+            document_creator_default_role=document_creator_default_role,
+            kms_key=kms_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_control_mode: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project_number: Optional[pulumi.Input[str]] = None,
+             document_creator_default_role: Optional[pulumi.Input[str]] = None,
+             kms_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_control_mode is None and 'accessControlMode' in kwargs:
+            access_control_mode = kwargs['accessControlMode']
+        if access_control_mode is None:
+            raise TypeError("Missing 'access_control_mode' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+        if project_number is None:
+            raise TypeError("Missing 'project_number' argument")
+        if document_creator_default_role is None and 'documentCreatorDefaultRole' in kwargs:
+            document_creator_default_role = kwargs['documentCreatorDefaultRole']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
+        _setter("access_control_mode", access_control_mode)
+        _setter("database_type", database_type)
+        _setter("location", location)
+        _setter("project_number", project_number)
         if document_creator_default_role is not None:
-            pulumi.set(__self__, "document_creator_default_role", document_creator_default_role)
+            _setter("document_creator_default_role", document_creator_default_role)
         if kms_key is not None:
-            pulumi.set(__self__, "kms_key", kms_key)
+            _setter("kms_key", kms_key)
 
     @property
     @pulumi.getter(name="accessControlMode")
@@ -159,18 +198,49 @@ class _DocumentAiWarehouseLocationState:
                - - -
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         """
+        _DocumentAiWarehouseLocationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_control_mode=access_control_mode,
+            database_type=database_type,
+            document_creator_default_role=document_creator_default_role,
+            kms_key=kms_key,
+            location=location,
+            project_number=project_number,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_control_mode: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             document_creator_default_role: Optional[pulumi.Input[str]] = None,
+             kms_key: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project_number: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_control_mode is None and 'accessControlMode' in kwargs:
+            access_control_mode = kwargs['accessControlMode']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if document_creator_default_role is None and 'documentCreatorDefaultRole' in kwargs:
+            document_creator_default_role = kwargs['documentCreatorDefaultRole']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if access_control_mode is not None:
-            pulumi.set(__self__, "access_control_mode", access_control_mode)
+            _setter("access_control_mode", access_control_mode)
         if database_type is not None:
-            pulumi.set(__self__, "database_type", database_type)
+            _setter("database_type", database_type)
         if document_creator_default_role is not None:
-            pulumi.set(__self__, "document_creator_default_role", document_creator_default_role)
+            _setter("document_creator_default_role", document_creator_default_role)
         if kms_key is not None:
-            pulumi.set(__self__, "kms_key", kms_key)
+            _setter("kms_key", kms_key)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project_number is not None:
-            pulumi.set(__self__, "project_number", project_number)
+            _setter("project_number", project_number)
 
     @property
     @pulumi.getter(name="accessControlMode")
@@ -362,6 +432,10 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DocumentAiWarehouseLocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

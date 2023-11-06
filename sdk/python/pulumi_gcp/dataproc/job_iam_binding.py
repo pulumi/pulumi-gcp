@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,15 +34,44 @@ class JobIAMBindingArgs:
         :param pulumi.Input[str] region: The region in which the job belongs. If it
                is not provided, the provider will use a default.
         """
-        pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        JobIAMBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            job_id=job_id,
+            members=members,
+            role=role,
+            condition=condition,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             job_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['JobIAMBindingConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("job_id", job_id)
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="jobId")
@@ -137,20 +166,45 @@ class _JobIAMBindingState:
                
                `dataproc.JobIAMPolicy` only:
         """
+        _JobIAMBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            job_id=job_id,
+            members=members,
+            project=project,
+            region=region,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['JobIAMBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             job_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+            _setter("job_id", job_id)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -418,6 +472,10 @@ class JobIAMBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            JobIAMBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -438,6 +496,11 @@ class JobIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobIAMBindingArgs.__new__(JobIAMBindingArgs)
 
+            if condition is not None and not isinstance(condition, JobIAMBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                JobIAMBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")

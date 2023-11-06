@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,8 +44,27 @@ class InstanceAccelerator(dict):
         :param str state: The type of an accelator for a CDF instance.
                Possible values are: `ENABLED`, `DISABLED`.
         """
-        pulumi.set(__self__, "accelerator_type", accelerator_type)
-        pulumi.set(__self__, "state", state)
+        InstanceAccelerator._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_type=accelerator_type,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_type: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if accelerator_type is None:
+            raise TypeError("Missing 'accelerator_type' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+
+        _setter("accelerator_type", accelerator_type)
+        _setter("state", state)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -90,7 +109,22 @@ class InstanceCryptoKeyConfig(dict):
         """
         :param str key_reference: The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
         """
-        pulumi.set(__self__, "key_reference", key_reference)
+        InstanceCryptoKeyConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_reference=key_reference,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_reference: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_reference is None and 'keyReference' in kwargs:
+            key_reference = kwargs['keyReference']
+        if key_reference is None:
+            raise TypeError("Missing 'key_reference' argument")
+
+        _setter("key_reference", key_reference)
 
     @property
     @pulumi.getter(name="keyReference")
@@ -110,8 +144,25 @@ class InstanceEventPublishConfig(dict):
         :param bool enabled: Option to enable Event Publishing.
         :param str topic: The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "topic", topic)
+        InstanceEventPublishConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
+        _setter("enabled", enabled)
+        _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -159,8 +210,27 @@ class InstanceNetworkConfig(dict):
                will be peered for executing pipelines. In case of shared VPC where the network resides in another host
                project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
         """
-        pulumi.set(__self__, "ip_allocation", ip_allocation)
-        pulumi.set(__self__, "network", network)
+        InstanceNetworkConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_allocation=ip_allocation,
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_allocation: Optional[str] = None,
+             network: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_allocation is None and 'ipAllocation' in kwargs:
+            ip_allocation = kwargs['ipAllocation']
+        if ip_allocation is None:
+            raise TypeError("Missing 'ip_allocation' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
+        _setter("ip_allocation", ip_allocation)
+        _setter("network", network)
 
     @property
     @pulumi.getter(name="ipAllocation")

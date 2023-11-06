@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,15 +43,42 @@ class TaxonomyIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "member", member)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "taxonomy", taxonomy)
+        TaxonomyIamMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member=member,
+            role=role,
+            taxonomy=taxonomy,
+            condition=condition,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['TaxonomyIamMemberConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if taxonomy is None:
+            raise TypeError("Missing 'taxonomy' argument")
+
+        _setter("member", member)
+        _setter("role", role)
+        _setter("taxonomy", taxonomy)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -164,20 +191,43 @@ class _TaxonomyIamMemberState:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] taxonomy: Used to find the parent resource to bind the IAM policy to
         """
+        _TaxonomyIamMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            member=member,
+            project=project,
+            region=region,
+            role=role,
+            taxonomy=taxonomy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['TaxonomyIamMemberConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if taxonomy is not None:
-            pulumi.set(__self__, "taxonomy", taxonomy)
+            _setter("taxonomy", taxonomy)
 
     @property
     @pulumi.getter
@@ -475,6 +525,10 @@ class TaxonomyIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TaxonomyIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -495,6 +549,11 @@ class TaxonomyIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TaxonomyIamMemberArgs.__new__(TaxonomyIamMemberArgs)
 
+            if condition is not None and not isinstance(condition, TaxonomyIamMemberConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                TaxonomyIamMemberConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

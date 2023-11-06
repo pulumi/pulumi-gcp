@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,21 +44,60 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "subnetwork", subnetwork)
-        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+        WorkstationClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            subnetwork=subnetwork,
+            workstation_cluster_id=workstation_cluster_id,
+            annotations=annotations,
+            display_name=display_name,
+            labels=labels,
+            location=location,
+            private_cluster_config=private_cluster_config,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if subnetwork is None:
+            raise TypeError("Missing 'subnetwork' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+
+        _setter("network", network)
+        _setter("subnetwork", subnetwork)
+        _setter("workstation_cluster_id", workstation_cluster_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if private_cluster_config is not None:
-            pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+            _setter("private_cluster_config", private_cluster_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -222,36 +261,83 @@ class _WorkstationClusterState:
                
                - - -
         """
+        _WorkstationClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            conditions=conditions,
+            create_time=create_time,
+            degraded=degraded,
+            display_name=display_name,
+            etag=etag,
+            labels=labels,
+            location=location,
+            name=name,
+            network=network,
+            private_cluster_config=private_cluster_config,
+            project=project,
+            subnetwork=subnetwork,
+            uid=uid,
+            workstation_cluster_id=workstation_cluster_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             degraded: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if degraded is not None:
-            pulumi.set(__self__, "degraded", degraded)
+            _setter("degraded", degraded)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if private_cluster_config is not None:
-            pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+            _setter("private_cluster_config", private_cluster_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if workstation_cluster_id is not None:
-            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+            _setter("workstation_cluster_id", workstation_cluster_id)
 
     @property
     @pulumi.getter
@@ -646,6 +732,10 @@ class WorkstationCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkstationClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -676,6 +766,11 @@ class WorkstationCluster(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            if private_cluster_config is not None and not isinstance(private_cluster_config, WorkstationClusterPrivateClusterConfigArgs):
+                private_cluster_config = private_cluster_config or {}
+                def _setter(key, value):
+                    private_cluster_config[key] = value
+                WorkstationClusterPrivateClusterConfigArgs._configure(_setter, **private_cluster_config)
             __props__.__dict__["private_cluster_config"] = private_cluster_config
             __props__.__dict__["project"] = project
             if subnetwork is None and not opts.urn:

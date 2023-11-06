@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -103,40 +103,113 @@ class TableArgs:
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
                Structure is documented below.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "table_id", table_id)
+        TableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            table_id=table_id,
+            clusterings=clusterings,
+            deletion_protection=deletion_protection,
+            description=description,
+            encryption_configuration=encryption_configuration,
+            expiration_time=expiration_time,
+            external_data_configuration=external_data_configuration,
+            friendly_name=friendly_name,
+            labels=labels,
+            materialized_view=materialized_view,
+            max_staleness=max_staleness,
+            project=project,
+            range_partitioning=range_partitioning,
+            schema=schema,
+            table_constraints=table_constraints,
+            time_partitioning=time_partitioning,
+            view=view,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
+             clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
+             expiration_time: Optional[pulumi.Input[int]] = None,
+             external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
+             max_staleness: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
+             time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
+             view: Optional[pulumi.Input['TableViewArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
+        _setter("dataset_id", dataset_id)
+        _setter("table_id", table_id)
         if clusterings is not None:
-            pulumi.set(__self__, "clusterings", clusterings)
+            _setter("clusterings", clusterings)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_configuration is not None:
-            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
+            _setter("encryption_configuration", encryption_configuration)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if external_data_configuration is not None:
-            pulumi.set(__self__, "external_data_configuration", external_data_configuration)
+            _setter("external_data_configuration", external_data_configuration)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if materialized_view is not None:
-            pulumi.set(__self__, "materialized_view", materialized_view)
+            _setter("materialized_view", materialized_view)
         if max_staleness is not None:
-            pulumi.set(__self__, "max_staleness", max_staleness)
+            _setter("max_staleness", max_staleness)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if range_partitioning is not None:
-            pulumi.set(__self__, "range_partitioning", range_partitioning)
+            _setter("range_partitioning", range_partitioning)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if table_constraints is not None:
-            pulumi.set(__self__, "table_constraints", table_constraints)
+            _setter("table_constraints", table_constraints)
         if time_partitioning is not None:
-            pulumi.set(__self__, "time_partitioning", time_partitioning)
+            _setter("time_partitioning", time_partitioning)
         if view is not None:
-            pulumi.set(__self__, "view", view)
+            _setter("view", view)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -512,60 +585,159 @@ class _TableState:
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
                Structure is documented below.
         """
+        _TableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            clusterings=clusterings,
+            creation_time=creation_time,
+            dataset_id=dataset_id,
+            deletion_protection=deletion_protection,
+            description=description,
+            encryption_configuration=encryption_configuration,
+            etag=etag,
+            expiration_time=expiration_time,
+            external_data_configuration=external_data_configuration,
+            friendly_name=friendly_name,
+            labels=labels,
+            last_modified_time=last_modified_time,
+            location=location,
+            materialized_view=materialized_view,
+            max_staleness=max_staleness,
+            num_bytes=num_bytes,
+            num_long_term_bytes=num_long_term_bytes,
+            num_rows=num_rows,
+            project=project,
+            range_partitioning=range_partitioning,
+            schema=schema,
+            self_link=self_link,
+            table_constraints=table_constraints,
+            table_id=table_id,
+            time_partitioning=time_partitioning,
+            type=type,
+            view=view,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             expiration_time: Optional[pulumi.Input[int]] = None,
+             external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             last_modified_time: Optional[pulumi.Input[int]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
+             max_staleness: Optional[pulumi.Input[str]] = None,
+             num_bytes: Optional[pulumi.Input[int]] = None,
+             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
+             num_rows: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
+             time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             view: Optional[pulumi.Input['TableViewArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if external_data_configuration is None and 'externalDataConfiguration' in kwargs:
+            external_data_configuration = kwargs['externalDataConfiguration']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if materialized_view is None and 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if max_staleness is None and 'maxStaleness' in kwargs:
+            max_staleness = kwargs['maxStaleness']
+        if num_bytes is None and 'numBytes' in kwargs:
+            num_bytes = kwargs['numBytes']
+        if num_long_term_bytes is None and 'numLongTermBytes' in kwargs:
+            num_long_term_bytes = kwargs['numLongTermBytes']
+        if num_rows is None and 'numRows' in kwargs:
+            num_rows = kwargs['numRows']
+        if range_partitioning is None and 'rangePartitioning' in kwargs:
+            range_partitioning = kwargs['rangePartitioning']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if table_constraints is None and 'tableConstraints' in kwargs:
+            table_constraints = kwargs['tableConstraints']
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if time_partitioning is None and 'timePartitioning' in kwargs:
+            time_partitioning = kwargs['timePartitioning']
+
         if clusterings is not None:
-            pulumi.set(__self__, "clusterings", clusterings)
+            _setter("clusterings", clusterings)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_configuration is not None:
-            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
+            _setter("encryption_configuration", encryption_configuration)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if external_data_configuration is not None:
-            pulumi.set(__self__, "external_data_configuration", external_data_configuration)
+            _setter("external_data_configuration", external_data_configuration)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if last_modified_time is not None:
-            pulumi.set(__self__, "last_modified_time", last_modified_time)
+            _setter("last_modified_time", last_modified_time)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if materialized_view is not None:
-            pulumi.set(__self__, "materialized_view", materialized_view)
+            _setter("materialized_view", materialized_view)
         if max_staleness is not None:
-            pulumi.set(__self__, "max_staleness", max_staleness)
+            _setter("max_staleness", max_staleness)
         if num_bytes is not None:
-            pulumi.set(__self__, "num_bytes", num_bytes)
+            _setter("num_bytes", num_bytes)
         if num_long_term_bytes is not None:
-            pulumi.set(__self__, "num_long_term_bytes", num_long_term_bytes)
+            _setter("num_long_term_bytes", num_long_term_bytes)
         if num_rows is not None:
-            pulumi.set(__self__, "num_rows", num_rows)
+            _setter("num_rows", num_rows)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if range_partitioning is not None:
-            pulumi.set(__self__, "range_partitioning", range_partitioning)
+            _setter("range_partitioning", range_partitioning)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if table_constraints is not None:
-            pulumi.set(__self__, "table_constraints", table_constraints)
+            _setter("table_constraints", table_constraints)
         if table_id is not None:
-            pulumi.set(__self__, "table_id", table_id)
+            _setter("table_id", table_id)
         if time_partitioning is not None:
-            pulumi.set(__self__, "time_partitioning", time_partitioning)
+            _setter("time_partitioning", time_partitioning)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if view is not None:
-            pulumi.set(__self__, "view", view)
+            _setter("view", view)
 
     @property
     @pulumi.getter
@@ -1204,6 +1376,10 @@ class Table(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1242,21 +1418,56 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            if encryption_configuration is not None and not isinstance(encryption_configuration, TableEncryptionConfigurationArgs):
+                encryption_configuration = encryption_configuration or {}
+                def _setter(key, value):
+                    encryption_configuration[key] = value
+                TableEncryptionConfigurationArgs._configure(_setter, **encryption_configuration)
             __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["expiration_time"] = expiration_time
+            if external_data_configuration is not None and not isinstance(external_data_configuration, TableExternalDataConfigurationArgs):
+                external_data_configuration = external_data_configuration or {}
+                def _setter(key, value):
+                    external_data_configuration[key] = value
+                TableExternalDataConfigurationArgs._configure(_setter, **external_data_configuration)
             __props__.__dict__["external_data_configuration"] = external_data_configuration
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
+            if materialized_view is not None and not isinstance(materialized_view, TableMaterializedViewArgs):
+                materialized_view = materialized_view or {}
+                def _setter(key, value):
+                    materialized_view[key] = value
+                TableMaterializedViewArgs._configure(_setter, **materialized_view)
             __props__.__dict__["materialized_view"] = materialized_view
             __props__.__dict__["max_staleness"] = max_staleness
             __props__.__dict__["project"] = project
+            if range_partitioning is not None and not isinstance(range_partitioning, TableRangePartitioningArgs):
+                range_partitioning = range_partitioning or {}
+                def _setter(key, value):
+                    range_partitioning[key] = value
+                TableRangePartitioningArgs._configure(_setter, **range_partitioning)
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["schema"] = schema
+            if table_constraints is not None and not isinstance(table_constraints, TableTableConstraintsArgs):
+                table_constraints = table_constraints or {}
+                def _setter(key, value):
+                    table_constraints[key] = value
+                TableTableConstraintsArgs._configure(_setter, **table_constraints)
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
+            if time_partitioning is not None and not isinstance(time_partitioning, TableTimePartitioningArgs):
+                time_partitioning = time_partitioning or {}
+                def _setter(key, value):
+                    time_partitioning[key] = value
+                TableTimePartitioningArgs._configure(_setter, **time_partitioning)
             __props__.__dict__["time_partitioning"] = time_partitioning
+            if view is not None and not isinstance(view, TableViewArgs):
+                view = view or {}
+                def _setter(key, value):
+                    view[key] = value
+                TableViewArgs._configure(_setter, **view)
             __props__.__dict__["view"] = view
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,10 +25,29 @@ class DataExchangeIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DataExchangeIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -52,10 +71,29 @@ class DataExchangeIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DataExchangeIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -82,7 +120,20 @@ class ListingBigqueryDataset(dict):
                
                - - -
         """
-        pulumi.set(__self__, "dataset", dataset)
+        ListingBigqueryDataset._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+
+        _setter("dataset", dataset)
 
     @property
     @pulumi.getter
@@ -121,9 +172,26 @@ class ListingDataProvider(dict):
         :param str name: Name of the data provider.
         :param str primary_contact: Email or URL of the data provider.
         """
-        pulumi.set(__self__, "name", name)
+        ListingDataProvider._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            primary_contact=primary_contact,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             primary_contact: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+
+        _setter("name", name)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
 
     @property
     @pulumi.getter
@@ -148,10 +216,29 @@ class ListingIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ListingIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -175,10 +262,29 @@ class ListingIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ListingIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -222,9 +328,26 @@ class ListingPublisher(dict):
         :param str name: Name of the listing publisher.
         :param str primary_contact: Email or URL of the listing publisher.
         """
-        pulumi.set(__self__, "name", name)
+        ListingPublisher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            primary_contact=primary_contact,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             primary_contact: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+
+        _setter("name", name)
         if primary_contact is not None:
-            pulumi.set(__self__, "primary_contact", primary_contact)
+            _setter("primary_contact", primary_contact)
 
     @property
     @pulumi.getter

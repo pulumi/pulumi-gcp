@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TagTemplateIamPolicyArgs', 'TagTemplateIamPolicy']
@@ -38,12 +38,37 @@ class TagTemplateIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "tag_template", tag_template)
+        TagTemplateIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_data=policy_data,
+            tag_template=tag_template,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             tag_template: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+        if tag_template is None:
+            raise TypeError("Missing 'tag_template' argument")
+
+        _setter("policy_data", policy_data)
+        _setter("tag_template", tag_template)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="policyData")
@@ -134,16 +159,39 @@ class _TagTemplateIamPolicyState:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] tag_template: Used to find the parent resource to bind the IAM policy to
         """
+        _TagTemplateIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            policy_data=policy_data,
+            project=project,
+            region=region,
+            tag_template=tag_template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tag_template: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tag_template is not None:
-            pulumi.set(__self__, "tag_template", tag_template)
+            _setter("tag_template", tag_template)
 
     @property
     @pulumi.getter
@@ -419,6 +467,10 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagTemplateIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

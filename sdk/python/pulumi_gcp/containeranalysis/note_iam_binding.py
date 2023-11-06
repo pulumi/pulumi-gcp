@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,13 +42,38 @@ class NoteIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "note", note)
-        pulumi.set(__self__, "role", role)
+        NoteIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            note=note,
+            role=role,
+            condition=condition,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             note: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['NoteIamBindingConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if note is None:
+            raise TypeError("Missing 'note' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("members", members)
+        _setter("note", note)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -151,18 +176,39 @@ class _NoteIamBindingState:
                `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _NoteIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            members=members,
+            note=note,
+            project=project,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['NoteIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             note: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if note is not None:
-            pulumi.set(__self__, "note", note)
+            _setter("note", note)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -456,6 +502,10 @@ class NoteIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NoteIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -475,6 +525,11 @@ class NoteIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NoteIamBindingArgs.__new__(NoteIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, NoteIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                NoteIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

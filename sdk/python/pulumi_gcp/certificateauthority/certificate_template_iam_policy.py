@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CertificateTemplateIamPolicyArgs', 'CertificateTemplateIamPolicy']
@@ -38,12 +38,37 @@ class CertificateTemplateIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "certificate_template", certificate_template)
-        pulumi.set(__self__, "policy_data", policy_data)
+        CertificateTemplateIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_template=certificate_template,
+            policy_data=policy_data,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if certificate_template is None:
+            raise TypeError("Missing 'certificate_template' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
+        _setter("certificate_template", certificate_template)
+        _setter("policy_data", policy_data)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="certificateTemplate")
@@ -134,16 +159,39 @@ class _CertificateTemplateIamPolicyState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
+        _CertificateTemplateIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_template=certificate_template,
+            etag=etag,
+            location=location,
+            policy_data=policy_data,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if certificate_template is not None:
-            pulumi.set(__self__, "certificate_template", certificate_template)
+            _setter("certificate_template", certificate_template)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="certificateTemplate")
@@ -527,6 +575,10 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateTemplateIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

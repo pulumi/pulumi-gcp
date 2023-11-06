@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,19 +48,52 @@ class QueueArgs:
         :param pulumi.Input['QueueStackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
+        QueueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            app_engine_routing_override=app_engine_routing_override,
+            name=name,
+            project=project,
+            rate_limits=rate_limits,
+            retry_config=retry_config,
+            stackdriver_logging_config=stackdriver_logging_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
+             retry_config: Optional[pulumi.Input['QueueRetryConfigArgs']] = None,
+             stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if app_engine_routing_override is None and 'appEngineRoutingOverride' in kwargs:
+            app_engine_routing_override = kwargs['appEngineRoutingOverride']
+        if rate_limits is None and 'rateLimits' in kwargs:
+            rate_limits = kwargs['rateLimits']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if stackdriver_logging_config is None and 'stackdriverLoggingConfig' in kwargs:
+            stackdriver_logging_config = kwargs['stackdriverLoggingConfig']
+
+        _setter("location", location)
         if app_engine_routing_override is not None:
-            pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+            _setter("app_engine_routing_override", app_engine_routing_override)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rate_limits is not None:
-            pulumi.set(__self__, "rate_limits", rate_limits)
+            _setter("rate_limits", rate_limits)
         if retry_config is not None:
-            pulumi.set(__self__, "retry_config", retry_config)
+            _setter("retry_config", retry_config)
         if stackdriver_logging_config is not None:
-            pulumi.set(__self__, "stackdriver_logging_config", stackdriver_logging_config)
+            _setter("stackdriver_logging_config", stackdriver_logging_config)
 
     @property
     @pulumi.getter
@@ -197,20 +230,51 @@ class _QueueState:
         :param pulumi.Input['QueueStackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
         """
+        _QueueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_engine_routing_override=app_engine_routing_override,
+            location=location,
+            name=name,
+            project=project,
+            rate_limits=rate_limits,
+            retry_config=retry_config,
+            stackdriver_logging_config=stackdriver_logging_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
+             retry_config: Optional[pulumi.Input['QueueRetryConfigArgs']] = None,
+             stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine_routing_override is None and 'appEngineRoutingOverride' in kwargs:
+            app_engine_routing_override = kwargs['appEngineRoutingOverride']
+        if rate_limits is None and 'rateLimits' in kwargs:
+            rate_limits = kwargs['rateLimits']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if stackdriver_logging_config is None and 'stackdriverLoggingConfig' in kwargs:
+            stackdriver_logging_config = kwargs['stackdriverLoggingConfig']
+
         if app_engine_routing_override is not None:
-            pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+            _setter("app_engine_routing_override", app_engine_routing_override)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if rate_limits is not None:
-            pulumi.set(__self__, "rate_limits", rate_limits)
+            _setter("rate_limits", rate_limits)
         if retry_config is not None:
-            pulumi.set(__self__, "retry_config", retry_config)
+            _setter("retry_config", retry_config)
         if stackdriver_logging_config is not None:
-            pulumi.set(__self__, "stackdriver_logging_config", stackdriver_logging_config)
+            _setter("stackdriver_logging_config", stackdriver_logging_config)
 
     @property
     @pulumi.getter(name="appEngineRoutingOverride")
@@ -490,6 +554,10 @@ class Queue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QueueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -511,14 +579,34 @@ class Queue(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = QueueArgs.__new__(QueueArgs)
 
+            if app_engine_routing_override is not None and not isinstance(app_engine_routing_override, QueueAppEngineRoutingOverrideArgs):
+                app_engine_routing_override = app_engine_routing_override or {}
+                def _setter(key, value):
+                    app_engine_routing_override[key] = value
+                QueueAppEngineRoutingOverrideArgs._configure(_setter, **app_engine_routing_override)
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if rate_limits is not None and not isinstance(rate_limits, QueueRateLimitsArgs):
+                rate_limits = rate_limits or {}
+                def _setter(key, value):
+                    rate_limits[key] = value
+                QueueRateLimitsArgs._configure(_setter, **rate_limits)
             __props__.__dict__["rate_limits"] = rate_limits
+            if retry_config is not None and not isinstance(retry_config, QueueRetryConfigArgs):
+                retry_config = retry_config or {}
+                def _setter(key, value):
+                    retry_config[key] = value
+                QueueRetryConfigArgs._configure(_setter, **retry_config)
             __props__.__dict__["retry_config"] = retry_config
+            if stackdriver_logging_config is not None and not isinstance(stackdriver_logging_config, QueueStackdriverLoggingConfigArgs):
+                stackdriver_logging_config = stackdriver_logging_config or {}
+                def _setter(key, value):
+                    stackdriver_logging_config[key] = value
+                QueueStackdriverLoggingConfigArgs._configure(_setter, **stackdriver_logging_config)
             __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config
         super(Queue, __self__).__init__(
             'gcp:cloudtasks/queue:Queue',

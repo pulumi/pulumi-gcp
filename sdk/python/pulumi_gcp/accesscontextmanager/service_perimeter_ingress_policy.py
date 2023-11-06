@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,11 +32,32 @@ class ServicePerimeterIngressPolicyArgs:
                this `IngressPolicy` to apply.
                Structure is documented below.
         """
-        pulumi.set(__self__, "perimeter", perimeter)
+        ServicePerimeterIngressPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            perimeter=perimeter,
+            ingress_from=ingress_from,
+            ingress_to=ingress_to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             perimeter: Optional[pulumi.Input[str]] = None,
+             ingress_from: Optional[pulumi.Input['ServicePerimeterIngressPolicyIngressFromArgs']] = None,
+             ingress_to: Optional[pulumi.Input['ServicePerimeterIngressPolicyIngressToArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if perimeter is None:
+            raise TypeError("Missing 'perimeter' argument")
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
+        _setter("perimeter", perimeter)
         if ingress_from is not None:
-            pulumi.set(__self__, "ingress_from", ingress_from)
+            _setter("ingress_from", ingress_from)
         if ingress_to is not None:
-            pulumi.set(__self__, "ingress_to", ingress_to)
+            _setter("ingress_to", ingress_to)
 
     @property
     @pulumi.getter
@@ -101,12 +122,31 @@ class _ServicePerimeterIngressPolicyState:
                
                - - -
         """
+        _ServicePerimeterIngressPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ingress_from=ingress_from,
+            ingress_to=ingress_to,
+            perimeter=perimeter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ingress_from: Optional[pulumi.Input['ServicePerimeterIngressPolicyIngressFromArgs']] = None,
+             ingress_to: Optional[pulumi.Input['ServicePerimeterIngressPolicyIngressToArgs']] = None,
+             perimeter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ingress_from is None and 'ingressFrom' in kwargs:
+            ingress_from = kwargs['ingressFrom']
+        if ingress_to is None and 'ingressTo' in kwargs:
+            ingress_to = kwargs['ingressTo']
+
         if ingress_from is not None:
-            pulumi.set(__self__, "ingress_from", ingress_from)
+            _setter("ingress_from", ingress_from)
         if ingress_to is not None:
-            pulumi.set(__self__, "ingress_to", ingress_to)
+            _setter("ingress_to", ingress_to)
         if perimeter is not None:
-            pulumi.set(__self__, "perimeter", perimeter)
+            _setter("perimeter", perimeter)
 
     @property
     @pulumi.getter(name="ingressFrom")
@@ -234,6 +274,10 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServicePerimeterIngressPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -251,7 +295,17 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePerimeterIngressPolicyArgs.__new__(ServicePerimeterIngressPolicyArgs)
 
+            if ingress_from is not None and not isinstance(ingress_from, ServicePerimeterIngressPolicyIngressFromArgs):
+                ingress_from = ingress_from or {}
+                def _setter(key, value):
+                    ingress_from[key] = value
+                ServicePerimeterIngressPolicyIngressFromArgs._configure(_setter, **ingress_from)
             __props__.__dict__["ingress_from"] = ingress_from
+            if ingress_to is not None and not isinstance(ingress_to, ServicePerimeterIngressPolicyIngressToArgs):
+                ingress_to = ingress_to or {}
+                def _setter(key, value):
+                    ingress_to[key] = value
+                ServicePerimeterIngressPolicyIngressToArgs._configure(_setter, **ingress_to)
             __props__.__dict__["ingress_to"] = ingress_to
             if perimeter is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter'")

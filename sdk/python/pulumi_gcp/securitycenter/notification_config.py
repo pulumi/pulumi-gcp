@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,12 +32,45 @@ class NotificationConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
         """
-        pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "organization", organization)
-        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
-        pulumi.set(__self__, "streaming_config", streaming_config)
+        NotificationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_id=config_id,
+            organization=organization,
+            pubsub_topic=pubsub_topic,
+            streaming_config=streaming_config,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_id: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             streaming_config: Optional[pulumi.Input['NotificationConfigStreamingConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+        if streaming_config is None and 'streamingConfig' in kwargs:
+            streaming_config = kwargs['streamingConfig']
+        if streaming_config is None:
+            raise TypeError("Missing 'streaming_config' argument")
+
+        _setter("config_id", config_id)
+        _setter("organization", organization)
+        _setter("pubsub_topic", pubsub_topic)
+        _setter("streaming_config", streaming_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="configId")
@@ -128,20 +161,51 @@ class _NotificationConfigState:
         :param pulumi.Input['NotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
+        _NotificationConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_id=config_id,
+            description=description,
+            name=name,
+            organization=organization,
+            pubsub_topic=pubsub_topic,
+            service_account=service_account,
+            streaming_config=streaming_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             streaming_config: Optional[pulumi.Input['NotificationConfigStreamingConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if streaming_config is None and 'streamingConfig' in kwargs:
+            streaming_config = kwargs['streamingConfig']
+
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organization is not None:
-            pulumi.set(__self__, "organization", organization)
+            _setter("organization", organization)
         if pubsub_topic is not None:
-            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+            _setter("pubsub_topic", pubsub_topic)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if streaming_config is not None:
-            pulumi.set(__self__, "streaming_config", streaming_config)
+            _setter("streaming_config", streaming_config)
 
     @property
     @pulumi.getter(name="configId")
@@ -361,6 +425,10 @@ class NotificationConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NotificationConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -390,6 +458,11 @@ class NotificationConfig(pulumi.CustomResource):
             if pubsub_topic is None and not opts.urn:
                 raise TypeError("Missing required property 'pubsub_topic'")
             __props__.__dict__["pubsub_topic"] = pubsub_topic
+            if streaming_config is not None and not isinstance(streaming_config, NotificationConfigStreamingConfigArgs):
+                streaming_config = streaming_config or {}
+                def _setter(key, value):
+                    streaming_config[key] = value
+                NotificationConfigStreamingConfigArgs._configure(_setter, **streaming_config)
             if streaming_config is None and not opts.urn:
                 raise TypeError("Missing required property 'streaming_config'")
             __props__.__dict__["streaming_config"] = streaming_config

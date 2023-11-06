@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -46,17 +46,42 @@ class DatabaseArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "instance", instance)
+        DatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance=instance,
+            charset=charset,
+            collation=collation,
+            deletion_policy=deletion_policy,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance: Optional[pulumi.Input[str]] = None,
+             charset: Optional[pulumi.Input[str]] = None,
+             collation: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
+        _setter("instance", instance)
         if charset is not None:
-            pulumi.set(__self__, "charset", charset)
+            _setter("charset", charset)
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -185,20 +210,47 @@ class _DatabaseState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _DatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            charset=charset,
+            collation=collation,
+            deletion_policy=deletion_policy,
+            instance=instance,
+            name=name,
+            project=project,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             charset: Optional[pulumi.Input[str]] = None,
+             collation: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if charset is not None:
-            pulumi.set(__self__, "charset", charset)
+            _setter("charset", charset)
         if collation is not None:
-            pulumi.set(__self__, "collation", collation)
+            _setter("collation", collation)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter
@@ -484,6 +536,10 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,10 +39,29 @@ class ConsentStoreIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ConsentStoreIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -78,10 +97,29 @@ class ConsentStoreIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ConsentStoreIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -117,10 +155,29 @@ class DatasetIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DatasetIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -156,10 +213,29 @@ class DatasetIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DatasetIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -195,10 +271,29 @@ class DicomStoreIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DicomStoreIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -234,10 +329,29 @@ class DicomStoreIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DicomStoreIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -279,7 +393,22 @@ class DicomStoreNotificationConfigArgs:
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
-        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        DicomStoreNotificationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_topic=pubsub_topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
+        _setter("pubsub_topic", pubsub_topic)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -307,7 +436,22 @@ class DicomStoreStreamConfigArgs:
         :param pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
                Structure is documented below.
         """
-        pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+        DicomStoreStreamConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_destination=bigquery_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_destination: Optional[pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_destination is None and 'bigqueryDestination' in kwargs:
+            bigquery_destination = kwargs['bigqueryDestination']
+        if bigquery_destination is None:
+            raise TypeError("Missing 'bigquery_destination' argument")
+
+        _setter("bigquery_destination", bigquery_destination)
 
     @property
     @pulumi.getter(name="bigqueryDestination")
@@ -330,7 +474,22 @@ class DicomStoreStreamConfigBigqueryDestinationArgs:
         """
         :param pulumi.Input[str] table_uri: a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
         """
-        pulumi.set(__self__, "table_uri", table_uri)
+        DicomStoreStreamConfigBigqueryDestinationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table_uri=table_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table_uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if table_uri is None and 'tableUri' in kwargs:
+            table_uri = kwargs['tableUri']
+        if table_uri is None:
+            raise TypeError("Missing 'table_uri' argument")
+
+        _setter("table_uri", table_uri)
 
     @property
     @pulumi.getter(name="tableUri")
@@ -351,10 +510,29 @@ class FhirStoreIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FhirStoreIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -390,10 +568,29 @@ class FhirStoreIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FhirStoreIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -447,11 +644,34 @@ class FhirStoreNotificationConfigArgs:
                check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
                resource as a separate operation.
         """
-        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        FhirStoreNotificationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_topic=pubsub_topic,
+            send_full_resource=send_full_resource,
+            send_previous_resource_on_delete=send_previous_resource_on_delete,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             send_full_resource: Optional[pulumi.Input[bool]] = None,
+             send_previous_resource_on_delete: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+        if send_full_resource is None and 'sendFullResource' in kwargs:
+            send_full_resource = kwargs['sendFullResource']
+        if send_previous_resource_on_delete is None and 'sendPreviousResourceOnDelete' in kwargs:
+            send_previous_resource_on_delete = kwargs['sendPreviousResourceOnDelete']
+
+        _setter("pubsub_topic", pubsub_topic)
         if send_full_resource is not None:
-            pulumi.set(__self__, "send_full_resource", send_full_resource)
+            _setter("send_full_resource", send_full_resource)
         if send_previous_resource_on_delete is not None:
-            pulumi.set(__self__, "send_previous_resource_on_delete", send_previous_resource_on_delete)
+            _setter("send_previous_resource_on_delete", send_previous_resource_on_delete)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -519,9 +739,28 @@ class FhirStoreStreamConfigArgs:
                https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
                an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
-        pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+        FhirStoreStreamConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_destination=bigquery_destination,
+            resource_types=resource_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_destination: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs']] = None,
+             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_destination is None and 'bigqueryDestination' in kwargs:
+            bigquery_destination = kwargs['bigqueryDestination']
+        if bigquery_destination is None:
+            raise TypeError("Missing 'bigquery_destination' argument")
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+
+        _setter("bigquery_destination", bigquery_destination)
         if resource_types is not None:
-            pulumi.set(__self__, "resource_types", resource_types)
+            _setter("resource_types", resource_types)
 
     @property
     @pulumi.getter(name="bigqueryDestination")
@@ -565,8 +804,29 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
         :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs'] schema_config: The configuration for the exported BigQuery schema.
                Structure is documented below.
         """
-        pulumi.set(__self__, "dataset_uri", dataset_uri)
-        pulumi.set(__self__, "schema_config", schema_config)
+        FhirStoreStreamConfigBigqueryDestinationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_uri=dataset_uri,
+            schema_config=schema_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_uri: Optional[pulumi.Input[str]] = None,
+             schema_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_uri is None and 'datasetUri' in kwargs:
+            dataset_uri = kwargs['datasetUri']
+        if dataset_uri is None:
+            raise TypeError("Missing 'dataset_uri' argument")
+        if schema_config is None and 'schemaConfig' in kwargs:
+            schema_config = kwargs['schemaConfig']
+        if schema_config is None:
+            raise TypeError("Missing 'schema_config' argument")
+
+        _setter("dataset_uri", dataset_uri)
+        _setter("schema_config", schema_config)
 
     @property
     @pulumi.getter(name="datasetUri")
@@ -615,11 +875,34 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
                Default value is `ANALYTICS`.
                Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
         """
-        pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            recursive_structure_depth=recursive_structure_depth,
+            last_updated_partition_config=last_updated_partition_config,
+            schema_type=schema_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             recursive_structure_depth: Optional[pulumi.Input[int]] = None,
+             last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
+             schema_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if recursive_structure_depth is None and 'recursiveStructureDepth' in kwargs:
+            recursive_structure_depth = kwargs['recursiveStructureDepth']
+        if recursive_structure_depth is None:
+            raise TypeError("Missing 'recursive_structure_depth' argument")
+        if last_updated_partition_config is None and 'lastUpdatedPartitionConfig' in kwargs:
+            last_updated_partition_config = kwargs['lastUpdatedPartitionConfig']
+        if schema_type is None and 'schemaType' in kwargs:
+            schema_type = kwargs['schemaType']
+
+        _setter("recursive_structure_depth", recursive_structure_depth)
         if last_updated_partition_config is not None:
-            pulumi.set(__self__, "last_updated_partition_config", last_updated_partition_config)
+            _setter("last_updated_partition_config", last_updated_partition_config)
         if schema_type is not None:
-            pulumi.set(__self__, "schema_type", schema_type)
+            _setter("schema_type", schema_type)
 
     @property
     @pulumi.getter(name="recursiveStructureDepth")
@@ -678,9 +961,26 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
                Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
         :param pulumi.Input[str] expiration_ms: Number of milliseconds for which to keep the storage for a partition.
         """
-        pulumi.set(__self__, "type", type)
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            expiration_ms=expiration_ms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[pulumi.Input[str]] = None,
+             expiration_ms: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if expiration_ms is None and 'expirationMs' in kwargs:
+            expiration_ms = kwargs['expirationMs']
+
+        _setter("type", type)
         if expiration_ms is not None:
-            pulumi.set(__self__, "expiration_ms", expiration_ms)
+            _setter("expiration_ms", expiration_ms)
 
     @property
     @pulumi.getter
@@ -714,10 +1014,29 @@ class Hl7StoreIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        Hl7StoreIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -753,10 +1072,29 @@ class Hl7StoreIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        Hl7StoreIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -798,7 +1136,22 @@ class Hl7StoreNotificationConfigArgs:
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
-        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        Hl7StoreNotificationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_topic=pubsub_topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
+        _setter("pubsub_topic", pubsub_topic)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -841,9 +1194,26 @@ class Hl7StoreNotificationConfigsArgs:
                * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
                * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
         """
-        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        Hl7StoreNotificationConfigsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pubsub_topic=pubsub_topic,
+            filter=filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+
+        _setter("pubsub_topic", pubsub_topic)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -901,14 +1271,35 @@ class Hl7StoreParserConfigArgs:
                Default value is `V1`.
                Possible values are: `V1`, `V2`, `V3`.
         """
+        Hl7StoreParserConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_null_header=allow_null_header,
+            schema=schema,
+            segment_terminator=segment_terminator,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_null_header: Optional[pulumi.Input[bool]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             segment_terminator: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_null_header is None and 'allowNullHeader' in kwargs:
+            allow_null_header = kwargs['allowNullHeader']
+        if segment_terminator is None and 'segmentTerminator' in kwargs:
+            segment_terminator = kwargs['segmentTerminator']
+
         if allow_null_header is not None:
-            pulumi.set(__self__, "allow_null_header", allow_null_header)
+            _setter("allow_null_header", allow_null_header)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if segment_terminator is not None:
-            pulumi.set(__self__, "segment_terminator", segment_terminator)
+            _setter("segment_terminator", segment_terminator)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="allowNullHeader")

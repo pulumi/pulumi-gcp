@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,26 +48,65 @@ class InstanceArgs:
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
-        pulumi.set(__self__, "file_shares", file_shares)
-        pulumi.set(__self__, "networks", networks)
-        pulumi.set(__self__, "tier", tier)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_shares=file_shares,
+            networks=networks,
+            tier=tier,
+            description=description,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if file_shares is None:
+            raise TypeError("Missing 'file_shares' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
+        _setter("file_shares", file_shares)
+        _setter("networks", networks)
+        _setter("tier", tier)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
             warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
             pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="fileShares")
@@ -242,33 +281,72 @@ class _InstanceState:
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            etag=etag,
+            file_shares=file_shares,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            name=name,
+            networks=networks,
+            project=project,
+            tier=tier,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if file_shares is not None:
-            pulumi.set(__self__, "file_shares", file_shares)
+            _setter("file_shares", file_shares)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+            _setter("networks", networks)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if tier is not None:
-            pulumi.set(__self__, "tier", tier)
+            _setter("tier", tier)
         if zone is not None:
             warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
             pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="createTime")
@@ -684,6 +762,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -709,6 +791,11 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["description"] = description
+            if file_shares is not None and not isinstance(file_shares, InstanceFileSharesArgs):
+                file_shares = file_shares or {}
+                def _setter(key, value):
+                    file_shares[key] = value
+                InstanceFileSharesArgs._configure(_setter, **file_shares)
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
             __props__.__dict__["file_shares"] = file_shares

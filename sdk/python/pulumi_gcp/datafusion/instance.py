@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -80,43 +80,110 @@ class InstanceArgs:
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
-        pulumi.set(__self__, "type", type)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            accelerators=accelerators,
+            crypto_key_config=crypto_key_config,
+            dataproc_service_account=dataproc_service_account,
+            description=description,
+            display_name=display_name,
+            enable_rbac=enable_rbac,
+            enable_stackdriver_logging=enable_stackdriver_logging,
+            enable_stackdriver_monitoring=enable_stackdriver_monitoring,
+            event_publish_config=event_publish_config,
+            labels=labels,
+            name=name,
+            network_config=network_config,
+            options=options,
+            private_instance=private_instance,
+            project=project,
+            region=region,
+            version=version,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[pulumi.Input[str]] = None,
+             accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
+             crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
+             dataproc_service_account: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_rbac: Optional[pulumi.Input[bool]] = None,
+             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+             enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+             event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             private_instance: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+
+        _setter("type", type)
         if accelerators is not None:
-            pulumi.set(__self__, "accelerators", accelerators)
+            _setter("accelerators", accelerators)
         if crypto_key_config is not None:
-            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
+            _setter("crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
-            pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
+            _setter("dataproc_service_account", dataproc_service_account)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_rbac is not None:
-            pulumi.set(__self__, "enable_rbac", enable_rbac)
+            _setter("enable_rbac", enable_rbac)
         if enable_stackdriver_logging is not None:
-            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
-            pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+            _setter("enable_stackdriver_monitoring", enable_stackdriver_monitoring)
         if event_publish_config is not None:
-            pulumi.set(__self__, "event_publish_config", event_publish_config)
+            _setter("event_publish_config", event_publish_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if private_instance is not None:
-            pulumi.set(__self__, "private_instance", private_instance)
+            _setter("private_instance", private_instance)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -458,67 +525,170 @@ class _InstanceState:
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerators=accelerators,
+            api_endpoint=api_endpoint,
+            create_time=create_time,
+            crypto_key_config=crypto_key_config,
+            dataproc_service_account=dataproc_service_account,
+            description=description,
+            display_name=display_name,
+            enable_rbac=enable_rbac,
+            enable_stackdriver_logging=enable_stackdriver_logging,
+            enable_stackdriver_monitoring=enable_stackdriver_monitoring,
+            event_publish_config=event_publish_config,
+            gcs_bucket=gcs_bucket,
+            labels=labels,
+            name=name,
+            network_config=network_config,
+            options=options,
+            p4_service_account=p4_service_account,
+            private_instance=private_instance,
+            project=project,
+            region=region,
+            service_account=service_account,
+            service_endpoint=service_endpoint,
+            state=state,
+            state_message=state_message,
+            tenant_project_id=tenant_project_id,
+            type=type,
+            update_time=update_time,
+            version=version,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
+             api_endpoint: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
+             dataproc_service_account: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_rbac: Optional[pulumi.Input[bool]] = None,
+             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+             enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+             event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
+             gcs_bucket: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             p4_service_account: Optional[pulumi.Input[str]] = None,
+             private_instance: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             service_endpoint: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_message: Optional[pulumi.Input[str]] = None,
+             tenant_project_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_endpoint is None and 'apiEndpoint' in kwargs:
+            api_endpoint = kwargs['apiEndpoint']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if p4_service_account is None and 'p4ServiceAccount' in kwargs:
+            p4_service_account = kwargs['p4ServiceAccount']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_endpoint is None and 'serviceEndpoint' in kwargs:
+            service_endpoint = kwargs['serviceEndpoint']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if tenant_project_id is None and 'tenantProjectId' in kwargs:
+            tenant_project_id = kwargs['tenantProjectId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if accelerators is not None:
-            pulumi.set(__self__, "accelerators", accelerators)
+            _setter("accelerators", accelerators)
         if api_endpoint is not None:
-            pulumi.set(__self__, "api_endpoint", api_endpoint)
+            _setter("api_endpoint", api_endpoint)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if crypto_key_config is not None:
-            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
+            _setter("crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
-            pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
+            _setter("dataproc_service_account", dataproc_service_account)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_rbac is not None:
-            pulumi.set(__self__, "enable_rbac", enable_rbac)
+            _setter("enable_rbac", enable_rbac)
         if enable_stackdriver_logging is not None:
-            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
-            pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+            _setter("enable_stackdriver_monitoring", enable_stackdriver_monitoring)
         if event_publish_config is not None:
-            pulumi.set(__self__, "event_publish_config", event_publish_config)
+            _setter("event_publish_config", event_publish_config)
         if gcs_bucket is not None:
-            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+            _setter("gcs_bucket", gcs_bucket)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if p4_service_account is not None:
-            pulumi.set(__self__, "p4_service_account", p4_service_account)
+            _setter("p4_service_account", p4_service_account)
         if private_instance is not None:
-            pulumi.set(__self__, "private_instance", private_instance)
+            _setter("private_instance", private_instance)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_account is not None:
             warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
             pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if service_endpoint is not None:
-            pulumi.set(__self__, "service_endpoint", service_endpoint)
+            _setter("service_endpoint", service_endpoint)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_message is not None:
-            pulumi.set(__self__, "state_message", state_message)
+            _setter("state_message", state_message)
         if tenant_project_id is not None:
-            pulumi.set(__self__, "tenant_project_id", tenant_project_id)
+            _setter("tenant_project_id", tenant_project_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -1248,6 +1418,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1282,6 +1456,11 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["accelerators"] = accelerators
+            if crypto_key_config is not None and not isinstance(crypto_key_config, InstanceCryptoKeyConfigArgs):
+                crypto_key_config = crypto_key_config or {}
+                def _setter(key, value):
+                    crypto_key_config[key] = value
+                InstanceCryptoKeyConfigArgs._configure(_setter, **crypto_key_config)
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
@@ -1289,9 +1468,19 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+            if event_publish_config is not None and not isinstance(event_publish_config, InstanceEventPublishConfigArgs):
+                event_publish_config = event_publish_config or {}
+                def _setter(key, value):
+                    event_publish_config[key] = value
+                InstanceEventPublishConfigArgs._configure(_setter, **event_publish_config)
             __props__.__dict__["event_publish_config"] = event_publish_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if network_config is not None and not isinstance(network_config, InstanceNetworkConfigArgs):
+                network_config = network_config or {}
+                def _setter(key, value):
+                    network_config[key] = value
+                InstanceNetworkConfigArgs._configure(_setter, **network_config)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options
             __props__.__dict__["private_instance"] = private_instance

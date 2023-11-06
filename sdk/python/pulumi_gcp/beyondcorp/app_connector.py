@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,17 +33,44 @@ class AppConnectorArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppConnector.
         """
-        pulumi.set(__self__, "principal_info", principal_info)
+        AppConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            principal_info=principal_info,
+            display_name=display_name,
+            labels=labels,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+        if principal_info is None:
+            raise TypeError("Missing 'principal_info' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
+        _setter("principal_info", principal_info)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="principalInfo")
@@ -142,20 +169,47 @@ class _AppConnectorState:
         :param pulumi.Input[str] region: The region of the AppConnector.
         :param pulumi.Input[str] state: Represents the different states of a AppConnector.
         """
+        _AppConnectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            labels=labels,
+            name=name,
+            principal_info=principal_info,
+            project=project,
+            region=region,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if principal_info is not None:
-            pulumi.set(__self__, "principal_info", principal_info)
+            _setter("principal_info", principal_info)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="displayName")
@@ -425,6 +479,10 @@ class AppConnector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppConnectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -448,6 +506,11 @@ class AppConnector(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if principal_info is not None and not isinstance(principal_info, AppConnectorPrincipalInfoArgs):
+                principal_info = principal_info or {}
+                def _setter(key, value):
+                    principal_info[key] = value
+                AppConnectorPrincipalInfoArgs._configure(_setter, **principal_info)
             if principal_info is None and not opts.urn:
                 raise TypeError("Missing required property 'principal_info'")
             __props__.__dict__["principal_info"] = principal_info

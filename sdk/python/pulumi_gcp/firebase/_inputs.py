@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -56,22 +56,67 @@ class ExtensionsInstanceConfigArgs:
                Unlike other params, these will not be set as environment variables on
                functions.
         """
-        pulumi.set(__self__, "extension_ref", extension_ref)
-        pulumi.set(__self__, "params", params)
+        ExtensionsInstanceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            extension_ref=extension_ref,
+            params=params,
+            allowed_event_types=allowed_event_types,
+            create_time=create_time,
+            eventarc_channel=eventarc_channel,
+            extension_version=extension_version,
+            name=name,
+            populated_postinstall_content=populated_postinstall_content,
+            system_params=system_params,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             extension_ref: Optional[pulumi.Input[str]] = None,
+             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             allowed_event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             eventarc_channel: Optional[pulumi.Input[str]] = None,
+             extension_version: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             populated_postinstall_content: Optional[pulumi.Input[str]] = None,
+             system_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if extension_ref is None and 'extensionRef' in kwargs:
+            extension_ref = kwargs['extensionRef']
+        if extension_ref is None:
+            raise TypeError("Missing 'extension_ref' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if allowed_event_types is None and 'allowedEventTypes' in kwargs:
+            allowed_event_types = kwargs['allowedEventTypes']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if eventarc_channel is None and 'eventarcChannel' in kwargs:
+            eventarc_channel = kwargs['eventarcChannel']
+        if extension_version is None and 'extensionVersion' in kwargs:
+            extension_version = kwargs['extensionVersion']
+        if populated_postinstall_content is None and 'populatedPostinstallContent' in kwargs:
+            populated_postinstall_content = kwargs['populatedPostinstallContent']
+        if system_params is None and 'systemParams' in kwargs:
+            system_params = kwargs['systemParams']
+
+        _setter("extension_ref", extension_ref)
+        _setter("params", params)
         if allowed_event_types is not None:
-            pulumi.set(__self__, "allowed_event_types", allowed_event_types)
+            _setter("allowed_event_types", allowed_event_types)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if eventarc_channel is not None:
-            pulumi.set(__self__, "eventarc_channel", eventarc_channel)
+            _setter("eventarc_channel", eventarc_channel)
         if extension_version is not None:
-            pulumi.set(__self__, "extension_version", extension_version)
+            _setter("extension_version", extension_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if populated_postinstall_content is not None:
-            pulumi.set(__self__, "populated_postinstall_content", populated_postinstall_content)
+            _setter("populated_postinstall_content", populated_postinstall_content)
         if system_params is not None:
-            pulumi.set(__self__, "system_params", system_params)
+            _setter("system_params", system_params)
 
     @property
     @pulumi.getter(name="extensionRef")
@@ -205,12 +250,27 @@ class ExtensionsInstanceErrorStatusArgs:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English.
         """
+        ExtensionsInstanceErrorStatusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            details=details,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[int]] = None,
+             details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
 
     @property
     @pulumi.getter
@@ -262,12 +322,33 @@ class ExtensionsInstanceRuntimeDataArgs:
                Structure is documented below.
         :param pulumi.Input[str] state_update_time: The time of the last state update.
         """
+        ExtensionsInstanceRuntimeDataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fatal_error=fatal_error,
+            processing_state=processing_state,
+            state_update_time=state_update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
+             processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
+             state_update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fatal_error is None and 'fatalError' in kwargs:
+            fatal_error = kwargs['fatalError']
+        if processing_state is None and 'processingState' in kwargs:
+            processing_state = kwargs['processingState']
+        if state_update_time is None and 'stateUpdateTime' in kwargs:
+            state_update_time = kwargs['stateUpdateTime']
+
         if fatal_error is not None:
-            pulumi.set(__self__, "fatal_error", fatal_error)
+            _setter("fatal_error", fatal_error)
         if processing_state is not None:
-            pulumi.set(__self__, "processing_state", processing_state)
+            _setter("processing_state", processing_state)
         if state_update_time is not None:
-            pulumi.set(__self__, "state_update_time", state_update_time)
+            _setter("state_update_time", state_update_time)
 
     @property
     @pulumi.getter(name="fatalError")
@@ -317,8 +398,21 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
                more detail on why the extension is unusable and must be re-installed
                or reconfigured.
         """
+        ExtensionsInstanceRuntimeDataFatalErrorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            error_message=error_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             error_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if error_message is not None:
-            pulumi.set(__self__, "error_message", error_message)
+            _setter("error_message", error_message)
 
     @property
     @pulumi.getter(name="errorMessage")
@@ -347,10 +441,25 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
                for the extension instance.
         :param pulumi.Input[str] state: The processing state of the extension instance.
         """
+        ExtensionsInstanceRuntimeDataProcessingStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            detail_message=detail_message,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             detail_message: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if detail_message is None and 'detailMessage' in kwargs:
+            detail_message = kwargs['detailMessage']
+
         if detail_message is not None:
-            pulumi.set(__self__, "detail_message", detail_message)
+            _setter("detail_message", detail_message)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="detailMessage")
@@ -393,10 +502,23 @@ class HostingVersionConfigArgs:
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
+        HostingVersionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            redirects=redirects,
+            rewrites=rewrites,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
+             rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if redirects is not None:
-            pulumi.set(__self__, "redirects", redirects)
+            _setter("redirects", redirects)
         if rewrites is not None:
-            pulumi.set(__self__, "rewrites", rewrites)
+            _setter("rewrites", rewrites)
 
     @property
     @pulumi.getter
@@ -445,12 +567,35 @@ class HostingVersionConfigRedirectArgs:
         :param pulumi.Input[str] glob: The user-supplied glob to match against the request URL path.
         :param pulumi.Input[str] regex: The user-supplied RE2 regular expression to match against the request URL path.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "status_code", status_code)
+        HostingVersionConfigRedirectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            status_code=status_code,
+            glob=glob,
+            regex=regex,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             status_code: Optional[pulumi.Input[int]] = None,
+             glob: Optional[pulumi.Input[str]] = None,
+             regex: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if status_code is None and 'statusCode' in kwargs:
+            status_code = kwargs['statusCode']
+        if status_code is None:
+            raise TypeError("Missing 'status_code' argument")
+
+        _setter("location", location)
+        _setter("status_code", status_code)
         if glob is not None:
-            pulumi.set(__self__, "glob", glob)
+            _setter("glob", glob)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
 
     @property
     @pulumi.getter
@@ -520,14 +665,31 @@ class HostingVersionConfigRewriteArgs:
         :param pulumi.Input['HostingVersionConfigRewriteRunArgs'] run: The request will be forwarded to Cloud Run.
                Structure is documented below.
         """
+        HostingVersionConfigRewriteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function=function,
+            glob=glob,
+            regex=regex,
+            run=run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function: Optional[pulumi.Input[str]] = None,
+             glob: Optional[pulumi.Input[str]] = None,
+             regex: Optional[pulumi.Input[str]] = None,
+             run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if function is not None:
-            pulumi.set(__self__, "function", function)
+            _setter("function", function)
         if glob is not None:
-            pulumi.set(__self__, "glob", glob)
+            _setter("glob", glob)
         if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+            _setter("regex", regex)
         if run is not None:
-            pulumi.set(__self__, "run", run)
+            _setter("run", run)
 
     @property
     @pulumi.getter
@@ -588,9 +750,26 @@ class HostingVersionConfigRewriteRunArgs:
         :param pulumi.Input[str] service_id: User-defined ID of the Cloud Run service.
         :param pulumi.Input[str] region: Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
         """
-        pulumi.set(__self__, "service_id", service_id)
+        HostingVersionConfigRewriteRunArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_id=service_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
+        _setter("service_id", service_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="serviceId")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,24 +53,71 @@ class SecurityScanConfigArgs:
                Default value is `CHROME_LINUX`.
                Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "starting_urls", starting_urls)
+        SecurityScanConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            starting_urls=starting_urls,
+            authentication=authentication,
+            blacklist_patterns=blacklist_patterns,
+            export_to_security_command_center=export_to_security_command_center,
+            max_qps=max_qps,
+            project=project,
+            schedule=schedule,
+            target_platforms=target_platforms,
+            user_agent=user_agent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
+             blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             export_to_security_command_center: Optional[pulumi.Input[str]] = None,
+             max_qps: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
+             target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_agent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if starting_urls is None:
+            raise TypeError("Missing 'starting_urls' argument")
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
+        _setter("display_name", display_name)
+        _setter("starting_urls", starting_urls)
         if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+            _setter("authentication", authentication)
         if blacklist_patterns is not None:
-            pulumi.set(__self__, "blacklist_patterns", blacklist_patterns)
+            _setter("blacklist_patterns", blacklist_patterns)
         if export_to_security_command_center is not None:
-            pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
+            _setter("export_to_security_command_center", export_to_security_command_center)
         if max_qps is not None:
-            pulumi.set(__self__, "max_qps", max_qps)
+            _setter("max_qps", max_qps)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if target_platforms is not None:
-            pulumi.set(__self__, "target_platforms", target_platforms)
+            _setter("target_platforms", target_platforms)
         if user_agent is not None:
-            pulumi.set(__self__, "user_agent", user_agent)
+            _setter("user_agent", user_agent)
 
     @property
     @pulumi.getter(name="displayName")
@@ -250,28 +297,73 @@ class _SecurityScanConfigState:
                Default value is `CHROME_LINUX`.
                Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
+        _SecurityScanConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication=authentication,
+            blacklist_patterns=blacklist_patterns,
+            display_name=display_name,
+            export_to_security_command_center=export_to_security_command_center,
+            max_qps=max_qps,
+            name=name,
+            project=project,
+            schedule=schedule,
+            starting_urls=starting_urls,
+            target_platforms=target_platforms,
+            user_agent=user_agent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
+             blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             export_to_security_command_center: Optional[pulumi.Input[str]] = None,
+             max_qps: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
+             starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_agent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blacklist_patterns is None and 'blacklistPatterns' in kwargs:
+            blacklist_patterns = kwargs['blacklistPatterns']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if export_to_security_command_center is None and 'exportToSecurityCommandCenter' in kwargs:
+            export_to_security_command_center = kwargs['exportToSecurityCommandCenter']
+        if max_qps is None and 'maxQps' in kwargs:
+            max_qps = kwargs['maxQps']
+        if starting_urls is None and 'startingUrls' in kwargs:
+            starting_urls = kwargs['startingUrls']
+        if target_platforms is None and 'targetPlatforms' in kwargs:
+            target_platforms = kwargs['targetPlatforms']
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+            _setter("authentication", authentication)
         if blacklist_patterns is not None:
-            pulumi.set(__self__, "blacklist_patterns", blacklist_patterns)
+            _setter("blacklist_patterns", blacklist_patterns)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if export_to_security_command_center is not None:
-            pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
+            _setter("export_to_security_command_center", export_to_security_command_center)
         if max_qps is not None:
-            pulumi.set(__self__, "max_qps", max_qps)
+            _setter("max_qps", max_qps)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if starting_urls is not None:
-            pulumi.set(__self__, "starting_urls", starting_urls)
+            _setter("starting_urls", starting_urls)
         if target_platforms is not None:
-            pulumi.set(__self__, "target_platforms", target_platforms)
+            _setter("target_platforms", target_platforms)
         if user_agent is not None:
-            pulumi.set(__self__, "user_agent", user_agent)
+            _setter("user_agent", user_agent)
 
     @property
     @pulumi.getter
@@ -564,6 +656,10 @@ class SecurityScanConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecurityScanConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -588,6 +684,11 @@ class SecurityScanConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityScanConfigArgs.__new__(SecurityScanConfigArgs)
 
+            if authentication is not None and not isinstance(authentication, SecurityScanConfigAuthenticationArgs):
+                authentication = authentication or {}
+                def _setter(key, value):
+                    authentication[key] = value
+                SecurityScanConfigAuthenticationArgs._configure(_setter, **authentication)
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["blacklist_patterns"] = blacklist_patterns
             if display_name is None and not opts.urn:
@@ -596,6 +697,11 @@ class SecurityScanConfig(pulumi.CustomResource):
             __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
             __props__.__dict__["max_qps"] = max_qps
             __props__.__dict__["project"] = project
+            if schedule is not None and not isinstance(schedule, SecurityScanConfigScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                SecurityScanConfigScheduleArgs._configure(_setter, **schedule)
             __props__.__dict__["schedule"] = schedule
             if starting_urls is None and not opts.urn:
                 raise TypeError("Missing required property 'starting_urls'")

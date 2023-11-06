@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -66,28 +66,85 @@ class CxSecuritySettingsArgs:
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
+        CxSecuritySettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            location=location,
+            audio_export_settings=audio_export_settings,
+            deidentify_template=deidentify_template,
+            insights_export_settings=insights_export_settings,
+            inspect_template=inspect_template,
+            project=project,
+            purge_data_types=purge_data_types,
+            redaction_scope=redaction_scope,
+            redaction_strategy=redaction_strategy,
+            retention_strategy=retention_strategy,
+            retention_window_days=retention_window_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+             deidentify_template: Optional[pulumi.Input[str]] = None,
+             insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+             inspect_template: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redaction_scope: Optional[pulumi.Input[str]] = None,
+             redaction_strategy: Optional[pulumi.Input[str]] = None,
+             retention_strategy: Optional[pulumi.Input[str]] = None,
+             retention_window_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
+        _setter("display_name", display_name)
+        _setter("location", location)
         if audio_export_settings is not None:
-            pulumi.set(__self__, "audio_export_settings", audio_export_settings)
+            _setter("audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
-            pulumi.set(__self__, "deidentify_template", deidentify_template)
+            _setter("deidentify_template", deidentify_template)
         if insights_export_settings is not None:
-            pulumi.set(__self__, "insights_export_settings", insights_export_settings)
+            _setter("insights_export_settings", insights_export_settings)
         if inspect_template is not None:
-            pulumi.set(__self__, "inspect_template", inspect_template)
+            _setter("inspect_template", inspect_template)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if purge_data_types is not None:
-            pulumi.set(__self__, "purge_data_types", purge_data_types)
+            _setter("purge_data_types", purge_data_types)
         if redaction_scope is not None:
-            pulumi.set(__self__, "redaction_scope", redaction_scope)
+            _setter("redaction_scope", redaction_scope)
         if redaction_strategy is not None:
-            pulumi.set(__self__, "redaction_strategy", redaction_strategy)
+            _setter("redaction_strategy", redaction_strategy)
         if retention_strategy is not None:
-            pulumi.set(__self__, "retention_strategy", retention_strategy)
+            _setter("retention_strategy", retention_strategy)
         if retention_window_days is not None:
-            pulumi.set(__self__, "retention_window_days", retention_window_days)
+            _setter("retention_window_days", retention_window_days)
 
     @property
     @pulumi.getter(name="displayName")
@@ -313,32 +370,87 @@ class _CxSecuritySettingsState:
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
+        _CxSecuritySettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audio_export_settings=audio_export_settings,
+            deidentify_template=deidentify_template,
+            display_name=display_name,
+            insights_export_settings=insights_export_settings,
+            inspect_template=inspect_template,
+            location=location,
+            name=name,
+            project=project,
+            purge_data_types=purge_data_types,
+            redaction_scope=redaction_scope,
+            redaction_strategy=redaction_strategy,
+            retention_strategy=retention_strategy,
+            retention_window_days=retention_window_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+             deidentify_template: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+             inspect_template: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redaction_scope: Optional[pulumi.Input[str]] = None,
+             redaction_strategy: Optional[pulumi.Input[str]] = None,
+             retention_strategy: Optional[pulumi.Input[str]] = None,
+             retention_window_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audio_export_settings is None and 'audioExportSettings' in kwargs:
+            audio_export_settings = kwargs['audioExportSettings']
+        if deidentify_template is None and 'deidentifyTemplate' in kwargs:
+            deidentify_template = kwargs['deidentifyTemplate']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if insights_export_settings is None and 'insightsExportSettings' in kwargs:
+            insights_export_settings = kwargs['insightsExportSettings']
+        if inspect_template is None and 'inspectTemplate' in kwargs:
+            inspect_template = kwargs['inspectTemplate']
+        if purge_data_types is None and 'purgeDataTypes' in kwargs:
+            purge_data_types = kwargs['purgeDataTypes']
+        if redaction_scope is None and 'redactionScope' in kwargs:
+            redaction_scope = kwargs['redactionScope']
+        if redaction_strategy is None and 'redactionStrategy' in kwargs:
+            redaction_strategy = kwargs['redactionStrategy']
+        if retention_strategy is None and 'retentionStrategy' in kwargs:
+            retention_strategy = kwargs['retentionStrategy']
+        if retention_window_days is None and 'retentionWindowDays' in kwargs:
+            retention_window_days = kwargs['retentionWindowDays']
+
         if audio_export_settings is not None:
-            pulumi.set(__self__, "audio_export_settings", audio_export_settings)
+            _setter("audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
-            pulumi.set(__self__, "deidentify_template", deidentify_template)
+            _setter("deidentify_template", deidentify_template)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if insights_export_settings is not None:
-            pulumi.set(__self__, "insights_export_settings", insights_export_settings)
+            _setter("insights_export_settings", insights_export_settings)
         if inspect_template is not None:
-            pulumi.set(__self__, "inspect_template", inspect_template)
+            _setter("inspect_template", inspect_template)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if purge_data_types is not None:
-            pulumi.set(__self__, "purge_data_types", purge_data_types)
+            _setter("purge_data_types", purge_data_types)
         if redaction_scope is not None:
-            pulumi.set(__self__, "redaction_scope", redaction_scope)
+            _setter("redaction_scope", redaction_scope)
         if redaction_strategy is not None:
-            pulumi.set(__self__, "redaction_strategy", redaction_strategy)
+            _setter("redaction_strategy", redaction_strategy)
         if retention_strategy is not None:
-            pulumi.set(__self__, "retention_strategy", retention_strategy)
+            _setter("retention_strategy", retention_strategy)
         if retention_window_days is not None:
-            pulumi.set(__self__, "retention_window_days", retention_window_days)
+            _setter("retention_window_days", retention_window_days)
 
     @property
     @pulumi.getter(name="audioExportSettings")
@@ -777,6 +889,10 @@ class CxSecuritySettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CxSecuritySettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -803,11 +919,21 @@ class CxSecuritySettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxSecuritySettingsArgs.__new__(CxSecuritySettingsArgs)
 
+            if audio_export_settings is not None and not isinstance(audio_export_settings, CxSecuritySettingsAudioExportSettingsArgs):
+                audio_export_settings = audio_export_settings or {}
+                def _setter(key, value):
+                    audio_export_settings[key] = value
+                CxSecuritySettingsAudioExportSettingsArgs._configure(_setter, **audio_export_settings)
             __props__.__dict__["audio_export_settings"] = audio_export_settings
             __props__.__dict__["deidentify_template"] = deidentify_template
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if insights_export_settings is not None and not isinstance(insights_export_settings, CxSecuritySettingsInsightsExportSettingsArgs):
+                insights_export_settings = insights_export_settings or {}
+                def _setter(key, value):
+                    insights_export_settings[key] = value
+                CxSecuritySettingsInsightsExportSettingsArgs._configure(_setter, **insights_export_settings)
             __props__.__dict__["insights_export_settings"] = insights_export_settings
             __props__.__dict__["inspect_template"] = inspect_template
             if location is None and not opts.urn:

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetHttpProxyArgs', 'TargetHttpProxy']
@@ -46,17 +46,46 @@ class TargetHttpProxyArgs:
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
                this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
-        pulumi.set(__self__, "url_map", url_map)
+        TargetHttpProxyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url_map=url_map,
+            description=description,
+            http_keep_alive_timeout_sec=http_keep_alive_timeout_sec,
+            name=name,
+            project=project,
+            proxy_bind=proxy_bind,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url_map: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_bind: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+
+        _setter("url_map", url_map)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if http_keep_alive_timeout_sec is not None:
-            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
+            _setter("http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_bind is not None:
-            pulumi.set(__self__, "proxy_bind", proxy_bind)
+            _setter("proxy_bind", proxy_bind)
 
     @property
     @pulumi.getter(name="urlMap")
@@ -189,24 +218,63 @@ class _TargetHttpProxyState:
                
                - - -
         """
+        _TargetHttpProxyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            http_keep_alive_timeout_sec=http_keep_alive_timeout_sec,
+            name=name,
+            project=project,
+            proxy_bind=proxy_bind,
+            proxy_id=proxy_id,
+            self_link=self_link,
+            url_map=url_map,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_bind: Optional[pulumi.Input[bool]] = None,
+             proxy_id: Optional[pulumi.Input[int]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             url_map: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if http_keep_alive_timeout_sec is not None:
-            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
+            _setter("http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_bind is not None:
-            pulumi.set(__self__, "proxy_bind", proxy_bind)
+            _setter("proxy_bind", proxy_bind)
         if proxy_id is not None:
-            pulumi.set(__self__, "proxy_id", proxy_id)
+            _setter("proxy_id", proxy_id)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if url_map is not None:
-            pulumi.set(__self__, "url_map", url_map)
+            _setter("url_map", url_map)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -468,6 +536,10 @@ class TargetHttpProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TargetHttpProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

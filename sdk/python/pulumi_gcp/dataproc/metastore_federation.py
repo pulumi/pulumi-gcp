@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,15 +35,46 @@ class MetastoreFederationArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "backend_metastores", backend_metastores)
-        pulumi.set(__self__, "federation_id", federation_id)
-        pulumi.set(__self__, "version", version)
+        MetastoreFederationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_metastores=backend_metastores,
+            federation_id=federation_id,
+            version=version,
+            labels=labels,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
+             federation_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_metastores is None and 'backendMetastores' in kwargs:
+            backend_metastores = kwargs['backendMetastores']
+        if backend_metastores is None:
+            raise TypeError("Missing 'backend_metastores' argument")
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if federation_id is None:
+            raise TypeError("Missing 'federation_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
+        _setter("backend_metastores", backend_metastores)
+        _setter("federation_id", federation_id)
+        _setter("version", version)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="backendMetastores")
@@ -154,28 +185,67 @@ class _MetastoreFederationState:
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore federation.
         :param pulumi.Input[str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
         """
+        _MetastoreFederationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_metastores=backend_metastores,
+            endpoint_uri=endpoint_uri,
+            federation_id=federation_id,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            state=state,
+            state_message=state_message,
+            uid=uid,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
+             endpoint_uri: Optional[pulumi.Input[str]] = None,
+             federation_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             state_message: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_metastores is None and 'backendMetastores' in kwargs:
+            backend_metastores = kwargs['backendMetastores']
+        if endpoint_uri is None and 'endpointUri' in kwargs:
+            endpoint_uri = kwargs['endpointUri']
+        if federation_id is None and 'federationId' in kwargs:
+            federation_id = kwargs['federationId']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+
         if backend_metastores is not None:
-            pulumi.set(__self__, "backend_metastores", backend_metastores)
+            _setter("backend_metastores", backend_metastores)
         if endpoint_uri is not None:
-            pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+            _setter("endpoint_uri", endpoint_uri)
         if federation_id is not None:
-            pulumi.set(__self__, "federation_id", federation_id)
+            _setter("federation_id", federation_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if state_message is not None:
-            pulumi.set(__self__, "state_message", state_message)
+            _setter("state_message", state_message)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="backendMetastores")
@@ -513,6 +583,10 @@ class MetastoreFederation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetastoreFederationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

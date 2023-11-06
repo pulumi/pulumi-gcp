@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnvGroupArgs', 'EnvGroup']
@@ -27,11 +27,30 @@ class EnvGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Hostnames of the environment group.
         :param pulumi.Input[str] name: The resource ID of the environment group.
         """
-        pulumi.set(__self__, "org_id", org_id)
+        EnvGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org_id=org_id,
+            hostnames=hostnames,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org_id: Optional[pulumi.Input[str]] = None,
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+
+        _setter("org_id", org_id)
         if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
+            _setter("hostnames", hostnames)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="orgId")
@@ -90,12 +109,29 @@ class _EnvGroupState:
                
                - - -
         """
+        _EnvGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostnames=hostnames,
+            name=name,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
+            _setter("hostnames", hostnames)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -271,6 +307,10 @@ class EnvGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnvGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

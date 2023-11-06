@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -27,8 +27,19 @@ __all__ = [
 class HubRoutingVpc(dict):
     def __init__(__self__, *,
                  uri: Optional[str] = None):
+        HubRoutingVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            uri=uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
 
     @property
     @pulumi.getter
@@ -45,9 +56,24 @@ class ServiceConnectionPolicyPscConfig(dict):
         :param Sequence[str] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
         :param str limit: Max number of PSC connections for this policy.
         """
-        pulumi.set(__self__, "subnetworks", subnetworks)
+        ServiceConnectionPolicyPscConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            subnetworks=subnetworks,
+            limit=limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             subnetworks: Optional[Sequence[str]] = None,
+             limit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if subnetworks is None:
+            raise TypeError("Missing 'subnetworks' argument")
+
+        _setter("subnetworks", subnetworks)
         if limit is not None:
-            pulumi.set(__self__, "limit", limit)
+            _setter("limit", limit)
 
     @property
     @pulumi.getter
@@ -123,24 +149,65 @@ class ServiceConnectionPolicyPscConnection(dict):
         :param str state: The state of the PSC connection.
                Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
         """
+        ServiceConnectionPolicyPscConnection._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_address=consumer_address,
+            consumer_forwarding_rule=consumer_forwarding_rule,
+            consumer_target_project=consumer_target_project,
+            error=error,
+            error_info=error_info,
+            error_type=error_type,
+            gce_operation=gce_operation,
+            psc_connection_id=psc_connection_id,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_address: Optional[str] = None,
+             consumer_forwarding_rule: Optional[str] = None,
+             consumer_target_project: Optional[str] = None,
+             error: Optional['outputs.ServiceConnectionPolicyPscConnectionError'] = None,
+             error_info: Optional['outputs.ServiceConnectionPolicyPscConnectionErrorInfo'] = None,
+             error_type: Optional[str] = None,
+             gce_operation: Optional[str] = None,
+             psc_connection_id: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_address is None and 'consumerAddress' in kwargs:
+            consumer_address = kwargs['consumerAddress']
+        if consumer_forwarding_rule is None and 'consumerForwardingRule' in kwargs:
+            consumer_forwarding_rule = kwargs['consumerForwardingRule']
+        if consumer_target_project is None and 'consumerTargetProject' in kwargs:
+            consumer_target_project = kwargs['consumerTargetProject']
+        if error_info is None and 'errorInfo' in kwargs:
+            error_info = kwargs['errorInfo']
+        if error_type is None and 'errorType' in kwargs:
+            error_type = kwargs['errorType']
+        if gce_operation is None and 'gceOperation' in kwargs:
+            gce_operation = kwargs['gceOperation']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+
         if consumer_address is not None:
-            pulumi.set(__self__, "consumer_address", consumer_address)
+            _setter("consumer_address", consumer_address)
         if consumer_forwarding_rule is not None:
-            pulumi.set(__self__, "consumer_forwarding_rule", consumer_forwarding_rule)
+            _setter("consumer_forwarding_rule", consumer_forwarding_rule)
         if consumer_target_project is not None:
-            pulumi.set(__self__, "consumer_target_project", consumer_target_project)
+            _setter("consumer_target_project", consumer_target_project)
         if error is not None:
-            pulumi.set(__self__, "error", error)
+            _setter("error", error)
         if error_info is not None:
-            pulumi.set(__self__, "error_info", error_info)
+            _setter("error_info", error_info)
         if error_type is not None:
-            pulumi.set(__self__, "error_type", error_type)
+            _setter("error_type", error_type)
         if gce_operation is not None:
-            pulumi.set(__self__, "gce_operation", gce_operation)
+            _setter("gce_operation", gce_operation)
         if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+            _setter("psc_connection_id", psc_connection_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="consumerAddress")
@@ -232,12 +299,27 @@ class ServiceConnectionPolicyPscConnectionError(dict):
                A list of messages that carry the error details.
         :param str message: A developer-facing error message.
         """
+        ServiceConnectionPolicyPscConnectionError._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            details=details,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[int] = None,
+             details: Optional[Sequence[Mapping[str, Any]]] = None,
+             message: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
 
     @property
     @pulumi.getter
@@ -276,12 +358,27 @@ class ServiceConnectionPolicyPscConnectionErrorInfo(dict):
         :param Mapping[str, str] metadata: Additional structured details about this error.
         :param str reason: The reason of the error.
         """
+        ServiceConnectionPolicyPscConnectionErrorInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            metadata=metadata,
+            reason=reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[str] = None,
+             metadata: Optional[Mapping[str, str]] = None,
+             reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
 
     @property
     @pulumi.getter
@@ -334,8 +431,27 @@ class SpokeLinkedInterconnectAttachments(dict):
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[str] uris: The URIs of linked interconnect attachment resources
         """
-        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
-        pulumi.set(__self__, "uris", uris)
+        SpokeLinkedInterconnectAttachments._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            site_to_site_data_transfer=site_to_site_data_transfer,
+            uris=uris,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             site_to_site_data_transfer: Optional[bool] = None,
+             uris: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
+            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
+        if site_to_site_data_transfer is None:
+            raise TypeError("Missing 'site_to_site_data_transfer' argument")
+        if uris is None:
+            raise TypeError("Missing 'uris' argument")
+
+        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
+        _setter("uris", uris)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -380,8 +496,27 @@ class SpokeLinkedRouterApplianceInstances(dict):
         :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        SpokeLinkedRouterApplianceInstances._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instances=instances,
+            site_to_site_data_transfer=site_to_site_data_transfer,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instances: Optional[Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance']] = None,
+             site_to_site_data_transfer: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
+            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
+        if site_to_site_data_transfer is None:
+            raise TypeError("Missing 'site_to_site_data_transfer' argument")
+
+        _setter("instances", instances)
+        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
 
     @property
     @pulumi.getter
@@ -430,10 +565,27 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
                
                - - -
         """
+        SpokeLinkedRouterApplianceInstancesInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            virtual_machine=virtual_machine,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[str] = None,
+             virtual_machine: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if virtual_machine is None and 'virtualMachine' in kwargs:
+            virtual_machine = kwargs['virtualMachine']
+
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if virtual_machine is not None:
-            pulumi.set(__self__, "virtual_machine", virtual_machine)
+            _setter("virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -480,9 +632,26 @@ class SpokeLinkedVpcNetwork(dict):
         :param str uri: The URI of the VPC network resource.
         :param Sequence[str] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
         """
-        pulumi.set(__self__, "uri", uri)
+        SpokeLinkedVpcNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            uri=uri,
+            exclude_export_ranges=exclude_export_ranges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             uri: Optional[str] = None,
+             exclude_export_ranges: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if exclude_export_ranges is None and 'excludeExportRanges' in kwargs:
+            exclude_export_ranges = kwargs['excludeExportRanges']
+
+        _setter("uri", uri)
         if exclude_export_ranges is not None:
-            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+            _setter("exclude_export_ranges", exclude_export_ranges)
 
     @property
     @pulumi.getter
@@ -527,8 +696,27 @@ class SpokeLinkedVpnTunnels(dict):
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[str] uris: The URIs of linked VPN tunnel resources.
         """
-        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
-        pulumi.set(__self__, "uris", uris)
+        SpokeLinkedVpnTunnels._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            site_to_site_data_transfer=site_to_site_data_transfer,
+            uris=uris,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             site_to_site_data_transfer: Optional[bool] = None,
+             uris: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
+            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
+        if site_to_site_data_transfer is None:
+            raise TypeError("Missing 'site_to_site_data_transfer' argument")
+        if uris is None:
+            raise TypeError("Missing 'uris' argument")
+
+        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
+        _setter("uris", uris)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")

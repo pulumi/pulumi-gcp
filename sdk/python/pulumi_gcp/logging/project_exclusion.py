@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectExclusionArgs', 'ProjectExclusion']
@@ -31,15 +31,36 @@ class ProjectExclusionArgs:
         :param pulumi.Input[str] project: The project to create the exclusion in. If omitted, the project associated with the provider is
                used.
         """
-        pulumi.set(__self__, "filter", filter)
+        ProjectExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            description=description,
+            disabled=disabled,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+
+        _setter("filter", filter)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -126,16 +147,35 @@ class _ProjectExclusionState:
         :param pulumi.Input[str] project: The project to create the exclusion in. If omitted, the project associated with the provider is
                used.
         """
+        _ProjectExclusionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disabled=disabled,
+            filter=filter,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -297,6 +337,10 @@ class ProjectExclusion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectExclusionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

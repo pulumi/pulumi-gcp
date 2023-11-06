@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WebAppArgs', 'WebApp']
@@ -32,13 +32,38 @@ class WebAppArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        WebAppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            api_key_id=api_key_id,
+            deletion_policy=deletion_policy,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
+        _setter("display_name", display_name)
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -125,20 +150,53 @@ class _WebAppState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _WebAppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key_id=api_key_id,
+            app_id=app_id,
+            app_urls=app_urls,
+            deletion_policy=deletion_policy,
+            display_name=display_name,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key_id: Optional[pulumi.Input[str]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key_id is None and 'apiKeyId' in kwargs:
+            api_key_id = kwargs['apiKeyId']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_urls is None and 'appUrls' in kwargs:
+            app_urls = kwargs['appUrls']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if api_key_id is not None:
-            pulumi.set(__self__, "api_key_id", api_key_id)
+            _setter("api_key_id", api_key_id)
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if app_urls is not None:
-            pulumi.set(__self__, "app_urls", app_urls)
+            _setter("app_urls", app_urls)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -464,6 +522,10 @@ class WebApp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebAppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

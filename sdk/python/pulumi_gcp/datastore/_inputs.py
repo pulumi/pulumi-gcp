@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,8 +23,25 @@ class DataStoreIndexPropertyArgs:
                Possible values are: `ASCENDING`, `DESCENDING`.
         :param pulumi.Input[str] name: The property name to index.
         """
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "name", name)
+        DataStoreIndexPropertyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            direction=direction,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             direction: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("direction", direction)
+        _setter("name", name)
 
     @property
     @pulumi.getter

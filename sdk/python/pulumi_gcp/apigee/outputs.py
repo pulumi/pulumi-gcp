@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -80,16 +80,45 @@ class AddonsConfigAddonsConfig(dict):
         :param 'AddonsConfigAddonsConfigMonetizationConfigArgs' monetization_config: Configuration for the Monetization add-on.
                Structure is documented below.
         """
+        AddonsConfigAddonsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            advanced_api_ops_config=advanced_api_ops_config,
+            api_security_config=api_security_config,
+            connectors_platform_config=connectors_platform_config,
+            integration_config=integration_config,
+            monetization_config=monetization_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             advanced_api_ops_config: Optional['outputs.AddonsConfigAddonsConfigAdvancedApiOpsConfig'] = None,
+             api_security_config: Optional['outputs.AddonsConfigAddonsConfigApiSecurityConfig'] = None,
+             connectors_platform_config: Optional['outputs.AddonsConfigAddonsConfigConnectorsPlatformConfig'] = None,
+             integration_config: Optional['outputs.AddonsConfigAddonsConfigIntegrationConfig'] = None,
+             monetization_config: Optional['outputs.AddonsConfigAddonsConfigMonetizationConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advanced_api_ops_config is None and 'advancedApiOpsConfig' in kwargs:
+            advanced_api_ops_config = kwargs['advancedApiOpsConfig']
+        if api_security_config is None and 'apiSecurityConfig' in kwargs:
+            api_security_config = kwargs['apiSecurityConfig']
+        if connectors_platform_config is None and 'connectorsPlatformConfig' in kwargs:
+            connectors_platform_config = kwargs['connectorsPlatformConfig']
+        if integration_config is None and 'integrationConfig' in kwargs:
+            integration_config = kwargs['integrationConfig']
+        if monetization_config is None and 'monetizationConfig' in kwargs:
+            monetization_config = kwargs['monetizationConfig']
+
         if advanced_api_ops_config is not None:
-            pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+            _setter("advanced_api_ops_config", advanced_api_ops_config)
         if api_security_config is not None:
-            pulumi.set(__self__, "api_security_config", api_security_config)
+            _setter("api_security_config", api_security_config)
         if connectors_platform_config is not None:
-            pulumi.set(__self__, "connectors_platform_config", connectors_platform_config)
+            _setter("connectors_platform_config", connectors_platform_config)
         if integration_config is not None:
-            pulumi.set(__self__, "integration_config", integration_config)
+            _setter("integration_config", integration_config)
         if monetization_config is not None:
-            pulumi.set(__self__, "monetization_config", monetization_config)
+            _setter("monetization_config", monetization_config)
 
     @property
     @pulumi.getter(name="advancedApiOpsConfig")
@@ -144,8 +173,19 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfig(dict):
         """
         :param bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
+        AddonsConfigAddonsConfigAdvancedApiOpsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -183,10 +223,25 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
         :param str expires_at: (Output)
                Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
+        AddonsConfigAddonsConfigApiSecurityConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            expires_at=expires_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             expires_at: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
 
     @property
     @pulumi.getter
@@ -233,10 +288,25 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
         :param str expires_at: (Output)
                Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
+        AddonsConfigAddonsConfigConnectorsPlatformConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            expires_at=expires_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             expires_at: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
 
     @property
     @pulumi.getter
@@ -263,8 +333,19 @@ class AddonsConfigAddonsConfigIntegrationConfig(dict):
         """
         :param bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
+        AddonsConfigAddonsConfigIntegrationConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -282,8 +363,19 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
         """
         :param bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
+        AddonsConfigAddonsConfigMonetizationConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -300,10 +392,29 @@ class EnvironmentIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        EnvironmentIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -327,10 +438,29 @@ class EnvironmentIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        EnvironmentIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -386,12 +516,33 @@ class EnvironmentNodeConfig(dict):
                has the specified environment. If not specified, the default is determined by the
                recommended minimum number of nodes for that gateway.
         """
+        EnvironmentNodeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            current_aggregate_node_count=current_aggregate_node_count,
+            max_node_count=max_node_count,
+            min_node_count=min_node_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             current_aggregate_node_count: Optional[str] = None,
+             max_node_count: Optional[str] = None,
+             min_node_count: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if current_aggregate_node_count is None and 'currentAggregateNodeCount' in kwargs:
+            current_aggregate_node_count = kwargs['currentAggregateNodeCount']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+
         if current_aggregate_node_count is not None:
-            pulumi.set(__self__, "current_aggregate_node_count", current_aggregate_node_count)
+            _setter("current_aggregate_node_count", current_aggregate_node_count)
         if max_node_count is not None:
-            pulumi.set(__self__, "max_node_count", max_node_count)
+            _setter("max_node_count", max_node_count)
         if min_node_count is not None:
-            pulumi.set(__self__, "min_node_count", min_node_count)
+            _setter("min_node_count", min_node_count)
 
     @property
     @pulumi.getter(name="currentAggregateNodeCount")
@@ -450,8 +601,21 @@ class KeystoresAliasesKeyCertFileCertsInfo(dict):
                List of all properties in the object.
                Structure is documented below.
         """
+        KeystoresAliasesKeyCertFileCertsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_infos=cert_infos,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_infos: Optional[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfoCertInfo']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
-            pulumi.set(__self__, "cert_infos", cert_infos)
+            _setter("cert_infos", cert_infos)
 
     @property
     @pulumi.getter(name="certInfos")
@@ -534,28 +698,75 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
         :param int version: (Output)
                X.509 version.
         """
+        KeystoresAliasesKeyCertFileCertsInfoCertInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_constraints=basic_constraints,
+            expiry_date=expiry_date,
+            is_valid=is_valid,
+            issuer=issuer,
+            public_key=public_key,
+            serial_number=serial_number,
+            sig_alg_name=sig_alg_name,
+            subject=subject,
+            subject_alternative_names=subject_alternative_names,
+            valid_from=valid_from,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_constraints: Optional[str] = None,
+             expiry_date: Optional[str] = None,
+             is_valid: Optional[str] = None,
+             issuer: Optional[str] = None,
+             public_key: Optional[str] = None,
+             serial_number: Optional[str] = None,
+             sig_alg_name: Optional[str] = None,
+             subject: Optional[str] = None,
+             subject_alternative_names: Optional[Sequence[str]] = None,
+             valid_from: Optional[str] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
-            pulumi.set(__self__, "basic_constraints", basic_constraints)
+            _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
-            pulumi.set(__self__, "expiry_date", expiry_date)
+            _setter("expiry_date", expiry_date)
         if is_valid is not None:
-            pulumi.set(__self__, "is_valid", is_valid)
+            _setter("is_valid", is_valid)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if sig_alg_name is not None:
-            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+            _setter("sig_alg_name", sig_alg_name)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if subject_alternative_names is not None:
-            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+            _setter("subject_alternative_names", subject_alternative_names)
         if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
+            _setter("valid_from", valid_from)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="basicConstraints")
@@ -684,8 +895,21 @@ class KeystoresAliasesPkcs12CertsInfo(dict):
                List of all properties in the object.
                Structure is documented below.
         """
+        KeystoresAliasesPkcs12CertsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_infos=cert_infos,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_infos: Optional[Sequence['outputs.KeystoresAliasesPkcs12CertsInfoCertInfo']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
-            pulumi.set(__self__, "cert_infos", cert_infos)
+            _setter("cert_infos", cert_infos)
 
     @property
     @pulumi.getter(name="certInfos")
@@ -768,28 +992,75 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo(dict):
         :param int version: (Output)
                X.509 version.
         """
+        KeystoresAliasesPkcs12CertsInfoCertInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_constraints=basic_constraints,
+            expiry_date=expiry_date,
+            is_valid=is_valid,
+            issuer=issuer,
+            public_key=public_key,
+            serial_number=serial_number,
+            sig_alg_name=sig_alg_name,
+            subject=subject,
+            subject_alternative_names=subject_alternative_names,
+            valid_from=valid_from,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_constraints: Optional[str] = None,
+             expiry_date: Optional[str] = None,
+             is_valid: Optional[str] = None,
+             issuer: Optional[str] = None,
+             public_key: Optional[str] = None,
+             serial_number: Optional[str] = None,
+             sig_alg_name: Optional[str] = None,
+             subject: Optional[str] = None,
+             subject_alternative_names: Optional[Sequence[str]] = None,
+             valid_from: Optional[str] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
-            pulumi.set(__self__, "basic_constraints", basic_constraints)
+            _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
-            pulumi.set(__self__, "expiry_date", expiry_date)
+            _setter("expiry_date", expiry_date)
         if is_valid is not None:
-            pulumi.set(__self__, "is_valid", is_valid)
+            _setter("is_valid", is_valid)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if sig_alg_name is not None:
-            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+            _setter("sig_alg_name", sig_alg_name)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if subject_alternative_names is not None:
-            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+            _setter("subject_alternative_names", subject_alternative_names)
         if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
+            _setter("valid_from", valid_from)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="basicConstraints")
@@ -918,8 +1189,21 @@ class KeystoresAliasesSelfSignedCertCertsInfo(dict):
                List of all properties in the object.
                Structure is documented below.
         """
+        KeystoresAliasesSelfSignedCertCertsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_infos=cert_infos,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_infos: Optional[Sequence['outputs.KeystoresAliasesSelfSignedCertCertsInfoCertInfo']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_infos is None and 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+
         if cert_infos is not None:
-            pulumi.set(__self__, "cert_infos", cert_infos)
+            _setter("cert_infos", cert_infos)
 
     @property
     @pulumi.getter(name="certInfos")
@@ -1002,28 +1286,75 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfo(dict):
         :param int version: (Output)
                X.509 version.
         """
+        KeystoresAliasesSelfSignedCertCertsInfoCertInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_constraints=basic_constraints,
+            expiry_date=expiry_date,
+            is_valid=is_valid,
+            issuer=issuer,
+            public_key=public_key,
+            serial_number=serial_number,
+            sig_alg_name=sig_alg_name,
+            subject=subject,
+            subject_alternative_names=subject_alternative_names,
+            valid_from=valid_from,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_constraints: Optional[str] = None,
+             expiry_date: Optional[str] = None,
+             is_valid: Optional[str] = None,
+             issuer: Optional[str] = None,
+             public_key: Optional[str] = None,
+             serial_number: Optional[str] = None,
+             sig_alg_name: Optional[str] = None,
+             subject: Optional[str] = None,
+             subject_alternative_names: Optional[Sequence[str]] = None,
+             valid_from: Optional[str] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if basic_constraints is None and 'basicConstraints' in kwargs:
+            basic_constraints = kwargs['basicConstraints']
+        if expiry_date is None and 'expiryDate' in kwargs:
+            expiry_date = kwargs['expiryDate']
+        if is_valid is None and 'isValid' in kwargs:
+            is_valid = kwargs['isValid']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if serial_number is None and 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if sig_alg_name is None and 'sigAlgName' in kwargs:
+            sig_alg_name = kwargs['sigAlgName']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+
         if basic_constraints is not None:
-            pulumi.set(__self__, "basic_constraints", basic_constraints)
+            _setter("basic_constraints", basic_constraints)
         if expiry_date is not None:
-            pulumi.set(__self__, "expiry_date", expiry_date)
+            _setter("expiry_date", expiry_date)
         if is_valid is not None:
-            pulumi.set(__self__, "is_valid", is_valid)
+            _setter("is_valid", is_valid)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if sig_alg_name is not None:
-            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+            _setter("sig_alg_name", sig_alg_name)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if subject_alternative_names is not None:
-            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+            _setter("subject_alternative_names", subject_alternative_names)
         if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
+            _setter("valid_from", valid_from)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="basicConstraints")
@@ -1168,20 +1499,49 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
         :param str org_unit: Organization team name. Maximum length is 64 characters.
         :param str state: State or district name. Maximum length is 128 characters.
         """
+        KeystoresAliasesSelfSignedCertSubject._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            common_name=common_name,
+            country_code=country_code,
+            email=email,
+            locality=locality,
+            org=org,
+            org_unit=org_unit,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             common_name: Optional[str] = None,
+             country_code: Optional[str] = None,
+             email: Optional[str] = None,
+             locality: Optional[str] = None,
+             org: Optional[str] = None,
+             org_unit: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if country_code is None and 'countryCode' in kwargs:
+            country_code = kwargs['countryCode']
+        if org_unit is None and 'orgUnit' in kwargs:
+            org_unit = kwargs['orgUnit']
+
         if common_name is not None:
-            pulumi.set(__self__, "common_name", common_name)
+            _setter("common_name", common_name)
         if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
+            _setter("country_code", country_code)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if locality is not None:
-            pulumi.set(__self__, "locality", locality)
+            _setter("locality", locality)
         if org is not None:
-            pulumi.set(__self__, "org", org)
+            _setter("org", org)
         if org_unit is not None:
-            pulumi.set(__self__, "org_unit", org_unit)
+            _setter("org_unit", org_unit)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="commonName")
@@ -1266,8 +1626,21 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(dict):
         """
         :param str subject_alternative_name: Subject Alternative Name
         """
+        KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            subject_alternative_name=subject_alternative_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             subject_alternative_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if subject_alternative_name is None and 'subjectAlternativeName' in kwargs:
+            subject_alternative_name = kwargs['subjectAlternativeName']
+
         if subject_alternative_name is not None:
-            pulumi.set(__self__, "subject_alternative_name", subject_alternative_name)
+            _setter("subject_alternative_name", subject_alternative_name)
 
     @property
     @pulumi.getter(name="subjectAlternativeName")
@@ -1286,8 +1659,19 @@ class OrganizationProperties(dict):
         :param Sequence['OrganizationPropertiesPropertyArgs'] properties: List of all properties in the object.
                Structure is documented below.
         """
+        OrganizationProperties._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            properties=properties,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             properties: Optional[Sequence['outputs.OrganizationPropertiesProperty']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
 
     @property
     @pulumi.getter
@@ -1308,10 +1692,23 @@ class OrganizationPropertiesProperty(dict):
         :param str name: Name of the property.
         :param str value: Value of the property.
         """
+        OrganizationPropertiesProperty._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1362,12 +1759,33 @@ class SharedflowMetaData(dict):
         :param str last_modified_at: Time at which the API proxy was most recently modified, in milliseconds since epoch.
         :param str sub_type: The type of entity described
         """
+        SharedflowMetaData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            last_modified_at=last_modified_at,
+            sub_type=sub_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[str] = None,
+             last_modified_at: Optional[str] = None,
+             sub_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if last_modified_at is None and 'lastModifiedAt' in kwargs:
+            last_modified_at = kwargs['lastModifiedAt']
+        if sub_type is None and 'subType' in kwargs:
+            sub_type = kwargs['subType']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if last_modified_at is not None:
-            pulumi.set(__self__, "last_modified_at", last_modified_at)
+            _setter("last_modified_at", last_modified_at)
         if sub_type is not None:
-            pulumi.set(__self__, "sub_type", sub_type)
+            _setter("sub_type", sub_type)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -1445,23 +1863,64 @@ class TargetServerSSlInfo(dict):
         :param Sequence[str] protocols: The TLS versioins to be used.
         :param str trust_store: The resource ID of the truststore.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        TargetServerSSlInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ciphers=ciphers,
+            client_auth_enabled=client_auth_enabled,
+            common_name=common_name,
+            ignore_validation_errors=ignore_validation_errors,
+            key_alias=key_alias,
+            key_store=key_store,
+            protocols=protocols,
+            trust_store=trust_store,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             ciphers: Optional[Sequence[str]] = None,
+             client_auth_enabled: Optional[bool] = None,
+             common_name: Optional['outputs.TargetServerSSlInfoCommonName'] = None,
+             ignore_validation_errors: Optional[bool] = None,
+             key_alias: Optional[str] = None,
+             key_store: Optional[str] = None,
+             protocols: Optional[Sequence[str]] = None,
+             trust_store: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if client_auth_enabled is None and 'clientAuthEnabled' in kwargs:
+            client_auth_enabled = kwargs['clientAuthEnabled']
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if ignore_validation_errors is None and 'ignoreValidationErrors' in kwargs:
+            ignore_validation_errors = kwargs['ignoreValidationErrors']
+        if key_alias is None and 'keyAlias' in kwargs:
+            key_alias = kwargs['keyAlias']
+        if key_store is None and 'keyStore' in kwargs:
+            key_store = kwargs['keyStore']
+        if trust_store is None and 'trustStore' in kwargs:
+            trust_store = kwargs['trustStore']
+
+        _setter("enabled", enabled)
         if ciphers is not None:
-            pulumi.set(__self__, "ciphers", ciphers)
+            _setter("ciphers", ciphers)
         if client_auth_enabled is not None:
-            pulumi.set(__self__, "client_auth_enabled", client_auth_enabled)
+            _setter("client_auth_enabled", client_auth_enabled)
         if common_name is not None:
-            pulumi.set(__self__, "common_name", common_name)
+            _setter("common_name", common_name)
         if ignore_validation_errors is not None:
-            pulumi.set(__self__, "ignore_validation_errors", ignore_validation_errors)
+            _setter("ignore_validation_errors", ignore_validation_errors)
         if key_alias is not None:
-            pulumi.set(__self__, "key_alias", key_alias)
+            _setter("key_alias", key_alias)
         if key_store is not None:
-            pulumi.set(__self__, "key_store", key_store)
+            _setter("key_store", key_store)
         if protocols is not None:
-            pulumi.set(__self__, "protocols", protocols)
+            _setter("protocols", protocols)
         if trust_store is not None:
-            pulumi.set(__self__, "trust_store", trust_store)
+            _setter("trust_store", trust_store)
 
     @property
     @pulumi.getter
@@ -1563,10 +2022,25 @@ class TargetServerSSlInfoCommonName(dict):
         :param str value: The TLS Common Name string of the certificate.
         :param bool wildcard_match: Indicates whether the cert should be matched against as a wildcard cert.
         """
+        TargetServerSSlInfoCommonName._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            wildcard_match=wildcard_match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: Optional[str] = None,
+             wildcard_match: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if wildcard_match is None and 'wildcardMatch' in kwargs:
+            wildcard_match = kwargs['wildcardMatch']
+
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if wildcard_match is not None:
-            pulumi.set(__self__, "wildcard_match", wildcard_match)
+            _setter("wildcard_match", wildcard_match)
 
     @property
     @pulumi.getter

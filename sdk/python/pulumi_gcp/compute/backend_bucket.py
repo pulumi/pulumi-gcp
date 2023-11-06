@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,23 +50,64 @@ class BackendBucketArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
+        BackendBucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            cdn_policy=cdn_policy,
+            compression_mode=compression_mode,
+            custom_response_headers=custom_response_headers,
+            description=description,
+            edge_security_policy=edge_security_policy,
+            enable_cdn=enable_cdn,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
+             compression_mode: Optional[pulumi.Input[str]] = None,
+             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             edge_security_policy: Optional[pulumi.Input[str]] = None,
+             enable_cdn: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+
+        _setter("bucket_name", bucket_name)
         if cdn_policy is not None:
-            pulumi.set(__self__, "cdn_policy", cdn_policy)
+            _setter("cdn_policy", cdn_policy)
         if compression_mode is not None:
-            pulumi.set(__self__, "compression_mode", compression_mode)
+            _setter("compression_mode", compression_mode)
         if custom_response_headers is not None:
-            pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+            _setter("custom_response_headers", custom_response_headers)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if edge_security_policy is not None:
-            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
+            _setter("edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
-            pulumi.set(__self__, "enable_cdn", enable_cdn)
+            _setter("enable_cdn", enable_cdn)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -231,28 +272,75 @@ class _BackendBucketState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _BackendBucketState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            cdn_policy=cdn_policy,
+            compression_mode=compression_mode,
+            creation_timestamp=creation_timestamp,
+            custom_response_headers=custom_response_headers,
+            description=description,
+            edge_security_policy=edge_security_policy,
+            enable_cdn=enable_cdn,
+            name=name,
+            project=project,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
+             compression_mode: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             edge_security_policy: Optional[pulumi.Input[str]] = None,
+             enable_cdn: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if cdn_policy is not None:
-            pulumi.set(__self__, "cdn_policy", cdn_policy)
+            _setter("cdn_policy", cdn_policy)
         if compression_mode is not None:
-            pulumi.set(__self__, "compression_mode", compression_mode)
+            _setter("compression_mode", compression_mode)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if custom_response_headers is not None:
-            pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+            _setter("custom_response_headers", custom_response_headers)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if edge_security_policy is not None:
-            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
+            _setter("edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
-            pulumi.set(__self__, "enable_cdn", enable_cdn)
+            _setter("enable_cdn", enable_cdn)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -646,6 +734,10 @@ class BackendBucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackendBucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -672,6 +764,11 @@ class BackendBucket(pulumi.CustomResource):
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
+            if cdn_policy is not None and not isinstance(cdn_policy, BackendBucketCdnPolicyArgs):
+                cdn_policy = cdn_policy or {}
+                def _setter(key, value):
+                    cdn_policy[key] = value
+                BackendBucketCdnPolicyArgs._configure(_setter, **cdn_policy)
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["custom_response_headers"] = custom_response_headers

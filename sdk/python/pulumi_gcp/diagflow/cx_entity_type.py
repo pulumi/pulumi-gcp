@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,21 +52,64 @@ class CxEntityTypeArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "entities", entities)
-        pulumi.set(__self__, "kind", kind)
+        CxEntityTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            entities=entities,
+            kind=kind,
+            auto_expansion_mode=auto_expansion_mode,
+            enable_fuzzy_extraction=enable_fuzzy_extraction,
+            excluded_phrases=excluded_phrases,
+            language_code=language_code,
+            parent=parent,
+            redact=redact,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             auto_expansion_mode: Optional[pulumi.Input[str]] = None,
+             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
+             excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             redact: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if entities is None:
+            raise TypeError("Missing 'entities' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if auto_expansion_mode is None and 'autoExpansionMode' in kwargs:
+            auto_expansion_mode = kwargs['autoExpansionMode']
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+        if excluded_phrases is None and 'excludedPhrases' in kwargs:
+            excluded_phrases = kwargs['excludedPhrases']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
+        _setter("display_name", display_name)
+        _setter("entities", entities)
+        _setter("kind", kind)
         if auto_expansion_mode is not None:
-            pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
+            _setter("auto_expansion_mode", auto_expansion_mode)
         if enable_fuzzy_extraction is not None:
-            pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
+            _setter("enable_fuzzy_extraction", enable_fuzzy_extraction)
         if excluded_phrases is not None:
-            pulumi.set(__self__, "excluded_phrases", excluded_phrases)
+            _setter("excluded_phrases", excluded_phrases)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if redact is not None:
-            pulumi.set(__self__, "redact", redact)
+            _setter("redact", redact)
 
     @property
     @pulumi.getter(name="displayName")
@@ -234,26 +277,65 @@ class _CxEntityTypeState:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         """
+        _CxEntityTypeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_expansion_mode=auto_expansion_mode,
+            display_name=display_name,
+            enable_fuzzy_extraction=enable_fuzzy_extraction,
+            entities=entities,
+            excluded_phrases=excluded_phrases,
+            kind=kind,
+            language_code=language_code,
+            name=name,
+            parent=parent,
+            redact=redact,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_expansion_mode: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]] = None,
+             excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             redact: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_expansion_mode is None and 'autoExpansionMode' in kwargs:
+            auto_expansion_mode = kwargs['autoExpansionMode']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_fuzzy_extraction is None and 'enableFuzzyExtraction' in kwargs:
+            enable_fuzzy_extraction = kwargs['enableFuzzyExtraction']
+        if excluded_phrases is None and 'excludedPhrases' in kwargs:
+            excluded_phrases = kwargs['excludedPhrases']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         if auto_expansion_mode is not None:
-            pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
+            _setter("auto_expansion_mode", auto_expansion_mode)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_fuzzy_extraction is not None:
-            pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
+            _setter("enable_fuzzy_extraction", enable_fuzzy_extraction)
         if entities is not None:
-            pulumi.set(__self__, "entities", entities)
+            _setter("entities", entities)
         if excluded_phrases is not None:
-            pulumi.set(__self__, "excluded_phrases", excluded_phrases)
+            _setter("excluded_phrases", excluded_phrases)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if redact is not None:
-            pulumi.set(__self__, "redact", redact)
+            _setter("redact", redact)
 
     @property
     @pulumi.getter(name="autoExpansionMode")
@@ -588,6 +670,10 @@ class CxEntityType(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CxEntityTypeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

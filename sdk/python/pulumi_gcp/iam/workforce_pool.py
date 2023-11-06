@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkforcePoolArgs', 'WorkforcePool']
@@ -41,17 +41,52 @@ class WorkforcePoolArgs:
                If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
                A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        WorkforcePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            parent=parent,
+            workforce_pool_id=workforce_pool_id,
+            description=description,
+            disabled=disabled,
+            display_name=display_name,
+            session_duration=session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             workforce_pool_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
+            workforce_pool_id = kwargs['workforcePoolId']
+        if workforce_pool_id is None:
+            raise TypeError("Missing 'workforce_pool_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
+        _setter("location", location)
+        _setter("parent", parent)
+        _setter("workforce_pool_id", workforce_pool_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
 
     @property
     @pulumi.getter
@@ -192,24 +227,57 @@ class _WorkforcePoolState:
                digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
+        _WorkforcePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disabled=disabled,
+            display_name=display_name,
+            location=location,
+            name=name,
+            parent=parent,
+            session_duration=session_duration,
+            state=state,
+            workforce_pool_id=workforce_pool_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             workforce_pool_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
+            workforce_pool_id = kwargs['workforcePoolId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if workforce_pool_id is not None:
-            pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+            _setter("workforce_pool_id", workforce_pool_id)
 
     @property
     @pulumi.getter
@@ -495,6 +563,10 @@ class WorkforcePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkforcePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SharedVPCServiceProjectArgs', 'SharedVPCServiceProject']
@@ -23,10 +23,35 @@ class SharedVPCServiceProjectArgs:
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
-        pulumi.set(__self__, "host_project", host_project)
-        pulumi.set(__self__, "service_project", service_project)
+        SharedVPCServiceProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_project=host_project,
+            service_project=service_project,
+            deletion_policy=deletion_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_project: Optional[pulumi.Input[str]] = None,
+             service_project: Optional[pulumi.Input[str]] = None,
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_project is None and 'hostProject' in kwargs:
+            host_project = kwargs['hostProject']
+        if host_project is None:
+            raise TypeError("Missing 'host_project' argument")
+        if service_project is None and 'serviceProject' in kwargs:
+            service_project = kwargs['serviceProject']
+        if service_project is None:
+            raise TypeError("Missing 'service_project' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
+        _setter("host_project", host_project)
+        _setter("service_project", service_project)
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
 
     @property
     @pulumi.getter(name="hostProject")
@@ -77,12 +102,33 @@ class _SharedVPCServiceProjectState:
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         """
+        _SharedVPCServiceProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deletion_policy=deletion_policy,
+            host_project=host_project,
+            service_project=service_project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deletion_policy: Optional[pulumi.Input[str]] = None,
+             host_project: Optional[pulumi.Input[str]] = None,
+             service_project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if host_project is None and 'hostProject' in kwargs:
+            host_project = kwargs['hostProject']
+        if service_project is None and 'serviceProject' in kwargs:
+            service_project = kwargs['serviceProject']
+
         if deletion_policy is not None:
-            pulumi.set(__self__, "deletion_policy", deletion_policy)
+            _setter("deletion_policy", deletion_policy)
         if host_project is not None:
-            pulumi.set(__self__, "host_project", host_project)
+            _setter("host_project", host_project)
         if service_project is not None:
-            pulumi.set(__self__, "service_project", service_project)
+            _setter("service_project", service_project)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -220,6 +266,10 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SharedVPCServiceProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

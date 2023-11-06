@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,12 +37,39 @@ class GameServerDeploymentRolloutArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "default_game_server_config", default_game_server_config)
-        pulumi.set(__self__, "deployment_id", deployment_id)
+        GameServerDeploymentRolloutArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_game_server_config=default_game_server_config,
+            deployment_id=deployment_id,
+            game_server_config_overrides=game_server_config_overrides,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_game_server_config: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if default_game_server_config is None:
+            raise TypeError("Missing 'default_game_server_config' argument")
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
+        _setter("default_game_server_config", default_game_server_config)
+        _setter("deployment_id", deployment_id)
         if game_server_config_overrides is not None:
-            pulumi.set(__self__, "game_server_config_overrides", game_server_config_overrides)
+            _setter("game_server_config_overrides", game_server_config_overrides)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="defaultGameServerConfig")
@@ -130,16 +157,41 @@ class _GameServerDeploymentRolloutState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _GameServerDeploymentRolloutState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_game_server_config=default_game_server_config,
+            deployment_id=deployment_id,
+            game_server_config_overrides=game_server_config_overrides,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_game_server_config: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_game_server_config is None and 'defaultGameServerConfig' in kwargs:
+            default_game_server_config = kwargs['defaultGameServerConfig']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if game_server_config_overrides is None and 'gameServerConfigOverrides' in kwargs:
+            game_server_config_overrides = kwargs['gameServerConfigOverrides']
+
         if default_game_server_config is not None:
-            pulumi.set(__self__, "default_game_server_config", default_game_server_config)
+            _setter("default_game_server_config", default_game_server_config)
         if deployment_id is not None:
-            pulumi.set(__self__, "deployment_id", deployment_id)
+            _setter("deployment_id", deployment_id)
         if game_server_config_overrides is not None:
-            pulumi.set(__self__, "game_server_config_overrides", game_server_config_overrides)
+            _setter("game_server_config_overrides", game_server_config_overrides)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="defaultGameServerConfig")
@@ -404,6 +456,10 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GameServerDeploymentRolloutArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

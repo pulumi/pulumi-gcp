@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IAMCustomRoleArgs', 'IAMCustomRole']
@@ -32,15 +32,44 @@ class IAMCustomRoleArgs:
                Defaults to `GA`.
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "role_id", role_id)
-        pulumi.set(__self__, "title", title)
+        IAMCustomRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            role_id=role_id,
+            title=title,
+            description=description,
+            project=project,
+            stage=stage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             stage: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("permissions", permissions)
+        _setter("role_id", role_id)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if stage is not None:
-            pulumi.set(__self__, "stage", stage)
+            _setter("stage", stage)
 
     @property
     @pulumi.getter
@@ -143,22 +172,49 @@ class _IAMCustomRoleState:
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
         :param pulumi.Input[str] title: A human-readable title for the role.
         """
+        _IAMCustomRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deleted=deleted,
+            description=description,
+            name=name,
+            permissions=permissions,
+            project=project,
+            role_id=role_id,
+            stage=stage,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deleted: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             stage: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if deleted is not None:
-            pulumi.set(__self__, "deleted", deleted)
+            _setter("deleted", deleted)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
         if stage is not None:
-            pulumi.set(__self__, "stage", stage)
+            _setter("stage", stage)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -396,6 +452,10 @@ class IAMCustomRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMCustomRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

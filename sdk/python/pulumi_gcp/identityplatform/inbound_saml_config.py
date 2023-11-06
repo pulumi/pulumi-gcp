@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,15 +37,48 @@ class InboundSamlConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "idp_config", idp_config)
-        pulumi.set(__self__, "sp_config", sp_config)
+        InboundSamlConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            idp_config=idp_config,
+            sp_config=sp_config,
+            enabled=enabled,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']] = None,
+             sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if idp_config is None:
+            raise TypeError("Missing 'idp_config' argument")
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+        if sp_config is None:
+            raise TypeError("Missing 'sp_config' argument")
+
+        _setter("display_name", display_name)
+        _setter("idp_config", idp_config)
+        _setter("sp_config", sp_config)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -150,18 +183,45 @@ class _InboundSamlConfigState:
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
+        _InboundSamlConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            enabled=enabled,
+            idp_config=idp_config,
+            name=name,
+            project=project,
+            sp_config=sp_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if idp_config is not None:
-            pulumi.set(__self__, "idp_config", idp_config)
+            _setter("idp_config", idp_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if sp_config is not None:
-            pulumi.set(__self__, "sp_config", sp_config)
+            _setter("sp_config", sp_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -377,6 +437,10 @@ class InboundSamlConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InboundSamlConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -401,11 +465,21 @@ class InboundSamlConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled"] = enabled
+            if idp_config is not None and not isinstance(idp_config, InboundSamlConfigIdpConfigArgs):
+                idp_config = idp_config or {}
+                def _setter(key, value):
+                    idp_config[key] = value
+                InboundSamlConfigIdpConfigArgs._configure(_setter, **idp_config)
             if idp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'idp_config'")
             __props__.__dict__["idp_config"] = idp_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if sp_config is not None and not isinstance(sp_config, InboundSamlConfigSpConfigArgs):
+                sp_config = sp_config or {}
+                def _setter(key, value):
+                    sp_config[key] = value
+                InboundSamlConfigSpConfigArgs._configure(_setter, **sp_config)
             if sp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'sp_config'")
             __props__.__dict__["sp_config"] = sp_config

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ScopeIamPolicyArgs', 'ScopeIamPolicy']
@@ -36,10 +36,33 @@ class ScopeIamPolicyArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "scope_id", scope_id)
+        ScopeIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_data=policy_data,
+            scope_id=scope_id,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+
+        _setter("policy_data", policy_data)
+        _setter("scope_id", scope_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="policyData")
@@ -116,14 +139,35 @@ class _ScopeIamPolicyState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
+        _ScopeIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            policy_data=policy_data,
+            project=project,
+            scope_id=scope_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if scope_id is not None:
-            pulumi.set(__self__, "scope_id", scope_id)
+            _setter("scope_id", scope_id)
 
     @property
     @pulumi.getter
@@ -391,6 +435,10 @@ class ScopeIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScopeIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MonitoredProjectArgs', 'MonitoredProject']
@@ -24,9 +24,26 @@ class MonitoredProjectArgs:
                - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
-        pulumi.set(__self__, "metrics_scope", metrics_scope)
+        MonitoredProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metrics_scope=metrics_scope,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metrics_scope: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metrics_scope is None and 'metricsScope' in kwargs:
+            metrics_scope = kwargs['metricsScope']
+        if metrics_scope is None:
+            raise TypeError("Missing 'metrics_scope' argument")
+
+        _setter("metrics_scope", metrics_scope)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="metricsScope")
@@ -71,12 +88,31 @@ class _MonitoredProjectState:
                - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
+        _MonitoredProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            metrics_scope=metrics_scope,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             metrics_scope: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if metrics_scope is None and 'metricsScope' in kwargs:
+            metrics_scope = kwargs['metricsScope']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if metrics_scope is not None:
-            pulumi.set(__self__, "metrics_scope", metrics_scope)
+            _setter("metrics_scope", metrics_scope)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -218,6 +254,10 @@ class MonitoredProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitoredProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

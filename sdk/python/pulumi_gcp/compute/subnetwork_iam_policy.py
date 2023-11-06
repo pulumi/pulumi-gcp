@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubnetworkIAMPolicyArgs', 'SubnetworkIAMPolicy']
@@ -42,12 +42,35 @@ class SubnetworkIAMPolicyArgs:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
-        pulumi.set(__self__, "policy_data", policy_data)
-        pulumi.set(__self__, "subnetwork", subnetwork)
+        SubnetworkIAMPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_data=policy_data,
+            subnetwork=subnetwork,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if subnetwork is None:
+            raise TypeError("Missing 'subnetwork' argument")
+
+        _setter("policy_data", policy_data)
+        _setter("subnetwork", subnetwork)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="policyData")
@@ -148,16 +171,37 @@ class _SubnetworkIAMPolicyState:
                region is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] subnetwork: Used to find the parent resource to bind the IAM policy to
         """
+        _SubnetworkIAMPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            policy_data=policy_data,
+            project=project,
+            region=region,
+            subnetwork=subnetwork,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -575,6 +619,10 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SubnetworkIAMPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

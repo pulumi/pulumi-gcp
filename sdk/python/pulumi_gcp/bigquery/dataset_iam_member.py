@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,13 +39,40 @@ class DatasetIamMemberArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "member", member)
-        pulumi.set(__self__, "role", role)
+        DatasetIamMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset_id=dataset_id,
+            member=member,
+            role=role,
+            condition=condition,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['DatasetIamMemberConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("dataset_id", dataset_id)
+        _setter("member", member)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -142,18 +169,41 @@ class _DatasetIamMemberState:
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _DatasetIamMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            dataset_id=dataset_id,
+            etag=etag,
+            member=member,
+            project=project,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['DatasetIamMemberConditionArgs']] = None,
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -461,6 +511,10 @@ class DatasetIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatasetIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -480,6 +534,11 @@ class DatasetIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetIamMemberArgs.__new__(DatasetIamMemberArgs)
 
+            if condition is not None and not isinstance(condition, DatasetIamMemberConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                DatasetIamMemberConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")

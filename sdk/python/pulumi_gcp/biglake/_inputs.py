@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,10 +28,25 @@ class DatabaseHiveOptionsArgs:
                
                - - -
         """
+        DatabaseHiveOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location_uri=location_uri,
+            parameters=parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location_uri: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+
         if location_uri is not None:
-            pulumi.set(__self__, "location_uri", location_uri)
+            _setter("location_uri", location_uri)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
 
     @property
     @pulumi.getter(name="locationUri")
@@ -76,12 +91,31 @@ class TableHiveOptionsArgs:
                Structure is documented below.
         :param pulumi.Input[str] table_type: Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
         """
+        TableHiveOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameters=parameters,
+            storage_descriptor=storage_descriptor,
+            table_type=table_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             storage_descriptor: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']] = None,
+             table_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if storage_descriptor is None and 'storageDescriptor' in kwargs:
+            storage_descriptor = kwargs['storageDescriptor']
+        if table_type is None and 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if storage_descriptor is not None:
-            pulumi.set(__self__, "storage_descriptor", storage_descriptor)
+            _setter("storage_descriptor", storage_descriptor)
         if table_type is not None:
-            pulumi.set(__self__, "table_type", table_type)
+            _setter("table_type", table_type)
 
     @property
     @pulumi.getter
@@ -134,12 +168,33 @@ class TableHiveOptionsStorageDescriptorArgs:
         :param pulumi.Input[str] location_uri: Cloud Storage folder URI where the table data is stored, starting with "gs://".
         :param pulumi.Input[str] output_format: The fully qualified Java class name of the output format.
         """
+        TableHiveOptionsStorageDescriptorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            input_format=input_format,
+            location_uri=location_uri,
+            output_format=output_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             input_format: Optional[pulumi.Input[str]] = None,
+             location_uri: Optional[pulumi.Input[str]] = None,
+             output_format: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if input_format is None and 'inputFormat' in kwargs:
+            input_format = kwargs['inputFormat']
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+        if output_format is None and 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+
         if input_format is not None:
-            pulumi.set(__self__, "input_format", input_format)
+            _setter("input_format", input_format)
         if location_uri is not None:
-            pulumi.set(__self__, "location_uri", location_uri)
+            _setter("location_uri", location_uri)
         if output_format is not None:
-            pulumi.set(__self__, "output_format", output_format)
+            _setter("output_format", output_format)
 
     @property
     @pulumi.getter(name="inputFormat")

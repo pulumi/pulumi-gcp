@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,21 +41,70 @@ class AwsNodePoolArgs:
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         """
-        pulumi.set(__self__, "autoscaling", autoscaling)
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
-        pulumi.set(__self__, "subnet_id", subnet_id)
-        pulumi.set(__self__, "version", version)
+        AwsNodePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscaling=autoscaling,
+            cluster=cluster,
+            config=config,
+            location=location,
+            max_pods_constraint=max_pods_constraint,
+            subnet_id=subnet_id,
+            version=version,
+            annotations=annotations,
+            management=management,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscaling: Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if autoscaling is None:
+            raise TypeError("Missing 'autoscaling' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if max_pods_constraint is None:
+            raise TypeError("Missing 'max_pods_constraint' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
+        _setter("autoscaling", autoscaling)
+        _setter("cluster", cluster)
+        _setter("config", config)
+        _setter("location", location)
+        _setter("max_pods_constraint", max_pods_constraint)
+        _setter("subnet_id", subnet_id)
+        _setter("version", version)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -230,40 +279,91 @@ class _AwsNodePoolState:
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
+        _AwsNodePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            autoscaling=autoscaling,
+            cluster=cluster,
+            config=config,
+            create_time=create_time,
+            etag=etag,
+            location=location,
+            management=management,
+            max_pods_constraint=max_pods_constraint,
+            name=name,
+            project=project,
+            reconciling=reconciling,
+            state=state,
+            subnet_id=subnet_id,
+            uid=uid,
+            update_time=update_time,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             autoscaling: Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
+             max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
+            max_pods_constraint = kwargs['maxPodsConstraint']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if autoscaling is not None:
-            pulumi.set(__self__, "autoscaling", autoscaling)
+            _setter("autoscaling", autoscaling)
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
         if max_pods_constraint is not None:
-            pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
+            _setter("max_pods_constraint", max_pods_constraint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -1283,6 +1383,10 @@ class AwsNodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AwsNodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1309,19 +1413,39 @@ class AwsNodePool(pulumi.CustomResource):
             __props__ = AwsNodePoolArgs.__new__(AwsNodePoolArgs)
 
             __props__.__dict__["annotations"] = annotations
+            if autoscaling is not None and not isinstance(autoscaling, AwsNodePoolAutoscalingArgs):
+                autoscaling = autoscaling or {}
+                def _setter(key, value):
+                    autoscaling[key] = value
+                AwsNodePoolAutoscalingArgs._configure(_setter, **autoscaling)
             if autoscaling is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling'")
             __props__.__dict__["autoscaling"] = autoscaling
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
+            if config is not None and not isinstance(config, AwsNodePoolConfigArgs):
+                config = config or {}
+                def _setter(key, value):
+                    config[key] = value
+                AwsNodePoolConfigArgs._configure(_setter, **config)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if management is not None and not isinstance(management, AwsNodePoolManagementArgs):
+                management = management or {}
+                def _setter(key, value):
+                    management[key] = value
+                AwsNodePoolManagementArgs._configure(_setter, **management)
             __props__.__dict__["management"] = management
+            if max_pods_constraint is not None and not isinstance(max_pods_constraint, AwsNodePoolMaxPodsConstraintArgs):
+                max_pods_constraint = max_pods_constraint or {}
+                def _setter(key, value):
+                    max_pods_constraint[key] = value
+                AwsNodePoolMaxPodsConstraintArgs._configure(_setter, **max_pods_constraint)
             if max_pods_constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'max_pods_constraint'")
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,10 +27,31 @@ class ServiceNetworkSettingsArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "network_settings", network_settings)
-        pulumi.set(__self__, "service", service)
+        ServiceNetworkSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_settings=network_settings,
+            service=service,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+        if network_settings is None:
+            raise TypeError("Missing 'network_settings' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
+        _setter("network_settings", network_settings)
+        _setter("service", service)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="networkSettings")
@@ -85,12 +106,29 @@ class _ServiceNetworkSettingsState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
         """
+        _ServiceNetworkSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_settings=network_settings,
+            project=project,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+
         if network_settings is not None:
-            pulumi.set(__self__, "network_settings", network_settings)
+            _setter("network_settings", network_settings)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="networkSettings")
@@ -278,6 +316,10 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceNetworkSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -295,6 +337,11 @@ class ServiceNetworkSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceNetworkSettingsArgs.__new__(ServiceNetworkSettingsArgs)
 
+            if network_settings is not None and not isinstance(network_settings, ServiceNetworkSettingsNetworkSettingsArgs):
+                network_settings = network_settings or {}
+                def _setter(key, value):
+                    network_settings[key] = value
+                ServiceNetworkSettingsNetworkSettingsArgs._configure(_setter, **network_settings)
             if network_settings is None and not opts.urn:
                 raise TypeError("Missing required property 'network_settings'")
             __props__.__dict__["network_settings"] = network_settings

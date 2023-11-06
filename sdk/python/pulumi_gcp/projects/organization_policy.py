@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,16 +38,47 @@ class OrganizationPolicyArgs:
                - - -
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
-        pulumi.set(__self__, "constraint", constraint)
-        pulumi.set(__self__, "project", project)
+        OrganizationPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint=constraint,
+            project=project,
+            boolean_policy=boolean_policy,
+            list_policy=list_policy,
+            restore_policy=restore_policy,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             boolean_policy: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']] = None,
+             list_policy: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']] = None,
+             restore_policy: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if constraint is None:
+            raise TypeError("Missing 'constraint' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+
+        _setter("constraint", constraint)
+        _setter("project", project)
         if boolean_policy is not None:
-            pulumi.set(__self__, "boolean_policy", boolean_policy)
+            _setter("boolean_policy", boolean_policy)
         if list_policy is not None:
-            pulumi.set(__self__, "list_policy", list_policy)
+            _setter("list_policy", list_policy)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -158,22 +189,55 @@ class _OrganizationPolicyState:
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
+        _OrganizationPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            boolean_policy=boolean_policy,
+            constraint=constraint,
+            etag=etag,
+            list_policy=list_policy,
+            project=project,
+            restore_policy=restore_policy,
+            update_time=update_time,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             boolean_policy: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']] = None,
+             constraint: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             list_policy: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_policy: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if boolean_policy is None and 'booleanPolicy' in kwargs:
+            boolean_policy = kwargs['booleanPolicy']
+        if list_policy is None and 'listPolicy' in kwargs:
+            list_policy = kwargs['listPolicy']
+        if restore_policy is None and 'restorePolicy' in kwargs:
+            restore_policy = kwargs['restorePolicy']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if boolean_policy is not None:
-            pulumi.set(__self__, "boolean_policy", boolean_policy)
+            _setter("boolean_policy", boolean_policy)
         if constraint is not None:
-            pulumi.set(__self__, "constraint", constraint)
+            _setter("constraint", constraint)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if list_policy is not None:
-            pulumi.set(__self__, "list_policy", list_policy)
+            _setter("list_policy", list_policy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_policy is not None:
-            pulumi.set(__self__, "restore_policy", restore_policy)
+            _setter("restore_policy", restore_policy)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="booleanPolicy")
@@ -503,6 +567,10 @@ class OrganizationPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -523,14 +591,29 @@ class OrganizationPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationPolicyArgs.__new__(OrganizationPolicyArgs)
 
+            if boolean_policy is not None and not isinstance(boolean_policy, OrganizationPolicyBooleanPolicyArgs):
+                boolean_policy = boolean_policy or {}
+                def _setter(key, value):
+                    boolean_policy[key] = value
+                OrganizationPolicyBooleanPolicyArgs._configure(_setter, **boolean_policy)
             __props__.__dict__["boolean_policy"] = boolean_policy
             if constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'constraint'")
             __props__.__dict__["constraint"] = constraint
+            if list_policy is not None and not isinstance(list_policy, OrganizationPolicyListPolicyArgs):
+                list_policy = list_policy or {}
+                def _setter(key, value):
+                    list_policy[key] = value
+                OrganizationPolicyListPolicyArgs._configure(_setter, **list_policy)
             __props__.__dict__["list_policy"] = list_policy
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if restore_policy is not None and not isinstance(restore_policy, OrganizationPolicyRestorePolicyArgs):
+                restore_policy = restore_policy or {}
+                def _setter(key, value):
+                    restore_policy[key] = value
+                OrganizationPolicyRestorePolicyArgs._configure(_setter, **restore_policy)
             __props__.__dict__["restore_policy"] = restore_policy
             __props__.__dict__["version"] = version
             __props__.__dict__["etag"] = None

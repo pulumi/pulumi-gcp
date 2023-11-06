@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouterInterfaceArgs', 'RouterInterface']
@@ -53,25 +53,66 @@ class RouterInterfaceArgs:
                interface will be linked to. Changing this forces a new interface to be created. Only
                one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
-        pulumi.set(__self__, "router", router)
+        RouterInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            router=router,
+            interconnect_attachment=interconnect_attachment,
+            ip_range=ip_range,
+            name=name,
+            private_ip_address=private_ip_address,
+            project=project,
+            redundant_interface=redundant_interface,
+            region=region,
+            subnetwork=subnetwork,
+            vpn_tunnel=vpn_tunnel,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             router: Optional[pulumi.Input[str]] = None,
+             interconnect_attachment: Optional[pulumi.Input[str]] = None,
+             ip_range: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             redundant_interface: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             vpn_tunnel: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if interconnect_attachment is None and 'interconnectAttachment' in kwargs:
+            interconnect_attachment = kwargs['interconnectAttachment']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if redundant_interface is None and 'redundantInterface' in kwargs:
+            redundant_interface = kwargs['redundantInterface']
+        if vpn_tunnel is None and 'vpnTunnel' in kwargs:
+            vpn_tunnel = kwargs['vpnTunnel']
+
+        _setter("router", router)
         if interconnect_attachment is not None:
-            pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
+            _setter("interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
-            pulumi.set(__self__, "ip_range", ip_range)
+            _setter("ip_range", ip_range)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if redundant_interface is not None:
-            pulumi.set(__self__, "redundant_interface", redundant_interface)
+            _setter("redundant_interface", redundant_interface)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if vpn_tunnel is not None:
-            pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
+            _setter("vpn_tunnel", vpn_tunnel)
 
     @property
     @pulumi.getter
@@ -252,26 +293,65 @@ class _RouterInterfaceState:
                interface will be linked to. Changing this forces a new interface to be created. Only
                one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
+        _RouterInterfaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interconnect_attachment=interconnect_attachment,
+            ip_range=ip_range,
+            name=name,
+            private_ip_address=private_ip_address,
+            project=project,
+            redundant_interface=redundant_interface,
+            region=region,
+            router=router,
+            subnetwork=subnetwork,
+            vpn_tunnel=vpn_tunnel,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interconnect_attachment: Optional[pulumi.Input[str]] = None,
+             ip_range: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             redundant_interface: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             vpn_tunnel: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interconnect_attachment is None and 'interconnectAttachment' in kwargs:
+            interconnect_attachment = kwargs['interconnectAttachment']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if redundant_interface is None and 'redundantInterface' in kwargs:
+            redundant_interface = kwargs['redundantInterface']
+        if vpn_tunnel is None and 'vpnTunnel' in kwargs:
+            vpn_tunnel = kwargs['vpnTunnel']
+
         if interconnect_attachment is not None:
-            pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
+            _setter("interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
-            pulumi.set(__self__, "ip_range", ip_range)
+            _setter("ip_range", ip_range)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if redundant_interface is not None:
-            pulumi.set(__self__, "redundant_interface", redundant_interface)
+            _setter("redundant_interface", redundant_interface)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if vpn_tunnel is not None:
-            pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
+            _setter("vpn_tunnel", vpn_tunnel)
 
     @property
     @pulumi.getter(name="interconnectAttachment")
@@ -533,6 +613,10 @@ class RouterInterface(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterInterfaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

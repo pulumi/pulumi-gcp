@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,14 +39,35 @@ class TransferAgentPoolArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        TransferAgentPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_limit=bandwidth_limit,
+            display_name=display_name,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_limit: Optional[pulumi.Input['TransferAgentPoolBandwidthLimitArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
-            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+            _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -137,16 +158,39 @@ class _TransferAgentPoolState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Specifies the state of the AgentPool.
         """
+        _TransferAgentPoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_limit=bandwidth_limit,
+            display_name=display_name,
+            name=name,
+            project=project,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_limit: Optional[pulumi.Input['TransferAgentPoolBandwidthLimitArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
-            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+            _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -356,6 +400,10 @@ class TransferAgentPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransferAgentPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -374,6 +422,11 @@ class TransferAgentPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransferAgentPoolArgs.__new__(TransferAgentPoolArgs)
 
+            if bandwidth_limit is not None and not isinstance(bandwidth_limit, TransferAgentPoolBandwidthLimitArgs):
+                bandwidth_limit = bandwidth_limit or {}
+                def _setter(key, value):
+                    bandwidth_limit[key] = value
+                TransferAgentPoolBandwidthLimitArgs._configure(_setter, **bandwidth_limit)
             __props__.__dict__["bandwidth_limit"] = bandwidth_limit
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name

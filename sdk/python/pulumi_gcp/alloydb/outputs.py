@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -63,8 +63,21 @@ class BackupEncryptionConfig(dict):
         """
         :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        BackupEncryptionConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -105,10 +118,27 @@ class BackupEncryptionInfo(dict):
         :param Sequence[str] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        BackupEncryptionInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[str] = None,
+             kms_key_versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -181,22 +211,57 @@ class ClusterAutomatedBackupPolicy(dict):
         :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArgs' weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
         """
+        ClusterAutomatedBackupPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_window=backup_window,
+            enabled=enabled,
+            encryption_config=encryption_config,
+            labels=labels,
+            location=location,
+            quantity_based_retention=quantity_based_retention,
+            time_based_retention=time_based_retention,
+            weekly_schedule=weekly_schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_window: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             encryption_config: Optional['outputs.ClusterAutomatedBackupPolicyEncryptionConfig'] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             location: Optional[str] = None,
+             quantity_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention'] = None,
+             time_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyTimeBasedRetention'] = None,
+             weekly_schedule: Optional['outputs.ClusterAutomatedBackupPolicyWeeklySchedule'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_window is None and 'backupWindow' in kwargs:
+            backup_window = kwargs['backupWindow']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if quantity_based_retention is None and 'quantityBasedRetention' in kwargs:
+            quantity_based_retention = kwargs['quantityBasedRetention']
+        if time_based_retention is None and 'timeBasedRetention' in kwargs:
+            time_based_retention = kwargs['timeBasedRetention']
+        if weekly_schedule is None and 'weeklySchedule' in kwargs:
+            weekly_schedule = kwargs['weeklySchedule']
+
         if backup_window is not None:
-            pulumi.set(__self__, "backup_window", backup_window)
+            _setter("backup_window", backup_window)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if quantity_based_retention is not None:
-            pulumi.set(__self__, "quantity_based_retention", quantity_based_retention)
+            _setter("quantity_based_retention", quantity_based_retention)
         if time_based_retention is not None:
-            pulumi.set(__self__, "time_based_retention", time_based_retention)
+            _setter("time_based_retention", time_based_retention)
         if weekly_schedule is not None:
-            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
+            _setter("weekly_schedule", weekly_schedule)
 
     @property
     @pulumi.getter(name="backupWindow")
@@ -293,8 +358,21 @@ class ClusterAutomatedBackupPolicyEncryptionConfig(dict):
         """
         :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterAutomatedBackupPolicyEncryptionConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -312,8 +390,19 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetention(dict):
         """
         :param int count: The number of backups to retain.
         """
+        ClusterAutomatedBackupPolicyQuantityBasedRetention._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter
@@ -349,8 +438,21 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention(dict):
         :param str retention_period: The retention period.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
+        ClusterAutomatedBackupPolicyTimeBasedRetention._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             retention_period: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="retentionPeriod")
@@ -392,9 +494,28 @@ class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
         :param Sequence[str] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
-        pulumi.set(__self__, "start_times", start_times)
+        ClusterAutomatedBackupPolicyWeeklySchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            start_times=start_times,
+            days_of_weeks=days_of_weeks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             start_times: Optional[Sequence['outputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTime']] = None,
+             days_of_weeks: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if start_times is None and 'startTimes' in kwargs:
+            start_times = kwargs['startTimes']
+        if start_times is None:
+            raise TypeError("Missing 'start_times' argument")
+        if days_of_weeks is None and 'daysOfWeeks' in kwargs:
+            days_of_weeks = kwargs['daysOfWeeks']
+
+        _setter("start_times", start_times)
         if days_of_weeks is not None:
-            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+            _setter("days_of_weeks", days_of_weeks)
 
     @property
     @pulumi.getter(name="startTimes")
@@ -428,14 +549,31 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
         :param int nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         :param int seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
+        ClusterAutomatedBackupPolicyWeeklyScheduleStartTime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hours=hours,
+            minutes=minutes,
+            nanos=nanos,
+            seconds=seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hours: Optional[int] = None,
+             minutes: Optional[int] = None,
+             nanos: Optional[int] = None,
+             seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hours is not None:
-            pulumi.set(__self__, "hours", hours)
+            _setter("hours", hours)
         if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
+            _setter("minutes", minutes)
         if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
+            _setter("nanos", nanos)
         if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
+            _setter("seconds", seconds)
 
     @property
     @pulumi.getter
@@ -494,8 +632,21 @@ class ClusterBackupSource(dict):
         """
         :param str backup_name: The name of the backup that this cluster is restored from.
         """
+        ClusterBackupSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_name=backup_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_name is None and 'backupName' in kwargs:
+            backup_name = kwargs['backupName']
+
         if backup_name is not None:
-            pulumi.set(__self__, "backup_name", backup_name)
+            _setter("backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
@@ -538,12 +689,31 @@ class ClusterContinuousBackupConfig(dict):
         :param int recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
                If not set, defaults to 14 days.
         """
+        ClusterContinuousBackupConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            encryption_config=encryption_config,
+            recovery_window_days=recovery_window_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             encryption_config: Optional['outputs.ClusterContinuousBackupConfigEncryptionConfig'] = None,
+             recovery_window_days: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if recovery_window_days is None and 'recoveryWindowDays' in kwargs:
+            recovery_window_days = kwargs['recoveryWindowDays']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if recovery_window_days is not None:
-            pulumi.set(__self__, "recovery_window_days", recovery_window_days)
+            _setter("recovery_window_days", recovery_window_days)
 
     @property
     @pulumi.getter
@@ -596,8 +766,21 @@ class ClusterContinuousBackupConfigEncryptionConfig(dict):
         """
         :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterContinuousBackupConfigEncryptionConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -647,14 +830,37 @@ class ClusterContinuousBackupInfo(dict):
         :param Sequence[str] schedules: (Output)
                Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
         """
+        ClusterContinuousBackupInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            earliest_restorable_time=earliest_restorable_time,
+            enabled_time=enabled_time,
+            encryption_infos=encryption_infos,
+            schedules=schedules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             earliest_restorable_time: Optional[str] = None,
+             enabled_time: Optional[str] = None,
+             encryption_infos: Optional[Sequence['outputs.ClusterContinuousBackupInfoEncryptionInfo']] = None,
+             schedules: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if earliest_restorable_time is None and 'earliestRestorableTime' in kwargs:
+            earliest_restorable_time = kwargs['earliestRestorableTime']
+        if enabled_time is None and 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+
         if earliest_restorable_time is not None:
-            pulumi.set(__self__, "earliest_restorable_time", earliest_restorable_time)
+            _setter("earliest_restorable_time", earliest_restorable_time)
         if enabled_time is not None:
-            pulumi.set(__self__, "enabled_time", enabled_time)
+            _setter("enabled_time", enabled_time)
         if encryption_infos is not None:
-            pulumi.set(__self__, "encryption_infos", encryption_infos)
+            _setter("encryption_infos", encryption_infos)
         if schedules is not None:
-            pulumi.set(__self__, "schedules", schedules)
+            _setter("schedules", schedules)
 
     @property
     @pulumi.getter(name="earliestRestorableTime")
@@ -724,10 +930,27 @@ class ClusterContinuousBackupInfoEncryptionInfo(dict):
         :param Sequence[str] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        ClusterContinuousBackupInfoEncryptionInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[str] = None,
+             kms_key_versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -772,8 +995,21 @@ class ClusterEncryptionConfig(dict):
         """
         :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
         """
+        ClusterEncryptionConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kms_key_name=kms_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kms_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -814,10 +1050,27 @@ class ClusterEncryptionInfo(dict):
         :param Sequence[str] kms_key_versions: (Output)
                Output only. Cloud KMS key versions that are being used to protect the database or the backup.
         """
+        ClusterEncryptionInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_type=encryption_type,
+            kms_key_versions=kms_key_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_type: Optional[str] = None,
+             kms_key_versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
-            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+            _setter("kms_key_versions", kms_key_versions)
 
     @property
     @pulumi.getter(name="encryptionType")
@@ -848,9 +1101,24 @@ class ClusterInitialUser(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str user: The database username.
         """
-        pulumi.set(__self__, "password", password)
+        ClusterInitialUser._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: Optional[str] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+
+        _setter("password", password)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -902,12 +1170,33 @@ class ClusterMigrationSource(dict):
         :param str reference_id: Place holder for the external source identifier(e.g DMS job name) that created the cluster.
         :param str source_type: Type of migration source.
         """
+        ClusterMigrationSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_port=host_port,
+            reference_id=reference_id,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_port: Optional[str] = None,
+             reference_id: Optional[str] = None,
+             source_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_port is None and 'hostPort' in kwargs:
+            host_port = kwargs['hostPort']
+        if reference_id is None and 'referenceId' in kwargs:
+            reference_id = kwargs['referenceId']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         if host_port is not None:
-            pulumi.set(__self__, "host_port", host_port)
+            _setter("host_port", host_port)
         if reference_id is not None:
-            pulumi.set(__self__, "reference_id", reference_id)
+            _setter("reference_id", reference_id)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="hostPort")
@@ -962,10 +1251,25 @@ class ClusterNetworkConfig(dict):
         :param str network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
                It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
         """
+        ClusterNetworkConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocated_ip_range=allocated_ip_range,
+            network=network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocated_ip_range: Optional[str] = None,
+             network: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+
         if allocated_ip_range is not None:
-            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+            _setter("allocated_ip_range", allocated_ip_range)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -1010,7 +1314,22 @@ class ClusterRestoreBackupSource(dict):
         """
         :param str backup_name: The name of the backup that this cluster is restored from.
         """
-        pulumi.set(__self__, "backup_name", backup_name)
+        ClusterRestoreBackupSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_name=backup_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_name is None and 'backupName' in kwargs:
+            backup_name = kwargs['backupName']
+        if backup_name is None:
+            raise TypeError("Missing 'backup_name' argument")
+
+        _setter("backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
@@ -1047,8 +1366,27 @@ class ClusterRestoreContinuousBackupSource(dict):
         :param str cluster: The name of the source cluster that this cluster is restored from.
         :param str point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "point_in_time", point_in_time)
+        ClusterRestoreContinuousBackupSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            point_in_time=point_in_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: Optional[str] = None,
+             point_in_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if point_in_time is None and 'pointInTime' in kwargs:
+            point_in_time = kwargs['pointInTime']
+        if point_in_time is None:
+            raise TypeError("Missing 'point_in_time' argument")
+
+        _setter("cluster", cluster)
+        _setter("point_in_time", point_in_time)
 
     @property
     @pulumi.getter
@@ -1091,8 +1429,21 @@ class InstanceMachineConfig(dict):
         """
         :param int cpu_count: The number of CPU's in the VM instance.
         """
+        InstanceMachineConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+
         if cpu_count is not None:
-            pulumi.set(__self__, "cpu_count", cpu_count)
+            _setter("cpu_count", cpu_count)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1127,8 +1478,21 @@ class InstanceReadPoolConfig(dict):
         """
         :param int node_count: Read capacity, i.e. number of nodes in a read pool instance.
         """
+        InstanceReadPoolConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_count=node_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
 
     @property
     @pulumi.getter(name="nodeCount")
@@ -1154,11 +1518,44 @@ class GetLocationsLocationResult(dict):
         :param Mapping[str, str] metadata: Service-specific metadata. For example the available capacity at the given location.
         :param str name: Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "location_id", location_id)
-        pulumi.set(__self__, "metadata", metadata)
-        pulumi.set(__self__, "name", name)
+        GetLocationsLocationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            labels=labels,
+            location_id=location_id,
+            metadata=metadata,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             location_id: Optional[str] = None,
+             metadata: Optional[Mapping[str, str]] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if location_id is None:
+            raise TypeError("Missing 'location_id' argument")
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("display_name", display_name)
+        _setter("labels", labels)
+        _setter("location_id", location_id)
+        _setter("metadata", metadata)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1222,14 +1619,69 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
         :param Sequence[str] supported_db_versions: Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
         :param str value_type: ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
         """
-        pulumi.set(__self__, "accepts_multiple_values", accepts_multiple_values)
-        pulumi.set(__self__, "flag_name", flag_name)
-        pulumi.set(__self__, "integer_restrictions", integer_restrictions)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "requires_db_restart", requires_db_restart)
-        pulumi.set(__self__, "string_restrictions", string_restrictions)
-        pulumi.set(__self__, "supported_db_versions", supported_db_versions)
-        pulumi.set(__self__, "value_type", value_type)
+        GetSupportedDatabaseFlagsSupportedDatabaseFlagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepts_multiple_values=accepts_multiple_values,
+            flag_name=flag_name,
+            integer_restrictions=integer_restrictions,
+            name=name,
+            requires_db_restart=requires_db_restart,
+            string_restrictions=string_restrictions,
+            supported_db_versions=supported_db_versions,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepts_multiple_values: Optional[bool] = None,
+             flag_name: Optional[str] = None,
+             integer_restrictions: Optional['outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult'] = None,
+             name: Optional[str] = None,
+             requires_db_restart: Optional[bool] = None,
+             string_restrictions: Optional['outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult'] = None,
+             supported_db_versions: Optional[Sequence[str]] = None,
+             value_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accepts_multiple_values is None and 'acceptsMultipleValues' in kwargs:
+            accepts_multiple_values = kwargs['acceptsMultipleValues']
+        if accepts_multiple_values is None:
+            raise TypeError("Missing 'accepts_multiple_values' argument")
+        if flag_name is None and 'flagName' in kwargs:
+            flag_name = kwargs['flagName']
+        if flag_name is None:
+            raise TypeError("Missing 'flag_name' argument")
+        if integer_restrictions is None and 'integerRestrictions' in kwargs:
+            integer_restrictions = kwargs['integerRestrictions']
+        if integer_restrictions is None:
+            raise TypeError("Missing 'integer_restrictions' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if requires_db_restart is None and 'requiresDbRestart' in kwargs:
+            requires_db_restart = kwargs['requiresDbRestart']
+        if requires_db_restart is None:
+            raise TypeError("Missing 'requires_db_restart' argument")
+        if string_restrictions is None and 'stringRestrictions' in kwargs:
+            string_restrictions = kwargs['stringRestrictions']
+        if string_restrictions is None:
+            raise TypeError("Missing 'string_restrictions' argument")
+        if supported_db_versions is None and 'supportedDbVersions' in kwargs:
+            supported_db_versions = kwargs['supportedDbVersions']
+        if supported_db_versions is None:
+            raise TypeError("Missing 'supported_db_versions' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+        if value_type is None:
+            raise TypeError("Missing 'value_type' argument")
+
+        _setter("accepts_multiple_values", accepts_multiple_values)
+        _setter("flag_name", flag_name)
+        _setter("integer_restrictions", integer_restrictions)
+        _setter("name", name)
+        _setter("requires_db_restart", requires_db_restart)
+        _setter("string_restrictions", string_restrictions)
+        _setter("supported_db_versions", supported_db_versions)
+        _setter("value_type", value_type)
 
     @property
     @pulumi.getter(name="acceptsMultipleValues")
@@ -1301,8 +1753,29 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(di
     def __init__(__self__, *,
                  max_value: str,
                  min_value: str):
-        pulumi.set(__self__, "max_value", max_value)
-        pulumi.set(__self__, "min_value", min_value)
+        GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_value=max_value,
+            min_value=min_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_value: Optional[str] = None,
+             min_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_value is None and 'maxValue' in kwargs:
+            max_value = kwargs['maxValue']
+        if max_value is None:
+            raise TypeError("Missing 'max_value' argument")
+        if min_value is None and 'minValue' in kwargs:
+            min_value = kwargs['minValue']
+        if min_value is None:
+            raise TypeError("Missing 'min_value' argument")
+
+        _setter("max_value", max_value)
+        _setter("min_value", min_value)
 
     @property
     @pulumi.getter(name="maxValue")
@@ -1319,7 +1792,22 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(di
 class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult(dict):
     def __init__(__self__, *,
                  allowed_values: Sequence[str]):
-        pulumi.set(__self__, "allowed_values", allowed_values)
+        GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_values=allowed_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_values is None and 'allowedValues' in kwargs:
+            allowed_values = kwargs['allowedValues']
+        if allowed_values is None:
+            raise TypeError("Missing 'allowed_values' argument")
+
+        _setter("allowed_values", allowed_values)
 
     @property
     @pulumi.getter(name="allowedValues")

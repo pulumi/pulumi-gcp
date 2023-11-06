@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HmacKeyArgs', 'HmacKey']
@@ -29,11 +29,30 @@ class HmacKeyArgs:
                Default value is `ACTIVE`.
                Possible values are: `ACTIVE`, `INACTIVE`.
         """
-        pulumi.set(__self__, "service_account_email", service_account_email)
+        HmacKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account_email=service_account_email,
+            project=project,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
+        _setter("service_account_email", service_account_email)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -105,20 +124,49 @@ class _HmacKeyState:
         :param pulumi.Input[str] time_created: 'The creation time of the HMAC key in RFC 3339 format. '
         :param pulumi.Input[str] updated: 'The last modification time of the HMAC key metadata in RFC 3339 format.'
         """
+        _HmacKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_id=access_id,
+            project=project,
+            secret=secret,
+            service_account_email=service_account_email,
+            state=state,
+            time_created=time_created,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             time_created: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_id is None and 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if time_created is None and 'timeCreated' in kwargs:
+            time_created = kwargs['timeCreated']
+
         if access_id is not None:
-            pulumi.set(__self__, "access_id", access_id)
+            _setter("access_id", access_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if time_created is not None:
-            pulumi.set(__self__, "time_created", time_created)
+            _setter("time_created", time_created)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
 
     @property
     @pulumi.getter(name="accessId")
@@ -341,6 +389,10 @@ class HmacKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HmacKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

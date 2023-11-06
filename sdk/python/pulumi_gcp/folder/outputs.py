@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -81,9 +81,28 @@ class AccessApprovalSettingsEnrolledService(dict):
                
                - - -
         """
-        pulumi.set(__self__, "cloud_product", cloud_product)
+        AccessApprovalSettingsEnrolledService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_product=cloud_product,
+            enrollment_level=enrollment_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_product: Optional[str] = None,
+             enrollment_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cloud_product is None and 'cloudProduct' in kwargs:
+            cloud_product = kwargs['cloudProduct']
+        if cloud_product is None:
+            raise TypeError("Missing 'cloud_product' argument")
+        if enrollment_level is None and 'enrollmentLevel' in kwargs:
+            enrollment_level = kwargs['enrollmentLevel']
+
+        _setter("cloud_product", cloud_product)
         if enrollment_level is not None:
-            pulumi.set(__self__, "enrollment_level", enrollment_level)
+            _setter("enrollment_level", enrollment_level)
 
     @property
     @pulumi.getter(name="cloudProduct")
@@ -134,10 +153,29 @@ class IAMBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -170,10 +208,29 @@ class IAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        IAMMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -232,9 +289,28 @@ class IamAuditConfigAuditLogConfig(dict):
         :param str log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         :param Sequence[str] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
-        pulumi.set(__self__, "log_type", log_type)
+        IamAuditConfigAuditLogConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            exempted_members=exempted_members,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: Optional[str] = None,
+             exempted_members: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if log_type is None and 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if exempted_members is None and 'exemptedMembers' in kwargs:
+            exempted_members = kwargs['exemptedMembers']
+
+        _setter("log_type", log_type)
         if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
+            _setter("exempted_members", exempted_members)
 
     @property
     @pulumi.getter(name="logType")
@@ -260,7 +336,20 @@ class OrganizationPolicyBooleanPolicy(dict):
         """
         :param bool enforced: If true, then the Policy is enforced. If false, then any configuration is acceptable.
         """
-        pulumi.set(__self__, "enforced", enforced)
+        OrganizationPolicyBooleanPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforced=enforced,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforced: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforced is None:
+            raise TypeError("Missing 'enforced' argument")
+
+        _setter("enforced", enforced)
 
     @property
     @pulumi.getter
@@ -305,14 +394,35 @@ class OrganizationPolicyListPolicy(dict):
                The `allow` or `deny` blocks support:
         :param str suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
+        OrganizationPolicyListPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow=allow,
+            deny=deny,
+            inherit_from_parent=inherit_from_parent,
+            suggested_value=suggested_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow: Optional['outputs.OrganizationPolicyListPolicyAllow'] = None,
+             deny: Optional['outputs.OrganizationPolicyListPolicyDeny'] = None,
+             inherit_from_parent: Optional[bool] = None,
+             suggested_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if suggested_value is None and 'suggestedValue' in kwargs:
+            suggested_value = kwargs['suggestedValue']
+
         if allow is not None:
-            pulumi.set(__self__, "allow", allow)
+            _setter("allow", allow)
         if deny is not None:
-            pulumi.set(__self__, "deny", deny)
+            _setter("deny", deny)
         if inherit_from_parent is not None:
-            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
+            _setter("inherit_from_parent", inherit_from_parent)
         if suggested_value is not None:
-            pulumi.set(__self__, "suggested_value", suggested_value)
+            _setter("suggested_value", suggested_value)
 
     @property
     @pulumi.getter
@@ -356,10 +466,23 @@ class OrganizationPolicyListPolicyAllow(dict):
         :param bool all: The policy allows or denies all values.
         :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
+        OrganizationPolicyListPolicyAllow._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -387,10 +510,23 @@ class OrganizationPolicyListPolicyDeny(dict):
         :param bool all: The policy allows or denies all values.
         :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
+        OrganizationPolicyListPolicyDeny._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -416,7 +552,20 @@ class OrganizationPolicyRestorePolicy(dict):
         """
         :param bool default: May only be set to true. If set, then the default Policy is restored.
         """
-        pulumi.set(__self__, "default", default)
+        OrganizationPolicyRestorePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+
+        _setter("default", default)
 
     @property
     @pulumi.getter
@@ -431,7 +580,20 @@ class OrganizationPolicyRestorePolicy(dict):
 class GetOrganizationPolicyBooleanPolicyResult(dict):
     def __init__(__self__, *,
                  enforced: bool):
-        pulumi.set(__self__, "enforced", enforced)
+        GetOrganizationPolicyBooleanPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforced=enforced,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforced: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforced is None:
+            raise TypeError("Missing 'enforced' argument")
+
+        _setter("enforced", enforced)
 
     @property
     @pulumi.getter
@@ -446,10 +608,39 @@ class GetOrganizationPolicyListPolicyResult(dict):
                  denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
                  inherit_from_parent: bool,
                  suggested_value: str):
-        pulumi.set(__self__, "allows", allows)
-        pulumi.set(__self__, "denies", denies)
-        pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
-        pulumi.set(__self__, "suggested_value", suggested_value)
+        GetOrganizationPolicyListPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allows=allows,
+            denies=denies,
+            inherit_from_parent=inherit_from_parent,
+            suggested_value=suggested_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allows: Optional[Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult']] = None,
+             denies: Optional[Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult']] = None,
+             inherit_from_parent: Optional[bool] = None,
+             suggested_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allows is None:
+            raise TypeError("Missing 'allows' argument")
+        if denies is None:
+            raise TypeError("Missing 'denies' argument")
+        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
+            inherit_from_parent = kwargs['inheritFromParent']
+        if inherit_from_parent is None:
+            raise TypeError("Missing 'inherit_from_parent' argument")
+        if suggested_value is None and 'suggestedValue' in kwargs:
+            suggested_value = kwargs['suggestedValue']
+        if suggested_value is None:
+            raise TypeError("Missing 'suggested_value' argument")
+
+        _setter("allows", allows)
+        _setter("denies", denies)
+        _setter("inherit_from_parent", inherit_from_parent)
+        _setter("suggested_value", suggested_value)
 
     @property
     @pulumi.getter
@@ -477,8 +668,25 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
-        pulumi.set(__self__, "all", all)
-        pulumi.set(__self__, "values", values)
+        GetOrganizationPolicyListPolicyAllowResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all is None:
+            raise TypeError("Missing 'all' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
+        _setter("all", all)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -496,8 +704,25 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
-        pulumi.set(__self__, "all", all)
-        pulumi.set(__self__, "values", values)
+        GetOrganizationPolicyListPolicyDenyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all is None:
+            raise TypeError("Missing 'all' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
+        _setter("all", all)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -514,7 +739,20 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
 class GetOrganizationPolicyRestorePolicyResult(dict):
     def __init__(__self__, *,
                  default: bool):
-        pulumi.set(__self__, "default", default)
+        GetOrganizationPolicyRestorePolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+
+        _setter("default", default)
 
     @property
     @pulumi.getter

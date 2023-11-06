@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -52,10 +52,29 @@ class DnsManagedZoneIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DnsManagedZoneIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -91,10 +110,29 @@ class DnsManagedZoneIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        DnsManagedZoneIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -131,7 +169,22 @@ class ManagedZoneCloudLoggingConfigArgs:
         """
         :param pulumi.Input[bool] enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
         """
-        pulumi.set(__self__, "enable_logging", enable_logging)
+        ManagedZoneCloudLoggingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_logging=enable_logging,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if enable_logging is None:
+            raise TypeError("Missing 'enable_logging' argument")
+
+        _setter("enable_logging", enable_logging)
 
     @property
     @pulumi.getter(name="enableLogging")
@@ -166,14 +219,35 @@ class ManagedZoneDnssecConfigArgs:
         :param pulumi.Input[str] state: Specifies whether DNSSEC is enabled, and what mode it is in
                Possible values are: `off`, `on`, `transfer`.
         """
+        ManagedZoneDnssecConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_key_specs=default_key_specs,
+            kind=kind,
+            non_existence=non_existence,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_key_specs: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             non_existence: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_key_specs is None and 'defaultKeySpecs' in kwargs:
+            default_key_specs = kwargs['defaultKeySpecs']
+        if non_existence is None and 'nonExistence' in kwargs:
+            non_existence = kwargs['nonExistence']
+
         if default_key_specs is not None:
-            pulumi.set(__self__, "default_key_specs", default_key_specs)
+            _setter("default_key_specs", default_key_specs)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if non_existence is not None:
-            pulumi.set(__self__, "non_existence", non_existence)
+            _setter("non_existence", non_existence)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="defaultKeySpecs")
@@ -251,14 +325,35 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
                Possible values are: `keySigning`, `zoneSigning`.
         :param pulumi.Input[str] kind: Identifies what kind of resource this is
         """
+        ManagedZoneDnssecConfigDefaultKeySpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            key_length=key_length,
+            key_type=key_type,
+            kind=kind,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             key_length: Optional[pulumi.Input[int]] = None,
+             key_type: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_length is None and 'keyLength' in kwargs:
+            key_length = kwargs['keyLength']
+        if key_type is None and 'keyType' in kwargs:
+            key_type = kwargs['keyType']
+
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if key_length is not None:
-            pulumi.set(__self__, "key_length", key_length)
+            _setter("key_length", key_length)
         if key_type is not None:
-            pulumi.set(__self__, "key_type", key_type)
+            _setter("key_type", key_type)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
 
     @property
     @pulumi.getter
@@ -326,7 +421,22 @@ class ManagedZoneForwardingConfigArgs:
                one target is given.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_name_servers", target_name_servers)
+        ManagedZoneForwardingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_name_servers=target_name_servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_name_servers is None and 'targetNameServers' in kwargs:
+            target_name_servers = kwargs['targetNameServers']
+        if target_name_servers is None:
+            raise TypeError("Missing 'target_name_servers' argument")
+
+        _setter("target_name_servers", target_name_servers)
 
     @property
     @pulumi.getter(name="targetNameServers")
@@ -356,9 +466,28 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
         """
-        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        ManagedZoneForwardingConfigTargetNameServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4_address=ipv4_address,
+            forwarding_path=forwarding_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             forwarding_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address is None:
+            raise TypeError("Missing 'ipv4_address' argument")
+        if forwarding_path is None and 'forwardingPath' in kwargs:
+            forwarding_path = kwargs['forwardingPath']
+
+        _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
-            pulumi.set(__self__, "forwarding_path", forwarding_path)
+            _setter("forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -396,7 +525,22 @@ class ManagedZonePeeringConfigArgs:
         :param pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs'] target_network: The network with which to peer.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_network", target_network)
+        ManagedZonePeeringConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_network=target_network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_network: Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_network is None and 'targetNetwork' in kwargs:
+            target_network = kwargs['targetNetwork']
+        if target_network is None:
+            raise TypeError("Missing 'target_network' argument")
+
+        _setter("target_network", target_network)
 
     @property
     @pulumi.getter(name="targetNetwork")
@@ -421,7 +565,22 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ManagedZonePeeringConfigTargetNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -447,10 +606,25 @@ class ManagedZonePrivateVisibilityConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
         """
+        ManagedZonePrivateVisibilityConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_clusters=gke_clusters,
+            networks=networks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_clusters is None and 'gkeClusters' in kwargs:
+            gke_clusters = kwargs['gkeClusters']
+
         if gke_clusters is not None:
-            pulumi.set(__self__, "gke_clusters", gke_clusters)
+            _setter("gke_clusters", gke_clusters)
         if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+            _setter("networks", networks)
 
     @property
     @pulumi.getter(name="gkeClusters")
@@ -484,7 +658,22 @@ class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
                This should be specified in the format like
                `projects/*/locations/*/clusters/*`
         """
-        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        ManagedZonePrivateVisibilityConfigGkeClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster_name=gke_cluster_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_name is None and 'gkeClusterName' in kwargs:
+            gke_cluster_name = kwargs['gkeClusterName']
+        if gke_cluster_name is None:
+            raise TypeError("Missing 'gke_cluster_name' argument")
+
+        _setter("gke_cluster_name", gke_cluster_name)
 
     @property
     @pulumi.getter(name="gkeClusterName")
@@ -510,7 +699,22 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ManagedZonePrivateVisibilityConfigNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -535,7 +739,20 @@ class ManagedZoneServiceDirectoryConfigArgs:
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs'] namespace: The namespace associated with the zone.
                Structure is documented below.
         """
-        pulumi.set(__self__, "namespace", namespace)
+        ManagedZoneServiceDirectoryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -562,7 +779,22 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
                or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
                Ignored for `public` visibility zones.
         """
-        pulumi.set(__self__, "namespace_url", namespace_url)
+        ManagedZoneServiceDirectoryConfigNamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace_url=namespace_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace_url is None and 'namespaceUrl' in kwargs:
+            namespace_url = kwargs['namespaceUrl']
+        if namespace_url is None:
+            raise TypeError("Missing 'namespace_url' argument")
+
+        _setter("namespace_url", namespace_url)
 
     @property
     @pulumi.getter(name="namespaceUrl")
@@ -591,7 +823,22 @@ class PolicyAlternativeNameServerConfigArgs:
                are not available when an alternative name server is specified.
                Structure is documented below.
         """
-        pulumi.set(__self__, "target_name_servers", target_name_servers)
+        PolicyAlternativeNameServerConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_name_servers=target_name_servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target_name_servers is None and 'targetNameServers' in kwargs:
+            target_name_servers = kwargs['targetNameServers']
+        if target_name_servers is None:
+            raise TypeError("Missing 'target_name_servers' argument")
+
+        _setter("target_name_servers", target_name_servers)
 
     @property
     @pulumi.getter(name="targetNameServers")
@@ -621,9 +868,28 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
         """
-        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        PolicyAlternativeNameServerConfigTargetNameServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4_address=ipv4_address,
+            forwarding_path=forwarding_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             forwarding_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address is None:
+            raise TypeError("Missing 'ipv4_address' argument")
+        if forwarding_path is None and 'forwardingPath' in kwargs:
+            forwarding_path = kwargs['forwardingPath']
+
+        _setter("ipv4_address", ipv4_address)
         if forwarding_path is not None:
-            pulumi.set(__self__, "forwarding_path", forwarding_path)
+            _setter("forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -662,7 +928,22 @@ class PolicyNetworkArgs:
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        PolicyNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -695,14 +976,35 @@ class RecordSetRoutingPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is document below.
         """
+        RecordSetRoutingPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_geo_fencing=enable_geo_fencing,
+            geos=geos,
+            primary_backup=primary_backup,
+            wrrs=wrrs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_geo_fencing: Optional[pulumi.Input[bool]] = None,
+             geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]] = None,
+             primary_backup: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']] = None,
+             wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_geo_fencing is None and 'enableGeoFencing' in kwargs:
+            enable_geo_fencing = kwargs['enableGeoFencing']
+        if primary_backup is None and 'primaryBackup' in kwargs:
+            primary_backup = kwargs['primaryBackup']
+
         if enable_geo_fencing is not None:
-            pulumi.set(__self__, "enable_geo_fencing", enable_geo_fencing)
+            _setter("enable_geo_fencing", enable_geo_fencing)
         if geos is not None:
-            pulumi.set(__self__, "geos", geos)
+            _setter("geos", geos)
         if primary_backup is not None:
-            pulumi.set(__self__, "primary_backup", primary_backup)
+            _setter("primary_backup", primary_backup)
         if wrrs is not None:
-            pulumi.set(__self__, "wrrs", wrrs)
+            _setter("wrrs", wrrs)
 
     @property
     @pulumi.getter(name="enableGeoFencing")
@@ -768,11 +1070,30 @@ class RecordSetRoutingPolicyGeoArgs:
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
-        pulumi.set(__self__, "location", location)
+        RecordSetRoutingPolicyGeoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
+        _setter("location", location)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -820,7 +1141,22 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -855,14 +1191,57 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_type: Optional[pulumi.Input[str]] = None,
+             network_url: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -964,12 +1343,39 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
         :param pulumi.Input[bool] enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
         :param pulumi.Input[float] trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
         """
-        pulumi.set(__self__, "backup_geos", backup_geos)
-        pulumi.set(__self__, "primary", primary)
+        RecordSetRoutingPolicyPrimaryBackupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_geos=backup_geos,
+            primary=primary,
+            enable_geo_fencing_for_backups=enable_geo_fencing_for_backups,
+            trickle_ratio=trickle_ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]]] = None,
+             primary: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs']] = None,
+             enable_geo_fencing_for_backups: Optional[pulumi.Input[bool]] = None,
+             trickle_ratio: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_geos is None and 'backupGeos' in kwargs:
+            backup_geos = kwargs['backupGeos']
+        if backup_geos is None:
+            raise TypeError("Missing 'backup_geos' argument")
+        if primary is None:
+            raise TypeError("Missing 'primary' argument")
+        if enable_geo_fencing_for_backups is None and 'enableGeoFencingForBackups' in kwargs:
+            enable_geo_fencing_for_backups = kwargs['enableGeoFencingForBackups']
+        if trickle_ratio is None and 'trickleRatio' in kwargs:
+            trickle_ratio = kwargs['trickleRatio']
+
+        _setter("backup_geos", backup_geos)
+        _setter("primary", primary)
         if enable_geo_fencing_for_backups is not None:
-            pulumi.set(__self__, "enable_geo_fencing_for_backups", enable_geo_fencing_for_backups)
+            _setter("enable_geo_fencing_for_backups", enable_geo_fencing_for_backups)
         if trickle_ratio is not None:
-            pulumi.set(__self__, "trickle_ratio", trickle_ratio)
+            _setter("trickle_ratio", trickle_ratio)
 
     @property
     @pulumi.getter(name="backupGeos")
@@ -1033,11 +1439,30 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
         :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         """
-        pulumi.set(__self__, "location", location)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
+        _setter("location", location)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -1082,7 +1507,22 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1117,14 +1557,57 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_type: Optional[pulumi.Input[str]] = None,
+             network_url: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1219,7 +1702,22 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyPrimaryBackupPrimaryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1254,14 +1752,57 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_type: Optional[pulumi.Input[str]] = None,
+             network_url: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1360,11 +1901,30 @@ class RecordSetRoutingPolicyWrrArgs:
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
-        pulumi.set(__self__, "weight", weight)
+        RecordSetRoutingPolicyWrrArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            weight=weight,
+            health_checked_targets=health_checked_targets,
+            rrdatas=rrdatas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             weight: Optional[pulumi.Input[float]] = None,
+             health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if health_checked_targets is None and 'healthCheckedTargets' in kwargs:
+            health_checked_targets = kwargs['healthCheckedTargets']
+
+        _setter("weight", weight)
         if health_checked_targets is not None:
-            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+            _setter("health_checked_targets", health_checked_targets)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -1412,7 +1972,22 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal_load_balancers=internal_load_balancers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if internal_load_balancers is None and 'internalLoadBalancers' in kwargs:
+            internal_load_balancers = kwargs['internalLoadBalancers']
+        if internal_load_balancers is None:
+            raise TypeError("Missing 'internal_load_balancers' argument")
+
+        _setter("internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
@@ -1447,14 +2022,57 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "network_url", network_url)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project", project)
+        RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            ip_protocol=ip_protocol,
+            load_balancer_type=load_balancer_type,
+            network_url=network_url,
+            port=port,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_type: Optional[pulumi.Input[str]] = None,
+             network_url: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if load_balancer_type is None:
+            raise TypeError("Missing 'load_balancer_type' argument")
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("ip_address", ip_address)
+        _setter("ip_protocol", ip_protocol)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("network_url", network_url)
+        _setter("port", port)
+        _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1550,7 +2168,22 @@ class ResponsePolicyGkeClusterArgs:
                This should be specified in the format like
                `projects/*/locations/*/clusters/*`
         """
-        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        ResponsePolicyGkeClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster_name=gke_cluster_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster_name is None and 'gkeClusterName' in kwargs:
+            gke_cluster_name = kwargs['gkeClusterName']
+        if gke_cluster_name is None:
+            raise TypeError("Missing 'gke_cluster_name' argument")
+
+        _setter("gke_cluster_name", gke_cluster_name)
 
     @property
     @pulumi.getter(name="gkeClusterName")
@@ -1576,7 +2209,22 @@ class ResponsePolicyNetworkArgs:
                This should be formatted like
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
-        pulumi.set(__self__, "network_url", network_url)
+        ResponsePolicyNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_url=network_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_url is None and 'networkUrl' in kwargs:
+            network_url = kwargs['networkUrl']
+        if network_url is None:
+            raise TypeError("Missing 'network_url' argument")
+
+        _setter("network_url", network_url)
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1601,7 +2249,22 @@ class ResponsePolicyRuleLocalDataArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
                Structure is documented below.
         """
-        pulumi.set(__self__, "local_datas", local_datas)
+        ResponsePolicyRuleLocalDataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_datas=local_datas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_datas is None and 'localDatas' in kwargs:
+            local_datas = kwargs['localDatas']
+        if local_datas is None:
+            raise TypeError("Missing 'local_datas' argument")
+
+        _setter("local_datas", local_datas)
 
     @property
     @pulumi.getter(name="localDatas")
@@ -1632,12 +2295,33 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
                resolvers.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        ResponsePolicyRuleLocalDataLocalDataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+            rrdatas=rrdatas,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("name", name)
+        _setter("type", type)
         if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
+            _setter("rrdatas", rrdatas)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter

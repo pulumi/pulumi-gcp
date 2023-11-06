@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
@@ -23,8 +23,27 @@ class FolderArgs:
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "parent", parent)
+        FolderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            parent=parent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
+        _setter("display_name", display_name)
+        _setter("parent", parent)
 
     @property
     @pulumi.getter(name="displayName")
@@ -74,18 +93,47 @@ class _FolderState:
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         """
+        _FolderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            display_name=display_name,
+            folder_id=folder_id,
+            lifecycle_state=lifecycle_state,
+            name=name,
+            parent=parent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             folder_id: Optional[pulumi.Input[str]] = None,
+             lifecycle_state: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
+            _setter("folder_id", folder_id)
         if lifecycle_state is not None:
-            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+            _setter("lifecycle_state", lifecycle_state)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
 
     @property
     @pulumi.getter(name="createTime")
@@ -280,6 +328,10 @@ class Folder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

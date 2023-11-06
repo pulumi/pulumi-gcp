@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnvReferencesArgs', 'EnvReferences']
@@ -31,13 +31,42 @@ class EnvReferencesArgs:
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
         :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
         """
-        pulumi.set(__self__, "env_id", env_id)
-        pulumi.set(__self__, "refers", refers)
-        pulumi.set(__self__, "resource_type", resource_type)
+        EnvReferencesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            env_id=env_id,
+            refers=refers,
+            resource_type=resource_type,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             env_id: Optional[pulumi.Input[str]] = None,
+             refers: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if refers is None:
+            raise TypeError("Missing 'refers' argument")
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+
+        _setter("env_id", env_id)
+        _setter("refers", refers)
+        _setter("resource_type", resource_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="envId")
@@ -124,16 +153,39 @@ class _EnvReferencesState:
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
+        _EnvReferencesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            env_id=env_id,
+            name=name,
+            refers=refers,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             env_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             refers: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if env_id is not None:
-            pulumi.set(__self__, "env_id", env_id)
+            _setter("env_id", env_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if refers is not None:
-            pulumi.set(__self__, "refers", refers)
+            _setter("refers", refers)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter
@@ -281,6 +333,10 @@ class EnvReferences(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnvReferencesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

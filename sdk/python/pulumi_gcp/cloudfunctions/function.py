@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -84,65 +84,182 @@ class FunctionArgs:
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
-        pulumi.set(__self__, "runtime", runtime)
+        FunctionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            runtime=runtime,
+            available_memory_mb=available_memory_mb,
+            build_environment_variables=build_environment_variables,
+            build_worker_pool=build_worker_pool,
+            description=description,
+            docker_registry=docker_registry,
+            docker_repository=docker_repository,
+            entry_point=entry_point,
+            environment_variables=environment_variables,
+            event_trigger=event_trigger,
+            https_trigger_security_level=https_trigger_security_level,
+            https_trigger_url=https_trigger_url,
+            ingress_settings=ingress_settings,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            max_instances=max_instances,
+            min_instances=min_instances,
+            name=name,
+            project=project,
+            region=region,
+            secret_environment_variables=secret_environment_variables,
+            secret_volumes=secret_volumes,
+            service_account_email=service_account_email,
+            source_archive_bucket=source_archive_bucket,
+            source_archive_object=source_archive_object,
+            source_repository=source_repository,
+            timeout=timeout,
+            trigger_http=trigger_http,
+            vpc_connector=vpc_connector,
+            vpc_connector_egress_settings=vpc_connector_egress_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             runtime: Optional[pulumi.Input[str]] = None,
+             available_memory_mb: Optional[pulumi.Input[int]] = None,
+             build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             build_worker_pool: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             docker_registry: Optional[pulumi.Input[str]] = None,
+             docker_repository: Optional[pulumi.Input[str]] = None,
+             entry_point: Optional[pulumi.Input[str]] = None,
+             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+             https_trigger_security_level: Optional[pulumi.Input[str]] = None,
+             https_trigger_url: Optional[pulumi.Input[str]] = None,
+             ingress_settings: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_instances: Optional[pulumi.Input[int]] = None,
+             min_instances: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
+             secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             source_archive_bucket: Optional[pulumi.Input[str]] = None,
+             source_archive_object: Optional[pulumi.Input[str]] = None,
+             source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             trigger_http: Optional[pulumi.Input[bool]] = None,
+             vpc_connector: Optional[pulumi.Input[str]] = None,
+             vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if available_memory_mb is None and 'availableMemoryMb' in kwargs:
+            available_memory_mb = kwargs['availableMemoryMb']
+        if build_environment_variables is None and 'buildEnvironmentVariables' in kwargs:
+            build_environment_variables = kwargs['buildEnvironmentVariables']
+        if build_worker_pool is None and 'buildWorkerPool' in kwargs:
+            build_worker_pool = kwargs['buildWorkerPool']
+        if docker_registry is None and 'dockerRegistry' in kwargs:
+            docker_registry = kwargs['dockerRegistry']
+        if docker_repository is None and 'dockerRepository' in kwargs:
+            docker_repository = kwargs['dockerRepository']
+        if entry_point is None and 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if environment_variables is None and 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if https_trigger_security_level is None and 'httpsTriggerSecurityLevel' in kwargs:
+            https_trigger_security_level = kwargs['httpsTriggerSecurityLevel']
+        if https_trigger_url is None and 'httpsTriggerUrl' in kwargs:
+            https_trigger_url = kwargs['httpsTriggerUrl']
+        if ingress_settings is None and 'ingressSettings' in kwargs:
+            ingress_settings = kwargs['ingressSettings']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
+            secret_environment_variables = kwargs['secretEnvironmentVariables']
+        if secret_volumes is None and 'secretVolumes' in kwargs:
+            secret_volumes = kwargs['secretVolumes']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if source_archive_bucket is None and 'sourceArchiveBucket' in kwargs:
+            source_archive_bucket = kwargs['sourceArchiveBucket']
+        if source_archive_object is None and 'sourceArchiveObject' in kwargs:
+            source_archive_object = kwargs['sourceArchiveObject']
+        if source_repository is None and 'sourceRepository' in kwargs:
+            source_repository = kwargs['sourceRepository']
+        if trigger_http is None and 'triggerHttp' in kwargs:
+            trigger_http = kwargs['triggerHttp']
+        if vpc_connector is None and 'vpcConnector' in kwargs:
+            vpc_connector = kwargs['vpcConnector']
+        if vpc_connector_egress_settings is None and 'vpcConnectorEgressSettings' in kwargs:
+            vpc_connector_egress_settings = kwargs['vpcConnectorEgressSettings']
+
+        _setter("runtime", runtime)
         if available_memory_mb is not None:
-            pulumi.set(__self__, "available_memory_mb", available_memory_mb)
+            _setter("available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
-            pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+            _setter("build_environment_variables", build_environment_variables)
         if build_worker_pool is not None:
-            pulumi.set(__self__, "build_worker_pool", build_worker_pool)
+            _setter("build_worker_pool", build_worker_pool)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if docker_registry is not None:
-            pulumi.set(__self__, "docker_registry", docker_registry)
+            _setter("docker_registry", docker_registry)
         if docker_repository is not None:
-            pulumi.set(__self__, "docker_repository", docker_repository)
+            _setter("docker_repository", docker_repository)
         if entry_point is not None:
-            pulumi.set(__self__, "entry_point", entry_point)
+            _setter("entry_point", entry_point)
         if environment_variables is not None:
-            pulumi.set(__self__, "environment_variables", environment_variables)
+            _setter("environment_variables", environment_variables)
         if event_trigger is not None:
-            pulumi.set(__self__, "event_trigger", event_trigger)
+            _setter("event_trigger", event_trigger)
         if https_trigger_security_level is not None:
-            pulumi.set(__self__, "https_trigger_security_level", https_trigger_security_level)
+            _setter("https_trigger_security_level", https_trigger_security_level)
         if https_trigger_url is not None:
-            pulumi.set(__self__, "https_trigger_url", https_trigger_url)
+            _setter("https_trigger_url", https_trigger_url)
         if ingress_settings is not None:
-            pulumi.set(__self__, "ingress_settings", ingress_settings)
+            _setter("ingress_settings", ingress_settings)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_instances is not None:
-            pulumi.set(__self__, "max_instances", max_instances)
+            _setter("max_instances", max_instances)
         if min_instances is not None:
-            pulumi.set(__self__, "min_instances", min_instances)
+            _setter("min_instances", min_instances)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if secret_environment_variables is not None:
-            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+            _setter("secret_environment_variables", secret_environment_variables)
         if secret_volumes is not None:
-            pulumi.set(__self__, "secret_volumes", secret_volumes)
+            _setter("secret_volumes", secret_volumes)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if source_archive_bucket is not None:
-            pulumi.set(__self__, "source_archive_bucket", source_archive_bucket)
+            _setter("source_archive_bucket", source_archive_bucket)
         if source_archive_object is not None:
-            pulumi.set(__self__, "source_archive_object", source_archive_object)
+            _setter("source_archive_object", source_archive_object)
         if source_repository is not None:
-            pulumi.set(__self__, "source_repository", source_repository)
+            _setter("source_repository", source_repository)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if trigger_http is not None:
-            pulumi.set(__self__, "trigger_http", trigger_http)
+            _setter("trigger_http", trigger_http)
         if vpc_connector is not None:
-            pulumi.set(__self__, "vpc_connector", vpc_connector)
+            _setter("vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
-            pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+            _setter("vpc_connector_egress_settings", vpc_connector_egress_settings)
 
     @property
     @pulumi.getter
@@ -583,68 +700,185 @@ class _FunctionState:
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
+        _FunctionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_memory_mb=available_memory_mb,
+            build_environment_variables=build_environment_variables,
+            build_worker_pool=build_worker_pool,
+            description=description,
+            docker_registry=docker_registry,
+            docker_repository=docker_repository,
+            entry_point=entry_point,
+            environment_variables=environment_variables,
+            event_trigger=event_trigger,
+            https_trigger_security_level=https_trigger_security_level,
+            https_trigger_url=https_trigger_url,
+            ingress_settings=ingress_settings,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            max_instances=max_instances,
+            min_instances=min_instances,
+            name=name,
+            project=project,
+            region=region,
+            runtime=runtime,
+            secret_environment_variables=secret_environment_variables,
+            secret_volumes=secret_volumes,
+            service_account_email=service_account_email,
+            source_archive_bucket=source_archive_bucket,
+            source_archive_object=source_archive_object,
+            source_repository=source_repository,
+            status=status,
+            timeout=timeout,
+            trigger_http=trigger_http,
+            vpc_connector=vpc_connector,
+            vpc_connector_egress_settings=vpc_connector_egress_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_memory_mb: Optional[pulumi.Input[int]] = None,
+             build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             build_worker_pool: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             docker_registry: Optional[pulumi.Input[str]] = None,
+             docker_repository: Optional[pulumi.Input[str]] = None,
+             entry_point: Optional[pulumi.Input[str]] = None,
+             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+             https_trigger_security_level: Optional[pulumi.Input[str]] = None,
+             https_trigger_url: Optional[pulumi.Input[str]] = None,
+             ingress_settings: Optional[pulumi.Input[str]] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_instances: Optional[pulumi.Input[int]] = None,
+             min_instances: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
+             secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             source_archive_bucket: Optional[pulumi.Input[str]] = None,
+             source_archive_object: Optional[pulumi.Input[str]] = None,
+             source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             trigger_http: Optional[pulumi.Input[bool]] = None,
+             vpc_connector: Optional[pulumi.Input[str]] = None,
+             vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_memory_mb is None and 'availableMemoryMb' in kwargs:
+            available_memory_mb = kwargs['availableMemoryMb']
+        if build_environment_variables is None and 'buildEnvironmentVariables' in kwargs:
+            build_environment_variables = kwargs['buildEnvironmentVariables']
+        if build_worker_pool is None and 'buildWorkerPool' in kwargs:
+            build_worker_pool = kwargs['buildWorkerPool']
+        if docker_registry is None and 'dockerRegistry' in kwargs:
+            docker_registry = kwargs['dockerRegistry']
+        if docker_repository is None and 'dockerRepository' in kwargs:
+            docker_repository = kwargs['dockerRepository']
+        if entry_point is None and 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if environment_variables is None and 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if https_trigger_security_level is None and 'httpsTriggerSecurityLevel' in kwargs:
+            https_trigger_security_level = kwargs['httpsTriggerSecurityLevel']
+        if https_trigger_url is None and 'httpsTriggerUrl' in kwargs:
+            https_trigger_url = kwargs['httpsTriggerUrl']
+        if ingress_settings is None and 'ingressSettings' in kwargs:
+            ingress_settings = kwargs['ingressSettings']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
+            secret_environment_variables = kwargs['secretEnvironmentVariables']
+        if secret_volumes is None and 'secretVolumes' in kwargs:
+            secret_volumes = kwargs['secretVolumes']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if source_archive_bucket is None and 'sourceArchiveBucket' in kwargs:
+            source_archive_bucket = kwargs['sourceArchiveBucket']
+        if source_archive_object is None and 'sourceArchiveObject' in kwargs:
+            source_archive_object = kwargs['sourceArchiveObject']
+        if source_repository is None and 'sourceRepository' in kwargs:
+            source_repository = kwargs['sourceRepository']
+        if trigger_http is None and 'triggerHttp' in kwargs:
+            trigger_http = kwargs['triggerHttp']
+        if vpc_connector is None and 'vpcConnector' in kwargs:
+            vpc_connector = kwargs['vpcConnector']
+        if vpc_connector_egress_settings is None and 'vpcConnectorEgressSettings' in kwargs:
+            vpc_connector_egress_settings = kwargs['vpcConnectorEgressSettings']
+
         if available_memory_mb is not None:
-            pulumi.set(__self__, "available_memory_mb", available_memory_mb)
+            _setter("available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
-            pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+            _setter("build_environment_variables", build_environment_variables)
         if build_worker_pool is not None:
-            pulumi.set(__self__, "build_worker_pool", build_worker_pool)
+            _setter("build_worker_pool", build_worker_pool)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if docker_registry is not None:
-            pulumi.set(__self__, "docker_registry", docker_registry)
+            _setter("docker_registry", docker_registry)
         if docker_repository is not None:
-            pulumi.set(__self__, "docker_repository", docker_repository)
+            _setter("docker_repository", docker_repository)
         if entry_point is not None:
-            pulumi.set(__self__, "entry_point", entry_point)
+            _setter("entry_point", entry_point)
         if environment_variables is not None:
-            pulumi.set(__self__, "environment_variables", environment_variables)
+            _setter("environment_variables", environment_variables)
         if event_trigger is not None:
-            pulumi.set(__self__, "event_trigger", event_trigger)
+            _setter("event_trigger", event_trigger)
         if https_trigger_security_level is not None:
-            pulumi.set(__self__, "https_trigger_security_level", https_trigger_security_level)
+            _setter("https_trigger_security_level", https_trigger_security_level)
         if https_trigger_url is not None:
-            pulumi.set(__self__, "https_trigger_url", https_trigger_url)
+            _setter("https_trigger_url", https_trigger_url)
         if ingress_settings is not None:
-            pulumi.set(__self__, "ingress_settings", ingress_settings)
+            _setter("ingress_settings", ingress_settings)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_instances is not None:
-            pulumi.set(__self__, "max_instances", max_instances)
+            _setter("max_instances", max_instances)
         if min_instances is not None:
-            pulumi.set(__self__, "min_instances", min_instances)
+            _setter("min_instances", min_instances)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if secret_environment_variables is not None:
-            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+            _setter("secret_environment_variables", secret_environment_variables)
         if secret_volumes is not None:
-            pulumi.set(__self__, "secret_volumes", secret_volumes)
+            _setter("secret_volumes", secret_volumes)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if source_archive_bucket is not None:
-            pulumi.set(__self__, "source_archive_bucket", source_archive_bucket)
+            _setter("source_archive_bucket", source_archive_bucket)
         if source_archive_object is not None:
-            pulumi.set(__self__, "source_archive_object", source_archive_object)
+            _setter("source_archive_object", source_archive_object)
         if source_repository is not None:
-            pulumi.set(__self__, "source_repository", source_repository)
+            _setter("source_repository", source_repository)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if trigger_http is not None:
-            pulumi.set(__self__, "trigger_http", trigger_http)
+            _setter("trigger_http", trigger_http)
         if vpc_connector is not None:
-            pulumi.set(__self__, "vpc_connector", vpc_connector)
+            _setter("vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
-            pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+            _setter("vpc_connector_egress_settings", vpc_connector_egress_settings)
 
     @property
     @pulumi.getter(name="availableMemoryMb")
@@ -1288,6 +1522,10 @@ class Function(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FunctionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1340,6 +1578,11 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["docker_repository"] = docker_repository
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
+            if event_trigger is not None and not isinstance(event_trigger, FunctionEventTriggerArgs):
+                event_trigger = event_trigger or {}
+                def _setter(key, value):
+                    event_trigger[key] = value
+                FunctionEventTriggerArgs._configure(_setter, **event_trigger)
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["https_trigger_security_level"] = https_trigger_security_level
             __props__.__dict__["https_trigger_url"] = https_trigger_url
@@ -1359,6 +1602,11 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["service_account_email"] = service_account_email
             __props__.__dict__["source_archive_bucket"] = source_archive_bucket
             __props__.__dict__["source_archive_object"] = source_archive_object
+            if source_repository is not None and not isinstance(source_repository, FunctionSourceRepositoryArgs):
+                source_repository = source_repository or {}
+                def _setter(key, value):
+                    source_repository[key] = value
+                FunctionSourceRepositoryArgs._configure(_setter, **source_repository)
             __props__.__dict__["source_repository"] = source_repository
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["trigger_http"] = trigger_http

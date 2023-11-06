@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecretCiphertextArgs', 'SecretCiphertext']
@@ -29,10 +29,33 @@ class SecretCiphertextArgs:
         :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "crypto_key", crypto_key)
-        pulumi.set(__self__, "plaintext", plaintext)
+        SecretCiphertextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key=crypto_key,
+            plaintext=plaintext,
+            additional_authenticated_data=additional_authenticated_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key: Optional[pulumi.Input[str]] = None,
+             plaintext: Optional[pulumi.Input[str]] = None,
+             additional_authenticated_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+        if plaintext is None:
+            raise TypeError("Missing 'plaintext' argument")
+        if additional_authenticated_data is None and 'additionalAuthenticatedData' in kwargs:
+            additional_authenticated_data = kwargs['additionalAuthenticatedData']
+
+        _setter("crypto_key", crypto_key)
+        _setter("plaintext", plaintext)
         if additional_authenticated_data is not None:
-            pulumi.set(__self__, "additional_authenticated_data", additional_authenticated_data)
+            _setter("additional_authenticated_data", additional_authenticated_data)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -97,14 +120,35 @@ class _SecretCiphertextState:
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        _SecretCiphertextState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_authenticated_data=additional_authenticated_data,
+            ciphertext=ciphertext,
+            crypto_key=crypto_key,
+            plaintext=plaintext,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_authenticated_data: Optional[pulumi.Input[str]] = None,
+             ciphertext: Optional[pulumi.Input[str]] = None,
+             crypto_key: Optional[pulumi.Input[str]] = None,
+             plaintext: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_authenticated_data is None and 'additionalAuthenticatedData' in kwargs:
+            additional_authenticated_data = kwargs['additionalAuthenticatedData']
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         if additional_authenticated_data is not None:
-            pulumi.set(__self__, "additional_authenticated_data", additional_authenticated_data)
+            _setter("additional_authenticated_data", additional_authenticated_data)
         if ciphertext is not None:
-            pulumi.set(__self__, "ciphertext", ciphertext)
+            _setter("ciphertext", ciphertext)
         if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
+            _setter("crypto_key", crypto_key)
         if plaintext is not None:
-            pulumi.set(__self__, "plaintext", plaintext)
+            _setter("plaintext", plaintext)
 
     @property
     @pulumi.getter(name="additionalAuthenticatedData")
@@ -300,6 +344,10 @@ class SecretCiphertext(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretCiphertextArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

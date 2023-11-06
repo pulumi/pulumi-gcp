@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,22 +41,55 @@ class AiFeatureStoreArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         """
+        AiFeatureStoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encryption_spec=encryption_spec,
+            force_destroy=force_destroy,
+            labels=labels,
+            name=name,
+            online_serving_config=online_serving_config,
+            online_storage_ttl_days=online_storage_ttl_days,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
+             online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if online_serving_config is not None:
-            pulumi.set(__self__, "online_serving_config", online_serving_config)
+            _setter("online_serving_config", online_serving_config)
         if online_storage_ttl_days is not None:
-            pulumi.set(__self__, "online_storage_ttl_days", online_storage_ttl_days)
+            _setter("online_storage_ttl_days", online_storage_ttl_days)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="encryptionSpec")
@@ -195,28 +228,71 @@ class _AiFeatureStoreState:
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _AiFeatureStoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            encryption_spec=encryption_spec,
+            etag=etag,
+            force_destroy=force_destroy,
+            labels=labels,
+            name=name,
+            online_serving_config=online_serving_config,
+            online_storage_ttl_days=online_storage_ttl_days,
+            project=project,
+            region=region,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
+             online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if online_serving_config is not None:
-            pulumi.set(__self__, "online_serving_config", online_serving_config)
+            _setter("online_serving_config", online_serving_config)
         if online_storage_ttl_days is not None:
-            pulumi.set(__self__, "online_storage_ttl_days", online_storage_ttl_days)
+            _setter("online_storage_ttl_days", online_storage_ttl_days)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -590,6 +666,10 @@ class AiFeatureStore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiFeatureStoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -612,10 +692,20 @@ class AiFeatureStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiFeatureStoreArgs.__new__(AiFeatureStoreArgs)
 
+            if encryption_spec is not None and not isinstance(encryption_spec, AiFeatureStoreEncryptionSpecArgs):
+                encryption_spec = encryption_spec or {}
+                def _setter(key, value):
+                    encryption_spec[key] = value
+                AiFeatureStoreEncryptionSpecArgs._configure(_setter, **encryption_spec)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if online_serving_config is not None and not isinstance(online_serving_config, AiFeatureStoreOnlineServingConfigArgs):
+                online_serving_config = online_serving_config or {}
+                def _setter(key, value):
+                    online_serving_config[key] = value
+                AiFeatureStoreOnlineServingConfigArgs._configure(_setter, **online_serving_config)
             __props__.__dict__["online_serving_config"] = online_serving_config
             __props__.__dict__["online_storage_ttl_days"] = online_storage_ttl_days
             __props__.__dict__["project"] = project

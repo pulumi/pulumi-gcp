@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ChannelArgs', 'Channel']
@@ -31,15 +31,40 @@ class ChannelArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
-        pulumi.set(__self__, "location", location)
+        ChannelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            crypto_key_name=crypto_key_name,
+            name=name,
+            project=project,
+            third_party_provider=third_party_provider,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             crypto_key_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             third_party_provider: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if third_party_provider is None and 'thirdPartyProvider' in kwargs:
+            third_party_provider = kwargs['thirdPartyProvider']
+
+        _setter("location", location)
         if crypto_key_name is not None:
-            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+            _setter("crypto_key_name", crypto_key_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if third_party_provider is not None:
-            pulumi.set(__self__, "third_party_provider", third_party_provider)
+            _setter("third_party_provider", third_party_provider)
 
     @property
     @pulumi.getter
@@ -138,28 +163,71 @@ class _ChannelState:
         :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
+        _ChannelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_token=activation_token,
+            create_time=create_time,
+            crypto_key_name=crypto_key_name,
+            location=location,
+            name=name,
+            project=project,
+            pubsub_topic=pubsub_topic,
+            state=state,
+            third_party_provider=third_party_provider,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_token: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             crypto_key_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             third_party_provider: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if activation_token is None and 'activationToken' in kwargs:
+            activation_token = kwargs['activationToken']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if third_party_provider is None and 'thirdPartyProvider' in kwargs:
+            third_party_provider = kwargs['thirdPartyProvider']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if activation_token is not None:
-            pulumi.set(__self__, "activation_token", activation_token)
+            _setter("activation_token", activation_token)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if crypto_key_name is not None:
-            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+            _setter("crypto_key_name", crypto_key_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pubsub_topic is not None:
-            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+            _setter("pubsub_topic", pubsub_topic)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if third_party_provider is not None:
-            pulumi.set(__self__, "third_party_provider", third_party_provider)
+            _setter("third_party_provider", third_party_provider)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="activationToken")
@@ -421,6 +489,10 @@ class Channel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ChannelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

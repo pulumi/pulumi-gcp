@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -92,39 +92,112 @@ class RouterPeerArgs:
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
         """
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "peer_asn", peer_asn)
-        pulumi.set(__self__, "router", router)
+        RouterPeerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interface=interface,
+            peer_asn=peer_asn,
+            router=router,
+            advertise_mode=advertise_mode,
+            advertised_groups=advertised_groups,
+            advertised_ip_ranges=advertised_ip_ranges,
+            advertised_route_priority=advertised_route_priority,
+            bfd=bfd,
+            enable=enable,
+            enable_ipv6=enable_ipv6,
+            ip_address=ip_address,
+            ipv6_nexthop_address=ipv6_nexthop_address,
+            name=name,
+            peer_ip_address=peer_ip_address,
+            peer_ipv6_nexthop_address=peer_ipv6_nexthop_address,
+            project=project,
+            region=region,
+            router_appliance_instance=router_appliance_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interface: Optional[pulumi.Input[str]] = None,
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             advertise_mode: Optional[pulumi.Input[str]] = None,
+             advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+             advertised_route_priority: Optional[pulumi.Input[int]] = None,
+             bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             peer_ip_address: Optional[pulumi.Input[str]] = None,
+             peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router_appliance_instance: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
+        _setter("interface", interface)
+        _setter("peer_asn", peer_asn)
+        _setter("router", router)
         if advertise_mode is not None:
-            pulumi.set(__self__, "advertise_mode", advertise_mode)
+            _setter("advertise_mode", advertise_mode)
         if advertised_groups is not None:
-            pulumi.set(__self__, "advertised_groups", advertised_groups)
+            _setter("advertised_groups", advertised_groups)
         if advertised_ip_ranges is not None:
-            pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+            _setter("advertised_ip_ranges", advertised_ip_ranges)
         if advertised_route_priority is not None:
-            pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+            _setter("advertised_route_priority", advertised_route_priority)
         if bfd is not None:
-            pulumi.set(__self__, "bfd", bfd)
+            _setter("bfd", bfd)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if enable_ipv6 is not None:
-            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+            _setter("enable_ipv6", enable_ipv6)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ipv6_nexthop_address is not None:
-            pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
+            _setter("ipv6_nexthop_address", ipv6_nexthop_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if peer_ip_address is not None:
-            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+            _setter("peer_ip_address", peer_ip_address)
         if peer_ipv6_nexthop_address is not None:
-            pulumi.set(__self__, "peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
+            _setter("peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router_appliance_instance is not None:
-            pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
+            _setter("router_appliance_instance", router_appliance_instance)
 
     @property
     @pulumi.getter
@@ -461,44 +534,115 @@ class _RouterPeerState:
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
         """
+        _RouterPeerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            advertise_mode=advertise_mode,
+            advertised_groups=advertised_groups,
+            advertised_ip_ranges=advertised_ip_ranges,
+            advertised_route_priority=advertised_route_priority,
+            bfd=bfd,
+            enable=enable,
+            enable_ipv6=enable_ipv6,
+            interface=interface,
+            ip_address=ip_address,
+            ipv6_nexthop_address=ipv6_nexthop_address,
+            management_type=management_type,
+            name=name,
+            peer_asn=peer_asn,
+            peer_ip_address=peer_ip_address,
+            peer_ipv6_nexthop_address=peer_ipv6_nexthop_address,
+            project=project,
+            region=region,
+            router=router,
+            router_appliance_instance=router_appliance_instance,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             advertise_mode: Optional[pulumi.Input[str]] = None,
+             advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+             advertised_route_priority: Optional[pulumi.Input[int]] = None,
+             bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+             interface: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+             management_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             peer_ip_address: Optional[pulumi.Input[str]] = None,
+             peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             router_appliance_instance: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if advertise_mode is None and 'advertiseMode' in kwargs:
+            advertise_mode = kwargs['advertiseMode']
+        if advertised_groups is None and 'advertisedGroups' in kwargs:
+            advertised_groups = kwargs['advertisedGroups']
+        if advertised_ip_ranges is None and 'advertisedIpRanges' in kwargs:
+            advertised_ip_ranges = kwargs['advertisedIpRanges']
+        if advertised_route_priority is None and 'advertisedRoutePriority' in kwargs:
+            advertised_route_priority = kwargs['advertisedRoutePriority']
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ipv6_nexthop_address is None and 'ipv6NexthopAddress' in kwargs:
+            ipv6_nexthop_address = kwargs['ipv6NexthopAddress']
+        if management_type is None and 'managementType' in kwargs:
+            management_type = kwargs['managementType']
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if peer_ipv6_nexthop_address is None and 'peerIpv6NexthopAddress' in kwargs:
+            peer_ipv6_nexthop_address = kwargs['peerIpv6NexthopAddress']
+        if router_appliance_instance is None and 'routerApplianceInstance' in kwargs:
+            router_appliance_instance = kwargs['routerApplianceInstance']
+
         if advertise_mode is not None:
-            pulumi.set(__self__, "advertise_mode", advertise_mode)
+            _setter("advertise_mode", advertise_mode)
         if advertised_groups is not None:
-            pulumi.set(__self__, "advertised_groups", advertised_groups)
+            _setter("advertised_groups", advertised_groups)
         if advertised_ip_ranges is not None:
-            pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+            _setter("advertised_ip_ranges", advertised_ip_ranges)
         if advertised_route_priority is not None:
-            pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+            _setter("advertised_route_priority", advertised_route_priority)
         if bfd is not None:
-            pulumi.set(__self__, "bfd", bfd)
+            _setter("bfd", bfd)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if enable_ipv6 is not None:
-            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+            _setter("enable_ipv6", enable_ipv6)
         if interface is not None:
-            pulumi.set(__self__, "interface", interface)
+            _setter("interface", interface)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if ipv6_nexthop_address is not None:
-            pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
+            _setter("ipv6_nexthop_address", ipv6_nexthop_address)
         if management_type is not None:
-            pulumi.set(__self__, "management_type", management_type)
+            _setter("management_type", management_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if peer_asn is not None:
-            pulumi.set(__self__, "peer_asn", peer_asn)
+            _setter("peer_asn", peer_asn)
         if peer_ip_address is not None:
-            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+            _setter("peer_ip_address", peer_ip_address)
         if peer_ipv6_nexthop_address is not None:
-            pulumi.set(__self__, "peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
+            _setter("peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if router_appliance_instance is not None:
-            pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
+            _setter("router_appliance_instance", router_appliance_instance)
 
     @property
     @pulumi.getter(name="advertiseMode")
@@ -1172,6 +1316,10 @@ class RouterPeer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterPeerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1208,6 +1356,11 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["advertised_groups"] = advertised_groups
             __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
             __props__.__dict__["advertised_route_priority"] = advertised_route_priority
+            if bfd is not None and not isinstance(bfd, RouterPeerBfdArgs):
+                bfd = bfd or {}
+                def _setter(key, value):
+                    bfd[key] = value
+                RouterPeerBfdArgs._configure(_setter, **bfd)
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["enable"] = enable
             __props__.__dict__["enable_ipv6"] = enable_ipv6

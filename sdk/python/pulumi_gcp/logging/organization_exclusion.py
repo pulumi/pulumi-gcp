@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OrganizationExclusionArgs', 'OrganizationExclusion']
@@ -30,14 +30,39 @@ class OrganizationExclusionArgs:
                false.
         :param pulumi.Input[str] name: The name of the logging exclusion.
         """
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "org_id", org_id)
+        OrganizationExclusionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            org_id=org_id,
+            description=description,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+
+        _setter("filter", filter)
+        _setter("org_id", org_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -122,16 +147,37 @@ class _OrganizationExclusionState:
         :param pulumi.Input[str] name: The name of the logging exclusion.
         :param pulumi.Input[str] org_id: The organization to create the exclusion in.
         """
+        _OrganizationExclusionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disabled=disabled,
+            filter=filter,
+            name=name,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -293,6 +339,10 @@ class OrganizationExclusion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationExclusionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

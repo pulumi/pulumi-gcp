@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,11 +29,28 @@ class PolicyArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
-        pulumi.set(__self__, "parent", parent)
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            name=name,
+            spec=spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
+        _setter("parent", parent)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
 
     @property
     @pulumi.getter
@@ -92,12 +109,27 @@ class _PolicyState:
                - - -
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            parent=parent,
+            spec=spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
 
     @property
     @pulumi.getter
@@ -365,6 +397,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -386,6 +422,11 @@ class Policy(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            if spec is not None and not isinstance(spec, PolicySpecArgs):
+                spec = spec or {}
+                def _setter(key, value):
+                    spec[key] = value
+                PolicySpecArgs._configure(_setter, **spec)
             __props__.__dict__["spec"] = spec
         super(Policy, __self__).__init__(
             'gcp:orgpolicy/policy:Policy',

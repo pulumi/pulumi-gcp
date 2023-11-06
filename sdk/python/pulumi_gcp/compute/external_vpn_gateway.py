@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,18 +43,41 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
                Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
+        ExternalVpnGatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            interfaces=interfaces,
+            labels=labels,
+            name=name,
+            project=project,
+            redundancy_type=redundancy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             redundancy_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
+            _setter("interfaces", interfaces)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
 
     @property
     @pulumi.getter
@@ -176,22 +199,53 @@ class _ExternalVpnGatewayState:
                Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _ExternalVpnGatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            interfaces=interfaces,
+            label_fingerprint=label_fingerprint,
+            labels=labels,
+            name=name,
+            project=project,
+            redundancy_type=redundancy_type,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             redundancy_type: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
+            _setter("interfaces", interfaces)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter
@@ -548,6 +602,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ExternalVpnGatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

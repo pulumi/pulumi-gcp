@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -125,68 +125,193 @@ class InstanceArgs:
         :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "machine_type", machine_type)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            machine_type=machine_type,
+            accelerator_config=accelerator_config,
+            boot_disk_size_gb=boot_disk_size_gb,
+            boot_disk_type=boot_disk_type,
+            container_image=container_image,
+            create_time=create_time,
+            custom_gpu_driver_path=custom_gpu_driver_path,
+            data_disk_size_gb=data_disk_size_gb,
+            data_disk_type=data_disk_type,
+            disk_encryption=disk_encryption,
+            install_gpu_driver=install_gpu_driver,
+            instance_owners=instance_owners,
+            kms_key=kms_key,
+            labels=labels,
+            metadata=metadata,
+            name=name,
+            network=network,
+            nic_type=nic_type,
+            no_proxy_access=no_proxy_access,
+            no_public_ip=no_public_ip,
+            no_remove_data_disk=no_remove_data_disk,
+            post_startup_script=post_startup_script,
+            project=project,
+            reservation_affinity=reservation_affinity,
+            service_account=service_account,
+            service_account_scopes=service_account_scopes,
+            shielded_instance_config=shielded_instance_config,
+            subnet=subnet,
+            tags=tags,
+            update_time=update_time,
+            vm_image=vm_image,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
+             boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             boot_disk_type: Optional[pulumi.Input[str]] = None,
+             container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
+             data_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             data_disk_type: Optional[pulumi.Input[str]] = None,
+             disk_encryption: Optional[pulumi.Input[str]] = None,
+             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+             instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             kms_key: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             nic_type: Optional[pulumi.Input[str]] = None,
+             no_proxy_access: Optional[pulumi.Input[bool]] = None,
+             no_public_ip: Optional[pulumi.Input[bool]] = None,
+             no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
+             post_startup_script: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+             subnet: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
+        _setter("location", location)
+        _setter("machine_type", machine_type)
         if accelerator_config is not None:
-            pulumi.set(__self__, "accelerator_config", accelerator_config)
+            _setter("accelerator_config", accelerator_config)
         if boot_disk_size_gb is not None:
-            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+            _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
-            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+            _setter("boot_disk_type", boot_disk_type)
         if container_image is not None:
-            pulumi.set(__self__, "container_image", container_image)
+            _setter("container_image", container_image)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if custom_gpu_driver_path is not None:
-            pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
+            _setter("custom_gpu_driver_path", custom_gpu_driver_path)
         if data_disk_size_gb is not None:
-            pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
+            _setter("data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
-            pulumi.set(__self__, "data_disk_type", data_disk_type)
+            _setter("data_disk_type", data_disk_type)
         if disk_encryption is not None:
-            pulumi.set(__self__, "disk_encryption", disk_encryption)
+            _setter("disk_encryption", disk_encryption)
         if install_gpu_driver is not None:
-            pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+            _setter("install_gpu_driver", install_gpu_driver)
         if instance_owners is not None:
-            pulumi.set(__self__, "instance_owners", instance_owners)
+            _setter("instance_owners", instance_owners)
         if kms_key is not None:
-            pulumi.set(__self__, "kms_key", kms_key)
+            _setter("kms_key", kms_key)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if nic_type is not None:
-            pulumi.set(__self__, "nic_type", nic_type)
+            _setter("nic_type", nic_type)
         if no_proxy_access is not None:
-            pulumi.set(__self__, "no_proxy_access", no_proxy_access)
+            _setter("no_proxy_access", no_proxy_access)
         if no_public_ip is not None:
-            pulumi.set(__self__, "no_public_ip", no_public_ip)
+            _setter("no_public_ip", no_public_ip)
         if no_remove_data_disk is not None:
-            pulumi.set(__self__, "no_remove_data_disk", no_remove_data_disk)
+            _setter("no_remove_data_disk", no_remove_data_disk)
         if post_startup_script is not None:
-            pulumi.set(__self__, "post_startup_script", post_startup_script)
+            _setter("post_startup_script", post_startup_script)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reservation_affinity is not None:
-            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+            _setter("reservation_affinity", reservation_affinity)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if service_account_scopes is not None:
-            pulumi.set(__self__, "service_account_scopes", service_account_scopes)
+            _setter("service_account_scopes", service_account_scopes)
         if shielded_instance_config is not None:
-            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+            _setter("shielded_instance_config", shielded_instance_config)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if vm_image is not None:
-            pulumi.set(__self__, "vm_image", vm_image)
+            _setter("vm_image", vm_image)
 
     @property
     @pulumi.getter
@@ -734,74 +859,201 @@ class _InstanceState:
         :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_config=accelerator_config,
+            boot_disk_size_gb=boot_disk_size_gb,
+            boot_disk_type=boot_disk_type,
+            container_image=container_image,
+            create_time=create_time,
+            custom_gpu_driver_path=custom_gpu_driver_path,
+            data_disk_size_gb=data_disk_size_gb,
+            data_disk_type=data_disk_type,
+            disk_encryption=disk_encryption,
+            install_gpu_driver=install_gpu_driver,
+            instance_owners=instance_owners,
+            kms_key=kms_key,
+            labels=labels,
+            location=location,
+            machine_type=machine_type,
+            metadata=metadata,
+            name=name,
+            network=network,
+            nic_type=nic_type,
+            no_proxy_access=no_proxy_access,
+            no_public_ip=no_public_ip,
+            no_remove_data_disk=no_remove_data_disk,
+            post_startup_script=post_startup_script,
+            project=project,
+            proxy_uri=proxy_uri,
+            reservation_affinity=reservation_affinity,
+            service_account=service_account,
+            service_account_scopes=service_account_scopes,
+            shielded_instance_config=shielded_instance_config,
+            state=state,
+            subnet=subnet,
+            tags=tags,
+            update_time=update_time,
+            vm_image=vm_image,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
+             boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             boot_disk_type: Optional[pulumi.Input[str]] = None,
+             container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
+             data_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             data_disk_type: Optional[pulumi.Input[str]] = None,
+             disk_encryption: Optional[pulumi.Input[str]] = None,
+             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+             instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             kms_key: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             nic_type: Optional[pulumi.Input[str]] = None,
+             no_proxy_access: Optional[pulumi.Input[bool]] = None,
+             no_public_ip: Optional[pulumi.Input[bool]] = None,
+             no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
+             post_startup_script: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_uri: Optional[pulumi.Input[str]] = None,
+             reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             subnet: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_config is None and 'acceleratorConfig' in kwargs:
+            accelerator_config = kwargs['acceleratorConfig']
+        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
+            boot_disk_size_gb = kwargs['bootDiskSizeGb']
+        if boot_disk_type is None and 'bootDiskType' in kwargs:
+            boot_disk_type = kwargs['bootDiskType']
+        if container_image is None and 'containerImage' in kwargs:
+            container_image = kwargs['containerImage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_gpu_driver_path is None and 'customGpuDriverPath' in kwargs:
+            custom_gpu_driver_path = kwargs['customGpuDriverPath']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if disk_encryption is None and 'diskEncryption' in kwargs:
+            disk_encryption = kwargs['diskEncryption']
+        if install_gpu_driver is None and 'installGpuDriver' in kwargs:
+            install_gpu_driver = kwargs['installGpuDriver']
+        if instance_owners is None and 'instanceOwners' in kwargs:
+            instance_owners = kwargs['instanceOwners']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if nic_type is None and 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if no_proxy_access is None and 'noProxyAccess' in kwargs:
+            no_proxy_access = kwargs['noProxyAccess']
+        if no_public_ip is None and 'noPublicIp' in kwargs:
+            no_public_ip = kwargs['noPublicIp']
+        if no_remove_data_disk is None and 'noRemoveDataDisk' in kwargs:
+            no_remove_data_disk = kwargs['noRemoveDataDisk']
+        if post_startup_script is None and 'postStartupScript' in kwargs:
+            post_startup_script = kwargs['postStartupScript']
+        if proxy_uri is None and 'proxyUri' in kwargs:
+            proxy_uri = kwargs['proxyUri']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_account_scopes is None and 'serviceAccountScopes' in kwargs:
+            service_account_scopes = kwargs['serviceAccountScopes']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vm_image is None and 'vmImage' in kwargs:
+            vm_image = kwargs['vmImage']
+
         if accelerator_config is not None:
-            pulumi.set(__self__, "accelerator_config", accelerator_config)
+            _setter("accelerator_config", accelerator_config)
         if boot_disk_size_gb is not None:
-            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+            _setter("boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
-            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+            _setter("boot_disk_type", boot_disk_type)
         if container_image is not None:
-            pulumi.set(__self__, "container_image", container_image)
+            _setter("container_image", container_image)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if custom_gpu_driver_path is not None:
-            pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
+            _setter("custom_gpu_driver_path", custom_gpu_driver_path)
         if data_disk_size_gb is not None:
-            pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
+            _setter("data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
-            pulumi.set(__self__, "data_disk_type", data_disk_type)
+            _setter("data_disk_type", data_disk_type)
         if disk_encryption is not None:
-            pulumi.set(__self__, "disk_encryption", disk_encryption)
+            _setter("disk_encryption", disk_encryption)
         if install_gpu_driver is not None:
-            pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+            _setter("install_gpu_driver", install_gpu_driver)
         if instance_owners is not None:
-            pulumi.set(__self__, "instance_owners", instance_owners)
+            _setter("instance_owners", instance_owners)
         if kms_key is not None:
-            pulumi.set(__self__, "kms_key", kms_key)
+            _setter("kms_key", kms_key)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
+            _setter("machine_type", machine_type)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if nic_type is not None:
-            pulumi.set(__self__, "nic_type", nic_type)
+            _setter("nic_type", nic_type)
         if no_proxy_access is not None:
-            pulumi.set(__self__, "no_proxy_access", no_proxy_access)
+            _setter("no_proxy_access", no_proxy_access)
         if no_public_ip is not None:
-            pulumi.set(__self__, "no_public_ip", no_public_ip)
+            _setter("no_public_ip", no_public_ip)
         if no_remove_data_disk is not None:
-            pulumi.set(__self__, "no_remove_data_disk", no_remove_data_disk)
+            _setter("no_remove_data_disk", no_remove_data_disk)
         if post_startup_script is not None:
-            pulumi.set(__self__, "post_startup_script", post_startup_script)
+            _setter("post_startup_script", post_startup_script)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_uri is not None:
-            pulumi.set(__self__, "proxy_uri", proxy_uri)
+            _setter("proxy_uri", proxy_uri)
         if reservation_affinity is not None:
-            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+            _setter("reservation_affinity", reservation_affinity)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if service_account_scopes is not None:
-            pulumi.set(__self__, "service_account_scopes", service_account_scopes)
+            _setter("service_account_scopes", service_account_scopes)
         if shielded_instance_config is not None:
-            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+            _setter("shielded_instance_config", shielded_instance_config)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if vm_image is not None:
-            pulumi.set(__self__, "vm_image", vm_image)
+            _setter("vm_image", vm_image)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -1608,6 +1860,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1654,9 +1910,19 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            if accelerator_config is not None and not isinstance(accelerator_config, InstanceAcceleratorConfigArgs):
+                accelerator_config = accelerator_config or {}
+                def _setter(key, value):
+                    accelerator_config[key] = value
+                InstanceAcceleratorConfigArgs._configure(_setter, **accelerator_config)
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["boot_disk_size_gb"] = boot_disk_size_gb
             __props__.__dict__["boot_disk_type"] = boot_disk_type
+            if container_image is not None and not isinstance(container_image, InstanceContainerImageArgs):
+                container_image = container_image or {}
+                def _setter(key, value):
+                    container_image[key] = value
+                InstanceContainerImageArgs._configure(_setter, **container_image)
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
@@ -1682,13 +1948,28 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project
+            if reservation_affinity is not None and not isinstance(reservation_affinity, InstanceReservationAffinityArgs):
+                reservation_affinity = reservation_affinity or {}
+                def _setter(key, value):
+                    reservation_affinity[key] = value
+                InstanceReservationAffinityArgs._configure(_setter, **reservation_affinity)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["service_account_scopes"] = service_account_scopes
+            if shielded_instance_config is not None and not isinstance(shielded_instance_config, InstanceShieldedInstanceConfigArgs):
+                shielded_instance_config = shielded_instance_config or {}
+                def _setter(key, value):
+                    shielded_instance_config[key] = value
+                InstanceShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_time"] = update_time
+            if vm_image is not None and not isinstance(vm_image, InstanceVmImageArgs):
+                vm_image = vm_image or {}
+                def _setter(key, value):
+                    vm_image[key] = value
+                InstanceVmImageArgs._configure(_setter, **vm_image)
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["proxy_uri"] = None
             __props__.__dict__["state"] = None

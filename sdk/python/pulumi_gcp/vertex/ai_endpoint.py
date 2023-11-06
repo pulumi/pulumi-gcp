@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,22 +42,57 @@ class AiEndpointArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
+        AiEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            location=location,
+            description=description,
+            encryption_spec=encryption_spec,
+            labels=labels,
+            name=name,
+            network=network,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
+        _setter("display_name", display_name)
+        _setter("location", location)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -214,34 +249,83 @@ class _AiEndpointState:
         :param pulumi.Input[str] region: The region for the resource
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
+        _AiEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            deployed_models=deployed_models,
+            description=description,
+            display_name=display_name,
+            encryption_spec=encryption_spec,
+            etag=etag,
+            labels=labels,
+            location=location,
+            model_deployment_monitoring_job=model_deployment_monitoring_job,
+            name=name,
+            network=network,
+            project=project,
+            region=region,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             model_deployment_monitoring_job: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deployed_models is None and 'deployedModels' in kwargs:
+            deployed_models = kwargs['deployedModels']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if model_deployment_monitoring_job is None and 'modelDeploymentMonitoringJob' in kwargs:
+            model_deployment_monitoring_job = kwargs['modelDeploymentMonitoringJob']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if deployed_models is not None:
-            pulumi.set(__self__, "deployed_models", deployed_models)
+            _setter("deployed_models", deployed_models)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if model_deployment_monitoring_job is not None:
-            pulumi.set(__self__, "model_deployment_monitoring_job", model_deployment_monitoring_job)
+            _setter("model_deployment_monitoring_job", model_deployment_monitoring_job)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -591,6 +675,10 @@ class AiEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -618,6 +706,11 @@ class AiEndpoint(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if encryption_spec is not None and not isinstance(encryption_spec, AiEndpointEncryptionSpecArgs):
+                encryption_spec = encryption_spec or {}
+                def _setter(key, value):
+                    encryption_spec[key] = value
+                AiEndpointEncryptionSpecArgs._configure(_setter, **encryption_spec)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

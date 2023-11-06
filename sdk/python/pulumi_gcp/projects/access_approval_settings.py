@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,17 +40,48 @@ class AccessApprovalSettingsArgs:
                
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
-        pulumi.set(__self__, "enrolled_services", enrolled_services)
-        pulumi.set(__self__, "project_id", project_id)
+        AccessApprovalSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enrolled_services=enrolled_services,
+            project_id=project_id,
+            active_key_version=active_key_version,
+            notification_emails=notification_emails,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             active_key_version: Optional[pulumi.Input[str]] = None,
+             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if enrolled_services is None:
+            raise TypeError("Missing 'enrolled_services' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
+        _setter("enrolled_services", enrolled_services)
+        _setter("project_id", project_id)
         if active_key_version is not None:
-            pulumi.set(__self__, "active_key_version", active_key_version)
+            _setter("active_key_version", active_key_version)
         if notification_emails is not None:
-            pulumi.set(__self__, "notification_emails", notification_emails)
+            _setter("notification_emails", notification_emails)
         if project is not None:
             warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
             pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="enrolledServices")
@@ -165,27 +196,68 @@ class _AccessApprovalSettingsState:
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
+        _AccessApprovalSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_key_version=active_key_version,
+            ancestor_has_active_key_version=ancestor_has_active_key_version,
+            enrolled_ancestor=enrolled_ancestor,
+            enrolled_services=enrolled_services,
+            invalid_key_version=invalid_key_version,
+            name=name,
+            notification_emails=notification_emails,
+            project=project,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_key_version: Optional[pulumi.Input[str]] = None,
+             ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
+             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             invalid_key_version: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
+            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
+        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
+            enrolled_ancestor = kwargs['enrolledAncestor']
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
+            invalid_key_version = kwargs['invalidKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if active_key_version is not None:
-            pulumi.set(__self__, "active_key_version", active_key_version)
+            _setter("active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:
-            pulumi.set(__self__, "ancestor_has_active_key_version", ancestor_has_active_key_version)
+            _setter("ancestor_has_active_key_version", ancestor_has_active_key_version)
         if enrolled_ancestor is not None:
-            pulumi.set(__self__, "enrolled_ancestor", enrolled_ancestor)
+            _setter("enrolled_ancestor", enrolled_ancestor)
         if enrolled_services is not None:
-            pulumi.set(__self__, "enrolled_services", enrolled_services)
+            _setter("enrolled_services", enrolled_services)
         if invalid_key_version is not None:
-            pulumi.set(__self__, "invalid_key_version", invalid_key_version)
+            _setter("invalid_key_version", invalid_key_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_emails is not None:
-            pulumi.set(__self__, "notification_emails", notification_emails)
+            _setter("notification_emails", notification_emails)
         if project is not None:
             warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
             pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
 
     @property
     @pulumi.getter(name="activeKeyVersion")
@@ -493,6 +565,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessApprovalSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

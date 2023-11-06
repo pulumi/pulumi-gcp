@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,23 +42,56 @@ class AppConnectionArgs:
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
                for a list of possible values.
         """
-        pulumi.set(__self__, "application_endpoint", application_endpoint)
+        AppConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_endpoint=application_endpoint,
+            connectors=connectors,
+            display_name=display_name,
+            gateway=gateway,
+            labels=labels,
+            name=name,
+            project=project,
+            region=region,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
+             connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if application_endpoint is None:
+            raise TypeError("Missing 'application_endpoint' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
+        _setter("application_endpoint", application_endpoint)
         if connectors is not None:
-            pulumi.set(__self__, "connectors", connectors)
+            _setter("connectors", connectors)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="applicationEndpoint")
@@ -203,24 +236,55 @@ class _AppConnectionState:
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
                for a list of possible values.
         """
+        _AppConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_endpoint=application_endpoint,
+            connectors=connectors,
+            display_name=display_name,
+            gateway=gateway,
+            labels=labels,
+            name=name,
+            project=project,
+            region=region,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
+             connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_endpoint is None and 'applicationEndpoint' in kwargs:
+            application_endpoint = kwargs['applicationEndpoint']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if application_endpoint is not None:
-            pulumi.set(__self__, "application_endpoint", application_endpoint)
+            _setter("application_endpoint", application_endpoint)
         if connectors is not None:
-            pulumi.set(__self__, "connectors", connectors)
+            _setter("connectors", connectors)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="applicationEndpoint")
@@ -560,6 +624,10 @@ class AppConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -583,11 +651,21 @@ class AppConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppConnectionArgs.__new__(AppConnectionArgs)
 
+            if application_endpoint is not None and not isinstance(application_endpoint, AppConnectionApplicationEndpointArgs):
+                application_endpoint = application_endpoint or {}
+                def _setter(key, value):
+                    application_endpoint[key] = value
+                AppConnectionApplicationEndpointArgs._configure(_setter, **application_endpoint)
             if application_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'application_endpoint'")
             __props__.__dict__["application_endpoint"] = application_endpoint
             __props__.__dict__["connectors"] = connectors
             __props__.__dict__["display_name"] = display_name
+            if gateway is not None and not isinstance(gateway, AppConnectionGatewayArgs):
+                gateway = gateway or {}
+                def _setter(key, value):
+                    gateway[key] = value
+                AppConnectionGatewayArgs._configure(_setter, **gateway)
             __props__.__dict__["gateway"] = gateway
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name

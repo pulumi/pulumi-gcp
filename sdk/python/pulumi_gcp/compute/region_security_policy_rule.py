@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -58,20 +58,59 @@ class RegionSecurityPolicyRuleArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "security_policy", security_policy)
+        RegionSecurityPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            priority=priority,
+            region=region,
+            security_policy=security_policy,
+            description=description,
+            match=match,
+            network_match=network_match,
+            preview=preview,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
+             network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+             preview: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+
+        _setter("action", action)
+        _setter("priority", priority)
+        _setter("region", region)
+        _setter("security_policy", security_policy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if network_match is not None:
-            pulumi.set(__self__, "network_match", network_match)
+            _setter("network_match", network_match)
         if preview is not None:
-            pulumi.set(__self__, "preview", preview)
+            _setter("preview", preview)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -248,24 +287,55 @@ class _RegionSecurityPolicyRuleState:
                
                - - -
         """
+        _RegionSecurityPolicyRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            description=description,
+            match=match,
+            network_match=network_match,
+            preview=preview,
+            priority=priority,
+            project=project,
+            region=region,
+            security_policy=security_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
+             network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+             preview: Optional[pulumi.Input[bool]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if network_match is not None:
-            pulumi.set(__self__, "network_match", network_match)
+            _setter("network_match", network_match)
         if preview is not None:
-            pulumi.set(__self__, "preview", preview)
+            _setter("preview", preview)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_policy is not None:
-            pulumi.set(__self__, "security_policy", security_policy)
+            _setter("security_policy", security_policy)
 
     @property
     @pulumi.getter
@@ -745,6 +815,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionSecurityPolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -772,7 +846,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["description"] = description
+            if match is not None and not isinstance(match, RegionSecurityPolicyRuleMatchArgs):
+                match = match or {}
+                def _setter(key, value):
+                    match[key] = value
+                RegionSecurityPolicyRuleMatchArgs._configure(_setter, **match)
             __props__.__dict__["match"] = match
+            if network_match is not None and not isinstance(network_match, RegionSecurityPolicyRuleNetworkMatchArgs):
+                network_match = network_match or {}
+                def _setter(key, value):
+                    network_match[key] = value
+                RegionSecurityPolicyRuleNetworkMatchArgs._configure(_setter, **network_match)
             __props__.__dict__["network_match"] = network_match
             __props__.__dict__["preview"] = preview
             if priority is None and not opts.urn:

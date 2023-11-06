@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,24 +48,59 @@ class FunctionArgs:
         :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
                Structure is documented below.
         """
+        FunctionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            build_config=build_config,
+            description=description,
+            event_trigger=event_trigger,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            service_config=service_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if build_config is None and 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if service_config is None and 'serviceConfig' in kwargs:
+            service_config = kwargs['serviceConfig']
+
         if build_config is not None:
-            pulumi.set(__self__, "build_config", build_config)
+            _setter("build_config", build_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_trigger is not None:
-            pulumi.set(__self__, "event_trigger", event_trigger)
+            _setter("event_trigger", event_trigger)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_config is not None:
-            pulumi.set(__self__, "service_config", service_config)
+            _setter("service_config", service_config)
 
     @property
     @pulumi.getter(name="buildConfig")
@@ -230,32 +265,77 @@ class _FunctionState:
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
         :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
+        _FunctionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            build_config=build_config,
+            description=description,
+            environment=environment,
+            event_trigger=event_trigger,
+            kms_key_name=kms_key_name,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            service_config=service_config,
+            state=state,
+            update_time=update_time,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if build_config is None and 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if service_config is None and 'serviceConfig' in kwargs:
+            service_config = kwargs['serviceConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if build_config is not None:
-            pulumi.set(__self__, "build_config", build_config)
+            _setter("build_config", build_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if event_trigger is not None:
-            pulumi.set(__self__, "event_trigger", event_trigger)
+            _setter("event_trigger", event_trigger)
         if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+            _setter("kms_key_name", kms_key_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if service_config is not None:
-            pulumi.set(__self__, "service_config", service_config)
+            _setter("service_config", service_config)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="buildConfig")
@@ -889,6 +969,10 @@ class Function(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FunctionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -912,14 +996,29 @@ class Function(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FunctionArgs.__new__(FunctionArgs)
 
+            if build_config is not None and not isinstance(build_config, FunctionBuildConfigArgs):
+                build_config = build_config or {}
+                def _setter(key, value):
+                    build_config[key] = value
+                FunctionBuildConfigArgs._configure(_setter, **build_config)
             __props__.__dict__["build_config"] = build_config
             __props__.__dict__["description"] = description
+            if event_trigger is not None and not isinstance(event_trigger, FunctionEventTriggerArgs):
+                event_trigger = event_trigger or {}
+                def _setter(key, value):
+                    event_trigger[key] = value
+                FunctionEventTriggerArgs._configure(_setter, **event_trigger)
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if service_config is not None and not isinstance(service_config, FunctionServiceConfigArgs):
+                service_config = service_config or {}
+                def _setter(key, value):
+                    service_config[key] = value
+                FunctionServiceConfigArgs._configure(_setter, **service_config)
             __props__.__dict__["service_config"] = service_config
             __props__.__dict__["environment"] = None
             __props__.__dict__["state"] = None

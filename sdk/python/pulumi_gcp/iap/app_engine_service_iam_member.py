@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,14 +46,45 @@ class AppEngineServiceIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "member", member)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "service", service)
+        AppEngineServiceIamMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            member=member,
+            role=role,
+            service=service,
+            condition=condition,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
+        _setter("app_id", app_id)
+        _setter("member", member)
+        _setter("role", role)
+        _setter("service", service)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="appId")
@@ -176,20 +207,45 @@ class _AppEngineServiceIamMemberState:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
         """
+        _AppEngineServiceIamMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            condition=condition,
+            etag=etag,
+            member=member,
+            project=project,
+            role=role,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
 
     @property
     @pulumi.getter(name="appId")
@@ -629,6 +685,10 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppEngineServiceIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -652,6 +712,11 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
+            if condition is not None and not isinstance(condition, AppEngineServiceIamMemberConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                AppEngineServiceIamMemberConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

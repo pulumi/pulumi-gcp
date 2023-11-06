@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TagKeyArgs', 'TagKey']
@@ -34,14 +34,41 @@ class TagKeyArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "short_name", short_name)
+        TagKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            short_name=short_name,
+            description=description,
+            purpose=purpose,
+            purpose_data=purpose_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: Optional[pulumi.Input[str]] = None,
+             short_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             purpose: Optional[pulumi.Input[str]] = None,
+             purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+        if short_name is None:
+            raise TypeError("Missing 'short_name' argument")
+        if purpose_data is None and 'purposeData' in kwargs:
+            purpose_data = kwargs['purposeData']
+
+        _setter("parent", parent)
+        _setter("short_name", short_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
         if purpose_data is not None:
-            pulumi.set(__self__, "purpose_data", purpose_data)
+            _setter("purpose_data", purpose_data)
 
     @property
     @pulumi.getter
@@ -144,24 +171,61 @@ class _TagKeyState:
         :param pulumi.Input[str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        _TagKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            name=name,
+            namespaced_name=namespaced_name,
+            parent=parent,
+            purpose=purpose,
+            purpose_data=purpose_data,
+            short_name=short_name,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespaced_name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             purpose: Optional[pulumi.Input[str]] = None,
+             purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             short_name: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if namespaced_name is None and 'namespacedName' in kwargs:
+            namespaced_name = kwargs['namespacedName']
+        if purpose_data is None and 'purposeData' in kwargs:
+            purpose_data = kwargs['purposeData']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespaced_name is not None:
-            pulumi.set(__self__, "namespaced_name", namespaced_name)
+            _setter("namespaced_name", namespaced_name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
         if purpose_data is not None:
-            pulumi.set(__self__, "purpose_data", purpose_data)
+            _setter("purpose_data", purpose_data)
         if short_name is not None:
-            pulumi.set(__self__, "short_name", short_name)
+            _setter("short_name", short_name)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -391,6 +455,10 @@ class TagKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

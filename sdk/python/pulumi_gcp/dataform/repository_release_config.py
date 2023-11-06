@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,21 +40,56 @@ class RepositoryReleaseConfigArgs:
         :param pulumi.Input[str] repository: A reference to the Dataform repository
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
-        pulumi.set(__self__, "git_commitish", git_commitish)
+        RepositoryReleaseConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            git_commitish=git_commitish,
+            code_compilation_config=code_compilation_config,
+            cron_schedule=cron_schedule,
+            name=name,
+            project=project,
+            region=region,
+            repository=repository,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             git_commitish: Optional[pulumi.Input[str]] = None,
+             code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
+             cron_schedule: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             repository: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if git_commitish is None:
+            raise TypeError("Missing 'git_commitish' argument")
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
+        _setter("git_commitish", git_commitish)
         if code_compilation_config is not None:
-            pulumi.set(__self__, "code_compilation_config", code_compilation_config)
+            _setter("code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
+            _setter("cron_schedule", cron_schedule)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+            _setter("repository", repository)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="gitCommitish")
@@ -188,24 +223,61 @@ class _RepositoryReleaseConfigState:
         :param pulumi.Input[str] repository: A reference to the Dataform repository
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
+        _RepositoryReleaseConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code_compilation_config=code_compilation_config,
+            cron_schedule=cron_schedule,
+            git_commitish=git_commitish,
+            name=name,
+            project=project,
+            recent_scheduled_release_records=recent_scheduled_release_records,
+            region=region,
+            repository=repository,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
+             cron_schedule: Optional[pulumi.Input[str]] = None,
+             git_commitish: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recent_scheduled_release_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             repository: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if recent_scheduled_release_records is None and 'recentScheduledReleaseRecords' in kwargs:
+            recent_scheduled_release_records = kwargs['recentScheduledReleaseRecords']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if code_compilation_config is not None:
-            pulumi.set(__self__, "code_compilation_config", code_compilation_config)
+            _setter("code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
-            pulumi.set(__self__, "cron_schedule", cron_schedule)
+            _setter("cron_schedule", cron_schedule)
         if git_commitish is not None:
-            pulumi.set(__self__, "git_commitish", git_commitish)
+            _setter("git_commitish", git_commitish)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recent_scheduled_release_records is not None:
-            pulumi.set(__self__, "recent_scheduled_release_records", recent_scheduled_release_records)
+            _setter("recent_scheduled_release_records", recent_scheduled_release_records)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+            _setter("repository", repository)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="codeCompilationConfig")
@@ -516,6 +588,10 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepositoryReleaseConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -538,6 +614,11 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryReleaseConfigArgs.__new__(RepositoryReleaseConfigArgs)
 
+            if code_compilation_config is not None and not isinstance(code_compilation_config, RepositoryReleaseConfigCodeCompilationConfigArgs):
+                code_compilation_config = code_compilation_config or {}
+                def _setter(key, value):
+                    code_compilation_config[key] = value
+                RepositoryReleaseConfigCodeCompilationConfigArgs._configure(_setter, **code_compilation_config)
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
             if git_commitish is None and not opts.urn:

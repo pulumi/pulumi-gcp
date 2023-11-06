@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,27 +53,84 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
+        ConnectionProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_profile_id=connection_profile_id,
+            display_name=display_name,
+            location=location,
+            bigquery_profile=bigquery_profile,
+            forward_ssh_connectivity=forward_ssh_connectivity,
+            gcs_profile=gcs_profile,
+            labels=labels,
+            mysql_profile=mysql_profile,
+            oracle_profile=oracle_profile,
+            postgresql_profile=postgresql_profile,
+            private_connectivity=private_connectivity,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
+             forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
+             gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
+             oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
+             postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
+             private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if connection_profile_id is None:
+            raise TypeError("Missing 'connection_profile_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
+        _setter("connection_profile_id", connection_profile_id)
+        _setter("display_name", display_name)
+        _setter("location", location)
         if bigquery_profile is not None:
-            pulumi.set(__self__, "bigquery_profile", bigquery_profile)
+            _setter("bigquery_profile", bigquery_profile)
         if forward_ssh_connectivity is not None:
-            pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
+            _setter("forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
-            pulumi.set(__self__, "gcs_profile", gcs_profile)
+            _setter("gcs_profile", gcs_profile)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if mysql_profile is not None:
-            pulumi.set(__self__, "mysql_profile", mysql_profile)
+            _setter("mysql_profile", mysql_profile)
         if oracle_profile is not None:
-            pulumi.set(__self__, "oracle_profile", oracle_profile)
+            _setter("oracle_profile", oracle_profile)
         if postgresql_profile is not None:
-            pulumi.set(__self__, "postgresql_profile", postgresql_profile)
+            _setter("postgresql_profile", postgresql_profile)
         if private_connectivity is not None:
-            pulumi.set(__self__, "private_connectivity", private_connectivity)
+            _setter("private_connectivity", private_connectivity)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -272,32 +329,85 @@ class _ConnectionProfileState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _ConnectionProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bigquery_profile=bigquery_profile,
+            connection_profile_id=connection_profile_id,
+            display_name=display_name,
+            forward_ssh_connectivity=forward_ssh_connectivity,
+            gcs_profile=gcs_profile,
+            labels=labels,
+            location=location,
+            mysql_profile=mysql_profile,
+            name=name,
+            oracle_profile=oracle_profile,
+            postgresql_profile=postgresql_profile,
+            private_connectivity=private_connectivity,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
+             gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
+             postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
+             private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
         if bigquery_profile is not None:
-            pulumi.set(__self__, "bigquery_profile", bigquery_profile)
+            _setter("bigquery_profile", bigquery_profile)
         if connection_profile_id is not None:
-            pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+            _setter("connection_profile_id", connection_profile_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if forward_ssh_connectivity is not None:
-            pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
+            _setter("forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
-            pulumi.set(__self__, "gcs_profile", gcs_profile)
+            _setter("gcs_profile", gcs_profile)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if mysql_profile is not None:
-            pulumi.set(__self__, "mysql_profile", mysql_profile)
+            _setter("mysql_profile", mysql_profile)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oracle_profile is not None:
-            pulumi.set(__self__, "oracle_profile", oracle_profile)
+            _setter("oracle_profile", oracle_profile)
         if postgresql_profile is not None:
-            pulumi.set(__self__, "postgresql_profile", postgresql_profile)
+            _setter("postgresql_profile", postgresql_profile)
         if private_connectivity is not None:
-            pulumi.set(__self__, "private_connectivity", private_connectivity)
+            _setter("private_connectivity", private_connectivity)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="bigqueryProfile")
@@ -821,6 +931,10 @@ class ConnectionProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -847,6 +961,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+            if bigquery_profile is not None and not isinstance(bigquery_profile, ConnectionProfileBigqueryProfileArgs):
+                bigquery_profile = bigquery_profile or {}
+                def _setter(key, value):
+                    bigquery_profile[key] = value
+                ConnectionProfileBigqueryProfileArgs._configure(_setter, **bigquery_profile)
             __props__.__dict__["bigquery_profile"] = bigquery_profile
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
@@ -854,15 +973,45 @@ class ConnectionProfile(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if forward_ssh_connectivity is not None and not isinstance(forward_ssh_connectivity, ConnectionProfileForwardSshConnectivityArgs):
+                forward_ssh_connectivity = forward_ssh_connectivity or {}
+                def _setter(key, value):
+                    forward_ssh_connectivity[key] = value
+                ConnectionProfileForwardSshConnectivityArgs._configure(_setter, **forward_ssh_connectivity)
             __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
+            if gcs_profile is not None and not isinstance(gcs_profile, ConnectionProfileGcsProfileArgs):
+                gcs_profile = gcs_profile or {}
+                def _setter(key, value):
+                    gcs_profile[key] = value
+                ConnectionProfileGcsProfileArgs._configure(_setter, **gcs_profile)
             __props__.__dict__["gcs_profile"] = gcs_profile
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if mysql_profile is not None and not isinstance(mysql_profile, ConnectionProfileMysqlProfileArgs):
+                mysql_profile = mysql_profile or {}
+                def _setter(key, value):
+                    mysql_profile[key] = value
+                ConnectionProfileMysqlProfileArgs._configure(_setter, **mysql_profile)
             __props__.__dict__["mysql_profile"] = mysql_profile
+            if oracle_profile is not None and not isinstance(oracle_profile, ConnectionProfileOracleProfileArgs):
+                oracle_profile = oracle_profile or {}
+                def _setter(key, value):
+                    oracle_profile[key] = value
+                ConnectionProfileOracleProfileArgs._configure(_setter, **oracle_profile)
             __props__.__dict__["oracle_profile"] = oracle_profile
+            if postgresql_profile is not None and not isinstance(postgresql_profile, ConnectionProfilePostgresqlProfileArgs):
+                postgresql_profile = postgresql_profile or {}
+                def _setter(key, value):
+                    postgresql_profile[key] = value
+                ConnectionProfilePostgresqlProfileArgs._configure(_setter, **postgresql_profile)
             __props__.__dict__["postgresql_profile"] = postgresql_profile
+            if private_connectivity is not None and not isinstance(private_connectivity, ConnectionProfilePrivateConnectivityArgs):
+                private_connectivity = private_connectivity or {}
+                def _setter(key, value):
+                    private_connectivity[key] = value
+                ConnectionProfilePrivateConnectivityArgs._configure(_setter, **private_connectivity)
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

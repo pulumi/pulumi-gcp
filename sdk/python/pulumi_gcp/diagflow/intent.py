@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,29 +63,80 @@ class IntentArgs:
                filling prompt is forwarded to the webhook.
                Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        IntentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            action=action,
+            default_response_platforms=default_response_platforms,
+            events=events,
+            input_context_names=input_context_names,
+            is_fallback=is_fallback,
+            ml_disabled=ml_disabled,
+            parent_followup_intent_name=parent_followup_intent_name,
+            priority=priority,
+            project=project,
+            reset_contexts=reset_contexts,
+            webhook_state=webhook_state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_fallback: Optional[pulumi.Input[bool]] = None,
+             ml_disabled: Optional[pulumi.Input[bool]] = None,
+             parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reset_contexts: Optional[pulumi.Input[bool]] = None,
+             webhook_state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
+        _setter("display_name", display_name)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if default_response_platforms is not None:
-            pulumi.set(__self__, "default_response_platforms", default_response_platforms)
+            _setter("default_response_platforms", default_response_platforms)
         if events is not None:
-            pulumi.set(__self__, "events", events)
+            _setter("events", events)
         if input_context_names is not None:
-            pulumi.set(__self__, "input_context_names", input_context_names)
+            _setter("input_context_names", input_context_names)
         if is_fallback is not None:
-            pulumi.set(__self__, "is_fallback", is_fallback)
+            _setter("is_fallback", is_fallback)
         if ml_disabled is not None:
-            pulumi.set(__self__, "ml_disabled", ml_disabled)
+            _setter("ml_disabled", ml_disabled)
         if parent_followup_intent_name is not None:
-            pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
+            _setter("parent_followup_intent_name", parent_followup_intent_name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reset_contexts is not None:
-            pulumi.set(__self__, "reset_contexts", reset_contexts)
+            _setter("reset_contexts", reset_contexts)
         if webhook_state is not None:
-            pulumi.set(__self__, "webhook_state", webhook_state)
+            _setter("webhook_state", webhook_state)
 
     @property
     @pulumi.getter(name="displayName")
@@ -313,36 +364,95 @@ class _IntentState:
                filling prompt is forwarded to the webhook.
                Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
+        _IntentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            default_response_platforms=default_response_platforms,
+            display_name=display_name,
+            events=events,
+            followup_intent_infos=followup_intent_infos,
+            input_context_names=input_context_names,
+            is_fallback=is_fallback,
+            ml_disabled=ml_disabled,
+            name=name,
+            parent_followup_intent_name=parent_followup_intent_name,
+            priority=priority,
+            project=project,
+            reset_contexts=reset_contexts,
+            root_followup_intent_name=root_followup_intent_name,
+            webhook_state=webhook_state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]]] = None,
+             input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_fallback: Optional[pulumi.Input[bool]] = None,
+             ml_disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reset_contexts: Optional[pulumi.Input[bool]] = None,
+             root_followup_intent_name: Optional[pulumi.Input[str]] = None,
+             webhook_state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if followup_intent_infos is None and 'followupIntentInfos' in kwargs:
+            followup_intent_infos = kwargs['followupIntentInfos']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if root_followup_intent_name is None and 'rootFollowupIntentName' in kwargs:
+            root_followup_intent_name = kwargs['rootFollowupIntentName']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if default_response_platforms is not None:
-            pulumi.set(__self__, "default_response_platforms", default_response_platforms)
+            _setter("default_response_platforms", default_response_platforms)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if events is not None:
-            pulumi.set(__self__, "events", events)
+            _setter("events", events)
         if followup_intent_infos is not None:
-            pulumi.set(__self__, "followup_intent_infos", followup_intent_infos)
+            _setter("followup_intent_infos", followup_intent_infos)
         if input_context_names is not None:
-            pulumi.set(__self__, "input_context_names", input_context_names)
+            _setter("input_context_names", input_context_names)
         if is_fallback is not None:
-            pulumi.set(__self__, "is_fallback", is_fallback)
+            _setter("is_fallback", is_fallback)
         if ml_disabled is not None:
-            pulumi.set(__self__, "ml_disabled", ml_disabled)
+            _setter("ml_disabled", ml_disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_followup_intent_name is not None:
-            pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
+            _setter("parent_followup_intent_name", parent_followup_intent_name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reset_contexts is not None:
-            pulumi.set(__self__, "reset_contexts", reset_contexts)
+            _setter("reset_contexts", reset_contexts)
         if root_followup_intent_name is not None:
-            pulumi.set(__self__, "root_followup_intent_name", root_followup_intent_name)
+            _setter("root_followup_intent_name", root_followup_intent_name)
         if webhook_state is not None:
-            pulumi.set(__self__, "webhook_state", webhook_state)
+            _setter("webhook_state", webhook_state)
 
     @property
     @pulumi.getter
@@ -765,6 +875,10 @@ class Intent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

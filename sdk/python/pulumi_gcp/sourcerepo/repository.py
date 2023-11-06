@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,12 +32,29 @@ class RepositoryArgs:
                Keyed by the topic names.
                Structure is documented below.
         """
+        RepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            project=project,
+            pubsub_configs=pubsub_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pubsub_configs is not None:
-            pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+            _setter("pubsub_configs", pubsub_configs)
 
     @property
     @pulumi.getter
@@ -106,16 +123,37 @@ class _RepositoryState:
         :param pulumi.Input[int] size: The disk usage of the repo, in bytes.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
         """
+        _RepositoryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            project=project,
+            pubsub_configs=pubsub_configs,
+            size=size,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pubsub_configs is None and 'pubsubConfigs' in kwargs:
+            pubsub_configs = kwargs['pubsubConfigs']
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pubsub_configs is not None:
-            pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+            _setter("pubsub_configs", pubsub_configs)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -317,6 +355,10 @@ class Repository(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepositoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

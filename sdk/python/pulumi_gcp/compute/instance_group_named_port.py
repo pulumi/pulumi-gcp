@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceGroupNamedPortInitArgs', 'InstanceGroupNamedPort']
@@ -32,14 +32,37 @@ class InstanceGroupNamedPortInitArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone of the instance group.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "port", port)
+        InstanceGroupNamedPortInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            port=port,
+            name=name,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
+        _setter("group", group)
+        _setter("port", port)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -128,16 +151,35 @@ class _InstanceGroupNamedPortState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone of the instance group.
         """
+        _InstanceGroupNamedPortState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            name=name,
+            port=port,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -371,6 +413,10 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceGroupNamedPortInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

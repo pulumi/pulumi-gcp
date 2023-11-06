@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -92,42 +92,121 @@ class InstanceGroupManagerArgs:
                
                - - -
         """
-        pulumi.set(__self__, "base_instance_name", base_instance_name)
-        pulumi.set(__self__, "versions", versions)
+        InstanceGroupManagerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            base_instance_name=base_instance_name,
+            versions=versions,
+            all_instances_config=all_instances_config,
+            auto_healing_policies=auto_healing_policies,
+            description=description,
+            instance_lifecycle_policy=instance_lifecycle_policy,
+            list_managed_instances_results=list_managed_instances_results,
+            name=name,
+            named_ports=named_ports,
+            project=project,
+            stateful_disks=stateful_disks,
+            stateful_external_ips=stateful_external_ips,
+            stateful_internal_ips=stateful_internal_ips,
+            target_pools=target_pools,
+            target_size=target_size,
+            update_policy=update_policy,
+            wait_for_instances=wait_for_instances,
+            wait_for_instances_status=wait_for_instances_status,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             base_instance_name: Optional[pulumi.Input[str]] = None,
+             versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
+             all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
+             auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
+             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
+             stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+             stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulInternalIpArgs']]]] = None,
+             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_size: Optional[pulumi.Input[int]] = None,
+             update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
+             wait_for_instances: Optional[pulumi.Input[bool]] = None,
+             wait_for_instances_status: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if base_instance_name is None:
+            raise TypeError("Missing 'base_instance_name' argument")
+        if versions is None:
+            raise TypeError("Missing 'versions' argument")
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
+        _setter("base_instance_name", base_instance_name)
+        _setter("versions", versions)
         if all_instances_config is not None:
-            pulumi.set(__self__, "all_instances_config", all_instances_config)
+            _setter("all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
-            pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
+            _setter("auto_healing_policies", auto_healing_policies)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_lifecycle_policy is not None:
-            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
+            _setter("instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
-            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
+            _setter("list_managed_instances_results", list_managed_instances_results)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if named_ports is not None:
-            pulumi.set(__self__, "named_ports", named_ports)
+            _setter("named_ports", named_ports)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if stateful_disks is not None:
-            pulumi.set(__self__, "stateful_disks", stateful_disks)
+            _setter("stateful_disks", stateful_disks)
         if stateful_external_ips is not None:
-            pulumi.set(__self__, "stateful_external_ips", stateful_external_ips)
+            _setter("stateful_external_ips", stateful_external_ips)
         if stateful_internal_ips is not None:
-            pulumi.set(__self__, "stateful_internal_ips", stateful_internal_ips)
+            _setter("stateful_internal_ips", stateful_internal_ips)
         if target_pools is not None:
-            pulumi.set(__self__, "target_pools", target_pools)
+            _setter("target_pools", target_pools)
         if target_size is not None:
-            pulumi.set(__self__, "target_size", target_size)
+            _setter("target_size", target_size)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if wait_for_instances is not None:
-            pulumi.set(__self__, "wait_for_instances", wait_for_instances)
+            _setter("wait_for_instances", wait_for_instances)
         if wait_for_instances_status is not None:
-            pulumi.set(__self__, "wait_for_instances_status", wait_for_instances_status)
+            _setter("wait_for_instances_status", wait_for_instances_status)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="baseInstanceName")
@@ -481,54 +560,143 @@ class _InstanceGroupManagerState:
                
                - - -
         """
+        _InstanceGroupManagerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_instances_config=all_instances_config,
+            auto_healing_policies=auto_healing_policies,
+            base_instance_name=base_instance_name,
+            description=description,
+            fingerprint=fingerprint,
+            instance_group=instance_group,
+            instance_lifecycle_policy=instance_lifecycle_policy,
+            list_managed_instances_results=list_managed_instances_results,
+            name=name,
+            named_ports=named_ports,
+            operation=operation,
+            project=project,
+            self_link=self_link,
+            stateful_disks=stateful_disks,
+            stateful_external_ips=stateful_external_ips,
+            stateful_internal_ips=stateful_internal_ips,
+            statuses=statuses,
+            target_pools=target_pools,
+            target_size=target_size,
+            update_policy=update_policy,
+            versions=versions,
+            wait_for_instances=wait_for_instances,
+            wait_for_instances_status=wait_for_instances_status,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
+             auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+             base_instance_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             instance_group: Optional[pulumi.Input[str]] = None,
+             instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
+             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
+             operation: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
+             stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+             stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulInternalIpArgs']]]] = None,
+             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]]] = None,
+             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_size: Optional[pulumi.Input[int]] = None,
+             update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
+             versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
+             wait_for_instances: Optional[pulumi.Input[bool]] = None,
+             wait_for_instances_status: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if instance_group is None and 'instanceGroup' in kwargs:
+            instance_group = kwargs['instanceGroup']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
         if all_instances_config is not None:
-            pulumi.set(__self__, "all_instances_config", all_instances_config)
+            _setter("all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
-            pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
+            _setter("auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
-            pulumi.set(__self__, "base_instance_name", base_instance_name)
+            _setter("base_instance_name", base_instance_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if instance_group is not None:
-            pulumi.set(__self__, "instance_group", instance_group)
+            _setter("instance_group", instance_group)
         if instance_lifecycle_policy is not None:
-            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
+            _setter("instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
-            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
+            _setter("list_managed_instances_results", list_managed_instances_results)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if named_ports is not None:
-            pulumi.set(__self__, "named_ports", named_ports)
+            _setter("named_ports", named_ports)
         if operation is not None:
-            pulumi.set(__self__, "operation", operation)
+            _setter("operation", operation)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if stateful_disks is not None:
-            pulumi.set(__self__, "stateful_disks", stateful_disks)
+            _setter("stateful_disks", stateful_disks)
         if stateful_external_ips is not None:
-            pulumi.set(__self__, "stateful_external_ips", stateful_external_ips)
+            _setter("stateful_external_ips", stateful_external_ips)
         if stateful_internal_ips is not None:
-            pulumi.set(__self__, "stateful_internal_ips", stateful_internal_ips)
+            _setter("stateful_internal_ips", stateful_internal_ips)
         if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
+            _setter("statuses", statuses)
         if target_pools is not None:
-            pulumi.set(__self__, "target_pools", target_pools)
+            _setter("target_pools", target_pools)
         if target_size is not None:
-            pulumi.set(__self__, "target_size", target_size)
+            _setter("target_size", target_size)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if versions is not None:
-            pulumi.set(__self__, "versions", versions)
+            _setter("versions", versions)
         if wait_for_instances is not None:
-            pulumi.set(__self__, "wait_for_instances", wait_for_instances)
+            _setter("wait_for_instances", wait_for_instances)
         if wait_for_instances_status is not None:
-            pulumi.set(__self__, "wait_for_instances_status", wait_for_instances_status)
+            _setter("wait_for_instances_status", wait_for_instances_status)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="allInstancesConfig")
@@ -1137,6 +1305,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceGroupManagerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1170,12 +1342,27 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
+            if all_instances_config is not None and not isinstance(all_instances_config, InstanceGroupManagerAllInstancesConfigArgs):
+                all_instances_config = all_instances_config or {}
+                def _setter(key, value):
+                    all_instances_config[key] = value
+                InstanceGroupManagerAllInstancesConfigArgs._configure(_setter, **all_instances_config)
             __props__.__dict__["all_instances_config"] = all_instances_config
+            if auto_healing_policies is not None and not isinstance(auto_healing_policies, InstanceGroupManagerAutoHealingPoliciesArgs):
+                auto_healing_policies = auto_healing_policies or {}
+                def _setter(key, value):
+                    auto_healing_policies[key] = value
+                InstanceGroupManagerAutoHealingPoliciesArgs._configure(_setter, **auto_healing_policies)
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
+            if instance_lifecycle_policy is not None and not isinstance(instance_lifecycle_policy, InstanceGroupManagerInstanceLifecyclePolicyArgs):
+                instance_lifecycle_policy = instance_lifecycle_policy or {}
+                def _setter(key, value):
+                    instance_lifecycle_policy[key] = value
+                InstanceGroupManagerInstanceLifecyclePolicyArgs._configure(_setter, **instance_lifecycle_policy)
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
@@ -1186,6 +1373,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
+            if update_policy is not None and not isinstance(update_policy, InstanceGroupManagerUpdatePolicyArgs):
+                update_policy = update_policy or {}
+                def _setter(key, value):
+                    update_policy[key] = value
+                InstanceGroupManagerUpdatePolicyArgs._configure(_setter, **update_policy)
             __props__.__dict__["update_policy"] = update_policy
             if versions is None and not opts.urn:
                 raise TypeError("Missing required property 'versions'")

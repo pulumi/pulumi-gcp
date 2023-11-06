@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkflowArgs', 'Workflow']
@@ -44,24 +44,59 @@ class WorkflowArgs:
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         """
+        WorkflowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crypto_key_name=crypto_key_name,
+            description=description,
+            labels=labels,
+            name=name,
+            name_prefix=name_prefix,
+            project=project,
+            region=region,
+            service_account=service_account,
+            source_contents=source_contents,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crypto_key_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             source_contents: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+
         if crypto_key_name is not None:
-            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+            _setter("crypto_key_name", crypto_key_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if source_contents is not None:
-            pulumi.set(__self__, "source_contents", source_contents)
+            _setter("source_contents", source_contents)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -222,32 +257,81 @@ class _WorkflowState:
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _WorkflowState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            crypto_key_name=crypto_key_name,
+            description=description,
+            labels=labels,
+            name=name,
+            name_prefix=name_prefix,
+            project=project,
+            region=region,
+            revision_id=revision_id,
+            service_account=service_account,
+            source_contents=source_contents,
+            state=state,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             crypto_key_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             revision_id: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             source_contents: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_name is None and 'cryptoKeyName' in kwargs:
+            crypto_key_name = kwargs['cryptoKeyName']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_contents is None and 'sourceContents' in kwargs:
+            source_contents = kwargs['sourceContents']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if crypto_key_name is not None:
-            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+            _setter("crypto_key_name", crypto_key_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if revision_id is not None:
-            pulumi.set(__self__, "revision_id", revision_id)
+            _setter("revision_id", revision_id)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if source_contents is not None:
-            pulumi.set(__self__, "source_contents", source_contents)
+            _setter("source_contents", source_contents)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -579,6 +663,10 @@ class Workflow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkflowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

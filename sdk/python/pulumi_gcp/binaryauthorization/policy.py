@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,17 +49,48 @@ class PolicyArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "default_admission_rule", default_admission_rule)
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_admission_rule=default_admission_rule,
+            admission_whitelist_patterns=admission_whitelist_patterns,
+            cluster_admission_rules=cluster_admission_rules,
+            description=description,
+            global_policy_evaluation_mode=global_policy_evaluation_mode,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_admission_rule: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']] = None,
+             admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
+             cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if default_admission_rule is None:
+            raise TypeError("Missing 'default_admission_rule' argument")
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
+        _setter("default_admission_rule", default_admission_rule)
         if admission_whitelist_patterns is not None:
-            pulumi.set(__self__, "admission_whitelist_patterns", admission_whitelist_patterns)
+            _setter("admission_whitelist_patterns", admission_whitelist_patterns)
         if cluster_admission_rules is not None:
-            pulumi.set(__self__, "cluster_admission_rules", cluster_admission_rules)
+            _setter("cluster_admission_rules", cluster_admission_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if global_policy_evaluation_mode is not None:
-            pulumi.set(__self__, "global_policy_evaluation_mode", global_policy_evaluation_mode)
+            _setter("global_policy_evaluation_mode", global_policy_evaluation_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="defaultAdmissionRule")
@@ -188,18 +219,47 @@ class _PolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admission_whitelist_patterns=admission_whitelist_patterns,
+            cluster_admission_rules=cluster_admission_rules,
+            default_admission_rule=default_admission_rule,
+            description=description,
+            global_policy_evaluation_mode=global_policy_evaluation_mode,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
+             cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
+             default_admission_rule: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admission_whitelist_patterns is None and 'admissionWhitelistPatterns' in kwargs:
+            admission_whitelist_patterns = kwargs['admissionWhitelistPatterns']
+        if cluster_admission_rules is None and 'clusterAdmissionRules' in kwargs:
+            cluster_admission_rules = kwargs['clusterAdmissionRules']
+        if default_admission_rule is None and 'defaultAdmissionRule' in kwargs:
+            default_admission_rule = kwargs['defaultAdmissionRule']
+        if global_policy_evaluation_mode is None and 'globalPolicyEvaluationMode' in kwargs:
+            global_policy_evaluation_mode = kwargs['globalPolicyEvaluationMode']
+
         if admission_whitelist_patterns is not None:
-            pulumi.set(__self__, "admission_whitelist_patterns", admission_whitelist_patterns)
+            _setter("admission_whitelist_patterns", admission_whitelist_patterns)
         if cluster_admission_rules is not None:
-            pulumi.set(__self__, "cluster_admission_rules", cluster_admission_rules)
+            _setter("cluster_admission_rules", cluster_admission_rules)
         if default_admission_rule is not None:
-            pulumi.set(__self__, "default_admission_rule", default_admission_rule)
+            _setter("default_admission_rule", default_admission_rule)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if global_policy_evaluation_mode is not None:
-            pulumi.set(__self__, "global_policy_evaluation_mode", global_policy_evaluation_mode)
+            _setter("global_policy_evaluation_mode", global_policy_evaluation_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="admissionWhitelistPatterns")
@@ -495,6 +555,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -517,6 +581,11 @@ class Policy(pulumi.CustomResource):
 
             __props__.__dict__["admission_whitelist_patterns"] = admission_whitelist_patterns
             __props__.__dict__["cluster_admission_rules"] = cluster_admission_rules
+            if default_admission_rule is not None and not isinstance(default_admission_rule, PolicyDefaultAdmissionRuleArgs):
+                default_admission_rule = default_admission_rule or {}
+                def _setter(key, value):
+                    default_admission_rule[key] = value
+                PolicyDefaultAdmissionRuleArgs._configure(_setter, **default_admission_rule)
             if default_admission_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'default_admission_rule'")
             __props__.__dict__["default_admission_rule"] = default_admission_rule

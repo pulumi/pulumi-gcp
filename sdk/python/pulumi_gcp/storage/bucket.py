@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -62,43 +62,110 @@ class BucketArgs:
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
-        pulumi.set(__self__, "location", location)
+        BucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            autoclass=autoclass,
+            cors=cors,
+            custom_placement_config=custom_placement_config,
+            default_event_based_hold=default_event_based_hold,
+            encryption=encryption,
+            force_destroy=force_destroy,
+            labels=labels,
+            lifecycle_rules=lifecycle_rules,
+            logging=logging,
+            name=name,
+            project=project,
+            public_access_prevention=public_access_prevention,
+            requester_pays=requester_pays,
+            retention_policy=retention_policy,
+            storage_class=storage_class,
+            uniform_bucket_level_access=uniform_bucket_level_access,
+            versioning=versioning,
+            website=website,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
+             cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+             custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
+             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+             encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+             logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_access_prevention: Optional[pulumi.Input[str]] = None,
+             requester_pays: Optional[pulumi.Input[bool]] = None,
+             retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
+             versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
+             website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
+        _setter("location", location)
         if autoclass is not None:
-            pulumi.set(__self__, "autoclass", autoclass)
+            _setter("autoclass", autoclass)
         if cors is not None:
-            pulumi.set(__self__, "cors", cors)
+            _setter("cors", cors)
         if custom_placement_config is not None:
-            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
+            _setter("custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
-            pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+            _setter("default_event_based_hold", default_event_based_hold)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lifecycle_rules is not None:
-            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+            _setter("lifecycle_rules", lifecycle_rules)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_access_prevention is not None:
-            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+            _setter("public_access_prevention", public_access_prevention)
         if requester_pays is not None:
-            pulumi.set(__self__, "requester_pays", requester_pays)
+            _setter("requester_pays", requester_pays)
         if retention_policy is not None:
-            pulumi.set(__self__, "retention_policy", retention_policy)
+            _setter("retention_policy", retention_policy)
         if storage_class is not None:
-            pulumi.set(__self__, "storage_class", storage_class)
+            _setter("storage_class", storage_class)
         if uniform_bucket_level_access is not None:
-            pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+            _setter("uniform_bucket_level_access", uniform_bucket_level_access)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if website is not None:
-            pulumi.set(__self__, "website", website)
+            _setter("website", website)
 
     @property
     @pulumi.getter
@@ -387,48 +454,119 @@ class _BucketState:
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
+        _BucketState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoclass=autoclass,
+            cors=cors,
+            custom_placement_config=custom_placement_config,
+            default_event_based_hold=default_event_based_hold,
+            encryption=encryption,
+            force_destroy=force_destroy,
+            labels=labels,
+            lifecycle_rules=lifecycle_rules,
+            location=location,
+            logging=logging,
+            name=name,
+            project=project,
+            public_access_prevention=public_access_prevention,
+            requester_pays=requester_pays,
+            retention_policy=retention_policy,
+            self_link=self_link,
+            storage_class=storage_class,
+            uniform_bucket_level_access=uniform_bucket_level_access,
+            url=url,
+            versioning=versioning,
+            website=website,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
+             cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+             custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
+             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+             encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_access_prevention: Optional[pulumi.Input[str]] = None,
+             requester_pays: Optional[pulumi.Input[bool]] = None,
+             retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
+             website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
         if autoclass is not None:
-            pulumi.set(__self__, "autoclass", autoclass)
+            _setter("autoclass", autoclass)
         if cors is not None:
-            pulumi.set(__self__, "cors", cors)
+            _setter("cors", cors)
         if custom_placement_config is not None:
-            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
+            _setter("custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
-            pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+            _setter("default_event_based_hold", default_event_based_hold)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lifecycle_rules is not None:
-            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+            _setter("lifecycle_rules", lifecycle_rules)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_access_prevention is not None:
-            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+            _setter("public_access_prevention", public_access_prevention)
         if requester_pays is not None:
-            pulumi.set(__self__, "requester_pays", requester_pays)
+            _setter("requester_pays", requester_pays)
         if retention_policy is not None:
-            pulumi.set(__self__, "retention_policy", retention_policy)
+            _setter("retention_policy", retention_policy)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if storage_class is not None:
-            pulumi.set(__self__, "storage_class", storage_class)
+            _setter("storage_class", storage_class)
         if uniform_bucket_level_access is not None:
-            pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+            _setter("uniform_bucket_level_access", uniform_bucket_level_access)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if website is not None:
-            pulumi.set(__self__, "website", website)
+            _setter("website", website)
 
     @property
     @pulumi.getter
@@ -948,6 +1086,10 @@ class Bucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -981,10 +1123,25 @@ class Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BucketArgs.__new__(BucketArgs)
 
+            if autoclass is not None and not isinstance(autoclass, BucketAutoclassArgs):
+                autoclass = autoclass or {}
+                def _setter(key, value):
+                    autoclass[key] = value
+                BucketAutoclassArgs._configure(_setter, **autoclass)
             __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["cors"] = cors
+            if custom_placement_config is not None and not isinstance(custom_placement_config, BucketCustomPlacementConfigArgs):
+                custom_placement_config = custom_placement_config or {}
+                def _setter(key, value):
+                    custom_placement_config[key] = value
+                BucketCustomPlacementConfigArgs._configure(_setter, **custom_placement_config)
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
+            if encryption is not None and not isinstance(encryption, BucketEncryptionArgs):
+                encryption = encryption or {}
+                def _setter(key, value):
+                    encryption[key] = value
+                BucketEncryptionArgs._configure(_setter, **encryption)
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
@@ -992,15 +1149,35 @@ class Bucket(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if logging is not None and not isinstance(logging, BucketLoggingArgs):
+                logging = logging or {}
+                def _setter(key, value):
+                    logging[key] = value
+                BucketLoggingArgs._configure(_setter, **logging)
             __props__.__dict__["logging"] = logging
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["public_access_prevention"] = public_access_prevention
             __props__.__dict__["requester_pays"] = requester_pays
+            if retention_policy is not None and not isinstance(retention_policy, BucketRetentionPolicyArgs):
+                retention_policy = retention_policy or {}
+                def _setter(key, value):
+                    retention_policy[key] = value
+                BucketRetentionPolicyArgs._configure(_setter, **retention_policy)
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
+            if versioning is not None and not isinstance(versioning, BucketVersioningArgs):
+                versioning = versioning or {}
+                def _setter(key, value):
+                    versioning[key] = value
+                BucketVersioningArgs._configure(_setter, **versioning)
             __props__.__dict__["versioning"] = versioning
+            if website is not None and not isinstance(website, BucketWebsiteArgs):
+                website = website or {}
+                def _setter(key, value):
+                    website[key] = value
+                BucketWebsiteArgs._configure(_setter, **website)
             __props__.__dict__["website"] = website
             __props__.__dict__["self_link"] = None
             __props__.__dict__["url"] = None

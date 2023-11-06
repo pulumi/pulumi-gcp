@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,12 +40,43 @@ class EnvironmentIamBindingArgs:
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        pulumi.set(__self__, "env_id", env_id)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "role", role)
+        EnvironmentIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            env_id=env_id,
+            members=members,
+            org_id=org_id,
+            role=role,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             env_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['EnvironmentIamBindingConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("env_id", env_id)
+        _setter("members", members)
+        _setter("org_id", org_id)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter(name="envId")
@@ -142,18 +173,43 @@ class _EnvironmentIamBindingState:
                `apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _EnvironmentIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            env_id=env_id,
+            etag=etag,
+            members=members,
+            org_id=org_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['EnvironmentIamBindingConditionArgs']] = None,
+             env_id: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if env_id is not None:
-            pulumi.set(__self__, "env_id", env_id)
+            _setter("env_id", env_id)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -441,6 +497,10 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnvironmentIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -460,6 +520,11 @@ class EnvironmentIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentIamBindingArgs.__new__(EnvironmentIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, EnvironmentIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                EnvironmentIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if env_id is None and not opts.urn:
                 raise TypeError("Missing required property 'env_id'")

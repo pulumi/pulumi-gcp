@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -115,52 +115,131 @@ class TriggerArgs:
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
+        TriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_config=approval_config,
+            bitbucket_server_trigger_config=bitbucket_server_trigger_config,
+            build=build,
+            description=description,
+            disabled=disabled,
+            filename=filename,
+            filter=filter,
+            git_file_source=git_file_source,
+            github=github,
+            ignored_files=ignored_files,
+            include_build_logs=include_build_logs,
+            included_files=included_files,
+            location=location,
+            name=name,
+            project=project,
+            pubsub_config=pubsub_config,
+            repository_event_config=repository_event_config,
+            service_account=service_account,
+            source_to_build=source_to_build,
+            substitutions=substitutions,
+            tags=tags,
+            trigger_template=trigger_template,
+            webhook_config=webhook_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
+             bitbucket_server_trigger_config: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']] = None,
+             build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             filename: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             git_file_source: Optional[pulumi.Input['TriggerGitFileSourceArgs']] = None,
+             github: Optional[pulumi.Input['TriggerGithubArgs']] = None,
+             ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_build_logs: Optional[pulumi.Input[str]] = None,
+             included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+             repository_event_config: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             source_to_build: Optional[pulumi.Input['TriggerSourceToBuildArgs']] = None,
+             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None,
+             webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_config is None and 'approvalConfig' in kwargs:
+            approval_config = kwargs['approvalConfig']
+        if bitbucket_server_trigger_config is None and 'bitbucketServerTriggerConfig' in kwargs:
+            bitbucket_server_trigger_config = kwargs['bitbucketServerTriggerConfig']
+        if git_file_source is None and 'gitFileSource' in kwargs:
+            git_file_source = kwargs['gitFileSource']
+        if ignored_files is None and 'ignoredFiles' in kwargs:
+            ignored_files = kwargs['ignoredFiles']
+        if include_build_logs is None and 'includeBuildLogs' in kwargs:
+            include_build_logs = kwargs['includeBuildLogs']
+        if included_files is None and 'includedFiles' in kwargs:
+            included_files = kwargs['includedFiles']
+        if pubsub_config is None and 'pubsubConfig' in kwargs:
+            pubsub_config = kwargs['pubsubConfig']
+        if repository_event_config is None and 'repositoryEventConfig' in kwargs:
+            repository_event_config = kwargs['repositoryEventConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_to_build is None and 'sourceToBuild' in kwargs:
+            source_to_build = kwargs['sourceToBuild']
+        if trigger_template is None and 'triggerTemplate' in kwargs:
+            trigger_template = kwargs['triggerTemplate']
+        if webhook_config is None and 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+
         if approval_config is not None:
-            pulumi.set(__self__, "approval_config", approval_config)
+            _setter("approval_config", approval_config)
         if bitbucket_server_trigger_config is not None:
-            pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
+            _setter("bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
-            pulumi.set(__self__, "build", build)
+            _setter("build", build)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if filename is not None:
-            pulumi.set(__self__, "filename", filename)
+            _setter("filename", filename)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if git_file_source is not None:
-            pulumi.set(__self__, "git_file_source", git_file_source)
+            _setter("git_file_source", git_file_source)
         if github is not None:
-            pulumi.set(__self__, "github", github)
+            _setter("github", github)
         if ignored_files is not None:
-            pulumi.set(__self__, "ignored_files", ignored_files)
+            _setter("ignored_files", ignored_files)
         if include_build_logs is not None:
-            pulumi.set(__self__, "include_build_logs", include_build_logs)
+            _setter("include_build_logs", include_build_logs)
         if included_files is not None:
-            pulumi.set(__self__, "included_files", included_files)
+            _setter("included_files", included_files)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pubsub_config is not None:
-            pulumi.set(__self__, "pubsub_config", pubsub_config)
+            _setter("pubsub_config", pubsub_config)
         if repository_event_config is not None:
-            pulumi.set(__self__, "repository_event_config", repository_event_config)
+            _setter("repository_event_config", repository_event_config)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if source_to_build is not None:
-            pulumi.set(__self__, "source_to_build", source_to_build)
+            _setter("source_to_build", source_to_build)
         if substitutions is not None:
-            pulumi.set(__self__, "substitutions", substitutions)
+            _setter("substitutions", substitutions)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if trigger_template is not None:
-            pulumi.set(__self__, "trigger_template", trigger_template)
+            _setter("trigger_template", trigger_template)
         if webhook_config is not None:
-            pulumi.set(__self__, "webhook_config", webhook_config)
+            _setter("webhook_config", webhook_config)
 
     @property
     @pulumi.getter(name="approvalConfig")
@@ -595,56 +674,143 @@ class _TriggerState:
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
+        _TriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_config=approval_config,
+            bitbucket_server_trigger_config=bitbucket_server_trigger_config,
+            build=build,
+            create_time=create_time,
+            description=description,
+            disabled=disabled,
+            filename=filename,
+            filter=filter,
+            git_file_source=git_file_source,
+            github=github,
+            ignored_files=ignored_files,
+            include_build_logs=include_build_logs,
+            included_files=included_files,
+            location=location,
+            name=name,
+            project=project,
+            pubsub_config=pubsub_config,
+            repository_event_config=repository_event_config,
+            service_account=service_account,
+            source_to_build=source_to_build,
+            substitutions=substitutions,
+            tags=tags,
+            trigger_id=trigger_id,
+            trigger_template=trigger_template,
+            webhook_config=webhook_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
+             bitbucket_server_trigger_config: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']] = None,
+             build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             filename: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             git_file_source: Optional[pulumi.Input['TriggerGitFileSourceArgs']] = None,
+             github: Optional[pulumi.Input['TriggerGithubArgs']] = None,
+             ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_build_logs: Optional[pulumi.Input[str]] = None,
+             included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+             repository_event_config: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             source_to_build: Optional[pulumi.Input['TriggerSourceToBuildArgs']] = None,
+             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None,
+             webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_config is None and 'approvalConfig' in kwargs:
+            approval_config = kwargs['approvalConfig']
+        if bitbucket_server_trigger_config is None and 'bitbucketServerTriggerConfig' in kwargs:
+            bitbucket_server_trigger_config = kwargs['bitbucketServerTriggerConfig']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if git_file_source is None and 'gitFileSource' in kwargs:
+            git_file_source = kwargs['gitFileSource']
+        if ignored_files is None and 'ignoredFiles' in kwargs:
+            ignored_files = kwargs['ignoredFiles']
+        if include_build_logs is None and 'includeBuildLogs' in kwargs:
+            include_build_logs = kwargs['includeBuildLogs']
+        if included_files is None and 'includedFiles' in kwargs:
+            included_files = kwargs['includedFiles']
+        if pubsub_config is None and 'pubsubConfig' in kwargs:
+            pubsub_config = kwargs['pubsubConfig']
+        if repository_event_config is None and 'repositoryEventConfig' in kwargs:
+            repository_event_config = kwargs['repositoryEventConfig']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if source_to_build is None and 'sourceToBuild' in kwargs:
+            source_to_build = kwargs['sourceToBuild']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if trigger_template is None and 'triggerTemplate' in kwargs:
+            trigger_template = kwargs['triggerTemplate']
+        if webhook_config is None and 'webhookConfig' in kwargs:
+            webhook_config = kwargs['webhookConfig']
+
         if approval_config is not None:
-            pulumi.set(__self__, "approval_config", approval_config)
+            _setter("approval_config", approval_config)
         if bitbucket_server_trigger_config is not None:
-            pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
+            _setter("bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
-            pulumi.set(__self__, "build", build)
+            _setter("build", build)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if filename is not None:
-            pulumi.set(__self__, "filename", filename)
+            _setter("filename", filename)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if git_file_source is not None:
-            pulumi.set(__self__, "git_file_source", git_file_source)
+            _setter("git_file_source", git_file_source)
         if github is not None:
-            pulumi.set(__self__, "github", github)
+            _setter("github", github)
         if ignored_files is not None:
-            pulumi.set(__self__, "ignored_files", ignored_files)
+            _setter("ignored_files", ignored_files)
         if include_build_logs is not None:
-            pulumi.set(__self__, "include_build_logs", include_build_logs)
+            _setter("include_build_logs", include_build_logs)
         if included_files is not None:
-            pulumi.set(__self__, "included_files", included_files)
+            _setter("included_files", included_files)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if pubsub_config is not None:
-            pulumi.set(__self__, "pubsub_config", pubsub_config)
+            _setter("pubsub_config", pubsub_config)
         if repository_event_config is not None:
-            pulumi.set(__self__, "repository_event_config", repository_event_config)
+            _setter("repository_event_config", repository_event_config)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if source_to_build is not None:
-            pulumi.set(__self__, "source_to_build", source_to_build)
+            _setter("source_to_build", source_to_build)
         if substitutions is not None:
-            pulumi.set(__self__, "substitutions", substitutions)
+            _setter("substitutions", substitutions)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
         if trigger_template is not None:
-            pulumi.set(__self__, "trigger_template", trigger_template)
+            _setter("trigger_template", trigger_template)
         if webhook_config is not None:
-            pulumi.set(__self__, "webhook_config", webhook_config)
+            _setter("webhook_config", webhook_config)
 
     @property
     @pulumi.getter(name="approvalConfig")
@@ -1824,6 +1990,10 @@ class Trigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1861,14 +2031,39 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
+            if approval_config is not None and not isinstance(approval_config, TriggerApprovalConfigArgs):
+                approval_config = approval_config or {}
+                def _setter(key, value):
+                    approval_config[key] = value
+                TriggerApprovalConfigArgs._configure(_setter, **approval_config)
             __props__.__dict__["approval_config"] = approval_config
+            if bitbucket_server_trigger_config is not None and not isinstance(bitbucket_server_trigger_config, TriggerBitbucketServerTriggerConfigArgs):
+                bitbucket_server_trigger_config = bitbucket_server_trigger_config or {}
+                def _setter(key, value):
+                    bitbucket_server_trigger_config[key] = value
+                TriggerBitbucketServerTriggerConfigArgs._configure(_setter, **bitbucket_server_trigger_config)
             __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
+            if build is not None and not isinstance(build, TriggerBuildArgs):
+                build = build or {}
+                def _setter(key, value):
+                    build[key] = value
+                TriggerBuildArgs._configure(_setter, **build)
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["filename"] = filename
             __props__.__dict__["filter"] = filter
+            if git_file_source is not None and not isinstance(git_file_source, TriggerGitFileSourceArgs):
+                git_file_source = git_file_source or {}
+                def _setter(key, value):
+                    git_file_source[key] = value
+                TriggerGitFileSourceArgs._configure(_setter, **git_file_source)
             __props__.__dict__["git_file_source"] = git_file_source
+            if github is not None and not isinstance(github, TriggerGithubArgs):
+                github = github or {}
+                def _setter(key, value):
+                    github[key] = value
+                TriggerGithubArgs._configure(_setter, **github)
             __props__.__dict__["github"] = github
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["include_build_logs"] = include_build_logs
@@ -1876,13 +2071,38 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if pubsub_config is not None and not isinstance(pubsub_config, TriggerPubsubConfigArgs):
+                pubsub_config = pubsub_config or {}
+                def _setter(key, value):
+                    pubsub_config[key] = value
+                TriggerPubsubConfigArgs._configure(_setter, **pubsub_config)
             __props__.__dict__["pubsub_config"] = pubsub_config
+            if repository_event_config is not None and not isinstance(repository_event_config, TriggerRepositoryEventConfigArgs):
+                repository_event_config = repository_event_config or {}
+                def _setter(key, value):
+                    repository_event_config[key] = value
+                TriggerRepositoryEventConfigArgs._configure(_setter, **repository_event_config)
             __props__.__dict__["repository_event_config"] = repository_event_config
             __props__.__dict__["service_account"] = service_account
+            if source_to_build is not None and not isinstance(source_to_build, TriggerSourceToBuildArgs):
+                source_to_build = source_to_build or {}
+                def _setter(key, value):
+                    source_to_build[key] = value
+                TriggerSourceToBuildArgs._configure(_setter, **source_to_build)
             __props__.__dict__["source_to_build"] = source_to_build
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
+            if trigger_template is not None and not isinstance(trigger_template, TriggerTriggerTemplateArgs):
+                trigger_template = trigger_template or {}
+                def _setter(key, value):
+                    trigger_template[key] = value
+                TriggerTriggerTemplateArgs._configure(_setter, **trigger_template)
             __props__.__dict__["trigger_template"] = trigger_template
+            if webhook_config is not None and not isinstance(webhook_config, TriggerWebhookConfigArgs):
+                webhook_config = webhook_config or {}
+                def _setter(key, value):
+                    webhook_config[key] = value
+                TriggerWebhookConfigArgs._configure(_setter, **webhook_config)
             __props__.__dict__["webhook_config"] = webhook_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["trigger_id"] = None

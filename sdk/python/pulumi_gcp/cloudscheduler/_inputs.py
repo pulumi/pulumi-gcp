@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,15 +44,42 @@ class JobAppEngineHttpTargetArgs:
                Headers can be set when the job is created.
         :param pulumi.Input[str] http_method: Which HTTP method to use for the request.
         """
-        pulumi.set(__self__, "relative_uri", relative_uri)
+        JobAppEngineHttpTargetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_uri=relative_uri,
+            app_engine_routing=app_engine_routing,
+            body=body,
+            headers=headers,
+            http_method=http_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_uri: Optional[pulumi.Input[str]] = None,
+             app_engine_routing: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']] = None,
+             body: Optional[pulumi.Input[str]] = None,
+             headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             http_method: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if relative_uri is None and 'relativeUri' in kwargs:
+            relative_uri = kwargs['relativeUri']
+        if relative_uri is None:
+            raise TypeError("Missing 'relative_uri' argument")
+        if app_engine_routing is None and 'appEngineRouting' in kwargs:
+            app_engine_routing = kwargs['appEngineRouting']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+
+        _setter("relative_uri", relative_uri)
         if app_engine_routing is not None:
-            pulumi.set(__self__, "app_engine_routing", app_engine_routing)
+            _setter("app_engine_routing", app_engine_routing)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
 
     @property
     @pulumi.getter(name="relativeUri")
@@ -139,12 +166,27 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
         :param pulumi.Input[str] version: App version.
                By default, the job is sent to the version which is the default version when the job is attempted.
         """
+        JobAppEngineHttpTargetAppEngineRoutingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance=instance,
+            service=service,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -211,17 +253,46 @@ class JobHttpTargetArgs:
                This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
                Structure is documented below.
         """
-        pulumi.set(__self__, "uri", uri)
+        JobHttpTargetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            uri=uri,
+            body=body,
+            headers=headers,
+            http_method=http_method,
+            oauth_token=oauth_token,
+            oidc_token=oidc_token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             uri: Optional[pulumi.Input[str]] = None,
+             body: Optional[pulumi.Input[str]] = None,
+             headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             http_method: Optional[pulumi.Input[str]] = None,
+             oauth_token: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']] = None,
+             oidc_token: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if oauth_token is None and 'oauthToken' in kwargs:
+            oauth_token = kwargs['oauthToken']
+        if oidc_token is None and 'oidcToken' in kwargs:
+            oidc_token = kwargs['oidcToken']
+
+        _setter("uri", uri)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if oauth_token is not None:
-            pulumi.set(__self__, "oauth_token", oauth_token)
+            _setter("oauth_token", oauth_token)
         if oidc_token is not None:
-            pulumi.set(__self__, "oidc_token", oidc_token)
+            _setter("oidc_token", oidc_token)
 
     @property
     @pulumi.getter
@@ -315,9 +386,26 @@ class JobHttpTargetOauthTokenArgs:
         :param pulumi.Input[str] scope: OAuth scope to be used for generating OAuth access token. If not specified,
                "https://www.googleapis.com/auth/cloud-platform" will be used.
         """
-        pulumi.set(__self__, "service_account_email", service_account_email)
+        JobHttpTargetOauthTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account_email=service_account_email,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
+        _setter("service_account_email", service_account_email)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -357,9 +445,26 @@ class JobHttpTargetOidcTokenArgs:
         :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. If not specified,
                the URI specified in target will be used.
         """
-        pulumi.set(__self__, "service_account_email", service_account_email)
+        JobHttpTargetOidcTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account_email=service_account_email,
+            audience=audience,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             audience: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+
+        _setter("service_account_email", service_account_email)
         if audience is not None:
-            pulumi.set(__self__, "audience", audience)
+            _setter("audience", audience)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -405,11 +510,30 @@ class JobPubsubTargetArgs:
                Pubsub message must contain either non-empty data, or at least one attribute.
                A base64-encoded string.
         """
-        pulumi.set(__self__, "topic_name", topic_name)
+        JobPubsubTargetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            topic_name=topic_name,
+            attributes=attributes,
+            data=data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             topic_name: Optional[pulumi.Input[str]] = None,
+             attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+
+        _setter("topic_name", topic_name)
         if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
+            _setter("attributes", attributes)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
 
     @property
     @pulumi.getter(name="topicName")
@@ -478,16 +602,45 @@ class JobRetryConfigArgs:
                job using the exponential backoff procedure described by maxDoublings.
                Values greater than 5 and negative values are not allowed.
         """
+        JobRetryConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_backoff_duration=max_backoff_duration,
+            max_doublings=max_doublings,
+            max_retry_duration=max_retry_duration,
+            min_backoff_duration=min_backoff_duration,
+            retry_count=retry_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_backoff_duration: Optional[pulumi.Input[str]] = None,
+             max_doublings: Optional[pulumi.Input[int]] = None,
+             max_retry_duration: Optional[pulumi.Input[str]] = None,
+             min_backoff_duration: Optional[pulumi.Input[str]] = None,
+             retry_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_backoff_duration is None and 'maxBackoffDuration' in kwargs:
+            max_backoff_duration = kwargs['maxBackoffDuration']
+        if max_doublings is None and 'maxDoublings' in kwargs:
+            max_doublings = kwargs['maxDoublings']
+        if max_retry_duration is None and 'maxRetryDuration' in kwargs:
+            max_retry_duration = kwargs['maxRetryDuration']
+        if min_backoff_duration is None and 'minBackoffDuration' in kwargs:
+            min_backoff_duration = kwargs['minBackoffDuration']
+        if retry_count is None and 'retryCount' in kwargs:
+            retry_count = kwargs['retryCount']
+
         if max_backoff_duration is not None:
-            pulumi.set(__self__, "max_backoff_duration", max_backoff_duration)
+            _setter("max_backoff_duration", max_backoff_duration)
         if max_doublings is not None:
-            pulumi.set(__self__, "max_doublings", max_doublings)
+            _setter("max_doublings", max_doublings)
         if max_retry_duration is not None:
-            pulumi.set(__self__, "max_retry_duration", max_retry_duration)
+            _setter("max_retry_duration", max_retry_duration)
         if min_backoff_duration is not None:
-            pulumi.set(__self__, "min_backoff_duration", min_backoff_duration)
+            _setter("min_backoff_duration", min_backoff_duration)
         if retry_count is not None:
-            pulumi.set(__self__, "retry_count", retry_count)
+            _setter("retry_count", retry_count)
 
     @property
     @pulumi.getter(name="maxBackoffDuration")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -291,141 +291,402 @@ class ClusterArgs:
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
         """
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons_config=addons_config,
+            allow_net_admin=allow_net_admin,
+            authenticator_groups_config=authenticator_groups_config,
+            binary_authorization=binary_authorization,
+            cluster_autoscaling=cluster_autoscaling,
+            cluster_ipv4_cidr=cluster_ipv4_cidr,
+            cluster_telemetry=cluster_telemetry,
+            confidential_nodes=confidential_nodes,
+            cost_management_config=cost_management_config,
+            database_encryption=database_encryption,
+            datapath_provider=datapath_provider,
+            default_max_pods_per_node=default_max_pods_per_node,
+            default_snat_status=default_snat_status,
+            description=description,
+            dns_config=dns_config,
+            enable_autopilot=enable_autopilot,
+            enable_binary_authorization=enable_binary_authorization,
+            enable_fqdn_network_policy=enable_fqdn_network_policy,
+            enable_intranode_visibility=enable_intranode_visibility,
+            enable_k8s_beta_apis=enable_k8s_beta_apis,
+            enable_kubernetes_alpha=enable_kubernetes_alpha,
+            enable_l4_ilb_subsetting=enable_l4_ilb_subsetting,
+            enable_legacy_abac=enable_legacy_abac,
+            enable_multi_networking=enable_multi_networking,
+            enable_shielded_nodes=enable_shielded_nodes,
+            enable_tpu=enable_tpu,
+            gateway_api_config=gateway_api_config,
+            identity_service_config=identity_service_config,
+            initial_node_count=initial_node_count,
+            ip_allocation_policy=ip_allocation_policy,
+            location=location,
+            logging_config=logging_config,
+            logging_service=logging_service,
+            maintenance_policy=maintenance_policy,
+            master_auth=master_auth,
+            master_authorized_networks_config=master_authorized_networks_config,
+            mesh_certificates=mesh_certificates,
+            min_master_version=min_master_version,
+            monitoring_config=monitoring_config,
+            monitoring_service=monitoring_service,
+            name=name,
+            network=network,
+            network_policy=network_policy,
+            networking_mode=networking_mode,
+            node_config=node_config,
+            node_locations=node_locations,
+            node_pool_auto_config=node_pool_auto_config,
+            node_pool_defaults=node_pool_defaults,
+            node_pools=node_pools,
+            node_version=node_version,
+            notification_config=notification_config,
+            pod_security_policy_config=pod_security_policy_config,
+            private_cluster_config=private_cluster_config,
+            private_ipv6_google_access=private_ipv6_google_access,
+            project=project,
+            protect_config=protect_config,
+            release_channel=release_channel,
+            remove_default_node_pool=remove_default_node_pool,
+            resource_labels=resource_labels,
+            resource_usage_export_config=resource_usage_export_config,
+            security_posture_config=security_posture_config,
+            service_external_ips_config=service_external_ips_config,
+            subnetwork=subnetwork,
+            tpu_config=tpu_config,
+            vertical_pod_autoscaling=vertical_pod_autoscaling,
+            workload_identity_config=workload_identity_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
+             allow_net_admin: Optional[pulumi.Input[bool]] = None,
+             authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+             binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
+             cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
+             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+             cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
+             confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+             cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
+             database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
+             datapath_provider: Optional[pulumi.Input[str]] = None,
+             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
+             enable_autopilot: Optional[pulumi.Input[bool]] = None,
+             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
+             enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
+             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+             enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
+             enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+             enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
+             enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+             enable_multi_networking: Optional[pulumi.Input[bool]] = None,
+             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
+             enable_tpu: Optional[pulumi.Input[bool]] = None,
+             gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
+             identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
+             initial_node_count: Optional[pulumi.Input[int]] = None,
+             ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
+             logging_service: Optional[pulumi.Input[str]] = None,
+             maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+             master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
+             master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
+             mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
+             min_master_version: Optional[pulumi.Input[str]] = None,
+             monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
+             monitoring_service: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_policy: Optional[pulumi.Input['ClusterNetworkPolicyArgs']] = None,
+             networking_mode: Optional[pulumi.Input[str]] = None,
+             node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
+             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
+             node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
+             node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
+             node_version: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
+             pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
+             private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
+             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
+             release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
+             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
+             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+             security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
+             service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
+             vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
+             workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+        if allow_net_admin is None and 'allowNetAdmin' in kwargs:
+            allow_net_admin = kwargs['allowNetAdmin']
+        if authenticator_groups_config is None and 'authenticatorGroupsConfig' in kwargs:
+            authenticator_groups_config = kwargs['authenticatorGroupsConfig']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_autoscaling is None and 'clusterAutoscaling' in kwargs:
+            cluster_autoscaling = kwargs['clusterAutoscaling']
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
+            cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
+        if cluster_telemetry is None and 'clusterTelemetry' in kwargs:
+            cluster_telemetry = kwargs['clusterTelemetry']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if cost_management_config is None and 'costManagementConfig' in kwargs:
+            cost_management_config = kwargs['costManagementConfig']
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if datapath_provider is None and 'datapathProvider' in kwargs:
+            datapath_provider = kwargs['datapathProvider']
+        if default_max_pods_per_node is None and 'defaultMaxPodsPerNode' in kwargs:
+            default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
+        if default_snat_status is None and 'defaultSnatStatus' in kwargs:
+            default_snat_status = kwargs['defaultSnatStatus']
+        if dns_config is None and 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if enable_autopilot is None and 'enableAutopilot' in kwargs:
+            enable_autopilot = kwargs['enableAutopilot']
+        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
+            enable_binary_authorization = kwargs['enableBinaryAuthorization']
+        if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
+            enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
+        if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
+            enable_intranode_visibility = kwargs['enableIntranodeVisibility']
+        if enable_k8s_beta_apis is None and 'enableK8sBetaApis' in kwargs:
+            enable_k8s_beta_apis = kwargs['enableK8sBetaApis']
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
+            enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
+        if enable_l4_ilb_subsetting is None and 'enableL4IlbSubsetting' in kwargs:
+            enable_l4_ilb_subsetting = kwargs['enableL4IlbSubsetting']
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
+            enable_legacy_abac = kwargs['enableLegacyAbac']
+        if enable_multi_networking is None and 'enableMultiNetworking' in kwargs:
+            enable_multi_networking = kwargs['enableMultiNetworking']
+        if enable_shielded_nodes is None and 'enableShieldedNodes' in kwargs:
+            enable_shielded_nodes = kwargs['enableShieldedNodes']
+        if enable_tpu is None and 'enableTpu' in kwargs:
+            enable_tpu = kwargs['enableTpu']
+        if gateway_api_config is None and 'gatewayApiConfig' in kwargs:
+            gateway_api_config = kwargs['gatewayApiConfig']
+        if identity_service_config is None and 'identityServiceConfig' in kwargs:
+            identity_service_config = kwargs['identityServiceConfig']
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
+            ip_allocation_policy = kwargs['ipAllocationPolicy']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if logging_service is None and 'loggingService' in kwargs:
+            logging_service = kwargs['loggingService']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if master_auth is None and 'masterAuth' in kwargs:
+            master_auth = kwargs['masterAuth']
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
+            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
+        if mesh_certificates is None and 'meshCertificates' in kwargs:
+            mesh_certificates = kwargs['meshCertificates']
+        if min_master_version is None and 'minMasterVersion' in kwargs:
+            min_master_version = kwargs['minMasterVersion']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if monitoring_service is None and 'monitoringService' in kwargs:
+            monitoring_service = kwargs['monitoringService']
+        if network_policy is None and 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if networking_mode is None and 'networkingMode' in kwargs:
+            networking_mode = kwargs['networkingMode']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if node_pool_auto_config is None and 'nodePoolAutoConfig' in kwargs:
+            node_pool_auto_config = kwargs['nodePoolAutoConfig']
+        if node_pool_defaults is None and 'nodePoolDefaults' in kwargs:
+            node_pool_defaults = kwargs['nodePoolDefaults']
+        if node_pools is None and 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if node_version is None and 'nodeVersion' in kwargs:
+            node_version = kwargs['nodeVersion']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if pod_security_policy_config is None and 'podSecurityPolicyConfig' in kwargs:
+            pod_security_policy_config = kwargs['podSecurityPolicyConfig']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if protect_config is None and 'protectConfig' in kwargs:
+            protect_config = kwargs['protectConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if remove_default_node_pool is None and 'removeDefaultNodePool' in kwargs:
+            remove_default_node_pool = kwargs['removeDefaultNodePool']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if resource_usage_export_config is None and 'resourceUsageExportConfig' in kwargs:
+            resource_usage_export_config = kwargs['resourceUsageExportConfig']
+        if security_posture_config is None and 'securityPostureConfig' in kwargs:
+            security_posture_config = kwargs['securityPostureConfig']
+        if service_external_ips_config is None and 'serviceExternalIpsConfig' in kwargs:
+            service_external_ips_config = kwargs['serviceExternalIpsConfig']
+        if tpu_config is None and 'tpuConfig' in kwargs:
+            tpu_config = kwargs['tpuConfig']
+        if vertical_pod_autoscaling is None and 'verticalPodAutoscaling' in kwargs:
+            vertical_pod_autoscaling = kwargs['verticalPodAutoscaling']
+        if workload_identity_config is None and 'workloadIdentityConfig' in kwargs:
+            workload_identity_config = kwargs['workloadIdentityConfig']
+
         if addons_config is not None:
-            pulumi.set(__self__, "addons_config", addons_config)
+            _setter("addons_config", addons_config)
         if allow_net_admin is not None:
-            pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+            _setter("allow_net_admin", allow_net_admin)
         if authenticator_groups_config is not None:
-            pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+            _setter("authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
-            pulumi.set(__self__, "binary_authorization", binary_authorization)
+            _setter("binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
-            pulumi.set(__self__, "cluster_autoscaling", cluster_autoscaling)
+            _setter("cluster_autoscaling", cluster_autoscaling)
         if cluster_ipv4_cidr is not None:
-            pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
+            _setter("cluster_ipv4_cidr", cluster_ipv4_cidr)
         if cluster_telemetry is not None:
-            pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
+            _setter("cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
-            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+            _setter("confidential_nodes", confidential_nodes)
         if cost_management_config is not None:
-            pulumi.set(__self__, "cost_management_config", cost_management_config)
+            _setter("cost_management_config", cost_management_config)
         if database_encryption is not None:
-            pulumi.set(__self__, "database_encryption", database_encryption)
+            _setter("database_encryption", database_encryption)
         if datapath_provider is not None:
-            pulumi.set(__self__, "datapath_provider", datapath_provider)
+            _setter("datapath_provider", datapath_provider)
         if default_max_pods_per_node is not None:
-            pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
+            _setter("default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
-            pulumi.set(__self__, "default_snat_status", default_snat_status)
+            _setter("default_snat_status", default_snat_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_config is not None:
-            pulumi.set(__self__, "dns_config", dns_config)
+            _setter("dns_config", dns_config)
         if enable_autopilot is not None:
-            pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+            _setter("enable_autopilot", enable_autopilot)
         if enable_binary_authorization is not None:
             warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
             pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
         if enable_binary_authorization is not None:
-            pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
+            _setter("enable_binary_authorization", enable_binary_authorization)
         if enable_fqdn_network_policy is not None:
-            pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
+            _setter("enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
-            pulumi.set(__self__, "enable_intranode_visibility", enable_intranode_visibility)
+            _setter("enable_intranode_visibility", enable_intranode_visibility)
         if enable_k8s_beta_apis is not None:
-            pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
+            _setter("enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha is not None:
-            pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+            _setter("enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_l4_ilb_subsetting is not None:
-            pulumi.set(__self__, "enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
+            _setter("enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
         if enable_legacy_abac is not None:
-            pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
+            _setter("enable_legacy_abac", enable_legacy_abac)
         if enable_multi_networking is not None:
-            pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
+            _setter("enable_multi_networking", enable_multi_networking)
         if enable_shielded_nodes is not None:
-            pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
+            _setter("enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
-            pulumi.set(__self__, "enable_tpu", enable_tpu)
+            _setter("enable_tpu", enable_tpu)
         if gateway_api_config is not None:
-            pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+            _setter("gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
-            pulumi.set(__self__, "identity_service_config", identity_service_config)
+            _setter("identity_service_config", identity_service_config)
         if initial_node_count is not None:
-            pulumi.set(__self__, "initial_node_count", initial_node_count)
+            _setter("initial_node_count", initial_node_count)
         if ip_allocation_policy is not None:
-            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
+            _setter("ip_allocation_policy", ip_allocation_policy)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
         if logging_service is not None:
-            pulumi.set(__self__, "logging_service", logging_service)
+            _setter("logging_service", logging_service)
         if maintenance_policy is not None:
-            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+            _setter("maintenance_policy", maintenance_policy)
         if master_auth is not None:
-            pulumi.set(__self__, "master_auth", master_auth)
+            _setter("master_auth", master_auth)
         if master_authorized_networks_config is not None:
-            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+            _setter("master_authorized_networks_config", master_authorized_networks_config)
         if mesh_certificates is not None:
-            pulumi.set(__self__, "mesh_certificates", mesh_certificates)
+            _setter("mesh_certificates", mesh_certificates)
         if min_master_version is not None:
-            pulumi.set(__self__, "min_master_version", min_master_version)
+            _setter("min_master_version", min_master_version)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if monitoring_service is not None:
-            pulumi.set(__self__, "monitoring_service", monitoring_service)
+            _setter("monitoring_service", monitoring_service)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_policy is not None:
-            pulumi.set(__self__, "network_policy", network_policy)
+            _setter("network_policy", network_policy)
         if networking_mode is not None:
-            pulumi.set(__self__, "networking_mode", networking_mode)
+            _setter("networking_mode", networking_mode)
         if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
+            _setter("node_config", node_config)
         if node_locations is not None:
-            pulumi.set(__self__, "node_locations", node_locations)
+            _setter("node_locations", node_locations)
         if node_pool_auto_config is not None:
-            pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
+            _setter("node_pool_auto_config", node_pool_auto_config)
         if node_pool_defaults is not None:
-            pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
+            _setter("node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
-            pulumi.set(__self__, "node_pools", node_pools)
+            _setter("node_pools", node_pools)
         if node_version is not None:
-            pulumi.set(__self__, "node_version", node_version)
+            _setter("node_version", node_version)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if pod_security_policy_config is not None:
-            pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
+            _setter("pod_security_policy_config", pod_security_policy_config)
         if private_cluster_config is not None:
-            pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+            _setter("private_cluster_config", private_cluster_config)
         if private_ipv6_google_access is not None:
-            pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+            _setter("private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protect_config is not None:
-            pulumi.set(__self__, "protect_config", protect_config)
+            _setter("protect_config", protect_config)
         if release_channel is not None:
-            pulumi.set(__self__, "release_channel", release_channel)
+            _setter("release_channel", release_channel)
         if remove_default_node_pool is not None:
-            pulumi.set(__self__, "remove_default_node_pool", remove_default_node_pool)
+            _setter("remove_default_node_pool", remove_default_node_pool)
         if resource_labels is not None:
-            pulumi.set(__self__, "resource_labels", resource_labels)
+            _setter("resource_labels", resource_labels)
         if resource_usage_export_config is not None:
-            pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+            _setter("resource_usage_export_config", resource_usage_export_config)
         if security_posture_config is not None:
-            pulumi.set(__self__, "security_posture_config", security_posture_config)
+            _setter("security_posture_config", security_posture_config)
         if service_external_ips_config is not None:
-            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
+            _setter("service_external_ips_config", service_external_ips_config)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if tpu_config is not None:
-            pulumi.set(__self__, "tpu_config", tpu_config)
+            _setter("tpu_config", tpu_config)
         if vertical_pod_autoscaling is not None:
-            pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+            _setter("vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
-            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
+            _setter("workload_identity_config", workload_identity_config)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -1661,155 +1922,440 @@ class _ClusterState:
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons_config=addons_config,
+            allow_net_admin=allow_net_admin,
+            authenticator_groups_config=authenticator_groups_config,
+            binary_authorization=binary_authorization,
+            cluster_autoscaling=cluster_autoscaling,
+            cluster_ipv4_cidr=cluster_ipv4_cidr,
+            cluster_telemetry=cluster_telemetry,
+            confidential_nodes=confidential_nodes,
+            cost_management_config=cost_management_config,
+            database_encryption=database_encryption,
+            datapath_provider=datapath_provider,
+            default_max_pods_per_node=default_max_pods_per_node,
+            default_snat_status=default_snat_status,
+            description=description,
+            dns_config=dns_config,
+            enable_autopilot=enable_autopilot,
+            enable_binary_authorization=enable_binary_authorization,
+            enable_fqdn_network_policy=enable_fqdn_network_policy,
+            enable_intranode_visibility=enable_intranode_visibility,
+            enable_k8s_beta_apis=enable_k8s_beta_apis,
+            enable_kubernetes_alpha=enable_kubernetes_alpha,
+            enable_l4_ilb_subsetting=enable_l4_ilb_subsetting,
+            enable_legacy_abac=enable_legacy_abac,
+            enable_multi_networking=enable_multi_networking,
+            enable_shielded_nodes=enable_shielded_nodes,
+            enable_tpu=enable_tpu,
+            endpoint=endpoint,
+            gateway_api_config=gateway_api_config,
+            identity_service_config=identity_service_config,
+            initial_node_count=initial_node_count,
+            ip_allocation_policy=ip_allocation_policy,
+            label_fingerprint=label_fingerprint,
+            location=location,
+            logging_config=logging_config,
+            logging_service=logging_service,
+            maintenance_policy=maintenance_policy,
+            master_auth=master_auth,
+            master_authorized_networks_config=master_authorized_networks_config,
+            master_version=master_version,
+            mesh_certificates=mesh_certificates,
+            min_master_version=min_master_version,
+            monitoring_config=monitoring_config,
+            monitoring_service=monitoring_service,
+            name=name,
+            network=network,
+            network_policy=network_policy,
+            networking_mode=networking_mode,
+            node_config=node_config,
+            node_locations=node_locations,
+            node_pool_auto_config=node_pool_auto_config,
+            node_pool_defaults=node_pool_defaults,
+            node_pools=node_pools,
+            node_version=node_version,
+            notification_config=notification_config,
+            operation=operation,
+            pod_security_policy_config=pod_security_policy_config,
+            private_cluster_config=private_cluster_config,
+            private_ipv6_google_access=private_ipv6_google_access,
+            project=project,
+            protect_config=protect_config,
+            release_channel=release_channel,
+            remove_default_node_pool=remove_default_node_pool,
+            resource_labels=resource_labels,
+            resource_usage_export_config=resource_usage_export_config,
+            security_posture_config=security_posture_config,
+            self_link=self_link,
+            service_external_ips_config=service_external_ips_config,
+            services_ipv4_cidr=services_ipv4_cidr,
+            subnetwork=subnetwork,
+            tpu_config=tpu_config,
+            tpu_ipv4_cidr_block=tpu_ipv4_cidr_block,
+            vertical_pod_autoscaling=vertical_pod_autoscaling,
+            workload_identity_config=workload_identity_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
+             allow_net_admin: Optional[pulumi.Input[bool]] = None,
+             authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+             binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
+             cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
+             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+             cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
+             confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+             cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
+             database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
+             datapath_provider: Optional[pulumi.Input[str]] = None,
+             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
+             enable_autopilot: Optional[pulumi.Input[bool]] = None,
+             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
+             enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
+             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+             enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
+             enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+             enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
+             enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+             enable_multi_networking: Optional[pulumi.Input[bool]] = None,
+             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
+             enable_tpu: Optional[pulumi.Input[bool]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
+             identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
+             initial_node_count: Optional[pulumi.Input[int]] = None,
+             ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
+             label_fingerprint: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
+             logging_service: Optional[pulumi.Input[str]] = None,
+             maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+             master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
+             master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
+             master_version: Optional[pulumi.Input[str]] = None,
+             mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
+             min_master_version: Optional[pulumi.Input[str]] = None,
+             monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
+             monitoring_service: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_policy: Optional[pulumi.Input['ClusterNetworkPolicyArgs']] = None,
+             networking_mode: Optional[pulumi.Input[str]] = None,
+             node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
+             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
+             node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
+             node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
+             node_version: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
+             operation: Optional[pulumi.Input[str]] = None,
+             pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
+             private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
+             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
+             release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
+             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
+             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+             security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
+             services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
+             tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+             vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
+             workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+        if allow_net_admin is None and 'allowNetAdmin' in kwargs:
+            allow_net_admin = kwargs['allowNetAdmin']
+        if authenticator_groups_config is None and 'authenticatorGroupsConfig' in kwargs:
+            authenticator_groups_config = kwargs['authenticatorGroupsConfig']
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if cluster_autoscaling is None and 'clusterAutoscaling' in kwargs:
+            cluster_autoscaling = kwargs['clusterAutoscaling']
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
+            cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
+        if cluster_telemetry is None and 'clusterTelemetry' in kwargs:
+            cluster_telemetry = kwargs['clusterTelemetry']
+        if confidential_nodes is None and 'confidentialNodes' in kwargs:
+            confidential_nodes = kwargs['confidentialNodes']
+        if cost_management_config is None and 'costManagementConfig' in kwargs:
+            cost_management_config = kwargs['costManagementConfig']
+        if database_encryption is None and 'databaseEncryption' in kwargs:
+            database_encryption = kwargs['databaseEncryption']
+        if datapath_provider is None and 'datapathProvider' in kwargs:
+            datapath_provider = kwargs['datapathProvider']
+        if default_max_pods_per_node is None and 'defaultMaxPodsPerNode' in kwargs:
+            default_max_pods_per_node = kwargs['defaultMaxPodsPerNode']
+        if default_snat_status is None and 'defaultSnatStatus' in kwargs:
+            default_snat_status = kwargs['defaultSnatStatus']
+        if dns_config is None and 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if enable_autopilot is None and 'enableAutopilot' in kwargs:
+            enable_autopilot = kwargs['enableAutopilot']
+        if enable_binary_authorization is None and 'enableBinaryAuthorization' in kwargs:
+            enable_binary_authorization = kwargs['enableBinaryAuthorization']
+        if enable_fqdn_network_policy is None and 'enableFqdnNetworkPolicy' in kwargs:
+            enable_fqdn_network_policy = kwargs['enableFqdnNetworkPolicy']
+        if enable_intranode_visibility is None and 'enableIntranodeVisibility' in kwargs:
+            enable_intranode_visibility = kwargs['enableIntranodeVisibility']
+        if enable_k8s_beta_apis is None and 'enableK8sBetaApis' in kwargs:
+            enable_k8s_beta_apis = kwargs['enableK8sBetaApis']
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
+            enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
+        if enable_l4_ilb_subsetting is None and 'enableL4IlbSubsetting' in kwargs:
+            enable_l4_ilb_subsetting = kwargs['enableL4IlbSubsetting']
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
+            enable_legacy_abac = kwargs['enableLegacyAbac']
+        if enable_multi_networking is None and 'enableMultiNetworking' in kwargs:
+            enable_multi_networking = kwargs['enableMultiNetworking']
+        if enable_shielded_nodes is None and 'enableShieldedNodes' in kwargs:
+            enable_shielded_nodes = kwargs['enableShieldedNodes']
+        if enable_tpu is None and 'enableTpu' in kwargs:
+            enable_tpu = kwargs['enableTpu']
+        if gateway_api_config is None and 'gatewayApiConfig' in kwargs:
+            gateway_api_config = kwargs['gatewayApiConfig']
+        if identity_service_config is None and 'identityServiceConfig' in kwargs:
+            identity_service_config = kwargs['identityServiceConfig']
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
+            initial_node_count = kwargs['initialNodeCount']
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
+            ip_allocation_policy = kwargs['ipAllocationPolicy']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if logging_service is None and 'loggingService' in kwargs:
+            logging_service = kwargs['loggingService']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if master_auth is None and 'masterAuth' in kwargs:
+            master_auth = kwargs['masterAuth']
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
+            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
+        if master_version is None and 'masterVersion' in kwargs:
+            master_version = kwargs['masterVersion']
+        if mesh_certificates is None and 'meshCertificates' in kwargs:
+            mesh_certificates = kwargs['meshCertificates']
+        if min_master_version is None and 'minMasterVersion' in kwargs:
+            min_master_version = kwargs['minMasterVersion']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if monitoring_service is None and 'monitoringService' in kwargs:
+            monitoring_service = kwargs['monitoringService']
+        if network_policy is None and 'networkPolicy' in kwargs:
+            network_policy = kwargs['networkPolicy']
+        if networking_mode is None and 'networkingMode' in kwargs:
+            networking_mode = kwargs['networkingMode']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_locations is None and 'nodeLocations' in kwargs:
+            node_locations = kwargs['nodeLocations']
+        if node_pool_auto_config is None and 'nodePoolAutoConfig' in kwargs:
+            node_pool_auto_config = kwargs['nodePoolAutoConfig']
+        if node_pool_defaults is None and 'nodePoolDefaults' in kwargs:
+            node_pool_defaults = kwargs['nodePoolDefaults']
+        if node_pools is None and 'nodePools' in kwargs:
+            node_pools = kwargs['nodePools']
+        if node_version is None and 'nodeVersion' in kwargs:
+            node_version = kwargs['nodeVersion']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if pod_security_policy_config is None and 'podSecurityPolicyConfig' in kwargs:
+            pod_security_policy_config = kwargs['podSecurityPolicyConfig']
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
+            private_cluster_config = kwargs['privateClusterConfig']
+        if private_ipv6_google_access is None and 'privateIpv6GoogleAccess' in kwargs:
+            private_ipv6_google_access = kwargs['privateIpv6GoogleAccess']
+        if protect_config is None and 'protectConfig' in kwargs:
+            protect_config = kwargs['protectConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if remove_default_node_pool is None and 'removeDefaultNodePool' in kwargs:
+            remove_default_node_pool = kwargs['removeDefaultNodePool']
+        if resource_labels is None and 'resourceLabels' in kwargs:
+            resource_labels = kwargs['resourceLabels']
+        if resource_usage_export_config is None and 'resourceUsageExportConfig' in kwargs:
+            resource_usage_export_config = kwargs['resourceUsageExportConfig']
+        if security_posture_config is None and 'securityPostureConfig' in kwargs:
+            security_posture_config = kwargs['securityPostureConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if service_external_ips_config is None and 'serviceExternalIpsConfig' in kwargs:
+            service_external_ips_config = kwargs['serviceExternalIpsConfig']
+        if services_ipv4_cidr is None and 'servicesIpv4Cidr' in kwargs:
+            services_ipv4_cidr = kwargs['servicesIpv4Cidr']
+        if tpu_config is None and 'tpuConfig' in kwargs:
+            tpu_config = kwargs['tpuConfig']
+        if tpu_ipv4_cidr_block is None and 'tpuIpv4CidrBlock' in kwargs:
+            tpu_ipv4_cidr_block = kwargs['tpuIpv4CidrBlock']
+        if vertical_pod_autoscaling is None and 'verticalPodAutoscaling' in kwargs:
+            vertical_pod_autoscaling = kwargs['verticalPodAutoscaling']
+        if workload_identity_config is None and 'workloadIdentityConfig' in kwargs:
+            workload_identity_config = kwargs['workloadIdentityConfig']
+
         if addons_config is not None:
-            pulumi.set(__self__, "addons_config", addons_config)
+            _setter("addons_config", addons_config)
         if allow_net_admin is not None:
-            pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+            _setter("allow_net_admin", allow_net_admin)
         if authenticator_groups_config is not None:
-            pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+            _setter("authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
-            pulumi.set(__self__, "binary_authorization", binary_authorization)
+            _setter("binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
-            pulumi.set(__self__, "cluster_autoscaling", cluster_autoscaling)
+            _setter("cluster_autoscaling", cluster_autoscaling)
         if cluster_ipv4_cidr is not None:
-            pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
+            _setter("cluster_ipv4_cidr", cluster_ipv4_cidr)
         if cluster_telemetry is not None:
-            pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
+            _setter("cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
-            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+            _setter("confidential_nodes", confidential_nodes)
         if cost_management_config is not None:
-            pulumi.set(__self__, "cost_management_config", cost_management_config)
+            _setter("cost_management_config", cost_management_config)
         if database_encryption is not None:
-            pulumi.set(__self__, "database_encryption", database_encryption)
+            _setter("database_encryption", database_encryption)
         if datapath_provider is not None:
-            pulumi.set(__self__, "datapath_provider", datapath_provider)
+            _setter("datapath_provider", datapath_provider)
         if default_max_pods_per_node is not None:
-            pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
+            _setter("default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
-            pulumi.set(__self__, "default_snat_status", default_snat_status)
+            _setter("default_snat_status", default_snat_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_config is not None:
-            pulumi.set(__self__, "dns_config", dns_config)
+            _setter("dns_config", dns_config)
         if enable_autopilot is not None:
-            pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+            _setter("enable_autopilot", enable_autopilot)
         if enable_binary_authorization is not None:
             warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
             pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
         if enable_binary_authorization is not None:
-            pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
+            _setter("enable_binary_authorization", enable_binary_authorization)
         if enable_fqdn_network_policy is not None:
-            pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
+            _setter("enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
-            pulumi.set(__self__, "enable_intranode_visibility", enable_intranode_visibility)
+            _setter("enable_intranode_visibility", enable_intranode_visibility)
         if enable_k8s_beta_apis is not None:
-            pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
+            _setter("enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha is not None:
-            pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+            _setter("enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_l4_ilb_subsetting is not None:
-            pulumi.set(__self__, "enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
+            _setter("enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
         if enable_legacy_abac is not None:
-            pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
+            _setter("enable_legacy_abac", enable_legacy_abac)
         if enable_multi_networking is not None:
-            pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
+            _setter("enable_multi_networking", enable_multi_networking)
         if enable_shielded_nodes is not None:
-            pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
+            _setter("enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
-            pulumi.set(__self__, "enable_tpu", enable_tpu)
+            _setter("enable_tpu", enable_tpu)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if gateway_api_config is not None:
-            pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+            _setter("gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
-            pulumi.set(__self__, "identity_service_config", identity_service_config)
+            _setter("identity_service_config", identity_service_config)
         if initial_node_count is not None:
-            pulumi.set(__self__, "initial_node_count", initial_node_count)
+            _setter("initial_node_count", initial_node_count)
         if ip_allocation_policy is not None:
-            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
+            _setter("ip_allocation_policy", ip_allocation_policy)
         if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+            _setter("label_fingerprint", label_fingerprint)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
         if logging_service is not None:
-            pulumi.set(__self__, "logging_service", logging_service)
+            _setter("logging_service", logging_service)
         if maintenance_policy is not None:
-            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+            _setter("maintenance_policy", maintenance_policy)
         if master_auth is not None:
-            pulumi.set(__self__, "master_auth", master_auth)
+            _setter("master_auth", master_auth)
         if master_authorized_networks_config is not None:
-            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+            _setter("master_authorized_networks_config", master_authorized_networks_config)
         if master_version is not None:
-            pulumi.set(__self__, "master_version", master_version)
+            _setter("master_version", master_version)
         if mesh_certificates is not None:
-            pulumi.set(__self__, "mesh_certificates", mesh_certificates)
+            _setter("mesh_certificates", mesh_certificates)
         if min_master_version is not None:
-            pulumi.set(__self__, "min_master_version", min_master_version)
+            _setter("min_master_version", min_master_version)
         if monitoring_config is not None:
-            pulumi.set(__self__, "monitoring_config", monitoring_config)
+            _setter("monitoring_config", monitoring_config)
         if monitoring_service is not None:
-            pulumi.set(__self__, "monitoring_service", monitoring_service)
+            _setter("monitoring_service", monitoring_service)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_policy is not None:
-            pulumi.set(__self__, "network_policy", network_policy)
+            _setter("network_policy", network_policy)
         if networking_mode is not None:
-            pulumi.set(__self__, "networking_mode", networking_mode)
+            _setter("networking_mode", networking_mode)
         if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
+            _setter("node_config", node_config)
         if node_locations is not None:
-            pulumi.set(__self__, "node_locations", node_locations)
+            _setter("node_locations", node_locations)
         if node_pool_auto_config is not None:
-            pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
+            _setter("node_pool_auto_config", node_pool_auto_config)
         if node_pool_defaults is not None:
-            pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
+            _setter("node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
-            pulumi.set(__self__, "node_pools", node_pools)
+            _setter("node_pools", node_pools)
         if node_version is not None:
-            pulumi.set(__self__, "node_version", node_version)
+            _setter("node_version", node_version)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if operation is not None:
-            pulumi.set(__self__, "operation", operation)
+            _setter("operation", operation)
         if pod_security_policy_config is not None:
-            pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
+            _setter("pod_security_policy_config", pod_security_policy_config)
         if private_cluster_config is not None:
-            pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+            _setter("private_cluster_config", private_cluster_config)
         if private_ipv6_google_access is not None:
-            pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+            _setter("private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protect_config is not None:
-            pulumi.set(__self__, "protect_config", protect_config)
+            _setter("protect_config", protect_config)
         if release_channel is not None:
-            pulumi.set(__self__, "release_channel", release_channel)
+            _setter("release_channel", release_channel)
         if remove_default_node_pool is not None:
-            pulumi.set(__self__, "remove_default_node_pool", remove_default_node_pool)
+            _setter("remove_default_node_pool", remove_default_node_pool)
         if resource_labels is not None:
-            pulumi.set(__self__, "resource_labels", resource_labels)
+            _setter("resource_labels", resource_labels)
         if resource_usage_export_config is not None:
-            pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+            _setter("resource_usage_export_config", resource_usage_export_config)
         if security_posture_config is not None:
-            pulumi.set(__self__, "security_posture_config", security_posture_config)
+            _setter("security_posture_config", security_posture_config)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if service_external_ips_config is not None:
-            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
+            _setter("service_external_ips_config", service_external_ips_config)
         if services_ipv4_cidr is not None:
-            pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
+            _setter("services_ipv4_cidr", services_ipv4_cidr)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
         if tpu_config is not None:
-            pulumi.set(__self__, "tpu_config", tpu_config)
+            _setter("tpu_config", tpu_config)
         if tpu_ipv4_cidr_block is not None:
-            pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
+            _setter("tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if vertical_pod_autoscaling is not None:
-            pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+            _setter("vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
-            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
+            _setter("workload_identity_config", workload_identity_config)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -3272,6 +3818,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3352,25 +3902,80 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            if addons_config is not None and not isinstance(addons_config, ClusterAddonsConfigArgs):
+                addons_config = addons_config or {}
+                def _setter(key, value):
+                    addons_config[key] = value
+                ClusterAddonsConfigArgs._configure(_setter, **addons_config)
             __props__.__dict__["addons_config"] = addons_config
             __props__.__dict__["allow_net_admin"] = allow_net_admin
+            if authenticator_groups_config is not None and not isinstance(authenticator_groups_config, ClusterAuthenticatorGroupsConfigArgs):
+                authenticator_groups_config = authenticator_groups_config or {}
+                def _setter(key, value):
+                    authenticator_groups_config[key] = value
+                ClusterAuthenticatorGroupsConfigArgs._configure(_setter, **authenticator_groups_config)
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+            if binary_authorization is not None and not isinstance(binary_authorization, ClusterBinaryAuthorizationArgs):
+                binary_authorization = binary_authorization or {}
+                def _setter(key, value):
+                    binary_authorization[key] = value
+                ClusterBinaryAuthorizationArgs._configure(_setter, **binary_authorization)
             __props__.__dict__["binary_authorization"] = binary_authorization
+            if cluster_autoscaling is not None and not isinstance(cluster_autoscaling, ClusterClusterAutoscalingArgs):
+                cluster_autoscaling = cluster_autoscaling or {}
+                def _setter(key, value):
+                    cluster_autoscaling[key] = value
+                ClusterClusterAutoscalingArgs._configure(_setter, **cluster_autoscaling)
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
+            if cluster_telemetry is not None and not isinstance(cluster_telemetry, ClusterClusterTelemetryArgs):
+                cluster_telemetry = cluster_telemetry or {}
+                def _setter(key, value):
+                    cluster_telemetry[key] = value
+                ClusterClusterTelemetryArgs._configure(_setter, **cluster_telemetry)
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
+            if confidential_nodes is not None and not isinstance(confidential_nodes, ClusterConfidentialNodesArgs):
+                confidential_nodes = confidential_nodes or {}
+                def _setter(key, value):
+                    confidential_nodes[key] = value
+                ClusterConfidentialNodesArgs._configure(_setter, **confidential_nodes)
             __props__.__dict__["confidential_nodes"] = confidential_nodes
+            if cost_management_config is not None and not isinstance(cost_management_config, ClusterCostManagementConfigArgs):
+                cost_management_config = cost_management_config or {}
+                def _setter(key, value):
+                    cost_management_config[key] = value
+                ClusterCostManagementConfigArgs._configure(_setter, **cost_management_config)
             __props__.__dict__["cost_management_config"] = cost_management_config
+            if database_encryption is not None and not isinstance(database_encryption, ClusterDatabaseEncryptionArgs):
+                database_encryption = database_encryption or {}
+                def _setter(key, value):
+                    database_encryption[key] = value
+                ClusterDatabaseEncryptionArgs._configure(_setter, **database_encryption)
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["datapath_provider"] = datapath_provider
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
+            if default_snat_status is not None and not isinstance(default_snat_status, ClusterDefaultSnatStatusArgs):
+                default_snat_status = default_snat_status or {}
+                def _setter(key, value):
+                    default_snat_status[key] = value
+                ClusterDefaultSnatStatusArgs._configure(_setter, **default_snat_status)
             __props__.__dict__["default_snat_status"] = default_snat_status
             __props__.__dict__["description"] = description
+            if dns_config is not None and not isinstance(dns_config, ClusterDnsConfigArgs):
+                dns_config = dns_config or {}
+                def _setter(key, value):
+                    dns_config[key] = value
+                ClusterDnsConfigArgs._configure(_setter, **dns_config)
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
             __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
             __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
+            if enable_k8s_beta_apis is not None and not isinstance(enable_k8s_beta_apis, ClusterEnableK8sBetaApisArgs):
+                enable_k8s_beta_apis = enable_k8s_beta_apis or {}
+                def _setter(key, value):
+                    enable_k8s_beta_apis[key] = value
+                ClusterEnableK8sBetaApisArgs._configure(_setter, **enable_k8s_beta_apis)
             __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
             __props__.__dict__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
@@ -3378,45 +3983,165 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_multi_networking"] = enable_multi_networking
             __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
             __props__.__dict__["enable_tpu"] = enable_tpu
+            if gateway_api_config is not None and not isinstance(gateway_api_config, ClusterGatewayApiConfigArgs):
+                gateway_api_config = gateway_api_config or {}
+                def _setter(key, value):
+                    gateway_api_config[key] = value
+                ClusterGatewayApiConfigArgs._configure(_setter, **gateway_api_config)
             __props__.__dict__["gateway_api_config"] = gateway_api_config
+            if identity_service_config is not None and not isinstance(identity_service_config, ClusterIdentityServiceConfigArgs):
+                identity_service_config = identity_service_config or {}
+                def _setter(key, value):
+                    identity_service_config[key] = value
+                ClusterIdentityServiceConfigArgs._configure(_setter, **identity_service_config)
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_node_count"] = initial_node_count
+            if ip_allocation_policy is not None and not isinstance(ip_allocation_policy, ClusterIpAllocationPolicyArgs):
+                ip_allocation_policy = ip_allocation_policy or {}
+                def _setter(key, value):
+                    ip_allocation_policy[key] = value
+                ClusterIpAllocationPolicyArgs._configure(_setter, **ip_allocation_policy)
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["location"] = location
+            if logging_config is not None and not isinstance(logging_config, ClusterLoggingConfigArgs):
+                logging_config = logging_config or {}
+                def _setter(key, value):
+                    logging_config[key] = value
+                ClusterLoggingConfigArgs._configure(_setter, **logging_config)
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
+            if maintenance_policy is not None and not isinstance(maintenance_policy, ClusterMaintenancePolicyArgs):
+                maintenance_policy = maintenance_policy or {}
+                def _setter(key, value):
+                    maintenance_policy[key] = value
+                ClusterMaintenancePolicyArgs._configure(_setter, **maintenance_policy)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            if master_auth is not None and not isinstance(master_auth, ClusterMasterAuthArgs):
+                master_auth = master_auth or {}
+                def _setter(key, value):
+                    master_auth[key] = value
+                ClusterMasterAuthArgs._configure(_setter, **master_auth)
             __props__.__dict__["master_auth"] = master_auth
+            if master_authorized_networks_config is not None and not isinstance(master_authorized_networks_config, ClusterMasterAuthorizedNetworksConfigArgs):
+                master_authorized_networks_config = master_authorized_networks_config or {}
+                def _setter(key, value):
+                    master_authorized_networks_config[key] = value
+                ClusterMasterAuthorizedNetworksConfigArgs._configure(_setter, **master_authorized_networks_config)
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
+            if mesh_certificates is not None and not isinstance(mesh_certificates, ClusterMeshCertificatesArgs):
+                mesh_certificates = mesh_certificates or {}
+                def _setter(key, value):
+                    mesh_certificates[key] = value
+                ClusterMeshCertificatesArgs._configure(_setter, **mesh_certificates)
             __props__.__dict__["mesh_certificates"] = mesh_certificates
             __props__.__dict__["min_master_version"] = min_master_version
+            if monitoring_config is not None and not isinstance(monitoring_config, ClusterMonitoringConfigArgs):
+                monitoring_config = monitoring_config or {}
+                def _setter(key, value):
+                    monitoring_config[key] = value
+                ClusterMonitoringConfigArgs._configure(_setter, **monitoring_config)
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            if network_policy is not None and not isinstance(network_policy, ClusterNetworkPolicyArgs):
+                network_policy = network_policy or {}
+                def _setter(key, value):
+                    network_policy[key] = value
+                ClusterNetworkPolicyArgs._configure(_setter, **network_policy)
             __props__.__dict__["network_policy"] = network_policy
             __props__.__dict__["networking_mode"] = networking_mode
+            if node_config is not None and not isinstance(node_config, ClusterNodeConfigArgs):
+                node_config = node_config or {}
+                def _setter(key, value):
+                    node_config[key] = value
+                ClusterNodeConfigArgs._configure(_setter, **node_config)
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_locations"] = node_locations
+            if node_pool_auto_config is not None and not isinstance(node_pool_auto_config, ClusterNodePoolAutoConfigArgs):
+                node_pool_auto_config = node_pool_auto_config or {}
+                def _setter(key, value):
+                    node_pool_auto_config[key] = value
+                ClusterNodePoolAutoConfigArgs._configure(_setter, **node_pool_auto_config)
             __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
+            if node_pool_defaults is not None and not isinstance(node_pool_defaults, ClusterNodePoolDefaultsArgs):
+                node_pool_defaults = node_pool_defaults or {}
+                def _setter(key, value):
+                    node_pool_defaults[key] = value
+                ClusterNodePoolDefaultsArgs._configure(_setter, **node_pool_defaults)
             __props__.__dict__["node_pool_defaults"] = node_pool_defaults
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["node_version"] = node_version
+            if notification_config is not None and not isinstance(notification_config, ClusterNotificationConfigArgs):
+                notification_config = notification_config or {}
+                def _setter(key, value):
+                    notification_config[key] = value
+                ClusterNotificationConfigArgs._configure(_setter, **notification_config)
             __props__.__dict__["notification_config"] = notification_config
+            if pod_security_policy_config is not None and not isinstance(pod_security_policy_config, ClusterPodSecurityPolicyConfigArgs):
+                pod_security_policy_config = pod_security_policy_config or {}
+                def _setter(key, value):
+                    pod_security_policy_config[key] = value
+                ClusterPodSecurityPolicyConfigArgs._configure(_setter, **pod_security_policy_config)
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
+            if private_cluster_config is not None and not isinstance(private_cluster_config, ClusterPrivateClusterConfigArgs):
+                private_cluster_config = private_cluster_config or {}
+                def _setter(key, value):
+                    private_cluster_config[key] = value
+                ClusterPrivateClusterConfigArgs._configure(_setter, **private_cluster_config)
             __props__.__dict__["private_cluster_config"] = private_cluster_config
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             __props__.__dict__["project"] = project
+            if protect_config is not None and not isinstance(protect_config, ClusterProtectConfigArgs):
+                protect_config = protect_config or {}
+                def _setter(key, value):
+                    protect_config[key] = value
+                ClusterProtectConfigArgs._configure(_setter, **protect_config)
             __props__.__dict__["protect_config"] = protect_config
+            if release_channel is not None and not isinstance(release_channel, ClusterReleaseChannelArgs):
+                release_channel = release_channel or {}
+                def _setter(key, value):
+                    release_channel[key] = value
+                ClusterReleaseChannelArgs._configure(_setter, **release_channel)
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
+            if resource_usage_export_config is not None and not isinstance(resource_usage_export_config, ClusterResourceUsageExportConfigArgs):
+                resource_usage_export_config = resource_usage_export_config or {}
+                def _setter(key, value):
+                    resource_usage_export_config[key] = value
+                ClusterResourceUsageExportConfigArgs._configure(_setter, **resource_usage_export_config)
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            if security_posture_config is not None and not isinstance(security_posture_config, ClusterSecurityPostureConfigArgs):
+                security_posture_config = security_posture_config or {}
+                def _setter(key, value):
+                    security_posture_config[key] = value
+                ClusterSecurityPostureConfigArgs._configure(_setter, **security_posture_config)
             __props__.__dict__["security_posture_config"] = security_posture_config
+            if service_external_ips_config is not None and not isinstance(service_external_ips_config, ClusterServiceExternalIpsConfigArgs):
+                service_external_ips_config = service_external_ips_config or {}
+                def _setter(key, value):
+                    service_external_ips_config[key] = value
+                ClusterServiceExternalIpsConfigArgs._configure(_setter, **service_external_ips_config)
             __props__.__dict__["service_external_ips_config"] = service_external_ips_config
             __props__.__dict__["subnetwork"] = subnetwork
+            if tpu_config is not None and not isinstance(tpu_config, ClusterTpuConfigArgs):
+                tpu_config = tpu_config or {}
+                def _setter(key, value):
+                    tpu_config[key] = value
+                ClusterTpuConfigArgs._configure(_setter, **tpu_config)
             __props__.__dict__["tpu_config"] = tpu_config
+            if vertical_pod_autoscaling is not None and not isinstance(vertical_pod_autoscaling, ClusterVerticalPodAutoscalingArgs):
+                vertical_pod_autoscaling = vertical_pod_autoscaling or {}
+                def _setter(key, value):
+                    vertical_pod_autoscaling[key] = value
+                ClusterVerticalPodAutoscalingArgs._configure(_setter, **vertical_pod_autoscaling)
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
+            if workload_identity_config is not None and not isinstance(workload_identity_config, ClusterWorkloadIdentityConfigArgs):
+                workload_identity_config = workload_identity_config or {}
+                def _setter(key, value):
+                    workload_identity_config[key] = value
+                ClusterWorkloadIdentityConfigArgs._configure(_setter, **workload_identity_config)
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["label_fingerprint"] = None

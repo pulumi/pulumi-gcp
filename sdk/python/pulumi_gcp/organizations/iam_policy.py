@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IAMPolicyArgs', 'IAMPolicy']
@@ -28,8 +28,29 @@ class IAMPolicyArgs:
                Deleting this removes all policies from the organization, locking out users without
                organization-level access.
         """
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "policy_data", policy_data)
+        IAMPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org_id=org_id,
+            policy_data=policy_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
+        _setter("org_id", org_id)
+        _setter("policy_data", policy_data)
 
     @property
     @pulumi.getter(name="orgId")
@@ -82,12 +103,31 @@ class _IAMPolicyState:
                Deleting this removes all policies from the organization, locking out users without
                organization-level access.
         """
+        _IAMPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            org_id=org_id,
+            policy_data=policy_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
 
     @property
     @pulumi.getter
@@ -527,6 +567,10 @@ class IAMPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IAMPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

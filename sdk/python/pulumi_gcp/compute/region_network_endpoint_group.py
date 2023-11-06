@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -67,29 +67,76 @@ class RegionNetworkEndpointGroupArgs:
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
-        pulumi.set(__self__, "region", region)
+        RegionNetworkEndpointGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            app_engine=app_engine,
+            cloud_function=cloud_function,
+            cloud_run=cloud_run,
+            description=description,
+            name=name,
+            network=network,
+            network_endpoint_type=network_endpoint_type,
+            project=project,
+            psc_target_service=psc_target_service,
+            serverless_deployment=serverless_deployment,
+            subnetwork=subnetwork,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: Optional[pulumi.Input[str]] = None,
+             app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']] = None,
+             cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
+             cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_endpoint_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_target_service: Optional[pulumi.Input[str]] = None,
+             serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if app_engine is None and 'appEngine' in kwargs:
+            app_engine = kwargs['appEngine']
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_run is None and 'cloudRun' in kwargs:
+            cloud_run = kwargs['cloudRun']
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+        if psc_target_service is None and 'pscTargetService' in kwargs:
+            psc_target_service = kwargs['pscTargetService']
+        if serverless_deployment is None and 'serverlessDeployment' in kwargs:
+            serverless_deployment = kwargs['serverlessDeployment']
+
+        _setter("region", region)
         if app_engine is not None:
-            pulumi.set(__self__, "app_engine", app_engine)
+            _setter("app_engine", app_engine)
         if cloud_function is not None:
-            pulumi.set(__self__, "cloud_function", cloud_function)
+            _setter("cloud_function", cloud_function)
         if cloud_run is not None:
-            pulumi.set(__self__, "cloud_run", cloud_run)
+            _setter("cloud_run", cloud_run)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_endpoint_type is not None:
-            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+            _setter("network_endpoint_type", network_endpoint_type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_target_service is not None:
-            pulumi.set(__self__, "psc_target_service", psc_target_service)
+            _setter("psc_target_service", psc_target_service)
         if serverless_deployment is not None:
-            pulumi.set(__self__, "serverless_deployment", serverless_deployment)
+            _setter("serverless_deployment", serverless_deployment)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -316,32 +363,81 @@ class _RegionNetworkEndpointGroupState:
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
+        _RegionNetworkEndpointGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_engine=app_engine,
+            cloud_function=cloud_function,
+            cloud_run=cloud_run,
+            description=description,
+            name=name,
+            network=network,
+            network_endpoint_type=network_endpoint_type,
+            project=project,
+            psc_target_service=psc_target_service,
+            region=region,
+            self_link=self_link,
+            serverless_deployment=serverless_deployment,
+            subnetwork=subnetwork,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_engine: Optional[pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs']] = None,
+             cloud_function: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
+             cloud_run: Optional[pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_endpoint_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             psc_target_service: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None,
+             subnetwork: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_engine is None and 'appEngine' in kwargs:
+            app_engine = kwargs['appEngine']
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_run is None and 'cloudRun' in kwargs:
+            cloud_run = kwargs['cloudRun']
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+        if psc_target_service is None and 'pscTargetService' in kwargs:
+            psc_target_service = kwargs['pscTargetService']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if serverless_deployment is None and 'serverlessDeployment' in kwargs:
+            serverless_deployment = kwargs['serverlessDeployment']
+
         if app_engine is not None:
-            pulumi.set(__self__, "app_engine", app_engine)
+            _setter("app_engine", app_engine)
         if cloud_function is not None:
-            pulumi.set(__self__, "cloud_function", cloud_function)
+            _setter("cloud_function", cloud_function)
         if cloud_run is not None:
-            pulumi.set(__self__, "cloud_run", cloud_run)
+            _setter("cloud_run", cloud_run)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_endpoint_type is not None:
-            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+            _setter("network_endpoint_type", network_endpoint_type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if psc_target_service is not None:
-            pulumi.set(__self__, "psc_target_service", psc_target_service)
+            _setter("psc_target_service", psc_target_service)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if serverless_deployment is not None:
-            pulumi.set(__self__, "serverless_deployment", serverless_deployment)
+            _setter("serverless_deployment", serverless_deployment)
         if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
+            _setter("subnetwork", subnetwork)
 
     @property
     @pulumi.getter(name="appEngine")
@@ -903,6 +999,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionNetworkEndpointGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -929,8 +1029,23 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionNetworkEndpointGroupArgs.__new__(RegionNetworkEndpointGroupArgs)
 
+            if app_engine is not None and not isinstance(app_engine, RegionNetworkEndpointGroupAppEngineArgs):
+                app_engine = app_engine or {}
+                def _setter(key, value):
+                    app_engine[key] = value
+                RegionNetworkEndpointGroupAppEngineArgs._configure(_setter, **app_engine)
             __props__.__dict__["app_engine"] = app_engine
+            if cloud_function is not None and not isinstance(cloud_function, RegionNetworkEndpointGroupCloudFunctionArgs):
+                cloud_function = cloud_function or {}
+                def _setter(key, value):
+                    cloud_function[key] = value
+                RegionNetworkEndpointGroupCloudFunctionArgs._configure(_setter, **cloud_function)
             __props__.__dict__["cloud_function"] = cloud_function
+            if cloud_run is not None and not isinstance(cloud_run, RegionNetworkEndpointGroupCloudRunArgs):
+                cloud_run = cloud_run or {}
+                def _setter(key, value):
+                    cloud_run[key] = value
+                RegionNetworkEndpointGroupCloudRunArgs._configure(_setter, **cloud_run)
             __props__.__dict__["cloud_run"] = cloud_run
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -941,6 +1056,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            if serverless_deployment is not None and not isinstance(serverless_deployment, RegionNetworkEndpointGroupServerlessDeploymentArgs):
+                serverless_deployment = serverless_deployment or {}
+                def _setter(key, value):
+                    serverless_deployment[key] = value
+                RegionNetworkEndpointGroupServerlessDeploymentArgs._configure(_setter, **serverless_deployment)
             __props__.__dict__["serverless_deployment"] = serverless_deployment
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["self_link"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -87,33 +87,86 @@ class EdgeCacheOriginArgs:
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
-        pulumi.set(__self__, "origin_address", origin_address)
+        EdgeCacheOriginArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            origin_address=origin_address,
+            aws_v4_authentication=aws_v4_authentication,
+            description=description,
+            failover_origin=failover_origin,
+            labels=labels,
+            max_attempts=max_attempts,
+            name=name,
+            origin_override_action=origin_override_action,
+            origin_redirect=origin_redirect,
+            port=port,
+            project=project,
+            protocol=protocol,
+            retry_conditions=retry_conditions,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             origin_address: Optional[pulumi.Input[str]] = None,
+             aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             failover_origin: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             max_attempts: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
+             origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if origin_address is None and 'originAddress' in kwargs:
+            origin_address = kwargs['originAddress']
+        if origin_address is None:
+            raise TypeError("Missing 'origin_address' argument")
+        if aws_v4_authentication is None and 'awsV4Authentication' in kwargs:
+            aws_v4_authentication = kwargs['awsV4Authentication']
+        if failover_origin is None and 'failoverOrigin' in kwargs:
+            failover_origin = kwargs['failoverOrigin']
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if origin_override_action is None and 'originOverrideAction' in kwargs:
+            origin_override_action = kwargs['originOverrideAction']
+        if origin_redirect is None and 'originRedirect' in kwargs:
+            origin_redirect = kwargs['originRedirect']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
+        _setter("origin_address", origin_address)
         if aws_v4_authentication is not None:
-            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
+            _setter("aws_v4_authentication", aws_v4_authentication)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if failover_origin is not None:
-            pulumi.set(__self__, "failover_origin", failover_origin)
+            _setter("failover_origin", failover_origin)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_attempts is not None:
-            pulumi.set(__self__, "max_attempts", max_attempts)
+            _setter("max_attempts", max_attempts)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if origin_override_action is not None:
-            pulumi.set(__self__, "origin_override_action", origin_override_action)
+            _setter("origin_override_action", origin_override_action)
         if origin_redirect is not None:
-            pulumi.set(__self__, "origin_redirect", origin_redirect)
+            _setter("origin_redirect", origin_redirect)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if retry_conditions is not None:
-            pulumi.set(__self__, "retry_conditions", retry_conditions)
+            _setter("retry_conditions", retry_conditions)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="originAddress")
@@ -398,34 +451,85 @@ class _EdgeCacheOriginState:
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
+        _EdgeCacheOriginState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_v4_authentication=aws_v4_authentication,
+            description=description,
+            failover_origin=failover_origin,
+            labels=labels,
+            max_attempts=max_attempts,
+            name=name,
+            origin_address=origin_address,
+            origin_override_action=origin_override_action,
+            origin_redirect=origin_redirect,
+            port=port,
+            project=project,
+            protocol=protocol,
+            retry_conditions=retry_conditions,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             failover_origin: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             max_attempts: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             origin_address: Optional[pulumi.Input[str]] = None,
+             origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
+             origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_v4_authentication is None and 'awsV4Authentication' in kwargs:
+            aws_v4_authentication = kwargs['awsV4Authentication']
+        if failover_origin is None and 'failoverOrigin' in kwargs:
+            failover_origin = kwargs['failoverOrigin']
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if origin_address is None and 'originAddress' in kwargs:
+            origin_address = kwargs['originAddress']
+        if origin_override_action is None and 'originOverrideAction' in kwargs:
+            origin_override_action = kwargs['originOverrideAction']
+        if origin_redirect is None and 'originRedirect' in kwargs:
+            origin_redirect = kwargs['originRedirect']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if aws_v4_authentication is not None:
-            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
+            _setter("aws_v4_authentication", aws_v4_authentication)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if failover_origin is not None:
-            pulumi.set(__self__, "failover_origin", failover_origin)
+            _setter("failover_origin", failover_origin)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_attempts is not None:
-            pulumi.set(__self__, "max_attempts", max_attempts)
+            _setter("max_attempts", max_attempts)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if origin_address is not None:
-            pulumi.set(__self__, "origin_address", origin_address)
+            _setter("origin_address", origin_address)
         if origin_override_action is not None:
-            pulumi.set(__self__, "origin_override_action", origin_override_action)
+            _setter("origin_override_action", origin_override_action)
         if origin_redirect is not None:
-            pulumi.set(__self__, "origin_redirect", origin_redirect)
+            _setter("origin_redirect", origin_redirect)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if retry_conditions is not None:
-            pulumi.set(__self__, "retry_conditions", retry_conditions)
+            _setter("retry_conditions", retry_conditions)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="awsV4Authentication")
@@ -959,6 +1063,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EdgeCacheOriginArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -987,6 +1095,11 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EdgeCacheOriginArgs.__new__(EdgeCacheOriginArgs)
 
+            if aws_v4_authentication is not None and not isinstance(aws_v4_authentication, EdgeCacheOriginAwsV4AuthenticationArgs):
+                aws_v4_authentication = aws_v4_authentication or {}
+                def _setter(key, value):
+                    aws_v4_authentication[key] = value
+                EdgeCacheOriginAwsV4AuthenticationArgs._configure(_setter, **aws_v4_authentication)
             __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_origin"] = failover_origin
@@ -996,12 +1109,27 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             if origin_address is None and not opts.urn:
                 raise TypeError("Missing required property 'origin_address'")
             __props__.__dict__["origin_address"] = origin_address
+            if origin_override_action is not None and not isinstance(origin_override_action, EdgeCacheOriginOriginOverrideActionArgs):
+                origin_override_action = origin_override_action or {}
+                def _setter(key, value):
+                    origin_override_action[key] = value
+                EdgeCacheOriginOriginOverrideActionArgs._configure(_setter, **origin_override_action)
             __props__.__dict__["origin_override_action"] = origin_override_action
+            if origin_redirect is not None and not isinstance(origin_redirect, EdgeCacheOriginOriginRedirectArgs):
+                origin_redirect = origin_redirect or {}
+                def _setter(key, value):
+                    origin_redirect[key] = value
+                EdgeCacheOriginOriginRedirectArgs._configure(_setter, **origin_redirect)
             __props__.__dict__["origin_redirect"] = origin_redirect
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["retry_conditions"] = retry_conditions
+            if timeout is not None and not isinstance(timeout, EdgeCacheOriginTimeoutArgs):
+                timeout = timeout or {}
+                def _setter(key, value):
+                    timeout[key] = value
+                EdgeCacheOriginTimeoutArgs._configure(_setter, **timeout)
             __props__.__dict__["timeout"] = timeout
         super(EdgeCacheOrigin, __self__).__init__(
             'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -61,33 +61,90 @@ class ClusterArgs:
         :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "location", location)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            location=location,
+            automated_backup_policy=automated_backup_policy,
+            continuous_backup_config=continuous_backup_config,
+            display_name=display_name,
+            encryption_config=encryption_config,
+            initial_user=initial_user,
+            labels=labels,
+            network=network,
+            network_config=network_config,
+            project=project,
+            restore_backup_source=restore_backup_source,
+            restore_continuous_backup_source=restore_continuous_backup_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
+             continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
+             initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+             restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
+        _setter("cluster_id", cluster_id)
+        _setter("location", location)
         if automated_backup_policy is not None:
-            pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
+            _setter("automated_backup_policy", automated_backup_policy)
         if continuous_backup_config is not None:
-            pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
+            _setter("continuous_backup_config", continuous_backup_config)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if initial_user is not None:
-            pulumi.set(__self__, "initial_user", initial_user)
+            _setter("initial_user", initial_user)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if network is not None:
             warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
             pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_backup_source is not None:
-            pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+            _setter("restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
-            pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
+            _setter("restore_continuous_backup_source", restore_continuous_backup_source)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -332,49 +389,126 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            automated_backup_policy=automated_backup_policy,
+            backup_sources=backup_sources,
+            cluster_id=cluster_id,
+            continuous_backup_config=continuous_backup_config,
+            continuous_backup_infos=continuous_backup_infos,
+            database_version=database_version,
+            display_name=display_name,
+            encryption_config=encryption_config,
+            encryption_infos=encryption_infos,
+            initial_user=initial_user,
+            labels=labels,
+            location=location,
+            migration_sources=migration_sources,
+            name=name,
+            network=network,
+            network_config=network_config,
+            project=project,
+            restore_backup_source=restore_backup_source,
+            restore_continuous_backup_source=restore_continuous_backup_source,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
+             backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
+             continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
+             database_version: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
+             encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]] = None,
+             initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+             restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if backup_sources is None and 'backupSources' in kwargs:
+            backup_sources = kwargs['backupSources']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if continuous_backup_infos is None and 'continuousBackupInfos' in kwargs:
+            continuous_backup_infos = kwargs['continuousBackupInfos']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if migration_sources is None and 'migrationSources' in kwargs:
+            migration_sources = kwargs['migrationSources']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
         if automated_backup_policy is not None:
-            pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
+            _setter("automated_backup_policy", automated_backup_policy)
         if backup_sources is not None:
-            pulumi.set(__self__, "backup_sources", backup_sources)
+            _setter("backup_sources", backup_sources)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if continuous_backup_config is not None:
-            pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
+            _setter("continuous_backup_config", continuous_backup_config)
         if continuous_backup_infos is not None:
-            pulumi.set(__self__, "continuous_backup_infos", continuous_backup_infos)
+            _setter("continuous_backup_infos", continuous_backup_infos)
         if database_version is not None:
-            pulumi.set(__self__, "database_version", database_version)
+            _setter("database_version", database_version)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if encryption_infos is not None:
-            pulumi.set(__self__, "encryption_infos", encryption_infos)
+            _setter("encryption_infos", encryption_infos)
         if initial_user is not None:
-            pulumi.set(__self__, "initial_user", initial_user)
+            _setter("initial_user", initial_user)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if migration_sources is not None:
-            pulumi.set(__self__, "migration_sources", migration_sources)
+            _setter("migration_sources", migration_sources)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
             warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
             pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_config is not None:
-            pulumi.set(__self__, "network_config", network_config)
+            _setter("network_config", network_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if restore_backup_source is not None:
-            pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+            _setter("restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
-            pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
+            _setter("restore_continuous_backup_source", restore_continuous_backup_source)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
@@ -998,6 +1132,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1025,22 +1163,57 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            if automated_backup_policy is not None and not isinstance(automated_backup_policy, ClusterAutomatedBackupPolicyArgs):
+                automated_backup_policy = automated_backup_policy or {}
+                def _setter(key, value):
+                    automated_backup_policy[key] = value
+                ClusterAutomatedBackupPolicyArgs._configure(_setter, **automated_backup_policy)
             __props__.__dict__["automated_backup_policy"] = automated_backup_policy
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            if continuous_backup_config is not None and not isinstance(continuous_backup_config, ClusterContinuousBackupConfigArgs):
+                continuous_backup_config = continuous_backup_config or {}
+                def _setter(key, value):
+                    continuous_backup_config[key] = value
+                ClusterContinuousBackupConfigArgs._configure(_setter, **continuous_backup_config)
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
             __props__.__dict__["display_name"] = display_name
+            if encryption_config is not None and not isinstance(encryption_config, ClusterEncryptionConfigArgs):
+                encryption_config = encryption_config or {}
+                def _setter(key, value):
+                    encryption_config[key] = value
+                ClusterEncryptionConfigArgs._configure(_setter, **encryption_config)
             __props__.__dict__["encryption_config"] = encryption_config
+            if initial_user is not None and not isinstance(initial_user, ClusterInitialUserArgs):
+                initial_user = initial_user or {}
+                def _setter(key, value):
+                    initial_user[key] = value
+                ClusterInitialUserArgs._configure(_setter, **initial_user)
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network"] = network
+            if network_config is not None and not isinstance(network_config, ClusterNetworkConfigArgs):
+                network_config = network_config or {}
+                def _setter(key, value):
+                    network_config[key] = value
+                ClusterNetworkConfigArgs._configure(_setter, **network_config)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
+            if restore_backup_source is not None and not isinstance(restore_backup_source, ClusterRestoreBackupSourceArgs):
+                restore_backup_source = restore_backup_source or {}
+                def _setter(key, value):
+                    restore_backup_source[key] = value
+                ClusterRestoreBackupSourceArgs._configure(_setter, **restore_backup_source)
             __props__.__dict__["restore_backup_source"] = restore_backup_source
+            if restore_continuous_backup_source is not None and not isinstance(restore_continuous_backup_source, ClusterRestoreContinuousBackupSourceArgs):
+                restore_continuous_backup_source = restore_continuous_backup_source or {}
+                def _setter(key, value):
+                    restore_continuous_backup_source[key] = value
+                ClusterRestoreContinuousBackupSourceArgs._configure(_setter, **restore_continuous_backup_source)
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None

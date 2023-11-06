@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,43 @@ class ConsumersIamBindingArgs:
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        pulumi.set(__self__, "consumer_project", consumer_project)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "service_name", service_name)
+        ConsumersIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_project=consumer_project,
+            members=members,
+            role=role,
+            service_name=service_name,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_project: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if consumer_project is None:
+            raise TypeError("Missing 'consumer_project' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
+        _setter("consumer_project", consumer_project)
+        _setter("members", members)
+        _setter("role", role)
+        _setter("service_name", service_name)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter(name="consumerProject")
@@ -101,18 +132,43 @@ class _ConsumersIamBindingState:
                `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _ConsumersIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            consumer_project=consumer_project,
+            etag=etag,
+            members=members,
+            role=role,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['ConsumersIamBindingConditionArgs']] = None,
+             consumer_project: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if consumer_project is not None:
-            pulumi.set(__self__, "consumer_project", consumer_project)
+            _setter("consumer_project", consumer_project)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -288,6 +344,10 @@ class ConsumersIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConsumersIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -307,6 +367,11 @@ class ConsumersIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConsumersIamBindingArgs.__new__(ConsumersIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, ConsumersIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                ConsumersIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if consumer_project is None and not opts.urn:
                 raise TypeError("Missing required property 'consumer_project'")

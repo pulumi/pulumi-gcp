@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -79,34 +79,93 @@ class InstanceArgs:
                total users, distributed across Viewer, Standard, and Developer.
                Structure is documented below.
         """
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_settings=admin_settings,
+            consumer_network=consumer_network,
+            deny_maintenance_period=deny_maintenance_period,
+            encryption_config=encryption_config,
+            maintenance_window=maintenance_window,
+            name=name,
+            oauth_config=oauth_config,
+            platform_edition=platform_edition,
+            private_ip_enabled=private_ip_enabled,
+            project=project,
+            public_ip_enabled=public_ip_enabled,
+            region=region,
+            reserved_range=reserved_range,
+            user_metadata=user_metadata,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
+             consumer_network: Optional[pulumi.Input[str]] = None,
+             deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
+             encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
+             maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oauth_config: Optional[pulumi.Input['InstanceOauthConfigArgs']] = None,
+             platform_edition: Optional[pulumi.Input[str]] = None,
+             private_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             reserved_range: Optional[pulumi.Input[str]] = None,
+             user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
-            pulumi.set(__self__, "admin_settings", admin_settings)
+            _setter("admin_settings", admin_settings)
         if consumer_network is not None:
-            pulumi.set(__self__, "consumer_network", consumer_network)
+            _setter("consumer_network", consumer_network)
         if deny_maintenance_period is not None:
-            pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
+            _setter("deny_maintenance_period", deny_maintenance_period)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
+            _setter("maintenance_window", maintenance_window)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oauth_config is not None:
-            pulumi.set(__self__, "oauth_config", oauth_config)
+            _setter("oauth_config", oauth_config)
         if platform_edition is not None:
-            pulumi.set(__self__, "platform_edition", platform_edition)
+            _setter("platform_edition", platform_edition)
         if private_ip_enabled is not None:
-            pulumi.set(__self__, "private_ip_enabled", private_ip_enabled)
+            _setter("private_ip_enabled", private_ip_enabled)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_ip_enabled is not None:
-            pulumi.set(__self__, "public_ip_enabled", public_ip_enabled)
+            _setter("public_ip_enabled", public_ip_enabled)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if reserved_range is not None:
-            pulumi.set(__self__, "reserved_range", reserved_range)
+            _setter("reserved_range", reserved_range)
         if user_metadata is not None:
-            pulumi.set(__self__, "user_metadata", user_metadata)
+            _setter("user_metadata", user_metadata)
 
     @property
     @pulumi.getter(name="adminSettings")
@@ -391,48 +450,135 @@ class _InstanceState:
                total users, distributed across Viewer, Standard, and Developer.
                Structure is documented below.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_settings=admin_settings,
+            consumer_network=consumer_network,
+            create_time=create_time,
+            deny_maintenance_period=deny_maintenance_period,
+            egress_public_ip=egress_public_ip,
+            encryption_config=encryption_config,
+            ingress_private_ip=ingress_private_ip,
+            ingress_public_ip=ingress_public_ip,
+            looker_uri=looker_uri,
+            looker_version=looker_version,
+            maintenance_window=maintenance_window,
+            name=name,
+            oauth_config=oauth_config,
+            platform_edition=platform_edition,
+            private_ip_enabled=private_ip_enabled,
+            project=project,
+            public_ip_enabled=public_ip_enabled,
+            region=region,
+            reserved_range=reserved_range,
+            update_time=update_time,
+            user_metadata=user_metadata,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
+             consumer_network: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
+             egress_public_ip: Optional[pulumi.Input[str]] = None,
+             encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
+             ingress_private_ip: Optional[pulumi.Input[str]] = None,
+             ingress_public_ip: Optional[pulumi.Input[str]] = None,
+             looker_uri: Optional[pulumi.Input[str]] = None,
+             looker_version: Optional[pulumi.Input[str]] = None,
+             maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oauth_config: Optional[pulumi.Input['InstanceOauthConfigArgs']] = None,
+             platform_edition: Optional[pulumi.Input[str]] = None,
+             private_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             public_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             reserved_range: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if egress_public_ip is None and 'egressPublicIp' in kwargs:
+            egress_public_ip = kwargs['egressPublicIp']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if ingress_private_ip is None and 'ingressPrivateIp' in kwargs:
+            ingress_private_ip = kwargs['ingressPrivateIp']
+        if ingress_public_ip is None and 'ingressPublicIp' in kwargs:
+            ingress_public_ip = kwargs['ingressPublicIp']
+        if looker_uri is None and 'lookerUri' in kwargs:
+            looker_uri = kwargs['lookerUri']
+        if looker_version is None and 'lookerVersion' in kwargs:
+            looker_version = kwargs['lookerVersion']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
-            pulumi.set(__self__, "admin_settings", admin_settings)
+            _setter("admin_settings", admin_settings)
         if consumer_network is not None:
-            pulumi.set(__self__, "consumer_network", consumer_network)
+            _setter("consumer_network", consumer_network)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if deny_maintenance_period is not None:
-            pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
+            _setter("deny_maintenance_period", deny_maintenance_period)
         if egress_public_ip is not None:
-            pulumi.set(__self__, "egress_public_ip", egress_public_ip)
+            _setter("egress_public_ip", egress_public_ip)
         if encryption_config is not None:
-            pulumi.set(__self__, "encryption_config", encryption_config)
+            _setter("encryption_config", encryption_config)
         if ingress_private_ip is not None:
-            pulumi.set(__self__, "ingress_private_ip", ingress_private_ip)
+            _setter("ingress_private_ip", ingress_private_ip)
         if ingress_public_ip is not None:
-            pulumi.set(__self__, "ingress_public_ip", ingress_public_ip)
+            _setter("ingress_public_ip", ingress_public_ip)
         if looker_uri is not None:
-            pulumi.set(__self__, "looker_uri", looker_uri)
+            _setter("looker_uri", looker_uri)
         if looker_version is not None:
-            pulumi.set(__self__, "looker_version", looker_version)
+            _setter("looker_version", looker_version)
         if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
+            _setter("maintenance_window", maintenance_window)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oauth_config is not None:
-            pulumi.set(__self__, "oauth_config", oauth_config)
+            _setter("oauth_config", oauth_config)
         if platform_edition is not None:
-            pulumi.set(__self__, "platform_edition", platform_edition)
+            _setter("platform_edition", platform_edition)
         if private_ip_enabled is not None:
-            pulumi.set(__self__, "private_ip_enabled", private_ip_enabled)
+            _setter("private_ip_enabled", private_ip_enabled)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if public_ip_enabled is not None:
-            pulumi.set(__self__, "public_ip_enabled", public_ip_enabled)
+            _setter("public_ip_enabled", public_ip_enabled)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if reserved_range is not None:
-            pulumi.set(__self__, "reserved_range", reserved_range)
+            _setter("reserved_range", reserved_range)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if user_metadata is not None:
-            pulumi.set(__self__, "user_metadata", user_metadata)
+            _setter("user_metadata", user_metadata)
 
     @property
     @pulumi.getter(name="adminSettings")
@@ -1132,6 +1278,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1160,12 +1310,37 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            if admin_settings is not None and not isinstance(admin_settings, InstanceAdminSettingsArgs):
+                admin_settings = admin_settings or {}
+                def _setter(key, value):
+                    admin_settings[key] = value
+                InstanceAdminSettingsArgs._configure(_setter, **admin_settings)
             __props__.__dict__["admin_settings"] = admin_settings
             __props__.__dict__["consumer_network"] = consumer_network
+            if deny_maintenance_period is not None and not isinstance(deny_maintenance_period, InstanceDenyMaintenancePeriodArgs):
+                deny_maintenance_period = deny_maintenance_period or {}
+                def _setter(key, value):
+                    deny_maintenance_period[key] = value
+                InstanceDenyMaintenancePeriodArgs._configure(_setter, **deny_maintenance_period)
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
+            if encryption_config is not None and not isinstance(encryption_config, InstanceEncryptionConfigArgs):
+                encryption_config = encryption_config or {}
+                def _setter(key, value):
+                    encryption_config[key] = value
+                InstanceEncryptionConfigArgs._configure(_setter, **encryption_config)
             __props__.__dict__["encryption_config"] = encryption_config
+            if maintenance_window is not None and not isinstance(maintenance_window, InstanceMaintenanceWindowArgs):
+                maintenance_window = maintenance_window or {}
+                def _setter(key, value):
+                    maintenance_window[key] = value
+                InstanceMaintenanceWindowArgs._configure(_setter, **maintenance_window)
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
+            if oauth_config is not None and not isinstance(oauth_config, InstanceOauthConfigArgs):
+                oauth_config = oauth_config or {}
+                def _setter(key, value):
+                    oauth_config[key] = value
+                InstanceOauthConfigArgs._configure(_setter, **oauth_config)
             __props__.__dict__["oauth_config"] = oauth_config
             __props__.__dict__["platform_edition"] = platform_edition
             __props__.__dict__["private_ip_enabled"] = private_ip_enabled
@@ -1173,6 +1348,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["public_ip_enabled"] = public_ip_enabled
             __props__.__dict__["region"] = region
             __props__.__dict__["reserved_range"] = reserved_range
+            if user_metadata is not None and not isinstance(user_metadata, InstanceUserMetadataArgs):
+                user_metadata = user_metadata or {}
+                def _setter(key, value):
+                    user_metadata[key] = value
+                InstanceUserMetadataArgs._configure(_setter, **user_metadata)
             __props__.__dict__["user_metadata"] = user_metadata
             __props__.__dict__["create_time"] = None
             __props__.__dict__["egress_public_ip"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,37 @@ class AiMetadataStoreArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Metadata Store. eg us-central1
         """
+        AiMetadataStoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            encryption_spec=encryption_spec,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -130,22 +151,53 @@ class _AiMetadataStoreState:
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
+        _AiMetadataStoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            encryption_spec=encryption_spec,
+            name=name,
+            project=project,
+            region=region,
+            states=states,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_spec is not None:
-            pulumi.set(__self__, "encryption_spec", encryption_spec)
+            _setter("encryption_spec", encryption_spec)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -350,6 +402,10 @@ class AiMetadataStore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiMetadataStoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -370,6 +426,11 @@ class AiMetadataStore(pulumi.CustomResource):
             __props__ = AiMetadataStoreArgs.__new__(AiMetadataStoreArgs)
 
             __props__.__dict__["description"] = description
+            if encryption_spec is not None and not isinstance(encryption_spec, AiMetadataStoreEncryptionSpecArgs):
+                encryption_spec = encryption_spec or {}
+                def _setter(key, value):
+                    encryption_spec[key] = value
+                AiMetadataStoreEncryptionSpecArgs._configure(_setter, **encryption_spec)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AiFeatureStoreIamPolicyArgs', 'AiFeatureStoreIamPolicy']
@@ -41,12 +41,35 @@ class AiFeatureStoreIamPolicyArgs:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
-        pulumi.set(__self__, "featurestore", featurestore)
-        pulumi.set(__self__, "policy_data", policy_data)
+        AiFeatureStoreIamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            featurestore=featurestore,
+            policy_data=policy_data,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             featurestore: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if featurestore is None:
+            raise TypeError("Missing 'featurestore' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
+        _setter("featurestore", featurestore)
+        _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -145,16 +168,37 @@ class _AiFeatureStoreIamPolicyState:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
+        _AiFeatureStoreIamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            featurestore=featurestore,
+            policy_data=policy_data,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             featurestore: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if featurestore is not None:
-            pulumi.set(__self__, "featurestore", featurestore)
+            _setter("featurestore", featurestore)
         if policy_data is not None:
-            pulumi.set(__self__, "policy_data", policy_data)
+            _setter("policy_data", policy_data)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -332,6 +376,10 @@ class AiFeatureStoreIamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AiFeatureStoreIamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

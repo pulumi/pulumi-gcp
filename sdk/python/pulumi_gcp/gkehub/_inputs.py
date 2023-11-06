@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -52,10 +52,29 @@ class FeatureIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FeatureIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -91,10 +110,29 @@ class FeatureIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        FeatureIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -139,16 +177,41 @@ class FeatureMembershipConfigmanagementArgs:
         :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param pulumi.Input[str] version: Version of ACM installed.
         """
+        FeatureMembershipConfigmanagementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            binauthz=binauthz,
+            config_sync=config_sync,
+            hierarchy_controller=hierarchy_controller,
+            policy_controller=policy_controller,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             binauthz: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']] = None,
+             config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
+             hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
+             policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_sync is None and 'configSync' in kwargs:
+            config_sync = kwargs['configSync']
+        if hierarchy_controller is None and 'hierarchyController' in kwargs:
+            hierarchy_controller = kwargs['hierarchyController']
+        if policy_controller is None and 'policyController' in kwargs:
+            policy_controller = kwargs['policyController']
+
         if binauthz is not None:
-            pulumi.set(__self__, "binauthz", binauthz)
+            _setter("binauthz", binauthz)
         if config_sync is not None:
-            pulumi.set(__self__, "config_sync", config_sync)
+            _setter("config_sync", config_sync)
         if hierarchy_controller is not None:
-            pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+            _setter("hierarchy_controller", hierarchy_controller)
         if policy_controller is not None:
-            pulumi.set(__self__, "policy_controller", policy_controller)
+            _setter("policy_controller", policy_controller)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -218,8 +281,19 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
         """
         :param pulumi.Input[bool] enabled: Whether binauthz is enabled in this cluster.
         """
+        FeatureMembershipConfigmanagementBinauthzArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -249,14 +323,35 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
+        FeatureMembershipConfigmanagementConfigSyncArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            git=git,
+            oci=oci,
+            prevent_drift=prevent_drift,
+            source_format=source_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
+             oci: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']] = None,
+             prevent_drift: Optional[pulumi.Input[bool]] = None,
+             source_format: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if prevent_drift is None and 'preventDrift' in kwargs:
+            prevent_drift = kwargs['preventDrift']
+        if source_format is None and 'sourceFormat' in kwargs:
+            source_format = kwargs['sourceFormat']
+
         if git is not None:
-            pulumi.set(__self__, "git", git)
+            _setter("git", git)
         if oci is not None:
-            pulumi.set(__self__, "oci", oci)
+            _setter("oci", oci)
         if prevent_drift is not None:
-            pulumi.set(__self__, "prevent_drift", prevent_drift)
+            _setter("prevent_drift", prevent_drift)
         if source_format is not None:
-            pulumi.set(__self__, "source_format", source_format)
+            _setter("source_format", source_format)
 
     @property
     @pulumi.getter
@@ -330,22 +425,63 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
         :param pulumi.Input[str] sync_rev: Git revision (tag or hash) to check out. Default HEAD.
         :param pulumi.Input[str] sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
         """
+        FeatureMembershipConfigmanagementConfigSyncGitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_service_account_email=gcp_service_account_email,
+            https_proxy=https_proxy,
+            policy_dir=policy_dir,
+            secret_type=secret_type,
+            sync_branch=sync_branch,
+            sync_repo=sync_repo,
+            sync_rev=sync_rev,
+            sync_wait_secs=sync_wait_secs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_service_account_email: Optional[pulumi.Input[str]] = None,
+             https_proxy: Optional[pulumi.Input[str]] = None,
+             policy_dir: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             sync_branch: Optional[pulumi.Input[str]] = None,
+             sync_repo: Optional[pulumi.Input[str]] = None,
+             sync_rev: Optional[pulumi.Input[str]] = None,
+             sync_wait_secs: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_service_account_email is None and 'gcpServiceAccountEmail' in kwargs:
+            gcp_service_account_email = kwargs['gcpServiceAccountEmail']
+        if https_proxy is None and 'httpsProxy' in kwargs:
+            https_proxy = kwargs['httpsProxy']
+        if policy_dir is None and 'policyDir' in kwargs:
+            policy_dir = kwargs['policyDir']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if sync_branch is None and 'syncBranch' in kwargs:
+            sync_branch = kwargs['syncBranch']
+        if sync_repo is None and 'syncRepo' in kwargs:
+            sync_repo = kwargs['syncRepo']
+        if sync_rev is None and 'syncRev' in kwargs:
+            sync_rev = kwargs['syncRev']
+        if sync_wait_secs is None and 'syncWaitSecs' in kwargs:
+            sync_wait_secs = kwargs['syncWaitSecs']
+
         if gcp_service_account_email is not None:
-            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+            _setter("gcp_service_account_email", gcp_service_account_email)
         if https_proxy is not None:
-            pulumi.set(__self__, "https_proxy", https_proxy)
+            _setter("https_proxy", https_proxy)
         if policy_dir is not None:
-            pulumi.set(__self__, "policy_dir", policy_dir)
+            _setter("policy_dir", policy_dir)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if sync_branch is not None:
-            pulumi.set(__self__, "sync_branch", sync_branch)
+            _setter("sync_branch", sync_branch)
         if sync_repo is not None:
-            pulumi.set(__self__, "sync_repo", sync_repo)
+            _setter("sync_repo", sync_repo)
         if sync_rev is not None:
-            pulumi.set(__self__, "sync_rev", sync_rev)
+            _setter("sync_rev", sync_rev)
         if sync_wait_secs is not None:
-            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+            _setter("sync_wait_secs", sync_wait_secs)
 
     @property
     @pulumi.getter(name="gcpServiceAccountEmail")
@@ -459,16 +595,45 @@ class FeatureMembershipConfigmanagementConfigSyncOciArgs:
         :param pulumi.Input[str] sync_repo: The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
         :param pulumi.Input[str] sync_wait_secs: Period in seconds(int64 format) between consecutive syncs. Default: 15.
         """
+        FeatureMembershipConfigmanagementConfigSyncOciArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gcp_service_account_email=gcp_service_account_email,
+            policy_dir=policy_dir,
+            secret_type=secret_type,
+            sync_repo=sync_repo,
+            sync_wait_secs=sync_wait_secs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gcp_service_account_email: Optional[pulumi.Input[str]] = None,
+             policy_dir: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             sync_repo: Optional[pulumi.Input[str]] = None,
+             sync_wait_secs: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gcp_service_account_email is None and 'gcpServiceAccountEmail' in kwargs:
+            gcp_service_account_email = kwargs['gcpServiceAccountEmail']
+        if policy_dir is None and 'policyDir' in kwargs:
+            policy_dir = kwargs['policyDir']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if sync_repo is None and 'syncRepo' in kwargs:
+            sync_repo = kwargs['syncRepo']
+        if sync_wait_secs is None and 'syncWaitSecs' in kwargs:
+            sync_wait_secs = kwargs['syncWaitSecs']
+
         if gcp_service_account_email is not None:
-            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+            _setter("gcp_service_account_email", gcp_service_account_email)
         if policy_dir is not None:
-            pulumi.set(__self__, "policy_dir", policy_dir)
+            _setter("policy_dir", policy_dir)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if sync_repo is not None:
-            pulumi.set(__self__, "sync_repo", sync_repo)
+            _setter("sync_repo", sync_repo)
         if sync_wait_secs is not None:
-            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+            _setter("sync_wait_secs", sync_wait_secs)
 
     @property
     @pulumi.getter(name="gcpServiceAccountEmail")
@@ -542,12 +707,31 @@ class FeatureMembershipConfigmanagementHierarchyControllerArgs:
         :param pulumi.Input[bool] enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
         :param pulumi.Input[bool] enabled: Whether Hierarchy Controller is enabled in this cluster.
         """
+        FeatureMembershipConfigmanagementHierarchyControllerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_hierarchical_resource_quota=enable_hierarchical_resource_quota,
+            enable_pod_tree_labels=enable_pod_tree_labels,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_hierarchical_resource_quota: Optional[pulumi.Input[bool]] = None,
+             enable_pod_tree_labels: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_hierarchical_resource_quota is None and 'enableHierarchicalResourceQuota' in kwargs:
+            enable_hierarchical_resource_quota = kwargs['enableHierarchicalResourceQuota']
+        if enable_pod_tree_labels is None and 'enablePodTreeLabels' in kwargs:
+            enable_pod_tree_labels = kwargs['enablePodTreeLabels']
+
         if enable_hierarchical_resource_quota is not None:
-            pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
+            _setter("enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
         if enable_pod_tree_labels is not None:
-            pulumi.set(__self__, "enable_pod_tree_labels", enable_pod_tree_labels)
+            _setter("enable_pod_tree_labels", enable_pod_tree_labels)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="enableHierarchicalResourceQuota")
@@ -607,22 +791,59 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
         :param pulumi.Input[bool] referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param pulumi.Input[bool] template_library_installed: Installs the default template library along with Policy Controller.
         """
+        FeatureMembershipConfigmanagementPolicyControllerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_interval_seconds=audit_interval_seconds,
+            enabled=enabled,
+            exemptable_namespaces=exemptable_namespaces,
+            log_denies_enabled=log_denies_enabled,
+            monitoring=monitoring,
+            mutation_enabled=mutation_enabled,
+            referential_rules_enabled=referential_rules_enabled,
+            template_library_installed=template_library_installed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_interval_seconds: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             log_denies_enabled: Optional[pulumi.Input[bool]] = None,
+             monitoring: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']] = None,
+             mutation_enabled: Optional[pulumi.Input[bool]] = None,
+             referential_rules_enabled: Optional[pulumi.Input[bool]] = None,
+             template_library_installed: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_interval_seconds is None and 'auditIntervalSeconds' in kwargs:
+            audit_interval_seconds = kwargs['auditIntervalSeconds']
+        if exemptable_namespaces is None and 'exemptableNamespaces' in kwargs:
+            exemptable_namespaces = kwargs['exemptableNamespaces']
+        if log_denies_enabled is None and 'logDeniesEnabled' in kwargs:
+            log_denies_enabled = kwargs['logDeniesEnabled']
+        if mutation_enabled is None and 'mutationEnabled' in kwargs:
+            mutation_enabled = kwargs['mutationEnabled']
+        if referential_rules_enabled is None and 'referentialRulesEnabled' in kwargs:
+            referential_rules_enabled = kwargs['referentialRulesEnabled']
+        if template_library_installed is None and 'templateLibraryInstalled' in kwargs:
+            template_library_installed = kwargs['templateLibraryInstalled']
+
         if audit_interval_seconds is not None:
-            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+            _setter("audit_interval_seconds", audit_interval_seconds)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exemptable_namespaces is not None:
-            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+            _setter("exemptable_namespaces", exemptable_namespaces)
         if log_denies_enabled is not None:
-            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+            _setter("log_denies_enabled", log_denies_enabled)
         if monitoring is not None:
-            pulumi.set(__self__, "monitoring", monitoring)
+            _setter("monitoring", monitoring)
         if mutation_enabled is not None:
-            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+            _setter("mutation_enabled", mutation_enabled)
         if referential_rules_enabled is not None:
-            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+            _setter("referential_rules_enabled", referential_rules_enabled)
         if template_library_installed is not None:
-            pulumi.set(__self__, "template_library_installed", template_library_installed)
+            _setter("template_library_installed", template_library_installed)
 
     @property
     @pulumi.getter(name="auditIntervalSeconds")
@@ -725,8 +946,19 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
 class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
     def __init__(__self__, *,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backends=backends,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backends: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if backends is not None:
-            pulumi.set(__self__, "backends", backends)
+            _setter("backends", backends)
 
     @property
     @pulumi.getter
@@ -746,13 +978,28 @@ class FeatureMembershipMeshArgs:
         """
         :param pulumi.Input[str] management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
+        FeatureMembershipMeshArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            control_plane=control_plane,
+            management=management,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             control_plane: Optional[pulumi.Input[str]] = None,
+             management: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+
         if control_plane is not None:
             warnings.warn("""Deprecated in favor of the `management` field""", DeprecationWarning)
             pulumi.log.warn("""control_plane is deprecated: Deprecated in favor of the `management` field""")
         if control_plane is not None:
-            pulumi.set(__self__, "control_plane", control_plane)
+            _setter("control_plane", control_plane)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -791,10 +1038,25 @@ class FeatureResourceStateArgs:
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
+        FeatureResourceStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            has_resources=has_resources,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             has_resources: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if has_resources is None and 'hasResources' in kwargs:
+            has_resources = kwargs['hasResources']
+
         if has_resources is not None:
-            pulumi.set(__self__, "has_resources", has_resources)
+            _setter("has_resources", has_resources)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="hasResources")
@@ -835,10 +1097,23 @@ class FeatureSpecArgs:
         :param pulumi.Input['FeatureSpecMulticlusteringressArgs'] multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
+        FeatureSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fleetobservability=fleetobservability,
+            multiclusteringress=multiclusteringress,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']] = None,
+             multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if fleetobservability is not None:
-            pulumi.set(__self__, "fleetobservability", fleetobservability)
+            _setter("fleetobservability", fleetobservability)
         if multiclusteringress is not None:
-            pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+            _setter("multiclusteringress", multiclusteringress)
 
     @property
     @pulumi.getter
@@ -875,8 +1150,21 @@ class FeatureSpecFleetobservabilityArgs:
         :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
                Structure is documented below.
         """
+        FeatureSpecFleetobservabilityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logging_config=logging_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         if logging_config is not None:
-            pulumi.set(__self__, "logging_config", logging_config)
+            _setter("logging_config", logging_config)
 
     @property
     @pulumi.getter(name="loggingConfig")
@@ -903,10 +1191,27 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
                Structure is documented below.
         """
+        FeatureSpecFleetobservabilityLoggingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_config=default_config,
+            fleet_scope_logs_config=fleet_scope_logs_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
+             fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_config is None and 'defaultConfig' in kwargs:
+            default_config = kwargs['defaultConfig']
+        if fleet_scope_logs_config is None and 'fleetScopeLogsConfig' in kwargs:
+            fleet_scope_logs_config = kwargs['fleetScopeLogsConfig']
+
         if default_config is not None:
-            pulumi.set(__self__, "default_config", default_config)
+            _setter("default_config", default_config)
         if fleet_scope_logs_config is not None:
-            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+            _setter("fleet_scope_logs_config", fleet_scope_logs_config)
 
     @property
     @pulumi.getter(name="defaultConfig")
@@ -943,8 +1248,19 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
         :param pulumi.Input[str] mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
         """
+        FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mode=mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
 
     @property
     @pulumi.getter
@@ -968,8 +1284,19 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
         :param pulumi.Input[str] mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
         """
+        FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mode=mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
 
     @property
     @pulumi.getter
@@ -992,7 +1319,22 @@ class FeatureSpecMulticlusteringressArgs:
         """
         :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
-        pulumi.set(__self__, "config_membership", config_membership)
+        FeatureSpecMulticlusteringressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_membership=config_membership,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_membership: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_membership is None and 'configMembership' in kwargs:
+            config_membership = kwargs['configMembership']
+        if config_membership is None:
+            raise TypeError("Missing 'config_membership' argument")
+
+        _setter("config_membership", config_membership)
 
     @property
     @pulumi.getter(name="configMembership")
@@ -1016,8 +1358,19 @@ class FeatureStateArgs:
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
+        FeatureStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            states=states,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
 
     @property
     @pulumi.getter
@@ -1048,12 +1401,29 @@ class FeatureStateStateArgs:
         :param pulumi.Input[str] update_time: (Output)
                The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
+        FeatureStateStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            description=description,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -1099,7 +1469,20 @@ class FeatureStateStateArgs:
 class MembershipAuthorityArgs:
     def __init__(__self__, *,
                  issuer: pulumi.Input[str]):
-        pulumi.set(__self__, "issuer", issuer)
+        MembershipAuthorityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            issuer=issuer,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             issuer: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+
+        _setter("issuer", issuer)
 
     @property
     @pulumi.getter
@@ -1119,8 +1502,19 @@ class MembershipBindingStateArgs:
         :param pulumi.Input[str] code: (Output)
                Code describes the state of a MembershipBinding resource.
         """
+        MembershipBindingStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1144,8 +1538,21 @@ class MembershipEndpointArgs:
         :param pulumi.Input['MembershipEndpointGkeClusterArgs'] gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         """
+        MembershipEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gke_cluster=gke_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gke_cluster: Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gke_cluster is None and 'gkeCluster' in kwargs:
+            gke_cluster = kwargs['gkeCluster']
+
         if gke_cluster is not None:
-            pulumi.set(__self__, "gke_cluster", gke_cluster)
+            _setter("gke_cluster", gke_cluster)
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -1165,7 +1572,22 @@ class MembershipEndpointArgs:
 class MembershipEndpointGkeClusterArgs:
     def __init__(__self__, *,
                  resource_link: pulumi.Input[str]):
-        pulumi.set(__self__, "resource_link", resource_link)
+        MembershipEndpointGkeClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_link=resource_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_link is None and 'resourceLink' in kwargs:
+            resource_link = kwargs['resourceLink']
+        if resource_link is None:
+            raise TypeError("Missing 'resource_link' argument")
+
+        _setter("resource_link", resource_link)
 
     @property
     @pulumi.getter(name="resourceLink")
@@ -1183,10 +1605,29 @@ class MembershipIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        MembershipIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1222,10 +1663,29 @@ class MembershipIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        MembershipIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1265,7 +1725,22 @@ class MembershipRbacRoleBindingRoleArgs:
                
                - - -
         """
-        pulumi.set(__self__, "predefined_role", predefined_role)
+        MembershipRbacRoleBindingRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            predefined_role=predefined_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             predefined_role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if predefined_role is None and 'predefinedRole' in kwargs:
+            predefined_role = kwargs['predefinedRole']
+        if predefined_role is None:
+            raise TypeError("Missing 'predefined_role' argument")
+
+        _setter("predefined_role", predefined_role)
 
     @property
     @pulumi.getter(name="predefinedRole")
@@ -1291,8 +1766,19 @@ class MembershipRbacRoleBindingStateArgs:
         :param pulumi.Input[str] code: (Output)
                Code describes the state of a RBAC Role Binding resource.
         """
+        MembershipRbacRoleBindingStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1316,8 +1802,19 @@ class NamespaceStateArgs:
         :param pulumi.Input[str] code: (Output)
                Code describes the state of a Namespace resource.
         """
+        NamespaceStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1339,10 +1836,29 @@ class ScopeIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ScopeIamBindingConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1378,10 +1894,29 @@ class ScopeIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        ScopeIamMemberConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -1421,8 +1956,21 @@ class ScopeRbacRoleBindingRoleArgs:
                
                - - -
         """
+        ScopeRbacRoleBindingRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            predefined_role=predefined_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             predefined_role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if predefined_role is None and 'predefinedRole' in kwargs:
+            predefined_role = kwargs['predefinedRole']
+
         if predefined_role is not None:
-            pulumi.set(__self__, "predefined_role", predefined_role)
+            _setter("predefined_role", predefined_role)
 
     @property
     @pulumi.getter(name="predefinedRole")
@@ -1448,8 +1996,19 @@ class ScopeRbacRoleBindingStateArgs:
         :param pulumi.Input[str] code: (Output)
                Code describes the state of a RBAC Role Binding resource.
         """
+        ScopeRbacRoleBindingStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter
@@ -1473,8 +2032,19 @@ class ScopeStateArgs:
         :param pulumi.Input[str] code: (Output)
                Code describes the state of a Scope resource.
         """
+        ScopeStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
 
     @property
     @pulumi.getter

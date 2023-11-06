@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,20 +53,53 @@ class GuestPoliciesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         """
-        pulumi.set(__self__, "assignment", assignment)
-        pulumi.set(__self__, "guest_policy_id", guest_policy_id)
+        GuestPoliciesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignment=assignment,
+            guest_policy_id=guest_policy_id,
+            description=description,
+            etag=etag,
+            package_repositories=package_repositories,
+            packages=packages,
+            project=project,
+            recipes=recipes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+             guest_policy_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
+             packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignment is None:
+            raise TypeError("Missing 'assignment' argument")
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if guest_policy_id is None:
+            raise TypeError("Missing 'guest_policy_id' argument")
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+
+        _setter("assignment", assignment)
+        _setter("guest_policy_id", guest_policy_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if package_repositories is not None:
-            pulumi.set(__self__, "package_repositories", package_repositories)
+            _setter("package_repositories", package_repositories)
         if packages is not None:
-            pulumi.set(__self__, "packages", packages)
+            _setter("packages", packages)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recipes is not None:
-            pulumi.set(__self__, "recipes", recipes)
+            _setter("recipes", recipes)
 
     @property
     @pulumi.getter
@@ -231,28 +264,67 @@ class _GuestPoliciesState:
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
         """
+        _GuestPoliciesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignment=assignment,
+            create_time=create_time,
+            description=description,
+            etag=etag,
+            guest_policy_id=guest_policy_id,
+            name=name,
+            package_repositories=package_repositories,
+            packages=packages,
+            project=project,
+            recipes=recipes,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             guest_policy_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
+             packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if assignment is not None:
-            pulumi.set(__self__, "assignment", assignment)
+            _setter("assignment", assignment)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if guest_policy_id is not None:
-            pulumi.set(__self__, "guest_policy_id", guest_policy_id)
+            _setter("guest_policy_id", guest_policy_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if package_repositories is not None:
-            pulumi.set(__self__, "package_repositories", package_repositories)
+            _setter("package_repositories", package_repositories)
         if packages is not None:
-            pulumi.set(__self__, "packages", packages)
+            _setter("packages", packages)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if recipes is not None:
-            pulumi.set(__self__, "recipes", recipes)
+            _setter("recipes", recipes)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -792,6 +864,10 @@ class GuestPolicies(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GuestPoliciesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -814,6 +890,11 @@ class GuestPolicies(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GuestPoliciesArgs.__new__(GuestPoliciesArgs)
 
+            if assignment is not None and not isinstance(assignment, GuestPoliciesAssignmentArgs):
+                assignment = assignment or {}
+                def _setter(key, value):
+                    assignment[key] = value
+                GuestPoliciesAssignmentArgs._configure(_setter, **assignment)
             if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
             __props__.__dict__["assignment"] = assignment

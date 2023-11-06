@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,18 +44,57 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout
                during resource creation and update.
         """
-        pulumi.set(__self__, "instance_filter", instance_filter)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "os_policies", os_policies)
-        pulumi.set(__self__, "rollout", rollout)
+        OsPolicyAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_filter=instance_filter,
+            location=location,
+            os_policies=os_policies,
+            rollout=rollout,
+            description=description,
+            name=name,
+            project=project,
+            skip_await_rollout=skip_await_rollout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+             rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             skip_await_rollout: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if instance_filter is None:
+            raise TypeError("Missing 'instance_filter' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if os_policies is None:
+            raise TypeError("Missing 'os_policies' argument")
+        if rollout is None:
+            raise TypeError("Missing 'rollout' argument")
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
+        _setter("instance_filter", instance_filter)
+        _setter("location", location)
+        _setter("os_policies", os_policies)
+        _setter("rollout", rollout)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if skip_await_rollout is not None:
-            pulumi.set(__self__, "skip_await_rollout", skip_await_rollout)
+            _setter("skip_await_rollout", skip_await_rollout)
 
     @property
     @pulumi.getter(name="instanceFilter")
@@ -219,38 +258,91 @@ class _OsPolicyAssignmentState:
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment
                resource.
         """
+        _OsPolicyAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            baseline=baseline,
+            deleted=deleted,
+            description=description,
+            etag=etag,
+            instance_filter=instance_filter,
+            location=location,
+            name=name,
+            os_policies=os_policies,
+            project=project,
+            reconciling=reconciling,
+            revision_create_time=revision_create_time,
+            revision_id=revision_id,
+            rollout=rollout,
+            rollout_state=rollout_state,
+            skip_await_rollout=skip_await_rollout,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             baseline: Optional[pulumi.Input[bool]] = None,
+             deleted: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reconciling: Optional[pulumi.Input[bool]] = None,
+             revision_create_time: Optional[pulumi.Input[str]] = None,
+             revision_id: Optional[pulumi.Input[str]] = None,
+             rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
+             rollout_state: Optional[pulumi.Input[str]] = None,
+             skip_await_rollout: Optional[pulumi.Input[bool]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_filter is None and 'instanceFilter' in kwargs:
+            instance_filter = kwargs['instanceFilter']
+        if os_policies is None and 'osPolicies' in kwargs:
+            os_policies = kwargs['osPolicies']
+        if revision_create_time is None and 'revisionCreateTime' in kwargs:
+            revision_create_time = kwargs['revisionCreateTime']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if rollout_state is None and 'rolloutState' in kwargs:
+            rollout_state = kwargs['rolloutState']
+        if skip_await_rollout is None and 'skipAwaitRollout' in kwargs:
+            skip_await_rollout = kwargs['skipAwaitRollout']
+
         if baseline is not None:
-            pulumi.set(__self__, "baseline", baseline)
+            _setter("baseline", baseline)
         if deleted is not None:
-            pulumi.set(__self__, "deleted", deleted)
+            _setter("deleted", deleted)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if instance_filter is not None:
-            pulumi.set(__self__, "instance_filter", instance_filter)
+            _setter("instance_filter", instance_filter)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if os_policies is not None:
-            pulumi.set(__self__, "os_policies", os_policies)
+            _setter("os_policies", os_policies)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reconciling is not None:
-            pulumi.set(__self__, "reconciling", reconciling)
+            _setter("reconciling", reconciling)
         if revision_create_time is not None:
-            pulumi.set(__self__, "revision_create_time", revision_create_time)
+            _setter("revision_create_time", revision_create_time)
         if revision_id is not None:
-            pulumi.set(__self__, "revision_id", revision_id)
+            _setter("revision_id", revision_id)
         if rollout is not None:
-            pulumi.set(__self__, "rollout", rollout)
+            _setter("rollout", rollout)
         if rollout_state is not None:
-            pulumi.set(__self__, "rollout_state", rollout_state)
+            _setter("rollout_state", rollout_state)
         if skip_await_rollout is not None:
-            pulumi.set(__self__, "skip_await_rollout", skip_await_rollout)
+            _setter("skip_await_rollout", skip_await_rollout)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -747,6 +839,10 @@ class OsPolicyAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OsPolicyAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -770,6 +866,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
             __props__ = OsPolicyAssignmentArgs.__new__(OsPolicyAssignmentArgs)
 
             __props__.__dict__["description"] = description
+            if instance_filter is not None and not isinstance(instance_filter, OsPolicyAssignmentInstanceFilterArgs):
+                instance_filter = instance_filter or {}
+                def _setter(key, value):
+                    instance_filter[key] = value
+                OsPolicyAssignmentInstanceFilterArgs._configure(_setter, **instance_filter)
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
@@ -781,6 +882,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'os_policies'")
             __props__.__dict__["os_policies"] = os_policies
             __props__.__dict__["project"] = project
+            if rollout is not None and not isinstance(rollout, OsPolicyAssignmentRolloutArgs):
+                rollout = rollout or {}
+                def _setter(key, value):
+                    rollout[key] = value
+                OsPolicyAssignmentRolloutArgs._configure(_setter, **rollout)
             if rollout is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout'")
             __props__.__dict__["rollout"] = rollout

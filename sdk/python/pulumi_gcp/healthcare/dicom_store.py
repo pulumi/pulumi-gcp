@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,15 +44,40 @@ class DicomStoreArgs:
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """
-        pulumi.set(__self__, "dataset", dataset)
+        DicomStoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            labels=labels,
+            name=name,
+            notification_config=notification_config,
+            stream_configs=stream_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
+             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
+        _setter("dataset", dataset)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if stream_configs is not None:
-            pulumi.set(__self__, "stream_configs", stream_configs)
+            _setter("stream_configs", stream_configs)
 
     @property
     @pulumi.getter
@@ -163,18 +188,45 @@ class _DicomStoreState:
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
         """
+        _DicomStoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            labels=labels,
+            name=name,
+            notification_config=notification_config,
+            self_link=self_link,
+            stream_configs=stream_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         if dataset is not None:
-            pulumi.set(__self__, "dataset", dataset)
+            _setter("dataset", dataset)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if stream_configs is not None:
-            pulumi.set(__self__, "stream_configs", stream_configs)
+            _setter("stream_configs", stream_configs)
 
     @property
     @pulumi.getter
@@ -468,6 +520,10 @@ class DicomStore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DicomStoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -492,6 +548,11 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if notification_config is not None and not isinstance(notification_config, DicomStoreNotificationConfigArgs):
+                notification_config = notification_config or {}
+                def _setter(key, value):
+                    notification_config[key] = value
+                DicomStoreNotificationConfigArgs._configure(_setter, **notification_config)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["self_link"] = None

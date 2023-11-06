@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -93,43 +93,126 @@ class RouterNatArgs:
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
-        pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
-        pulumi.set(__self__, "router", router)
-        pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
+        RouterNatArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            nat_ip_allocate_option=nat_ip_allocate_option,
+            router=router,
+            source_subnetwork_ip_ranges_to_nat=source_subnetwork_ip_ranges_to_nat,
+            drain_nat_ips=drain_nat_ips,
+            enable_dynamic_port_allocation=enable_dynamic_port_allocation,
+            enable_endpoint_independent_mapping=enable_endpoint_independent_mapping,
+            icmp_idle_timeout_sec=icmp_idle_timeout_sec,
+            log_config=log_config,
+            max_ports_per_vm=max_ports_per_vm,
+            min_ports_per_vm=min_ports_per_vm,
+            name=name,
+            nat_ips=nat_ips,
+            project=project,
+            region=region,
+            rules=rules,
+            subnetworks=subnetworks,
+            tcp_established_idle_timeout_sec=tcp_established_idle_timeout_sec,
+            tcp_time_wait_timeout_sec=tcp_time_wait_timeout_sec,
+            tcp_transitory_idle_timeout_sec=tcp_transitory_idle_timeout_sec,
+            udp_idle_timeout_sec=udp_idle_timeout_sec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
+             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
+             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
+             max_ports_per_vm: Optional[pulumi.Input[int]] = None,
+             min_ports_per_vm: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
+             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
+             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
+             tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ip_allocate_option is None:
+            raise TypeError("Missing 'nat_ip_allocate_option' argument")
+        if router is None:
+            raise TypeError("Missing 'router' argument")
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if source_subnetwork_ip_ranges_to_nat is None:
+            raise TypeError("Missing 'source_subnetwork_ip_ranges_to_nat' argument")
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
+        _setter("nat_ip_allocate_option", nat_ip_allocate_option)
+        _setter("router", router)
+        _setter("source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if drain_nat_ips is not None:
-            pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
+            _setter("drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
-            pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
+            _setter("enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
-            pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+            _setter("enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
         if icmp_idle_timeout_sec is not None:
-            pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
+            _setter("icmp_idle_timeout_sec", icmp_idle_timeout_sec)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if max_ports_per_vm is not None:
-            pulumi.set(__self__, "max_ports_per_vm", max_ports_per_vm)
+            _setter("max_ports_per_vm", max_ports_per_vm)
         if min_ports_per_vm is not None:
-            pulumi.set(__self__, "min_ports_per_vm", min_ports_per_vm)
+            _setter("min_ports_per_vm", min_ports_per_vm)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nat_ips is not None:
-            pulumi.set(__self__, "nat_ips", nat_ips)
+            _setter("nat_ips", nat_ips)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if subnetworks is not None:
-            pulumi.set(__self__, "subnetworks", subnetworks)
+            _setter("subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+            _setter("tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
         if tcp_time_wait_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
+            _setter("tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+            _setter("tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
-            pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+            _setter("udp_idle_timeout_sec", udp_idle_timeout_sec)
 
     @property
     @pulumi.getter(name="natIpAllocateOption")
@@ -486,46 +569,123 @@ class _RouterNatState:
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
+        _RouterNatState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            drain_nat_ips=drain_nat_ips,
+            enable_dynamic_port_allocation=enable_dynamic_port_allocation,
+            enable_endpoint_independent_mapping=enable_endpoint_independent_mapping,
+            icmp_idle_timeout_sec=icmp_idle_timeout_sec,
+            log_config=log_config,
+            max_ports_per_vm=max_ports_per_vm,
+            min_ports_per_vm=min_ports_per_vm,
+            name=name,
+            nat_ip_allocate_option=nat_ip_allocate_option,
+            nat_ips=nat_ips,
+            project=project,
+            region=region,
+            router=router,
+            rules=rules,
+            source_subnetwork_ip_ranges_to_nat=source_subnetwork_ip_ranges_to_nat,
+            subnetworks=subnetworks,
+            tcp_established_idle_timeout_sec=tcp_established_idle_timeout_sec,
+            tcp_time_wait_timeout_sec=tcp_time_wait_timeout_sec,
+            tcp_transitory_idle_timeout_sec=tcp_transitory_idle_timeout_sec,
+            udp_idle_timeout_sec=udp_idle_timeout_sec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
+             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
+             max_ports_per_vm: Optional[pulumi.Input[int]] = None,
+             min_ports_per_vm: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+             nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
+             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
+             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
+             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
+             tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if drain_nat_ips is None and 'drainNatIps' in kwargs:
+            drain_nat_ips = kwargs['drainNatIps']
+        if enable_dynamic_port_allocation is None and 'enableDynamicPortAllocation' in kwargs:
+            enable_dynamic_port_allocation = kwargs['enableDynamicPortAllocation']
+        if enable_endpoint_independent_mapping is None and 'enableEndpointIndependentMapping' in kwargs:
+            enable_endpoint_independent_mapping = kwargs['enableEndpointIndependentMapping']
+        if icmp_idle_timeout_sec is None and 'icmpIdleTimeoutSec' in kwargs:
+            icmp_idle_timeout_sec = kwargs['icmpIdleTimeoutSec']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if max_ports_per_vm is None and 'maxPortsPerVm' in kwargs:
+            max_ports_per_vm = kwargs['maxPortsPerVm']
+        if min_ports_per_vm is None and 'minPortsPerVm' in kwargs:
+            min_ports_per_vm = kwargs['minPortsPerVm']
+        if nat_ip_allocate_option is None and 'natIpAllocateOption' in kwargs:
+            nat_ip_allocate_option = kwargs['natIpAllocateOption']
+        if nat_ips is None and 'natIps' in kwargs:
+            nat_ips = kwargs['natIps']
+        if source_subnetwork_ip_ranges_to_nat is None and 'sourceSubnetworkIpRangesToNat' in kwargs:
+            source_subnetwork_ip_ranges_to_nat = kwargs['sourceSubnetworkIpRangesToNat']
+        if tcp_established_idle_timeout_sec is None and 'tcpEstablishedIdleTimeoutSec' in kwargs:
+            tcp_established_idle_timeout_sec = kwargs['tcpEstablishedIdleTimeoutSec']
+        if tcp_time_wait_timeout_sec is None and 'tcpTimeWaitTimeoutSec' in kwargs:
+            tcp_time_wait_timeout_sec = kwargs['tcpTimeWaitTimeoutSec']
+        if tcp_transitory_idle_timeout_sec is None and 'tcpTransitoryIdleTimeoutSec' in kwargs:
+            tcp_transitory_idle_timeout_sec = kwargs['tcpTransitoryIdleTimeoutSec']
+        if udp_idle_timeout_sec is None and 'udpIdleTimeoutSec' in kwargs:
+            udp_idle_timeout_sec = kwargs['udpIdleTimeoutSec']
+
         if drain_nat_ips is not None:
-            pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
+            _setter("drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
-            pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
+            _setter("enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
-            pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+            _setter("enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
         if icmp_idle_timeout_sec is not None:
-            pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
+            _setter("icmp_idle_timeout_sec", icmp_idle_timeout_sec)
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if max_ports_per_vm is not None:
-            pulumi.set(__self__, "max_ports_per_vm", max_ports_per_vm)
+            _setter("max_ports_per_vm", max_ports_per_vm)
         if min_ports_per_vm is not None:
-            pulumi.set(__self__, "min_ports_per_vm", min_ports_per_vm)
+            _setter("min_ports_per_vm", min_ports_per_vm)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nat_ip_allocate_option is not None:
-            pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
+            _setter("nat_ip_allocate_option", nat_ip_allocate_option)
         if nat_ips is not None:
-            pulumi.set(__self__, "nat_ips", nat_ips)
+            _setter("nat_ips", nat_ips)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if source_subnetwork_ip_ranges_to_nat is not None:
-            pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
+            _setter("source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if subnetworks is not None:
-            pulumi.set(__self__, "subnetworks", subnetworks)
+            _setter("subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+            _setter("tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
         if tcp_time_wait_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
+            _setter("tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
-            pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+            _setter("tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
-            pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+            _setter("udp_idle_timeout_sec", udp_idle_timeout_sec)
 
     @property
     @pulumi.getter(name="drainNatIps")
@@ -1153,6 +1313,10 @@ class RouterNat(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterNatArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1191,6 +1355,11 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
             __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
+            if log_config is not None and not isinstance(log_config, RouterNatLogConfigArgs):
+                log_config = log_config or {}
+                def _setter(key, value):
+                    log_config[key] = value
+                RouterNatLogConfigArgs._configure(_setter, **log_config)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
             __props__.__dict__["min_ports_per_vm"] = min_ports_per_vm

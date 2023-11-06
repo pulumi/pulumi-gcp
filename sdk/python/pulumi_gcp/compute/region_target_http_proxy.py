@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegionTargetHttpProxyArgs', 'RegionTargetHttpProxy']
@@ -39,15 +39,38 @@ class RegionTargetHttpProxyArgs:
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
         """
-        pulumi.set(__self__, "url_map", url_map)
+        RegionTargetHttpProxyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url_map=url_map,
+            description=description,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url_map: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+
+        _setter("url_map", url_map)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="urlMap")
@@ -156,22 +179,55 @@ class _RegionTargetHttpProxyState:
                
                - - -
         """
+        _RegionTargetHttpProxyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            name=name,
+            project=project,
+            proxy_id=proxy_id,
+            region=region,
+            self_link=self_link,
+            url_map=url_map,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_id: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             url_map: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_id is not None:
-            pulumi.set(__self__, "proxy_id", proxy_id)
+            _setter("proxy_id", proxy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if url_map is not None:
-            pulumi.set(__self__, "url_map", url_map)
+            _setter("url_map", url_map)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -425,6 +481,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegionTargetHttpProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VPNGatewayArgs', 'VPNGateway']
@@ -37,15 +37,36 @@ class VPNGatewayArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         """
-        pulumi.set(__self__, "network", network)
+        VPNGatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            description=description,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
+        _setter("network", network)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -150,22 +171,53 @@ class _VPNGatewayState:
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _VPNGatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_timestamp=creation_timestamp,
+            description=description,
+            gateway_id=gateway_id,
+            name=name,
+            network=network,
+            project=project,
+            region=region,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -461,6 +513,10 @@ class VPNGateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VPNGatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

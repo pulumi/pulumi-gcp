@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -64,21 +64,68 @@ class MetricDescriptorArgs:
                More info can be found in the API documentation
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "metric_kind", metric_kind)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value_type", value_type)
+        MetricDescriptorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            metric_kind=metric_kind,
+            type=type,
+            value_type=value_type,
+            labels=labels,
+            launch_stage=launch_stage,
+            metadata=metadata,
+            project=project,
+            unit=unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             metric_kind: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value_type: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]] = None,
+             launch_stage: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if metric_kind is None and 'metricKind' in kwargs:
+            metric_kind = kwargs['metricKind']
+        if metric_kind is None:
+            raise TypeError("Missing 'metric_kind' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+        if value_type is None:
+            raise TypeError("Missing 'value_type' argument")
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
+        _setter("description", description)
+        _setter("display_name", display_name)
+        _setter("metric_kind", metric_kind)
+        _setter("type", type)
+        _setter("value_type", value_type)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if launch_stage is not None:
-            pulumi.set(__self__, "launch_stage", launch_stage)
+            _setter("launch_stage", launch_stage)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if unit is not None:
-            pulumi.set(__self__, "unit", unit)
+            _setter("unit", unit)
 
     @property
     @pulumi.getter
@@ -281,30 +328,73 @@ class _MetricDescriptorState:
         :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         """
+        _MetricDescriptorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            launch_stage=launch_stage,
+            metadata=metadata,
+            metric_kind=metric_kind,
+            monitored_resource_types=monitored_resource_types,
+            name=name,
+            project=project,
+            type=type,
+            unit=unit,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]]] = None,
+             launch_stage: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
+             metric_kind: Optional[pulumi.Input[str]] = None,
+             monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             unit: Optional[pulumi.Input[str]] = None,
+             value_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if metric_kind is None and 'metricKind' in kwargs:
+            metric_kind = kwargs['metricKind']
+        if monitored_resource_types is None and 'monitoredResourceTypes' in kwargs:
+            monitored_resource_types = kwargs['monitoredResourceTypes']
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if launch_stage is not None:
-            pulumi.set(__self__, "launch_stage", launch_stage)
+            _setter("launch_stage", launch_stage)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if metric_kind is not None:
-            pulumi.set(__self__, "metric_kind", metric_kind)
+            _setter("metric_kind", metric_kind)
         if monitored_resource_types is not None:
-            pulumi.set(__self__, "monitored_resource_types", monitored_resource_types)
+            _setter("monitored_resource_types", monitored_resource_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if unit is not None:
-            pulumi.set(__self__, "unit", unit)
+            _setter("unit", unit)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -682,6 +772,10 @@ class MetricDescriptor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetricDescriptorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -714,6 +808,11 @@ class MetricDescriptor(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
+            if metadata is not None and not isinstance(metadata, MetricDescriptorMetadataArgs):
+                metadata = metadata or {}
+                def _setter(key, value):
+                    metadata[key] = value
+                MetricDescriptorMetadataArgs._configure(_setter, **metadata)
             __props__.__dict__["metadata"] = metadata
             if metric_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_kind'")

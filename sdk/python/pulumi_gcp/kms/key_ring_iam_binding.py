@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,11 +41,36 @@ class KeyRingIAMBindingArgs:
         :param pulumi.Input['KeyRingIAMBindingConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
-        pulumi.set(__self__, "key_ring_id", key_ring_id)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
+        KeyRingIAMBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_ring_id=key_ring_id,
+            members=members,
+            role=role,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_ring_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['KeyRingIAMBindingConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_ring_id is None and 'keyRingId' in kwargs:
+            key_ring_id = kwargs['keyRingId']
+        if key_ring_id is None:
+            raise TypeError("Missing 'key_ring_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("key_ring_id", key_ring_id)
+        _setter("members", members)
+        _setter("role", role)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter(name="keyRingId")
@@ -138,16 +163,37 @@ class _KeyRingIAMBindingState:
                `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _KeyRingIAMBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            key_ring_id=key_ring_id,
+            members=members,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['KeyRingIAMBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             key_ring_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_ring_id is None and 'keyRingId' in kwargs:
+            key_ring_id = kwargs['keyRingId']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if key_ring_id is not None:
-            pulumi.set(__self__, "key_ring_id", key_ring_id)
+            _setter("key_ring_id", key_ring_id)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -533,6 +579,10 @@ class KeyRingIAMBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyRingIAMBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -551,6 +601,11 @@ class KeyRingIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingIAMBindingArgs.__new__(KeyRingIAMBindingArgs)
 
+            if condition is not None and not isinstance(condition, KeyRingIAMBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                KeyRingIAMBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")

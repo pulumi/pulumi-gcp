@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SshPublicKeyArgs', 'SshPublicKey']
@@ -28,12 +28,35 @@ class SshPublicKeyArgs:
         :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[str] project: The project ID of the Google Cloud Platform project.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "user", user)
+        SshPublicKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            user=user,
+            expiration_time_usec=expiration_time_usec,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             expiration_time_usec: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if expiration_time_usec is None and 'expirationTimeUsec' in kwargs:
+            expiration_time_usec = kwargs['expirationTimeUsec']
+
+        _setter("key", key)
+        _setter("user", user)
         if expiration_time_usec is not None:
-            pulumi.set(__self__, "expiration_time_usec", expiration_time_usec)
+            _setter("expiration_time_usec", expiration_time_usec)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -106,16 +129,37 @@ class _SshPublicKeyState:
                
                - - -
         """
+        _SshPublicKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expiration_time_usec=expiration_time_usec,
+            fingerprint=fingerprint,
+            key=key,
+            project=project,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expiration_time_usec: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expiration_time_usec is None and 'expirationTimeUsec' in kwargs:
+            expiration_time_usec = kwargs['expirationTimeUsec']
+
         if expiration_time_usec is not None:
-            pulumi.set(__self__, "expiration_time_usec", expiration_time_usec)
+            _setter("expiration_time_usec", expiration_time_usec)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="expirationTimeUsec")
@@ -285,6 +329,10 @@ class SshPublicKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SshPublicKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

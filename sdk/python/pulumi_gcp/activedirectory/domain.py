@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
@@ -40,17 +40,52 @@ class DomainArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            locations=locations,
+            reserved_ip_range=reserved_ip_range,
+            admin=admin,
+            authorized_networks=authorized_networks,
+            labels=labels,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             reserved_ip_range: Optional[pulumi.Input[str]] = None,
+             admin: Optional[pulumi.Input[str]] = None,
+             authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if reserved_ip_range is None:
+            raise TypeError("Missing 'reserved_ip_range' argument")
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+
+        _setter("domain_name", domain_name)
+        _setter("locations", locations)
+        _setter("reserved_ip_range", reserved_ip_range)
         if admin is not None:
-            pulumi.set(__self__, "admin", admin)
+            _setter("admin", admin)
         if authorized_networks is not None:
-            pulumi.set(__self__, "authorized_networks", authorized_networks)
+            _setter("authorized_networks", authorized_networks)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="domainName")
@@ -180,24 +215,57 @@ class _DomainState:
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin=admin,
+            authorized_networks=authorized_networks,
+            domain_name=domain_name,
+            fqdn=fqdn,
+            labels=labels,
+            locations=locations,
+            name=name,
+            project=project,
+            reserved_ip_range=reserved_ip_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin: Optional[pulumi.Input[str]] = None,
+             authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             fqdn: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             reserved_ip_range: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+
         if admin is not None:
-            pulumi.set(__self__, "admin", admin)
+            _setter("admin", admin)
         if authorized_networks is not None:
-            pulumi.set(__self__, "authorized_networks", authorized_networks)
+            _setter("authorized_networks", authorized_networks)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if fqdn is not None:
-            pulumi.set(__self__, "fqdn", fqdn)
+            _setter("fqdn", fqdn)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+            _setter("locations", locations)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if reserved_ip_range is not None:
-            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+            _setter("reserved_ip_range", reserved_ip_range)
 
     @property
     @pulumi.getter
@@ -426,6 +494,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,15 +45,44 @@ class MetastoreServiceIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "service_id", service_id)
+        MetastoreServiceIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            role=role,
+            service_id=service_id,
+            condition=condition,
+            location=location,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
+        _setter("members", members)
+        _setter("role", role)
+        _setter("service_id", service_id)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -170,20 +199,45 @@ class _MetastoreServiceIamBindingState:
                `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        _MetastoreServiceIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            location=location,
+            members=members,
+            project=project,
+            role=role,
+            service_id=service_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
 
     @property
     @pulumi.getter
@@ -497,6 +551,10 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetastoreServiceIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -517,6 +575,11 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreServiceIamBindingArgs.__new__(MetastoreServiceIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, MetastoreServiceIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                MetastoreServiceIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

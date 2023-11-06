@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,16 +34,45 @@ class TransferJobArgs:
                - - -
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "transfer_spec", transfer_spec)
+        TransferJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            transfer_spec=transfer_spec,
+            notification_config=notification_config,
+            project=project,
+            schedule=schedule,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
+             notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+        if transfer_spec is None:
+            raise TypeError("Missing 'transfer_spec' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+
+        _setter("description", description)
+        _setter("transfer_spec", transfer_spec)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -150,26 +179,65 @@ class _TransferJobState:
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
         """
+        _TransferJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_time=creation_time,
+            deletion_time=deletion_time,
+            description=description,
+            last_modification_time=last_modification_time,
+            name=name,
+            notification_config=notification_config,
+            project=project,
+            schedule=schedule,
+            status=status,
+            transfer_spec=transfer_spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_time: Optional[pulumi.Input[str]] = None,
+             deletion_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             last_modification_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if deletion_time is None and 'deletionTime' in kwargs:
+            deletion_time = kwargs['deletionTime']
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if deletion_time is not None:
-            pulumi.set(__self__, "deletion_time", deletion_time)
+            _setter("deletion_time", deletion_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if last_modification_time is not None:
-            pulumi.set(__self__, "last_modification_time", last_modification_time)
+            _setter("last_modification_time", last_modification_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transfer_spec is not None:
-            pulumi.set(__self__, "transfer_spec", transfer_spec)
+            _setter("transfer_spec", transfer_spec)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -529,6 +597,10 @@ class TransferJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransferJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -552,10 +624,25 @@ class TransferJob(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            if notification_config is not None and not isinstance(notification_config, TransferJobNotificationConfigArgs):
+                notification_config = notification_config or {}
+                def _setter(key, value):
+                    notification_config[key] = value
+                TransferJobNotificationConfigArgs._configure(_setter, **notification_config)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
+            if schedule is not None and not isinstance(schedule, TransferJobScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                TransferJobScheduleArgs._configure(_setter, **schedule)
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
+            if transfer_spec is not None and not isinstance(transfer_spec, TransferJobTransferSpecArgs):
+                transfer_spec = transfer_spec or {}
+                def _setter(key, value):
+                    transfer_spec[key] = value
+                TransferJobTransferSpecArgs._configure(_setter, **transfer_spec)
             if transfer_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'transfer_spec'")
             __props__.__dict__["transfer_spec"] = transfer_spec

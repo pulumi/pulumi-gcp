@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -102,60 +102,177 @@ class FlexibleAppVersionArgs:
         :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
-        pulumi.set(__self__, "liveness_check", liveness_check)
-        pulumi.set(__self__, "readiness_check", readiness_check)
-        pulumi.set(__self__, "runtime", runtime)
-        pulumi.set(__self__, "service", service)
+        FlexibleAppVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            liveness_check=liveness_check,
+            readiness_check=readiness_check,
+            runtime=runtime,
+            service=service,
+            api_config=api_config,
+            automatic_scaling=automatic_scaling,
+            beta_settings=beta_settings,
+            default_expiration=default_expiration,
+            delete_service_on_destroy=delete_service_on_destroy,
+            deployment=deployment,
+            endpoints_api_service=endpoints_api_service,
+            entrypoint=entrypoint,
+            env_variables=env_variables,
+            handlers=handlers,
+            inbound_services=inbound_services,
+            instance_class=instance_class,
+            manual_scaling=manual_scaling,
+            network=network,
+            nobuild_files_regex=nobuild_files_regex,
+            noop_on_destroy=noop_on_destroy,
+            project=project,
+            resources=resources,
+            runtime_api_version=runtime_api_version,
+            runtime_channel=runtime_channel,
+            runtime_main_executable_path=runtime_main_executable_path,
+            service_account=service_account,
+            serving_status=serving_status,
+            version_id=version_id,
+            vpc_access_connector=vpc_access_connector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']] = None,
+             readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
+             automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
+             beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             default_expiration: Optional[pulumi.Input[str]] = None,
+             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
+             deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']] = None,
+             endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
+             entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
+             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
+             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']] = None,
+             network: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']] = None,
+             nobuild_files_regex: Optional[pulumi.Input[str]] = None,
+             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']] = None,
+             runtime_api_version: Optional[pulumi.Input[str]] = None,
+             runtime_channel: Optional[pulumi.Input[str]] = None,
+             runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             serving_status: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if liveness_check is None:
+            raise TypeError("Missing 'liveness_check' argument")
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if readiness_check is None:
+            raise TypeError("Missing 'readiness_check' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
+        _setter("liveness_check", liveness_check)
+        _setter("readiness_check", readiness_check)
+        _setter("runtime", runtime)
+        _setter("service", service)
         if api_config is not None:
-            pulumi.set(__self__, "api_config", api_config)
+            _setter("api_config", api_config)
         if automatic_scaling is not None:
-            pulumi.set(__self__, "automatic_scaling", automatic_scaling)
+            _setter("automatic_scaling", automatic_scaling)
         if beta_settings is not None:
-            pulumi.set(__self__, "beta_settings", beta_settings)
+            _setter("beta_settings", beta_settings)
         if default_expiration is not None:
-            pulumi.set(__self__, "default_expiration", default_expiration)
+            _setter("default_expiration", default_expiration)
         if delete_service_on_destroy is not None:
-            pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+            _setter("delete_service_on_destroy", delete_service_on_destroy)
         if deployment is not None:
-            pulumi.set(__self__, "deployment", deployment)
+            _setter("deployment", deployment)
         if endpoints_api_service is not None:
-            pulumi.set(__self__, "endpoints_api_service", endpoints_api_service)
+            _setter("endpoints_api_service", endpoints_api_service)
         if entrypoint is not None:
-            pulumi.set(__self__, "entrypoint", entrypoint)
+            _setter("entrypoint", entrypoint)
         if env_variables is not None:
-            pulumi.set(__self__, "env_variables", env_variables)
+            _setter("env_variables", env_variables)
         if handlers is not None:
-            pulumi.set(__self__, "handlers", handlers)
+            _setter("handlers", handlers)
         if inbound_services is not None:
-            pulumi.set(__self__, "inbound_services", inbound_services)
+            _setter("inbound_services", inbound_services)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if manual_scaling is not None:
-            pulumi.set(__self__, "manual_scaling", manual_scaling)
+            _setter("manual_scaling", manual_scaling)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if nobuild_files_regex is not None:
-            pulumi.set(__self__, "nobuild_files_regex", nobuild_files_regex)
+            _setter("nobuild_files_regex", nobuild_files_regex)
         if noop_on_destroy is not None:
-            pulumi.set(__self__, "noop_on_destroy", noop_on_destroy)
+            _setter("noop_on_destroy", noop_on_destroy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if runtime_api_version is not None:
-            pulumi.set(__self__, "runtime_api_version", runtime_api_version)
+            _setter("runtime_api_version", runtime_api_version)
         if runtime_channel is not None:
-            pulumi.set(__self__, "runtime_channel", runtime_channel)
+            _setter("runtime_channel", runtime_channel)
         if runtime_main_executable_path is not None:
-            pulumi.set(__self__, "runtime_main_executable_path", runtime_main_executable_path)
+            _setter("runtime_main_executable_path", runtime_main_executable_path)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if serving_status is not None:
-            pulumi.set(__self__, "serving_status", serving_status)
+            _setter("serving_status", serving_status)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
         if vpc_access_connector is not None:
-            pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+            _setter("vpc_access_connector", vpc_access_connector)
 
     @property
     @pulumi.getter(name="livenessCheck")
@@ -623,66 +740,177 @@ class _FlexibleAppVersionState:
         :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
+        _FlexibleAppVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_config=api_config,
+            automatic_scaling=automatic_scaling,
+            beta_settings=beta_settings,
+            default_expiration=default_expiration,
+            delete_service_on_destroy=delete_service_on_destroy,
+            deployment=deployment,
+            endpoints_api_service=endpoints_api_service,
+            entrypoint=entrypoint,
+            env_variables=env_variables,
+            handlers=handlers,
+            inbound_services=inbound_services,
+            instance_class=instance_class,
+            liveness_check=liveness_check,
+            manual_scaling=manual_scaling,
+            name=name,
+            network=network,
+            nobuild_files_regex=nobuild_files_regex,
+            noop_on_destroy=noop_on_destroy,
+            project=project,
+            readiness_check=readiness_check,
+            resources=resources,
+            runtime=runtime,
+            runtime_api_version=runtime_api_version,
+            runtime_channel=runtime_channel,
+            runtime_main_executable_path=runtime_main_executable_path,
+            service=service,
+            service_account=service_account,
+            serving_status=serving_status,
+            version_id=version_id,
+            vpc_access_connector=vpc_access_connector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
+             automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
+             beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             default_expiration: Optional[pulumi.Input[str]] = None,
+             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
+             deployment: Optional[pulumi.Input['FlexibleAppVersionDeploymentArgs']] = None,
+             endpoints_api_service: Optional[pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
+             entrypoint: Optional[pulumi.Input['FlexibleAppVersionEntrypointArgs']] = None,
+             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             handlers: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]]] = None,
+             inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']] = None,
+             manual_scaling: Optional[pulumi.Input['FlexibleAppVersionManualScalingArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input['FlexibleAppVersionNetworkArgs']] = None,
+             nobuild_files_regex: Optional[pulumi.Input[str]] = None,
+             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']] = None,
+             resources: Optional[pulumi.Input['FlexibleAppVersionResourcesArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             runtime_api_version: Optional[pulumi.Input[str]] = None,
+             runtime_channel: Optional[pulumi.Input[str]] = None,
+             runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             serving_status: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if api_config is not None:
-            pulumi.set(__self__, "api_config", api_config)
+            _setter("api_config", api_config)
         if automatic_scaling is not None:
-            pulumi.set(__self__, "automatic_scaling", automatic_scaling)
+            _setter("automatic_scaling", automatic_scaling)
         if beta_settings is not None:
-            pulumi.set(__self__, "beta_settings", beta_settings)
+            _setter("beta_settings", beta_settings)
         if default_expiration is not None:
-            pulumi.set(__self__, "default_expiration", default_expiration)
+            _setter("default_expiration", default_expiration)
         if delete_service_on_destroy is not None:
-            pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+            _setter("delete_service_on_destroy", delete_service_on_destroy)
         if deployment is not None:
-            pulumi.set(__self__, "deployment", deployment)
+            _setter("deployment", deployment)
         if endpoints_api_service is not None:
-            pulumi.set(__self__, "endpoints_api_service", endpoints_api_service)
+            _setter("endpoints_api_service", endpoints_api_service)
         if entrypoint is not None:
-            pulumi.set(__self__, "entrypoint", entrypoint)
+            _setter("entrypoint", entrypoint)
         if env_variables is not None:
-            pulumi.set(__self__, "env_variables", env_variables)
+            _setter("env_variables", env_variables)
         if handlers is not None:
-            pulumi.set(__self__, "handlers", handlers)
+            _setter("handlers", handlers)
         if inbound_services is not None:
-            pulumi.set(__self__, "inbound_services", inbound_services)
+            _setter("inbound_services", inbound_services)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if liveness_check is not None:
-            pulumi.set(__self__, "liveness_check", liveness_check)
+            _setter("liveness_check", liveness_check)
         if manual_scaling is not None:
-            pulumi.set(__self__, "manual_scaling", manual_scaling)
+            _setter("manual_scaling", manual_scaling)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if nobuild_files_regex is not None:
-            pulumi.set(__self__, "nobuild_files_regex", nobuild_files_regex)
+            _setter("nobuild_files_regex", nobuild_files_regex)
         if noop_on_destroy is not None:
-            pulumi.set(__self__, "noop_on_destroy", noop_on_destroy)
+            _setter("noop_on_destroy", noop_on_destroy)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if readiness_check is not None:
-            pulumi.set(__self__, "readiness_check", readiness_check)
+            _setter("readiness_check", readiness_check)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if runtime_api_version is not None:
-            pulumi.set(__self__, "runtime_api_version", runtime_api_version)
+            _setter("runtime_api_version", runtime_api_version)
         if runtime_channel is not None:
-            pulumi.set(__self__, "runtime_channel", runtime_channel)
+            _setter("runtime_channel", runtime_channel)
         if runtime_main_executable_path is not None:
-            pulumi.set(__self__, "runtime_main_executable_path", runtime_main_executable_path)
+            _setter("runtime_main_executable_path", runtime_main_executable_path)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if serving_status is not None:
-            pulumi.set(__self__, "serving_status", serving_status)
+            _setter("serving_status", serving_status)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
         if vpc_access_connector is not None:
-            pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+            _setter("vpc_access_connector", vpc_access_connector)
 
     @property
     @pulumi.getter(name="apiConfig")
@@ -1405,6 +1633,10 @@ class FlexibleAppVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlexibleAppVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1448,29 +1680,79 @@ class FlexibleAppVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FlexibleAppVersionArgs.__new__(FlexibleAppVersionArgs)
 
+            if api_config is not None and not isinstance(api_config, FlexibleAppVersionApiConfigArgs):
+                api_config = api_config or {}
+                def _setter(key, value):
+                    api_config[key] = value
+                FlexibleAppVersionApiConfigArgs._configure(_setter, **api_config)
             __props__.__dict__["api_config"] = api_config
+            if automatic_scaling is not None and not isinstance(automatic_scaling, FlexibleAppVersionAutomaticScalingArgs):
+                automatic_scaling = automatic_scaling or {}
+                def _setter(key, value):
+                    automatic_scaling[key] = value
+                FlexibleAppVersionAutomaticScalingArgs._configure(_setter, **automatic_scaling)
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["beta_settings"] = beta_settings
             __props__.__dict__["default_expiration"] = default_expiration
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+            if deployment is not None and not isinstance(deployment, FlexibleAppVersionDeploymentArgs):
+                deployment = deployment or {}
+                def _setter(key, value):
+                    deployment[key] = value
+                FlexibleAppVersionDeploymentArgs._configure(_setter, **deployment)
             __props__.__dict__["deployment"] = deployment
+            if endpoints_api_service is not None and not isinstance(endpoints_api_service, FlexibleAppVersionEndpointsApiServiceArgs):
+                endpoints_api_service = endpoints_api_service or {}
+                def _setter(key, value):
+                    endpoints_api_service[key] = value
+                FlexibleAppVersionEndpointsApiServiceArgs._configure(_setter, **endpoints_api_service)
             __props__.__dict__["endpoints_api_service"] = endpoints_api_service
+            if entrypoint is not None and not isinstance(entrypoint, FlexibleAppVersionEntrypointArgs):
+                entrypoint = entrypoint or {}
+                def _setter(key, value):
+                    entrypoint[key] = value
+                FlexibleAppVersionEntrypointArgs._configure(_setter, **entrypoint)
             __props__.__dict__["entrypoint"] = entrypoint
             __props__.__dict__["env_variables"] = env_variables
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
+            if liveness_check is not None and not isinstance(liveness_check, FlexibleAppVersionLivenessCheckArgs):
+                liveness_check = liveness_check or {}
+                def _setter(key, value):
+                    liveness_check[key] = value
+                FlexibleAppVersionLivenessCheckArgs._configure(_setter, **liveness_check)
             if liveness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'liveness_check'")
             __props__.__dict__["liveness_check"] = liveness_check
+            if manual_scaling is not None and not isinstance(manual_scaling, FlexibleAppVersionManualScalingArgs):
+                manual_scaling = manual_scaling or {}
+                def _setter(key, value):
+                    manual_scaling[key] = value
+                FlexibleAppVersionManualScalingArgs._configure(_setter, **manual_scaling)
             __props__.__dict__["manual_scaling"] = manual_scaling
+            if network is not None and not isinstance(network, FlexibleAppVersionNetworkArgs):
+                network = network or {}
+                def _setter(key, value):
+                    network[key] = value
+                FlexibleAppVersionNetworkArgs._configure(_setter, **network)
             __props__.__dict__["network"] = network
             __props__.__dict__["nobuild_files_regex"] = nobuild_files_regex
             __props__.__dict__["noop_on_destroy"] = noop_on_destroy
             __props__.__dict__["project"] = project
+            if readiness_check is not None and not isinstance(readiness_check, FlexibleAppVersionReadinessCheckArgs):
+                readiness_check = readiness_check or {}
+                def _setter(key, value):
+                    readiness_check[key] = value
+                FlexibleAppVersionReadinessCheckArgs._configure(_setter, **readiness_check)
             if readiness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'readiness_check'")
             __props__.__dict__["readiness_check"] = readiness_check
+            if resources is not None and not isinstance(resources, FlexibleAppVersionResourcesArgs):
+                resources = resources or {}
+                def _setter(key, value):
+                    resources[key] = value
+                FlexibleAppVersionResourcesArgs._configure(_setter, **resources)
             __props__.__dict__["resources"] = resources
             if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
@@ -1484,6 +1766,11 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["version_id"] = version_id
+            if vpc_access_connector is not None and not isinstance(vpc_access_connector, FlexibleAppVersionVpcAccessConnectorArgs):
+                vpc_access_connector = vpc_access_connector or {}
+                def _setter(key, value):
+                    vpc_access_connector[key] = value
+                FlexibleAppVersionVpcAccessConnectorArgs._configure(_setter, **vpc_access_connector)
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             __props__.__dict__["name"] = None
         super(FlexibleAppVersion, __self__).__init__(

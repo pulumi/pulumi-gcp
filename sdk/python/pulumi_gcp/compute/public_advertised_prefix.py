@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
@@ -36,14 +36,41 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "dns_verification_ip", dns_verification_ip)
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        PublicAdvertisedPrefixArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_verification_ip=dns_verification_ip,
+            ip_cidr_range=ip_cidr_range,
+            description=description,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_verification_ip: Optional[pulumi.Input[str]] = None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_verification_ip is None and 'dnsVerificationIp' in kwargs:
+            dns_verification_ip = kwargs['dnsVerificationIp']
+        if dns_verification_ip is None:
+            raise TypeError("Missing 'dns_verification_ip' argument")
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+
+        _setter("dns_verification_ip", dns_verification_ip)
+        _setter("ip_cidr_range", ip_cidr_range)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="dnsVerificationIp")
@@ -142,18 +169,45 @@ class _PublicAdvertisedPrefixState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
+        _PublicAdvertisedPrefixState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dns_verification_ip=dns_verification_ip,
+            ip_cidr_range=ip_cidr_range,
+            name=name,
+            project=project,
+            self_link=self_link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dns_verification_ip: Optional[pulumi.Input[str]] = None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_verification_ip is None and 'dnsVerificationIp' in kwargs:
+            dns_verification_ip = kwargs['dnsVerificationIp']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_verification_ip is not None:
-            pulumi.set(__self__, "dns_verification_ip", dns_verification_ip)
+            _setter("dns_verification_ip", dns_verification_ip)
         if ip_cidr_range is not None:
-            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+            _setter("ip_cidr_range", ip_cidr_range)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
 
     @property
     @pulumi.getter
@@ -357,6 +411,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PublicAdvertisedPrefixArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

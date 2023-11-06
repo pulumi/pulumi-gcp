@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
@@ -41,20 +41,57 @@ class CapacityCommitmentArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         """
-        pulumi.set(__self__, "plan", plan)
-        pulumi.set(__self__, "slot_count", slot_count)
+        CapacityCommitmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            slot_count=slot_count,
+            capacity_commitment_id=capacity_commitment_id,
+            edition=edition,
+            enforce_single_admin_project_per_org=enforce_single_admin_project_per_org,
+            location=location,
+            project=project,
+            renewal_plan=renewal_plan,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: Optional[pulumi.Input[str]] = None,
+             slot_count: Optional[pulumi.Input[int]] = None,
+             capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+             edition: Optional[pulumi.Input[str]] = None,
+             enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             renewal_plan: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if slot_count is None and 'slotCount' in kwargs:
+            slot_count = kwargs['slotCount']
+        if slot_count is None:
+            raise TypeError("Missing 'slot_count' argument")
+        if capacity_commitment_id is None and 'capacityCommitmentId' in kwargs:
+            capacity_commitment_id = kwargs['capacityCommitmentId']
+        if enforce_single_admin_project_per_org is None and 'enforceSingleAdminProjectPerOrg' in kwargs:
+            enforce_single_admin_project_per_org = kwargs['enforceSingleAdminProjectPerOrg']
+        if renewal_plan is None and 'renewalPlan' in kwargs:
+            renewal_plan = kwargs['renewalPlan']
+
+        _setter("plan", plan)
+        _setter("slot_count", slot_count)
         if capacity_commitment_id is not None:
-            pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
+            _setter("capacity_commitment_id", capacity_commitment_id)
         if edition is not None:
-            pulumi.set(__self__, "edition", edition)
+            _setter("edition", edition)
         if enforce_single_admin_project_per_org is not None:
-            pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
+            _setter("enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if renewal_plan is not None:
-            pulumi.set(__self__, "renewal_plan", renewal_plan)
+            _setter("renewal_plan", renewal_plan)
 
     @property
     @pulumi.getter
@@ -199,30 +236,75 @@ class _CapacityCommitmentState:
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] state: State of the commitment
         """
+        _CapacityCommitmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_commitment_id=capacity_commitment_id,
+            commitment_end_time=commitment_end_time,
+            commitment_start_time=commitment_start_time,
+            edition=edition,
+            enforce_single_admin_project_per_org=enforce_single_admin_project_per_org,
+            location=location,
+            name=name,
+            plan=plan,
+            project=project,
+            renewal_plan=renewal_plan,
+            slot_count=slot_count,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+             commitment_end_time: Optional[pulumi.Input[str]] = None,
+             commitment_start_time: Optional[pulumi.Input[str]] = None,
+             edition: Optional[pulumi.Input[str]] = None,
+             enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             renewal_plan: Optional[pulumi.Input[str]] = None,
+             slot_count: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if capacity_commitment_id is None and 'capacityCommitmentId' in kwargs:
+            capacity_commitment_id = kwargs['capacityCommitmentId']
+        if commitment_end_time is None and 'commitmentEndTime' in kwargs:
+            commitment_end_time = kwargs['commitmentEndTime']
+        if commitment_start_time is None and 'commitmentStartTime' in kwargs:
+            commitment_start_time = kwargs['commitmentStartTime']
+        if enforce_single_admin_project_per_org is None and 'enforceSingleAdminProjectPerOrg' in kwargs:
+            enforce_single_admin_project_per_org = kwargs['enforceSingleAdminProjectPerOrg']
+        if renewal_plan is None and 'renewalPlan' in kwargs:
+            renewal_plan = kwargs['renewalPlan']
+        if slot_count is None and 'slotCount' in kwargs:
+            slot_count = kwargs['slotCount']
+
         if capacity_commitment_id is not None:
-            pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
+            _setter("capacity_commitment_id", capacity_commitment_id)
         if commitment_end_time is not None:
-            pulumi.set(__self__, "commitment_end_time", commitment_end_time)
+            _setter("commitment_end_time", commitment_end_time)
         if commitment_start_time is not None:
-            pulumi.set(__self__, "commitment_start_time", commitment_start_time)
+            _setter("commitment_start_time", commitment_start_time)
         if edition is not None:
-            pulumi.set(__self__, "edition", edition)
+            _setter("edition", edition)
         if enforce_single_admin_project_per_org is not None:
-            pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
+            _setter("enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if renewal_plan is not None:
-            pulumi.set(__self__, "renewal_plan", renewal_plan)
+            _setter("renewal_plan", renewal_plan)
         if slot_count is not None:
-            pulumi.set(__self__, "slot_count", slot_count)
+            _setter("slot_count", slot_count)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="capacityCommitmentId")
@@ -510,6 +592,10 @@ class CapacityCommitment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CapacityCommitmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,19 +37,54 @@ class EnterpriseKeyArgs:
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        EnterpriseKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            android_settings=android_settings,
+            ios_settings=ios_settings,
+            labels=labels,
+            project=project,
+            testing_options=testing_options,
+            web_settings=web_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
+             ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
+             web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
+        _setter("display_name", display_name)
         if android_settings is not None:
-            pulumi.set(__self__, "android_settings", android_settings)
+            _setter("android_settings", android_settings)
         if ios_settings is not None:
-            pulumi.set(__self__, "ios_settings", ios_settings)
+            _setter("ios_settings", ios_settings)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if testing_options is not None:
-            pulumi.set(__self__, "testing_options", testing_options)
+            _setter("testing_options", testing_options)
         if web_settings is not None:
-            pulumi.set(__self__, "web_settings", web_settings)
+            _setter("web_settings", web_settings)
 
     @property
     @pulumi.getter(name="displayName")
@@ -168,24 +203,63 @@ class _EnterpriseKeyState:
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
+        _EnterpriseKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            android_settings=android_settings,
+            create_time=create_time,
+            display_name=display_name,
+            ios_settings=ios_settings,
+            labels=labels,
+            name=name,
+            project=project,
+            testing_options=testing_options,
+            web_settings=web_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
+             web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
         if android_settings is not None:
-            pulumi.set(__self__, "android_settings", android_settings)
+            _setter("android_settings", android_settings)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if ios_settings is not None:
-            pulumi.set(__self__, "ios_settings", ios_settings)
+            _setter("ios_settings", ios_settings)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if testing_options is not None:
-            pulumi.set(__self__, "testing_options", testing_options)
+            _setter("testing_options", testing_options)
         if web_settings is not None:
-            pulumi.set(__self__, "web_settings", web_settings)
+            _setter("web_settings", web_settings)
 
     @property
     @pulumi.getter(name="androidSettings")
@@ -585,6 +659,10 @@ class EnterpriseKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnterpriseKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -606,14 +684,34 @@ class EnterpriseKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnterpriseKeyArgs.__new__(EnterpriseKeyArgs)
 
+            if android_settings is not None and not isinstance(android_settings, EnterpriseKeyAndroidSettingsArgs):
+                android_settings = android_settings or {}
+                def _setter(key, value):
+                    android_settings[key] = value
+                EnterpriseKeyAndroidSettingsArgs._configure(_setter, **android_settings)
             __props__.__dict__["android_settings"] = android_settings
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if ios_settings is not None and not isinstance(ios_settings, EnterpriseKeyIosSettingsArgs):
+                ios_settings = ios_settings or {}
+                def _setter(key, value):
+                    ios_settings[key] = value
+                EnterpriseKeyIosSettingsArgs._configure(_setter, **ios_settings)
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
+            if testing_options is not None and not isinstance(testing_options, EnterpriseKeyTestingOptionsArgs):
+                testing_options = testing_options or {}
+                def _setter(key, value):
+                    testing_options[key] = value
+                EnterpriseKeyTestingOptionsArgs._configure(_setter, **testing_options)
             __props__.__dict__["testing_options"] = testing_options
+            if web_settings is not None and not isinstance(web_settings, EnterpriseKeyWebSettingsArgs):
+                web_settings = web_settings or {}
+                def _setter(key, value):
+                    web_settings[key] = value
+                EnterpriseKeyWebSettingsArgs._configure(_setter, **web_settings)
             __props__.__dict__["web_settings"] = web_settings
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

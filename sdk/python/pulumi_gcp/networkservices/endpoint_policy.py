@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,24 +43,67 @@ class EndpointPolicyArgs:
         :param pulumi.Input['EndpointPolicyTrafficPortSelectorArgs'] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
         """
-        pulumi.set(__self__, "endpoint_matcher", endpoint_matcher)
-        pulumi.set(__self__, "type", type)
+        EndpointPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_matcher=endpoint_matcher,
+            type=type,
+            authorization_policy=authorization_policy,
+            client_tls_policy=client_tls_policy,
+            description=description,
+            labels=labels,
+            name=name,
+            project=project,
+            server_tls_policy=server_tls_policy,
+            traffic_port_selector=traffic_port_selector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_matcher: Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             authorization_policy: Optional[pulumi.Input[str]] = None,
+             client_tls_policy: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             server_tls_policy: Optional[pulumi.Input[str]] = None,
+             traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if endpoint_matcher is None:
+            raise TypeError("Missing 'endpoint_matcher' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+
+        _setter("endpoint_matcher", endpoint_matcher)
+        _setter("type", type)
         if authorization_policy is not None:
-            pulumi.set(__self__, "authorization_policy", authorization_policy)
+            _setter("authorization_policy", authorization_policy)
         if client_tls_policy is not None:
-            pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+            _setter("client_tls_policy", client_tls_policy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if server_tls_policy is not None:
-            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+            _setter("server_tls_policy", server_tls_policy)
         if traffic_port_selector is not None:
-            pulumi.set(__self__, "traffic_port_selector", traffic_port_selector)
+            _setter("traffic_port_selector", traffic_port_selector)
 
     @property
     @pulumi.getter(name="endpointMatcher")
@@ -221,30 +264,77 @@ class _EndpointPolicyState:
                Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
         :param pulumi.Input[str] update_time: Time the TcpRoute was updated in UTC.
         """
+        _EndpointPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorization_policy=authorization_policy,
+            client_tls_policy=client_tls_policy,
+            create_time=create_time,
+            description=description,
+            endpoint_matcher=endpoint_matcher,
+            labels=labels,
+            name=name,
+            project=project,
+            server_tls_policy=server_tls_policy,
+            traffic_port_selector=traffic_port_selector,
+            type=type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorization_policy: Optional[pulumi.Input[str]] = None,
+             client_tls_policy: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_matcher: Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             server_tls_policy: Optional[pulumi.Input[str]] = None,
+             traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if authorization_policy is not None:
-            pulumi.set(__self__, "authorization_policy", authorization_policy)
+            _setter("authorization_policy", authorization_policy)
         if client_tls_policy is not None:
-            pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+            _setter("client_tls_policy", client_tls_policy)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_matcher is not None:
-            pulumi.set(__self__, "endpoint_matcher", endpoint_matcher)
+            _setter("endpoint_matcher", endpoint_matcher)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if server_tls_policy is not None:
-            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+            _setter("server_tls_policy", server_tls_policy)
         if traffic_port_selector is not None:
-            pulumi.set(__self__, "traffic_port_selector", traffic_port_selector)
+            _setter("traffic_port_selector", traffic_port_selector)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="authorizationPolicy")
@@ -578,6 +668,10 @@ class EndpointPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -605,6 +699,11 @@ class EndpointPolicy(pulumi.CustomResource):
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["client_tls_policy"] = client_tls_policy
             __props__.__dict__["description"] = description
+            if endpoint_matcher is not None and not isinstance(endpoint_matcher, EndpointPolicyEndpointMatcherArgs):
+                endpoint_matcher = endpoint_matcher or {}
+                def _setter(key, value):
+                    endpoint_matcher[key] = value
+                EndpointPolicyEndpointMatcherArgs._configure(_setter, **endpoint_matcher)
             if endpoint_matcher is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_matcher'")
             __props__.__dict__["endpoint_matcher"] = endpoint_matcher
@@ -612,6 +711,11 @@ class EndpointPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["server_tls_policy"] = server_tls_policy
+            if traffic_port_selector is not None and not isinstance(traffic_port_selector, EndpointPolicyTrafficPortSelectorArgs):
+                traffic_port_selector = traffic_port_selector or {}
+                def _setter(key, value):
+                    traffic_port_selector[key] = value
+                EndpointPolicyTrafficPortSelectorArgs._configure(_setter, **traffic_port_selector)
             __props__.__dict__["traffic_port_selector"] = traffic_port_selector
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

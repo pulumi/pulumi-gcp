@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkPeeringRoutesConfigArgs', 'NetworkPeeringRoutesConfig']
@@ -31,12 +31,43 @@ class NetworkPeeringRoutesConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "export_custom_routes", export_custom_routes)
-        pulumi.set(__self__, "import_custom_routes", import_custom_routes)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "peering", peering)
+        NetworkPeeringRoutesConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            export_custom_routes=export_custom_routes,
+            import_custom_routes=import_custom_routes,
+            network=network,
+            peering=peering,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             export_custom_routes: Optional[pulumi.Input[bool]] = None,
+             import_custom_routes: Optional[pulumi.Input[bool]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             peering: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if export_custom_routes is None:
+            raise TypeError("Missing 'export_custom_routes' argument")
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+        if import_custom_routes is None:
+            raise TypeError("Missing 'import_custom_routes' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if peering is None:
+            raise TypeError("Missing 'peering' argument")
+
+        _setter("export_custom_routes", export_custom_routes)
+        _setter("import_custom_routes", import_custom_routes)
+        _setter("network", network)
+        _setter("peering", peering)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
@@ -123,16 +154,39 @@ class _NetworkPeeringRoutesConfigState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _NetworkPeeringRoutesConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            export_custom_routes=export_custom_routes,
+            import_custom_routes=import_custom_routes,
+            network=network,
+            peering=peering,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             export_custom_routes: Optional[pulumi.Input[bool]] = None,
+             import_custom_routes: Optional[pulumi.Input[bool]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             peering: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+
         if export_custom_routes is not None:
-            pulumi.set(__self__, "export_custom_routes", export_custom_routes)
+            _setter("export_custom_routes", export_custom_routes)
         if import_custom_routes is not None:
-            pulumi.set(__self__, "import_custom_routes", import_custom_routes)
+            _setter("import_custom_routes", import_custom_routes)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if peering is not None:
-            pulumi.set(__self__, "peering", peering)
+            _setter("peering", peering)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
@@ -428,6 +482,10 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkPeeringRoutesConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

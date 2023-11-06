@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AuthorizedOrgsDescArgs', 'AuthorizedOrgsDesc']
@@ -56,17 +56,46 @@ class AuthorizedOrgsDescArgs:
                Format: `organizations/<org_number>`
                Example: `organizations/123456`
         """
-        pulumi.set(__self__, "parent", parent)
+        AuthorizedOrgsDescArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            asset_type=asset_type,
+            authorization_direction=authorization_direction,
+            authorization_type=authorization_type,
+            name=name,
+            orgs=orgs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: Optional[pulumi.Input[str]] = None,
+             asset_type: Optional[pulumi.Input[str]] = None,
+             authorization_direction: Optional[pulumi.Input[str]] = None,
+             authorization_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if asset_type is None and 'assetType' in kwargs:
+            asset_type = kwargs['assetType']
+        if authorization_direction is None and 'authorizationDirection' in kwargs:
+            authorization_direction = kwargs['authorizationDirection']
+        if authorization_type is None and 'authorizationType' in kwargs:
+            authorization_type = kwargs['authorizationType']
+
+        _setter("parent", parent)
         if asset_type is not None:
-            pulumi.set(__self__, "asset_type", asset_type)
+            _setter("asset_type", asset_type)
         if authorization_direction is not None:
-            pulumi.set(__self__, "authorization_direction", authorization_direction)
+            _setter("authorization_direction", authorization_direction)
         if authorization_type is not None:
-            pulumi.set(__self__, "authorization_type", authorization_type)
+            _setter("authorization_type", authorization_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if orgs is not None:
-            pulumi.set(__self__, "orgs", orgs)
+            _setter("orgs", orgs)
 
     @property
     @pulumi.getter
@@ -217,22 +246,57 @@ class _AuthorizedOrgsDescState:
         :param pulumi.Input[str] parent: Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
         :param pulumi.Input[str] update_time: Time the AuthorizedOrgsDesc was updated in UTC.
         """
+        _AuthorizedOrgsDescState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asset_type=asset_type,
+            authorization_direction=authorization_direction,
+            authorization_type=authorization_type,
+            create_time=create_time,
+            name=name,
+            orgs=orgs,
+            parent=parent,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asset_type: Optional[pulumi.Input[str]] = None,
+             authorization_direction: Optional[pulumi.Input[str]] = None,
+             authorization_type: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset_type is None and 'assetType' in kwargs:
+            asset_type = kwargs['assetType']
+        if authorization_direction is None and 'authorizationDirection' in kwargs:
+            authorization_direction = kwargs['authorizationDirection']
+        if authorization_type is None and 'authorizationType' in kwargs:
+            authorization_type = kwargs['authorizationType']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_type is not None:
-            pulumi.set(__self__, "asset_type", asset_type)
+            _setter("asset_type", asset_type)
         if authorization_direction is not None:
-            pulumi.set(__self__, "authorization_direction", authorization_direction)
+            _setter("authorization_direction", authorization_direction)
         if authorization_type is not None:
-            pulumi.set(__self__, "authorization_type", authorization_type)
+            _setter("authorization_type", authorization_type)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if orgs is not None:
-            pulumi.set(__self__, "orgs", orgs)
+            _setter("orgs", orgs)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="assetType")
@@ -518,6 +582,10 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthorizedOrgsDescArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

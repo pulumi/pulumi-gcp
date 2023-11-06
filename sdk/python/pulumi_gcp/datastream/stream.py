@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,23 +46,80 @@ class StreamArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "destination_config", destination_config)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "source_config", source_config)
-        pulumi.set(__self__, "stream_id", stream_id)
+        StreamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_config=destination_config,
+            display_name=display_name,
+            location=location,
+            source_config=source_config,
+            stream_id=stream_id,
+            backfill_all=backfill_all,
+            backfill_none=backfill_none,
+            customer_managed_encryption_key=customer_managed_encryption_key,
+            desired_state=desired_state,
+            labels=labels,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
+             stream_id: Optional[pulumi.Input[str]] = None,
+             backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
+             backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+             customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
+             desired_state: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if destination_config is None:
+            raise TypeError("Missing 'destination_config' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if source_config is None and 'sourceConfig' in kwargs:
+            source_config = kwargs['sourceConfig']
+        if source_config is None:
+            raise TypeError("Missing 'source_config' argument")
+        if stream_id is None and 'streamId' in kwargs:
+            stream_id = kwargs['streamId']
+        if stream_id is None:
+            raise TypeError("Missing 'stream_id' argument")
+        if backfill_all is None and 'backfillAll' in kwargs:
+            backfill_all = kwargs['backfillAll']
+        if backfill_none is None and 'backfillNone' in kwargs:
+            backfill_none = kwargs['backfillNone']
+        if customer_managed_encryption_key is None and 'customerManagedEncryptionKey' in kwargs:
+            customer_managed_encryption_key = kwargs['customerManagedEncryptionKey']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+
+        _setter("destination_config", destination_config)
+        _setter("display_name", display_name)
+        _setter("location", location)
+        _setter("source_config", source_config)
+        _setter("stream_id", stream_id)
         if backfill_all is not None:
-            pulumi.set(__self__, "backfill_all", backfill_all)
+            _setter("backfill_all", backfill_all)
         if backfill_none is not None:
-            pulumi.set(__self__, "backfill_none", backfill_none)
+            _setter("backfill_none", backfill_none)
         if customer_managed_encryption_key is not None:
-            pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
+            _setter("customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
+            _setter("desired_state", desired_state)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="destinationConfig")
@@ -239,32 +296,83 @@ class _StreamState:
         :param pulumi.Input[str] state: The state of the stream.
         :param pulumi.Input[str] stream_id: The stream identifier.
         """
+        _StreamState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backfill_all=backfill_all,
+            backfill_none=backfill_none,
+            customer_managed_encryption_key=customer_managed_encryption_key,
+            desired_state=desired_state,
+            destination_config=destination_config,
+            display_name=display_name,
+            labels=labels,
+            location=location,
+            name=name,
+            project=project,
+            source_config=source_config,
+            state=state,
+            stream_id=stream_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
+             backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+             customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
+             desired_state: Optional[pulumi.Input[str]] = None,
+             destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             stream_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backfill_all is None and 'backfillAll' in kwargs:
+            backfill_all = kwargs['backfillAll']
+        if backfill_none is None and 'backfillNone' in kwargs:
+            backfill_none = kwargs['backfillNone']
+        if customer_managed_encryption_key is None and 'customerManagedEncryptionKey' in kwargs:
+            customer_managed_encryption_key = kwargs['customerManagedEncryptionKey']
+        if desired_state is None and 'desiredState' in kwargs:
+            desired_state = kwargs['desiredState']
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if source_config is None and 'sourceConfig' in kwargs:
+            source_config = kwargs['sourceConfig']
+        if stream_id is None and 'streamId' in kwargs:
+            stream_id = kwargs['streamId']
+
         if backfill_all is not None:
-            pulumi.set(__self__, "backfill_all", backfill_all)
+            _setter("backfill_all", backfill_all)
         if backfill_none is not None:
-            pulumi.set(__self__, "backfill_none", backfill_none)
+            _setter("backfill_none", backfill_none)
         if customer_managed_encryption_key is not None:
-            pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
+            _setter("customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
+            _setter("desired_state", desired_state)
         if destination_config is not None:
-            pulumi.set(__self__, "destination_config", destination_config)
+            _setter("destination_config", destination_config)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if source_config is not None:
-            pulumi.set(__self__, "source_config", source_config)
+            _setter("source_config", source_config)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if stream_id is not None:
-            pulumi.set(__self__, "stream_id", stream_id)
+            _setter("stream_id", stream_id)
 
     @property
     @pulumi.getter(name="backfillAll")
@@ -1524,6 +1632,10 @@ class Stream(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StreamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1549,10 +1661,25 @@ class Stream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamArgs.__new__(StreamArgs)
 
+            if backfill_all is not None and not isinstance(backfill_all, StreamBackfillAllArgs):
+                backfill_all = backfill_all or {}
+                def _setter(key, value):
+                    backfill_all[key] = value
+                StreamBackfillAllArgs._configure(_setter, **backfill_all)
             __props__.__dict__["backfill_all"] = backfill_all
+            if backfill_none is not None and not isinstance(backfill_none, StreamBackfillNoneArgs):
+                backfill_none = backfill_none or {}
+                def _setter(key, value):
+                    backfill_none[key] = value
+                StreamBackfillNoneArgs._configure(_setter, **backfill_none)
             __props__.__dict__["backfill_none"] = backfill_none
             __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
             __props__.__dict__["desired_state"] = desired_state
+            if destination_config is not None and not isinstance(destination_config, StreamDestinationConfigArgs):
+                destination_config = destination_config or {}
+                def _setter(key, value):
+                    destination_config[key] = value
+                StreamDestinationConfigArgs._configure(_setter, **destination_config)
             if destination_config is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_config'")
             __props__.__dict__["destination_config"] = destination_config
@@ -1564,6 +1691,11 @@ class Stream(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            if source_config is not None and not isinstance(source_config, StreamSourceConfigArgs):
+                source_config = source_config or {}
+                def _setter(key, value):
+                    source_config[key] = value
+                StreamSourceConfigArgs._configure(_setter, **source_config)
             if source_config is None and not opts.urn:
                 raise TypeError("Missing required property 'source_config'")
             __props__.__dict__["source_config"] = source_config

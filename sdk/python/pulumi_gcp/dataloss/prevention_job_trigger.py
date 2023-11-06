@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,18 +40,51 @@ class PreventionJobTriggerArgs:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+.
                The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "triggers", triggers)
+        PreventionJobTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent=parent,
+            triggers=triggers,
+            description=description,
+            display_name=display_name,
+            inspect_job=inspect_job,
+            status=status,
+            trigger_id=trigger_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent: Optional[pulumi.Input[str]] = None,
+             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if triggers is None:
+            raise TypeError("Missing 'triggers' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_job is None and 'inspectJob' in kwargs:
+            inspect_job = kwargs['inspectJob']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+
+        _setter("parent", parent)
+        _setter("triggers", triggers)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_job is not None:
-            pulumi.set(__self__, "inspect_job", inspect_job)
+            _setter("inspect_job", inspect_job)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
 
     @property
     @pulumi.getter
@@ -181,28 +214,71 @@ class _PreventionJobTriggerState:
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
         """
+        _PreventionJobTriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            display_name=display_name,
+            inspect_job=inspect_job,
+            last_run_time=last_run_time,
+            name=name,
+            parent=parent,
+            status=status,
+            trigger_id=trigger_id,
+            triggers=triggers,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
+             last_run_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if inspect_job is None and 'inspectJob' in kwargs:
+            inspect_job = kwargs['inspectJob']
+        if last_run_time is None and 'lastRunTime' in kwargs:
+            last_run_time = kwargs['lastRunTime']
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if inspect_job is not None:
-            pulumi.set(__self__, "inspect_job", inspect_job)
+            _setter("inspect_job", inspect_job)
         if last_run_time is not None:
-            pulumi.set(__self__, "last_run_time", last_run_time)
+            _setter("last_run_time", last_run_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
         if triggers is not None:
-            pulumi.set(__self__, "triggers", triggers)
+            _setter("triggers", triggers)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1099,6 +1175,10 @@ class PreventionJobTrigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PreventionJobTriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1122,6 +1202,11 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if inspect_job is not None and not isinstance(inspect_job, PreventionJobTriggerInspectJobArgs):
+                inspect_job = inspect_job or {}
+                def _setter(key, value):
+                    inspect_job[key] = value
+                PreventionJobTriggerInspectJobArgs._configure(_setter, **inspect_job)
             __props__.__dict__["inspect_job"] = inspect_job
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

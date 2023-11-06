@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TaxonomyArgs', 'Taxonomy']
@@ -38,15 +38,40 @@ class TaxonomyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Taxonomy location region.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        TaxonomyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            activated_policy_types=activated_policy_types,
+            description=description,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if activated_policy_types is None and 'activatedPolicyTypes' in kwargs:
+            activated_policy_types = kwargs['activatedPolicyTypes']
+
+        _setter("display_name", display_name)
         if activated_policy_types is not None:
-            pulumi.set(__self__, "activated_policy_types", activated_policy_types)
+            _setter("activated_policy_types", activated_policy_types)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -150,18 +175,43 @@ class _TaxonomyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Taxonomy location region.
         """
+        _TaxonomyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activated_policy_types=activated_policy_types,
+            description=description,
+            display_name=display_name,
+            name=name,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if activated_policy_types is None and 'activatedPolicyTypes' in kwargs:
+            activated_policy_types = kwargs['activatedPolicyTypes']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if activated_policy_types is not None:
-            pulumi.set(__self__, "activated_policy_types", activated_policy_types)
+            _setter("activated_policy_types", activated_policy_types)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="activatedPolicyTypes")
@@ -354,6 +404,10 @@ class Taxonomy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TaxonomyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

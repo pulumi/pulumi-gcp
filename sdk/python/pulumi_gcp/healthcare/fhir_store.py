@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -89,31 +89,86 @@ class FhirStoreArgs:
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
         """
-        pulumi.set(__self__, "dataset", dataset)
+        FhirStoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            complex_data_type_reference_parsing=complex_data_type_reference_parsing,
+            default_search_handling_strict=default_search_handling_strict,
+            disable_referential_integrity=disable_referential_integrity,
+            disable_resource_versioning=disable_resource_versioning,
+            enable_history_import=enable_history_import,
+            enable_update_create=enable_update_create,
+            labels=labels,
+            name=name,
+            notification_config=notification_config,
+            notification_configs=notification_configs,
+            stream_configs=stream_configs,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[pulumi.Input[str]] = None,
+             complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
+             default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
+             disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
+             disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+             enable_history_import: Optional[pulumi.Input[bool]] = None,
+             enable_update_create: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
+             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if complex_data_type_reference_parsing is None and 'complexDataTypeReferenceParsing' in kwargs:
+            complex_data_type_reference_parsing = kwargs['complexDataTypeReferenceParsing']
+        if default_search_handling_strict is None and 'defaultSearchHandlingStrict' in kwargs:
+            default_search_handling_strict = kwargs['defaultSearchHandlingStrict']
+        if disable_referential_integrity is None and 'disableReferentialIntegrity' in kwargs:
+            disable_referential_integrity = kwargs['disableReferentialIntegrity']
+        if disable_resource_versioning is None and 'disableResourceVersioning' in kwargs:
+            disable_resource_versioning = kwargs['disableResourceVersioning']
+        if enable_history_import is None and 'enableHistoryImport' in kwargs:
+            enable_history_import = kwargs['enableHistoryImport']
+        if enable_update_create is None and 'enableUpdateCreate' in kwargs:
+            enable_update_create = kwargs['enableUpdateCreate']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
+        _setter("dataset", dataset)
         if complex_data_type_reference_parsing is not None:
-            pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
+            _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if default_search_handling_strict is not None:
-            pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
+            _setter("default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
-            pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
+            _setter("disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
-            pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
+            _setter("disable_resource_versioning", disable_resource_versioning)
         if enable_history_import is not None:
-            pulumi.set(__self__, "enable_history_import", enable_history_import)
+            _setter("enable_history_import", enable_history_import)
         if enable_update_create is not None:
-            pulumi.set(__self__, "enable_update_create", enable_update_create)
+            _setter("enable_update_create", enable_update_create)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if notification_configs is not None:
-            pulumi.set(__self__, "notification_configs", notification_configs)
+            _setter("notification_configs", notification_configs)
         if stream_configs is not None:
-            pulumi.set(__self__, "stream_configs", stream_configs)
+            _setter("stream_configs", stream_configs)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -394,34 +449,91 @@ class _FhirStoreState:
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
         """
+        _FhirStoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            complex_data_type_reference_parsing=complex_data_type_reference_parsing,
+            dataset=dataset,
+            default_search_handling_strict=default_search_handling_strict,
+            disable_referential_integrity=disable_referential_integrity,
+            disable_resource_versioning=disable_resource_versioning,
+            enable_history_import=enable_history_import,
+            enable_update_create=enable_update_create,
+            labels=labels,
+            name=name,
+            notification_config=notification_config,
+            notification_configs=notification_configs,
+            self_link=self_link,
+            stream_configs=stream_configs,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
+             dataset: Optional[pulumi.Input[str]] = None,
+             default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
+             disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
+             disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+             enable_history_import: Optional[pulumi.Input[bool]] = None,
+             enable_update_create: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
+             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if complex_data_type_reference_parsing is None and 'complexDataTypeReferenceParsing' in kwargs:
+            complex_data_type_reference_parsing = kwargs['complexDataTypeReferenceParsing']
+        if default_search_handling_strict is None and 'defaultSearchHandlingStrict' in kwargs:
+            default_search_handling_strict = kwargs['defaultSearchHandlingStrict']
+        if disable_referential_integrity is None and 'disableReferentialIntegrity' in kwargs:
+            disable_referential_integrity = kwargs['disableReferentialIntegrity']
+        if disable_resource_versioning is None and 'disableResourceVersioning' in kwargs:
+            disable_resource_versioning = kwargs['disableResourceVersioning']
+        if enable_history_import is None and 'enableHistoryImport' in kwargs:
+            enable_history_import = kwargs['enableHistoryImport']
+        if enable_update_create is None and 'enableUpdateCreate' in kwargs:
+            enable_update_create = kwargs['enableUpdateCreate']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         if complex_data_type_reference_parsing is not None:
-            pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
+            _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if dataset is not None:
-            pulumi.set(__self__, "dataset", dataset)
+            _setter("dataset", dataset)
         if default_search_handling_strict is not None:
-            pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
+            _setter("default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
-            pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
+            _setter("disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
-            pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
+            _setter("disable_resource_versioning", disable_resource_versioning)
         if enable_history_import is not None:
-            pulumi.set(__self__, "enable_history_import", enable_history_import)
+            _setter("enable_history_import", enable_history_import)
         if enable_update_create is not None:
-            pulumi.set(__self__, "enable_update_create", enable_update_create)
+            _setter("enable_update_create", enable_update_create)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+            _setter("notification_config", notification_config)
         if notification_configs is not None:
-            pulumi.set(__self__, "notification_configs", notification_configs)
+            _setter("notification_configs", notification_configs)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if stream_configs is not None:
-            pulumi.set(__self__, "stream_configs", stream_configs)
+            _setter("stream_configs", stream_configs)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="complexDataTypeReferenceParsing")
@@ -999,6 +1111,10 @@ class FhirStore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FhirStoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1037,6 +1153,11 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["enable_update_create"] = enable_update_create
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if notification_config is not None and not isinstance(notification_config, FhirStoreNotificationConfigArgs):
+                notification_config = notification_config or {}
+                def _setter(key, value):
+                    notification_config[key] = value
+                FhirStoreNotificationConfigArgs._configure(_setter, **notification_config)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["stream_configs"] = stream_configs

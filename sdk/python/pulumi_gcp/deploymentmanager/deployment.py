@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,21 +59,52 @@ class DeploymentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "target", target)
+        DeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target=target,
+            create_policy=create_policy,
+            delete_policy=delete_policy,
+            description=description,
+            labels=labels,
+            name=name,
+            preview=preview,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
+             create_policy: Optional[pulumi.Input[str]] = None,
+             delete_policy: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preview: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+
+        _setter("target", target)
         if create_policy is not None:
-            pulumi.set(__self__, "create_policy", create_policy)
+            _setter("create_policy", create_policy)
         if delete_policy is not None:
-            pulumi.set(__self__, "delete_policy", delete_policy)
+            _setter("delete_policy", delete_policy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preview is not None:
-            pulumi.set(__self__, "preview", preview)
+            _setter("preview", preview)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -249,28 +280,67 @@ class _DeploymentState:
                configuration and relevant templates.
                Structure is documented below.
         """
+        _DeploymentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_policy=create_policy,
+            delete_policy=delete_policy,
+            deployment_id=deployment_id,
+            description=description,
+            labels=labels,
+            manifest=manifest,
+            name=name,
+            preview=preview,
+            project=project,
+            self_link=self_link,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_policy: Optional[pulumi.Input[str]] = None,
+             delete_policy: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
+             manifest: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preview: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input['DeploymentTargetArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_policy is None and 'createPolicy' in kwargs:
+            create_policy = kwargs['createPolicy']
+        if delete_policy is None and 'deletePolicy' in kwargs:
+            delete_policy = kwargs['deletePolicy']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if create_policy is not None:
-            pulumi.set(__self__, "create_policy", create_policy)
+            _setter("create_policy", create_policy)
         if delete_policy is not None:
-            pulumi.set(__self__, "delete_policy", delete_policy)
+            _setter("delete_policy", delete_policy)
         if deployment_id is not None:
-            pulumi.set(__self__, "deployment_id", deployment_id)
+            _setter("deployment_id", deployment_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if manifest is not None:
-            pulumi.set(__self__, "manifest", manifest)
+            _setter("manifest", manifest)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preview is not None:
-            pulumi.set(__self__, "preview", preview)
+            _setter("preview", preview)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter(name="createPolicy")
@@ -595,6 +665,10 @@ class Deployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -624,6 +698,11 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["preview"] = preview
             __props__.__dict__["project"] = project
+            if target is not None and not isinstance(target, DeploymentTargetArgs):
+                target = target or {}
+                def _setter(key, value):
+                    target[key] = value
+                DeploymentTargetArgs._configure(_setter, **target)
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target

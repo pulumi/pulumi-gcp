@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NotificationArgs', 'Notification']
@@ -34,15 +34,50 @@ class NotificationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "payload_format", payload_format)
-        pulumi.set(__self__, "topic", topic)
+        NotificationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            payload_format=payload_format,
+            topic=topic,
+            custom_attributes=custom_attributes,
+            event_types=event_types,
+            object_name_prefix=object_name_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             payload_format: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             object_name_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if payload_format is None and 'payloadFormat' in kwargs:
+            payload_format = kwargs['payloadFormat']
+        if payload_format is None:
+            raise TypeError("Missing 'payload_format' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+        if object_name_prefix is None and 'objectNamePrefix' in kwargs:
+            object_name_prefix = kwargs['objectNamePrefix']
+
+        _setter("bucket", bucket)
+        _setter("payload_format", payload_format)
+        _setter("topic", topic)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if event_types is not None:
-            pulumi.set(__self__, "event_types", event_types)
+            _setter("event_types", event_types)
         if object_name_prefix is not None:
-            pulumi.set(__self__, "object_name_prefix", object_name_prefix)
+            _setter("object_name_prefix", object_name_prefix)
 
     @property
     @pulumi.getter
@@ -149,22 +184,59 @@ class _NotificationState:
                
                - - -
         """
+        _NotificationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            custom_attributes=custom_attributes,
+            event_types=event_types,
+            notification_id=notification_id,
+            object_name_prefix=object_name_prefix,
+            payload_format=payload_format,
+            self_link=self_link,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notification_id: Optional[pulumi.Input[str]] = None,
+             object_name_prefix: Optional[pulumi.Input[str]] = None,
+             payload_format: Optional[pulumi.Input[str]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+        if notification_id is None and 'notificationId' in kwargs:
+            notification_id = kwargs['notificationId']
+        if object_name_prefix is None and 'objectNamePrefix' in kwargs:
+            object_name_prefix = kwargs['objectNamePrefix']
+        if payload_format is None and 'payloadFormat' in kwargs:
+            payload_format = kwargs['payloadFormat']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if event_types is not None:
-            pulumi.set(__self__, "event_types", event_types)
+            _setter("event_types", event_types)
         if notification_id is not None:
-            pulumi.set(__self__, "notification_id", notification_id)
+            _setter("notification_id", notification_id)
         if object_name_prefix is not None:
-            pulumi.set(__self__, "object_name_prefix", object_name_prefix)
+            _setter("object_name_prefix", object_name_prefix)
         if payload_format is not None:
-            pulumi.set(__self__, "payload_format", payload_format)
+            _setter("payload_format", payload_format)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
 
     @property
     @pulumi.getter
@@ -420,6 +492,10 @@ class Notification(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NotificationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

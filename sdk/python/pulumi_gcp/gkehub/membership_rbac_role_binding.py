@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,13 +36,48 @@ class MembershipRbacRoleBindingArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "membership_id", membership_id)
-        pulumi.set(__self__, "membership_rbac_role_binding_id", membership_rbac_role_binding_id)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "user", user)
+        MembershipRbacRoleBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            membership_id=membership_id,
+            membership_rbac_role_binding_id=membership_rbac_role_binding_id,
+            role=role,
+            user=user,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: Optional[pulumi.Input[str]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArgs']] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if membership_rbac_role_binding_id is None and 'membershipRbacRoleBindingId' in kwargs:
+            membership_rbac_role_binding_id = kwargs['membershipRbacRoleBindingId']
+        if membership_rbac_role_binding_id is None:
+            raise TypeError("Missing 'membership_rbac_role_binding_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("location", location)
+        _setter("membership_id", membership_id)
+        _setter("membership_rbac_role_binding_id", membership_rbac_role_binding_id)
+        _setter("role", role)
+        _setter("user", user)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -158,30 +193,73 @@ class _MembershipRbacRoleBindingState:
                user is the name of the user as seen by the kubernetes cluster, example
                "alice" or "alice@domain.tld"
         """
+        _MembershipRbacRoleBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            delete_time=delete_time,
+            location=location,
+            membership_id=membership_id,
+            membership_rbac_role_binding_id=membership_rbac_role_binding_id,
+            name=name,
+            project=project,
+            role=role,
+            states=states,
+            uid=uid,
+            update_time=update_time,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             membership_id: Optional[pulumi.Input[str]] = None,
+             membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input['MembershipRbacRoleBindingRoleArgs']] = None,
+             states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_rbac_role_binding_id is None and 'membershipRbacRoleBindingId' in kwargs:
+            membership_rbac_role_binding_id = kwargs['membershipRbacRoleBindingId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if membership_id is not None:
-            pulumi.set(__self__, "membership_id", membership_id)
+            _setter("membership_id", membership_id)
         if membership_rbac_role_binding_id is not None:
-            pulumi.set(__self__, "membership_rbac_role_binding_id", membership_rbac_role_binding_id)
+            _setter("membership_rbac_role_binding_id", membership_rbac_role_binding_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="createTime")
@@ -414,6 +492,10 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MembershipRbacRoleBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -444,6 +526,11 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                 raise TypeError("Missing required property 'membership_rbac_role_binding_id'")
             __props__.__dict__["membership_rbac_role_binding_id"] = membership_rbac_role_binding_id
             __props__.__dict__["project"] = project
+            if role is not None and not isinstance(role, MembershipRbacRoleBindingRoleArgs):
+                role = role or {}
+                def _setter(key, value):
+                    role[key] = value
+                MembershipRbacRoleBindingRoleArgs._configure(_setter, **role)
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,20 +47,73 @@ class BitbucketServerConfigArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         """
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "host_uri", host_uri)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "secrets", secrets)
-        pulumi.set(__self__, "username", username)
+        BitbucketServerConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            config_id=config_id,
+            host_uri=host_uri,
+            location=location,
+            secrets=secrets,
+            username=username,
+            connected_repositories=connected_repositories,
+            peered_network=peered_network,
+            project=project,
+            ssl_ca=ssl_ca,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[str]] = None,
+             host_uri: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
+             peered_network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             ssl_ca: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if host_uri is None:
+            raise TypeError("Missing 'host_uri' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if secrets is None:
+            raise TypeError("Missing 'secrets' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+
+        _setter("api_key", api_key)
+        _setter("config_id", config_id)
+        _setter("host_uri", host_uri)
+        _setter("location", location)
+        _setter("secrets", secrets)
+        _setter("username", username)
         if connected_repositories is not None:
-            pulumi.set(__self__, "connected_repositories", connected_repositories)
+            _setter("connected_repositories", connected_repositories)
         if peered_network is not None:
-            pulumi.set(__self__, "peered_network", peered_network)
+            _setter("peered_network", peered_network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if ssl_ca is not None:
-            pulumi.set(__self__, "ssl_ca", ssl_ca)
+            _setter("ssl_ca", ssl_ca)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -229,30 +282,77 @@ class _BitbucketServerConfigState:
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         :param pulumi.Input[str] webhook_key: Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
         """
+        _BitbucketServerConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            config_id=config_id,
+            connected_repositories=connected_repositories,
+            host_uri=host_uri,
+            location=location,
+            name=name,
+            peered_network=peered_network,
+            project=project,
+            secrets=secrets,
+            ssl_ca=ssl_ca,
+            username=username,
+            webhook_key=webhook_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[str]] = None,
+             connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]] = None,
+             host_uri: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             peered_network: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             secrets: Optional[pulumi.Input['BitbucketServerConfigSecretsArgs']] = None,
+             ssl_ca: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             webhook_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if connected_repositories is None and 'connectedRepositories' in kwargs:
+            connected_repositories = kwargs['connectedRepositories']
+        if host_uri is None and 'hostUri' in kwargs:
+            host_uri = kwargs['hostUri']
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if ssl_ca is None and 'sslCa' in kwargs:
+            ssl_ca = kwargs['sslCa']
+        if webhook_key is None and 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+
         if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
+            _setter("api_key", api_key)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if connected_repositories is not None:
-            pulumi.set(__self__, "connected_repositories", connected_repositories)
+            _setter("connected_repositories", connected_repositories)
         if host_uri is not None:
-            pulumi.set(__self__, "host_uri", host_uri)
+            _setter("host_uri", host_uri)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if peered_network is not None:
-            pulumi.set(__self__, "peered_network", peered_network)
+            _setter("peered_network", peered_network)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if secrets is not None:
-            pulumi.set(__self__, "secrets", secrets)
+            _setter("secrets", secrets)
         if ssl_ca is not None:
-            pulumi.set(__self__, "ssl_ca", ssl_ca)
+            _setter("ssl_ca", ssl_ca)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if webhook_key is not None:
-            pulumi.set(__self__, "webhook_key", webhook_key)
+            _setter("webhook_key", webhook_key)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -606,6 +706,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BitbucketServerConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -645,6 +749,11 @@ class BitbucketServerConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["peered_network"] = peered_network
             __props__.__dict__["project"] = project
+            if secrets is not None and not isinstance(secrets, BitbucketServerConfigSecretsArgs):
+                secrets = secrets or {}
+                def _setter(key, value):
+                    secrets[key] = value
+                BitbucketServerConfigSecretsArgs._configure(_setter, **secrets)
             if secrets is None and not opts.urn:
                 raise TypeError("Missing required property 'secrets'")
             __props__.__dict__["secrets"] = secrets

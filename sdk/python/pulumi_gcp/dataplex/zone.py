@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,21 +39,66 @@ class ZoneArgs:
         :param pulumi.Input[str] name: The name of the zone.
         :param pulumi.Input[str] project: The project for the resource
         """
-        pulumi.set(__self__, "discovery_spec", discovery_spec)
-        pulumi.set(__self__, "lake", lake)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "resource_spec", resource_spec)
-        pulumi.set(__self__, "type", type)
+        ZoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            discovery_spec=discovery_spec,
+            lake=lake,
+            location=location,
+            resource_spec=resource_spec,
+            type=type,
+            description=description,
+            display_name=display_name,
+            labels=labels,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             discovery_spec: Optional[pulumi.Input['ZoneDiscoverySpecArgs']] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['ZoneResourceSpecArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_spec is None:
+            raise TypeError("Missing 'discovery_spec' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_spec is None:
+            raise TypeError("Missing 'resource_spec' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
+        _setter("discovery_spec", discovery_spec)
+        _setter("lake", lake)
+        _setter("location", location)
+        _setter("resource_spec", resource_spec)
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="discoverySpec")
@@ -212,36 +257,87 @@ class _ZoneState:
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the zone was last updated.
         """
+        _ZoneState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asset_statuses=asset_statuses,
+            create_time=create_time,
+            description=description,
+            discovery_spec=discovery_spec,
+            display_name=display_name,
+            labels=labels,
+            lake=lake,
+            location=location,
+            name=name,
+            project=project,
+            resource_spec=resource_spec,
+            state=state,
+            type=type,
+            uid=uid,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asset_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAssetStatusArgs']]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             discovery_spec: Optional[pulumi.Input['ZoneDiscoverySpecArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['ZoneResourceSpecArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asset_statuses is None and 'assetStatuses' in kwargs:
+            asset_statuses = kwargs['assetStatuses']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if asset_statuses is not None:
-            pulumi.set(__self__, "asset_statuses", asset_statuses)
+            _setter("asset_statuses", asset_statuses)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if discovery_spec is not None:
-            pulumi.set(__self__, "discovery_spec", discovery_spec)
+            _setter("discovery_spec", discovery_spec)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lake is not None:
-            pulumi.set(__self__, "lake", lake)
+            _setter("lake", lake)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resource_spec is not None:
-            pulumi.set(__self__, "resource_spec", resource_spec)
+            _setter("resource_spec", resource_spec)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="assetStatuses")
@@ -569,6 +665,10 @@ class Zone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -594,6 +694,11 @@ class Zone(pulumi.CustomResource):
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
             __props__.__dict__["description"] = description
+            if discovery_spec is not None and not isinstance(discovery_spec, ZoneDiscoverySpecArgs):
+                discovery_spec = discovery_spec or {}
+                def _setter(key, value):
+                    discovery_spec[key] = value
+                ZoneDiscoverySpecArgs._configure(_setter, **discovery_spec)
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
             __props__.__dict__["discovery_spec"] = discovery_spec
@@ -607,6 +712,11 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if resource_spec is not None and not isinstance(resource_spec, ZoneResourceSpecArgs):
+                resource_spec = resource_spec or {}
+                def _setter(key, value):
+                    resource_spec[key] = value
+                ZoneResourceSpecArgs._configure(_setter, **resource_spec)
             if resource_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_spec'")
             __props__.__dict__["resource_spec"] = resource_spec

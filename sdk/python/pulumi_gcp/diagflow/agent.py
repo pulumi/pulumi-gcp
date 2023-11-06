@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AgentArgs', 'Agent']
@@ -69,27 +69,84 @@ class AgentArgs:
                NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
                the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         """
-        pulumi.set(__self__, "default_language_code", default_language_code)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "time_zone", time_zone)
+        AgentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_language_code=default_language_code,
+            display_name=display_name,
+            time_zone=time_zone,
+            api_version=api_version,
+            avatar_uri=avatar_uri,
+            classification_threshold=classification_threshold,
+            description=description,
+            enable_logging=enable_logging,
+            match_mode=match_mode,
+            project=project,
+            supported_language_codes=supported_language_codes,
+            tier=tier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_language_code: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             api_version: Optional[pulumi.Input[str]] = None,
+             avatar_uri: Optional[pulumi.Input[str]] = None,
+             classification_threshold: Optional[pulumi.Input[float]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             match_mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if default_language_code is None:
+            raise TypeError("Missing 'default_language_code' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if api_version is None and 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if match_mode is None and 'matchMode' in kwargs:
+            match_mode = kwargs['matchMode']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+
+        _setter("default_language_code", default_language_code)
+        _setter("display_name", display_name)
+        _setter("time_zone", time_zone)
         if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
+            _setter("api_version", api_version)
         if avatar_uri is not None:
-            pulumi.set(__self__, "avatar_uri", avatar_uri)
+            _setter("avatar_uri", avatar_uri)
         if classification_threshold is not None:
-            pulumi.set(__self__, "classification_threshold", classification_threshold)
+            _setter("classification_threshold", classification_threshold)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if match_mode is not None:
-            pulumi.set(__self__, "match_mode", match_mode)
+            _setter("match_mode", match_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if supported_language_codes is not None:
-            pulumi.set(__self__, "supported_language_codes", supported_language_codes)
+            _setter("supported_language_codes", supported_language_codes)
         if tier is not None:
-            pulumi.set(__self__, "tier", tier)
+            _setter("tier", tier)
 
     @property
     @pulumi.getter(name="defaultLanguageCode")
@@ -325,32 +382,87 @@ class _AgentState:
                
                - - -
         """
+        _AgentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_version=api_version,
+            avatar_uri=avatar_uri,
+            avatar_uri_backend=avatar_uri_backend,
+            classification_threshold=classification_threshold,
+            default_language_code=default_language_code,
+            description=description,
+            display_name=display_name,
+            enable_logging=enable_logging,
+            match_mode=match_mode,
+            project=project,
+            supported_language_codes=supported_language_codes,
+            tier=tier,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_version: Optional[pulumi.Input[str]] = None,
+             avatar_uri: Optional[pulumi.Input[str]] = None,
+             avatar_uri_backend: Optional[pulumi.Input[str]] = None,
+             classification_threshold: Optional[pulumi.Input[float]] = None,
+             default_language_code: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             match_mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_version is None and 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if avatar_uri_backend is None and 'avatarUriBackend' in kwargs:
+            avatar_uri_backend = kwargs['avatarUriBackend']
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if match_mode is None and 'matchMode' in kwargs:
+            match_mode = kwargs['matchMode']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
+            _setter("api_version", api_version)
         if avatar_uri is not None:
-            pulumi.set(__self__, "avatar_uri", avatar_uri)
+            _setter("avatar_uri", avatar_uri)
         if avatar_uri_backend is not None:
-            pulumi.set(__self__, "avatar_uri_backend", avatar_uri_backend)
+            _setter("avatar_uri_backend", avatar_uri_backend)
         if classification_threshold is not None:
-            pulumi.set(__self__, "classification_threshold", classification_threshold)
+            _setter("classification_threshold", classification_threshold)
         if default_language_code is not None:
-            pulumi.set(__self__, "default_language_code", default_language_code)
+            _setter("default_language_code", default_language_code)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if match_mode is not None:
-            pulumi.set(__self__, "match_mode", match_mode)
+            _setter("match_mode", match_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if supported_language_codes is not None:
-            pulumi.set(__self__, "supported_language_codes", supported_language_codes)
+            _setter("supported_language_codes", supported_language_codes)
         if tier is not None:
-            pulumi.set(__self__, "tier", tier)
+            _setter("tier", tier)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -705,6 +817,10 @@ class Agent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AgentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OrganizationSecurityPolicyAssociationArgs', 'OrganizationSecurityPolicyAssociation']
@@ -26,10 +26,33 @@ class OrganizationSecurityPolicyAssociationArgs:
                - - -
         :param pulumi.Input[str] name: The name for an association.
         """
-        pulumi.set(__self__, "attachment_id", attachment_id)
-        pulumi.set(__self__, "policy_id", policy_id)
+        OrganizationSecurityPolicyAssociationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_id=attachment_id,
+            policy_id=policy_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_id: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attachment_id is None and 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if attachment_id is None:
+            raise TypeError("Missing 'attachment_id' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
+        _setter("attachment_id", attachment_id)
+        _setter("policy_id", policy_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="attachmentId")
@@ -88,14 +111,37 @@ class _OrganizationSecurityPolicyAssociationState:
                
                - - -
         """
+        _OrganizationSecurityPolicyAssociationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_id=attachment_id,
+            display_name=display_name,
+            name=name,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attachment_id is None and 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if attachment_id is not None:
-            pulumi.set(__self__, "attachment_id", attachment_id)
+            _setter("attachment_id", attachment_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="attachmentId")
@@ -307,6 +353,10 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationSecurityPolicyAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

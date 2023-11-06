@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -45,10 +45,29 @@ class AppEngineServiceIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AppEngineServiceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -94,10 +113,29 @@ class AppEngineServiceIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AppEngineServiceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -143,10 +181,29 @@ class AppEngineVersionIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AppEngineVersionIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -192,10 +249,29 @@ class AppEngineVersionIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        AppEngineVersionIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -237,10 +313,29 @@ class TunnelIamBindingCondition(dict):
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TunnelIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -278,10 +373,29 @@ class TunnelIamMemberCondition(dict):
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TunnelIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -323,10 +437,29 @@ class TunnelInstanceIAMBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TunnelInstanceIAMBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -372,10 +505,29 @@ class TunnelInstanceIAMMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        TunnelInstanceIAMMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -421,10 +573,29 @@ class WebBackendServiceIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebBackendServiceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -470,10 +641,29 @@ class WebBackendServiceIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebBackendServiceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -519,10 +709,29 @@ class WebIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -568,10 +777,29 @@ class WebIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -612,10 +840,29 @@ class WebRegionBackendServiceIamBindingCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebRegionBackendServiceIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -649,10 +896,29 @@ class WebRegionBackendServiceIamMemberCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebRegionBackendServiceIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -691,10 +957,29 @@ class WebTypeAppEngingIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebTypeAppEngingIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -740,10 +1025,29 @@ class WebTypeAppEngingIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebTypeAppEngingIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -789,10 +1093,29 @@ class WebTypeComputeIamBindingCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebTypeComputeIamBindingCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -838,10 +1161,29 @@ class WebTypeComputeIamMemberCondition(dict):
                identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
                consider it to be an entirely different resource and will treat it as such.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
+        WebTypeComputeIamMemberCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            title=title,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
+        _setter("expression", expression)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter

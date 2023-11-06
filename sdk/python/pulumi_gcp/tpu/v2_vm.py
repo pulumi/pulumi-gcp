@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['V2VmArgs', 'V2Vm']
@@ -33,17 +33,44 @@ class V2VmArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
-        pulumi.set(__self__, "runtime_version", runtime_version)
+        V2VmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            runtime_version=runtime_version,
+            accelerator_type=accelerator_type,
+            description=description,
+            name=name,
+            project=project,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             runtime_version: Optional[pulumi.Input[str]] = None,
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if runtime_version is None and 'runtimeVersion' in kwargs:
+            runtime_version = kwargs['runtimeVersion']
+        if runtime_version is None:
+            raise TypeError("Missing 'runtime_version' argument")
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
+        _setter("runtime_version", runtime_version)
         if accelerator_type is not None:
-            pulumi.set(__self__, "accelerator_type", accelerator_type)
+            _setter("accelerator_type", accelerator_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="runtimeVersion")
@@ -144,18 +171,43 @@ class _V2VmState:
                - - -
         :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
+        _V2VmState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_type=accelerator_type,
+            description=description,
+            name=name,
+            project=project,
+            runtime_version=runtime_version,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             runtime_version: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if runtime_version is None and 'runtimeVersion' in kwargs:
+            runtime_version = kwargs['runtimeVersion']
+
         if accelerator_type is not None:
-            pulumi.set(__self__, "accelerator_type", accelerator_type)
+            _setter("accelerator_type", accelerator_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if runtime_version is not None:
-            pulumi.set(__self__, "runtime_version", runtime_version)
+            _setter("runtime_version", runtime_version)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -375,6 +427,10 @@ class V2Vm(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            V2VmArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

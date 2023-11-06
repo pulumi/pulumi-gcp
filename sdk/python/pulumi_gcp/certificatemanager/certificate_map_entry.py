@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CertificateMapEntryArgs', 'CertificateMapEntry']
@@ -45,20 +45,49 @@ class CertificateMapEntryArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "certificates", certificates)
-        pulumi.set(__self__, "map", map)
+        CertificateMapEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificates=certificates,
+            map=map,
+            description=description,
+            hostname=hostname,
+            labels=labels,
+            matcher=matcher,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             map: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             matcher: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if map is None:
+            raise TypeError("Missing 'map' argument")
+
+        _setter("certificates", certificates)
+        _setter("map", map)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if matcher is not None:
-            pulumi.set(__self__, "matcher", matcher)
+            _setter("matcher", matcher)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -213,28 +242,63 @@ class _CertificateMapEntryState:
                with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        _CertificateMapEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificates=certificates,
+            create_time=create_time,
+            description=description,
+            hostname=hostname,
+            labels=labels,
+            map=map,
+            matcher=matcher,
+            name=name,
+            project=project,
+            state=state,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             map: Optional[pulumi.Input[str]] = None,
+             matcher: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if map is not None:
-            pulumi.set(__self__, "map", map)
+            _setter("map", map)
         if matcher is not None:
-            pulumi.set(__self__, "matcher", matcher)
+            _setter("matcher", matcher)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -564,6 +628,10 @@ class CertificateMapEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateMapEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

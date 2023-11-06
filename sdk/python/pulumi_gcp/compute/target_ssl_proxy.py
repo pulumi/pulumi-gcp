@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TargetSSLProxyArgs', 'TargetSSLProxy']
@@ -52,21 +52,58 @@ class TargetSSLProxyArgs:
                the TargetSslProxy resource. If not set, the TargetSslProxy
                resource will not have any SSL policy configured.
         """
-        pulumi.set(__self__, "backend_service", backend_service)
+        TargetSSLProxyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_service=backend_service,
+            certificate_map=certificate_map,
+            description=description,
+            name=name,
+            project=project,
+            proxy_header=proxy_header,
+            ssl_certificates=ssl_certificates,
+            ssl_policy=ssl_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             certificate_map: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_header: Optional[pulumi.Input[str]] = None,
+             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ssl_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
+        _setter("backend_service", backend_service)
         if certificate_map is not None:
-            pulumi.set(__self__, "certificate_map", certificate_map)
+            _setter("certificate_map", certificate_map)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_header is not None:
-            pulumi.set(__self__, "proxy_header", proxy_header)
+            _setter("proxy_header", proxy_header)
         if ssl_certificates is not None:
-            pulumi.set(__self__, "ssl_certificates", ssl_certificates)
+            _setter("ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
-            pulumi.set(__self__, "ssl_policy", ssl_policy)
+            _setter("ssl_policy", ssl_policy)
 
     @property
     @pulumi.getter(name="backendService")
@@ -231,28 +268,75 @@ class _TargetSSLProxyState:
                the TargetSslProxy resource. If not set, the TargetSslProxy
                resource will not have any SSL policy configured.
         """
+        _TargetSSLProxyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_service=backend_service,
+            certificate_map=certificate_map,
+            creation_timestamp=creation_timestamp,
+            description=description,
+            name=name,
+            project=project,
+            proxy_header=proxy_header,
+            proxy_id=proxy_id,
+            self_link=self_link,
+            ssl_certificates=ssl_certificates,
+            ssl_policy=ssl_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_service: Optional[pulumi.Input[str]] = None,
+             certificate_map: Optional[pulumi.Input[str]] = None,
+             creation_timestamp: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             proxy_header: Optional[pulumi.Input[str]] = None,
+             proxy_id: Optional[pulumi.Input[int]] = None,
+             self_link: Optional[pulumi.Input[str]] = None,
+             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ssl_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         if backend_service is not None:
-            pulumi.set(__self__, "backend_service", backend_service)
+            _setter("backend_service", backend_service)
         if certificate_map is not None:
-            pulumi.set(__self__, "certificate_map", certificate_map)
+            _setter("certificate_map", certificate_map)
         if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+            _setter("creation_timestamp", creation_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if proxy_header is not None:
-            pulumi.set(__self__, "proxy_header", proxy_header)
+            _setter("proxy_header", proxy_header)
         if proxy_id is not None:
-            pulumi.set(__self__, "proxy_id", proxy_id)
+            _setter("proxy_id", proxy_id)
         if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
+            _setter("self_link", self_link)
         if ssl_certificates is not None:
-            pulumi.set(__self__, "ssl_certificates", ssl_certificates)
+            _setter("ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
-            pulumi.set(__self__, "ssl_policy", ssl_policy)
+            _setter("ssl_policy", ssl_policy)
 
     @property
     @pulumi.getter(name="backendService")
@@ -524,6 +608,10 @@ class TargetSSLProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TargetSSLProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

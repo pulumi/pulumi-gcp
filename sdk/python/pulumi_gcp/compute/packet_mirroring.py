@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,21 +50,58 @@ class PacketMirroringArgs:
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         """
-        pulumi.set(__self__, "collector_ilb", collector_ilb)
-        pulumi.set(__self__, "mirrored_resources", mirrored_resources)
-        pulumi.set(__self__, "network", network)
+        PacketMirroringArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_ilb=collector_ilb,
+            mirrored_resources=mirrored_resources,
+            network=network,
+            description=description,
+            filter=filter,
+            name=name,
+            priority=priority,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
+             mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
+             network: Optional[pulumi.Input['PacketMirroringNetworkArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if collector_ilb is None and 'collectorIlb' in kwargs:
+            collector_ilb = kwargs['collectorIlb']
+        if collector_ilb is None:
+            raise TypeError("Missing 'collector_ilb' argument")
+        if mirrored_resources is None and 'mirroredResources' in kwargs:
+            mirrored_resources = kwargs['mirroredResources']
+        if mirrored_resources is None:
+            raise TypeError("Missing 'mirrored_resources' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+
+        _setter("collector_ilb", collector_ilb)
+        _setter("mirrored_resources", mirrored_resources)
+        _setter("network", network)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="collectorIlb")
@@ -225,24 +262,55 @@ class _PacketMirroringState:
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         """
+        _PacketMirroringState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_ilb=collector_ilb,
+            description=description,
+            filter=filter,
+            mirrored_resources=mirrored_resources,
+            name=name,
+            network=network,
+            priority=priority,
+            project=project,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
+             mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input['PacketMirroringNetworkArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if collector_ilb is None and 'collectorIlb' in kwargs:
+            collector_ilb = kwargs['collectorIlb']
+        if mirrored_resources is None and 'mirroredResources' in kwargs:
+            mirrored_resources = kwargs['mirroredResources']
+
         if collector_ilb is not None:
-            pulumi.set(__self__, "collector_ilb", collector_ilb)
+            _setter("collector_ilb", collector_ilb)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if mirrored_resources is not None:
-            pulumi.set(__self__, "mirrored_resources", mirrored_resources)
+            _setter("mirrored_resources", mirrored_resources)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="collectorIlb")
@@ -488,6 +556,10 @@ class PacketMirroring(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PacketMirroringArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -511,15 +583,35 @@ class PacketMirroring(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PacketMirroringArgs.__new__(PacketMirroringArgs)
 
+            if collector_ilb is not None and not isinstance(collector_ilb, PacketMirroringCollectorIlbArgs):
+                collector_ilb = collector_ilb or {}
+                def _setter(key, value):
+                    collector_ilb[key] = value
+                PacketMirroringCollectorIlbArgs._configure(_setter, **collector_ilb)
             if collector_ilb is None and not opts.urn:
                 raise TypeError("Missing required property 'collector_ilb'")
             __props__.__dict__["collector_ilb"] = collector_ilb
             __props__.__dict__["description"] = description
+            if filter is not None and not isinstance(filter, PacketMirroringFilterArgs):
+                filter = filter or {}
+                def _setter(key, value):
+                    filter[key] = value
+                PacketMirroringFilterArgs._configure(_setter, **filter)
             __props__.__dict__["filter"] = filter
+            if mirrored_resources is not None and not isinstance(mirrored_resources, PacketMirroringMirroredResourcesArgs):
+                mirrored_resources = mirrored_resources or {}
+                def _setter(key, value):
+                    mirrored_resources[key] = value
+                PacketMirroringMirroredResourcesArgs._configure(_setter, **mirrored_resources)
             if mirrored_resources is None and not opts.urn:
                 raise TypeError("Missing required property 'mirrored_resources'")
             __props__.__dict__["mirrored_resources"] = mirrored_resources
             __props__.__dict__["name"] = name
+            if network is not None and not isinstance(network, PacketMirroringNetworkArgs):
+                network = network or {}
+                def _setter(key, value):
+                    network[key] = value
+                PacketMirroringNetworkArgs._configure(_setter, **network)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,12 +29,39 @@ class SourceIamBindingArgs:
                
                - - -
         """
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "organization", organization)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "source", source)
+        SourceIamBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            organization=organization,
+            role=role,
+            source=source,
+            condition=condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             condition: Optional[pulumi.Input['SourceIamBindingConditionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
+        _setter("members", members)
+        _setter("organization", organization)
+        _setter("role", role)
+        _setter("source", source)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
 
     @property
     @pulumi.getter
@@ -106,18 +133,39 @@ class _SourceIamBindingState:
                
                - - -
         """
+        _SourceIamBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            etag=etag,
+            members=members,
+            organization=organization,
+            role=role,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['SourceIamBindingConditionArgs']] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if organization is not None:
-            pulumi.set(__self__, "organization", organization)
+            _setter("organization", organization)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter
@@ -290,6 +338,10 @@ class SourceIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SourceIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -309,6 +361,11 @@ class SourceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SourceIamBindingArgs.__new__(SourceIamBindingArgs)
 
+            if condition is not None and not isinstance(condition, SourceIamBindingConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                SourceIamBindingConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

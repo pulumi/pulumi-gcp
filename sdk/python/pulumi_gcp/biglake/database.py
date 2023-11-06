@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,11 +28,36 @@ class DatabaseArgs:
         :param pulumi.Input[str] type: The database type.
         :param pulumi.Input[str] name: The name of the database.
         """
-        pulumi.set(__self__, "catalog", catalog)
-        pulumi.set(__self__, "hive_options", hive_options)
-        pulumi.set(__self__, "type", type)
+        DatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog=catalog,
+            hive_options=hive_options,
+            type=type,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog: Optional[pulumi.Input[str]] = None,
+             hive_options: Optional[pulumi.Input['DatabaseHiveOptionsArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog is None:
+            raise TypeError("Missing 'catalog' argument")
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if hive_options is None:
+            raise TypeError("Missing 'hive_options' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("catalog", catalog)
+        _setter("hive_options", hive_options)
+        _setter("type", type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -119,22 +144,57 @@ class _DatabaseState:
                fractional digits. Examples: "2014-10-02T15:01:23Z" and
                "2014-10-02T15:01:23.045123456Z".
         """
+        _DatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog=catalog,
+            create_time=create_time,
+            delete_time=delete_time,
+            expire_time=expire_time,
+            hive_options=hive_options,
+            name=name,
+            type=type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             delete_time: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             hive_options: Optional[pulumi.Input['DatabaseHiveOptionsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if catalog is not None:
-            pulumi.set(__self__, "catalog", catalog)
+            _setter("catalog", catalog)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if delete_time is not None:
-            pulumi.set(__self__, "delete_time", delete_time)
+            _setter("delete_time", delete_time)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if hive_options is not None:
-            pulumi.set(__self__, "hive_options", hive_options)
+            _setter("hive_options", hive_options)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -366,6 +426,10 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -387,6 +451,11 @@ class Database(pulumi.CustomResource):
             if catalog is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog'")
             __props__.__dict__["catalog"] = catalog
+            if hive_options is not None and not isinstance(hive_options, DatabaseHiveOptionsArgs):
+                hive_options = hive_options or {}
+                def _setter(key, value):
+                    hive_options[key] = value
+                DatabaseHiveOptionsArgs._configure(_setter, **hive_options)
             if hive_options is None and not opts.urn:
                 raise TypeError("Missing required property 'hive_options'")
             __props__.__dict__["hive_options"] = hive_options

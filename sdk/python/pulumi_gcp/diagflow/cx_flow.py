@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,21 +59,60 @@ class CxFlowArgs:
                TransitionRoutes with intent specified are inherited by pages in the flow.
                Structure is documented below.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        CxFlowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            description=description,
+            event_handlers=event_handlers,
+            language_code=language_code,
+            nlu_settings=nlu_settings,
+            parent=parent,
+            transition_route_groups=transition_route_groups,
+            transition_routes=transition_routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if nlu_settings is None and 'nluSettings' in kwargs:
+            nlu_settings = kwargs['nluSettings']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
+        _setter("display_name", display_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_handlers is not None:
-            pulumi.set(__self__, "event_handlers", event_handlers)
+            _setter("event_handlers", event_handlers)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if nlu_settings is not None:
-            pulumi.set(__self__, "nlu_settings", nlu_settings)
+            _setter("nlu_settings", nlu_settings)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if transition_route_groups is not None:
-            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
+            _setter("transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            pulumi.set(__self__, "transition_routes", transition_routes)
+            _setter("transition_routes", transition_routes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -245,24 +284,63 @@ class _CxFlowState:
                TransitionRoutes with intent specified are inherited by pages in the flow.
                Structure is documented below.
         """
+        _CxFlowState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            event_handlers=event_handlers,
+            language_code=language_code,
+            name=name,
+            nlu_settings=nlu_settings,
+            parent=parent,
+            transition_route_groups=transition_route_groups,
+            transition_routes=transition_routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+             language_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if event_handlers is None and 'eventHandlers' in kwargs:
+            event_handlers = kwargs['eventHandlers']
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+        if nlu_settings is None and 'nluSettings' in kwargs:
+            nlu_settings = kwargs['nluSettings']
+        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
+            transition_route_groups = kwargs['transitionRouteGroups']
+        if transition_routes is None and 'transitionRoutes' in kwargs:
+            transition_routes = kwargs['transitionRoutes']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if event_handlers is not None:
-            pulumi.set(__self__, "event_handlers", event_handlers)
+            _setter("event_handlers", event_handlers)
         if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
+            _setter("language_code", language_code)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nlu_settings is not None:
-            pulumi.set(__self__, "nlu_settings", nlu_settings)
+            _setter("nlu_settings", nlu_settings)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if transition_route_groups is not None:
-            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
+            _setter("transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            pulumi.set(__self__, "transition_routes", transition_routes)
+            _setter("transition_routes", transition_routes)
 
     @property
     @pulumi.getter
@@ -1047,6 +1125,10 @@ class CxFlow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CxFlowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1075,6 +1157,11 @@ class CxFlow(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["event_handlers"] = event_handlers
             __props__.__dict__["language_code"] = language_code
+            if nlu_settings is not None and not isinstance(nlu_settings, CxFlowNluSettingsArgs):
+                nlu_settings = nlu_settings or {}
+                def _setter(key, value):
+                    nlu_settings[key] = value
+                CxFlowNluSettingsArgs._configure(_setter, **nlu_settings)
             __props__.__dict__["nlu_settings"] = nlu_settings
             __props__.__dict__["parent"] = parent
             __props__.__dict__["transition_route_groups"] = transition_route_groups

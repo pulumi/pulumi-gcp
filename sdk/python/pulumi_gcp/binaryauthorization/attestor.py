@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,13 +30,34 @@ class AttestorArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
+        AttestorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attestation_authority_note=attestation_authority_note,
+            description=description,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attestation_authority_note: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority_note is None and 'attestationAuthorityNote' in kwargs:
+            attestation_authority_note = kwargs['attestationAuthorityNote']
+        if attestation_authority_note is None:
+            raise TypeError("Missing 'attestation_authority_note' argument")
+
+        _setter("attestation_authority_note", attestation_authority_note)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="attestationAuthorityNote")
@@ -107,14 +128,33 @@ class _AttestorState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        _AttestorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attestation_authority_note=attestation_authority_note,
+            description=description,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attestation_authority_note: Optional[pulumi.Input['AttestorAttestationAuthorityNoteArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attestation_authority_note is None and 'attestationAuthorityNote' in kwargs:
+            attestation_authority_note = kwargs['attestationAuthorityNote']
+
         if attestation_authority_note is not None:
-            pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
+            _setter("attestation_authority_note", attestation_authority_note)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="attestationAuthorityNote")
@@ -384,6 +424,10 @@ class Attestor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AttestorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -402,6 +446,11 @@ class Attestor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttestorArgs.__new__(AttestorArgs)
 
+            if attestation_authority_note is not None and not isinstance(attestation_authority_note, AttestorAttestationAuthorityNoteArgs):
+                attestation_authority_note = attestation_authority_note or {}
+                def _setter(key, value):
+                    attestation_authority_note[key] = value
+                AttestorAttestationAuthorityNoteArgs._configure(_setter, **attestation_authority_note)
             if attestation_authority_note is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority_note'")
             __props__.__dict__["attestation_authority_note"] = attestation_authority_note

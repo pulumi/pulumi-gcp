@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PeeringArgs', 'Peering']
@@ -32,17 +32,54 @@ class PeeringArgs:
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
         """
-        pulumi.set(__self__, "authorized_network", authorized_network)
-        pulumi.set(__self__, "domain_resource", domain_resource)
-        pulumi.set(__self__, "peering_id", peering_id)
+        PeeringArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_network=authorized_network,
+            domain_resource=domain_resource,
+            peering_id=peering_id,
+            labels=labels,
+            project=project,
+            status=status,
+            status_message=status_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_network: Optional[pulumi.Input[str]] = None,
+             domain_resource: Optional[pulumi.Input[str]] = None,
+             peering_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             status_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if authorized_network is None:
+            raise TypeError("Missing 'authorized_network' argument")
+        if domain_resource is None and 'domainResource' in kwargs:
+            domain_resource = kwargs['domainResource']
+        if domain_resource is None:
+            raise TypeError("Missing 'domain_resource' argument")
+        if peering_id is None and 'peeringId' in kwargs:
+            peering_id = kwargs['peeringId']
+        if peering_id is None:
+            raise TypeError("Missing 'peering_id' argument")
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
+        _setter("authorized_network", authorized_network)
+        _setter("domain_resource", domain_resource)
+        _setter("peering_id", peering_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
+            _setter("status_message", status_message)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -153,22 +190,55 @@ class _PeeringState:
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
         """
+        _PeeringState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_network=authorized_network,
+            domain_resource=domain_resource,
+            labels=labels,
+            name=name,
+            peering_id=peering_id,
+            project=project,
+            status=status,
+            status_message=status_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_network: Optional[pulumi.Input[str]] = None,
+             domain_resource: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             peering_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             status_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if domain_resource is None and 'domainResource' in kwargs:
+            domain_resource = kwargs['domainResource']
+        if peering_id is None and 'peeringId' in kwargs:
+            peering_id = kwargs['peeringId']
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         if authorized_network is not None:
-            pulumi.set(__self__, "authorized_network", authorized_network)
+            _setter("authorized_network", authorized_network)
         if domain_resource is not None:
-            pulumi.set(__self__, "domain_resource", domain_resource)
+            _setter("domain_resource", domain_resource)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if peering_id is not None:
-            pulumi.set(__self__, "peering_id", peering_id)
+            _setter("peering_id", peering_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
+            _setter("status_message", status_message)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -388,6 +458,10 @@ class Peering(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PeeringArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
