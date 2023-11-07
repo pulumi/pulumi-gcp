@@ -858,6 +858,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["memcache_full_version"] = None
             __props__.__dict__["memcache_nodes"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:memcache/instance:Instance',
             resource_name,

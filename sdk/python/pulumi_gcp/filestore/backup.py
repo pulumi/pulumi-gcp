@@ -655,6 +655,8 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["source_instance_tier"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["storage_bytes"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Backup, __self__).__init__(
             'gcp:filestore/backup:Backup',
             resource_name,

@@ -422,6 +422,11 @@ func NewDataset(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Dataset
 	err := ctx.RegisterResource("gcp:bigquery/dataset:Dataset", name, args, &resource, opts...)

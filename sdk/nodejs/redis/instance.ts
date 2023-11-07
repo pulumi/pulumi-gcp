@@ -516,7 +516,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serverCaCerts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["authString"] };
+        const secretOpts = { additionalSecretOutputs: ["authString", "effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }

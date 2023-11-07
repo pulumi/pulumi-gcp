@@ -118,6 +118,11 @@ func NewDnsAuthorization(ctx *pulumi.Context,
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsAuthorization
 	err := ctx.RegisterResource("gcp:certificatemanager/dnsAuthorization:DnsAuthorization", name, args, &resource, opts...)

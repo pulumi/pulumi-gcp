@@ -145,6 +145,11 @@ func NewEngineModel(ctx *pulumi.Context,
 		args = &EngineModelArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EngineModel
 	err := ctx.RegisterResource("gcp:ml/engineModel:EngineModel", name, args, &resource, opts...)

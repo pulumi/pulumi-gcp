@@ -164,6 +164,11 @@ func NewBackup(ctx *pulumi.Context,
 	if args.SourceInstance == nil {
 		return nil, errors.New("invalid value for required argument 'SourceInstance'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Backup
 	err := ctx.RegisterResource("gcp:filestore/backup:Backup", name, args, &resource, opts...)

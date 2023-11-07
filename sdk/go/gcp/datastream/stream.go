@@ -883,6 +883,11 @@ func NewStream(ctx *pulumi.Context,
 	if args.StreamId == nil {
 		return nil, errors.New("invalid value for required argument 'StreamId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Stream
 	err := ctx.RegisterResource("gcp:datastream/stream:Stream", name, args, &resource, opts...)

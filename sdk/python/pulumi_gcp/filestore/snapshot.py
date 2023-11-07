@@ -586,6 +586,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["filesystem_used_bytes"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Snapshot, __self__).__init__(
             'gcp:filestore/snapshot:Snapshot',
             resource_name,

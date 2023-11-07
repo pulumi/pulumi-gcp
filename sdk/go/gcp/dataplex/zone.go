@@ -152,6 +152,11 @@ func NewZone(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Zone
 	err := ctx.RegisterResource("gcp:dataplex/zone:Zone", name, args, &resource, opts...)

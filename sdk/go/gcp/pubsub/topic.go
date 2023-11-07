@@ -246,6 +246,11 @@ func NewTopic(ctx *pulumi.Context,
 		args = &TopicArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Topic
 	err := ctx.RegisterResource("gcp:pubsub/topic:Topic", name, args, &resource, opts...)

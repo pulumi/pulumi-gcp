@@ -111,6 +111,11 @@ func NewCertificateMapResource(ctx *pulumi.Context,
 		args = &CertificateMapResourceArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateMapResource
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateMap:CertificateMap", name, args, &resource, opts...)

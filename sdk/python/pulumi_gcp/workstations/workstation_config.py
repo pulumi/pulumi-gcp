@@ -1554,6 +1554,8 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["uid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WorkstationConfig, __self__).__init__(
             'gcp:workstations/workstationConfig:WorkstationConfig',
             resource_name,

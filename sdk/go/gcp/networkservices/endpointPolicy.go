@@ -174,6 +174,11 @@ func NewEndpointPolicy(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointPolicy
 	err := ctx.RegisterResource("gcp:networkservices/endpointPolicy:EndpointPolicy", name, args, &resource, opts...)

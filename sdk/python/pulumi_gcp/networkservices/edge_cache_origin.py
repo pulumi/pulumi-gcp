@@ -1051,6 +1051,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EdgeCacheOrigin, __self__).__init__(
             'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
             resource_name,

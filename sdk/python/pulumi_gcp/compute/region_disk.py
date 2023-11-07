@@ -1400,6 +1400,8 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["users"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RegionDisk, __self__).__init__(
             'gcp:compute/regionDisk:RegionDisk',
             resource_name,

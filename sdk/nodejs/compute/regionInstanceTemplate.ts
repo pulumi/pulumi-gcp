@@ -289,6 +289,8 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RegionInstanceTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

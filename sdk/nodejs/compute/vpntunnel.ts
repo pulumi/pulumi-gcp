@@ -373,7 +373,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["tunnelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["sharedSecret"] };
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels", "sharedSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(VPNTunnel.__pulumiType, name, resourceInputs, opts);
     }

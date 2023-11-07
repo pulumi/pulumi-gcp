@@ -469,6 +469,11 @@ func NewRepository(ctx *pulumi.Context,
 	if args.RepositoryId == nil {
 		return nil, errors.New("invalid value for required argument 'RepositoryId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
 	err := ctx.RegisterResource("gcp:artifactregistry/repository:Repository", name, args, &resource, opts...)

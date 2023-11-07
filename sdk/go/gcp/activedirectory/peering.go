@@ -135,6 +135,11 @@ func NewPeering(ctx *pulumi.Context,
 	if args.PeeringId == nil {
 		return nil, errors.New("invalid value for required argument 'PeeringId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Peering
 	err := ctx.RegisterResource("gcp:activedirectory/peering:Peering", name, args, &resource, opts...)

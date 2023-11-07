@@ -338,6 +338,8 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Address.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -153,6 +153,11 @@ func NewApiConfig(ctx *pulumi.Context,
 	if args.Api == nil {
 		return nil, errors.New("invalid value for required argument 'Api'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiConfig
 	err := ctx.RegisterResource("gcp:apigateway/apiConfig:ApiConfig", name, args, &resource, opts...)

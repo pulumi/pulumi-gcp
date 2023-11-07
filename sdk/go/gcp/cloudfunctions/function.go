@@ -250,6 +250,11 @@ func NewFunction(ctx *pulumi.Context,
 	if args.Runtime == nil {
 		return nil, errors.New("invalid value for required argument 'Runtime'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Function
 	err := ctx.RegisterResource("gcp:cloudfunctions/function:Function", name, args, &resource, opts...)

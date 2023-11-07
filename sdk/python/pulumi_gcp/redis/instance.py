@@ -1703,7 +1703,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["read_endpoint"] = None
             __props__.__dict__["read_endpoint_port"] = None
             __props__.__dict__["server_ca_certs"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authString"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authString", "effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',

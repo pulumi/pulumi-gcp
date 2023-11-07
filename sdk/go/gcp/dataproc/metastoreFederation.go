@@ -193,6 +193,11 @@ func NewMetastoreFederation(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreFederation
 	err := ctx.RegisterResource("gcp:dataproc/metastoreFederation:MetastoreFederation", name, args, &resource, opts...)

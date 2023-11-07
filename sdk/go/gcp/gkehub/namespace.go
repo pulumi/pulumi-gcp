@@ -106,6 +106,11 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.ScopeNamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'ScopeNamespaceId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
 	err := ctx.RegisterResource("gcp:gkehub/namespace:Namespace", name, args, &resource, opts...)

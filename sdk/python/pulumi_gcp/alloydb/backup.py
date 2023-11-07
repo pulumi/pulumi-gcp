@@ -978,6 +978,8 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Backup, __self__).__init__(
             'gcp:alloydb/backup:Backup',
             resource_name,

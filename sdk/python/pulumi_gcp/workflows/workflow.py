@@ -674,6 +674,8 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Workflow, __self__).__init__(
             'gcp:workflows/workflow:Workflow',
             resource_name,

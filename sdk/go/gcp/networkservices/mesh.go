@@ -135,6 +135,11 @@ func NewMesh(ctx *pulumi.Context,
 		args = &MeshArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Mesh
 	err := ctx.RegisterResource("gcp:networkservices/mesh:Mesh", name, args, &resource, opts...)

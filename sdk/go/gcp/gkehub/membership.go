@@ -189,6 +189,11 @@ func NewMembership(ctx *pulumi.Context,
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Membership
 	err := ctx.RegisterResource("gcp:gkehub/membership:Membership", name, args, &resource, opts...)

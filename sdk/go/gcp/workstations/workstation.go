@@ -188,6 +188,11 @@ func NewWorkstation(ctx *pulumi.Context,
 	if args.WorkstationId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkstationId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Workstation
 	err := ctx.RegisterResource("gcp:workstations/workstation:Workstation", name, args, &resource, opts...)

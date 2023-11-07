@@ -245,6 +245,11 @@ func NewJob(ctx *pulumi.Context,
 	if args.TemplateGcsPath == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateGcsPath'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
 	err := ctx.RegisterResource("gcp:dataflow/job:Job", name, args, &resource, opts...)

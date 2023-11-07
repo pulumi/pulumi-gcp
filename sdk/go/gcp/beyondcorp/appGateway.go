@@ -159,6 +159,11 @@ func NewAppGateway(ctx *pulumi.Context,
 		args = &AppGatewayArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppGateway
 	err := ctx.RegisterResource("gcp:beyondcorp/appGateway:AppGateway", name, args, &resource, opts...)

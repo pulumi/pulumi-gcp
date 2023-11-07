@@ -979,6 +979,11 @@ namespace Pulumi.Gcp.Datastream
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -1138,7 +1143,11 @@ namespace Pulumi.Gcp.Datastream
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
-            set => _effectiveLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("labels")]
@@ -1184,7 +1193,11 @@ namespace Pulumi.Gcp.Datastream
         public InputMap<string> PulumiLabels
         {
             get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
-            set => _pulumiLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

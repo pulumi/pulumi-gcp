@@ -155,6 +155,11 @@ func NewServiceConnectionPolicy(ctx *pulumi.Context,
 	if args.ServiceClass == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceClass'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceConnectionPolicy
 	err := ctx.RegisterResource("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, args, &resource, opts...)

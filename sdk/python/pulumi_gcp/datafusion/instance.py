@@ -1365,6 +1365,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["state_message"] = None
             __props__.__dict__["tenant_project_id"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:datafusion/instance:Instance',
             resource_name,

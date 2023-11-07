@@ -1718,6 +1718,8 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["users"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Disk, __self__).__init__(
             'gcp:compute/disk:Disk',
             resource_name,

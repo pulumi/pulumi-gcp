@@ -1257,6 +1257,8 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(FlexTemplateJob, __self__).__init__(
             'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
             resource_name,

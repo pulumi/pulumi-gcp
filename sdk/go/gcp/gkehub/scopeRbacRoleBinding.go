@@ -108,6 +108,11 @@ func NewScopeRbacRoleBinding(ctx *pulumi.Context,
 	if args.ScopeRbacRoleBindingId == nil {
 		return nil, errors.New("invalid value for required argument 'ScopeRbacRoleBindingId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ScopeRbacRoleBinding
 	err := ctx.RegisterResource("gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding", name, args, &resource, opts...)

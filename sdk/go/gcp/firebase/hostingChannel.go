@@ -149,6 +149,11 @@ func NewHostingChannel(ctx *pulumi.Context,
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostingChannel
 	err := ctx.RegisterResource("gcp:firebase/hostingChannel:HostingChannel", name, args, &resource, opts...)

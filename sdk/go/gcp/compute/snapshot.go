@@ -245,6 +245,11 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.SourceDisk == nil {
 		return nil, errors.New("invalid value for required argument 'SourceDisk'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("gcp:compute/snapshot:Snapshot", name, args, &resource, opts...)

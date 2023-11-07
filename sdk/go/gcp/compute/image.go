@@ -244,6 +244,11 @@ func NewImage(ctx *pulumi.Context,
 		args = &ImageArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
 	err := ctx.RegisterResource("gcp:compute/image:Image", name, args, &resource, opts...)

@@ -619,6 +619,8 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["resources"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Workload, __self__).__init__(
             'gcp:assuredworkloads/workload:Workload',
             resource_name,

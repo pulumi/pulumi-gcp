@@ -195,6 +195,11 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 	if args.SourceInstanceTemplate == nil {
 		return nil, errors.New("invalid value for required argument 'SourceInstanceTemplate'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceFromTemplate
 	err := ctx.RegisterResource("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, args, &resource, opts...)

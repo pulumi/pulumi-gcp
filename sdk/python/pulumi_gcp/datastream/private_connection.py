@@ -496,6 +496,8 @@ class PrivateConnection(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(PrivateConnection, __self__).__init__(
             'gcp:datastream/privateConnection:PrivateConnection',
             resource_name,

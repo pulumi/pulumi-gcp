@@ -680,6 +680,8 @@ class AiEndpoint(pulumi.CustomResource):
             __props__.__dict__["model_deployment_monitoring_job"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AiEndpoint, __self__).__init__(
             'gcp:vertex/aiEndpoint:AiEndpoint',
             resource_name,

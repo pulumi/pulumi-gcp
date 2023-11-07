@@ -414,6 +414,8 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RegionDisk.__pulumiType, name, resourceInputs, opts);
     }
 }

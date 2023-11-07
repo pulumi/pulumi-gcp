@@ -1197,7 +1197,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret_hash"] = None
             __props__.__dict__["tunnel_id"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharedSecret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels", "sharedSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',

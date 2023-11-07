@@ -415,6 +415,8 @@ namespace Pulumi.Gcp.Compute
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "effectiveLabels",
+                    "pulumiLabels",
                     "sharedSecret",
                 },
             };
@@ -634,7 +636,11 @@ namespace Pulumi.Gcp.Compute
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
-            set => _effectiveLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -735,7 +741,11 @@ namespace Pulumi.Gcp.Compute
         public InputMap<string> PulumiLabels
         {
             get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
-            set => _pulumiLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

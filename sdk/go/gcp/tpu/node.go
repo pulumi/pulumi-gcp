@@ -222,6 +222,11 @@ func NewNode(ctx *pulumi.Context,
 	if args.TensorflowVersion == nil {
 		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
 	err := ctx.RegisterResource("gcp:tpu/node:Node", name, args, &resource, opts...)

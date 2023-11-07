@@ -137,6 +137,11 @@ func NewPrivateConnection(ctx *pulumi.Context,
 	if args.VpcPeeringConfig == nil {
 		return nil, errors.New("invalid value for required argument 'VpcPeeringConfig'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrivateConnection
 	err := ctx.RegisterResource("gcp:datastream/privateConnection:PrivateConnection", name, args, &resource, opts...)

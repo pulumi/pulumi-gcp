@@ -1230,6 +1230,8 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["managed_zone_id"] = None
             __props__.__dict__["name_servers"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
             resource_name,

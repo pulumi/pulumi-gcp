@@ -509,6 +509,8 @@ class TrustConfig(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TrustConfig, __self__).__init__(
             'gcp:certificatemanager/trustConfig:TrustConfig',
             resource_name,

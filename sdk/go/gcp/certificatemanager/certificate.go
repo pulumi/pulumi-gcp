@@ -334,6 +334,11 @@ func NewCertificate(ctx *pulumi.Context,
 		args = &CertificateArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
 	err := ctx.RegisterResource("gcp:certificatemanager/certificate:Certificate", name, args, &resource, opts...)

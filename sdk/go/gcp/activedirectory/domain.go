@@ -117,6 +117,11 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ReservedIpRange == nil {
 		return nil, errors.New("invalid value for required argument 'ReservedIpRange'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Domain
 	err := ctx.RegisterResource("gcp:activedirectory/domain:Domain", name, args, &resource, opts...)

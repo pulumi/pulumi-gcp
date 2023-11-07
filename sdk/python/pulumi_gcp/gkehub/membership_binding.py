@@ -524,6 +524,8 @@ class MembershipBinding(pulumi.CustomResource):
             __props__.__dict__["states"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MembershipBinding, __self__).__init__(
             'gcp:gkehub/membershipBinding:MembershipBinding',
             resource_name,

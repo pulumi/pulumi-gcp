@@ -173,6 +173,11 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.MatchingCriterias == nil {
 		return nil, errors.New("invalid value for required argument 'MatchingCriterias'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Trigger
 	err := ctx.RegisterResource("gcp:eventarc/trigger:Trigger", name, args, &resource, opts...)

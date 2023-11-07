@@ -505,6 +505,11 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Pool == nil {
 		return nil, errors.New("invalid value for required argument 'Pool'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
 	err := ctx.RegisterResource("gcp:certificateauthority/certificate:Certificate", name, args, &resource, opts...)

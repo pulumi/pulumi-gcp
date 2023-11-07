@@ -105,6 +105,11 @@ func NewAiDataset(ctx *pulumi.Context,
 	if args.MetadataSchemaUri == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataSchemaUri'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiDataset
 	err := ctx.RegisterResource("gcp:vertex/aiDataset:AiDataset", name, args, &resource, opts...)

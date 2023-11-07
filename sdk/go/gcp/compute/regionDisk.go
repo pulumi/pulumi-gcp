@@ -340,6 +340,11 @@ func NewRegionDisk(ctx *pulumi.Context,
 	if args.ReplicaZones == nil {
 		return nil, errors.New("invalid value for required argument 'ReplicaZones'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionDisk
 	err := ctx.RegisterResource("gcp:compute/regionDisk:RegionDisk", name, args, &resource, opts...)

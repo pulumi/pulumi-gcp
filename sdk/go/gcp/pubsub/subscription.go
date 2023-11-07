@@ -407,6 +407,11 @@ func NewSubscription(ctx *pulumi.Context,
 	if args.Topic == nil {
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subscription
 	err := ctx.RegisterResource("gcp:pubsub/subscription:Subscription", name, args, &resource, opts...)

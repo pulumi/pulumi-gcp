@@ -314,6 +314,8 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
 		"sharedSecret",
 	})
 	opts = append(opts, secrets)

@@ -272,6 +272,8 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkstationCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

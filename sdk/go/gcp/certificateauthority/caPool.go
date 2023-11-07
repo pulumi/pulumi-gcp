@@ -123,6 +123,11 @@ func NewCaPool(ctx *pulumi.Context,
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CaPool
 	err := ctx.RegisterResource("gcp:certificateauthority/caPool:CaPool", name, args, &resource, opts...)

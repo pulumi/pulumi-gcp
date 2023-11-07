@@ -428,6 +428,8 @@ class DnsAuthorization(pulumi.CustomResource):
             __props__.__dict__["dns_resource_records"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DnsAuthorization, __self__).__init__(
             'gcp:certificatemanager/dnsAuthorization:DnsAuthorization',
             resource_name,

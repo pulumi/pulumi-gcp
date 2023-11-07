@@ -152,6 +152,11 @@ namespace Pulumi.Gcp.NetworkConnectivity
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -242,7 +247,11 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public InputMap<object> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
-            set => _effectiveLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("labels")]
@@ -285,7 +294,11 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public InputMap<object> PulumiLabels
         {
             get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
-            set => _pulumiLabels = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("routingVpcs")]

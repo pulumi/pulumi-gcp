@@ -200,6 +200,11 @@ func NewCertificateIssuanceConfig(ctx *pulumi.Context,
 	if args.RotationWindowPercentage == nil {
 		return nil, errors.New("invalid value for required argument 'RotationWindowPercentage'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateIssuanceConfig
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, args, &resource, opts...)

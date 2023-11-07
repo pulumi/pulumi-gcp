@@ -385,6 +385,11 @@ func NewForwardingRule(ctx *pulumi.Context,
 		args = &ForwardingRuleArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ForwardingRule
 	err := ctx.RegisterResource("gcp:compute/forwardingRule:ForwardingRule", name, args, &resource, opts...)

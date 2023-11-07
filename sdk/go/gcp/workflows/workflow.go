@@ -151,6 +151,11 @@ func NewWorkflow(ctx *pulumi.Context,
 		args = &WorkflowArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Workflow
 	err := ctx.RegisterResource("gcp:workflows/workflow:Workflow", name, args, &resource, opts...)

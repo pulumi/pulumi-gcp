@@ -979,6 +979,8 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["url"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Function, __self__).__init__(
             'gcp:cloudfunctionsv2/function:Function',
             resource_name,

@@ -496,6 +496,8 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["serviceName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -115,6 +115,11 @@ func NewTask(ctx *pulumi.Context,
 	if args.TriggerSpec == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerSpec'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Task
 	err := ctx.RegisterResource("gcp:dataplex/task:Task", name, args, &resource, opts...)

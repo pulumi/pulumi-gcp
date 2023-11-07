@@ -1434,6 +1434,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["scratch_disks"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["tags_fingerprint"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InstanceFromMachineImage, __self__).__init__(
             'gcp:compute/instanceFromMachineImage:InstanceFromMachineImage',
             resource_name,

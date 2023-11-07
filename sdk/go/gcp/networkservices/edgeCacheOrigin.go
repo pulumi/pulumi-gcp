@@ -285,6 +285,11 @@ func NewEdgeCacheOrigin(ctx *pulumi.Context,
 	if args.OriginAddress == nil {
 		return nil, errors.New("invalid value for required argument 'OriginAddress'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheOrigin
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin", name, args, &resource, opts...)

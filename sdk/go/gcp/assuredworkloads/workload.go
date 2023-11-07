@@ -142,6 +142,11 @@ func NewWorkload(ctx *pulumi.Context,
 	if args.Organization == nil {
 		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Workload
 	err := ctx.RegisterResource("gcp:assuredworkloads/workload:Workload", name, args, &resource, opts...)

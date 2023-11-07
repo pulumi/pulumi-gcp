@@ -171,6 +171,11 @@ func NewGlobalAddress(ctx *pulumi.Context,
 		args = &GlobalAddressArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalAddress
 	err := ctx.RegisterResource("gcp:compute/globalAddress:GlobalAddress", name, args, &resource, opts...)

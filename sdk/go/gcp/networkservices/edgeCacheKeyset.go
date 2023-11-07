@@ -182,6 +182,11 @@ func NewEdgeCacheKeyset(ctx *pulumi.Context,
 		args = &EdgeCacheKeysetArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheKeyset
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, args, &resource, opts...)

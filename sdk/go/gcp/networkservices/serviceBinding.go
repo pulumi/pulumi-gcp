@@ -125,6 +125,11 @@ func NewServiceBinding(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceBinding
 	err := ctx.RegisterResource("gcp:networkservices/serviceBinding:ServiceBinding", name, args, &resource, opts...)

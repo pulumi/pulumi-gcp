@@ -612,6 +612,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',
             resource_name,

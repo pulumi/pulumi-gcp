@@ -977,6 +977,8 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DeliveryPipeline, __self__).__init__(
             'gcp:clouddeploy/deliveryPipeline:DeliveryPipeline',
             resource_name,

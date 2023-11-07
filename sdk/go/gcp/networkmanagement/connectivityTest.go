@@ -276,6 +276,11 @@ func NewConnectivityTest(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectivityTest
 	err := ctx.RegisterResource("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, args, &resource, opts...)

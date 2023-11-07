@@ -364,6 +364,8 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MetastoreService.__pulumiType, name, resourceInputs, opts);
     }
 }

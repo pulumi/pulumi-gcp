@@ -13,6 +13,7 @@ import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigState;
 import com.pulumi.gcp.certificatemanager.outputs.CertificateIssuanceConfigCertificateAuthorityConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -400,6 +401,10 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

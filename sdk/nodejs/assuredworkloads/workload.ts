@@ -210,6 +210,8 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["resources"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Workload.__pulumiType, name, resourceInputs, opts);
     }
 }

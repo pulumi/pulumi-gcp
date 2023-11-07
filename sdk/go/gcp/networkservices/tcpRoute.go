@@ -85,6 +85,11 @@ func NewTcpRoute(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TcpRoute
 	err := ctx.RegisterResource("gcp:networkservices/tcpRoute:TcpRoute", name, args, &resource, opts...)

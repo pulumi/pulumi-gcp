@@ -1595,6 +1595,8 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["uri"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Service, __self__).__init__(
             'gcp:cloudrunv2/service:Service',
             resource_name,

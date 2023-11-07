@@ -178,6 +178,11 @@ func NewAsset(ctx *pulumi.Context,
 	if args.ResourceSpec == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceSpec'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Asset
 	err := ctx.RegisterResource("gcp:dataplex/asset:Asset", name, args, &resource, opts...)

@@ -586,6 +586,8 @@ class AppGateway(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uri"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AppGateway, __self__).__init__(
             'gcp:beyondcorp/appGateway:AppGateway',
             resource_name,

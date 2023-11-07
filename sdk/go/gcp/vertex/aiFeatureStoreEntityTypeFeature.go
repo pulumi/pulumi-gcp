@@ -191,6 +191,11 @@ func NewAiFeatureStoreEntityTypeFeature(ctx *pulumi.Context,
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStoreEntityTypeFeature
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, args, &resource, opts...)

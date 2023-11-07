@@ -257,6 +257,11 @@ func NewSecret(ctx *pulumi.Context,
 	if args.SecretId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Secret
 	err := ctx.RegisterResource("gcp:secretmanager/secret:Secret", name, args, &resource, opts...)

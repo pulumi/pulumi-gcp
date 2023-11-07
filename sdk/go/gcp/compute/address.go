@@ -333,6 +333,11 @@ func NewAddress(ctx *pulumi.Context,
 		args = &AddressArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Address
 	err := ctx.RegisterResource("gcp:compute/address:Address", name, args, &resource, opts...)

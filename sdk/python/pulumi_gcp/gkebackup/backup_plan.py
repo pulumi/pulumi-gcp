@@ -966,6 +966,8 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_reason"] = None
             __props__.__dict__["uid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(BackupPlan, __self__).__init__(
             'gcp:gkebackup/backupPlan:BackupPlan',
             resource_name,

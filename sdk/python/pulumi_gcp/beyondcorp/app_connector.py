@@ -507,6 +507,8 @@ class AppConnector(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AppConnector, __self__).__init__(
             'gcp:beyondcorp/appConnector:AppConnector',
             resource_name,

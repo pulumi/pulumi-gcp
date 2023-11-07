@@ -545,6 +545,11 @@ func NewJob(ctx *pulumi.Context,
 	if args.Template == nil {
 		return nil, errors.New("invalid value for required argument 'Template'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
 	err := ctx.RegisterResource("gcp:cloudrunv2/job:Job", name, args, &resource, opts...)

@@ -629,6 +629,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
             __props__.__dict__["public_endpoint_domain_name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AiIndexEndpoint, __self__).__init__(
             'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
             resource_name,

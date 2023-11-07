@@ -178,6 +178,11 @@ func NewCertificateMapEntry(ctx *pulumi.Context,
 	if args.Map == nil {
 		return nil, errors.New("invalid value for required argument 'Map'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateMapEntry
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, args, &resource, opts...)

@@ -584,6 +584,11 @@ func NewRestorePlan(ctx *pulumi.Context,
 	if args.RestoreConfig == nil {
 		return nil, errors.New("invalid value for required argument 'RestoreConfig'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RestorePlan
 	err := ctx.RegisterResource("gcp:gkebackup/restorePlan:RestorePlan", name, args, &resource, opts...)

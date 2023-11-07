@@ -349,6 +349,11 @@ func NewDisk(ctx *pulumi.Context,
 		args = &DiskArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Disk
 	err := ctx.RegisterResource("gcp:compute/disk:Disk", name, args, &resource, opts...)

@@ -1329,6 +1329,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["terminal_conditions"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Job, __self__).__init__(
             'gcp:cloudrunv2/job:Job',
             resource_name,

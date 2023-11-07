@@ -236,6 +236,11 @@ func NewTable(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Table
 	err := ctx.RegisterResource("gcp:bigquery/table:Table", name, args, &resource, opts...)

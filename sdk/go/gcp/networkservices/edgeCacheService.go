@@ -444,6 +444,11 @@ func NewEdgeCacheService(ctx *pulumi.Context,
 	if args.Routing == nil {
 		return nil, errors.New("invalid value for required argument 'Routing'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheService
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheService:EdgeCacheService", name, args, &resource, opts...)

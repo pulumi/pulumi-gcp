@@ -234,6 +234,11 @@ func NewAiIndex(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiIndex
 	err := ctx.RegisterResource("gcp:vertex/aiIndex:AiIndex", name, args, &resource, opts...)

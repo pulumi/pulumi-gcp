@@ -207,6 +207,11 @@ func NewAiFeatureStore(ctx *pulumi.Context,
 		args = &AiFeatureStoreArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStore
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStore:AiFeatureStore", name, args, &resource, opts...)

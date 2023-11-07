@@ -800,6 +800,8 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["network_endpoints"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_account"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,

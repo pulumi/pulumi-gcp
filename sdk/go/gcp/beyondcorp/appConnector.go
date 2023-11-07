@@ -173,6 +173,11 @@ func NewAppConnector(ctx *pulumi.Context,
 	if args.PrincipalInfo == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalInfo'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppConnector
 	err := ctx.RegisterResource("gcp:beyondcorp/appConnector:AppConnector", name, args, &resource, opts...)

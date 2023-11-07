@@ -214,6 +214,11 @@ func NewAppConnection(ctx *pulumi.Context,
 	if args.ApplicationEndpoint == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationEndpoint'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppConnection
 	err := ctx.RegisterResource("gcp:beyondcorp/appConnection:AppConnection", name, args, &resource, opts...)

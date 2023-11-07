@@ -106,6 +106,11 @@ func NewMembershipBinding(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MembershipBinding
 	err := ctx.RegisterResource("gcp:gkehub/membershipBinding:MembershipBinding", name, args, &resource, opts...)

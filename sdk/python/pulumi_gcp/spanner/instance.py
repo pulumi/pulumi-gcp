@@ -656,6 +656,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:spanner/instance:Instance',
             resource_name,

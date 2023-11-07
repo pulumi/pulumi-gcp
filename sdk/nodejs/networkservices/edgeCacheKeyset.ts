@@ -198,6 +198,8 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EdgeCacheKeyset.__pulumiType, name, resourceInputs, opts);
     }
 }

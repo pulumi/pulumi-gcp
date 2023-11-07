@@ -591,6 +591,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:bigtable/instance:Instance',
             resource_name,

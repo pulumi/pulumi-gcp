@@ -506,6 +506,8 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Gateway, __self__).__init__(
             'gcp:apigateway/gateway:Gateway',
             resource_name,

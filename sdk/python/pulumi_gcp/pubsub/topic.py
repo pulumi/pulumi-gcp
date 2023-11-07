@@ -645,6 +645,8 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["schema_settings"] = schema_settings
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,

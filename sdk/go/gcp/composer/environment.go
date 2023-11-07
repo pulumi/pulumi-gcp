@@ -66,6 +66,11 @@ func NewEnvironment(ctx *pulumi.Context,
 		args = &EnvironmentArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Environment
 	err := ctx.RegisterResource("gcp:composer/environment:Environment", name, args, &resource, opts...)

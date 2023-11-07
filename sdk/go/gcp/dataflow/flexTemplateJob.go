@@ -212,6 +212,11 @@ func NewFlexTemplateJob(ctx *pulumi.Context,
 	if args.ContainerSpecGcsPath == nil {
 		return nil, errors.New("invalid value for required argument 'ContainerSpecGcsPath'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlexTemplateJob
 	err := ctx.RegisterResource("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, args, &resource, opts...)

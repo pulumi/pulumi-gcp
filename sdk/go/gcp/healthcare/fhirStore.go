@@ -359,6 +359,11 @@ func NewFhirStore(ctx *pulumi.Context,
 	if args.Dataset == nil {
 		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FhirStore
 	err := ctx.RegisterResource("gcp:healthcare/fhirStore:FhirStore", name, args, &resource, opts...)

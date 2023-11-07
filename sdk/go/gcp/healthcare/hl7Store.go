@@ -294,6 +294,11 @@ func NewHl7Store(ctx *pulumi.Context,
 	if args.Dataset == nil {
 		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Hl7Store
 	err := ctx.RegisterResource("gcp:healthcare/hl7Store:Hl7Store", name, args, &resource, opts...)

@@ -335,6 +335,11 @@ func NewMetastoreService(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreService
 	err := ctx.RegisterResource("gcp:dataproc/metastoreService:MetastoreService", name, args, &resource, opts...)

@@ -955,6 +955,8 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["target_id"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Target, __self__).__init__(
             'gcp:clouddeploy/target:Target',
             resource_name,

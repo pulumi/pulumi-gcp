@@ -406,6 +406,11 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalForwardingRule
 	err := ctx.RegisterResource("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, args, &resource, opts...)

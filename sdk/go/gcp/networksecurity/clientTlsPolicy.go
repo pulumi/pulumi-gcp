@@ -155,6 +155,11 @@ func NewClientTlsPolicy(ctx *pulumi.Context,
 		args = &ClientTlsPolicyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientTlsPolicy
 	err := ctx.RegisterResource("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, args, &resource, opts...)

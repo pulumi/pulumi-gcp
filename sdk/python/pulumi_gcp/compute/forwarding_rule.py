@@ -2068,6 +2068,8 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["service_name"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ForwardingRule, __self__).__init__(
             'gcp:compute/forwardingRule:ForwardingRule',
             resource_name,

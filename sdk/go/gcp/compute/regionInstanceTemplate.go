@@ -146,6 +146,11 @@ func NewRegionInstanceTemplate(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionInstanceTemplate
 	err := ctx.RegisterResource("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", name, args, &resource, opts...)

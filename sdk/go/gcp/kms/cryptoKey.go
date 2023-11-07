@@ -167,6 +167,11 @@ func NewCryptoKey(ctx *pulumi.Context,
 	if args.KeyRing == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRing'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CryptoKey
 	err := ctx.RegisterResource("gcp:kms/cryptoKey:CryptoKey", name, args, &resource, opts...)

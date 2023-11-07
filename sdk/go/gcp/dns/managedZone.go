@@ -499,6 +499,11 @@ func NewManagedZone(ctx *pulumi.Context,
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagedZone
 	err := ctx.RegisterResource("gcp:dns/managedZone:ManagedZone", name, args, &resource, opts...)

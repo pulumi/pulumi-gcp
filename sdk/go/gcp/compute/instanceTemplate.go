@@ -355,6 +355,11 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceTemplate
 	err := ctx.RegisterResource("gcp:compute/instanceTemplate:InstanceTemplate", name, args, &resource, opts...)

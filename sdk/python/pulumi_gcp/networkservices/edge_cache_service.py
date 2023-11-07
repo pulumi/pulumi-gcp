@@ -1164,6 +1164,8 @@ class EdgeCacheService(pulumi.CustomResource):
             __props__.__dict__["ipv4_addresses"] = None
             __props__.__dict__["ipv6_addresses"] = None
             __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EdgeCacheService, __self__).__init__(
             'gcp:networkservices/edgeCacheService:EdgeCacheService',
             resource_name,

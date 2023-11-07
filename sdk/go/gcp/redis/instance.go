@@ -478,6 +478,8 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"authString",
+		"effectiveLabels",
+		"pulumiLabels",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

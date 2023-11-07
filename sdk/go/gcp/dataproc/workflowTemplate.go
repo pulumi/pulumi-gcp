@@ -165,6 +165,11 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkflowTemplate
 	err := ctx.RegisterResource("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, args, &resource, opts...)
