@@ -9,7 +9,6 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		gcpProvider, err := gcp.NewProvider(ctx, "gcp-provider", &gcp.ProviderArgs{
-			Project: pulumi.String("pulumi-development"),
 			DefaultLabels: pulumi.StringMap{
 				"hello": pulumi.String("goodbye"),
 				"new":   pulumi.String("defaultlabel"),
@@ -18,7 +17,7 @@ func main() {
 		if err != nil {
 			return err
 		}
-		myBucket, err := storage.NewBucket(ctx, "my-bucket", &storage.BucketArgs{
+		goBucket, err := storage.NewBucket(ctx, "go-bucket", &storage.BucketArgs{
 			Location: pulumi.String("EU"),
 			Labels: pulumi.StringMap{
 				"good": pulumi.String("morning"),
@@ -29,7 +28,7 @@ func main() {
 			return err
 		}
 
-		ctx.Export("pulumiLabels", myBucket.PulumiLabels)
+		ctx.Export("pulumiLabels", goBucket.PulumiLabels)
 		return nil
 	})
 }

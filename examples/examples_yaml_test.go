@@ -21,21 +21,18 @@ func TestHttpHealthCheck(t *testing.T) {
 
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	t.Skip("Skipping due to secrets bug in YAML")
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
-			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-				outputBytes, err := json.Marshal(stack.Outputs)
-				assert.NoError(t, err)
-				outputStr := string(outputBytes)
-				// We expect a pulumiLabels field
-				assert.Contains(t, outputStr, "pulumiLabels")
-				// We expect its contents to be secret
-				assert.NotContains(t, outputStr, "hello")
-				// We assert the presence of the "ciphertext" key to denote secretness of the Output.
-				assert.Contains(t, outputStr, "ciphertext")
-			},
-		})
-	integration.ProgramTest(t, &test)
-
+	integration.ProgramTest(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			outputBytes, err := json.Marshal(stack.Outputs)
+			assert.NoError(t, err)
+			outputStr := string(outputBytes)
+			// We expect a pulumiLabels field
+			assert.Contains(t, outputStr, "pulumiLabels")
+			// We expect its contents to be secret
+			assert.NotContains(t, outputStr, "hello")
+			// We assert the presence of the "ciphertext" key to denote secretness of the Output.
+			assert.Contains(t, outputStr, "ciphertext")
+		},
+	})
 }

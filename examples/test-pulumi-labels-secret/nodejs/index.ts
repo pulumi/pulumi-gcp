@@ -2,14 +2,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp";
 
 const gcpProvider = new gcp.Provider("gcp-provider", {
-    project: "pulumi-development",
     defaultLabels: {
         hello: "goodbye",
         new: "defaultlabel"
     }
 });
 
-const myBucket = new gcp.storage.Bucket("my-bucket", {
+const tsBucket = new gcp.storage.Bucket("ts-bucket", {
     location: "EU",
     labels: {
         good: "morning",
@@ -19,4 +18,4 @@ const myBucket = new gcp.storage.Bucket("my-bucket", {
     provider: gcpProvider,
 
 });
-export const pulumiLabels = myBucket.pulumiLabels["good"]
+export const pulumiLabels = tsBucket.pulumiLabels["good"]

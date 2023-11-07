@@ -19,5 +19,4 @@ resources:
       defaultLabels:
         hello: goodbye
         new: defaultlabel
-      project: pulumi-development
 
