@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
-	github.com/pulumi/pulumi-gcp/sdk/v7 v7.0.0-00010101000000-000000000000
+	github.com/pulumi/pulumi-gcp/sdk/v7 v7.0.0-alpha.0
 	github.com/pulumi/pulumi/pkg/v3 v3.91.1
 	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 	github.com/stretchr/testify v1.8.4
@@ -115,6 +115,7 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
