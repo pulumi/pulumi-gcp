@@ -4,6 +4,7 @@ go 1.21
 
 require (
 	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
+	github.com/pulumi/pulumi-gcp/sdk/v7 v7.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi/pkg/v3 v3.91.1
 	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 	github.com/stretchr/testify v1.8.4

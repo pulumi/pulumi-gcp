@@ -33,6 +33,25 @@ func TestAccBucketGo(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestPulumiLabelsSecretGo(t *testing.T) {
+	test := getGoBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "go"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				outputBytes, err := json.Marshal(stack.Outputs)
+				assert.NoError(t, err)
+				outputStr := string(outputBytes)
+				// We expect a pulumiLabels field
+				assert.Contains(t, outputStr, "pulumiLabels")
+				// We expect its contents to be secret
+				assert.NotContains(t, outputStr, "hello")
+				// We assert the presence of the "ciphertext" key to denote secretness of the Output.
+				assert.Contains(t, outputStr, "ciphertext")
+			},
+		})
+	integration.ProgramTest(t, &test)
+}
+
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
