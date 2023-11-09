@@ -177,11 +177,19 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Settings for keys that can be used by iOS apps.
      */
     public readonly iosSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -192,6 +200,10 @@ export class EnterpriseKey extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Options for user acceptance testing.
      */
@@ -217,10 +229,12 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["androidSettings"] = state ? state.androidSettings : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["iosSettings"] = state ? state.iosSettings : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["testingOptions"] = state ? state.testingOptions : undefined;
             resourceInputs["webSettings"] = state ? state.webSettings : undefined;
         } else {
@@ -236,9 +250,13 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
             resourceInputs["webSettings"] = args ? args.webSettings : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EnterpriseKey.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -264,11 +282,19 @@ export interface EnterpriseKeyState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Settings for keys that can be used by iOS apps.
      */
     iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -279,6 +305,10 @@ export interface EnterpriseKeyState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Options for user acceptance testing.
      */
@@ -311,6 +341,9 @@ export interface EnterpriseKeyArgs {
     iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

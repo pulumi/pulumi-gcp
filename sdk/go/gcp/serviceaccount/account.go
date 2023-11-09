@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -34,14 +34,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//			_, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("service-account-id"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
@@ -60,7 +60,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+//	$ pulumi import gcp:serviceaccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
 //
 // ```
 type Account struct {
@@ -105,9 +105,15 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:serviceAccount/account:Account"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
-	err := ctx.RegisterResource("gcp:serviceAccount/account:Account", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:serviceaccount/account:Account", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -119,7 +125,7 @@ func NewAccount(ctx *pulumi.Context,
 func GetAccount(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AccountState, opts ...pulumi.ResourceOption) (*Account, error) {
 	var resource Account
-	err := ctx.ReadResource("gcp:serviceAccount/account:Account", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:serviceaccount/account:Account", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

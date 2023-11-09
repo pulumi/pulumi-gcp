@@ -2,48 +2,52 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-09T18:08:19.292332-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T16:18:28.392072375Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:xfHEZaw3rX8=:v1:mBZQ967BPqa/59Ya:92bBUjM6pke6TrygKTS/eApALj1z0g=="
+                "salt": "v1:0Zujf8aCkgQ=:v1:wBOJIWa9tUCizvfb:Om94Xg+D7WHNezhWCsce2IIGzFnHhw=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-3d731590",
+                "urn": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:pulumi:Stack::test-p-it-runner-bigquery-r-992e4034",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-09T22:08:16.640815Z",
-                "modified": "2023-10-09T22:08:16.640815Z"
+                "created": "2023-11-01T16:18:24.916072653Z",
+                "modified": "2023-11-01T16:18:24.916072653Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "24db2e34-76a3-4e8a-856e-e85462d50bfc",
+                "id": "81a7ccf2-e075-4aaf-ad01-6cc910d30782",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-3d731590",
+                "parent": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:pulumi:Stack::test-p-it-runner-bigquery-r-992e4034",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-09T22:08:17.733908Z",
-                "modified": "2023-10-09T22:08:17.733908Z"
+                "created": "2023-11-01T16:18:26.939543247Z",
+                "modified": "2023-11-01T16:18:26.939543247Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::gcp:bigquery/dataset:Dataset::test",
+                "urn": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::gcp:bigquery/dataset:Dataset::test",
                 "custom": true,
-                "id": "projects/pulumi-development/datasets/dataset_id",
+                "id": "projects/pulumi-ci-gcp-provider/datasets/dataset_id",
                 "type": "gcp:bigquery/dataset:Dataset",
                 "inputs": {
                     "__defaults": [
@@ -57,16 +61,6 @@
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
                     "accesses": [
-                        {
-                            "dataset": null,
-                            "domain": "",
-                            "groupByEmail": "",
-                            "role": "OWNER",
-                            "routine": null,
-                            "specialGroup": "",
-                            "userByEmail": "anton@pulumi.com",
-                            "view": null
-                        },
                         {
                             "dataset": null,
                             "domain": "",
@@ -93,12 +87,22 @@
                             "groupByEmail": "",
                             "role": "OWNER",
                             "routine": null,
+                            "specialGroup": "",
+                            "userByEmail": "pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
                             "specialGroup": "projectOwners",
                             "userByEmail": "",
                             "view": null
                         }
                     ],
-                    "creationTime": 1696889298443,
+                    "creationTime": 1698855507634,
                     "datasetId": "dataset_id",
                     "defaultCollation": "",
                     "defaultEncryptionConfiguration": null,
@@ -106,30 +110,30 @@
                     "defaultTableExpirationMs": 0,
                     "deleteContentsOnDestroy": false,
                     "description": "",
-                    "etag": "E8FCrMETpETKdebgBl0QYg==",
+                    "etag": "tm1Q/5jtSj8zcRhW4XRy3g==",
                     "friendlyName": "",
-                    "id": "projects/pulumi-development/datasets/dataset_id",
+                    "id": "projects/pulumi-ci-gcp-provider/datasets/dataset_id",
                     "isCaseInsensitive": false,
                     "labels": {},
-                    "lastModifiedTime": 1696889298443,
+                    "lastModifiedTime": 1698855507634,
                     "location": "US",
                     "maxTimeTravelHours": "",
-                    "project": "pulumi-development",
-                    "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/pulumi-development/datasets/dataset_id",
+                    "project": "pulumi-ci-gcp-provider",
+                    "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/pulumi-ci-gcp-provider/datasets/dataset_id",
                     "storageBillingModel": ""
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-3d731590",
-                "provider": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:providers:gcp::provider::24db2e34-76a3-4e8a-856e-e85462d50bfc",
+                "parent": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:pulumi:Stack::test-p-it-runner-bigquery-r-992e4034",
+                "provider": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:providers:gcp::provider::81a7ccf2-e075-4aaf-ad01-6cc910d30782",
                 "propertyDependencies": {
                     "datasetId": null
                 },
-                "created": "2023-10-09T22:08:18.691888Z",
-                "modified": "2023-10-09T22:08:18.691888Z"
+                "created": "2023-11-01T16:18:27.931768513Z",
+                "modified": "2023-11-01T16:18:27.931768513Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::gcp:bigquery/routine:Routine::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::gcp:bigquery/routine:Routine::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/datasets/dataset_id/routines/routine_id",
+                "id": "projects/pulumi-ci-gcp-provider/datasets/dataset_id/routines/routine_id",
                 "type": "gcp:bigquery/routine:Routine",
                 "inputs": {
                     "__defaults": [],
@@ -142,37 +146,37 @@
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
                     "arguments": [],
-                    "creationTime": 1696889299127,
+                    "creationTime": 1698855508204,
                     "datasetId": "dataset_id",
                     "definitionBody": "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
                     "description": "",
                     "determinismLevel": "",
-                    "id": "projects/pulumi-development/datasets/dataset_id/routines/routine_id",
+                    "id": "projects/pulumi-ci-gcp-provider/datasets/dataset_id/routines/routine_id",
                     "importedLibraries": [],
                     "language": "SQL",
-                    "lastModifiedTime": 1696889299127,
-                    "project": "pulumi-development",
+                    "lastModifiedTime": 1698855508204,
+                    "project": "pulumi-ci-gcp-provider",
                     "returnTableType": "",
                     "returnType": "",
                     "routineId": "routine_id",
                     "routineType": "PROCEDURE"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-r-3d731590",
+                "parent": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:pulumi:Stack::test-p-it-runner-bigquery-r-992e4034",
                 "dependencies": [
-                    "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::gcp:bigquery/dataset:Dataset::test"
+                    "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::gcp:bigquery/dataset:Dataset::test"
                 ],
-                "provider": "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::pulumi:providers:gcp::provider::24db2e34-76a3-4e8a-856e-e85462d50bfc",
+                "provider": "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::pulumi:providers:gcp::provider::81a7ccf2-e075-4aaf-ad01-6cc910d30782",
                 "propertyDependencies": {
                     "datasetId": [
-                        "urn:pulumi:p-it-antons-mac-bigquery-r-3d731590::test::gcp:bigquery/dataset:Dataset::test"
+                        "urn:pulumi:p-it-runner-bigquery-r-992e4034::test::gcp:bigquery/dataset:Dataset::test"
                     ],
                     "definitionBody": null,
                     "language": null,
                     "routineId": null,
                     "routineType": null
                 },
-                "created": "2023-10-09T22:08:19.292306Z",
-                "modified": "2023-10-09T22:08:19.292306Z"
+                "created": "2023-11-01T16:18:28.391959444Z",
+                "modified": "2023-11-01T16:18:28.391959444Z"
             }
         ]
     }

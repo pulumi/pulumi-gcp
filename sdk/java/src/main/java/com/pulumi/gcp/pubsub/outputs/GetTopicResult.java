@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTopicResult {
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,9 +27,13 @@ public final class GetTopicResult {
     private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetTopicSchemaSetting> schemaSettings;
 
     private GetTopicResult() {}
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -54,6 +59,9 @@ public final class GetTopicResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetTopicSchemaSetting> schemaSettings() {
         return this.schemaSettings;
     }
@@ -67,6 +75,7 @@ public final class GetTopicResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Map<String,String> effectiveLabels;
         private String id;
         private String kmsKeyName;
         private Map<String,String> labels;
@@ -74,10 +83,12 @@ public final class GetTopicResult {
         private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetTopicSchemaSetting> schemaSettings;
         public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.labels = defaults.labels;
@@ -85,9 +96,15 @@ public final class GetTopicResult {
     	      this.messageStoragePolicies = defaults.messageStoragePolicies;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.schemaSettings = defaults.schemaSettings;
         }
 
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -127,6 +144,11 @@ public final class GetTopicResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder schemaSettings(List<GetTopicSchemaSetting> schemaSettings) {
             this.schemaSettings = Objects.requireNonNull(schemaSettings);
             return this;
@@ -136,6 +158,7 @@ public final class GetTopicResult {
         }
         public GetTopicResult build() {
             final var o = new GetTopicResult();
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.kmsKeyName = kmsKeyName;
             o.labels = labels;
@@ -143,6 +166,7 @@ public final class GetTopicResult {
             o.messageStoragePolicies = messageStoragePolicies;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.schemaSettings = schemaSettings;
             return o;
         }

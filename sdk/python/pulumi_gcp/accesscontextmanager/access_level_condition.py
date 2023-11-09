@@ -431,7 +431,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                     ],
                 )],
             ))
-        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
+        created_later = gcp.serviceaccount.Account("created-later", account_id="my-account-id")
         access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
             access_level=access_level_service_account.name,
             ip_subnetworks=["192.0.4.0/24"],
@@ -554,7 +554,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                     ],
                 )],
             ))
-        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
+        created_later = gcp.serviceaccount.Account("created-later", account_id="my-account-id")
         access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
             access_level=access_level_service_account.name,
             ip_subnetworks=["192.0.4.0/24"],

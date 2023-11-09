@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,25 +29,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
-//			}, nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(defaultNetwork.Id),
+//				Network:   defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -56,13 +54,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(defaultNetwork.Id),
+//				Network:      defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(defaultNetwork.Id),
+//				Network: defaultNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -103,25 +101,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
-//			}, nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(defaultNetwork.Id),
+//				Network:   defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -130,13 +126,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(defaultNetwork.Id),
+//				Network:      defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(defaultNetwork.Id),
+//				Network: defaultNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -160,6 +156,7 @@ import (
 //				BackupId:    pulumi.String("alloydb-backup"),
 //				ClusterName: defaultCluster.Name,
 //				Description: pulumi.String("example description"),
+//				Type:        pulumi.String("ON_DEMAND"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
@@ -199,23 +196,53 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The ID of the alloydb backup.
 	BackupId pulumi.StringOutput `pulumi:"backupId"`
 	// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
-	// Time the Backup was created in UTC.
+	// Output only. The system-generated UID of the cluster which was used to create this resource.
+	ClusterUid pulumi.StringOutput `pulumi:"clusterUid"`
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-provided description of the backup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// User-settable and human-readable display name for the Backup.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig BackupEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos BackupEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
-	// A hash of the resource.
+	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// User-defined labels for the alloydb backup.
+	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+	// Structure is documented below.
+	ExpiryQuantities BackupExpiryQuantityArrayOutput `pulumi:"expiryQuantities"`
+	// Output only. The time at which after the backup is eligible to be garbage collected.
+	// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+	ExpiryTime pulumi.StringOutput `pulumi:"expiryTime"`
+	// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
 	//
@@ -226,13 +253,23 @@ type Backup struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The current state of the backup.
+	// Output only. The size of the backup in bytes.
+	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
+	// Output only. The current state of the backup.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The backup type, which suggests the trigger for the backup.
+	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Time the Backup was updated in UTC.
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -252,6 +289,11 @@ func NewBackup(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Backup
 	err := ctx.RegisterResource("gcp:alloydb/backup:Backup", name, args, &resource, opts...)
@@ -275,23 +317,53 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations map[string]string `pulumi:"annotations"`
 	// The ID of the alloydb backup.
 	BackupId *string `pulumi:"backupId"`
 	// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
 	ClusterName *string `pulumi:"clusterName"`
-	// Time the Backup was created in UTC.
+	// Output only. The system-generated UID of the cluster which was used to create this resource.
+	ClusterUid *string `pulumi:"clusterUid"`
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime *string `pulumi:"deleteTime"`
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
+	// User-settable and human-readable display name for the Backup.
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *BackupEncryptionConfig `pulumi:"encryptionConfig"`
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos []BackupEncryptionInfo `pulumi:"encryptionInfos"`
-	// A hash of the resource.
+	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
-	// User-defined labels for the alloydb backup.
+	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+	// Structure is documented below.
+	ExpiryQuantities []BackupExpiryQuantity `pulumi:"expiryQuantities"`
+	// Output only. The time at which after the backup is eligible to be garbage collected.
+	// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+	ExpiryTime *string `pulumi:"expiryTime"`
+	// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
 	//
@@ -302,34 +374,74 @@ type backupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The current state of the backup.
+	// Output only. The size of the backup in bytes.
+	SizeBytes *string `pulumi:"sizeBytes"`
+	// Output only. The current state of the backup.
 	State *string `pulumi:"state"`
+	// The backup type, which suggests the trigger for the backup.
+	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+	Type *string `pulumi:"type"`
 	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid *string `pulumi:"uid"`
-	// Time the Backup was updated in UTC.
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type BackupState struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapInput
 	// The ID of the alloydb backup.
 	BackupId pulumi.StringPtrInput
 	// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
 	ClusterName pulumi.StringPtrInput
-	// Time the Backup was created in UTC.
+	// Output only. The system-generated UID of the cluster which was used to create this resource.
+	ClusterUid pulumi.StringPtrInput
+	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime pulumi.StringPtrInput
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
+	// User-settable and human-readable display name for the Backup.
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig BackupEncryptionConfigPtrInput
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos BackupEncryptionInfoArrayInput
-	// A hash of the resource.
+	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
-	// User-defined labels for the alloydb backup.
+	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+	// Structure is documented below.
+	ExpiryQuantities BackupExpiryQuantityArrayInput
+	// Output only. The time at which after the backup is eligible to be garbage collected.
+	// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+	ExpiryTime pulumi.StringPtrInput
+	// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
 	//
@@ -340,13 +452,23 @@ type BackupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
-	// The current state of the backup.
+	// Output only. The size of the backup in bytes.
+	SizeBytes pulumi.StringPtrInput
+	// Output only. The current state of the backup.
 	State pulumi.StringPtrInput
+	// The backup type, which suggests the trigger for the backup.
+	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+	Type pulumi.StringPtrInput
 	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid pulumi.StringPtrInput
-	// Time the Backup was updated in UTC.
+	// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -355,16 +477,27 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations map[string]string `pulumi:"annotations"`
 	// The ID of the alloydb backup.
 	BackupId string `pulumi:"backupId"`
 	// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
 	ClusterName string `pulumi:"clusterName"`
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
+	// User-settable and human-readable display name for the Backup.
+	DisplayName *string `pulumi:"displayName"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *BackupEncryptionConfig `pulumi:"encryptionConfig"`
-	// User-defined labels for the alloydb backup.
+	// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
 	//
@@ -373,20 +506,34 @@ type backupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The backup type, which suggests the trigger for the backup.
+	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapInput
 	// The ID of the alloydb backup.
 	BackupId pulumi.StringInput
 	// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
 	ClusterName pulumi.StringInput
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
+	// User-settable and human-readable display name for the Backup.
+	DisplayName pulumi.StringPtrInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig BackupEncryptionConfigPtrInput
-	// User-defined labels for the alloydb backup.
+	// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
 	//
@@ -395,6 +542,9 @@ type BackupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The backup type, which suggests the trigger for the backup.
+	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+	Type pulumi.StringPtrInput
 }
 
 func (BackupArgs) ElementType() reflect.Type {
@@ -508,6 +658,15 @@ func (o BackupOutput) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
 	}
 }
 
+// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+func (o BackupOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // The ID of the alloydb backup.
 func (o BackupOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
@@ -518,14 +677,43 @@ func (o BackupOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Time the Backup was created in UTC.
+// Output only. The system-generated UID of the cluster which was used to create this resource.
+func (o BackupOutput) ClusterUid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ClusterUid }).(pulumi.StringOutput)
+}
+
+// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o BackupOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
 // User-provided description of the backup.
 func (o BackupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// User-settable and human-readable display name for the Backup.
+func (o BackupOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o BackupOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o BackupOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -540,12 +728,28 @@ func (o BackupOutput) EncryptionInfos() BackupEncryptionInfoArrayOutput {
 	return o.ApplyT(func(v *Backup) BackupEncryptionInfoArrayOutput { return v.EncryptionInfos }).(BackupEncryptionInfoArrayOutput)
 }
 
-// A hash of the resource.
+// For Resource freshness validation (https://google.aip.dev/154)
 func (o BackupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// User-defined labels for the alloydb backup.
+// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+// Structure is documented below.
+func (o BackupOutput) ExpiryQuantities() BackupExpiryQuantityArrayOutput {
+	return o.ApplyT(func(v *Backup) BackupExpiryQuantityArrayOutput { return v.ExpiryQuantities }).(BackupExpiryQuantityArrayOutput)
+}
+
+// Output only. The time at which after the backup is eligible to be garbage collected.
+// It is the duration specified by the backup's retention policy, added to the backup's createTime.
+func (o BackupOutput) ExpiryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ExpiryTime }).(pulumi.StringOutput)
+}
+
+// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o BackupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -568,14 +772,32 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+// This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o BackupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The current state of the backup.
+// Output only. The size of the backup in bytes.
+func (o BackupOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// Output only. The current state of the backup.
 func (o BackupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The backup type, which suggests the trigger for the backup.
+// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+func (o BackupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
@@ -583,7 +805,8 @@ func (o BackupOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Time the Backup was updated in UTC.
+// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o BackupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

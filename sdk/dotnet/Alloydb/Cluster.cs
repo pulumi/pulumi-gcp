@@ -240,6 +240,16 @@ namespace Pulumi.Gcp.Alloydb
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
         /// </summary>
@@ -287,6 +297,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         /// Structure is documented below.
         /// </summary>
@@ -302,6 +326,12 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.ClusterEncryptionInfo>> EncryptionInfos { get; private set; } = null!;
 
         /// <summary>
+        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// </summary>
+        [Output("etag")]
+        public Output<string?> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// Initial user to setup during cluster creation.
         /// Structure is documented below.
         /// </summary>
@@ -310,6 +340,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -361,6 +393,21 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+        /// This can happen due to user-triggered updates or system actions like failover or maintenance.
+        /// </summary>
+        [Output("reconciling")]
+        public Output<bool> Reconciling { get; private set; } = null!;
+
+        /// <summary>
         /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
         /// Structure is documented below.
         /// </summary>
@@ -373,6 +420,12 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("restoreContinuousBackupSource")]
         public Output<Outputs.ClusterRestoreContinuousBackupSource?> RestoreContinuousBackupSource { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The current serving state of the cluster.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The system-generated UID of the resource.
@@ -403,6 +456,11 @@ namespace Pulumi.Gcp.Alloydb
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -426,6 +484,22 @@ namespace Pulumi.Gcp.Alloydb
 
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
@@ -461,6 +535,12 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
         /// Initial user to setup during cluster creation.
         /// Structure is documented below.
         /// </summary>
@@ -472,6 +552,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -534,6 +616,22 @@ namespace Pulumi.Gcp.Alloydb
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
@@ -593,6 +691,36 @@ namespace Pulumi.Gcp.Alloydb
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
         /// Structure is documented below.
@@ -615,6 +743,12 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
+        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
         /// Initial user to setup during cluster creation.
         /// Structure is documented below.
         /// </summary>
@@ -626,6 +760,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb cluster.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -685,6 +821,31 @@ namespace Pulumi.Gcp.Alloydb
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+        /// This can happen due to user-triggered updates or system actions like failover or maintenance.
+        /// </summary>
+        [Input("reconciling")]
+        public Input<bool>? Reconciling { get; set; }
+
         /// <summary>
         /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
         /// Structure is documented below.
@@ -698,6 +859,12 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("restoreContinuousBackupSource")]
         public Input<Inputs.ClusterRestoreContinuousBackupSourceGetArgs>? RestoreContinuousBackupSource { get; set; }
+
+        /// <summary>
+        /// Output only. The current serving state of the cluster.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The system-generated UID of the resource.

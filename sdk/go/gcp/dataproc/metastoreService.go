@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -39,6 +39,9 @@ import (
 //			_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("2.3.6"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
 //				},
 //				Location: pulumi.String("us-central1"),
 //				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
@@ -64,8 +67,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -110,8 +113,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -162,7 +165,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -195,7 +198,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -252,6 +255,9 @@ type MetastoreService struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -263,6 +269,8 @@ type MetastoreService struct {
 	// Structure is documented below.
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrOutput `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
@@ -287,6 +295,9 @@ type MetastoreService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -324,6 +335,11 @@ func NewMetastoreService(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreService
 	err := ctx.RegisterResource("gcp:dataproc/metastoreService:MetastoreService", name, args, &resource, opts...)
@@ -353,6 +369,9 @@ type metastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -364,6 +383,8 @@ type metastoreServiceState struct {
 	// Structure is documented below.
 	HiveMetastoreConfig *MetastoreServiceHiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
@@ -388,6 +409,9 @@ type metastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -422,6 +446,9 @@ type MetastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -433,6 +460,8 @@ type MetastoreServiceState struct {
 	// Structure is documented below.
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore service should reside.
 	// The default value is `global`.
@@ -457,6 +486,9 @@ type MetastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -501,6 +533,8 @@ type metastoreServiceArgs struct {
 	// Structure is documented below.
 	HiveMetastoreConfig *MetastoreServiceHiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore service should reside.
 	// The default value is `global`.
@@ -558,6 +592,8 @@ type MetastoreServiceArgs struct {
 	// Structure is documented below.
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the metastore service should reside.
 	// The default value is `global`.
@@ -724,6 +760,12 @@ func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o MetastoreServiceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Information used to configure the Dataproc Metastore service to encrypt
 // customer data at rest.
 // Structure is documented below.
@@ -744,6 +786,8 @@ func (o MetastoreServiceOutput) HiveMetastoreConfig() MetastoreServiceHiveMetast
 }
 
 // User-defined labels for the metastore service.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MetastoreServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -793,6 +837,12 @@ func (o MetastoreServiceOutput) Port() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MetastoreServiceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The release channel of the service. If unspecified, defaults to `STABLE`.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -184,7 +184,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -340,7 +340,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -519,6 +519,9 @@ type AwsNodePool struct {
 	pulumi.CustomResourceState
 
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingOutput `pulumi:"autoscaling"`
@@ -528,6 +531,9 @@ type AwsNodePool struct {
 	Config AwsNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
@@ -548,6 +554,8 @@ type AwsNodePool struct {
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	UpdateSettings AwsNodePoolUpdateSettingsOutput `pulumi:"updateSettings"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
@@ -606,6 +614,9 @@ func GetAwsNodePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AwsNodePool resources.
 type awsNodePoolState struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling *AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -615,6 +626,9 @@ type awsNodePoolState struct {
 	Config *AwsNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
@@ -635,6 +649,8 @@ type awsNodePoolState struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid *string `pulumi:"uid"`
+	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	UpdateSettings *AwsNodePoolUpdateSettings `pulumi:"updateSettings"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
@@ -643,6 +659,9 @@ type awsNodePoolState struct {
 
 type AwsNodePoolState struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingPtrInput
@@ -652,6 +671,9 @@ type AwsNodePoolState struct {
 	Config AwsNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location for the resource
@@ -672,6 +694,8 @@ type AwsNodePoolState struct {
 	SubnetId pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringPtrInput
+	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	UpdateSettings AwsNodePoolUpdateSettingsPtrInput
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
@@ -684,6 +708,9 @@ func (AwsNodePoolState) ElementType() reflect.Type {
 
 type awsNodePoolArgs struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -703,6 +730,8 @@ type awsNodePoolArgs struct {
 	Project *string `pulumi:"project"`
 	// The subnet where the node pool node run.
 	SubnetId string `pulumi:"subnetId"`
+	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	UpdateSettings *AwsNodePoolUpdateSettings `pulumi:"updateSettings"`
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version string `pulumi:"version"`
 }
@@ -710,6 +739,9 @@ type awsNodePoolArgs struct {
 // The set of arguments for constructing a AwsNodePool resource.
 type AwsNodePoolArgs struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingInput
@@ -729,6 +761,8 @@ type AwsNodePoolArgs struct {
 	Project pulumi.StringPtrInput
 	// The subnet where the node pool node run.
 	SubnetId pulumi.StringInput
+	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	UpdateSettings AwsNodePoolUpdateSettingsPtrInput
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version pulumi.StringInput
 }
@@ -845,6 +879,9 @@ func (o AwsNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsNode
 }
 
 // Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AwsNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -867,6 +904,12 @@ func (o AwsNodePoolOutput) Config() AwsNodePoolConfigOutput {
 // Output only. The time at which this node pool was created.
 func (o AwsNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o AwsNodePoolOutput) EffectiveAnnotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AwsNodePool) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }
 
 // Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -917,6 +960,11 @@ func (o AwsNodePoolOutput) SubnetId() pulumi.StringOutput {
 // Output only. A globally unique identifier for the node pool.
 func (o AwsNodePoolOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+func (o AwsNodePoolOutput) UpdateSettings() AwsNodePoolUpdateSettingsOutput {
+	return o.ApplyT(func(v *AwsNodePool) AwsNodePoolUpdateSettingsOutput { return v.UpdateSettings }).(AwsNodePoolUpdateSettingsOutput)
 }
 
 // Output only. The time at which this node pool was last updated.

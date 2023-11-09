@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEffectiveTaintArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigFastSocketArgs;
@@ -116,6 +117,13 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+
+    @Import(name="effectiveTaints")
+    private @Nullable Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints;
+
+    public Optional<Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
+        return Optional.ofNullable(this.effectiveTaints);
     }
 
     /**
@@ -964,6 +972,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.confidentialNodes = $.confidentialNodes;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
+        this.effectiveTaints = $.effectiveTaints;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
@@ -1123,6 +1132,19 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
+        }
+
+        public Builder effectiveTaints(@Nullable Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints) {
+            $.effectiveTaints = effectiveTaints;
+            return this;
+        }
+
+        public Builder effectiveTaints(List<ClusterNodePoolNodeConfigEffectiveTaintArgs> effectiveTaints) {
+            return effectiveTaints(Output.of(effectiveTaints));
+        }
+
+        public Builder effectiveTaints(ClusterNodePoolNodeConfigEffectiveTaintArgs... effectiveTaints) {
+            return effectiveTaints(List.of(effectiveTaints));
         }
 
         /**

@@ -148,6 +148,21 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     }
 
     /**
+     * Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+     * 
+     */
+    @Import(name="serviceAccountScopes")
+    private @Nullable Output<List<String>> serviceAccountScopes;
+
+    /**
+     * @return Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+     * 
+     */
+    public Optional<Output<List<String>>> serviceAccountScopes() {
+        return Optional.ofNullable(this.serviceAccountScopes);
+    }
+
+    /**
      * A set of Compute Engine Shielded instance options.
      * Structure is documented below.
      * 
@@ -190,6 +205,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
         this.serviceAccount = $.serviceAccount;
+        this.serviceAccountScopes = $.serviceAccountScopes;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
     }
@@ -395,6 +411,37 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param serviceAccountScopes Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountScopes(@Nullable Output<List<String>> serviceAccountScopes) {
+            $.serviceAccountScopes = serviceAccountScopes;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountScopes Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountScopes(List<String> serviceAccountScopes) {
+            return serviceAccountScopes(Output.of(serviceAccountScopes));
+        }
+
+        /**
+         * @param serviceAccountScopes Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountScopes(String... serviceAccountScopes) {
+            return serviceAccountScopes(List.of(serviceAccountScopes));
         }
 
         /**

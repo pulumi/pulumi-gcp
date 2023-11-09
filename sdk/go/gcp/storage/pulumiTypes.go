@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -4177,6 +4177,205 @@ func (o TransferAgentPoolBandwidthLimitPtrOutput) LimitMbps() pulumi.StringPtrOu
 			return nil
 		}
 		return &v.LimitMbps
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobEventStream struct {
+	// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EventStreamExpirationTime *string `pulumi:"eventStreamExpirationTime"`
+	// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EventStreamStartTime *string `pulumi:"eventStreamStartTime"`
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	Name string `pulumi:"name"`
+}
+
+// TransferJobEventStreamInput is an input type that accepts TransferJobEventStreamArgs and TransferJobEventStreamOutput values.
+// You can construct a concrete instance of `TransferJobEventStreamInput` via:
+//
+//	TransferJobEventStreamArgs{...}
+type TransferJobEventStreamInput interface {
+	pulumi.Input
+
+	ToTransferJobEventStreamOutput() TransferJobEventStreamOutput
+	ToTransferJobEventStreamOutputWithContext(context.Context) TransferJobEventStreamOutput
+}
+
+type TransferJobEventStreamArgs struct {
+	// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EventStreamExpirationTime pulumi.StringPtrInput `pulumi:"eventStreamExpirationTime"`
+	// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EventStreamStartTime pulumi.StringPtrInput `pulumi:"eventStreamStartTime"`
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TransferJobEventStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobEventStream)(nil)).Elem()
+}
+
+func (i TransferJobEventStreamArgs) ToTransferJobEventStreamOutput() TransferJobEventStreamOutput {
+	return i.ToTransferJobEventStreamOutputWithContext(context.Background())
+}
+
+func (i TransferJobEventStreamArgs) ToTransferJobEventStreamOutputWithContext(ctx context.Context) TransferJobEventStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobEventStreamOutput)
+}
+
+func (i TransferJobEventStreamArgs) ToOutput(ctx context.Context) pulumix.Output[TransferJobEventStream] {
+	return pulumix.Output[TransferJobEventStream]{
+		OutputState: i.ToTransferJobEventStreamOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TransferJobEventStreamArgs) ToTransferJobEventStreamPtrOutput() TransferJobEventStreamPtrOutput {
+	return i.ToTransferJobEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobEventStreamArgs) ToTransferJobEventStreamPtrOutputWithContext(ctx context.Context) TransferJobEventStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobEventStreamOutput).ToTransferJobEventStreamPtrOutputWithContext(ctx)
+}
+
+// TransferJobEventStreamPtrInput is an input type that accepts TransferJobEventStreamArgs, TransferJobEventStreamPtr and TransferJobEventStreamPtrOutput values.
+// You can construct a concrete instance of `TransferJobEventStreamPtrInput` via:
+//
+//	        TransferJobEventStreamArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobEventStreamPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobEventStreamPtrOutput() TransferJobEventStreamPtrOutput
+	ToTransferJobEventStreamPtrOutputWithContext(context.Context) TransferJobEventStreamPtrOutput
+}
+
+type transferJobEventStreamPtrType TransferJobEventStreamArgs
+
+func TransferJobEventStreamPtr(v *TransferJobEventStreamArgs) TransferJobEventStreamPtrInput {
+	return (*transferJobEventStreamPtrType)(v)
+}
+
+func (*transferJobEventStreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobEventStream)(nil)).Elem()
+}
+
+func (i *transferJobEventStreamPtrType) ToTransferJobEventStreamPtrOutput() TransferJobEventStreamPtrOutput {
+	return i.ToTransferJobEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobEventStreamPtrType) ToTransferJobEventStreamPtrOutputWithContext(ctx context.Context) TransferJobEventStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobEventStreamPtrOutput)
+}
+
+func (i *transferJobEventStreamPtrType) ToOutput(ctx context.Context) pulumix.Output[*TransferJobEventStream] {
+	return pulumix.Output[*TransferJobEventStream]{
+		OutputState: i.ToTransferJobEventStreamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TransferJobEventStreamOutput struct{ *pulumi.OutputState }
+
+func (TransferJobEventStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobEventStream)(nil)).Elem()
+}
+
+func (o TransferJobEventStreamOutput) ToTransferJobEventStreamOutput() TransferJobEventStreamOutput {
+	return o
+}
+
+func (o TransferJobEventStreamOutput) ToTransferJobEventStreamOutputWithContext(ctx context.Context) TransferJobEventStreamOutput {
+	return o
+}
+
+func (o TransferJobEventStreamOutput) ToTransferJobEventStreamPtrOutput() TransferJobEventStreamPtrOutput {
+	return o.ToTransferJobEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobEventStreamOutput) ToTransferJobEventStreamPtrOutputWithContext(ctx context.Context) TransferJobEventStreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobEventStream) *TransferJobEventStream {
+		return &v
+	}).(TransferJobEventStreamPtrOutput)
+}
+
+func (o TransferJobEventStreamOutput) ToOutput(ctx context.Context) pulumix.Output[TransferJobEventStream] {
+	return pulumix.Output[TransferJobEventStream]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobEventStreamOutput) EventStreamExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobEventStream) *string { return v.EventStreamExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobEventStreamOutput) EventStreamStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobEventStream) *string { return v.EventStreamStartTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+func (o TransferJobEventStreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobEventStream) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TransferJobEventStreamPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobEventStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobEventStream)(nil)).Elem()
+}
+
+func (o TransferJobEventStreamPtrOutput) ToTransferJobEventStreamPtrOutput() TransferJobEventStreamPtrOutput {
+	return o
+}
+
+func (o TransferJobEventStreamPtrOutput) ToTransferJobEventStreamPtrOutputWithContext(ctx context.Context) TransferJobEventStreamPtrOutput {
+	return o
+}
+
+func (o TransferJobEventStreamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferJobEventStream] {
+	return pulumix.Output[*TransferJobEventStream]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransferJobEventStreamPtrOutput) Elem() TransferJobEventStreamOutput {
+	return o.ApplyT(func(v *TransferJobEventStream) TransferJobEventStream {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobEventStream
+		return ret
+	}).(TransferJobEventStreamOutput)
+}
+
+// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobEventStreamPtrOutput) EventStreamExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobEventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventStreamExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobEventStreamPtrOutput) EventStreamStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobEventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventStreamStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+func (o TransferJobEventStreamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobEventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9401,6 +9600,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitPtrInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobEventStreamInput)(nil)).Elem(), TransferJobEventStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobEventStreamPtrInput)(nil)).Elem(), TransferJobEventStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigPtrInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleInput)(nil)).Elem(), TransferJobScheduleArgs{})
@@ -9507,6 +9708,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitOutput{})
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobEventStreamOutput{})
+	pulumi.RegisterOutputType(TransferJobEventStreamPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})

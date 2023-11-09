@@ -29,16 +29,13 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "alloydb-network",
-    ///     });
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "alloydb-cluster",
@@ -50,12 +47,12 @@ namespace Pulumi.Gcp.Alloydb
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
     ///     {
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = defaultNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -106,6 +103,8 @@ namespace Pulumi.Gcp.Alloydb
     {
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -148,6 +147,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         /// </summary>
         [Output("gceZone")]
@@ -177,6 +190,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb instance.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -193,6 +208,20 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("queryInsightsConfig")]
+        public Output<Outputs.InstanceQueryInsightsConfig> QueryInsightsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -248,6 +277,11 @@ namespace Pulumi.Gcp.Alloydb
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -276,6 +310,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -347,6 +383,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb instance.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -360,6 +398,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("machineConfig")]
         public Input<Inputs.InstanceMachineConfigArgs>? MachineConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("queryInsightsConfig")]
+        public Input<Inputs.InstanceQueryInsightsConfigArgs>? QueryInsightsConfig { get; set; }
 
         /// <summary>
         /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -381,6 +426,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -431,6 +478,36 @@ namespace Pulumi.Gcp.Alloydb
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         /// </summary>
@@ -464,6 +541,8 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// User-defined labels for the alloydb instance.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -483,6 +562,30 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// Configuration for query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("queryInsightsConfig")]
+        public Input<Inputs.InstanceQueryInsightsConfigGetArgs>? QueryInsightsConfig { get; set; }
 
         /// <summary>
         /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.

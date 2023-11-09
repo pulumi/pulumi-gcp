@@ -24,6 +24,7 @@ public final class GetRepositoryResult {
     private String createTime;
     private String description;
     private List<GetRepositoryDockerConfig> dockerConfigs;
+    private Map<String,String> effectiveLabels;
     private String format;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -37,6 +38,7 @@ public final class GetRepositoryResult {
     private String mode;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
     private String repositoryId;
     private String updateTime;
@@ -57,6 +59,9 @@ public final class GetRepositoryResult {
     }
     public List<GetRepositoryDockerConfig> dockerConfigs() {
         return this.dockerConfigs;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String format() {
         return this.format;
@@ -89,6 +94,9 @@ public final class GetRepositoryResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs() {
         return this.remoteRepositoryConfigs;
     }
@@ -116,6 +124,7 @@ public final class GetRepositoryResult {
         private String createTime;
         private String description;
         private List<GetRepositoryDockerConfig> dockerConfigs;
+        private Map<String,String> effectiveLabels;
         private String format;
         private String id;
         private String kmsKeyName;
@@ -125,6 +134,7 @@ public final class GetRepositoryResult {
         private String mode;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
         private String repositoryId;
         private String updateTime;
@@ -137,6 +147,7 @@ public final class GetRepositoryResult {
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.dockerConfigs = defaults.dockerConfigs;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
@@ -146,6 +157,7 @@ public final class GetRepositoryResult {
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.remoteRepositoryConfigs = defaults.remoteRepositoryConfigs;
     	      this.repositoryId = defaults.repositoryId;
     	      this.updateTime = defaults.updateTime;
@@ -182,6 +194,11 @@ public final class GetRepositoryResult {
         }
         public Builder dockerConfigs(GetRepositoryDockerConfig... dockerConfigs) {
             return dockerConfigs(List.of(dockerConfigs));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder format(String format) {
@@ -232,6 +249,11 @@ public final class GetRepositoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder remoteRepositoryConfigs(List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs) {
             this.remoteRepositoryConfigs = Objects.requireNonNull(remoteRepositoryConfigs);
             return this;
@@ -264,6 +286,7 @@ public final class GetRepositoryResult {
             o.createTime = createTime;
             o.description = description;
             o.dockerConfigs = dockerConfigs;
+            o.effectiveLabels = effectiveLabels;
             o.format = format;
             o.id = id;
             o.kmsKeyName = kmsKeyName;
@@ -273,6 +296,7 @@ public final class GetRepositoryResult {
             o.mode = mode;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.remoteRepositoryConfigs = remoteRepositoryConfigs;
             o.repositoryId = repositoryId;
             o.updateTime = updateTime;

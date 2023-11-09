@@ -1688,6 +1688,19 @@ export namespace alloydb {
         kmsKeyVersions: string[];
     }
 
+    export interface BackupExpiryQuantity {
+        /**
+         * (Output)
+         * Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+         */
+        retentionCount: number;
+        /**
+         * (Output)
+         * Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+         */
+        totalRetentionCount: number;
+    }
+
     export interface ClusterAutomatedBackupPolicy {
         /**
          * The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
@@ -2001,6 +2014,25 @@ export namespace alloydb {
          * The number of CPU's in the VM instance.
          */
         cpuCount: number;
+    }
+
+    export interface InstanceQueryInsightsConfig {
+        /**
+         * Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+         */
+        queryPlansPerMinute?: number;
+        /**
+         * Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+         */
+        queryStringLength?: number;
+        /**
+         * Record application tags for an instance. This flag is turned "on" by default.
+         */
+        recordApplicationTags?: boolean;
+        /**
+         * Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+         */
+        recordClientAddress?: boolean;
     }
 
     export interface InstanceReadPoolConfig {
@@ -3432,11 +3464,22 @@ export namespace artifactregistry {
     }
 
     export interface GetRepositoryRemoteRepositoryConfig {
+        aptRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigAptRepository[];
         description: string;
         dockerRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigDockerRepository[];
         mavenRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigMavenRepository[];
         npmRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNpmRepository[];
         pythonRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigPythonRepository[];
+        yumRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigYumRepository[];
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigAptRepository {
+        publicRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository[];
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
+        repositoryBase: string;
+        repositoryPath: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigDockerRepository {
@@ -3453,6 +3496,15 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigPythonRepository {
         publicRepository: string;
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigYumRepository {
+        publicRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository[];
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
+        repositoryBase: string;
+        repositoryPath: string;
     }
 
     export interface GetRepositoryVirtualRepositoryConfig {
@@ -3524,6 +3576,11 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfig {
         /**
+         * Specific settings for an Apt remote repository.
+         * Structure is documented below.
+         */
+        aptRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigAptRepository;
+        /**
          * The description of the remote source.
          */
         description?: string;
@@ -3547,6 +3604,31 @@ export namespace artifactregistry {
          * Structure is documented below.
          */
         pythonRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepository;
+        /**
+         * Specific settings for an Yum remote repository.
+         * Structure is documented below.
+         */
+        yumRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigYumRepository;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigAptRepository {
+        /**
+         * One of the publicly available Apt repositories supported by Artifact Registry.
+         * Structure is documented below.
+         */
+        publicRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
+        /**
+         * A common public repository base for Yum.
+         * Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+         */
+        repositoryBase: string;
+        /**
+         * Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+         */
+        repositoryPath: string;
     }
 
     export interface RepositoryRemoteRepositoryConfigDockerRepository {
@@ -3583,6 +3665,26 @@ export namespace artifactregistry {
          * Possible values are: `PYPI`.
          */
         publicRepository?: string;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigYumRepository {
+        /**
+         * One of the publicly available Yum repositories supported by Artifact Registry.
+         * Structure is documented below.
+         */
+        publicRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
+        /**
+         * A common public repository base for Yum.
+         * Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+         */
+        repositoryBase: string;
+        /**
+         * Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+         */
+        repositoryPath: string;
     }
 
     export interface RepositoryVirtualRepositoryConfig {
@@ -5387,6 +5489,7 @@ export namespace bigtable {
          * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes: number;
+        state: string;
         /**
          * The storage type to use. One of `"SSD"` or
          * `"HDD"`. Defaults to `"SSD"`.
@@ -6645,14 +6748,6 @@ export namespace certificateauthority {
          */
         certFingerprints: outputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint[];
         /**
-         * (Output, Deprecated)
-         * Describes some of the technical fields in a certificate.
-         * Structure is documented below.
-         *
-         * @deprecated `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-         */
-        configValues: outputs.certificateauthority.CertificateCertificateDescriptionConfigValue[];
-        /**
          * (Output)
          * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
          */
@@ -6699,123 +6794,6 @@ export namespace certificateauthority {
          * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
          */
         sha256Hash: string;
-    }
-
-    export interface CertificateCertificateDescriptionConfigValue {
-        /**
-         * Indicates the intended use for keys that correspond to a certificate.
-         * Structure is documented below.
-         */
-        keyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsage[];
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsage {
-        /**
-         * Describes high-level ways in which a key may be used.
-         * Structure is documented below.
-         */
-        baseKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage[];
-        /**
-         * Describes high-level ways in which a key may be used.
-         * Structure is documented below.
-         */
-        extendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage[];
-        /**
-         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-         * Structure is documented below.
-         */
-        unknownExtendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage[];
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
-        /**
-         * (Output)
-         * Describes high-level ways in which a key may be used.
-         * Structure is documented below.
-         */
-        keyUsageOptions: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption[];
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption {
-        /**
-         * The key may be used to sign certificates.
-         */
-        certSign: boolean;
-        /**
-         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-         */
-        contentCommitment: boolean;
-        /**
-         * The key may be used sign certificate revocation lists.
-         */
-        crlSign: boolean;
-        /**
-         * The key may be used to encipher data.
-         */
-        dataEncipherment: boolean;
-        /**
-         * The key may be used to decipher only.
-         */
-        decipherOnly: boolean;
-        /**
-         * The key may be used for digital signatures.
-         */
-        digitalSignature: boolean;
-        /**
-         * The key may be used to encipher only.
-         */
-        encipherOnly: boolean;
-        /**
-         * The key may be used in a key agreement protocol.
-         */
-        keyAgreement: boolean;
-        /**
-         * The key may be used to encipher other keys.
-         */
-        keyEncipherment: boolean;
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage {
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-         */
-        clientAuth: boolean;
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-         */
-        codeSigning: boolean;
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-         */
-        emailProtection: boolean;
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-         */
-        ocspSigning: boolean;
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-         */
-        serverAuth: boolean;
-        /**
-         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-         */
-        timeStamping: boolean;
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
-        /**
-         * (Output)
-         * Required. Describes how some of the technical fields in a certificate should be populated.
-         * Structure is documented below.
-         */
-        obectIds: outputs.certificateauthority.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId[];
-    }
-
-    export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
-        /**
-         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-         */
-        objectIdPaths: number[];
     }
 
     export interface CertificateCertificateDescriptionPublicKey {
@@ -6932,7 +6910,7 @@ export namespace certificateauthority {
         critical: boolean;
         /**
          * (Output)
-         * Required. Describes how some of the technical fields in a certificate should be populated.
+         * Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          */
         obectIds: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId[];
@@ -10552,10 +10530,12 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         *
-         * - - -
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          */
-        annotations: {[key: string]: string};
+        annotations?: {[key: string]: string};
+        effectiveAnnotations: {[key: string]: string};
+        effectiveLabels: {[key: string]: string};
         /**
          * (Output)
          * A sequence number representing a specific generation of the desired state.
@@ -10566,13 +10546,21 @@ export namespace cloudrun {
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          */
-        labels: {[key: string]: string};
+        labels?: {[key: string]: string};
         /**
          * In Cloud Run the namespace must be equal to either the
          * project ID or project number.
          */
         namespace: string;
+        /**
+         * (Output)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
         /**
          * (Output)
          * An opaque value that represents the internal version of this object that
@@ -10603,6 +10591,8 @@ export namespace cloudrun {
          * The mode of the certificate.
          * Default value is `AUTOMATIC`.
          * Possible values are: `NONE`, `AUTOMATIC`.
+         *
+         * - - -
          */
         certificateMode?: string;
         /**
@@ -10690,9 +10680,12 @@ export namespace cloudrun {
 
     export interface GetServiceMetadata {
         annotations: {[key: string]: string};
+        effectiveAnnotations: {[key: string]: string};
+        effectiveLabels: {[key: string]: string};
         generation: number;
         labels: {[key: string]: string};
         namespace: string;
+        pulumiLabels: {[key: string]: string};
         resourceVersion: string;
         selfLink: string;
         uid: string;
@@ -10968,8 +10961,12 @@ export namespace cloudrun {
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          */
-        annotations: {[key: string]: string};
+        annotations?: {[key: string]: string};
+        effectiveAnnotations: {[key: string]: string};
+        effectiveLabels: {[key: string]: string};
         /**
          * (Output)
          * A sequence number representing a specific generation of the desired state.
@@ -10979,13 +10976,21 @@ export namespace cloudrun {
          * Map of string keys and values that can be used to organize and categorize
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          */
-        labels: {[key: string]: string};
+        labels?: {[key: string]: string};
         /**
          * In Cloud Run the namespace must be equal to either the
          * project ID or project number.
          */
         namespace: string;
+        /**
+         * (Output)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
         /**
          * (Output)
          * An opaque value that represents the internal version of this object that
@@ -11143,6 +11148,8 @@ export namespace cloudrun {
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          */
         annotations: {[key: string]: string};
         /**
@@ -11154,6 +11161,8 @@ export namespace cloudrun {
          * Map of string keys and values that can be used to organize and categorize
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          */
         labels: {[key: string]: string};
         /**
@@ -11906,17 +11915,6 @@ export namespace cloudrunv2 {
          */
         image: string;
         /**
-         * (Optional, Deprecated)
-         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         *
-         * > **Warning:** `livenessProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         *
-         * @deprecated `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         */
-        livenessProbe?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbe;
-        /**
          * Name of the container specified as a DNS_LABEL.
          */
         name?: string;
@@ -11931,17 +11929,6 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         resources: outputs.cloudrunv2.JobTemplateTemplateContainerResources;
-        /**
-         * (Optional, Deprecated)
-         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         * This field is not supported in Cloud Run Job currently.
-         * Structure is documented below.
-         *
-         * > **Warning:** `startupProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         *
-         * @deprecated `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         */
-        startupProbe: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbe;
         /**
          * Volume to mount into the container's filesystem.
          * Structure is documented below.
@@ -11988,65 +11975,6 @@ export namespace cloudrunv2 {
         version: string;
     }
 
-    export interface JobTemplateTemplateContainerLivenessProbe {
-        /**
-         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-         */
-        failureThreshold?: number;
-        /**
-         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-         * Structure is documented below.
-         */
-        httpGet?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGet;
-        /**
-         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         */
-        initialDelaySeconds?: number;
-        /**
-         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-         */
-        periodSeconds?: number;
-        /**
-         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-         * Structure is documented below.
-         */
-        tcpSocket?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeTcpSocket;
-        /**
-         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         */
-        timeoutSeconds?: number;
-    }
-
-    export interface JobTemplateTemplateContainerLivenessProbeHttpGet {
-        /**
-         * Custom headers to set in the request. HTTP allows repeated headers.
-         * Structure is documented below.
-         */
-        httpHeaders?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader[];
-        /**
-         * Path to access on the HTTP server. Defaults to '/'.
-         */
-        path?: string;
-    }
-
-    export interface JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader {
-        /**
-         * The header field name
-         */
-        name: string;
-        /**
-         * The header field value
-         */
-        value?: string;
-    }
-
-    export interface JobTemplateTemplateContainerLivenessProbeTcpSocket {
-        /**
-         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-         */
-        port?: number;
-    }
-
     export interface JobTemplateTemplateContainerPort {
         /**
          * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -12063,65 +11991,6 @@ export namespace cloudrunv2 {
          * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits: {[key: string]: string};
-    }
-
-    export interface JobTemplateTemplateContainerStartupProbe {
-        /**
-         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-         */
-        failureThreshold?: number;
-        /**
-         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-         * Structure is documented below.
-         */
-        httpGet?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGet;
-        /**
-         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         */
-        initialDelaySeconds?: number;
-        /**
-         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-         */
-        periodSeconds?: number;
-        /**
-         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-         * Structure is documented below.
-         */
-        tcpSocket?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocket;
-        /**
-         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-         */
-        timeoutSeconds?: number;
-    }
-
-    export interface JobTemplateTemplateContainerStartupProbeHttpGet {
-        /**
-         * Custom headers to set in the request. HTTP allows repeated headers.
-         * Structure is documented below.
-         */
-        httpHeaders?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader[];
-        /**
-         * Path to access on the HTTP server. Defaults to '/'.
-         */
-        path?: string;
-    }
-
-    export interface JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
-        /**
-         * The header field name
-         */
-        name: string;
-        /**
-         * The header field value
-         */
-        value?: string;
-    }
-
-    export interface JobTemplateTemplateContainerStartupProbeTcpSocket {
-        /**
-         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-         */
-        port: number;
     }
 
     export interface JobTemplateTemplateContainerVolumeMount {
@@ -12534,16 +12403,6 @@ export namespace cloudrunv2 {
          */
         periodSeconds?: number;
         /**
-         * (Optional, Deprecated)
-         * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-         * Structure is documented below.
-         *
-         * > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         *
-         * @deprecated `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-         */
-        tcpSocket?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbeTcpSocket;
-        /**
          * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
          */
         timeoutSeconds?: number;
@@ -12589,14 +12448,6 @@ export namespace cloudrunv2 {
          * The header field value
          */
         value?: string;
-    }
-
-    export interface ServiceTemplateContainerLivenessProbeTcpSocket {
-        /**
-         * Port number to access on the container. Must be in the range 1 to 65535.
-         * If not specified, defaults to the same value as container.ports[0].containerPort.
-         */
-        port?: number;
     }
 
     export interface ServiceTemplateContainerPort {
@@ -13522,261 +13373,6 @@ export namespace composer {
 }
 
 export namespace compute {
-    export interface AutoscalarAutoscalingPolicy {
-        /**
-         * The number of seconds that the autoscaler should wait before it
-         * starts collecting information from a new instance. This prevents
-         * the autoscaler from collecting information when the instance is
-         * initializing, during which the collected usage would not be
-         * reliable. The default time autoscaler waits is 60 seconds.
-         * Virtual machine initialization times might vary because of
-         * numerous factors. We recommend that you test how long an
-         * instance may take to initialize. To do this, create an instance
-         * and time the startup process.
-         */
-        cooldownPeriod?: number;
-        /**
-         * Defines the CPU utilization policy that allows the autoscaler to
-         * scale based on the average CPU utilization of a managed instance
-         * group.
-         * Structure is documented below.
-         */
-        cpuUtilization: outputs.compute.AutoscalarAutoscalingPolicyCpuUtilization;
-        /**
-         * Configuration parameters of autoscaling based on a load balancer.
-         * Structure is documented below.
-         */
-        loadBalancingUtilization?: outputs.compute.AutoscalarAutoscalingPolicyLoadBalancingUtilization;
-        /**
-         * The maximum number of instances that the autoscaler can scale up
-         * to. This is required when creating or updating an autoscaler. The
-         * maximum number of replicas should not be lower than minimal number
-         * of replicas.
-         */
-        maxReplicas: number;
-        /**
-         * Configuration parameters of autoscaling based on a custom metric.
-         * Structure is documented below.
-         */
-        metrics?: outputs.compute.AutoscalarAutoscalingPolicyMetric[];
-        /**
-         * The minimum number of replicas that the autoscaler can scale down
-         * to. This cannot be less than 0. If not provided, autoscaler will
-         * choose a default value depending on maximum number of instances
-         * allowed.
-         */
-        minReplicas: number;
-        /**
-         * Defines operating mode for this policy.
-         */
-        mode?: string;
-        /**
-         * Defines scale down controls to reduce the risk of response latency
-         * and outages due to abrupt scale-in events
-         * Structure is documented below.
-         */
-        scaleDownControl: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControl;
-        /**
-         * Defines scale in controls to reduce the risk of response latency
-         * and outages due to abrupt scale-in events
-         * Structure is documented below.
-         */
-        scaleInControl?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControl;
-        /**
-         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
-         * Structure is documented below.
-         */
-        scalingSchedules?: outputs.compute.AutoscalarAutoscalingPolicyScalingSchedule[];
-    }
-
-    export interface AutoscalarAutoscalingPolicyCpuUtilization {
-        /**
-         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
-         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
-         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
-         */
-        predictiveMethod?: string;
-        /**
-         * The target CPU utilization that the autoscaler should maintain.
-         * Must be a float value in the range (0, 1]. If not specified, the
-         * default is 0.6.
-         * If the CPU level is below the target utilization, the autoscaler
-         * scales down the number of instances until it reaches the minimum
-         * number of instances you specified or until the average CPU of
-         * your instances reaches the target utilization.
-         * If the average CPU is above the target utilization, the autoscaler
-         * scales up until it reaches the maximum number of instances you
-         * specified or until the average utilization reaches the target
-         * utilization.
-         */
-        target: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyLoadBalancingUtilization {
-        /**
-         * Fraction of backend capacity utilization (set in HTTP(s) load
-         * balancing configuration) that autoscaler should maintain. Must
-         * be a positive float value. If not defined, the default is 0.8.
-         */
-        target: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyMetric {
-        /**
-         * A filter string to be used as the filter string for
-         * a Stackdriver Monitoring TimeSeries.list API call.
-         * This filter is used to select a specific TimeSeries for
-         * the purpose of autoscaling and to determine whether the metric
-         * is exporting per-instance or per-group data.
-         * You can only use the AND operator for joining selectors.
-         * You can only use direct equality comparison operator (=) without
-         * any functions for each selector.
-         * You can specify the metric in both the filter string and in the
-         * metric field. However, if specified in both places, the metric must
-         * be identical.
-         * The monitored resource type determines what kind of values are
-         * expected for the metric. If it is a gce_instance, the autoscaler
-         * expects the metric to include a separate TimeSeries for each
-         * instance in a group. In such a case, you cannot filter on resource
-         * labels.
-         * If the resource type is any other value, the autoscaler expects
-         * this metric to contain values that apply to the entire autoscaled
-         * instance group and resource label filtering can be performed to
-         * point autoscaler at the correct TimeSeries to scale upon.
-         * This is called a per-group metric for the purpose of autoscaling.
-         * If not specified, the type defaults to gce_instance.
-         * You should provide a filter that is selective enough to pick just
-         * one TimeSeries for the autoscaled group or for each of the instances
-         * (if you are using gceInstance resource type). If multiple
-         * TimeSeries are returned upon the query execution, the autoscaler
-         * will sum their respective values to obtain its scaling value.
-         */
-        filter?: string;
-        /**
-         * The identifier (type) of the Stackdriver Monitoring metric.
-         * The metric cannot have negative values.
-         * The metric must have a value type of INT64 or DOUBLE.
-         */
-        name: string;
-        /**
-         * If scaling is based on a per-group metric value that represents the
-         * total amount of work to be done or resource usage, set this value to
-         * an amount assigned for a single instance of the scaled group.
-         * The autoscaler will keep the number of instances proportional to the
-         * value of this metric, the metric itself should not change value due
-         * to group resizing.
-         * For example, a good metric to use with the target is
-         * `pubsub.googleapis.com/subscription/num_undelivered_messages`
-         * or a custom metric exporting the total number of requests coming to
-         * your instances.
-         * A bad example would be a metric exporting an average or median
-         * latency, since this value can't include a chunk assignable to a
-         * single instance, it could be better used with utilizationTarget
-         * instead.
-         */
-        singleInstanceAssignment?: number;
-        /**
-         * The target value of the metric that autoscaler should
-         * maintain. This must be a positive value. A utilization
-         * metric scales number of virtual machines handling requests
-         * to increase or decrease proportionally to the metric.
-         * For example, a good metric to use as a utilizationTarget is
-         * www.googleapis.com/compute/instance/network/received_bytes_count.
-         * The autoscaler will work to keep this value constant for each
-         * of the instances.
-         */
-        target?: number;
-        /**
-         * Defines how target utilization value is expressed for a
-         * Stackdriver Monitoring metric.
-         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
-         */
-        type?: string;
-    }
-
-    export interface AutoscalarAutoscalingPolicyScaleDownControl {
-        /**
-         * A nested object resource
-         * Structure is documented below.
-         */
-        maxScaledDownReplicas?: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas;
-        /**
-         * How long back autoscaling should look when computing recommendations
-         * to include directives regarding slower scale down, as described above.
-         */
-        timeWindowSec?: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
-        /**
-         * Specifies a fixed number of VM instances. This must be a positive
-         * integer.
-         */
-        fixed?: number;
-        /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
-         */
-        percent?: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyScaleInControl {
-        /**
-         * A nested object resource
-         * Structure is documented below.
-         */
-        maxScaledInReplicas?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas;
-        /**
-         * How long back autoscaling should look when computing recommendations
-         * to include directives regarding slower scale down, as described above.
-         */
-        timeWindowSec?: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas {
-        /**
-         * Specifies a fixed number of VM instances. This must be a positive
-         * integer.
-         */
-        fixed?: number;
-        /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
-         */
-        percent?: number;
-    }
-
-    export interface AutoscalarAutoscalingPolicyScalingSchedule {
-        /**
-         * An optional description of this resource.
-         */
-        description?: string;
-        /**
-         * A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-         */
-        disabled?: boolean;
-        /**
-         * The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
-         */
-        durationSec: number;
-        /**
-         * Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
-         */
-        minRequiredReplicas: number;
-        /**
-         * The identifier for this object. Format specified above.
-         */
-        name: string;
-        /**
-         * The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-         */
-        schedule: string;
-        /**
-         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
-         */
-        timeZone?: string;
-    }
-
     export interface AutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it
@@ -14942,7 +14538,7 @@ export namespace compute {
         ports?: string[];
     }
 
-    export interface ForwardingRuleServiceDirectoryRegistration {
+    export interface ForwardingRuleServiceDirectoryRegistrations {
         /**
          * Service Directory namespace to register the forwarding rule under.
          */
@@ -15490,12 +15086,14 @@ export namespace compute {
          * The name or selfLink of the network attached to this interface.
          */
         network: string;
+        networkAttachment: string;
         /**
          * The private IP address assigned to the instance.
          */
         networkIp: string;
         nicType: string;
         queueCount: number;
+        securityPolicy: string;
         stackType: string;
         /**
          * The name or selfLink of the subnetwork attached to this interface.
@@ -15521,6 +15119,7 @@ export namespace compute {
          * The DNS domain name for the public PTR record.
          */
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface GetInstanceNetworkInterfaceAliasIpRange {
@@ -15551,6 +15150,7 @@ export namespace compute {
          * The DNS domain name for the public PTR record.
          */
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface GetInstanceNetworkPerformanceConfig {
@@ -16491,7 +16091,9 @@ export namespace compute {
 
     export interface GetRouterNatRuleAction {
         sourceNatActiveIps: string[];
+        sourceNatActiveRanges: string[];
         sourceNatDrainIps: string[];
+        sourceNatDrainRanges: string[];
     }
 
     export interface GetRouterNatSubnetwork {
@@ -17069,7 +16671,7 @@ export namespace compute {
          */
         image: string;
         /**
-         * A set of key/value label pairs assigned to the disk. This  
+         * A set of key/value label pairs assigned to the disk. This
          * field is only applicable for persistent disks.
          */
         labels: {[key: string]: any};
@@ -17148,9 +16750,11 @@ export namespace compute {
          */
         name: string;
         network: string;
+        networkAttachment: string;
         networkIp: string;
         nicType: string;
         queueCount: number;
+        securityPolicy: string;
         stackType: string;
         subnetwork: string;
         subnetworkProject: string;
@@ -17160,6 +16764,7 @@ export namespace compute {
         natIp: string;
         networkTier: string;
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
@@ -17177,6 +16782,7 @@ export namespace compute {
         name: string;
         networkTier: string;
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface InstanceFromMachineImageNetworkPerformanceConfig {
@@ -17298,9 +16904,11 @@ export namespace compute {
          */
         name: string;
         network: string;
+        networkAttachment: string;
         networkIp: string;
         nicType: string;
         queueCount: number;
+        securityPolicy: string;
         stackType: string;
         subnetwork: string;
         subnetworkProject: string;
@@ -17310,6 +16918,7 @@ export namespace compute {
         natIp: string;
         networkTier: string;
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
@@ -17327,6 +16936,7 @@ export namespace compute {
         name: string;
         networkTier: string;
         publicPtrDomainName: string;
+        securityPolicy: string;
     }
 
     export interface InstanceFromTemplateNetworkPerformanceConfig {
@@ -17682,6 +17292,7 @@ export namespace compute {
          * be inferred from the subnetwork.
          */
         network: string;
+        networkAttachment: string;
         /**
          * The private IP address to assign to the instance. If
          * empty, the address will be automatically assigned.
@@ -17695,6 +17306,7 @@ export namespace compute {
          * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          */
         queueCount?: number;
+        securityPolicy?: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
@@ -17734,6 +17346,7 @@ export namespace compute {
          * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
+        securityPolicy: string;
     }
 
     export interface InstanceNetworkInterfaceAliasIpRange {
@@ -17754,7 +17367,7 @@ export namespace compute {
 
     export interface InstanceNetworkInterfaceIpv6AccessConfig {
         /**
-         * The first IPv6 address of the external IPv6 range associated 
+         * The first IPv6 address of the external IPv6 range associated
          * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
          * To use a static external IP address, it must be unused and in the same region as the instance's zone.
          * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -17779,6 +17392,7 @@ export namespace compute {
          * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
+        securityPolicy: string;
     }
 
     export interface InstanceNetworkPerformanceConfig {
@@ -17855,7 +17469,7 @@ export namespace compute {
          */
         preemptible?: boolean;
         /**
-         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
          * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -23022,6 +22636,7 @@ export namespace compute {
          * This field is used for public NAT.
          */
         sourceNatActiveIps?: string[];
+        sourceNatActiveRanges?: string[];
         /**
          * A list of URLs of the IP resources to be drained.
          * These IPs must be valid static external IPs that have been assigned to the NAT.
@@ -23029,6 +22644,7 @@ export namespace compute {
          * This field is used for public NAT.
          */
         sourceNatDrainIps?: string[];
+        sourceNatDrainRanges?: string[];
     }
 
     export interface RouterNatSubnetwork {
@@ -25904,6 +25520,13 @@ export namespace container {
         username: string;
     }
 
+    export interface AwsClusterBinaryAuthorization {
+        /**
+         * Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
+         */
+        evaluationMode: string;
+    }
+
     export interface AwsClusterControlPlane {
         /**
          * Authentication configuration for management of AWS resources.
@@ -26285,6 +25908,24 @@ export namespace container {
         maxPodsPerNode: number;
     }
 
+    export interface AwsNodePoolUpdateSettings {
+        /**
+         * Optional. Settings for surge update.
+         */
+        surgeSettings: outputs.container.AwsNodePoolUpdateSettingsSurgeSettings;
+    }
+
+    export interface AwsNodePoolUpdateSettingsSurgeSettings {
+        /**
+         * Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
+         */
+        maxSurge: number;
+        /**
+         * Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
+         */
+        maxUnavailable: number;
+    }
+
     export interface AzureClusterAuthorization {
         /**
          * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
@@ -26573,7 +26214,9 @@ export namespace container {
         /**
          * The status of the GCSFuse CSI driver addon,
          * which allows the usage of a gcs bucket as volumes.
-         * It is disabled by default; set `enabled = true` to enable.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
+         * See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
          */
         gcsFuseCsiDriverConfig: outputs.container.ClusterAddonsConfigGcsFuseCsiDriverConfig;
         /**
@@ -26732,8 +26375,7 @@ export namespace container {
         enabled?: boolean;
         /**
          * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-         * deprecated `enableBinaryAuthorization` parameter being set to `true`.
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          */
         evaluationMode?: string;
     }
@@ -27257,6 +26899,7 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
+        effectiveTaints: outputs.container.ClusterNodeConfigEffectiveTaint[];
         /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
@@ -27353,7 +26996,7 @@ export namespace container {
         /**
          * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
-        loggingVariant?: string;
+        loggingVariant: string;
         /**
          * The name of a Google Compute Engine machine type.
          * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -27442,7 +27085,7 @@ export namespace container {
          * this field to manage taints. If you do, `lifecycle.ignore_changes` is
          * recommended. Structure is documented below.
          */
-        taints: outputs.container.ClusterNodeConfigTaint[];
+        taints?: outputs.container.ClusterNodeConfigTaint[];
         /**
          * Metadata configuration to expose to workloads on the node pool.
          * Structure is documented below.
@@ -27463,6 +27106,21 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface ClusterNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+         */
+        effect: string;
+        /**
+         * The default or custom node affinity label key name.
+         */
+        key: string;
+        /**
+         * Value for taint.
+         */
+        value: string;
     }
 
     export interface ClusterNodeConfigEphemeralStorageConfig {
@@ -27793,7 +27451,7 @@ export namespace container {
         /**
          * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
-        loggingVariant?: string;
+        loggingVariant: string;
     }
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
@@ -27898,6 +27556,7 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
+        effectiveTaints: outputs.container.ClusterNodePoolNodeConfigEffectiveTaint[];
         /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
@@ -27994,7 +27653,7 @@ export namespace container {
         /**
          * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
-        loggingVariant?: string;
+        loggingVariant: string;
         /**
          * The name of a Google Compute Engine machine type.
          * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -28083,7 +27742,7 @@ export namespace container {
          * this field to manage taints. If you do, `lifecycle.ignore_changes` is
          * recommended. Structure is documented below.
          */
-        taints: outputs.container.ClusterNodePoolNodeConfigTaint[];
+        taints?: outputs.container.ClusterNodePoolNodeConfigTaint[];
         /**
          * Metadata configuration to expose to workloads on the node pool.
          * Structure is documented below.
@@ -28104,6 +27763,21 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface ClusterNodePoolNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+         */
+        effect: string;
+        /**
+         * The default or custom node affinity label key name.
+         */
+        key: string;
+        /**
+         * Value for taint.
+         */
+        value: string;
     }
 
     export interface ClusterNodePoolNodeConfigEphemeralStorageConfig {
@@ -28867,6 +28541,7 @@ export namespace container {
         confidentialNodes: outputs.container.GetClusterNodeConfigConfidentialNode[];
         diskSizeGb: number;
         diskType: string;
+        effectiveTaints: outputs.container.GetClusterNodeConfigEffectiveTaint[];
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageLocalSsdConfig[];
         fastSockets: outputs.container.GetClusterNodeConfigFastSocket[];
@@ -28905,6 +28580,12 @@ export namespace container {
 
     export interface GetClusterNodeConfigConfidentialNode {
         enabled: boolean;
+    }
+
+    export interface GetClusterNodeConfigEffectiveTaint {
+        effect: string;
+        key: string;
+        value: string;
     }
 
     export interface GetClusterNodeConfigEphemeralStorageConfig {
@@ -29084,6 +28765,7 @@ export namespace container {
         confidentialNodes: outputs.container.GetClusterNodePoolNodeConfigConfidentialNode[];
         diskSizeGb: number;
         diskType: string;
+        effectiveTaints: outputs.container.GetClusterNodePoolNodeConfigEffectiveTaint[];
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig[];
         fastSockets: outputs.container.GetClusterNodePoolNodeConfigFastSocket[];
@@ -29122,6 +28804,12 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigConfidentialNode {
         enabled: boolean;
+    }
+
+    export interface GetClusterNodePoolNodeConfigEffectiveTaint {
+        effect: string;
+        key: string;
+        value: string;
     }
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageConfig {
@@ -29353,11 +29041,11 @@ export namespace container {
 
     export interface NodePoolManagement {
         /**
-         * Whether the nodes will be automatically repaired.
+         * Whether the nodes will be automatically repaired. Enabled by default.
          */
         autoRepair?: boolean;
         /**
-         * Whether the nodes will be automatically upgraded.
+         * Whether the nodes will be automatically upgraded. Enabled by default.
          */
         autoUpgrade?: boolean;
     }
@@ -29431,6 +29119,7 @@ export namespace container {
         confidentialNodes: outputs.container.NodePoolNodeConfigConfidentialNodes;
         diskSizeGb: number;
         diskType: string;
+        effectiveTaints: outputs.container.NodePoolNodeConfigEffectiveTaint[];
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
         ephemeralStorageLocalSsdConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
         fastSocket?: outputs.container.NodePoolNodeConfigFastSocket;
@@ -29444,7 +29133,7 @@ export namespace container {
         linuxNodeConfig?: outputs.container.NodePoolNodeConfigLinuxNodeConfig;
         localNvmeSsdBlockConfig?: outputs.container.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
         localSsdCount: number;
-        loggingVariant?: string;
+        loggingVariant: string;
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
@@ -29459,7 +29148,7 @@ export namespace container {
         soleTenantConfig?: outputs.container.NodePoolNodeConfigSoleTenantConfig;
         spot?: boolean;
         tags?: string[];
-        taints: outputs.container.NodePoolNodeConfigTaint[];
+        taints?: outputs.container.NodePoolNodeConfigTaint[];
         workloadMetadataConfig: outputs.container.NodePoolNodeConfigWorkloadMetadataConfig;
     }
 
@@ -29473,6 +29162,12 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: boolean;
+    }
+
+    export interface NodePoolNodeConfigEffectiveTaint {
+        effect: string;
+        key: string;
+        value: string;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
@@ -35948,189 +35643,6 @@ export namespace dataplex {
         resource?: string;
     }
 
-    export interface DatascanDataProfileResult {
-        /**
-         * Profile information for the corresponding field.
-         * Structure is documented below.
-         */
-        profiles: outputs.dataplex.DatascanDataProfileResultProfile[];
-        /**
-         * The count of rows scanned.
-         */
-        rowCount?: string;
-        /**
-         * (Output)
-         * The data scanned for this result.
-         * Structure is documented below.
-         */
-        scannedDatas: outputs.dataplex.DatascanDataProfileResultScannedData[];
-    }
-
-    export interface DatascanDataProfileResultProfile {
-        /**
-         * List of fields with structural and profile information for each field.
-         * Structure is documented below.
-         */
-        fields?: outputs.dataplex.DatascanDataProfileResultProfileField[];
-    }
-
-    export interface DatascanDataProfileResultProfileField {
-        /**
-         * The mode of the field. Possible values include:
-         * 1. REQUIRED, if it is a required field.
-         * 2. NULLABLE, if it is an optional field.
-         * 3. REPEATED, if it is a repeated field.
-         */
-        mode?: string;
-        /**
-         * A mutable name for the rule.
-         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
-         * The maximum length is 63 characters.
-         * Must start with a letter.
-         * Must end with a number or a letter.
-         */
-        name?: string;
-        /**
-         * Profile information for the corresponding field.
-         * Structure is documented below.
-         */
-        profile?: outputs.dataplex.DatascanDataProfileResultProfileFieldProfile;
-        /**
-         * The field data type.
-         */
-        type?: string;
-    }
-
-    export interface DatascanDataProfileResultProfileFieldProfile {
-        /**
-         * Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
-         */
-        distinctRatio?: number;
-        /**
-         * (Output)
-         * Double type field information.
-         * Structure is documented below.
-         */
-        doubleProfiles: outputs.dataplex.DatascanDataProfileResultProfileFieldProfileDoubleProfile[];
-        /**
-         * (Output)
-         * Integer type field information.
-         * Structure is documented below.
-         */
-        integerProfiles: outputs.dataplex.DatascanDataProfileResultProfileFieldProfileIntegerProfile[];
-        /**
-         * (Output)
-         * Ratio of rows with null value against total scanned rows.
-         */
-        nullRatio: number;
-        /**
-         * (Output)
-         * String type field information.
-         * Structure is documented below.
-         */
-        stringProfiles: outputs.dataplex.DatascanDataProfileResultProfileFieldProfileStringProfile[];
-        /**
-         * The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
-         * Structure is documented below.
-         */
-        topNValues?: outputs.dataplex.DatascanDataProfileResultProfileFieldProfileTopNValues;
-    }
-
-    export interface DatascanDataProfileResultProfileFieldProfileDoubleProfile {
-        /**
-         * Average of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        average?: number;
-        /**
-         * Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        max?: string;
-        /**
-         * Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        min?: string;
-        /**
-         * A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
-         */
-        quartiles?: string;
-        /**
-         * Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        standardDeviation?: number;
-    }
-
-    export interface DatascanDataProfileResultProfileFieldProfileIntegerProfile {
-        /**
-         * Average of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        average?: number;
-        /**
-         * Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        max?: string;
-        /**
-         * Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        min?: string;
-        /**
-         * A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
-         */
-        quartiles?: string;
-        /**
-         * Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
-         */
-        standardDeviation?: number;
-    }
-
-    export interface DatascanDataProfileResultProfileFieldProfileStringProfile {
-        /**
-         * Average length of non-null values in the scanned data.
-         */
-        averageLength?: number;
-        /**
-         * Maximum length of non-null values in the scanned data.
-         */
-        maxLength?: string;
-        /**
-         * Minimum length of non-null values in the scanned data.
-         */
-        minLength?: string;
-    }
-
-    export interface DatascanDataProfileResultProfileFieldProfileTopNValues {
-        /**
-         * Count of the corresponding value in the scanned data.
-         */
-        count?: string;
-        /**
-         * String value of a top N non-null value.
-         */
-        value?: string;
-    }
-
-    export interface DatascanDataProfileResultScannedData {
-        /**
-         * The range denoted by values of an incremental field
-         * Structure is documented below.
-         */
-        incrementalField?: outputs.dataplex.DatascanDataProfileResultScannedDataIncrementalField;
-    }
-
-    export interface DatascanDataProfileResultScannedDataIncrementalField {
-        /**
-         * Value that marks the end of the range.
-         */
-        end?: string;
-        /**
-         * The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
-         */
-        field?: string;
-        /**
-         * Value that marks the start of the range.
-         */
-        start?: string;
-    }
-
     export interface DatascanDataProfileSpec {
         /**
          * The fields to exclude from data profile.
@@ -36193,247 +35705,6 @@ export namespace dataplex {
          * Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
          */
         resultsTable?: string;
-    }
-
-    export interface DatascanDataQualityResult {
-        /**
-         * A list of results at the dimension level.
-         * Structure is documented below.
-         */
-        dimensions?: outputs.dataplex.DatascanDataQualityResultDimension[];
-        /**
-         * (Output)
-         * Whether the rule passed or failed.
-         */
-        passed: boolean;
-        /**
-         * The count of rows scanned.
-         */
-        rowCount: string;
-        /**
-         * The list of rules to evaluate against a data source. At least one rule is required.
-         * Structure is documented below.
-         */
-        rules: outputs.dataplex.DatascanDataQualityResultRule[];
-        /**
-         * (Output)
-         * The data scanned for this result.
-         * Structure is documented below.
-         */
-        scannedDatas: outputs.dataplex.DatascanDataQualityResultScannedData[];
-    }
-
-    export interface DatascanDataQualityResultDimension {
-        /**
-         * (Output)
-         * Whether the rule passed or failed.
-         */
-        passed?: boolean;
-    }
-
-    export interface DatascanDataQualityResultRule {
-        /**
-         * (Output)
-         * The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
-         * Evaluated count can be configured to either
-         * 1. include all rows (default) - with null rows automatically failing rule evaluation, or
-         * 2. exclude null rows from the evaluatedCount, by setting ignoreNulls = true.
-         */
-        evaluatedCount: string;
-        /**
-         * (Output)
-         * The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
-         */
-        failingRowsQuery: string;
-        /**
-         * (Output)
-         * The number of rows with null values in the specified column.
-         */
-        nullCount: string;
-        /**
-         * (Output)
-         * The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
-         */
-        passRatio: number;
-        /**
-         * (Output)
-         * Whether the rule passed or failed.
-         */
-        passed: boolean;
-        /**
-         * (Output)
-         * The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
-         */
-        passedCount: string;
-        /**
-         * (Output)
-         * The rule specified in the DataQualitySpec, as is.
-         * Structure is documented below.
-         */
-        rules: outputs.dataplex.DatascanDataQualityResultRuleRule[];
-    }
-
-    export interface DatascanDataQualityResultRuleRule {
-        /**
-         * The unnested column which this rule is evaluated against.
-         */
-        column?: string;
-        /**
-         * The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
-         */
-        dimension?: string;
-        /**
-         * Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
-         */
-        ignoreNull?: boolean;
-        /**
-         * ColumnMap rule which evaluates whether each column value is null.
-         */
-        nonNullExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleNonNullExpectation[];
-        /**
-         * ColumnMap rule which evaluates whether each column value lies between a specified range.
-         * Structure is documented below.
-         */
-        rangeExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleRangeExpectation[];
-        /**
-         * ColumnMap rule which evaluates whether each column value matches a specified regex.
-         * Structure is documented below.
-         */
-        regexExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleRegexExpectation[];
-        /**
-         * Table rule which evaluates whether each row passes the specified condition.
-         * Structure is documented below.
-         */
-        rowConditionExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleRowConditionExpectation[];
-        /**
-         * ColumnMap rule which evaluates whether each column value is contained by a specified set.
-         * Structure is documented below.
-         */
-        setExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleSetExpectation[];
-        /**
-         * ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
-         * Structure is documented below.
-         */
-        statisticRangeExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleStatisticRangeExpectation[];
-        /**
-         * Table rule which evaluates whether the provided expression is true.
-         * Structure is documented below.
-         */
-        tableConditionExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleTableConditionExpectation[];
-        /**
-         * The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
-         */
-        threshold?: number;
-        /**
-         * Row-level rule which evaluates whether each column value is unique.
-         */
-        uniquenessExpectations: outputs.dataplex.DatascanDataQualityResultRuleRuleUniquenessExpectation[];
-    }
-
-    export interface DatascanDataQualityResultRuleRuleNonNullExpectation {
-    }
-
-    export interface DatascanDataQualityResultRuleRuleRangeExpectation {
-        /**
-         * The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
-         */
-        maxValue?: string;
-        /**
-         * The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
-         */
-        minValue?: string;
-        /**
-         * Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
-         * Only relevant if a maxValue has been defined. Default = false.
-         */
-        strictMaxEnabled?: boolean;
-        /**
-         * Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
-         * Only relevant if a minValue has been defined. Default = false.
-         */
-        strictMinEnabled?: boolean;
-    }
-
-    export interface DatascanDataQualityResultRuleRuleRegexExpectation {
-        /**
-         * A regular expression the column value is expected to match.
-         */
-        regex?: string;
-    }
-
-    export interface DatascanDataQualityResultRuleRuleRowConditionExpectation {
-        /**
-         * The SQL expression.
-         */
-        sqlExpression?: string;
-    }
-
-    export interface DatascanDataQualityResultRuleRuleSetExpectation {
-        /**
-         * Expected values for the column value.
-         */
-        values?: string[];
-    }
-
-    export interface DatascanDataQualityResultRuleRuleStatisticRangeExpectation {
-        /**
-         * The maximum column statistic value allowed for a row to pass this validation.
-         * At least one of minValue and maxValue need to be provided.
-         */
-        maxValue?: string;
-        /**
-         * The minimum column statistic value allowed for a row to pass this validation.
-         * At least one of minValue and maxValue need to be provided.
-         */
-        minValue?: string;
-        /**
-         * column statistics.
-         * Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
-         */
-        statistic?: string;
-        /**
-         * Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
-         * Only relevant if a maxValue has been defined. Default = false.
-         */
-        strictMaxEnabled?: boolean;
-        /**
-         * Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
-         * Only relevant if a minValue has been defined. Default = false.
-         */
-        strictMinEnabled?: boolean;
-    }
-
-    export interface DatascanDataQualityResultRuleRuleTableConditionExpectation {
-        /**
-         * The SQL expression.
-         */
-        sqlExpression?: string;
-    }
-
-    export interface DatascanDataQualityResultRuleRuleUniquenessExpectation {
-    }
-
-    export interface DatascanDataQualityResultScannedData {
-        /**
-         * The range denoted by values of an incremental field
-         * Structure is documented below.
-         */
-        incrementalField?: outputs.dataplex.DatascanDataQualityResultScannedDataIncrementalField;
-    }
-
-    export interface DatascanDataQualityResultScannedDataIncrementalField {
-        /**
-         * Value that marks the end of the range.
-         */
-        end?: string;
-        /**
-         * The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
-         */
-        field?: string;
-        /**
-         * Value that marks the start of the range.
-         */
-        start?: string;
     }
 
     export interface DatascanDataQualitySpec {
@@ -43621,7 +42892,7 @@ export namespace eventarc {
         /**
          * The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
          */
-        pubsubs?: outputs.eventarc.TriggerTransportPubsub[];
+        pubsub?: outputs.eventarc.TriggerTransportPubsub;
     }
 
     export interface TriggerTransportPubsub {
@@ -44162,152 +43433,6 @@ export namespace folder {
          * May only be set to true. If set, then the default Policy is restored.
          */
         default: boolean;
-    }
-
-}
-
-export namespace gameservices {
-    export interface GameServerClusterConnectionInfo {
-        /**
-         * Reference of the GKE cluster where the game servers are installed.
-         * Structure is documented below.
-         */
-        gkeClusterReference: outputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference;
-        /**
-         * Namespace designated on the game server cluster where the game server
-         * instances will be created. The namespace existence will be validated
-         * during creation.
-         */
-        namespace: string;
-    }
-
-    export interface GameServerClusterConnectionInfoGkeClusterReference {
-        /**
-         * The full or partial name of a GKE cluster, using one of the following
-         * forms:
-         * * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
-         * * `locations/{location}/clusters/{cluster_id}`
-         * * `{cluster_id}`
-         * If project and location are not specified, the project and location of the
-         * GameServerCluster resource are used to generate the full name of the
-         * GKE cluster.
-         *
-         * - - -
-         */
-        cluster: string;
-    }
-
-    export interface GameServerConfigFleetConfig {
-        /**
-         * The fleet spec, which is sent to Agones to configure fleet.
-         * The spec can be passed as inline json but it is recommended to use a file reference
-         * instead. File references can contain the json or yaml format of the fleet spec. Eg:
-         * * fleetSpec = jsonencode(yamldecode(file("fleet_configs.yaml")))
-         * * fleetSpec = file("fleet_configs.json")
-         * The format of the spec can be found :
-         * `https://agones.dev/site/docs/reference/fleet/`.
-         */
-        fleetSpec: string;
-        /**
-         * The name of the FleetConfig.
-         *
-         * - - -
-         */
-        name: string;
-    }
-
-    export interface GameServerConfigScalingConfig {
-        /**
-         * Fleet autoscaler spec, which is sent to Agones.
-         * Example spec can be found :
-         * https://agones.dev/site/docs/reference/fleetautoscaler/
-         */
-        fleetAutoscalerSpec: string;
-        /**
-         * The name of the ScalingConfig
-         */
-        name: string;
-        /**
-         * The schedules to which this scaling config applies.
-         * Structure is documented below.
-         */
-        schedules?: outputs.gameservices.GameServerConfigScalingConfigSchedule[];
-        /**
-         * Labels used to identify the clusters to which this scaling config
-         * applies. A cluster is subject to this scaling config if its labels match
-         * any of the selector entries.
-         * Structure is documented below.
-         */
-        selectors?: outputs.gameservices.GameServerConfigScalingConfigSelector[];
-    }
-
-    export interface GameServerConfigScalingConfigSchedule {
-        /**
-         * The duration for the cron job event. The duration of the event is effective
-         * after the cron job's start time.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-         */
-        cronJobDuration?: string;
-        /**
-         * The cron definition of the scheduled event. See
-         * https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
-         * defined by the realm.
-         */
-        cronSpec?: string;
-        /**
-         * The end time of the event.
-         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-         */
-        endTime?: string;
-        /**
-         * The start time of the event.
-         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-         */
-        startTime?: string;
-    }
-
-    export interface GameServerConfigScalingConfigSelector {
-        /**
-         * Set of labels to group by.
-         */
-        labels?: {[key: string]: string};
-    }
-
-    export interface GameServerDeploymentRolloutGameServerConfigOverride {
-        /**
-         * Version of the configuration.
-         */
-        configVersion?: string;
-        /**
-         * Selection by realms.
-         * Structure is documented below.
-         */
-        realmsSelector?: outputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector;
-    }
-
-    export interface GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
-        /**
-         * List of realms to match against.
-         */
-        realms?: string[];
-    }
-
-    export interface GetGameServerDeploymentRolloutGameServerConfigOverride {
-        /**
-         * Version of the configuration.
-         */
-        configVersion: string;
-        /**
-         * Selection by realms.  Structure is documented below.
-         */
-        realmsSelectors: outputs.gameservices.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector[];
-    }
-
-    export interface GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
-        /**
-         * List of realms to match against.
-         */
-        realms: string[];
     }
 
 }
@@ -48244,140 +47369,6 @@ export namespace identityplatform {
 
 }
 
-export namespace iot {
-    export interface DeviceConfig {
-        /**
-         * The device state data.
-         */
-        binaryData?: string;
-        /**
-         * (Output)
-         * The time at which this configuration version was updated in Cloud IoT Core.
-         */
-        cloudUpdateTime: string;
-        /**
-         * (Output)
-         * The time at which Cloud IoT Core received the acknowledgment from the device,
-         * indicating that the device has received this configuration version.
-         */
-        deviceAckTime: string;
-        /**
-         * (Output)
-         * The version of this update.
-         */
-        version: string;
-    }
-
-    export interface DeviceCredential {
-        /**
-         * The time at which this credential becomes invalid.
-         */
-        expirationTime: string;
-        /**
-         * A public key used to verify the signature of JSON Web Tokens (JWTs).
-         * Structure is documented below.
-         */
-        publicKey: outputs.iot.DeviceCredentialPublicKey;
-    }
-
-    export interface DeviceCredentialPublicKey {
-        /**
-         * The format of the key.
-         * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
-         */
-        format: string;
-        /**
-         * The key data.
-         */
-        key: string;
-    }
-
-    export interface DeviceGatewayConfig {
-        /**
-         * Indicates whether the device is a gateway.
-         * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
-         */
-        gatewayAuthMethod?: string;
-        /**
-         * Indicates whether the device is a gateway.
-         * Default value is `NON_GATEWAY`.
-         * Possible values are: `GATEWAY`, `NON_GATEWAY`.
-         */
-        gatewayType?: string;
-        /**
-         * (Output)
-         * The ID of the gateway the device accessed most recently.
-         */
-        lastAccessedGatewayId: string;
-        /**
-         * (Output)
-         * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
-         */
-        lastAccessedGatewayTime: string;
-    }
-
-    export interface DeviceLastErrorStatus {
-        /**
-         * A list of messages that carry the error details.
-         */
-        details?: {[key: string]: any}[];
-        /**
-         * A developer-facing error message, which should be in English.
-         */
-        message?: string;
-        /**
-         * The status code, which should be an enum value of google.rpc.Code.
-         */
-        number?: number;
-    }
-
-    export interface DeviceState {
-        /**
-         * The device state data.
-         */
-        binaryData?: string;
-        /**
-         * The time at which this state version was updated in Cloud IoT Core.
-         */
-        updateTime?: string;
-    }
-
-    export interface RegistryCredential {
-        /**
-         * A public key certificate format and data.
-         */
-        publicKeyCertificate: {[key: string]: any};
-    }
-
-    export interface RegistryEventNotificationConfigItem {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: string;
-        /**
-         * If the subfolder name matches this string exactly, this
-         * configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty
-         * value can only be used for the last `eventNotificationConfigs`
-         * item.
-         */
-        subfolderMatches?: string;
-    }
-
-    export interface RegistryIamBindingCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-    export interface RegistryIamMemberCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-}
-
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         /**
@@ -48555,28 +47546,6 @@ export namespace kms {
         pem: string;
     }
 
-    export interface RegistryCredential {
-        /**
-         * A public key certificate format and data.
-         */
-        publicKeyCertificate: {[key: string]: any};
-    }
-
-    export interface RegistryEventNotificationConfigItem {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: string;
-        /**
-         * If the subfolder name matches this string exactly, this
-         * configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty
-         * value can only be used for the last `eventNotificationConfigs`
-         * item.
-         */
-        subfolderMatches?: string;
-    }
-
 }
 
 export namespace logging {
@@ -48728,30 +47697,30 @@ export namespace logging {
         /**
          * Must be greater than 1.
          */
-        growthFactor?: number;
+        growthFactor: number;
         /**
          * Must be greater than 0.
          */
-        numFiniteBuckets?: number;
+        numFiniteBuckets: number;
         /**
          * Must be greater than 0.
          */
-        scale?: number;
+        scale: number;
     }
 
     export interface MetricBucketOptionsLinearBuckets {
         /**
          * Must be greater than 0.
          */
-        numFiniteBuckets?: number;
+        numFiniteBuckets: number;
         /**
          * Lower bound of the first bucket.
          */
-        offset?: number;
+        offset: number;
         /**
          * Must be greater than 0.
          */
-        width?: number;
+        width: number;
     }
 
     export interface MetricMetricDescriptor {
@@ -55148,6 +54117,10 @@ export namespace osconfig {
          */
         dayOfWeek: string;
         /**
+         * Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+         */
+        dayOffset?: number;
+        /**
          * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
          */
         weekOrdinal: number;
@@ -56230,7 +55203,6 @@ export namespace runtimeconfig {
 
 export namespace secretmanager {
     export interface GetSecretReplication {
-        automatic: boolean;
         autos: outputs.secretmanager.GetSecretReplicationAuto[];
         userManageds: outputs.secretmanager.GetSecretReplicationUserManaged[];
     }
@@ -56283,15 +55255,6 @@ export namespace secretmanager {
          * Structure is documented below.
          */
         auto?: outputs.secretmanager.SecretReplicationAuto;
-        /**
-         * (Optional, Deprecated)
-         * The Secret will automatically be replicated without any restrictions.
-         *
-         * > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         *
-         * @deprecated `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         */
-        automatic?: boolean;
         /**
          * The Secret will be replicated to the regions specified by the user.
          * Structure is documented below.
@@ -56371,6 +55334,117 @@ export namespace secretmanager {
 }
 
 export namespace securitycenter {
+    export interface FolderCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.FolderCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securitycenter.FolderCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securitycenter.FolderCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface FolderCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.FolderCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface FolderCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface FolderCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface FolderCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         *
+         * - - -
+         */
+        resourceTypes: string[];
+    }
+
     export interface InstanceIamBindingCondition {
         /**
          * An optional description of the instance.
@@ -56414,6 +55488,117 @@ export namespace securitycenter {
          * - - -
          */
         filter: string;
+    }
+
+    export interface OrganizationCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.OrganizationCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securitycenter.OrganizationCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securitycenter.OrganizationCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface OrganizationCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.OrganizationCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface OrganizationCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface OrganizationCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface OrganizationCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         *
+         * - - -
+         */
+        resourceTypes: string[];
     }
 
     export interface ProjectCustomModuleCustomConfig {
@@ -56547,7 +55732,7 @@ export namespace securitycenter {
 
 }
 
-export namespace serviceAccount {
+export namespace serviceaccount {
     export interface IAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -56709,6 +55894,10 @@ export namespace sql {
          */
         pointInTime?: string;
         /**
+         * (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+         */
+        preferredZone?: string;
+        /**
          * Name of the source instance which will be cloned.
          */
         sourceInstanceName: string;
@@ -56763,6 +55952,9 @@ export namespace sql {
          * Password for the replication connection.
          */
         password?: string;
+        /**
+         * Permissible ciphers for use in SSL encryption.
+         */
         sslCipher?: string;
         /**
          * Username for replication connection.
@@ -57170,6 +56362,7 @@ export namespace sql {
         allocatedIpRange: string;
         databaseNames: string[];
         pointInTime: string;
+        preferredZone: string;
         sourceInstanceName: string;
     }
 
@@ -57381,6 +56574,7 @@ export namespace sql {
         allocatedIpRange: string;
         databaseNames: string[];
         pointInTime: string;
+        preferredZone: string;
         sourceInstanceName: string;
     }
 
@@ -58042,6 +57236,21 @@ export namespace storage {
          * Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
          */
         limitMbps: string;
+    }
+
+    export interface TransferJobEventStream {
+        /**
+         * Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        eventStreamExpirationTime?: string;
+        /**
+         * Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        eventStreamStartTime?: string;
+        /**
+         * Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+         */
+        name: string;
     }
 
     export interface TransferJobNotificationConfig {
@@ -58721,7 +57930,7 @@ export namespace vertex {
          * The expected structure and format of the files this URI points to is
          * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
          */
-        contentsDeltaUri?: string;
+        contentsDeltaUri: string;
         /**
          * If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
          * then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -59246,6 +58455,10 @@ export namespace workstations {
          * Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
          */
         serviceAccount: string;
+        /**
+         * Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+         */
+        serviceAccountScopes: string[];
         /**
          * A set of Compute Engine Shielded instance options.
          * Structure is documented below.

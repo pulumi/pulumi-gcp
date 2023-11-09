@@ -65,6 +65,19 @@ namespace Pulumi.Gcp.Workstations
     ///         Location = "us-central1",
     ///         IdleTimeout = "600s",
     ///         RunningTimeout = "21600s",
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-b",
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
     ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
     ///         {
     ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
@@ -602,6 +615,8 @@ namespace Pulumi.Gcp.Workstations
     {
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -639,6 +654,26 @@ namespace Pulumi.Gcp.Workstations
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// </summary>
+        [Output("enableAuditAgent")]
+        public Output<bool?> EnableAuditAgent { get; private set; } = null!;
+
+        /// <summary>
         /// Encrypts resources of this workstation configuration using a customer-managed encryption key.
         /// If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
         /// If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -671,6 +706,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -703,6 +740,20 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        /// </summary>
+        [Output("replicaZones")]
+        public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
 
         /// <summary>
         /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -752,6 +803,11 @@ namespace Pulumi.Gcp.Workstations
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -780,6 +836,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -799,6 +857,12 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// </summary>
+        [Input("enableAuditAgent")]
+        public Input<bool>? EnableAuditAgent { get; set; }
 
         /// <summary>
         /// Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -829,6 +893,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -865,6 +931,19 @@ namespace Pulumi.Gcp.Workstations
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("replicaZones")]
+        private InputList<string>? _replicaZones;
+
+        /// <summary>
+        /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        /// </summary>
+        public InputList<string> ReplicaZones
+        {
+            get => _replicaZones ?? (_replicaZones = new InputList<string>());
+            set => _replicaZones = value;
+        }
+
         /// <summary>
         /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -897,6 +976,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -942,6 +1023,42 @@ namespace Pulumi.Gcp.Workstations
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// </summary>
+        [Input("enableAuditAgent")]
+        public Input<bool>? EnableAuditAgent { get; set; }
+
         /// <summary>
         /// Encrypts resources of this workstation configuration using a customer-managed encryption key.
         /// If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -978,6 +1095,8 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1019,6 +1138,36 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        [Input("replicaZones")]
+        private InputList<string>? _replicaZones;
+
+        /// <summary>
+        /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
+        /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        /// </summary>
+        public InputList<string> ReplicaZones
+        {
+            get => _replicaZones ?? (_replicaZones = new InputList<string>());
+            set => _replicaZones = value;
+        }
 
         /// <summary>
         /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.

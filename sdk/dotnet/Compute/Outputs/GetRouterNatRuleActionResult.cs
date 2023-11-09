@@ -14,16 +14,24 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRouterNatRuleActionResult
     {
         public readonly ImmutableArray<string> SourceNatActiveIps;
+        public readonly ImmutableArray<string> SourceNatActiveRanges;
         public readonly ImmutableArray<string> SourceNatDrainIps;
+        public readonly ImmutableArray<string> SourceNatDrainRanges;
 
         [OutputConstructor]
         private GetRouterNatRuleActionResult(
             ImmutableArray<string> sourceNatActiveIps,
 
-            ImmutableArray<string> sourceNatDrainIps)
+            ImmutableArray<string> sourceNatActiveRanges,
+
+            ImmutableArray<string> sourceNatDrainIps,
+
+            ImmutableArray<string> sourceNatDrainRanges)
         {
             SourceNatActiveIps = sourceNatActiveIps;
+            SourceNatActiveRanges = sourceNatActiveRanges;
             SourceNatDrainIps = sourceNatDrainIps;
+            SourceNatDrainRanges = sourceNatDrainRanges;
         }
     }
 }

@@ -203,6 +203,11 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
      * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -211,6 +216,9 @@ export class Hl7Store extends pulumi.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -241,6 +249,11 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -259,11 +272,13 @@ export class Hl7Store extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as Hl7StoreState | undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = state ? state.parserConfig : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
@@ -276,9 +291,13 @@ export class Hl7Store extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Hl7Store.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -296,6 +315,11 @@ export interface Hl7StoreState {
      */
     dataset?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
      * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -304,6 +328,9 @@ export interface Hl7StoreState {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -334,6 +361,11 @@ export interface Hl7StoreState {
      */
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The fully qualified name of this dataset
      */
     selfLink?: pulumi.Input<string>;
@@ -360,6 +392,9 @@ export interface Hl7StoreArgs {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

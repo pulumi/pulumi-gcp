@@ -115,9 +115,6 @@ export interface GetImageResult {
      * A fingerprint for the labels being applied to this image.
      */
     readonly labelFingerprint: string;
-    /**
-     * A map of labels applied to this image.
-     */
     readonly labels: {[key: string]: string};
     /**
      * A list of applicable license URI.

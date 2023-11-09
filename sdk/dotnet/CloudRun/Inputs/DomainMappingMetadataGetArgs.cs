@@ -22,13 +22,33 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         /// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         /// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-        /// 
-        /// - - -
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
+        }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<string>? _effectiveAnnotations;
+        public InputMap<string> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -46,6 +66,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// (scope and select) objects. May match selectors of replication controllers
         /// and routes.
         /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -59,6 +81,24 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// (Output)

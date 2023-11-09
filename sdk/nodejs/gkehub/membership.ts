@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     deletionProtection: true,
  *     initialNodeCount: 1,
  *     location: "us-central1-a",
  * });
@@ -31,6 +32,9 @@ import * as utilities from "../utilities";
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
  *         },
+ *     },
+ *     labels: {
+ *         env: "test",
  *     },
  *     membershipId: "basic",
  * });
@@ -47,6 +51,7 @@ import * as utilities from "../utilities";
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
+ *     deletionProtection: true,
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "basic",
@@ -122,12 +127,20 @@ export class Membership extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
     public readonly endpoint!: pulumi.Output<outputs.gkehub.MembershipEndpoint | undefined>;
     /**
      * Labels to apply to this membership.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -146,6 +159,11 @@ export class Membership extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Membership resource with the given unique name, arguments, and options.
@@ -162,11 +180,13 @@ export class Membership extends pulumi.CustomResource {
             const state = argsOrState as MembershipState | undefined;
             resourceInputs["authority"] = state ? state.authority : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["membershipId"] = state ? state.membershipId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
         } else {
             const args = argsOrState as MembershipArgs | undefined;
             if ((!args || args.membershipId === undefined) && !opts.urn) {
@@ -178,9 +198,13 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["membershipId"] = args ? args.membershipId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Membership.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -206,12 +230,20 @@ export interface MembershipState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
     endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
     /**
      * Labels to apply to this membership.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -230,6 +262,11 @@ export interface MembershipState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -259,6 +296,9 @@ export interface MembershipArgs {
     endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
     /**
      * Labels to apply to this membership.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

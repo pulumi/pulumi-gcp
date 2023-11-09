@@ -60,6 +60,23 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `org_id` or `folder_id` may be
      * specified. If the `folder_id` is specified, then the project is
@@ -84,6 +101,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -91,6 +110,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -168,6 +189,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.
      * 
@@ -189,12 +225,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState(ProjectState $) {
         this.autoCreateNetwork = $.autoCreateNetwork;
         this.billingAccount = $.billingAccount;
+        this.effectiveLabels = $.effectiveLabels;
         this.folderId = $.folderId;
         this.labels = $.labels;
         this.name = $.name;
         this.number = $.number;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.pulumiLabels = $.pulumiLabels;
         this.skipDelete = $.skipDelete;
     }
 
@@ -271,6 +309,29 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param folderId The numeric ID of the folder this project should be
          * created under. Only one of `org_id` or `folder_id` may be
          * specified. If the `folder_id` is specified, then the project is
@@ -301,6 +362,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A set of key/value label pairs to assign to the project.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -312,6 +375,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A set of key/value label pairs to assign to the project.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -412,6 +477,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

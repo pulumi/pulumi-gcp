@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,15 +32,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
@@ -69,15 +69,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
@@ -138,7 +138,13 @@ type AppConnector struct {
 
 	// An arbitrary user-provided name for the AppConnector.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the AppConnector.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -148,6 +154,9 @@ type AppConnector struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Represents the different states of a AppConnector.
@@ -164,6 +173,11 @@ func NewAppConnector(ctx *pulumi.Context,
 	if args.PrincipalInfo == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalInfo'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppConnector
 	err := ctx.RegisterResource("gcp:beyondcorp/appConnector:AppConnector", name, args, &resource, opts...)
@@ -189,7 +203,13 @@ func GetAppConnector(ctx *pulumi.Context,
 type appConnectorState struct {
 	// An arbitrary user-provided name for the AppConnector.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppConnector.
 	Name *string `pulumi:"name"`
@@ -199,6 +219,9 @@ type appConnectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region *string `pulumi:"region"`
 	// Represents the different states of a AppConnector.
@@ -208,7 +231,13 @@ type appConnectorState struct {
 type AppConnectorState struct {
 	// An arbitrary user-provided name for the AppConnector.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppConnector.
 	Name pulumi.StringPtrInput
@@ -218,6 +247,9 @@ type AppConnectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the AppConnector.
 	Region pulumi.StringPtrInput
 	// Represents the different states of a AppConnector.
@@ -232,6 +264,9 @@ type appConnectorArgs struct {
 	// An arbitrary user-provided name for the AppConnector.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppConnector.
 	Name *string `pulumi:"name"`
@@ -250,6 +285,9 @@ type AppConnectorArgs struct {
 	// An arbitrary user-provided name for the AppConnector.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppConnector.
 	Name pulumi.StringPtrInput
@@ -379,7 +417,16 @@ func (o AppConnectorOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AppConnectorOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels to represent user provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AppConnectorOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -399,6 +446,12 @@ func (o AppConnectorOutput) PrincipalInfo() AppConnectorPrincipalInfoOutput {
 // If it is not provided, the provider project is used.
 func (o AppConnectorOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AppConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the AppConnector.

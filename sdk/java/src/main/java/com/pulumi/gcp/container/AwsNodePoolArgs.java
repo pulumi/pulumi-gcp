@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.inputs.AwsNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
+import com.pulumi.gcp.container.inputs.AwsNodePoolUpdateSettingsArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,12 +24,18 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -171,6 +178,21 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    @Import(name="updateSettings")
+    private @Nullable Output<AwsNodePoolUpdateSettingsArgs> updateSettings;
+
+    /**
+     * @return (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    public Optional<Output<AwsNodePoolUpdateSettingsArgs>> updateSettings() {
+        return Optional.ofNullable(this.updateSettings);
+    }
+
+    /**
      * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      * 
      */
@@ -198,6 +220,7 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.subnetId = $.subnetId;
+        this.updateSettings = $.updateSettings;
         this.version = $.version;
     }
 
@@ -222,6 +245,9 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -232,6 +258,9 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -427,6 +456,27 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subnetId(String subnetId) {
             return subnetId(Output.of(subnetId));
+        }
+
+        /**
+         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateSettings(@Nullable Output<AwsNodePoolUpdateSettingsArgs> updateSettings) {
+            $.updateSettings = updateSettings;
+            return this;
+        }
+
+        /**
+         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateSettings(AwsNodePoolUpdateSettingsArgs updateSettings) {
+            return updateSettings(Output.of(updateSettings));
         }
 
         /**

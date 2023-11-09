@@ -12,6 +12,7 @@ import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolState;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolNetworkConfig;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolWorkerConfig;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -154,7 +155,8 @@ import javax.annotation.Nullable;
 public class WorkerPool extends com.pulumi.resources.CustomResource {
     /**
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -162,7 +164,8 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -209,6 +212,22 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * The location for the resource

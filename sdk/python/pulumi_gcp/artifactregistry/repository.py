@@ -57,6 +57,9 @@ class RepositoryArgs:
                longer than 63 characters. Label keys must begin with a lowercase letter
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
         :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
@@ -205,6 +208,9 @@ class RepositoryArgs:
         longer than 63 characters. Label keys must begin with a lowercase letter
         and may only contain lowercase letters, numeric characters, underscores,
         and dashes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -301,6 +307,7 @@ class _RepositoryState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -309,6 +316,7 @@ class _RepositoryState:
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -323,6 +331,8 @@ class _RepositoryState:
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -339,6 +349,9 @@ class _RepositoryState:
                longer than 63 characters. Label keys must begin with a lowercase letter
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
         :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
@@ -351,6 +364,8 @@ class _RepositoryState:
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
@@ -369,6 +384,8 @@ class _RepositoryState:
             pulumi.set(__self__, "description", description)
         if docker_config is not None:
             pulumi.set(__self__, "docker_config", docker_config)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if kms_key_name is not None:
@@ -385,6 +402,8 @@ class _RepositoryState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if remote_repository_config is not None:
             pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if repository_id is not None:
@@ -458,6 +477,19 @@ class _RepositoryState:
         pulumi.set(self, "docker_config", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
@@ -499,6 +531,9 @@ class _RepositoryState:
         longer than 63 characters. Label keys must begin with a lowercase letter
         and may only contain lowercase letters, numeric characters, underscores,
         and dashes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -572,6 +607,19 @@ class _RepositoryState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="remoteRepositoryConfig")
@@ -746,6 +794,50 @@ class Repository(pulumi.CustomResource):
             ),
             repository_id="my-repository")
         ```
+        ### Artifact Registry Repository Remote Apt
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example remote apt repository",
+            format="APT",
+            location="us-central1",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
+                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
+                        repository_base="DEBIAN",
+                        repository_path="debian/dists/buster",
+                    ),
+                ),
+                description="Debian buster remote repository",
+            ),
+            repository_id="debian-buster")
+        ```
+        ### Artifact Registry Repository Remote Yum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example remote yum repository",
+            format="YUM",
+            location="us-central1",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="Centos 8 remote repository",
+                yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
+                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
+                        repository_base="CENTOS",
+                        repository_path="8-stream/BaseOs/x86_64/os",
+                    ),
+                ),
+            ),
+            repository_id="centos-8")
+        ```
         ### Artifact Registry Repository Cleanup
 
         ```python
@@ -844,6 +936,9 @@ class Repository(pulumi.CustomResource):
                longer than 63 characters. Label keys must begin with a lowercase letter
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
         :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
@@ -967,6 +1062,50 @@ class Repository(pulumi.CustomResource):
                 ),
             ),
             repository_id="my-repository")
+        ```
+        ### Artifact Registry Repository Remote Apt
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example remote apt repository",
+            format="APT",
+            location="us-central1",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
+                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
+                        repository_base="DEBIAN",
+                        repository_path="debian/dists/buster",
+                    ),
+                ),
+                description="Debian buster remote repository",
+            ),
+            repository_id="debian-buster")
+        ```
+        ### Artifact Registry Repository Remote Yum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example remote yum repository",
+            format="YUM",
+            location="us-central1",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="Centos 8 remote repository",
+                yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
+                    public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
+                        repository_base="CENTOS",
+                        repository_path="8-stream/BaseOs/x86_64/os",
+                    ),
+                ),
+            ),
+            repository_id="centos-8")
         ```
         ### Artifact Registry Repository Cleanup
 
@@ -1098,8 +1237,12 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["virtual_repository_config"] = virtual_repository_config
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Repository, __self__).__init__(
             'gcp:artifactregistry/repository:Repository',
             resource_name,
@@ -1115,6 +1258,7 @@ class Repository(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             format: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1123,6 +1267,7 @@ class Repository(pulumi.CustomResource):
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -1142,6 +1287,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -1158,6 +1305,9 @@ class Repository(pulumi.CustomResource):
                longer than 63 characters. Label keys must begin with a lowercase letter
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
         :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
@@ -1170,6 +1320,8 @@ class Repository(pulumi.CustomResource):
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
@@ -1187,6 +1339,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_config"] = docker_config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["format"] = format
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
@@ -1195,6 +1348,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["remote_repository_config"] = remote_repository_config
         __props__.__dict__["repository_id"] = repository_id
         __props__.__dict__["update_time"] = update_time
@@ -1245,6 +1399,15 @@ class Repository(pulumi.CustomResource):
         return pulumi.get(self, "docker_config")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def format(self) -> pulumi.Output[str]:
         """
@@ -1278,6 +1441,9 @@ class Repository(pulumi.CustomResource):
         longer than 63 characters. Label keys must begin with a lowercase letter
         and may only contain lowercase letters, numeric characters, underscores,
         and dashes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1327,6 +1493,15 @@ class Repository(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="remoteRepositoryConfig")

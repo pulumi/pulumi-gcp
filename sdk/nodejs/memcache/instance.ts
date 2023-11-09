@@ -22,22 +22,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const memcacheNetwork = gcp.compute.getNetwork({
- *     name: "test-network",
- * });
+ * // This example assumes this network already exists.
+ * // The API creates a tenant network per network authorized for a
+ * // Memcache instance and that network is not deleted when the user-created
+ * // network (authorized_network) is deleted, so this prevents issues
+ * // with tenant network quota.
+ * // If this network hasn't been created and you are using this example in your
+ * // config, add an additional network resource or change
+ * // this from "data"to "resource"
+ * const memcacheNetwork = new gcp.compute.Network("memcacheNetwork", {});
  * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
- *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
+ *     network: memcacheNetwork.id,
  * });
  * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
- *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
+ *     network: memcacheNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
  * const instance = new gcp.memcache.Instance("instance", {
  *     authorizedNetwork: privateServiceConnection.network,
+ *     labels: {
+ *         env: "test",
+ *     },
  *     nodeConfig: {
  *         cpuCount: 1,
  *         memorySizeMb: 1024,
@@ -128,7 +137,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -182,6 +199,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
@@ -208,6 +230,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
@@ -219,6 +242,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
@@ -243,11 +267,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["memcacheFullVersion"] = undefined /*out*/;
             resourceInputs["memcacheNodes"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -277,7 +305,15 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -331,6 +367,11 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
@@ -356,6 +397,9 @@ export interface InstanceArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

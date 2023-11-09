@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetHostingChannelResult
     {
         public readonly string ChannelId;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExpireTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -74,6 +75,7 @@ namespace Pulumi.Gcp.Firebase
         /// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly int RetainedReleaseCount;
         public readonly string SiteId;
         public readonly string Ttl;
@@ -81,6 +83,8 @@ namespace Pulumi.Gcp.Firebase
         [OutputConstructor]
         private GetHostingChannelResult(
             string channelId,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string expireTime,
 
@@ -90,6 +94,8 @@ namespace Pulumi.Gcp.Firebase
 
             string name,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             int retainedReleaseCount,
 
             string siteId,
@@ -97,10 +103,12 @@ namespace Pulumi.Gcp.Firebase
             string ttl)
         {
             ChannelId = channelId;
+            EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;
             Id = id;
             Labels = labels;
             Name = name;
+            PulumiLabels = pulumiLabels;
             RetainedReleaseCount = retainedReleaseCount;
             SiteId = siteId;
             Ttl = ttl;

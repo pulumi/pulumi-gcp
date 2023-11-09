@@ -6317,6 +6317,8 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
             suggest = "day_of_week"
         elif key == "weekOrdinal":
             suggest = "week_ordinal"
+        elif key == "dayOffset":
+            suggest = "day_offset"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth. Access the value via the '{suggest}' property getter instead.")
@@ -6331,14 +6333,18 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
 
     def __init__(__self__, *,
                  day_of_week: str,
-                 week_ordinal: int):
+                 week_ordinal: int,
+                 day_offset: Optional[int] = None):
         """
         :param str day_of_week: A day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param int week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param int day_offset: Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "week_ordinal", week_ordinal)
+        if day_offset is not None:
+            pulumi.set(__self__, "day_offset", day_offset)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -6356,6 +6362,14 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
         Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
+
+    @property
+    @pulumi.getter(name="dayOffset")
+    def day_offset(self) -> Optional[int]:
+        """
+        Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+        """
+        return pulumi.get(self, "day_offset")
 
 
 @pulumi.output_type

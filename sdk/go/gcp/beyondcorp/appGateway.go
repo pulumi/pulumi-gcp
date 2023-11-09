@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -57,7 +57,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -118,11 +118,17 @@ type AppGateway struct {
 	AllocatedConnections AppGatewayAllocatedConnectionArrayOutput `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
 	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrOutput `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the AppGateway.
 	//
@@ -131,6 +137,9 @@ type AppGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Represents the different states of a AppGateway.
@@ -150,6 +159,11 @@ func NewAppGateway(ctx *pulumi.Context,
 		args = &AppGatewayArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppGateway
 	err := ctx.RegisterResource("gcp:beyondcorp/appGateway:AppGateway", name, args, &resource, opts...)
@@ -178,11 +192,17 @@ type appGatewayState struct {
 	AllocatedConnections []AppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
 	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType *string `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppGateway.
 	//
@@ -191,6 +211,9 @@ type appGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region *string `pulumi:"region"`
 	// Represents the different states of a AppGateway.
@@ -209,11 +232,17 @@ type AppGatewayState struct {
 	AllocatedConnections AppGatewayAllocatedConnectionArrayInput
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
 	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppGateway.
 	//
@@ -222,6 +251,9 @@ type AppGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the AppGateway.
 	Region pulumi.StringPtrInput
 	// Represents the different states of a AppGateway.
@@ -246,6 +278,9 @@ type appGatewayArgs struct {
 	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType *string `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppGateway.
 	//
@@ -271,6 +306,9 @@ type AppGatewayArgs struct {
 	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the AppGateway.
 	//
@@ -409,6 +447,12 @@ func (o AppGatewayOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AppGatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The type of hosting used by the AppGateway.
 // Default value is `HOST_TYPE_UNSPECIFIED`.
 // Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -417,6 +461,9 @@ func (o AppGatewayOutput) HostType() pulumi.StringPtrOutput {
 }
 
 // Resource labels to represent user provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AppGatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -432,6 +479,12 @@ func (o AppGatewayOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AppGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AppGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the AppGateway.

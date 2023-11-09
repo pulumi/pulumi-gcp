@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.GetAccount(ctx, &serviceaccount.GetAccountArgs{
+//			_, err := serviceaccount.LookupAccount(ctx, &serviceaccount.LookupAccountArgs{
 //				AccountId: "object-viewer",
 //			}, nil)
 //			if err != nil {
@@ -43,7 +43,7 @@ import (
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
-	err := ctx.Invoke("gcp:serviceAccount/getAccount:getAccount", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getAccount:getAccount", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

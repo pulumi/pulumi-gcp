@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -113,7 +113,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -226,6 +226,9 @@ type VPNTunnel struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -233,6 +236,8 @@ type VPNTunnel struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this VpnTunnel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Local traffic selector to use when establishing the VPN tunnel with
 	// peer VPN gateway. The value should be a CIDR formatted string,
@@ -261,6 +266,8 @@ type VPNTunnel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -307,6 +314,8 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
 		"sharedSecret",
 	})
 	opts = append(opts, secrets)
@@ -339,6 +348,9 @@ type vpntunnelState struct {
 	Description *string `pulumi:"description"`
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus *string `pulumi:"detailedStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -346,6 +358,8 @@ type vpntunnelState struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this VpnTunnel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Local traffic selector to use when establishing the VPN tunnel with
 	// peer VPN gateway. The value should be a CIDR formatted string,
@@ -374,6 +388,8 @@ type vpntunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region *string `pulumi:"region"`
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -413,6 +429,9 @@ type VPNTunnelState struct {
 	Description pulumi.StringPtrInput
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -420,6 +439,8 @@ type VPNTunnelState struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this VpnTunnel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Local traffic selector to use when establishing the VPN tunnel with
 	// peer VPN gateway. The value should be a CIDR formatted string,
@@ -448,6 +469,8 @@ type VPNTunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringPtrInput
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -492,6 +515,8 @@ type vpntunnelArgs struct {
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
 	IkeVersion *int `pulumi:"ikeVersion"`
 	// Labels to apply to this VpnTunnel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Local traffic selector to use when establishing the VPN tunnel with
 	// peer VPN gateway. The value should be a CIDR formatted string,
@@ -555,6 +580,8 @@ type VPNTunnelArgs struct {
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
 	IkeVersion pulumi.IntPtrInput
 	// Labels to apply to this VpnTunnel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Local traffic selector to use when establishing the VPN tunnel with
 	// peer VPN gateway. The value should be a CIDR formatted string,
@@ -735,6 +762,12 @@ func (o VPNTunnelOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.DetailedStatus }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o VPNTunnelOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // IKE protocol version to use when establishing the VPN tunnel with
 // peer VPN gateway.
 // Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -748,6 +781,8 @@ func (o VPNTunnelOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this VpnTunnel.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o VPNTunnelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -798,6 +833,11 @@ func (o VPNTunnelOutput) PeerIp() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o VPNTunnelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o VPNTunnelOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.

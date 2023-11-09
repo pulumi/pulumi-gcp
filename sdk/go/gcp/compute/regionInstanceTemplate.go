@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -52,6 +52,9 @@ type RegionInstanceTemplate struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks RegionInstanceTemplateDiskArrayOutput `pulumi:"disks"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
@@ -62,6 +65,9 @@ type RegionInstanceTemplate struct {
 	InstanceDescription pulumi.StringPtrOutput `pulumi:"instanceDescription"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -101,6 +107,8 @@ type RegionInstanceTemplate struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -138,6 +146,11 @@ func NewRegionInstanceTemplate(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionInstanceTemplate
 	err := ctx.RegisterResource("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", name, args, &resource, opts...)
@@ -174,6 +187,9 @@ type regionInstanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []RegionInstanceTemplateDisk `pulumi:"disks"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
@@ -184,6 +200,9 @@ type regionInstanceTemplateState struct {
 	InstanceDescription *string `pulumi:"instanceDescription"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -223,6 +242,8 @@ type regionInstanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -261,6 +282,9 @@ type RegionInstanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks RegionInstanceTemplateDiskArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
@@ -271,6 +295,9 @@ type RegionInstanceTemplateState struct {
 	InstanceDescription pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
@@ -310,6 +337,8 @@ type RegionInstanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
@@ -362,6 +391,9 @@ type regionInstanceTemplateArgs struct {
 	InstanceDescription *string `pulumi:"instanceDescription"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
@@ -444,6 +476,9 @@ type RegionInstanceTemplateArgs struct {
 	InstanceDescription pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
@@ -644,6 +679,12 @@ func (o RegionInstanceTemplateOutput) Disks() RegionInstanceTemplateDiskArrayOut
 	return o.ApplyT(func(v *RegionInstanceTemplate) RegionInstanceTemplateDiskArrayOutput { return v.Disks }).(RegionInstanceTemplateDiskArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o RegionInstanceTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (o RegionInstanceTemplateOutput) EnableDisplay() pulumi.BoolPtrOutput {
@@ -665,6 +706,9 @@ func (o RegionInstanceTemplateOutput) InstanceDescription() pulumi.StringPtrOutp
 
 // A set of key/value label pairs to assign to instances
 // created from this template.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o RegionInstanceTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -739,6 +783,11 @@ func (o RegionInstanceTemplateOutput) NetworkPerformanceConfig() RegionInstanceT
 // is not provided, the provider project is used.
 func (o RegionInstanceTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o RegionInstanceTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The Region in which the resource belongs.

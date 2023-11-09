@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -35,6 +35,9 @@ class GetDiskResult:
         if disk_encryption_keys and not isinstance(disk_encryption_keys, list):
             raise TypeError("Expected argument 'disk_encryption_keys' to be a list")
         pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
             raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -83,6 +86,9 @@ class GetDiskResult:
         if provisioned_throughput and not isinstance(provisioned_throughput, int):
             raise TypeError("Expected argument 'provisioned_throughput' to be a int")
         pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -150,6 +156,11 @@ class GetDiskResult:
         return pulumi.get(self, "disk_encryption_keys")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         return pulumi.get(self, "enable_confidential_compute")
@@ -192,9 +203,6 @@ class GetDiskResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
-        """
-        A map of labels applied to this disk.
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -250,6 +258,11 @@ class GetDiskResult:
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> int:
         return pulumi.get(self, "provisioned_throughput")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -368,6 +381,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
+            effective_labels=self.effective_labels,
             enable_confidential_compute=self.enable_confidential_compute,
             guest_os_features=self.guest_os_features,
             id=self.id,
@@ -384,6 +398,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             project=self.project,
             provisioned_iops=self.provisioned_iops,
             provisioned_throughput=self.provisioned_throughput,
+            pulumi_labels=self.pulumi_labels,
             resource_policies=self.resource_policies,
             self_link=self.self_link,
             size=self.size,
@@ -443,6 +458,7 @@ def get_disk(name: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         id=pulumi.get(__ret__, 'id'),
@@ -459,6 +475,7 @@ def get_disk(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
         provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         size=pulumi.get(__ret__, 'size'),

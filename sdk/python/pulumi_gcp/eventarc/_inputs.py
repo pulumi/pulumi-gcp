@@ -286,24 +286,24 @@ class TriggerMatchingCriteriaArgs:
 @pulumi.input_type
 class TriggerTransportArgs:
     def __init__(__self__, *,
-                 pubsubs: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]] = None):
+                 pubsub: Optional[pulumi.Input['TriggerTransportPubsubArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]] pubsubs: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        :param pulumi.Input['TriggerTransportPubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
-        if pubsubs is not None:
-            pulumi.set(__self__, "pubsubs", pubsubs)
+        if pubsub is not None:
+            pulumi.set(__self__, "pubsub", pubsub)
 
     @property
     @pulumi.getter
-    def pubsubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]]:
+    def pubsub(self) -> Optional[pulumi.Input['TriggerTransportPubsubArgs']]:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
-        return pulumi.get(self, "pubsubs")
+        return pulumi.get(self, "pubsub")
 
-    @pubsubs.setter
-    def pubsubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportPubsubArgs']]]]):
-        pulumi.set(self, "pubsubs", value)
+    @pubsub.setter
+    def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArgs']]):
+        pulumi.set(self, "pubsub", value)
 
 
 @pulumi.input_type

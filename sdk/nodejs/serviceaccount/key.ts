@@ -61,7 +61,7 @@ export class Key extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:serviceAccount/key:Key';
+    public static readonly __pulumiType = 'gcp:serviceaccount/key:Key';
 
     /**
      * Returns true if the given object is an instance of Key.  This is designed to work even
@@ -171,6 +171,8 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["validBefore"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/key:Key" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["privateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Key.__pulumiType, name, resourceInputs, opts);

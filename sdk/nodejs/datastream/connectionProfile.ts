@@ -203,6 +203,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Forward SSH tunnel connectivity.
      * Structure is documented below.
      */
@@ -214,6 +219,8 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly gcsProfile!: pulumi.Output<outputs.datastream.ConnectionProfileGcsProfile | undefined>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -252,6 +259,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -269,6 +281,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["bigqueryProfile"] = state ? state.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = state ? state.connectionProfileId : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forwardSshConnectivity"] = state ? state.forwardSshConnectivity : undefined;
             resourceInputs["gcsProfile"] = state ? state.gcsProfile : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -279,6 +292,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresqlProfile"] = state ? state.postgresqlProfile : undefined;
             resourceInputs["privateConnectivity"] = state ? state.privateConnectivity : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
@@ -302,9 +316,13 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
             resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -326,6 +344,11 @@ export interface ConnectionProfileState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Forward SSH tunnel connectivity.
      * Structure is documented below.
      */
@@ -337,6 +360,8 @@ export interface ConnectionProfileState {
     gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -375,6 +400,11 @@ export interface ConnectionProfileState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -405,6 +435,8 @@ export interface ConnectionProfileArgs {
     gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

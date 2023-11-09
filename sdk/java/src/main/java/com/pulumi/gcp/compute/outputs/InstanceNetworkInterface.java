@@ -52,6 +52,7 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable String network;
+    private @Nullable String networkAttachment;
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -68,6 +69,7 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable Integer queueCount;
+    private @Nullable String securityPolicy;
     /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
@@ -146,6 +148,9 @@ public final class InstanceNetworkInterface {
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    public Optional<String> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -167,6 +172,9 @@ public final class InstanceNetworkInterface {
      */
     public Optional<Integer> queueCount() {
         return Optional.ofNullable(this.queueCount);
+    }
+    public Optional<String> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
     }
     /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -216,9 +224,11 @@ public final class InstanceNetworkInterface {
         private @Nullable String ipv6Address;
         private @Nullable String name;
         private @Nullable String network;
+        private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
         private @Nullable Integer queueCount;
+        private @Nullable String securityPolicy;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
@@ -233,9 +243,11 @@ public final class InstanceNetworkInterface {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
     	      this.queueCount = defaults.queueCount;
+    	      this.securityPolicy = defaults.securityPolicy;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -291,6 +303,11 @@ public final class InstanceNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(@Nullable String networkAttachment) {
+            this.networkAttachment = networkAttachment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
             this.networkIp = networkIp;
             return this;
@@ -303,6 +320,11 @@ public final class InstanceNetworkInterface {
         @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
             this.queueCount = queueCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityPolicy(@Nullable String securityPolicy) {
+            this.securityPolicy = securityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -330,9 +352,11 @@ public final class InstanceNetworkInterface {
             o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
+            o.networkAttachment = networkAttachment;
             o.networkIp = networkIp;
             o.nicType = nicType;
             o.queueCount = queueCount;
+            o.securityPolicy = securityPolicy;
             o.stackType = stackType;
             o.subnetwork = subnetwork;
             o.subnetworkProject = subnetworkProject;

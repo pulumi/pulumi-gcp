@@ -58,6 +58,7 @@ export interface GetAppGatewayArgs {
 export interface GetAppGatewayResult {
     readonly allocatedConnections: outputs.beyondcorp.GetAppGatewayAllocatedConnection[];
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly hostType: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -66,6 +67,7 @@ export interface GetAppGatewayResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly state: string;
     readonly type: string;

@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string BaseForwardingRule;
         public readonly string CreationTimestamp;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -162,6 +163,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
@@ -186,6 +188,8 @@ namespace Pulumi.Gcp.Compute
             string creationTimestamp,
 
             string description,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -221,6 +225,8 @@ namespace Pulumi.Gcp.Compute
 
             string pscConnectionStatus,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             string selfLink,
@@ -244,6 +250,7 @@ namespace Pulumi.Gcp.Compute
             BaseForwardingRule = baseForwardingRule;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
@@ -261,6 +268,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
+            PulumiLabels = pulumiLabels;
             Region = region;
             SelfLink = selfLink;
             ServiceDirectoryRegistrations = serviceDirectoryRegistrations;

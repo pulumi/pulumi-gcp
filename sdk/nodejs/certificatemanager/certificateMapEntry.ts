@@ -117,6 +117,11 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
      * for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
      * selecting a proper certificate.
@@ -126,8 +131,11 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A map entry that is inputted into the cetrificate map
      *
@@ -150,6 +158,11 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A serving state of this Certificate Map Entry.
      */
@@ -177,12 +190,14 @@ export class CertificateMapEntry extends pulumi.CustomResource {
             resourceInputs["certificates"] = state ? state.certificates : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["map"] = state ? state.map : undefined;
             resourceInputs["matcher"] = state ? state.matcher : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -202,10 +217,14 @@ export class CertificateMapEntry extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CertificateMapEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -231,6 +250,11 @@ export interface CertificateMapEntryState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
      * for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
      * selecting a proper certificate.
@@ -240,6 +264,9 @@ export interface CertificateMapEntryState {
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -264,6 +291,11 @@ export interface CertificateMapEntryState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A serving state of this Certificate Map Entry.
      */
@@ -300,6 +332,9 @@ export interface CertificateMapEntryArgs {
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -34,12 +34,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The name or self_link of the network attached to this interface.
         /// </summary>
         public readonly string Network;
+        public readonly string NetworkAttachment;
         /// <summary>
         /// The private IP address assigned to the instance.
         /// </summary>
         public readonly string NetworkIp;
         public readonly string NicType;
         public readonly int QueueCount;
+        public readonly string SecurityPolicy;
         public readonly string StackType;
         /// <summary>
         /// The name or self_link of the subnetwork attached to this interface.
@@ -68,11 +70,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string network,
 
+            string networkAttachment,
+
             string networkIp,
 
             string nicType,
 
             int queueCount,
+
+            string securityPolicy,
 
             string stackType,
 
@@ -88,9 +94,11 @@ namespace Pulumi.Gcp.Compute.Outputs
             Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
             QueueCount = queueCount;
+            SecurityPolicy = securityPolicy;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;

@@ -476,6 +476,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         [Output("issuerCertificateAuthority")]
@@ -483,6 +490,9 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Labels with user-defined metadata to apply to this resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -524,13 +534,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableArray<string>> PemCertificateChains { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated)
-        /// Required. Expected to be in leaf-to-root order according to RFC 5246.
-        /// </summary>
-        [Output("pemCertificates")]
-        public Output<ImmutableArray<string>> PemCertificates { get; private set; } = null!;
-
-        /// <summary>
         /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
         /// </summary>
         [Output("pemCsr")]
@@ -548,6 +551,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Details regarding the revocation of this Certificate. This Certificate is
@@ -587,6 +597,11 @@ namespace Pulumi.Gcp.CertificateAuthority
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -641,6 +656,9 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Labels with user-defined metadata to apply to this resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -745,6 +763,23 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
@@ -756,6 +791,9 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Labels with user-defined metadata to apply to this resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -805,20 +843,6 @@ namespace Pulumi.Gcp.CertificateAuthority
             set => _pemCertificateChains = value;
         }
 
-        [Input("pemCertificates")]
-        private InputList<string>? _pemCertificates;
-
-        /// <summary>
-        /// (Deprecated)
-        /// Required. Expected to be in leaf-to-root order according to RFC 5246.
-        /// </summary>
-        [Obsolete(@"`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.")]
-        public InputList<string> PemCertificates
-        {
-            get => _pemCertificates ?? (_pemCertificates = new InputList<string>());
-            set => _pemCertificates = value;
-        }
-
         /// <summary>
         /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
         /// </summary>
@@ -837,6 +861,23 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         [Input("revocationDetails")]
         private InputList<Inputs.CertificateRevocationDetailGetArgs>? _revocationDetails;

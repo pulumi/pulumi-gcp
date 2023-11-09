@@ -25,6 +25,7 @@ public final class GetBucketResult {
     private List<GetBucketCor> cors;
     private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
+    private Map<String,String> effectiveLabels;
     private List<GetBucketEncryption> encryptions;
     private Boolean forceDestroy;
     /**
@@ -39,6 +40,7 @@ public final class GetBucketResult {
     private String name;
     private String project;
     private String publicAccessPrevention;
+    private Map<String,String> pulumiLabels;
     private Boolean requesterPays;
     private List<GetBucketRetentionPolicy> retentionPolicies;
     private String selfLink;
@@ -60,6 +62,9 @@ public final class GetBucketResult {
     }
     public Boolean defaultEventBasedHold() {
         return this.defaultEventBasedHold;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public List<GetBucketEncryption> encryptions() {
         return this.encryptions;
@@ -94,6 +99,9 @@ public final class GetBucketResult {
     }
     public String publicAccessPrevention() {
         return this.publicAccessPrevention;
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public Boolean requesterPays() {
         return this.requesterPays;
@@ -133,6 +141,7 @@ public final class GetBucketResult {
         private List<GetBucketCor> cors;
         private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
+        private Map<String,String> effectiveLabels;
         private List<GetBucketEncryption> encryptions;
         private Boolean forceDestroy;
         private String id;
@@ -143,6 +152,7 @@ public final class GetBucketResult {
         private String name;
         private String project;
         private String publicAccessPrevention;
+        private Map<String,String> pulumiLabels;
         private Boolean requesterPays;
         private List<GetBucketRetentionPolicy> retentionPolicies;
         private String selfLink;
@@ -158,6 +168,7 @@ public final class GetBucketResult {
     	      this.cors = defaults.cors;
     	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.encryptions = defaults.encryptions;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
@@ -168,6 +179,7 @@ public final class GetBucketResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.publicAccessPrevention = defaults.publicAccessPrevention;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.requesterPays = defaults.requesterPays;
     	      this.retentionPolicies = defaults.retentionPolicies;
     	      this.selfLink = defaults.selfLink;
@@ -205,6 +217,11 @@ public final class GetBucketResult {
         @CustomType.Setter
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             this.defaultEventBasedHold = Objects.requireNonNull(defaultEventBasedHold);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -267,6 +284,11 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder requesterPays(Boolean requesterPays) {
             this.requesterPays = Objects.requireNonNull(requesterPays);
             return this;
@@ -321,6 +343,7 @@ public final class GetBucketResult {
             o.cors = cors;
             o.customPlacementConfigs = customPlacementConfigs;
             o.defaultEventBasedHold = defaultEventBasedHold;
+            o.effectiveLabels = effectiveLabels;
             o.encryptions = encryptions;
             o.forceDestroy = forceDestroy;
             o.id = id;
@@ -331,6 +354,7 @@ public final class GetBucketResult {
             o.name = name;
             o.project = project;
             o.publicAccessPrevention = publicAccessPrevention;
+            o.pulumiLabels = pulumiLabels;
             o.requesterPays = requesterPays;
             o.retentionPolicies = retentionPolicies;
             o.selfLink = selfLink;

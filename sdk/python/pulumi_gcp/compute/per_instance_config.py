@@ -764,7 +764,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> pulumi.Output[Optional[str]]:
+    def zone(self) -> pulumi.Output[str]:
         """
         Zone where the containing instance group manager is located
         """

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,19 +29,17 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vertexNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "network-name",
-//			}, nil)
+//			vertexNetwork, err := compute.NewNetwork(ctx, "vertexNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -49,13 +47,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(24),
-//				Network:      *pulumi.String(vertexNetwork.Id),
+//				Network:      vertexNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertexVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(vertexNetwork.Id),
+//				Network: vertexNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					vertexRange.Name,
@@ -75,7 +73,9 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Network: pulumi.String(fmt.Sprintf("projects/%v/global/networks/%v", project.Number, vertexNetwork.Name)),
+//				Network: vertexNetwork.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
+//				}).(pulumi.StringOutput),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vertexVpcConnection,
 //			}))
@@ -94,7 +94,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -157,9 +157,14 @@ type AiIndexEndpoint struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Index.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -175,6 +180,9 @@ type AiIndexEndpoint struct {
 	PublicEndpointDomainName pulumi.StringOutput `pulumi:"publicEndpointDomainName"`
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrOutput `pulumi:"publicEndpointEnabled"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -191,6 +199,11 @@ func NewAiIndexEndpoint(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiIndexEndpoint
 	err := ctx.RegisterResource("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", name, args, &resource, opts...)
@@ -222,9 +235,14 @@ type aiIndexEndpointState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Index.
 	Name *string `pulumi:"name"`
@@ -240,6 +258,9 @@ type aiIndexEndpointState struct {
 	PublicEndpointDomainName *string `pulumi:"publicEndpointDomainName"`
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled *bool `pulumi:"publicEndpointEnabled"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the index endpoint. eg us-central1
 	Region *string `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -255,9 +276,14 @@ type AiIndexEndpointState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name of the Index.
 	Name pulumi.StringPtrInput
@@ -273,6 +299,9 @@ type AiIndexEndpointState struct {
 	PublicEndpointDomainName pulumi.StringPtrInput
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -291,6 +320,8 @@ type aiIndexEndpointArgs struct {
 	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
 	// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -315,6 +346,8 @@ type AiIndexEndpointArgs struct {
 	// ***
 	DisplayName pulumi.StringInput
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
 	// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -458,12 +491,20 @@ func (o AiIndexEndpointOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiIndexEndpointOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Used to perform consistent read-modify-write updates.
 func (o AiIndexEndpointOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The labels with user-defined metadata to organize your Indexes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiIndexEndpointOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -495,6 +536,12 @@ func (o AiIndexEndpointOutput) PublicEndpointDomainName() pulumi.StringOutput {
 // If true, the deployed index will be accessible through public endpoint.
 func (o AiIndexEndpointOutput) PublicEndpointEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.BoolPtrOutput { return v.PublicEndpointEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiIndexEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the index endpoint. eg us-central1

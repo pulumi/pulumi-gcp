@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/notebooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/notebooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -96,7 +96,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/notebooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -131,8 +131,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/notebooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -238,6 +238,9 @@ type Instance struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
 	// won't be installed. Only applicable to instances with GPUs.
@@ -253,6 +256,9 @@ type Instance struct {
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
@@ -289,6 +295,9 @@ type Instance struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
@@ -334,6 +343,11 @@ func NewInstance(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("gcp:notebooks/instance:Instance", name, args, &resource, opts...)
@@ -388,6 +402,9 @@ type instanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
 	// won't be installed. Only applicable to instances with GPUs.
@@ -403,6 +420,9 @@ type instanceState struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
@@ -439,6 +459,9 @@ type instanceState struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
@@ -503,6 +526,9 @@ type InstanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
 	// won't be installed. Only applicable to instances with GPUs.
@@ -518,6 +544,9 @@ type InstanceState struct {
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
 	//
@@ -554,6 +583,9 @@ type InstanceState struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
@@ -637,6 +669,9 @@ type instanceArgs struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
@@ -746,6 +781,9 @@ type InstanceArgs struct {
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
 	//
@@ -976,6 +1014,12 @@ func (o InstanceOutput) DiskEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DiskEncryption }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether the end user authorizes Google Cloud to install GPU driver
 // on this instance. If this field is empty or set to false, the GPU driver
 // won't be installed. Only applicable to instances with GPUs.
@@ -1000,6 +1044,9 @@ func (o InstanceOutput) KmsKey() pulumi.StringPtrOutput {
 
 // Labels to apply to this instance. These can be later modified by the setLabels method.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1073,6 +1120,12 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 // the population of this value.
 func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProxyUri }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Reservation Affinity for consuming Zonal reservation.

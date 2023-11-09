@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
  *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
  *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
  *             .build());
  * 
  *         var example_response_policy = new ResponsePolicy(&#34;example-response-policy&#34;, ResponsePolicyArgs.builder()        

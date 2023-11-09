@@ -24,8 +24,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -38,12 +38,26 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
+    }
+
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
@@ -68,6 +82,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -78,6 +94,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -99,6 +117,25 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      */
     public Output<String> namespace() {
         return this.namespace;
+    }
+
+    /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
     }
 
     /**
@@ -172,9 +209,12 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
 
     private DomainMappingMetadataArgs(DomainMappingMetadataArgs $) {
         this.annotations = $.annotations;
+        this.effectiveAnnotations = $.effectiveAnnotations;
+        this.effectiveLabels = $.effectiveLabels;
         this.generation = $.generation;
         this.labels = $.labels;
         this.namespace = $.namespace;
+        this.pulumiLabels = $.pulumiLabels;
         this.resourceVersion = $.resourceVersion;
         this.selfLink = $.selfLink;
         this.uid = $.uid;
@@ -205,8 +245,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * 
-         * ***
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -223,14 +263,32 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * 
-         * ***
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -261,6 +319,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -275,6 +335,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
          * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -304,6 +366,31 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
+        }
+
+        /**
+         * @param pulumiLabels (Output)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels (Output)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

@@ -20,11 +20,13 @@ public final class DomainMappingMetadata {
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     private @Nullable Map<String,String> annotations;
+    private @Nullable Map<String,String> effectiveAnnotations;
+    private @Nullable Map<String,String> effectiveLabels;
     /**
      * @return (Output)
      * A sequence number representing a specific generation of the desired state.
@@ -36,6 +38,8 @@ public final class DomainMappingMetadata {
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -45,6 +49,13 @@ public final class DomainMappingMetadata {
      * 
      */
     private String namespace;
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    private @Nullable Map<String,String> pulumiLabels;
     /**
      * @return (Output)
      * An opaque value that represents the internal version of this object that
@@ -80,12 +91,18 @@ public final class DomainMappingMetadata {
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * 
-     * ***
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations == null ? Map.of() : this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels == null ? Map.of() : this.effectiveLabels;
     }
     /**
      * @return (Output)
@@ -100,6 +117,8 @@ public final class DomainMappingMetadata {
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Map<String,String> labels() {
@@ -112,6 +131,15 @@ public final class DomainMappingMetadata {
      */
     public String namespace() {
         return this.namespace;
+    }
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels == null ? Map.of() : this.pulumiLabels;
     }
     /**
      * @return (Output)
@@ -156,9 +184,12 @@ public final class DomainMappingMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
+        private @Nullable Map<String,String> effectiveAnnotations;
+        private @Nullable Map<String,String> effectiveLabels;
         private @Nullable Integer generation;
         private @Nullable Map<String,String> labels;
         private String namespace;
+        private @Nullable Map<String,String> pulumiLabels;
         private @Nullable String resourceVersion;
         private @Nullable String selfLink;
         private @Nullable String uid;
@@ -166,9 +197,12 @@ public final class DomainMappingMetadata {
         public Builder(DomainMappingMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.generation = defaults.generation;
     	      this.labels = defaults.labels;
     	      this.namespace = defaults.namespace;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.selfLink = defaults.selfLink;
     	      this.uid = defaults.uid;
@@ -177,6 +211,16 @@ public final class DomainMappingMetadata {
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(@Nullable Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(@Nullable Map<String,String> effectiveLabels) {
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
@@ -192,6 +236,11 @@ public final class DomainMappingMetadata {
         @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(@Nullable Map<String,String> pulumiLabels) {
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
@@ -212,9 +261,12 @@ public final class DomainMappingMetadata {
         public DomainMappingMetadata build() {
             final var o = new DomainMappingMetadata();
             o.annotations = annotations;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.generation = generation;
             o.labels = labels;
             o.namespace = namespace;
+            o.pulumiLabels = pulumiLabels;
             o.resourceVersion = resourceVersion;
             o.selfLink = selfLink;
             o.uid = uid;

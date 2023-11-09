@@ -88,6 +88,23 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The bucket&#39;s encryption configuration. Structure is documented below.
      * 
      */
@@ -233,6 +250,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      * 
      */
@@ -359,6 +391,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.cors = $.cors;
         this.customPlacementConfig = $.customPlacementConfig;
         this.defaultEventBasedHold = $.defaultEventBasedHold;
+        this.effectiveLabels = $.effectiveLabels;
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
@@ -368,6 +401,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.publicAccessPrevention = $.publicAccessPrevention;
+        this.pulumiLabels = $.pulumiLabels;
         this.requesterPays = $.requesterPays;
         this.retentionPolicy = $.retentionPolicy;
         this.selfLink = $.selfLink;
@@ -488,6 +522,29 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             return defaultEventBasedHold(Output.of(defaultEventBasedHold));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -697,6 +754,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder publicAccessPrevention(String publicAccessPrevention) {
             return publicAccessPrevention(Output.of(publicAccessPrevention));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

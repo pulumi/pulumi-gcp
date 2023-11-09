@@ -30,39 +30,13 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
-    ///     {
-    ///         ProjectId = "my-project",
-    ///         OrgId = "123456789",
-    ///         Labels = 
-    ///         {
-    ///             { "firebase", "enabled" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
-    ///     {
-    ///         ProjectID = defaultProject.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
     ///     var basicWebApp = new Gcp.Firebase.WebApp("basicWebApp", new()
     ///     {
-    ///         Project = defaultProject.ProjectId,
+    ///         Project = "my-project-name",
     ///         DisplayName = "Display Name Basic",
-    ///         DeletionPolicy = "DELETE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultFirebase / projectProject,
-    ///         },
     ///     });
     /// 
     ///     var basicWebAppConfig = Gcp.Firebase.GetWebAppConfig.Invoke(new()
@@ -201,7 +175,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -285,7 +259,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -343,7 +317,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

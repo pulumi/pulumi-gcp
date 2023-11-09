@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,6 +64,7 @@ type LookupBucketResult struct {
 	Cors                   []GetBucketCor                   `pulumi:"cors"`
 	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
 	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
+	EffectiveLabels        map[string]string                `pulumi:"effectiveLabels"`
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
 	ForceDestroy           bool                             `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
@@ -75,6 +76,7 @@ type LookupBucketResult struct {
 	Name                     string                     `pulumi:"name"`
 	Project                  string                     `pulumi:"project"`
 	PublicAccessPrevention   string                     `pulumi:"publicAccessPrevention"`
+	PulumiLabels             map[string]string          `pulumi:"pulumiLabels"`
 	RequesterPays            bool                       `pulumi:"requesterPays"`
 	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
 	SelfLink                 string                     `pulumi:"selfLink"`
@@ -145,6 +147,10 @@ func (o LookupBucketResultOutput) DefaultEventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.DefaultEventBasedHold }).(pulumi.BoolOutput)
 }
 
+func (o LookupBucketResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupBucketResultOutput) Encryptions() GetBucketEncryptionArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []GetBucketEncryption { return v.Encryptions }).(GetBucketEncryptionArrayOutput)
 }
@@ -184,6 +190,10 @@ func (o LookupBucketResultOutput) Project() pulumi.StringOutput {
 
 func (o LookupBucketResultOutput) PublicAccessPrevention() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.PublicAccessPrevention }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupBucketResultOutput) RequesterPays() pulumi.BoolOutput {

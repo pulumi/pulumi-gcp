@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,9 +21,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workstations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workstations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,9 +75,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workstations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workstations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,6 +151,8 @@ type WorkstationCluster struct {
 	pulumi.CustomResourceState
 
 	// Client-specified annotations. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
@@ -162,10 +164,18 @@ type WorkstationCluster struct {
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation cluster should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -180,6 +190,9 @@ type WorkstationCluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
@@ -207,6 +220,11 @@ func NewWorkstationCluster(ctx *pulumi.Context,
 	if args.WorkstationClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkstationClusterId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkstationCluster
 	err := ctx.RegisterResource("gcp:workstations/workstationCluster:WorkstationCluster", name, args, &resource, opts...)
@@ -231,6 +249,8 @@ func GetWorkstationCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering WorkstationCluster resources.
 type workstationClusterState struct {
 	// Client-specified annotations. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
@@ -242,10 +262,18 @@ type workstationClusterState struct {
 	Degraded *bool `pulumi:"degraded"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster should reside.
 	Location *string `pulumi:"location"`
@@ -260,6 +288,9 @@ type workstationClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -273,6 +304,8 @@ type workstationClusterState struct {
 
 type WorkstationClusterState struct {
 	// Client-specified annotations. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
@@ -284,10 +317,18 @@ type WorkstationClusterState struct {
 	Degraded pulumi.BoolPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster should reside.
 	Location pulumi.StringPtrInput
@@ -302,6 +343,9 @@ type WorkstationClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringPtrInput
@@ -319,10 +363,14 @@ func (WorkstationClusterState) ElementType() reflect.Type {
 
 type workstationClusterArgs struct {
 	// Client-specified annotations. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster should reside.
 	Location *string `pulumi:"location"`
@@ -347,10 +395,14 @@ type workstationClusterArgs struct {
 // The set of arguments for constructing a WorkstationCluster resource.
 type WorkstationClusterArgs struct {
 	// Client-specified annotations. This is distinct from labels.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster should reside.
 	Location pulumi.StringPtrInput
@@ -484,6 +536,8 @@ func (o WorkstationClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*
 }
 
 // Client-specified annotations. This is distinct from labels.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o WorkstationClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -510,6 +564,18 @@ func (o WorkstationClusterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o WorkstationClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o WorkstationClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Checksum computed by the server.
 // May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 func (o WorkstationClusterOutput) Etag() pulumi.StringOutput {
@@ -517,6 +583,8 @@ func (o WorkstationClusterOutput) Etag() pulumi.StringOutput {
 }
 
 // Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkstationClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -549,6 +617,12 @@ func (o WorkstationClusterOutput) PrivateClusterConfig() WorkstationClusterPriva
 // If it is not provided, the provider project is used.
 func (o WorkstationClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o WorkstationClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.

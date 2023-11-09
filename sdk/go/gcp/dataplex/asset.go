@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -22,8 +22,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,6 +70,10 @@ import (
 //				ResourceSpec: &dataplex.AssetResourceSpecArgs{
 //					Name: pulumi.String("projects/my-project-name/buckets/bucket"),
 //					Type: pulumi.String("STORAGE_BUCKET"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env":      pulumi.String("foo"),
+//					"my-asset": pulumi.String("exists"),
 //				},
 //				Project: pulumi.String("my-project-name"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -120,7 +124,13 @@ type Asset struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayOutput `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake for the resource
 	Lake pulumi.StringOutput `pulumi:"lake"`
@@ -130,6 +140,8 @@ type Asset struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -166,6 +178,11 @@ func NewAsset(ctx *pulumi.Context,
 	if args.ResourceSpec == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceSpec'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Asset
 	err := ctx.RegisterResource("gcp:dataplex/asset:Asset", name, args, &resource, opts...)
@@ -201,7 +218,13 @@ type assetState struct {
 	DiscoveryStatuses []AssetDiscoveryStatus `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake *string `pulumi:"lake"`
@@ -211,6 +234,8 @@ type assetState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec *AssetResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -238,7 +263,13 @@ type AssetState struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringPtrInput
@@ -248,6 +279,8 @@ type AssetState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecPtrInput
 	// Output only. Status of the resource referenced by this asset.
@@ -276,6 +309,9 @@ type assetArgs struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake string `pulumi:"lake"`
@@ -300,6 +336,9 @@ type AssetArgs struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringInput
@@ -454,7 +493,16 @@ func (o AssetOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AssetOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. User defined labels for the asset.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AssetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -477,6 +525,11 @@ func (o AssetOutput) Name() pulumi.StringOutput {
 // The project for the resource
 func (o AssetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o AssetOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Required. Immutable. Specification of the resource that is referenced by this asset.

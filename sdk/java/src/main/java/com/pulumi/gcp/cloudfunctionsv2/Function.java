@@ -14,6 +14,7 @@ import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionBuildConfig;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionEventTrigger;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -41,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
@@ -171,8 +172,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -345,6 +346,22 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The environment the function is hosted on.
      * 
      */
@@ -395,12 +412,18 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs associated with this Cloud Function.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -409,22 +432,24 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * The location of this cloud function.
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return The location of this cloud function.
      * 
+     * ***
+     * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -433,8 +458,6 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * @return A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -455,6 +478,22 @@ public class Function extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Describes the Service being deployed.
@@ -527,7 +566,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Function(String name, @Nullable FunctionArgs args) {
+    public Function(String name, FunctionArgs args) {
         this(name, args, null);
     }
     /**
@@ -536,7 +575,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Function(String name, @Nullable FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Function(String name, FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudfunctionsv2/function:Function", name, args == null ? FunctionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
@@ -547,6 +586,10 @@ public class Function extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

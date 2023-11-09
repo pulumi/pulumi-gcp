@@ -7,9 +7,11 @@ package examples
 import (
 	"context"
 	cryptoRand "crypto/rand"
+	"encoding/json"
 	"fmt"
 	"math/big"
 	"math/rand"
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -19,10 +21,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestAccBucketGo(t *testing.T) {
-	t.Skip("Skipping while major release in progress")
 	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket-go"),
@@ -31,15 +33,34 @@ func TestAccBucketGo(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestPulumiLabelsSecretGo(t *testing.T) {
+	test := getGoBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "go"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				outputBytes, err := json.Marshal(stack.Outputs)
+				assert.NoError(t, err)
+				outputStr := string(outputBytes)
+				// We expect a pulumiLabels field
+				assert.Contains(t, outputStr, "pulumiLabels")
+				// We expect its contents to be secret
+				assert.NotContains(t, outputStr, "hello")
+				// We assert the presence of the "ciphertext" key to denote secretness of the Output.
+				assert.Contains(t, outputStr, "ciphertext")
+			},
+		})
+	integration.ProgramTest(t, &test)
+}
+
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
-	csharpBase := base.With(integration.ProgramTestOptions{
+	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v5",
+			"github.com/pulumi/pulumi-gcp/sdk/v7",
 		},
 	})
 
-	return csharpBase
+	return goBase
 }
 
 // Regression test for issue #794.
@@ -185,4 +206,201 @@ func GenerateRandomString(n int) (string, error) {
 	}
 
 	return string(ret), nil
+}
+
+func TestLabelsCombinationsGo(t *testing.T) {
+	type testCase struct {
+		name string
+		s1   labelsState
+		s2   labelsState
+	}
+
+	testCases := []testCase{
+		{
+			"can add an empty label",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": ""},
+			},
+		},
+		{
+			"convoluted test case found by random-sampling",
+			labelsState{
+				DefaultLabels: map[string]string{"x": "", "y": "s"},
+				Labels:        map[string]string{"x": ""},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+				Labels:        map[string]string{"x": "", "y": ""},
+			},
+		},
+		{
+			"can add a new default label on Update of existing stack",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"hello": "goodbye"},
+				Labels:        map[string]string{},
+			},
+		},
+		{
+			"no changes means no changes",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{},
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			tc.s1.validateTransitionTo(t, tc.s2)
+		})
+	}
+}
+
+func TestRandomLabelsCombinationsGo(t *testing.T) {
+	labelValues := []string{"", "s"} // empty values are conflated with unknowns in TF internals, must test
+
+	labelsValues := []map[string]string{
+		nil,
+		{},
+	}
+
+	for _, label := range labelValues {
+		m := map[string]string{"x": label}
+		labelsValues = append(labelsValues, m)
+	}
+
+	for _, label1 := range labelValues {
+		for _, label2 := range labelValues {
+			m := map[string]string{
+				"x": label1,
+				"y": label2,
+			}
+			labelsValues = append(labelsValues, m)
+		}
+	}
+
+	states := []labelsState{}
+
+	for _, label1 := range labelsValues {
+		for _, label2 := range labelsValues {
+			states = append(states, labelsState{
+				DefaultLabels: label1,
+				Labels:        label2,
+			})
+		}
+	}
+
+	t.Logf("total state space: %v states", len(states))
+	t.Logf("random-sampling 100 state transitions")
+
+	for i := 0; i < 100; i++ {
+		t.Run(fmt.Sprintf("test%d", i), func(t *testing.T) {
+			t.Parallel()
+			i := rand.Intn(len(states))
+			j := rand.Intn(len(states))
+			state1, state2 := states[i], states[j]
+			state1.validateTransitionTo(t, state2)
+		})
+	}
+}
+
+type labelsState struct {
+	DefaultLabels map[string]string `json:"defaultLabels"`
+	Labels        map[string]string `json:"labels"`
+}
+
+func (st labelsState) serialize(t *testing.T) string {
+	bytes, err := json.Marshal(st)
+	require.NoError(t, err)
+	return string(bytes)
+}
+
+func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
+	t.Logf("state1 = %v", st.serialize(t))
+	t.Logf("state2 = %v", st2.serialize(t))
+
+	goSdkFolder, err := filepath.Abs(filepath.Join("..", "sdk"))
+	require.NoError(t, err)
+
+	baseOpts := integration.ProgramTestOptions{
+		Dependencies: []string{
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v7=%s", goSdkFolder),
+		},
+	}
+	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
+		baseOpts = getGoBaseOptions(t)
+	}
+
+	opts := baseOpts.With(integration.ProgramTestOptions{
+		Dir:                    "labels-combinations-go",
+		ExtraRuntimeValidation: validateStateResult(1, st, st2),
+		EditDirs: []integration.EditDir{{
+			Dir:                    filepath.Join("labels-combinations-go", "step1"),
+			Additive:               true,
+			ExtraRuntimeValidation: validateStateResult(2, st, st2),
+		}},
+		Config: map[string]string{
+			"state1": st.serialize(t),
+			"state2": st2.serialize(t),
+		},
+		Quick:            true,
+		DestroyOnCleanup: true,
+	})
+
+	integration.ProgramTest(t, &opts)
+}
+
+func (st labelsState) expectedLabels() map[string]string {
+	r := map[string]string{}
+	for k, v := range st.DefaultLabels {
+		r[k] = v
+	}
+	for k, v := range st.Labels {
+		r[k] = v
+	}
+	return r
+}
+
+func validateStateResult(phase int, st1, st2 labelsState) func(
+	t *testing.T,
+	stack integration.RuntimeValidationStackInfo,
+) {
+	var st labelsState
+	switch phase {
+	case 1:
+		st = st1
+	default:
+		st = st2
+	}
+
+	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+		for k, v := range stack.Outputs {
+			actualLabelsJSON := v.(string)
+			var actualLabels map[string]string
+			err := json.Unmarshal([]byte(actualLabelsJSON), &actualLabels)
+			require.NoError(t, err)
+			t.Logf("phase: %d", phase)
+			t.Logf("state1: %v", st1.serialize(t))
+			if phase == 2 {
+				t.Logf("state2: %v", st2.serialize(t))
+			}
+			require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
+			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
+		}
+	}
 }

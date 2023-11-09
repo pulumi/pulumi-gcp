@@ -123,22 +123,19 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lookerNetwork = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "looker-network",
-    ///     });
+    ///     var lookerNetwork = new Gcp.Compute.Network("lookerNetwork");
     /// 
     ///     var lookerRange = new Gcp.Compute.GlobalAddress("lookerRange", new()
     ///     {
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 20,
-    ///         Network = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = lookerNetwork.Id,
     ///     });
     /// 
     ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("lookerVpcConnection", new()
     ///     {
-    ///         Network = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = lookerNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -153,7 +150,7 @@ namespace Pulumi.Gcp.Looker
     ///         PrivateIpEnabled = true,
     ///         PublicIpEnabled = false,
     ///         ReservedRange = lookerRange.Name,
-    ///         ConsumerNetwork = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         ConsumerNetwork = lookerNetwork.Id,
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
     ///         {
     ///             AllowedEmailDomains = new[]
@@ -347,9 +344,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// - LOOKER_MODELER: standalone modeling service
         /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Output("platformEdition")]
         public Output<string?> PlatformEdition { get; private set; } = null!;
@@ -516,9 +512,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// - LOOKER_MODELER: standalone modeling service
         /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Input("platformEdition")]
         public Input<string>? PlatformEdition { get; set; }
@@ -677,9 +672,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// - LOOKER_MODELER: standalone modeling service
         /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Input("platformEdition")]
         public Input<string>? PlatformEdition { get; set; }

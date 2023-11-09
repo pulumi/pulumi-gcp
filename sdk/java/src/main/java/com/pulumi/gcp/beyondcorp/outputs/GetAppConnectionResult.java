@@ -18,6 +18,7 @@ public final class GetAppConnectionResult {
     private List<GetAppConnectionApplicationEndpoint> applicationEndpoints;
     private List<String> connectors;
     private String displayName;
+    private Map<String,String> effectiveLabels;
     private List<GetAppConnectionGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,7 @@ public final class GetAppConnectionResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private String type;
 
@@ -39,6 +41,9 @@ public final class GetAppConnectionResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public List<GetAppConnectionGateway> gateways() {
         return this.gateways;
@@ -59,6 +64,9 @@ public final class GetAppConnectionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -78,11 +86,13 @@ public final class GetAppConnectionResult {
         private List<GetAppConnectionApplicationEndpoint> applicationEndpoints;
         private List<String> connectors;
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private List<GetAppConnectionGateway> gateways;
         private String id;
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String type;
         public Builder() {}
@@ -91,11 +101,13 @@ public final class GetAppConnectionResult {
     	      this.applicationEndpoints = defaults.applicationEndpoints;
     	      this.connectors = defaults.connectors;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gateways = defaults.gateways;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.type = defaults.type;
         }
@@ -119,6 +131,11 @@ public final class GetAppConnectionResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -150,6 +167,11 @@ public final class GetAppConnectionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -164,11 +186,13 @@ public final class GetAppConnectionResult {
             o.applicationEndpoints = applicationEndpoints;
             o.connectors = connectors;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.gateways = gateways;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.type = type;
             return o;

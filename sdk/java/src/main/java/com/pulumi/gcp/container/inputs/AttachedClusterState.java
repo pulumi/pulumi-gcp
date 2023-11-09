@@ -34,6 +34,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
@@ -45,6 +48,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
      * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -166,6 +172,23 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> distribution() {
         return Optional.ofNullable(this.distribution);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -438,6 +461,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.distribution = $.distribution;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.errors = $.errors;
         this.fleet = $.fleet;
         this.kubernetesVersion = $.kubernetesVersion;
@@ -481,6 +505,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          * Name must be 63 characters or less, begin and end with alphanumerics,
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -496,6 +523,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
          * Name must be 63 characters or less, begin and end with alphanumerics,
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -661,6 +691,29 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder distribution(String distribution) {
             return distribution(Output.of(distribution));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.TransferJobEventStreamArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
@@ -64,6 +65,21 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    @Import(name="eventStream")
+    private @Nullable Output<TransferJobEventStreamArgs> eventStream;
+
+    /**
+     * @return Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    public Optional<Output<TransferJobEventStreamArgs>> eventStream() {
+        return Optional.ofNullable(this.eventStream);
+    }
+
+    /**
      * When the Transfer Job was last modified.
      * 
      */
@@ -79,14 +95,14 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Transfer Job.
+     * Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Transfer Job.
+     * @return Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -126,18 +142,14 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<TransferJobScheduleArgs> schedule;
 
     /**
-     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     public Optional<Output<TransferJobScheduleArgs>> schedule() {
@@ -162,12 +174,16 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     /**
      * Transfer specification. Structure documented below.
      * 
+     * ***
+     * 
      */
     @Import(name="transferSpec")
     private @Nullable Output<TransferJobTransferSpecArgs> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
+     * 
+     * ***
      * 
      */
     public Optional<Output<TransferJobTransferSpecArgs>> transferSpec() {
@@ -180,6 +196,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         this.creationTime = $.creationTime;
         this.deletionTime = $.deletionTime;
         this.description = $.description;
+        this.eventStream = $.eventStream;
         this.lastModificationTime = $.lastModificationTime;
         this.name = $.name;
         this.notificationConfig = $.notificationConfig;
@@ -271,6 +288,27 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param eventStream Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventStream(@Nullable Output<TransferJobEventStreamArgs> eventStream) {
+            $.eventStream = eventStream;
+            return this;
+        }
+
+        /**
+         * @param eventStream Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventStream(TransferJobEventStreamArgs eventStream) {
+            return eventStream(Output.of(eventStream));
+        }
+
+        /**
          * @param lastModificationTime When the Transfer Job was last modified.
          * 
          * @return builder
@@ -292,7 +330,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Transfer Job.
+         * @param name Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
          * 
          * @return builder
          * 
@@ -303,7 +341,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Transfer Job.
+         * @param name Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
          * 
          * @return builder
          * 
@@ -357,9 +395,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-         * 
-         * ***
+         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
          * 
          * @return builder
          * 
@@ -370,9 +406,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-         * 
-         * ***
+         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
          * 
          * @return builder
          * 
@@ -405,6 +439,8 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transferSpec Transfer specification. Structure documented below.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -415,6 +451,8 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param transferSpec Transfer specification. Structure documented below.
+         * 
+         * ***
          * 
          * @return builder
          * 

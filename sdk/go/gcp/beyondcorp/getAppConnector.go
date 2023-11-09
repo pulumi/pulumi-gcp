@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,13 +65,15 @@ type LookupAppConnectorArgs struct {
 
 // A collection of values returned by getAppConnector.
 type LookupAppConnectorResult struct {
-	DisplayName string `pulumi:"displayName"`
+	DisplayName     string            `pulumi:"displayName"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                         `pulumi:"id"`
 	Labels         map[string]string              `pulumi:"labels"`
 	Name           string                         `pulumi:"name"`
 	PrincipalInfos []GetAppConnectorPrincipalInfo `pulumi:"principalInfos"`
 	Project        *string                        `pulumi:"project"`
+	PulumiLabels   map[string]string              `pulumi:"pulumiLabels"`
 	Region         *string                        `pulumi:"region"`
 	State          string                         `pulumi:"state"`
 }
@@ -132,6 +134,10 @@ func (o LookupAppConnectorResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupAppConnectorResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAppConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -151,6 +157,10 @@ func (o LookupAppConnectorResultOutput) PrincipalInfos() GetAppConnectorPrincipa
 
 func (o LookupAppConnectorResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAppConnectorResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAppConnectorResultOutput) Region() pulumi.StringPtrOutput {

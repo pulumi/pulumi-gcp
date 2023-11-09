@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,8 +25,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,8 +111,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -398,11 +398,16 @@ type EdgeCacheService struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayOutput `pulumi:"edgeSslCertificates"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses pulumi.StringArrayOutput `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -414,6 +419,9 @@ type EdgeCacheService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -436,6 +444,11 @@ func NewEdgeCacheService(ctx *pulumi.Context,
 	if args.Routing == nil {
 		return nil, errors.New("invalid value for required argument 'Routing'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheService
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheService:EdgeCacheService", name, args, &resource, opts...)
@@ -472,11 +485,16 @@ type edgeCacheServiceState struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -488,6 +506,9 @@ type edgeCacheServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -514,11 +535,16 @@ type EdgeCacheServiceState struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses pulumi.StringArrayInput
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -530,6 +556,9 @@ type EdgeCacheServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -561,6 +590,8 @@ type edgeCacheServiceArgs struct {
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -600,6 +631,8 @@ type EdgeCacheServiceArgs struct {
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -762,6 +795,12 @@ func (o EdgeCacheServiceOutput) EdgeSslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.EdgeSslCertificates }).(pulumi.StringArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EdgeCacheServiceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 func (o EdgeCacheServiceOutput) Ipv4Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
@@ -773,6 +812,8 @@ func (o EdgeCacheServiceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 }
 
 // Set of label tags associated with the EdgeCache resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EdgeCacheServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -794,6 +835,12 @@ func (o EdgeCacheServiceOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o EdgeCacheServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheServiceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Require TLS (HTTPS) for all clients connecting to this service.

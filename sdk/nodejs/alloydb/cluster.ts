@@ -193,6 +193,14 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
@@ -226,6 +234,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
@@ -237,12 +255,18 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
     /**
+     * For Resource freshness validation (https://google.aip.dev/154)
+     */
+    public readonly etag!: pulumi.Output<string | undefined>;
+    /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      */
     public readonly initialUser!: pulumi.Output<outputs.alloydb.ClusterInitialUser | undefined>;
     /**
      * User-defined labels for the alloydb cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -282,6 +306,17 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
+     */
+    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
      * Structure is documented below.
      */
@@ -291,6 +326,10 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly restoreContinuousBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
+    /**
+     * Output only. The current serving state of the cluster.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The system-generated UID of the resource.
      */
@@ -309,6 +348,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
             resourceInputs["backupSources"] = state ? state.backupSources : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
@@ -316,8 +356,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupInfos"] = state ? state.continuousBackupInfos : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["initialUser"] = state ? state.initialUser : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -326,8 +369,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -337,11 +383,13 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["initialUser"] = args ? args.initialUser : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -353,12 +401,19 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["databaseVersion"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionInfos"] = undefined /*out*/;
             resourceInputs["migrationSources"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -367,6 +422,14 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
@@ -401,6 +464,16 @@ export interface ClusterState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
@@ -412,12 +485,18 @@ export interface ClusterState {
      */
     encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[]>;
     /**
+     * For Resource freshness validation (https://google.aip.dev/154)
+     */
+    etag?: pulumi.Input<string>;
+    /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
     /**
      * User-defined labels for the alloydb cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -457,6 +536,17 @@ export interface ClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
+     */
+    reconciling?: pulumi.Input<boolean>;
+    /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
      * Structure is documented below.
      */
@@ -467,6 +557,10 @@ export interface ClusterState {
      */
     restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
     /**
+     * Output only. The current serving state of the cluster.
+     */
+    state?: pulumi.Input<string>;
+    /**
      * The system-generated UID of the resource.
      */
     uid?: pulumi.Input<string>;
@@ -476,6 +570,14 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
@@ -501,12 +603,18 @@ export interface ClusterArgs {
      */
     encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
     /**
+     * For Resource freshness validation (https://google.aip.dev/154)
+     */
+    etag?: pulumi.Input<string>;
+    /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
     /**
      * User-defined labels for the alloydb cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

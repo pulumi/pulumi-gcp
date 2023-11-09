@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Compute
     public static class GetInstanceTemplate
     {
         /// <summary>
+        /// &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+        /// 
         /// Get information about a VM instance template resource within GCE. For more information see
         /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
         /// and
@@ -49,6 +51,8 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+        /// 
         /// Get information about a VM instance template resource within GCE. For more information see
         /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
         /// and
@@ -195,6 +199,7 @@ namespace Pulumi.Gcp.Compute
         /// documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateDiskResult> Disks;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -266,6 +271,7 @@ namespace Pulumi.Gcp.Compute
         /// is not provided, the provider project is used.
         /// </summary>
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         /// <summary>
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
@@ -324,6 +330,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceTemplateDiskResult> disks,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             bool enableDisplay,
 
             string? filter,
@@ -358,6 +366,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string region,
 
             ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> reservationAffinities,
@@ -383,6 +393,7 @@ namespace Pulumi.Gcp.Compute
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             Description = description;
             Disks = disks;
+            EffectiveLabels = effectiveLabels;
             EnableDisplay = enableDisplay;
             Filter = filter;
             GuestAccelerators = guestAccelerators;
@@ -400,6 +411,7 @@ namespace Pulumi.Gcp.Compute
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;

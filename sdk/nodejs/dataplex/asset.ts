@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *         name: "projects/my-project-name/buckets/bucket",
  *         type: "STORAGE_BUCKET",
  *     },
+ *     labels: {
+ *         env: "foo",
+ *         "my-asset": "exists",
+ *     },
  *     project: "my-project-name",
  * }, {
  *     dependsOn: [basicBucket],
@@ -122,7 +126,15 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -141,6 +153,10 @@ export class Asset extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
@@ -185,11 +201,13 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["discoverySpec"] = state ? state.discoverySpec : undefined;
             resourceInputs["discoveryStatuses"] = state ? state.discoveryStatuses : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lake"] = state ? state.lake : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
             resourceInputs["resourceStatuses"] = state ? state.resourceStatuses : undefined;
             resourceInputs["securityStatuses"] = state ? state.securityStatuses : undefined;
@@ -225,6 +243,8 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryStatuses"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["resourceStatuses"] = undefined /*out*/;
             resourceInputs["securityStatuses"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -232,6 +252,8 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Asset.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -265,7 +287,15 @@ export interface AssetState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -284,6 +314,10 @@ export interface AssetState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
@@ -332,6 +366,9 @@ export interface AssetArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("myaccount"),
 //				DisplayName: pulumi.String("My Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+//			_, err = serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
 //				PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
 //			})
@@ -54,7 +54,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -62,7 +62,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("myaccount"),
 //				DisplayName: pulumi.String("My Service Account"),
 //			})
@@ -75,7 +75,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+//			_, err = serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
 //				Keepers: pulumi.Map{
 //					"rotation_time": mykeyRotation.RotationRfc3339,
@@ -140,13 +140,19 @@ func NewKey(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:serviceAccount/key:Key"),
+		},
+	})
+	opts = append(opts, aliases)
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"privateKey",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Key
-	err := ctx.RegisterResource("gcp:serviceAccount/key:Key", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:serviceaccount/key:Key", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -158,7 +164,7 @@ func NewKey(ctx *pulumi.Context,
 func GetKey(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KeyState, opts ...pulumi.ResourceOption) (*Key, error) {
 	var resource Key
-	err := ctx.ReadResource("gcp:serviceAccount/key:Key", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:serviceaccount/key:Key", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

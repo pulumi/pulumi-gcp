@@ -168,7 +168,7 @@ class SyncAuthorization(pulumi.CustomResource):
             project_id=project.project_id,
             runtime_type="HYBRID",
             opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Service Account")
         synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",
@@ -236,7 +236,7 @@ class SyncAuthorization(pulumi.CustomResource):
             project_id=project.project_id,
             runtime_type="HYBRID",
             opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Service Account")
         synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",

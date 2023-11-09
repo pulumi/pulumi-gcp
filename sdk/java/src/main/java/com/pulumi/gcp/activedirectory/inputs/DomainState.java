@@ -73,6 +73,23 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
      * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
@@ -91,6 +108,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Resource labels that can contain user-provided metadata
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -98,6 +117,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Resource labels that can contain user-provided metadata
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -154,6 +175,23 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
      * Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
      * 
@@ -176,11 +214,13 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.admin = $.admin;
         this.authorizedNetworks = $.authorizedNetworks;
         this.domainName = $.domainName;
+        this.effectiveLabels = $.effectiveLabels;
         this.fqdn = $.fqdn;
         this.labels = $.labels;
         this.locations = $.locations;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.reservedIpRange = $.reservedIpRange;
     }
 
@@ -287,6 +327,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param fqdn The fully-qualified domain name of the exposed domain used by clients to connect to the service.
          * Similar to what would be chosen for an Active Directory set up on an internal network.
          * 
@@ -311,6 +374,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels that can contain user-provided metadata
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -322,6 +387,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels that can contain user-provided metadata
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -406,6 +473,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

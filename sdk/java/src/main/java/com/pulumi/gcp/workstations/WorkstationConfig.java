@@ -86,6 +86,11 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-central1&#34;)
  *             .idleTimeout(&#34;600s&#34;)
  *             .runningTimeout(&#34;21600s&#34;)
+ *             .replicaZones(            
+ *                 &#34;us-central1-a&#34;,
+ *                 &#34;us-central1-b&#34;)
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
  *             .host(WorkstationConfigHostArgs.builder()
  *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
  *                     .machineType(&#34;e2-standard-4&#34;)
@@ -538,8 +543,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.workstations.WorkstationConfig;
  * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
  * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
@@ -652,6 +657,8 @@ import javax.annotation.Nullable;
 public class WorkstationConfig extends com.pulumi.resources.CustomResource {
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -659,6 +666,8 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -739,6 +748,52 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
+     * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    @Export(name="enableAuditAgent", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableAuditAgent;
+
+    /**
+     * @return Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+     * 
+     */
+    public Output<Optional<Boolean>> enableAuditAgent() {
+        return Codegen.optional(this.enableAuditAgent);
+    }
+    /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
      * If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
@@ -810,6 +865,8 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -817,6 +874,8 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -885,6 +944,38 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
+     * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    @Export(name="replicaZones", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> replicaZones;
+
+    /**
+     * @return Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
+     * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+     * 
+     */
+    public Output<List<String>> replicaZones() {
+        return this.replicaZones;
     }
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -977,6 +1068,10 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

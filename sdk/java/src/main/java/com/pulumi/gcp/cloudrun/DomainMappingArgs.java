@@ -37,16 +37,16 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="metadata", required=true)
-    private Output<DomainMappingMetadataArgs> metadata;
+    @Import(name="metadata")
+    private @Nullable Output<DomainMappingMetadataArgs> metadata;
 
     /**
      * @return Metadata associated with this DomainMapping.
      * Structure is documented below.
      * 
      */
-    public Output<DomainMappingMetadataArgs> metadata() {
-        return this.metadata;
+    public Optional<Output<DomainMappingMetadataArgs>> metadata() {
+        return Optional.ofNullable(this.metadata);
     }
 
     /**
@@ -154,7 +154,7 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Output<DomainMappingMetadataArgs> metadata) {
+        public Builder metadata(@Nullable Output<DomainMappingMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -239,7 +239,6 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
 
         public DomainMappingArgs build() {
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.metadata = Objects.requireNonNull($.metadata, "expected parameter 'metadata' to be non-null");
             $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
             return $;
         }

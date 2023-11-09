@@ -59,6 +59,10 @@ import javax.annotation.Nullable;
  * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
  * 
+ * &gt; **Note**: On version 5.0.0+ of the provider, you must explicitly set `deletion_protection=false`
+ * (and run `pulumi up` to write the field to state) in order to destroy a cluster.
+ * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
+ * 
  * &gt; **Warning:** All arguments and attributes, including basic auth username and
  * passwords as well as certificate outputs will be stored in the raw state as
  * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
@@ -71,8 +75,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
  * import com.pulumi.gcp.container.NodePool;
@@ -129,8 +133,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
  * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
@@ -176,8 +180,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
  * import java.util.List;
@@ -322,7 +326,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
      * 
      */
     @Export(name="clusterIpv4Cidr", refs={String.class}, tree="[0]")
@@ -332,7 +336,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
      * 
      */
     public Output<String> clusterIpv4Cidr() {
@@ -451,6 +455,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.defaultSnatStatus;
     }
     /**
+     * Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+     * Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
+    }
+    /**
      * Description of the cluster.
      * 
      */
@@ -497,28 +517,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableAutopilot() {
         return Codegen.optional(this.enableAutopilot);
-    }
-    /**
-     * Enable Binary Authorization for this cluster.
-     * If enabled, all container images will be validated by Google Binary Authorization.
-     * Deprecated in favor of `binary_authorization`.
-     * 
-     * @deprecated
-     * Deprecated in favor of binary_authorization.
-     * 
-     */
-    @Deprecated /* Deprecated in favor of binary_authorization. */
-    @Export(name="enableBinaryAuthorization", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableBinaryAuthorization;
-
-    /**
-     * @return Enable Binary Authorization for this cluster.
-     * If enabled, all container images will be validated by Google Binary Authorization.
-     * Deprecated in favor of `binary_authorization`.
-     * 
-     */
-    public Output<Optional<Boolean>> enableBinaryAuthorization() {
-        return Codegen.optional(this.enableBinaryAuthorization);
     }
     /**
      * )
@@ -732,9 +730,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration of cluster IP allocation for
-     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * making the cluster VPC-native instead of routes-based. Structure is documented
-     * below.
+     * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+     * Structure is documented below.
      * 
      */
     @Export(name="ipAllocationPolicy", refs={ClusterIpAllocationPolicy.class}, tree="[0]")
@@ -742,9 +739,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration of cluster IP allocation for
-     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * making the cluster VPC-native instead of routes-based. Structure is documented
-     * below.
+     * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterIpAllocationPolicy> ipAllocationPolicy() {
@@ -1054,8 +1050,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
      * 
      */
     @Export(name="networkingMode", refs={String.class}, tree="[0]")
@@ -1063,8 +1058,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
      * 
      */
     public Output<String> networkingMode() {

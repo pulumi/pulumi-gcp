@@ -132,6 +132,13 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.network);
     }
 
+    @Import(name="networkAttachment")
+    private @Nullable Output<String> networkAttachment;
+
+    public Optional<Output<String>> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
+
     /**
      * The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -177,6 +184,13 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<Integer>> queueCount() {
         return Optional.ofNullable(this.queueCount);
+    }
+
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
     }
 
     /**
@@ -253,9 +267,11 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         this.ipv6Address = $.ipv6Address;
         this.name = $.name;
         this.network = $.network;
+        this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
         this.queueCount = $.queueCount;
+        this.securityPolicy = $.securityPolicy;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
@@ -455,6 +471,15 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             return network(Output.of(network));
         }
 
+        public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
+            $.networkAttachment = networkAttachment;
+            return this;
+        }
+
+        public Builder networkAttachment(String networkAttachment) {
+            return networkAttachment(Output.of(networkAttachment));
+        }
+
         /**
          * @param networkIp The private IP address to assign to the instance. If
          * empty, the address will be automatically assigned.
@@ -518,6 +543,15 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
          */
         public Builder queueCount(Integer queueCount) {
             return queueCount(Output.of(queueCount));
+        }
+
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         /**

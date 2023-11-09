@@ -12,6 +12,7 @@ import com.pulumi.gcp.vertex.AiDatasetArgs;
 import com.pulumi.gcp.vertex.inputs.AiDatasetState;
 import com.pulumi.gcp.vertex.outputs.AiDatasetEncryptionSpec;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,6 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataset = new AiDataset(&#34;dataset&#34;, AiDatasetArgs.builder()        
  *             .displayName(&#34;terraform&#34;)
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .metadataSchemaUri(&#34;gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
@@ -94,6 +96,22 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
      * Structure is documented below.
      * 
@@ -112,16 +130,22 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs to assign to this Workflow.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> labels;
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to this Workflow.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
-    public Output<Map<String,String>> labels() {
-        return this.labels;
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
@@ -170,6 +194,22 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The region of the dataset. eg us-central1
@@ -232,6 +272,10 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

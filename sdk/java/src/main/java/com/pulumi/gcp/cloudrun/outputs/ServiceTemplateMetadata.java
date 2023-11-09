@@ -32,6 +32,8 @@ public final class ServiceTemplateMetadata {
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     private @Nullable Map<String,String> annotations;
@@ -45,6 +47,8 @@ public final class ServiceTemplateMetadata {
      * @return Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -105,6 +109,8 @@ public final class ServiceTemplateMetadata {
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Map<String,String> annotations() {
@@ -122,6 +128,8 @@ public final class ServiceTemplateMetadata {
      * @return Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Map<String,String> labels() {

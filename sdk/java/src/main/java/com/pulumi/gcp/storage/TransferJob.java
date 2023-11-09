@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.TransferJobArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobState;
+import com.pulumi.gcp.storage.outputs.TransferJobEventStream;
 import com.pulumi.gcp.storage.outputs.TransferJobNotificationConfig;
 import com.pulumi.gcp.storage.outputs.TransferJobSchedule;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpec;
@@ -211,6 +212,20 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    @Export(name="eventStream", refs={TransferJobEventStream.class}, tree="[0]")
+    private Output</* @Nullable */ TransferJobEventStream> eventStream;
+
+    /**
+     * @return Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    public Output<Optional<TransferJobEventStream>> eventStream() {
+        return Codegen.optional(this.eventStream);
+    }
+    /**
      * When the Transfer Job was last modified.
      * 
      */
@@ -225,14 +240,14 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return this.lastModificationTime;
     }
     /**
-     * The name of the Transfer Job.
+     * Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Transfer Job.
+     * @return Specifies a unique name of the resource such as AWS SQS ARN in the form &#39;arn:aws:sqs:region:account_id:queue_name&#39;, or Pub/Sub subscription resource name in the form &#39;projects/{project}/subscriptions/{sub}&#39;.
      * 
      */
     public Output<String> name() {
@@ -269,18 +284,14 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     @Export(name="schedule", refs={TransferJobSchedule.class}, tree="[0]")
     private Output</* @Nullable */ TransferJobSchedule> schedule;
 
     /**
-     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     public Output<Optional<TransferJobSchedule>> schedule() {
@@ -303,12 +314,16 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
     /**
      * Transfer specification. Structure documented below.
      * 
+     * ***
+     * 
      */
     @Export(name="transferSpec", refs={TransferJobTransferSpec.class}, tree="[0]")
     private Output<TransferJobTransferSpec> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
+     * 
+     * ***
      * 
      */
     public Output<TransferJobTransferSpec> transferSpec() {

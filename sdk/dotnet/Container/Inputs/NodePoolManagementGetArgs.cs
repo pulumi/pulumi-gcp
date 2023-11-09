@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolManagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the nodes will be automatically repaired.
+        /// Whether the nodes will be automatically repaired. Enabled by default.
         /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
 
         /// <summary>
-        /// Whether the nodes will be automatically upgraded.
+        /// Whether the nodes will be automatically upgraded. Enabled by default.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }

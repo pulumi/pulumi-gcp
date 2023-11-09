@@ -29,22 +29,19 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vertexNetwork = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "network-name",
-    ///     });
+    ///     var vertexNetwork = new Gcp.Compute.Network("vertexNetwork");
     /// 
     ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertexRange", new()
     ///     {
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 24,
-    ///         Network = vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = vertexNetwork.Id,
     ///     });
     /// 
     ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertexVpcConnection", new()
     ///     {
-    ///         Network = vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = vertexNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -64,11 +61,11 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///         Network = Output.Tuple(project, vertexNetwork).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, vertexNetwork.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
-    ///             var vertexNetwork = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Name)}";
+    ///             var name = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{name}";
     ///         }),
     ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiEndpointEncryptionSpecArgs
     ///         {
@@ -138,6 +135,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
         /// Structure is documented below.
         /// </summary>
@@ -152,6 +156,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -191,6 +197,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The region for the resource
         /// </summary>
         [Output("region")]
@@ -225,6 +238,11 @@ namespace Pulumi.Gcp.Vertex
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -272,6 +290,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -353,6 +373,23 @@ namespace Pulumi.Gcp.Vertex
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
         /// Structure is documented below.
@@ -371,6 +408,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -411,6 +450,23 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// The region for the resource

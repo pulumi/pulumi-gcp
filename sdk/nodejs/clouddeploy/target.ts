@@ -18,10 +18,6 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.clouddeploy.Target("primary", {
  *     location: "us-west1",
- *     annotations: {
- *         my_first_annotation: "example-annotation-1",
- *         my_second_annotation: "example-annotation-2",
- *     },
  *     deployParameters: {},
  *     description: "multi-target description",
  *     executionConfigs: [{
@@ -31,10 +27,6 @@ import * as utilities from "../utilities";
  *         ],
  *         executionTimeout: "3600s",
  *     }],
- *     labels: {
- *         my_first_label: "example-label-1",
- *         my_second_label: "example-label-2",
- *     },
  *     multiTarget: {
  *         targetIds: [
  *             "1",
@@ -43,6 +35,14 @@ import * as utilities from "../utilities";
  *     },
  *     project: "my-project-name",
  *     requireApproval: false,
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     labels: {
+ *         my_first_label: "example-label-1",
+ *         my_second_label: "example-label-2",
+ *     },
  * }, {
  *     provider: google_beta,
  * });
@@ -55,10 +55,6 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.clouddeploy.Target("primary", {
  *     location: "us-west1",
- *     annotations: {
- *         my_first_annotation: "example-annotation-1",
- *         my_second_annotation: "example-annotation-2",
- *     },
  *     deployParameters: {},
  *     description: "basic description",
  *     executionConfigs: [{
@@ -68,14 +64,18 @@ import * as utilities from "../utilities";
  *         ],
  *         executionTimeout: "3600s",
  *     }],
- *     labels: {
- *         my_first_label: "example-label-1",
- *         my_second_label: "example-label-2",
- *     },
  *     project: "my-project-name",
  *     requireApproval: false,
  *     run: {
  *         location: "projects/my-project-name/locations/us-west1",
+ *     },
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     labels: {
+ *         my_first_label: "example-label-1",
+ *         my_second_label: "example-label-2",
  *     },
  * }, {
  *     provider: google_beta,
@@ -155,6 +155,9 @@ export class Target extends pulumi.CustomResource {
 
     /**
      * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -174,6 +177,16 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -187,6 +200,9 @@ export class Target extends pulumi.CustomResource {
     public readonly gke!: pulumi.Output<outputs.clouddeploy.TargetGke | undefined>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -209,6 +225,10 @@ export class Target extends pulumi.CustomResource {
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Optional. Whether or not the `Target` requires approval.
      */
@@ -248,6 +268,8 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deployParameters"] = state ? state.deployParameters : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["executionConfigs"] = state ? state.executionConfigs : undefined;
             resourceInputs["gke"] = state ? state.gke : undefined;
@@ -256,6 +278,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["multiTarget"] = state ? state.multiTarget : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requireApproval"] = state ? state.requireApproval : undefined;
             resourceInputs["run"] = state ? state.run : undefined;
             resourceInputs["targetId"] = state ? state.targetId : undefined;
@@ -280,12 +303,17 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["requireApproval"] = args ? args.requireApproval : undefined;
             resourceInputs["run"] = args ? args.run : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Target.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -296,6 +324,9 @@ export class Target extends pulumi.CustomResource {
 export interface TargetState {
     /**
      * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -315,6 +346,16 @@ export interface TargetState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
@@ -328,6 +369,9 @@ export interface TargetState {
     gke?: pulumi.Input<inputs.clouddeploy.TargetGke>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -350,6 +394,10 @@ export interface TargetState {
      * The project for the resource
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Optional. Whether or not the `Target` requires approval.
      */
@@ -378,6 +426,9 @@ export interface TargetState {
 export interface TargetArgs {
     /**
      * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -402,6 +453,9 @@ export interface TargetArgs {
     gke?: pulumi.Input<inputs.clouddeploy.TargetGke>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

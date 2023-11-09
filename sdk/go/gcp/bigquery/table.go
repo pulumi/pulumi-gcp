@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -139,6 +139,9 @@ type Table struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The field description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
 	// is transparent to the user.  Structure is documented below.
@@ -159,20 +162,8 @@ type Table struct {
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// A mapping of labels to assign to the resource.
 	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced `STRUCT` field type with `RECORD`
-	// field type, we currently cannot suppress the recurring diff this causes.
-	// As a workaround, we recommend using the schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The time when this table was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
@@ -192,6 +183,8 @@ type Table struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
@@ -243,6 +236,11 @@ func NewTable(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Table
 	err := ctx.RegisterResource("gcp:bigquery/table:Table", name, args, &resource, opts...)
@@ -280,6 +278,9 @@ type tableState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The field description.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
 	// is transparent to the user.  Structure is documented below.
@@ -300,20 +301,8 @@ type tableState struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// A mapping of labels to assign to the resource.
 	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced `STRUCT` field type with `RECORD`
-	// field type, we currently cannot suppress the recurring diff this causes.
-	// As a workaround, we recommend using the schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The time when this table was last modified, in milliseconds since the epoch.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
@@ -333,6 +322,8 @@ type tableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
@@ -386,6 +377,9 @@ type TableState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The field description.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
 	// is transparent to the user.  Structure is documented below.
@@ -406,20 +400,8 @@ type TableState struct {
 	FriendlyName pulumi.StringPtrInput
 	// A mapping of labels to assign to the resource.
 	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced `STRUCT` field type with `RECORD`
-	// field type, we currently cannot suppress the recurring diff this causes.
-	// As a workaround, we recommend using the schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The time when this table was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.IntPtrInput
@@ -439,6 +421,8 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
@@ -512,20 +496,8 @@ type tableArgs struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// A mapping of labels to assign to the resource.
 	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced `STRUCT` field type with `RECORD`
-	// field type, we currently cannot suppress the recurring diff this causes.
-	// As a workaround, we recommend using the schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
@@ -600,20 +572,8 @@ type TableArgs struct {
 	FriendlyName pulumi.StringPtrInput
 	// A mapping of labels to assign to the resource.
 	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced `STRUCT` field type with `RECORD`
-	// field type, we currently cannot suppress the recurring diff this causes.
-	// As a workaround, we recommend using the schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
@@ -796,6 +756,12 @@ func (o TableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TableOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies how the table should be encrypted.
 // If left blank, the table will be encrypted with a Google-managed key; that process
 // is transparent to the user.  Structure is documented below.
@@ -831,20 +797,8 @@ func (o TableOutput) FriendlyName() pulumi.StringPtrOutput {
 
 // A mapping of labels to assign to the resource.
 //
-// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-//
-// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-// string will create a diff, even if the JSON itself hasn't changed.
-// If the API returns a different value for the same schema, e.g. it
-// switched the order of values or replaced `STRUCT` field type with `RECORD`
-// field type, we currently cannot suppress the recurring diff this causes.
-// As a workaround, we recommend using the schema as returned by the API.
-//
-// ~>**NOTE:**  If you use `externalDataConfiguration`
-// documented below and do **not** set
-// `external_data_configuration.connection_id`, schemas must be specified
-// with `external_data_configuration.schema`. Otherwise, schemas must be
-// specified with this top-level field.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o TableOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -889,6 +843,11 @@ func (o TableOutput) NumRows() pulumi.IntOutput {
 // is not provided, the provider project is used.
 func (o TableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o TableOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // If specified, configures range-based

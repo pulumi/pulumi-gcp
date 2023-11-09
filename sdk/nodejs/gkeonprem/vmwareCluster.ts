@@ -282,8 +282,11 @@ export class VMwareCluster extends pulumi.CustomResource {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware User Cluster nodes across at
      * least three physical hosts in the datacenter.
@@ -322,6 +325,11 @@ export class VMwareCluster extends pulumi.CustomResource {
      * A human readable description of this VMware User Cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable control plane V2. Default to false.
      */
@@ -455,6 +463,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["dataplaneV2"] = state ? state.dataplaneV2 : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["enableControlPlaneV2"] = state ? state.enableControlPlaneV2 : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -510,6 +519,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fleets"] = undefined /*out*/;
@@ -547,6 +557,9 @@ export interface VMwareClusterState {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -587,6 +600,11 @@ export interface VMwareClusterState {
      * A human readable description of this VMware User Cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable control plane V2. Default to false.
      */
@@ -718,6 +736,9 @@ export interface VMwareClusterArgs {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

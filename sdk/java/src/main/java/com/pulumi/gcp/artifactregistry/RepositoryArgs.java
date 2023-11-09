@@ -142,6 +142,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
@@ -152,6 +155,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -485,6 +491,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          * and may only contain lowercase letters, numeric characters, underscores,
          * and dashes.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -499,6 +508,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          * longer than 63 characters. Label keys must begin with a lowercase letter
          * and may only contain lowercase letters, numeric characters, underscores,
          * and dashes.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

@@ -135,6 +135,13 @@ namespace Pulumi.Gcp.Eventarc
         public Output<Outputs.TriggerDestination> Destination { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
@@ -148,6 +155,9 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Optional. User labels attached to the triggers that can be used to group resources.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -177,6 +187,12 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Output("serviceAccount")]
@@ -185,8 +201,8 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
-        [Output("transports")]
-        public Output<ImmutableArray<Outputs.TriggerTransport>> Transports { get; private set; } = null!;
+        [Output("transport")]
+        public Output<Outputs.TriggerTransport> Transport { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -223,6 +239,11 @@ namespace Pulumi.Gcp.Eventarc
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -269,6 +290,9 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Optional. User labels attached to the triggers that can be used to group resources.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -312,17 +336,11 @@ namespace Pulumi.Gcp.Eventarc
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        [Input("transports")]
-        private InputList<Inputs.TriggerTransportArgs>? _transports;
-
         /// <summary>
         /// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
-        public InputList<Inputs.TriggerTransportArgs> Transports
-        {
-            get => _transports ?? (_transports = new InputList<Inputs.TriggerTransportArgs>());
-            set => _transports = value;
-        }
+        [Input("transport")]
+        public Input<Inputs.TriggerTransportArgs>? Transport { get; set; }
 
         public TriggerArgs()
         {
@@ -362,6 +380,23 @@ namespace Pulumi.Gcp.Eventarc
         [Input("destination")]
         public Input<Inputs.TriggerDestinationGetArgs>? Destination { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -379,6 +414,9 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Optional. User labels attached to the triggers that can be used to group resources.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -416,23 +454,33 @@ namespace Pulumi.Gcp.Eventarc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        [Input("transports")]
-        private InputList<Inputs.TriggerTransportGetArgs>? _transports;
-
         /// <summary>
         /// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
-        public InputList<Inputs.TriggerTransportGetArgs> Transports
-        {
-            get => _transports ?? (_transports = new InputList<Inputs.TriggerTransportGetArgs>());
-            set => _transports = value;
-        }
+        [Input("transport")]
+        public Input<Inputs.TriggerTransportGetArgs>? Transport { get; set; }
 
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.

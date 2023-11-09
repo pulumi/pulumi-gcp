@@ -146,6 +146,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies how the table should be encrypted.
         /// If left blank, the table will be encrypted with a Google-managed key; that process
         /// is transparent to the user.  Structure is documented below.
@@ -186,20 +193,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// A mapping of labels to assign to the resource.
         /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-        /// 
-        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-        /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
-        /// 
-        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
-        /// documented below and do **not** set
-        /// `external_data_configuration.connection_id`, schemas must be specified
-        /// with `external_data_configuration.schema`. Otherwise, schemas must be
-        /// specified with this top-level field.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -253,6 +248,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// If specified, configures range-based
@@ -345,6 +346,11 @@ namespace Pulumi.Gcp.BigQuery
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -440,20 +446,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// A mapping of labels to assign to the resource.
         /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-        /// 
-        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-        /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
-        /// 
-        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
-        /// documented below and do **not** set
-        /// `external_data_configuration.connection_id`, schemas must be specified
-        /// with `external_data_configuration.schema`. Otherwise, schemas must be
-        /// specified with this top-level field.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -584,6 +578,23 @@ namespace Pulumi.Gcp.BigQuery
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Specifies how the table should be encrypted.
         /// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -628,20 +639,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// A mapping of labels to assign to the resource.
         /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-        /// 
-        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-        /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
-        /// 
-        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
-        /// documented below and do **not** set
-        /// `external_data_configuration.connection_id`, schemas must be specified
-        /// with `external_data_configuration.schema`. Otherwise, schemas must be
-        /// specified with this top-level field.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -698,6 +697,22 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// If specified, configures range-based

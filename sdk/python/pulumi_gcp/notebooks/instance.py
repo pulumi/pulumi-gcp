@@ -89,6 +89,9 @@ class InstanceArgs:
                Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
@@ -385,6 +388,9 @@ class InstanceArgs:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -627,6 +633,7 @@ class _InstanceState:
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -643,6 +650,7 @@ class _InstanceState:
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -676,6 +684,8 @@ class _InstanceState:
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -688,6 +698,9 @@ class _InstanceState:
                Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -712,6 +725,8 @@ class _InstanceState:
                Only returned when the resource is in a `PROVISIONED` state. If
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -752,6 +767,8 @@ class _InstanceState:
             pulumi.set(__self__, "data_disk_type", data_disk_type)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if install_gpu_driver is not None:
             pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
         if instance_owners is not None:
@@ -784,6 +801,8 @@ class _InstanceState:
             pulumi.set(__self__, "project", project)
         if proxy_uri is not None:
             pulumi.set(__self__, "proxy_uri", proxy_uri)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
@@ -925,6 +944,19 @@ class _InstanceState:
         pulumi.set(self, "disk_encryption", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="installGpuDriver")
     def install_gpu_driver(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -973,6 +1005,9 @@ class _InstanceState:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1135,6 +1170,19 @@ class _InstanceState:
     @proxy_uri.setter
     def proxy_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "proxy_uri", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="reservationAffinity")
@@ -1441,6 +1489,9 @@ class Instance(pulumi.CustomResource):
                Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -1690,8 +1741,12 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["vm_image"] = vm_image
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["proxy_uri"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'gcp:notebooks/instance:Instance',
             resource_name,
@@ -1711,6 +1766,7 @@ class Instance(pulumi.CustomResource):
             data_disk_size_gb: Optional[pulumi.Input[int]] = None,
             data_disk_type: Optional[pulumi.Input[str]] = None,
             disk_encryption: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
             instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_key: Optional[pulumi.Input[str]] = None,
@@ -1727,6 +1783,7 @@ class Instance(pulumi.CustomResource):
             post_startup_script: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_uri: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1765,6 +1822,8 @@ class Instance(pulumi.CustomResource):
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -1777,6 +1836,9 @@ class Instance(pulumi.CustomResource):
                Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -1801,6 +1863,8 @@ class Instance(pulumi.CustomResource):
                Only returned when the resource is in a `PROVISIONED` state. If
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -1836,6 +1900,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
         __props__.__dict__["data_disk_type"] = data_disk_type
         __props__.__dict__["disk_encryption"] = disk_encryption
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["install_gpu_driver"] = install_gpu_driver
         __props__.__dict__["instance_owners"] = instance_owners
         __props__.__dict__["kms_key"] = kms_key
@@ -1852,6 +1917,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["post_startup_script"] = post_startup_script
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_uri"] = proxy_uri
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["service_account_scopes"] = service_account_scopes
@@ -1949,6 +2015,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="installGpuDriver")
     def install_gpu_driver(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1981,10 +2056,13 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2095,6 +2173,15 @@ class Instance(pulumi.CustomResource):
         the population of this value.
         """
         return pulumi.get(self, "proxy_uri")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="reservationAffinity")

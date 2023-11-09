@@ -60,6 +60,7 @@ export interface GetKMSCryptoKeyArgs {
  */
 export interface GetKMSCryptoKeyResult {
     readonly destroyScheduledDuration: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -68,6 +69,7 @@ export interface GetKMSCryptoKeyResult {
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
+    readonly pulumiLabels: {[key: string]: string};
     /**
      * Defines the cryptographic capabilities of the key.
      */

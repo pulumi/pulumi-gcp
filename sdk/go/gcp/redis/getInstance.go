@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,16 +68,17 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AlternativeLocationId string `pulumi:"alternativeLocationId"`
-	AuthEnabled           bool   `pulumi:"authEnabled"`
-	AuthString            string `pulumi:"authString"`
-	AuthorizedNetwork     string `pulumi:"authorizedNetwork"`
-	ConnectMode           string `pulumi:"connectMode"`
-	CreateTime            string `pulumi:"createTime"`
-	CurrentLocationId     string `pulumi:"currentLocationId"`
-	CustomerManagedKey    string `pulumi:"customerManagedKey"`
-	DisplayName           string `pulumi:"displayName"`
-	Host                  string `pulumi:"host"`
+	AlternativeLocationId string            `pulumi:"alternativeLocationId"`
+	AuthEnabled           bool              `pulumi:"authEnabled"`
+	AuthString            string            `pulumi:"authString"`
+	AuthorizedNetwork     string            `pulumi:"authorizedNetwork"`
+	ConnectMode           string            `pulumi:"connectMode"`
+	CreateTime            string            `pulumi:"createTime"`
+	CurrentLocationId     string            `pulumi:"currentLocationId"`
+	CustomerManagedKey    string            `pulumi:"customerManagedKey"`
+	DisplayName           string            `pulumi:"displayName"`
+	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
+	Host                  string            `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                           `pulumi:"id"`
 	Labels                 map[string]string                `pulumi:"labels"`
@@ -91,6 +92,7 @@ type LookupInstanceResult struct {
 	PersistenceIamIdentity string                           `pulumi:"persistenceIamIdentity"`
 	Port                   int                              `pulumi:"port"`
 	Project                *string                          `pulumi:"project"`
+	PulumiLabels           map[string]string                `pulumi:"pulumiLabels"`
 	ReadEndpoint           string                           `pulumi:"readEndpoint"`
 	ReadEndpointPort       int                              `pulumi:"readEndpointPort"`
 	ReadReplicasMode       string                           `pulumi:"readReplicasMode"`
@@ -193,6 +195,10 @@ func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -244,6 +250,10 @@ func (o LookupInstanceResultOutput) Port() pulumi.IntOutput {
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) ReadEndpoint() pulumi.StringOutput {

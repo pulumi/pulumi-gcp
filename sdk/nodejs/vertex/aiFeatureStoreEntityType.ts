@@ -147,6 +147,11 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -159,6 +164,9 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     public readonly featurestore!: pulumi.Output<string>;
     /**
      * A set of key/value label pairs to assign to this EntityType.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -177,6 +185,11 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      */
     public readonly offlineStorageTtlDays!: pulumi.Output<number | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the EntityType.
      */
@@ -201,12 +214,14 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
             const state = argsOrState as AiFeatureStoreEntityTypeState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["featurestore"] = state ? state.featurestore : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["offlineStorageTtlDays"] = state ? state.offlineStorageTtlDays : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -221,11 +236,15 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["offlineStorageTtlDays"] = args ? args.offlineStorageTtlDays : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AiFeatureStoreEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -243,6 +262,11 @@ export interface AiFeatureStoreEntityTypeState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     etag?: pulumi.Input<string>;
@@ -255,6 +279,9 @@ export interface AiFeatureStoreEntityTypeState {
     featurestore?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this EntityType.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -273,6 +300,11 @@ export interface AiFeatureStoreEntityTypeState {
      * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      */
     offlineStorageTtlDays?: pulumi.Input<number>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the EntityType.
      */
@@ -300,6 +332,9 @@ export interface AiFeatureStoreEntityTypeArgs {
     featurestore: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this EntityType.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

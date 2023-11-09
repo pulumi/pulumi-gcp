@@ -10,6 +10,7 @@ import com.pulumi.gcp.inputs.ProviderBatchingArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -250,13 +251,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudIdsCustomEndpoint);
     }
 
-    @Import(name="cloudIotCustomEndpoint")
-    private @Nullable Output<String> cloudIotCustomEndpoint;
-
-    public Optional<Output<String>> cloudIotCustomEndpoint() {
-        return Optional.ofNullable(this.cloudIotCustomEndpoint);
-    }
-
     @Import(name="cloudResourceManagerCustomEndpoint")
     private @Nullable Output<String> cloudResourceManagerCustomEndpoint;
 
@@ -460,6 +454,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.datastreamCustomEndpoint);
     }
 
+    @Import(name="defaultLabels", json=true)
+    private @Nullable Output<Map<String,String>> defaultLabels;
+
+    public Optional<Output<Map<String,String>>> defaultLabels() {
+        return Optional.ofNullable(this.defaultLabels);
+    }
+
     @Import(name="deploymentManagerCustomEndpoint")
     private @Nullable Output<String> deploymentManagerCustomEndpoint;
 
@@ -584,13 +585,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> firestoreCustomEndpoint() {
         return Optional.ofNullable(this.firestoreCustomEndpoint);
-    }
-
-    @Import(name="gameServicesCustomEndpoint")
-    private @Nullable Output<String> gameServicesCustomEndpoint;
-
-    public Optional<Output<String>> gameServicesCustomEndpoint() {
-        return Optional.ofNullable(this.gameServicesCustomEndpoint);
     }
 
     @Import(name="gkeBackupCustomEndpoint")
@@ -1112,7 +1106,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudFunctionsCustomEndpoint = $.cloudFunctionsCustomEndpoint;
         this.cloudIdentityCustomEndpoint = $.cloudIdentityCustomEndpoint;
         this.cloudIdsCustomEndpoint = $.cloudIdsCustomEndpoint;
-        this.cloudIotCustomEndpoint = $.cloudIotCustomEndpoint;
         this.cloudResourceManagerCustomEndpoint = $.cloudResourceManagerCustomEndpoint;
         this.cloudRunCustomEndpoint = $.cloudRunCustomEndpoint;
         this.cloudRunV2CustomEndpoint = $.cloudRunV2CustomEndpoint;
@@ -1142,6 +1135,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
         this.datastoreCustomEndpoint = $.datastoreCustomEndpoint;
         this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
+        this.defaultLabels = $.defaultLabels;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
@@ -1160,7 +1154,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.firebaseStorageCustomEndpoint = $.firebaseStorageCustomEndpoint;
         this.firebaserulesCustomEndpoint = $.firebaserulesCustomEndpoint;
         this.firestoreCustomEndpoint = $.firestoreCustomEndpoint;
-        this.gameServicesCustomEndpoint = $.gameServicesCustomEndpoint;
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHub2CustomEndpoint = $.gkeHub2CustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
@@ -1547,15 +1540,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return cloudIdsCustomEndpoint(Output.of(cloudIdsCustomEndpoint));
         }
 
-        public Builder cloudIotCustomEndpoint(@Nullable Output<String> cloudIotCustomEndpoint) {
-            $.cloudIotCustomEndpoint = cloudIotCustomEndpoint;
-            return this;
-        }
-
-        public Builder cloudIotCustomEndpoint(String cloudIotCustomEndpoint) {
-            return cloudIotCustomEndpoint(Output.of(cloudIotCustomEndpoint));
-        }
-
         public Builder cloudResourceManagerCustomEndpoint(@Nullable Output<String> cloudResourceManagerCustomEndpoint) {
             $.cloudResourceManagerCustomEndpoint = cloudResourceManagerCustomEndpoint;
             return this;
@@ -1817,6 +1801,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return datastreamCustomEndpoint(Output.of(datastreamCustomEndpoint));
         }
 
+        public Builder defaultLabels(@Nullable Output<Map<String,String>> defaultLabels) {
+            $.defaultLabels = defaultLabels;
+            return this;
+        }
+
+        public Builder defaultLabels(Map<String,String> defaultLabels) {
+            return defaultLabels(Output.of(defaultLabels));
+        }
+
         public Builder deploymentManagerCustomEndpoint(@Nullable Output<String> deploymentManagerCustomEndpoint) {
             $.deploymentManagerCustomEndpoint = deploymentManagerCustomEndpoint;
             return this;
@@ -1977,15 +1970,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder firestoreCustomEndpoint(String firestoreCustomEndpoint) {
             return firestoreCustomEndpoint(Output.of(firestoreCustomEndpoint));
-        }
-
-        public Builder gameServicesCustomEndpoint(@Nullable Output<String> gameServicesCustomEndpoint) {
-            $.gameServicesCustomEndpoint = gameServicesCustomEndpoint;
-            return this;
-        }
-
-        public Builder gameServicesCustomEndpoint(String gameServicesCustomEndpoint) {
-            return gameServicesCustomEndpoint(Output.of(gameServicesCustomEndpoint));
         }
 
         public Builder gkeBackupCustomEndpoint(@Nullable Output<String> gkeBackupCustomEndpoint) {

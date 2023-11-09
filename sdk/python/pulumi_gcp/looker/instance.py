@@ -60,9 +60,8 @@ class InstanceArgs:
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_MODELER: standalone modeling service
                Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -217,9 +216,8 @@ class InstanceArgs:
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_MODELER: standalone modeling service
         Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -370,9 +368,8 @@ class _InstanceState:
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_MODELER: standalone modeling service
                Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -616,9 +613,8 @@ class _InstanceState:
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_MODELER: standalone modeling service
         Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -822,7 +818,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.get_network(name="looker-network")
+        looker_network = gcp.compute.Network("lookerNetwork")
         looker_range = gcp.compute.GlobalAddress("lookerRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -934,9 +930,8 @@ class Instance(pulumi.CustomResource):
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_MODELER: standalone modeling service
                Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1040,7 +1035,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.get_network(name="looker-network")
+        looker_network = gcp.compute.Network("lookerNetwork")
         looker_range = gcp.compute.GlobalAddress("lookerRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -1254,9 +1249,8 @@ class Instance(pulumi.CustomResource):
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_MODELER: standalone modeling service
                Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1432,9 +1426,8 @@ class Instance(pulumi.CustomResource):
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_MODELER: standalone modeling service
         Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 

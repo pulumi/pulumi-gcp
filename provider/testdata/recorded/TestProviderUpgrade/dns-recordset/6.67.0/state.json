@@ -2,62 +2,70 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2023-10-06T16:30:36.608471-04:00",
-            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
-            "version": "v3.86.0"
+            "time": "2023-11-01T15:59:38.061923449Z",
+            "magic": "acdeccf9e5003385dafbac764321868e2deb68a98202938780c079c3d99ec55a",
+            "version": "v3.91.1"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:MRvUKjBY0IQ=:v1:QRaBYwqfv0KsdzgB:pNcnjQCo7a7ixhpExpkZ0ECgK1Jd/g=="
+                "salt": "v1:u8xha1RT5I8=:v1:5rouVvjL1sWU7AxF:XNjhQDP22SXIlJKHsrOwno1C9suYOg=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:pulumi:Stack::test-p-it-antons-mac-dns-record-0c048b65",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:pulumi:Stack::test-p-it-runner-dns-record-0449126f",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
-                "created": "2023-10-06T20:30:08.076593Z",
-                "modified": "2023-10-06T20:30:08.076593Z"
+                "created": "2023-11-01T15:59:18.899518564Z",
+                "modified": "2023-11-01T15:59:18.899518564Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:providers:gcp::default",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:providers:gcp::default",
                 "custom": true,
-                "id": "770dfeb1-3aca-4db0-be4c-0c7df129cf5b",
+                "id": "2e5e815c-30c1-4305-939f-b78920ce7e20",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "zone": "us-central1-a"
                 },
-                "created": "2023-10-06T20:30:08.913085Z",
-                "modified": "2023-10-06T20:30:08.913085Z"
+                "created": "2023-11-01T15:59:20.466497271Z",
+                "modified": "2023-11-01T15:59:20.466497271Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:providers:gcp::provider",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:providers:gcp::provider",
                 "custom": true,
-                "id": "c8747986-c7d5-49e1-a5b9-977f96441a69",
+                "id": "7c9724a7-385b-4dc7-91ee-628a63db70cc",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
                 "outputs": {
-                    "project": "pulumi-development",
-                    "version": "6.67.0"
+                    "project": "pulumi-ci-gcp-provider",
+                    "region": "us-central1",
+                    "version": "6.67.0",
+                    "zone": "us-central1-a"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:pulumi:Stack::test-p-it-antons-mac-dns-record-0c048b65",
+                "parent": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:pulumi:Stack::test-p-it-runner-dns-record-0449126f",
                 "propertyDependencies": {
                     "project": null
                 },
-                "created": "2023-10-06T20:30:09.542433Z",
-                "modified": "2023-10-06T20:30:09.542433Z"
+                "created": "2023-11-01T15:59:21.151289099Z",
+                "modified": "2023-11-01T15:59:21.151289099Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:dns/managedZone:ManagedZone::prod",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:dns/managedZone:ManagedZone::prod",
                 "custom": true,
-                "id": "projects/pulumi-development/managedZones/prod-ee35260",
+                "id": "projects/pulumi-ci-gcp-provider/managedZones/prod-c7f39ca",
                 "type": "gcp:dns/managedZone:ManagedZone",
                 "inputs": {
                     "__defaults": [
@@ -67,9 +75,9 @@
                         "visibility"
                     ],
                     "description": "Managed by Pulumi",
-                    "dnsName": "prod.p-it-antons-mac-dns-record-0c048b65.com.",
+                    "dnsName": "prod.p-it-runner-dns-record-0449126f.com.",
                     "forceDestroy": false,
-                    "name": "prod-ee35260",
+                    "name": "prod-c7f39ca",
                     "visibility": "public"
                 },
                 "outputs": {
@@ -77,16 +85,16 @@
                     "cloudLoggingConfig": {
                         "enableLogging": false
                     },
-                    "creationTime": "2023-10-06T20:30:09.811Z",
+                    "creationTime": "2023-11-01T15:59:21.482Z",
                     "description": "Managed by Pulumi",
-                    "dnsName": "prod.p-it-antons-mac-dns-record-0c048b65.com.",
+                    "dnsName": "prod.p-it-runner-dns-record-0449126f.com.",
                     "dnssecConfig": null,
                     "forceDestroy": false,
                     "forwardingConfig": null,
-                    "id": "projects/pulumi-development/managedZones/prod-ee35260",
+                    "id": "projects/pulumi-ci-gcp-provider/managedZones/prod-c7f39ca",
                     "labels": {},
-                    "managedZoneId": 3710607307472766500,
-                    "name": "prod-ee35260",
+                    "managedZoneId": 1659683630382125800,
+                    "name": "prod-c7f39ca",
                     "nameServers": [
                         "ns-cloud-c1.googledomains.com.",
                         "ns-cloud-c2.googledomains.com.",
@@ -95,23 +103,23 @@
                     ],
                     "peeringConfig": null,
                     "privateVisibilityConfig": null,
-                    "project": "pulumi-development",
+                    "project": "pulumi-ci-gcp-provider",
                     "reverseLookup": false,
                     "serviceDirectoryConfig": null,
                     "visibility": "public"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:pulumi:Stack::test-p-it-antons-mac-dns-record-0c048b65",
-                "provider": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:providers:gcp::default::770dfeb1-3aca-4db0-be4c-0c7df129cf5b",
+                "parent": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:pulumi:Stack::test-p-it-runner-dns-record-0449126f",
+                "provider": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:providers:gcp::default::2e5e815c-30c1-4305-939f-b78920ce7e20",
                 "propertyDependencies": {
                     "dnsName": null
                 },
-                "created": "2023-10-06T20:30:10.264267Z",
-                "modified": "2023-10-06T20:30:10.264267Z"
+                "created": "2023-11-01T15:59:21.921732019Z",
+                "modified": "2023-11-01T15:59:21.921732019Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:compute/instance:Instance::ins",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:compute/instance:Instance::ins",
                 "custom": true,
-                "id": "projects/pulumi-development/zones/us-central1-b/instances/ins-efd16e0",
+                "id": "projects/pulumi-ci-gcp-provider/zones/us-central1-b/instances/ins-5b98dfc",
                 "type": "gcp:compute/instance:Instance",
                 "inputs": {
                     "__defaults": [
@@ -134,7 +142,7 @@
                     "canIpForward": false,
                     "deletionProtection": false,
                     "machineType": "g1-small",
-                    "name": "ins-efd16e0",
+                    "name": "ins-5b98dfc",
                     "networkInterfaces": [
                         {
                             "__defaults": [],
@@ -157,11 +165,11 @@
                         "deviceName": "persistent-disk-0",
                         "diskEncryptionKeyRaw": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:d8TWOfKmfrliO0gG:rzMOuIRcuzssxGKfyGP3q687"
+                            "ciphertext": "v1:iJ0FlGe30sKETcw8:jymVstkmNHV6yVXnfFVfJiXA"
                         },
                         "diskEncryptionKeySha256": "",
                         "initializeParams": {
-                            "image": "https://www.googleapis.com/compute/beta/projects/debian-cloud/global/images/debian-11-bullseye-v20231004",
+                            "image": "https://www.googleapis.com/compute/beta/projects/debian-cloud/global/images/debian-11-bullseye-v20231010",
                             "labels": {},
                             "resourceManagerTags": {},
                             "size": 10,
@@ -169,7 +177,7 @@
                         },
                         "kmsKeySelfLink": "",
                         "mode": "READ_WRITE",
-                        "source": "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-b/disks/ins-efd16e0"
+                        "source": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/zones/us-central1-b/disks/ins-5b98dfc"
                     },
                     "canIpForward": false,
                     "confidentialInstanceConfig": null,
@@ -180,20 +188,20 @@
                     "enableDisplay": false,
                     "guestAccelerators": [],
                     "hostname": "",
-                    "id": "projects/pulumi-development/zones/us-central1-b/instances/ins-efd16e0",
-                    "instanceId": "8607839149867520189",
+                    "id": "projects/pulumi-ci-gcp-provider/zones/us-central1-b/instances/ins-5b98dfc",
+                    "instanceId": "3558996091450936117",
                     "labelFingerprint": "42WmSpB8rSM=",
                     "labels": {},
                     "machineType": "g1-small",
                     "metadata": {},
-                    "metadataFingerprint": "EAsrhpzp-qs=",
+                    "metadataFingerprint": "5l1qiDIj1d8=",
                     "minCpuPlatform": "",
-                    "name": "ins-efd16e0",
+                    "name": "ins-5b98dfc",
                     "networkInterfaces": [
                         {
                             "accessConfigs": [
                                 {
-                                    "natIp": "34.71.140.49",
+                                    "natIp": "34.42.137.103",
                                     "networkTier": "PREMIUM",
                                     "publicPtrDomainName": ""
                                 }
@@ -202,19 +210,19 @@
                             "internalIpv6PrefixLength": 0,
                             "ipv6AccessConfigs": [],
                             "ipv6AccessType": "",
-                            "ipv6Address": "2600:2d00:4000:a5ff:a80:31:0:0",
+                            "ipv6Address": "",
                             "name": "nic0",
-                            "network": "https://www.googleapis.com/compute/v1/projects/pulumi-development/global/networks/default",
-                            "networkIp": "10.128.0.49",
+                            "network": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/global/networks/default",
+                            "networkIp": "10.128.0.8",
                             "nicType": "",
                             "queueCount": 0,
                             "stackType": "IPV4_ONLY",
-                            "subnetwork": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/subnetworks/default",
-                            "subnetworkProject": "pulumi-development"
+                            "subnetwork": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/regions/us-central1/subnetworks/default",
+                            "subnetworkProject": "pulumi-ci-gcp-provider"
                         }
                     ],
                     "networkPerformanceConfig": null,
-                    "project": "pulumi-development",
+                    "project": "pulumi-ci-gcp-provider",
                     "reservationAffinity": null,
                     "resourcePolicies": null,
                     "scheduling": {
@@ -230,7 +238,7 @@
                         "provisioningModel": "STANDARD"
                     },
                     "scratchDisks": [],
-                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-b/instances/ins-efd16e0",
+                    "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-ci-gcp-provider/zones/us-central1-b/instances/ins-5b98dfc",
                     "serviceAccount": null,
                     "shieldedInstanceConfig": {
                         "enableIntegrityMonitoring": true,
@@ -241,64 +249,64 @@
                     "tagsFingerprint": "42WmSpB8rSM=",
                     "zone": "us-central1-b"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:pulumi:Stack::test-p-it-antons-mac-dns-record-0c048b65",
-                "provider": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:providers:gcp::default::770dfeb1-3aca-4db0-be4c-0c7df129cf5b",
+                "parent": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:pulumi:Stack::test-p-it-runner-dns-record-0449126f",
+                "provider": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:providers:gcp::default::2e5e815c-30c1-4305-939f-b78920ce7e20",
                 "propertyDependencies": {
                     "bootDisk": null,
                     "machineType": null,
                     "networkInterfaces": null,
                     "zone": null
                 },
-                "created": "2023-10-06T20:30:33.580665Z",
-                "modified": "2023-10-06T20:30:33.580665Z"
+                "created": "2023-11-01T15:59:35.163864445Z",
+                "modified": "2023-11-01T15:59:35.163864445Z"
             },
             {
-                "urn": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:dns/recordSet:RecordSet::tested-resource",
+                "urn": "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:dns/recordSet:RecordSet::tested-resource",
                 "custom": true,
-                "id": "projects/pulumi-development/managedZones/prod-ee35260/rrsets/frontend.prod.p-it-antons-mac-dns-record-0c048b65.com./A",
+                "id": "projects/pulumi-ci-gcp-provider/managedZones/prod-c7f39ca/rrsets/frontend.prod.p-it-runner-dns-record-0449126f.com./A",
                 "type": "gcp:dns/recordSet:RecordSet",
                 "inputs": {
                     "__defaults": [],
-                    "managedZone": "prod-ee35260",
-                    "name": "frontend.prod.p-it-antons-mac-dns-record-0c048b65.com.",
+                    "managedZone": "prod-c7f39ca",
+                    "name": "frontend.prod.p-it-runner-dns-record-0449126f.com.",
                     "rrdatas": [
-                        "34.71.140.49"
+                        "34.42.137.103"
                     ],
                     "ttl": 300,
                     "type": "A"
                 },
                 "outputs": {
-                    "id": "projects/pulumi-development/managedZones/prod-ee35260/rrsets/frontend.prod.p-it-antons-mac-dns-record-0c048b65.com./A",
-                    "managedZone": "prod-ee35260",
-                    "name": "frontend.prod.p-it-antons-mac-dns-record-0c048b65.com.",
-                    "project": "pulumi-development",
+                    "id": "projects/pulumi-ci-gcp-provider/managedZones/prod-c7f39ca/rrsets/frontend.prod.p-it-runner-dns-record-0449126f.com./A",
+                    "managedZone": "prod-c7f39ca",
+                    "name": "frontend.prod.p-it-runner-dns-record-0449126f.com.",
+                    "project": "pulumi-ci-gcp-provider",
                     "rrdatas": [
-                        "34.71.140.49"
+                        "34.42.137.103"
                     ],
                     "ttl": 300,
                     "type": "A"
                 },
-                "parent": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:pulumi:Stack::test-p-it-antons-mac-dns-record-0c048b65",
+                "parent": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:pulumi:Stack::test-p-it-runner-dns-record-0449126f",
                 "dependencies": [
-                    "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:compute/instance:Instance::ins",
-                    "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:dns/managedZone:ManagedZone::prod"
+                    "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:compute/instance:Instance::ins",
+                    "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:dns/managedZone:ManagedZone::prod"
                 ],
-                "provider": "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::pulumi:providers:gcp::provider::c8747986-c7d5-49e1-a5b9-977f96441a69",
+                "provider": "urn:pulumi:p-it-runner-dns-record-0449126f::test::pulumi:providers:gcp::provider::7c9724a7-385b-4dc7-91ee-628a63db70cc",
                 "propertyDependencies": {
                     "managedZone": [
-                        "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:dns/managedZone:ManagedZone::prod"
+                        "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:dns/managedZone:ManagedZone::prod"
                     ],
                     "name": [
-                        "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:dns/managedZone:ManagedZone::prod"
+                        "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:dns/managedZone:ManagedZone::prod"
                     ],
                     "rrdatas": [
-                        "urn:pulumi:p-it-antons-mac-dns-record-0c048b65::test::gcp:compute/instance:Instance::ins"
+                        "urn:pulumi:p-it-runner-dns-record-0449126f::test::gcp:compute/instance:Instance::ins"
                     ],
                     "ttl": null,
                     "type": null
                 },
-                "created": "2023-10-06T20:30:36.608436Z",
-                "modified": "2023-10-06T20:30:36.608436Z"
+                "created": "2023-11-01T15:59:38.061834463Z",
+                "modified": "2023-11-01T15:59:38.061834463Z"
             }
         ]
     }

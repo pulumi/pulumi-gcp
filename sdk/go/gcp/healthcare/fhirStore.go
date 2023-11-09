@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,8 +30,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -81,9 +81,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -157,8 +157,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -204,8 +204,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -293,6 +293,9 @@ type FhirStore struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning pulumi.BoolPtrOutput `pulumi:"disableResourceVersioning"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
 	// occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -315,6 +318,9 @@ type FhirStore struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -324,6 +330,9 @@ type FhirStore struct {
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -350,6 +359,11 @@ func NewFhirStore(ctx *pulumi.Context,
 	if args.Dataset == nil {
 		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FhirStore
 	err := ctx.RegisterResource("gcp:healthcare/fhirStore:FhirStore", name, args, &resource, opts...)
@@ -399,6 +413,9 @@ type fhirStoreState struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning *bool `pulumi:"disableResourceVersioning"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
 	// occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -421,6 +438,9 @@ type fhirStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -430,6 +450,9 @@ type fhirStoreState struct {
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -473,6 +496,9 @@ type FhirStoreState struct {
 	// attempts to read the historical versions.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	DisableResourceVersioning pulumi.BoolPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 	// versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
 	// occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -495,6 +521,9 @@ type FhirStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -504,6 +533,9 @@ type FhirStoreState struct {
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -573,6 +605,9 @@ type fhirStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -646,6 +681,9 @@ type FhirStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -821,6 +859,12 @@ func (o FhirStoreOutput) DisableResourceVersioning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.DisableResourceVersioning }).(pulumi.BoolPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o FhirStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether to allow the bulk import API to accept history bundles and directly insert historical resource
 // versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
 // occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -849,6 +893,9 @@ func (o FhirStoreOutput) EnableUpdateCreate() pulumi.BoolPtrOutput {
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FhirStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -868,6 +915,12 @@ func (o FhirStoreOutput) NotificationConfig() FhirStoreNotificationConfigPtrOutp
 // A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigArrayOutput { return v.NotificationConfigs }).(FhirStoreNotificationConfigArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FhirStoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The fully qualified name of this dataset

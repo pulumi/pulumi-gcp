@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetProjectResult {
     private Boolean autoCreateNetwork;
     private String billingAccount;
+    private Map<String,String> effectiveLabels;
     private String folderId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -30,6 +31,7 @@ public final class GetProjectResult {
     private String number;
     private String orgId;
     private @Nullable String projectId;
+    private Map<String,String> pulumiLabels;
     private Boolean skipDelete;
 
     private GetProjectResult() {}
@@ -38,6 +40,9 @@ public final class GetProjectResult {
     }
     public String billingAccount() {
         return this.billingAccount;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String folderId() {
         return this.folderId;
@@ -68,6 +73,9 @@ public final class GetProjectResult {
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Boolean skipDelete() {
         return this.skipDelete;
     }
@@ -83,6 +91,7 @@ public final class GetProjectResult {
     public static final class Builder {
         private Boolean autoCreateNetwork;
         private String billingAccount;
+        private Map<String,String> effectiveLabels;
         private String folderId;
         private String id;
         private Map<String,String> labels;
@@ -90,12 +99,14 @@ public final class GetProjectResult {
         private String number;
         private String orgId;
         private @Nullable String projectId;
+        private Map<String,String> pulumiLabels;
         private Boolean skipDelete;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreateNetwork = defaults.autoCreateNetwork;
     	      this.billingAccount = defaults.billingAccount;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.folderId = defaults.folderId;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -103,6 +114,7 @@ public final class GetProjectResult {
     	      this.number = defaults.number;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.skipDelete = defaults.skipDelete;
         }
 
@@ -114,6 +126,11 @@ public final class GetProjectResult {
         @CustomType.Setter
         public Builder billingAccount(String billingAccount) {
             this.billingAccount = Objects.requireNonNull(billingAccount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -152,6 +169,11 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipDelete(Boolean skipDelete) {
             this.skipDelete = Objects.requireNonNull(skipDelete);
             return this;
@@ -160,6 +182,7 @@ public final class GetProjectResult {
             final var o = new GetProjectResult();
             o.autoCreateNetwork = autoCreateNetwork;
             o.billingAccount = billingAccount;
+            o.effectiveLabels = effectiveLabels;
             o.folderId = folderId;
             o.id = id;
             o.labels = labels;
@@ -167,6 +190,7 @@ public final class GetProjectResult {
             o.number = number;
             o.orgId = orgId;
             o.projectId = projectId;
+            o.pulumiLabels = pulumiLabels;
             o.skipDelete = skipDelete;
             return o;
         }

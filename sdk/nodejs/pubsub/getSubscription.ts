@@ -56,6 +56,7 @@ export interface GetSubscriptionResult {
     readonly bigqueryConfigs: outputs.pubsub.GetSubscriptionBigqueryConfig[];
     readonly cloudStorageConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfig[];
     readonly deadLetterPolicies: outputs.pubsub.GetSubscriptionDeadLetterPolicy[];
+    readonly effectiveLabels: {[key: string]: string};
     readonly enableExactlyOnceDelivery: boolean;
     readonly enableMessageOrdering: boolean;
     readonly expirationPolicies: outputs.pubsub.GetSubscriptionExpirationPolicy[];
@@ -68,6 +69,7 @@ export interface GetSubscriptionResult {
     readonly messageRetentionDuration: string;
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly pushConfigs: outputs.pubsub.GetSubscriptionPushConfig[];
     readonly retainAckedMessages: boolean;
     readonly retryPolicies: outputs.pubsub.GetSubscriptionRetryPolicy[];

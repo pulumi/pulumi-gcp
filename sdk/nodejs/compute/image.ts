@@ -138,6 +138,11 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly diskSizeGb!: pulumi.Output<number>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
      * image name. The image family always returns its latest image that is
@@ -166,6 +171,8 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this Image.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -190,6 +197,11 @@ export class Image extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
@@ -248,6 +260,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["family"] = state ? state.family : undefined;
             resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
             resourceInputs["imageEncryptionKey"] = state ? state.imageEncryptionKey : undefined;
@@ -256,6 +269,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rawDisk"] = state ? state.rawDisk : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
@@ -280,10 +294,14 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -310,6 +328,11 @@ export interface ImageState {
      * Size of the image when restored onto a persistent disk (in GB).
      */
     diskSizeGb?: pulumi.Input<number>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -339,6 +362,8 @@ export interface ImageState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this Image.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -363,6 +388,11 @@ export interface ImageState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
@@ -442,6 +472,8 @@ export interface ImageArgs {
     imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
     /**
      * Labels to apply to this Image.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -11,9 +11,11 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.alloydb.InstanceArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceState;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
+import com.pulumi.gcp.alloydb.outputs.InstanceQueryInsightsConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceReadPoolConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,8 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
@@ -63,14 +64,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;alloydb-network&#34;)
- *             .build());
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .clusterId(&#34;alloydb-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(defaultNetwork.id())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password(&#34;alloydb-cluster&#34;)
  *                 .build())
@@ -80,11 +79,11 @@ import javax.annotation.Nullable;
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .prefixLength(16)
- *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(defaultNetwork.id())
  *             .build());
  * 
  *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
- *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(defaultNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
@@ -127,6 +126,8 @@ import javax.annotation.Nullable;
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -134,6 +135,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -224,6 +227,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
@@ -287,6 +322,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -294,6 +331,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -328,6 +367,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="queryInsightsConfig", refs={InstanceQueryInsightsConfig.class}, tree="[0]")
+    private Output<InstanceQueryInsightsConfig> queryInsightsConfig;
+
+    /**
+     * @return Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    public Output<InstanceQueryInsightsConfig> queryInsightsConfig() {
+        return this.queryInsightsConfig;
     }
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
@@ -434,6 +505,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

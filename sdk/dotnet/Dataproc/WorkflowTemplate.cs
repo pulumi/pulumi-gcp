@@ -132,6 +132,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string?> DagTimeout { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
@@ -174,6 +181,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The time template was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -208,6 +221,11 @@ namespace Pulumi.Gcp.Dataproc
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -323,6 +341,23 @@ namespace Pulumi.Gcp.Dataproc
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("jobs")]
         private InputList<Inputs.WorkflowTemplateJobGetArgs>? _jobs;
 
@@ -382,6 +417,22 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// Output only. The time template was last updated.

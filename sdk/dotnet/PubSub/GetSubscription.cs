@@ -127,6 +127,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetSubscriptionBigqueryConfigResult> BigqueryConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> CloudStorageConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> DeadLetterPolicies;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableExactlyOnceDelivery;
         public readonly bool EnableMessageOrdering;
         public readonly ImmutableArray<Outputs.GetSubscriptionExpirationPolicyResult> ExpirationPolicies;
@@ -139,6 +140,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly string MessageRetentionDuration;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigResult> PushConfigs;
         public readonly bool RetainAckedMessages;
         public readonly ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> RetryPolicies;
@@ -153,6 +155,8 @@ namespace Pulumi.Gcp.PubSub
             ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> cloudStorageConfigs,
 
             ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> deadLetterPolicies,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableExactlyOnceDelivery,
 
@@ -172,6 +176,8 @@ namespace Pulumi.Gcp.PubSub
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetSubscriptionPushConfigResult> pushConfigs,
 
             bool retainAckedMessages,
@@ -184,6 +190,7 @@ namespace Pulumi.Gcp.PubSub
             BigqueryConfigs = bigqueryConfigs;
             CloudStorageConfigs = cloudStorageConfigs;
             DeadLetterPolicies = deadLetterPolicies;
+            EffectiveLabels = effectiveLabels;
             EnableExactlyOnceDelivery = enableExactlyOnceDelivery;
             EnableMessageOrdering = enableMessageOrdering;
             ExpirationPolicies = expirationPolicies;
@@ -193,6 +200,7 @@ namespace Pulumi.Gcp.PubSub
             MessageRetentionDuration = messageRetentionDuration;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             PushConfigs = pushConfigs;
             RetainAckedMessages = retainAckedMessages;
             RetryPolicies = retryPolicies;

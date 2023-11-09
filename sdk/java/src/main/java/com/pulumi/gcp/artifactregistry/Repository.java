@@ -240,6 +240,96 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Artifact Registry Repository Remote Apt
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .description(&#34;example remote apt repository&#34;)
+ *             .format(&#34;APT&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .aptRepository(RepositoryRemoteRepositoryConfigAptRepositoryArgs.builder()
+ *                     .publicRepository(RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs.builder()
+ *                         .repositoryBase(&#34;DEBIAN&#34;)
+ *                         .repositoryPath(&#34;debian/dists/buster&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .description(&#34;Debian buster remote repository&#34;)
+ *                 .build())
+ *             .repositoryId(&#34;debian-buster&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Artifact Registry Repository Remote Yum
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .description(&#34;example remote yum repository&#34;)
+ *             .format(&#34;YUM&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description(&#34;Centos 8 remote repository&#34;)
+ *                 .yumRepository(RepositoryRemoteRepositoryConfigYumRepositoryArgs.builder()
+ *                     .publicRepository(RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs.builder()
+ *                         .repositoryBase(&#34;CENTOS&#34;)
+ *                         .repositoryPath(&#34;8-stream/BaseOs/x86_64/os&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .repositoryId(&#34;centos-8&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Artifact Registry Repository Cleanup
  * ```java
  * package generated_program;
@@ -414,6 +504,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dockerConfig);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
@@ -464,6 +570,9 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
@@ -474,6 +583,9 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -562,6 +674,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Configuration specific for a Remote Repository.
@@ -658,6 +786,10 @@ public class Repository extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

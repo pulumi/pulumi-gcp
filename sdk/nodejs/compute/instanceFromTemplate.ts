@@ -129,6 +129,11 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly desiredStatus!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether the instance has virtual displays enabled.
      */
     public readonly enableDisplay!: pulumi.Output<boolean>;
@@ -151,7 +156,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+     * the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -197,6 +204,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * self_link nor project are provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -275,6 +286,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -291,6 +303,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
@@ -340,13 +353,17 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(InstanceFromTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -404,6 +421,11 @@ export interface InstanceFromTemplateState {
      */
     desiredStatus?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether the instance has virtual displays enabled.
      */
     enableDisplay?: pulumi.Input<boolean>;
@@ -426,7 +448,9 @@ export interface InstanceFromTemplateState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+     * the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -472,6 +496,10 @@ export interface InstanceFromTemplateState {
      * self_link nor project are provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -584,7 +612,9 @@ export interface InstanceFromTemplateArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+     * the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

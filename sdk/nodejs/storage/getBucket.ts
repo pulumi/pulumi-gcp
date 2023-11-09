@@ -49,6 +49,7 @@ export interface GetBucketResult {
     readonly cors: outputs.storage.GetBucketCor[];
     readonly customPlacementConfigs: outputs.storage.GetBucketCustomPlacementConfig[];
     readonly defaultEventBasedHold: boolean;
+    readonly effectiveLabels: {[key: string]: string};
     readonly encryptions: outputs.storage.GetBucketEncryption[];
     readonly forceDestroy: boolean;
     /**
@@ -62,6 +63,7 @@ export interface GetBucketResult {
     readonly name: string;
     readonly project: string;
     readonly publicAccessPrevention: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly requesterPays: boolean;
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
     readonly selfLink: string;

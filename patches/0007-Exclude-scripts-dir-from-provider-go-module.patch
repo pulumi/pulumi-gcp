@@ -1,0 +1,23 @@
+From 7fd6cdea57c1857d514780fa0556c8884de01aa3 Mon Sep 17 00:00:00 2001
+From: Aaron Friel <mayreply@aaronfriel.com>
+Date: Thu, 22 Jun 2023 09:45:36 -0700
+Subject: [PATCH 7/9] Exclude scripts dir from provider go module
+
+This directory references a private Go module, which we cannot "go vet" or check.
+---
+ scripts/go.mod | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 scripts/go.mod
+
+diff --git a/scripts/go.mod b/scripts/go.mod
+new file mode 100644
+index 000000000..ddd2cb8ff
+--- /dev/null
++++ b/scripts/go.mod
+@@ -0,0 +1,3 @@
++module exclude
++
++go 1.20
+-- 
+2.40.0
+

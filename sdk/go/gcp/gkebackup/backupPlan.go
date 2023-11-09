@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -48,6 +48,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -76,8 +77,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -96,6 +97,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -124,9 +126,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,6 +146,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -192,8 +195,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -211,6 +214,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -290,6 +294,9 @@ type BackupPlan struct {
 	Deactivated pulumi.BoolOutput `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
 	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -300,6 +307,9 @@ type BackupPlan struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Backup Plan.
 	//
@@ -312,6 +322,9 @@ type BackupPlan struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntOutput `pulumi:"protectedPodCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
@@ -336,6 +349,11 @@ func NewBackupPlan(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BackupPlan
 	err := ctx.RegisterResource("gcp:gkebackup/backupPlan:BackupPlan", name, args, &resource, opts...)
@@ -374,6 +392,9 @@ type backupPlanState struct {
 	Deactivated *bool `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
 	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -384,6 +405,9 @@ type backupPlanState struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
 	//
@@ -396,6 +420,9 @@ type backupPlanState struct {
 	Project *string `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount *int `pulumi:"protectedPodCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy *BackupPlanRetentionPolicy `pulumi:"retentionPolicy"`
@@ -423,6 +450,9 @@ type BackupPlanState struct {
 	Deactivated pulumi.BoolPtrInput
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
 	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -433,6 +463,9 @@ type BackupPlanState struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
 	//
@@ -445,6 +478,9 @@ type BackupPlanState struct {
 	Project pulumi.StringPtrInput
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrInput
@@ -479,6 +515,9 @@ type backupPlanArgs struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
 	//
@@ -514,6 +553,9 @@ type BackupPlanArgs struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
 	//
@@ -670,6 +712,12 @@ func (o BackupPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o BackupPlanOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // etag is used for optimistic concurrency control as a way to help prevent simultaneous
 // updates of a backup plan from overwriting each other. It is strongly suggested that
 // systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -683,6 +731,9 @@ func (o BackupPlanOutput) Etag() pulumi.StringOutput {
 // Description: A set of custom labels supplied by the user.
 // A list of key->value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o BackupPlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -708,6 +759,12 @@ func (o BackupPlanOutput) Project() pulumi.StringOutput {
 // The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 func (o BackupPlanOutput) ProtectedPodCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.IntOutput { return v.ProtectedPodCount }).(pulumi.IntOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o BackupPlanOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // RetentionPolicy governs lifecycle of Backups created under this plan.

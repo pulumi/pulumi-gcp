@@ -274,6 +274,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The environment the function is hosted on.
      */
     public /*out*/ readonly environment!: pulumi.Output<string>;
@@ -290,18 +295,21 @@ export class Function extends pulumi.CustomResource {
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of this cloud function.
-     */
-    public readonly location!: pulumi.Output<string | undefined>;
-    /**
-     * A user-defined name of the function. Function names must
-     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      *
      *
      * - - -
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * A user-defined name of the function. Function names must
+     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -309,6 +317,11 @@ export class Function extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Describes the Service being deployed.
      * Structure is documented below.
@@ -334,7 +347,7 @@ export class Function extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FunctionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -342,6 +355,7 @@ export class Function extends pulumi.CustomResource {
             const state = argsOrState as FunctionState | undefined;
             resourceInputs["buildConfig"] = state ? state.buildConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
@@ -349,12 +363,16 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
@@ -364,12 +382,16 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -389,6 +411,11 @@ export interface FunctionState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The environment the function is hosted on.
      */
     environment?: pulumi.Input<string>;
@@ -405,18 +432,21 @@ export interface FunctionState {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -424,6 +454,11 @@ export interface FunctionState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Describes the Service being deployed.
      * Structure is documented below.
@@ -470,18 +505,21 @@ export interface FunctionArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * A user-defined name of the function. Function names must
-     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      *
      *
      * - - -
+     */
+    location: pulumi.Input<string>;
+    /**
+     * A user-defined name of the function. Function names must
+     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      */
     name?: pulumi.Input<string>;
     /**

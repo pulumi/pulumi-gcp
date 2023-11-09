@@ -87,6 +87,7 @@ namespace Pulumi.Gcp.Composer
         /// Configuration parameters for the environment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigResult> Configs;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -94,11 +95,14 @@ namespace Pulumi.Gcp.Composer
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
 
         [OutputConstructor]
         private GetEnvironmentResult(
             ImmutableArray<Outputs.GetEnvironmentConfigResult> configs,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -108,13 +112,17 @@ namespace Pulumi.Gcp.Composer
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region)
         {
             Configs = configs;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
         }
     }

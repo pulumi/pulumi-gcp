@@ -48,10 +48,10 @@ namespace Pulumi.Gcp.ServiceAccount
     /// Service accounts can be imported using their URI, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+    ///  $ pulumi import gcp:serviceaccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:serviceAccount/account:Account")]
+    [GcpResourceType("gcp:serviceaccount/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -126,12 +126,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
+            : base("gcp:serviceaccount/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Account(string name, Input<string> id, AccountState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/account:Account", name, state, MakeResourceOptions(options, id))
+            : base("gcp:serviceaccount/account:Account", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -140,6 +140,10 @@ namespace Pulumi.Gcp.ServiceAccount
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/account:Account"},
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

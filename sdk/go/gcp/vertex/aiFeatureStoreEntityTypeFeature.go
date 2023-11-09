@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -79,7 +79,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,6 +151,9 @@ type AiFeatureStoreEntityTypeFeature struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the feature.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
 	//
 	// ***
@@ -158,9 +161,15 @@ type AiFeatureStoreEntityTypeFeature struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A set of key/value label pairs to assign to the feature.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the feature
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -182,6 +191,11 @@ func NewAiFeatureStoreEntityTypeFeature(ctx *pulumi.Context,
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStoreEntityTypeFeature
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, args, &resource, opts...)
@@ -209,6 +223,9 @@ type aiFeatureStoreEntityTypeFeatureState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the feature.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
 	//
 	// ***
@@ -216,9 +233,15 @@ type aiFeatureStoreEntityTypeFeatureState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// A set of key/value label pairs to assign to the feature.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the feature
 	Region *string `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -232,6 +255,9 @@ type AiFeatureStoreEntityTypeFeatureState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the feature.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
 	//
 	// ***
@@ -239,9 +265,15 @@ type AiFeatureStoreEntityTypeFeatureState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the feature.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the feature
 	Region pulumi.StringPtrInput
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -262,6 +294,9 @@ type aiFeatureStoreEntityTypeFeatureArgs struct {
 	// ***
 	Entitytype string `pulumi:"entitytype"`
 	// A set of key/value label pairs to assign to the feature.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name *string `pulumi:"name"`
@@ -278,6 +313,9 @@ type AiFeatureStoreEntityTypeFeatureArgs struct {
 	// ***
 	Entitytype pulumi.StringInput
 	// A set of key/value label pairs to assign to the feature.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringPtrInput
@@ -406,6 +444,12 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) Description() pulumi.StringPtrOut
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiFeatureStoreEntityTypeFeatureOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
 //
 // ***
@@ -419,6 +463,9 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) Etag() pulumi.StringOutput {
 }
 
 // A set of key/value label pairs to assign to the feature.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiFeatureStoreEntityTypeFeatureOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -426,6 +473,12 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) Labels() pulumi.StringMapOutput {
 // The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 func (o AiFeatureStoreEntityTypeFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiFeatureStoreEntityTypeFeatureOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the feature

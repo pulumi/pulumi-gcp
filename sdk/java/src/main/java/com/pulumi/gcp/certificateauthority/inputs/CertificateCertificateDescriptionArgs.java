@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionCertFingerprintArgs;
-import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionConfigValueArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionPublicKeyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionSubjectDescriptionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionSubjectKeyIdArgs;
@@ -76,33 +75,6 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
      */
     public Optional<Output<List<CertificateCertificateDescriptionCertFingerprintArgs>>> certFingerprints() {
         return Optional.ofNullable(this.certFingerprints);
-    }
-
-    /**
-     * (Output, Deprecated)
-     * Describes some of the technical fields in a certificate.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-     * 
-     */
-    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-    @Import(name="configValues")
-    private @Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues;
-
-    /**
-     * @return (Output, Deprecated)
-     * Describes some of the technical fields in a certificate.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-     * 
-     */
-    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-    public Optional<Output<List<CertificateCertificateDescriptionConfigValueArgs>>> configValues() {
-        return Optional.ofNullable(this.configValues);
     }
 
     /**
@@ -206,7 +178,6 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         this.aiaIssuingCertificateUrls = $.aiaIssuingCertificateUrls;
         this.authorityKeyIds = $.authorityKeyIds;
         this.certFingerprints = $.certFingerprints;
-        this.configValues = $.configValues;
         this.crlDistributionPoints = $.crlDistributionPoints;
         this.publicKeys = $.publicKeys;
         this.subjectDescriptions = $.subjectDescriptions;
@@ -338,55 +309,6 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
          */
         public Builder certFingerprints(CertificateCertificateDescriptionCertFingerprintArgs... certFingerprints) {
             return certFingerprints(List.of(certFingerprints));
-        }
-
-        /**
-         * @param configValues (Output, Deprecated)
-         * Describes some of the technical fields in a certificate.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-         * 
-         */
-        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-        public Builder configValues(@Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues) {
-            $.configValues = configValues;
-            return this;
-        }
-
-        /**
-         * @param configValues (Output, Deprecated)
-         * Describes some of the technical fields in a certificate.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-         * 
-         */
-        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-        public Builder configValues(List<CertificateCertificateDescriptionConfigValueArgs> configValues) {
-            return configValues(Output.of(configValues));
-        }
-
-        /**
-         * @param configValues (Output, Deprecated)
-         * Describes some of the technical fields in a certificate.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-         * 
-         */
-        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-        public Builder configValues(CertificateCertificateDescriptionConfigValueArgs... configValues) {
-            return configValues(List.of(configValues));
         }
 
         /**

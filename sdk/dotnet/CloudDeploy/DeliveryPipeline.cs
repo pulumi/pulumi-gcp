@@ -26,17 +26,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
     ///         Description = "basic description",
-    ///         Labels = 
-    ///         {
-    ///             { "my_first_label", "example-label-1" },
-    ///             { "my_second_label", "example-label-2" },
-    ///         },
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -68,6 +58,16 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -89,17 +89,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
     ///         Description = "basic description",
-    ///         Labels = 
-    ///         {
-    ///             { "my_first_label", "example-label-1" },
-    ///             { "my_second_label", "example-label-2" },
-    ///         },
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -131,6 +121,16 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -152,17 +152,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
     ///         Description = "basic description",
-    ///         Labels = 
-    ///         {
-    ///             { "my_first_label", "example-label-1" },
-    ///             { "my_second_label", "example-label-2" },
-    ///         },
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -194,6 +184,16 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -275,17 +275,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
     ///         Description = "basic description",
-    ///         Labels = 
-    ///         {
-    ///             { "my_first_label", "example-label-1" },
-    ///             { "my_second_label", "example-label-2" },
-    ///         },
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -318,6 +308,16 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -347,6 +347,9 @@ namespace Pulumi.Gcp.CloudDeploy
     {
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -370,6 +373,20 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
@@ -377,6 +394,9 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -398,6 +418,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -446,6 +472,11 @@ namespace Pulumi.Gcp.CloudDeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -474,6 +505,9 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -492,6 +526,9 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -542,6 +579,9 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -573,6 +613,36 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveAnnotations")]
+        private InputMap<object>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            set => _effectiveAnnotations = value;
+        }
+
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -584,6 +654,9 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -608,6 +681,22 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.

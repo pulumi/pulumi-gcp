@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -99,7 +99,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -163,6 +163,9 @@ type AiFeatureStore struct {
 
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiFeatureStoreEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
@@ -171,6 +174,9 @@ type AiFeatureStore struct {
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to this Featurestore.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -185,6 +191,9 @@ type AiFeatureStore struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -198,6 +207,11 @@ func NewAiFeatureStore(ctx *pulumi.Context,
 		args = &AiFeatureStoreArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStore
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStore:AiFeatureStore", name, args, &resource, opts...)
@@ -223,6 +237,9 @@ func GetAiFeatureStore(ctx *pulumi.Context,
 type aiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiFeatureStoreEncryptionSpec `pulumi:"encryptionSpec"`
@@ -231,6 +248,9 @@ type aiFeatureStoreState struct {
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to this Featurestore.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
@@ -245,6 +265,9 @@ type aiFeatureStoreState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -254,6 +277,9 @@ type aiFeatureStoreState struct {
 type AiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiFeatureStoreEncryptionSpecPtrInput
@@ -262,6 +288,9 @@ type AiFeatureStoreState struct {
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to this Featurestore.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
@@ -276,6 +305,9 @@ type AiFeatureStoreState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -293,6 +325,9 @@ type aiFeatureStoreArgs struct {
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to this Featurestore.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
@@ -319,6 +354,9 @@ type AiFeatureStoreArgs struct {
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to this Featurestore.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
@@ -453,6 +491,12 @@ func (o AiFeatureStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiFeatureStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If set, both of the online and offline data storage will be secured by this key.
 // Structure is documented below.
 func (o AiFeatureStoreOutput) EncryptionSpec() AiFeatureStoreEncryptionSpecPtrOutput {
@@ -470,6 +514,9 @@ func (o AiFeatureStoreOutput) ForceDestroy() pulumi.BoolPtrOutput {
 }
 
 // A set of key/value label pairs to assign to this Featurestore.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiFeatureStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -497,6 +544,12 @@ func (o AiFeatureStoreOutput) OnlineStorageTtlDays() pulumi.IntPtrOutput {
 // If it is not provided, the provider project is used.
 func (o AiFeatureStoreOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiFeatureStoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the dataset. eg us-central1

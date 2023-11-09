@@ -60,20 +60,8 @@ class TableArgs:
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
                
-               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-               
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
-               
-               ~>**NOTE:**  If you use `external_data_configuration`
-               documented below and do **not** set
-               `external_data_configuration.connection_id`, schemas must be specified
-               with `external_data_configuration.schema`. Otherwise, schemas must be
-               specified with this top-level field.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
         :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
@@ -265,20 +253,8 @@ class TableArgs:
         """
         A mapping of labels to assign to the resource.
 
-        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
-
-        ~>**NOTE:**  If you use `external_data_configuration`
-        documented below and do **not** set
-        `external_data_configuration.connection_id`, schemas must be specified
-        with `external_data_configuration.schema`. Otherwise, schemas must be
-        specified with this top-level field.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -411,6 +387,7 @@ class _TableState:
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
@@ -425,6 +402,7 @@ class _TableState:
                  num_long_term_bytes: Optional[pulumi.Input[int]] = None,
                  num_rows: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -444,6 +422,8 @@ class _TableState:
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['TableEncryptionConfigurationArgs'] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -459,20 +439,8 @@ class _TableState:
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
                
-               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-               
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
-               
-               ~>**NOTE:**  If you use `external_data_configuration`
-               documented below and do **not** set
-               `external_data_configuration.connection_id`, schemas must be specified
-               with `external_data_configuration.schema`. Otherwise, schemas must be
-               specified with this top-level field.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
@@ -483,6 +451,7 @@ class _TableState:
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
@@ -522,6 +491,8 @@ class _TableState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_configuration is not None:
             pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if etag is not None:
@@ -550,6 +521,8 @@ class _TableState:
             pulumi.set(__self__, "num_rows", num_rows)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if range_partitioning is not None:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if schema is not None:
@@ -632,6 +605,19 @@ class _TableState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="encryptionConfiguration")
     def encryption_configuration(self) -> Optional[pulumi.Input['TableEncryptionConfigurationArgs']]:
         """
@@ -705,20 +691,8 @@ class _TableState:
         """
         A mapping of labels to assign to the resource.
 
-        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
-
-        ~>**NOTE:**  If you use `external_data_configuration`
-        documented below and do **not** set
-        `external_data_configuration.connection_id`, schemas must be specified
-        with `external_data_configuration.schema`. Otherwise, schemas must be
-        specified with this top-level field.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -823,6 +797,18 @@ class _TableState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="rangePartitioning")
@@ -1066,20 +1052,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
                
-               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-               
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
-               
-               ~>**NOTE:**  If you use `external_data_configuration`
-               documented below and do **not** set
-               `external_data_configuration.connection_id`, schemas must be specified
-               with `external_data_configuration.schema`. Otherwise, schemas must be
-               specified with this top-level field.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
         :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
@@ -1259,14 +1233,18 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
             __props__.__dict__["location"] = None
             __props__.__dict__["num_bytes"] = None
             __props__.__dict__["num_long_term_bytes"] = None
             __props__.__dict__["num_rows"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Table, __self__).__init__(
             'gcp:bigquery/table:Table',
             resource_name,
@@ -1282,6 +1260,7 @@ class Table(pulumi.CustomResource):
             dataset_id: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             expiration_time: Optional[pulumi.Input[int]] = None,
@@ -1296,6 +1275,7 @@ class Table(pulumi.CustomResource):
             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
             num_rows: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1320,6 +1300,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -1335,20 +1317,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
                
-               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-               
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
-               
-               ~>**NOTE:**  If you use `external_data_configuration`
-               documented below and do **not** set
-               `external_data_configuration.connection_id`, schemas must be specified
-               with `external_data_configuration.schema`. Otherwise, schemas must be
-               specified with this top-level field.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
@@ -1359,6 +1329,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
@@ -1397,6 +1368,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["dataset_id"] = dataset_id
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_configuration"] = encryption_configuration
         __props__.__dict__["etag"] = etag
         __props__.__dict__["expiration_time"] = expiration_time
@@ -1411,6 +1383,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["num_long_term_bytes"] = num_long_term_bytes
         __props__.__dict__["num_rows"] = num_rows
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["range_partitioning"] = range_partitioning
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
@@ -1466,6 +1439,15 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="encryptionConfiguration")
     def encryption_configuration(self) -> pulumi.Output[Optional['outputs.TableEncryptionConfiguration']]:
         """
@@ -1519,20 +1501,8 @@ class Table(pulumi.CustomResource):
         """
         A mapping of labels to assign to the resource.
 
-        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
-
-        ~>**NOTE:**  If you use `external_data_configuration`
-        documented below and do **not** set
-        `external_data_configuration.connection_id`, schemas must be specified
-        with `external_data_configuration.schema`. Otherwise, schemas must be
-        specified with this top-level field.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1601,6 +1571,14 @@ class Table(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="rangePartitioning")

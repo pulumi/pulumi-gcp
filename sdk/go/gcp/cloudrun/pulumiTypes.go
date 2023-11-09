@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,9 +21,11 @@ type DomainMappingMetadata struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-	//
-	// ***
-	Annotations map[string]string `pulumi:"annotations"`
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations          map[string]string `pulumi:"annotations"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -31,10 +33,16 @@ type DomainMappingMetadata struct {
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace string `pulumi:"namespace"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
 	// can be used by clients to determine when objects have changed. May be used
@@ -72,9 +80,11 @@ type DomainMappingMetadataArgs struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-	//
-	// ***
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations          pulumi.StringMapInput `pulumi:"annotations"`
+	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -82,10 +92,16 @@ type DomainMappingMetadataArgs struct {
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
 	// can be used by clients to determine when objects have changed. May be used
@@ -206,10 +222,18 @@ func (o DomainMappingMetadataOutput) ToOutput(ctx context.Context) pulumix.Outpu
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-//
-// ***
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o DomainMappingMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o DomainMappingMetadataOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+func (o DomainMappingMetadataOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -222,6 +246,8 @@ func (o DomainMappingMetadataOutput) Generation() pulumi.IntPtrOutput {
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DomainMappingMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -230,6 +256,13 @@ func (o DomainMappingMetadataOutput) Labels() pulumi.StringMapOutput {
 // project ID or project number.
 func (o DomainMappingMetadataOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DomainMappingMetadataOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -294,14 +327,32 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-//
-// ***
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+func (o DomainMappingMetadataPtrOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+func (o DomainMappingMetadataPtrOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveLabels
 	}).(pulumi.StringMapOutput)
 }
 
@@ -320,6 +371,8 @@ func (o DomainMappingMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DomainMappingMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -338,6 +391,18 @@ func (o DomainMappingMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
 		}
 		return &v.Namespace
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DomainMappingMetadataPtrOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PulumiLabels
+	}).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -385,6 +450,8 @@ type DomainMappingSpec struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
 	// Possible values are: `NONE`, `AUTOMATIC`.
+	//
+	// ***
 	CertificateMode *string `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -411,6 +478,8 @@ type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
 	// Possible values are: `NONE`, `AUTOMATIC`.
+	//
+	// ***
 	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -520,6 +589,8 @@ func (o DomainMappingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[Do
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
 // Possible values are: `NONE`, `AUTOMATIC`.
+//
+// ***
 func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
@@ -571,6 +642,8 @@ func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
 // Possible values are: `NONE`, `AUTOMATIC`.
+//
+// ***
 func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSpec) *string {
 		if v == nil {
@@ -1480,17 +1553,27 @@ type ServiceMetadata struct {
 	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 	//   when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-	Annotations map[string]string `pulumi:"annotations"`
+	//   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations          map[string]string `pulumi:"annotations"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace *string `pulumi:"namespace"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
 	// can be used by clients to determine when objects have changed. May be used
@@ -1537,17 +1620,27 @@ type ServiceMetadataArgs struct {
 	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 	//   when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	//   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations          pulumi.StringMapInput `pulumi:"annotations"`
+	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
 	// (Output)
 	// An opaque value that represents the internal version of this object that
 	// can be used by clients to determine when objects have changed. May be used
@@ -1677,8 +1770,18 @@ func (o ServiceMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[Serv
 //     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 //   - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 //     when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+//     **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+//     Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o ServiceMetadataOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+func (o ServiceMetadataOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -1690,6 +1793,8 @@ func (o ServiceMetadataOutput) Generation() pulumi.IntPtrOutput {
 // Map of string keys and values that can be used to organize and categorize
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1698,6 +1803,13 @@ func (o ServiceMetadataOutput) Labels() pulumi.StringMapOutput {
 // project ID or project number.
 func (o ServiceMetadataOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceMetadataOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -1771,12 +1883,32 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 //     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 //   - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 //     when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+//     **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+//     Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+func (o ServiceMetadataPtrOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+func (o ServiceMetadataPtrOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveLabels
 	}).(pulumi.StringMapOutput)
 }
 
@@ -1794,6 +1926,8 @@ func (o ServiceMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
 // Map of string keys and values that can be used to organize and categorize
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
@@ -1812,6 +1946,18 @@ func (o ServiceMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
 		}
 		return v.Namespace
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceMetadataPtrOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PulumiLabels
+	}).(pulumi.StringMapOutput)
 }
 
 // (Output)
@@ -2635,6 +2781,8 @@ type ServiceTemplateMetadata struct {
 	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 	//   when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+	//   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
@@ -2642,6 +2790,8 @@ type ServiceTemplateMetadata struct {
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
@@ -2696,6 +2846,8 @@ type ServiceTemplateMetadataArgs struct {
 	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 	//   when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+	//   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
@@ -2703,6 +2855,8 @@ type ServiceTemplateMetadataArgs struct {
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects. May match selectors of replication controllers
 	// and routes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
@@ -2840,6 +2994,8 @@ func (o ServiceTemplateMetadataOutput) ToOutput(ctx context.Context) pulumix.Out
 //     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 //   - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 //     when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+//     **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+//     Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2853,6 +3009,8 @@ func (o ServiceTemplateMetadataOutput) Generation() pulumi.IntPtrOutput {
 // Map of string keys and values that can be used to organize and categorize
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2941,6 +3099,8 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 //     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 //   - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
 //     when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+//     **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+//     Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {
@@ -2964,6 +3124,8 @@ func (o ServiceTemplateMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
 // Map of string keys and values that can be used to organize and categorize
 // (scope and select) objects. May match selectors of replication controllers
 // and routes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {
@@ -8254,13 +8416,16 @@ func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput
 }
 
 type GetServiceMetadata struct {
-	Annotations     map[string]string `pulumi:"annotations"`
-	Generation      int               `pulumi:"generation"`
-	Labels          map[string]string `pulumi:"labels"`
-	Namespace       string            `pulumi:"namespace"`
-	ResourceVersion string            `pulumi:"resourceVersion"`
-	SelfLink        string            `pulumi:"selfLink"`
-	Uid             string            `pulumi:"uid"`
+	Annotations          map[string]string `pulumi:"annotations"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	Generation           int               `pulumi:"generation"`
+	Labels               map[string]string `pulumi:"labels"`
+	Namespace            string            `pulumi:"namespace"`
+	PulumiLabels         map[string]string `pulumi:"pulumiLabels"`
+	ResourceVersion      string            `pulumi:"resourceVersion"`
+	SelfLink             string            `pulumi:"selfLink"`
+	Uid                  string            `pulumi:"uid"`
 }
 
 // GetServiceMetadataInput is an input type that accepts GetServiceMetadataArgs and GetServiceMetadataOutput values.
@@ -8275,13 +8440,16 @@ type GetServiceMetadataInput interface {
 }
 
 type GetServiceMetadataArgs struct {
-	Annotations     pulumi.StringMapInput `pulumi:"annotations"`
-	Generation      pulumi.IntInput       `pulumi:"generation"`
-	Labels          pulumi.StringMapInput `pulumi:"labels"`
-	Namespace       pulumi.StringInput    `pulumi:"namespace"`
-	ResourceVersion pulumi.StringInput    `pulumi:"resourceVersion"`
-	SelfLink        pulumi.StringInput    `pulumi:"selfLink"`
-	Uid             pulumi.StringInput    `pulumi:"uid"`
+	Annotations          pulumi.StringMapInput `pulumi:"annotations"`
+	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
+	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	Generation           pulumi.IntInput       `pulumi:"generation"`
+	Labels               pulumi.StringMapInput `pulumi:"labels"`
+	Namespace            pulumi.StringInput    `pulumi:"namespace"`
+	PulumiLabels         pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	ResourceVersion      pulumi.StringInput    `pulumi:"resourceVersion"`
+	SelfLink             pulumi.StringInput    `pulumi:"selfLink"`
+	Uid                  pulumi.StringInput    `pulumi:"uid"`
 }
 
 func (GetServiceMetadataArgs) ElementType() reflect.Type {
@@ -8357,6 +8525,14 @@ func (o GetServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+func (o GetServiceMetadataOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceMetadata) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+func (o GetServiceMetadataOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceMetadata) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o GetServiceMetadataOutput) Generation() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceMetadata) int { return v.Generation }).(pulumi.IntOutput)
 }
@@ -8367,6 +8543,10 @@ func (o GetServiceMetadataOutput) Labels() pulumi.StringMapOutput {
 
 func (o GetServiceMetadataOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMetadata) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o GetServiceMetadataOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceMetadata) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceMetadataOutput) ResourceVersion() pulumi.StringOutput {

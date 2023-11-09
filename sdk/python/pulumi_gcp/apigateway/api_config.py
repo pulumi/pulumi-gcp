@@ -42,6 +42,9 @@ class ApiConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
@@ -154,6 +157,9 @@ class ApiConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -209,6 +215,7 @@ class _ApiConfigState:
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gateway_config: Optional[pulumi.Input['ApiConfigGatewayConfigArgs']] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -216,6 +223,7 @@ class _ApiConfigState:
                  name: Optional[pulumi.Input[str]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_config_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiConfig resources.
@@ -227,12 +235,17 @@ class _ApiConfigState:
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['ApiConfigGatewayConfigArgs'] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigGrpcServiceArgs']]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
@@ -241,6 +254,8 @@ class _ApiConfigState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
         if api is not None:
@@ -251,6 +266,8 @@ class _ApiConfigState:
             pulumi.set(__self__, "api_config_id_prefix", api_config_id_prefix)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if gateway_config is not None:
             pulumi.set(__self__, "gateway_config", gateway_config)
         if grpc_services is not None:
@@ -265,6 +282,8 @@ class _ApiConfigState:
             pulumi.set(__self__, "openapi_documents", openapi_documents)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if service_config_id is not None:
             pulumi.set(__self__, "service_config_id", service_config_id)
 
@@ -321,6 +340,19 @@ class _ApiConfigState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="gatewayConfig")
     def gateway_config(self) -> Optional[pulumi.Input['ApiConfigGatewayConfigArgs']]:
         """
@@ -352,6 +384,9 @@ class _ApiConfigState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -410,6 +445,19 @@ class _ApiConfigState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="serviceConfigId")
@@ -503,6 +551,9 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
@@ -610,8 +661,12 @@ class ApiConfig(pulumi.CustomResource):
             __props__.__dict__["managed_service_configs"] = managed_service_configs
             __props__.__dict__["openapi_documents"] = openapi_documents
             __props__.__dict__["project"] = project
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_config_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApiConfig, __self__).__init__(
             'gcp:apigateway/apiConfig:ApiConfig',
             resource_name,
@@ -626,6 +681,7 @@ class ApiConfig(pulumi.CustomResource):
             api_config_id: Optional[pulumi.Input[str]] = None,
             api_config_id_prefix: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
             grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -633,6 +689,7 @@ class ApiConfig(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigOpenapiDocumentArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_config_id: Optional[pulumi.Input[str]] = None) -> 'ApiConfig':
         """
         Get an existing ApiConfig resource's state with the given name, id, and optional extra
@@ -649,12 +706,17 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigGrpcServiceArgs']]]] grpc_services: gRPC service definition files. If specified, openapiDocuments must not be included.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConfigManagedServiceConfigArgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
@@ -663,6 +725,8 @@ class ApiConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -673,6 +737,7 @@ class ApiConfig(pulumi.CustomResource):
         __props__.__dict__["api_config_id"] = api_config_id
         __props__.__dict__["api_config_id_prefix"] = api_config_id_prefix
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateway_config"] = gateway_config
         __props__.__dict__["grpc_services"] = grpc_services
         __props__.__dict__["labels"] = labels
@@ -680,6 +745,7 @@ class ApiConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["openapi_documents"] = openapi_documents
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["service_config_id"] = service_config_id
         return ApiConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -720,6 +786,15 @@ class ApiConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gatewayConfig")
     def gateway_config(self) -> pulumi.Output[Optional['outputs.ApiConfigGatewayConfig']]:
         """
@@ -743,6 +818,9 @@ class ApiConfig(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -781,6 +859,15 @@ class ApiConfig(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="serviceConfigId")

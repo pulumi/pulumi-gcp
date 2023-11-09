@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _sourceNatActiveIps = value;
         }
 
+        [Input("sourceNatActiveRanges")]
+        private InputList<string>? _sourceNatActiveRanges;
+        public InputList<string> SourceNatActiveRanges
+        {
+            get => _sourceNatActiveRanges ?? (_sourceNatActiveRanges = new InputList<string>());
+            set => _sourceNatActiveRanges = value;
+        }
+
         [Input("sourceNatDrainIps")]
         private InputList<string>? _sourceNatDrainIps;
 
@@ -39,6 +47,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         {
             get => _sourceNatDrainIps ?? (_sourceNatDrainIps = new InputList<string>());
             set => _sourceNatDrainIps = value;
+        }
+
+        [Input("sourceNatDrainRanges")]
+        private InputList<string>? _sourceNatDrainRanges;
+        public InputList<string> SourceNatDrainRanges
+        {
+            get => _sourceNatDrainRanges ?? (_sourceNatDrainRanges = new InputList<string>());
+            set => _sourceNatDrainRanges = value;
         }
 
         public RouterNatRuleActionArgs()

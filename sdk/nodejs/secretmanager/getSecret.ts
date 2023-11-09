@@ -49,6 +49,8 @@ export interface GetSecretArgs {
 export interface GetSecretResult {
     readonly annotations: {[key: string]: string};
     readonly createTime: string;
+    readonly effectiveAnnotations: {[key: string]: string};
+    readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -57,6 +59,7 @@ export interface GetSecretResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly replications: outputs.secretmanager.GetSecretReplication[];
     readonly rotations: outputs.secretmanager.GetSecretRotation[];
     readonly secretId: string;

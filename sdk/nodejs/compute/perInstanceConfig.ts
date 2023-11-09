@@ -179,7 +179,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
     /**
      * Zone where the containing instance group manager is located
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a PerInstanceConfig resource with the given unique name, arguments, and options.

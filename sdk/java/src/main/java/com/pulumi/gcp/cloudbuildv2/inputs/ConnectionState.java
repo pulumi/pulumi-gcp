@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionInstallationStateArgs;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +26,18 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * Allows clients to store small amounts of arbitrary data.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -65,6 +72,23 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -223,6 +247,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.createTime = $.createTime;
         this.disabled = $.disabled;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.etag = $.etag;
         this.githubConfig = $.githubConfig;
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
@@ -256,6 +281,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -266,6 +294,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -314,6 +345,29 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**

@@ -91,7 +91,13 @@ class DomainMappingMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceVersion":
+        if key == "effectiveAnnotations":
+            suggest = "effective_annotations"
+        elif key == "effectiveLabels":
+            suggest = "effective_labels"
+        elif key == "pulumiLabels":
+            suggest = "pulumi_labels"
+        elif key == "resourceVersion":
             suggest = "resource_version"
         elif key == "selfLink":
             suggest = "self_link"
@@ -110,8 +116,11 @@ class DomainMappingMetadata(dict):
     def __init__(__self__, *,
                  namespace: str,
                  annotations: Optional[Mapping[str, str]] = None,
+                 effective_annotations: Optional[Mapping[str, str]] = None,
+                 effective_labels: Optional[Mapping[str, str]] = None,
                  generation: Optional[int] = None,
                  labels: Optional[Mapping[str, str]] = None,
+                 pulumi_labels: Optional[Mapping[str, str]] = None,
                  resource_version: Optional[str] = None,
                  self_link: Optional[str] = None,
                  uid: Optional[str] = None):
@@ -124,14 +133,19 @@ class DomainMappingMetadata(dict):
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-               
-               - - -
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
                and routes.
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param Mapping[str, str] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param str resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -150,10 +164,16 @@ class DomainMappingMetadata(dict):
         pulumi.set(__self__, "namespace", namespace)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if resource_version is not None:
             pulumi.set(__self__, "resource_version", resource_version)
         if self_link is not None:
@@ -180,10 +200,20 @@ class DomainMappingMetadata(dict):
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-
-        - - -
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -202,8 +232,20 @@ class DomainMappingMetadata(dict):
         (scope and select) objects. May match selectors of replication controllers
         and routes.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="resourceVersion")
@@ -274,6 +316,8 @@ class DomainMappingSpec(dict):
         :param str certificate_mode: The mode of the certificate.
                Default value is `AUTOMATIC`.
                Possible values are: `NONE`, `AUTOMATIC`.
+               
+               - - -
         :param bool force_override: If set, the mapping will override any mapping set before this spec was set.
                It is recommended that the user leaves this empty to receive an error
                warning about a potential conflict and only set it once the respective UI
@@ -301,6 +345,8 @@ class DomainMappingSpec(dict):
         The mode of the certificate.
         Default value is `AUTOMATIC`.
         Possible values are: `NONE`, `AUTOMATIC`.
+
+        - - -
         """
         return pulumi.get(self, "certificate_mode")
 
@@ -581,7 +627,13 @@ class ServiceMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceVersion":
+        if key == "effectiveAnnotations":
+            suggest = "effective_annotations"
+        elif key == "effectiveLabels":
+            suggest = "effective_labels"
+        elif key == "pulumiLabels":
+            suggest = "pulumi_labels"
+        elif key == "resourceVersion":
             suggest = "resource_version"
         elif key == "selfLink":
             suggest = "self_link"
@@ -599,9 +651,12 @@ class ServiceMetadata(dict):
 
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, str]] = None,
+                 effective_annotations: Optional[Mapping[str, str]] = None,
+                 effective_labels: Optional[Mapping[str, str]] = None,
                  generation: Optional[int] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  namespace: Optional[str] = None,
+                 pulumi_labels: Optional[Mapping[str, str]] = None,
                  resource_version: Optional[str] = None,
                  self_link: Optional[str] = None,
                  uid: Optional[str] = None):
@@ -624,13 +679,20 @@ class ServiceMetadata(dict):
                for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
                - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
                when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
                and routes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
+        :param Mapping[str, str] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param str resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
@@ -645,12 +707,18 @@ class ServiceMetadata(dict):
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if resource_version is not None:
             pulumi.set(__self__, "resource_version", resource_version)
         if self_link is not None:
@@ -680,8 +748,20 @@ class ServiceMetadata(dict):
         for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
         when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -699,6 +779,8 @@ class ServiceMetadata(dict):
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and routes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -710,6 +792,16 @@ class ServiceMetadata(dict):
         project ID or project number.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="resourceVersion")
@@ -1135,11 +1227,15 @@ class ServiceTemplateMetadata(dict):
                for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
                - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
                when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
                and routes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param str name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
@@ -1196,6 +1292,8 @@ class ServiceTemplateMetadata(dict):
         for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
         when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1215,6 +1313,8 @@ class ServiceTemplateMetadata(dict):
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and routes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -3024,16 +3124,22 @@ class ServiceTraffic(dict):
 class GetServiceMetadataResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
+                 effective_annotations: Mapping[str, str],
+                 effective_labels: Mapping[str, str],
                  generation: int,
                  labels: Mapping[str, str],
                  namespace: str,
+                 pulumi_labels: Mapping[str, str],
                  resource_version: str,
                  self_link: str,
                  uid: str):
         pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "effective_annotations", effective_annotations)
+        pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         pulumi.set(__self__, "resource_version", resource_version)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "uid", uid)
@@ -3042,6 +3148,16 @@ class GetServiceMetadataResult(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -3057,6 +3173,11 @@ class GetServiceMetadataResult(dict):
     @pulumi.getter
     def namespace(self) -> str:
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="resourceVersion")

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,13 +74,15 @@ type GetKMSCryptoKeyArgs struct {
 
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
-	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
+	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
+	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	ImportOnly bool              `pulumi:"importOnly"`
-	KeyRing    string            `pulumi:"keyRing"`
-	Labels     map[string]string `pulumi:"labels"`
-	Name       string            `pulumi:"name"`
+	Id           string            `pulumi:"id"`
+	ImportOnly   bool              `pulumi:"importOnly"`
+	KeyRing      string            `pulumi:"keyRing"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines the cryptographic capabilities of the key.
 	Purpose string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -142,6 +144,10 @@ func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOut
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
+func (o GetKMSCryptoKeyResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetKMSCryptoKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -161,6 +167,10 @@ func (o GetKMSCryptoKeyResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o GetKMSCryptoKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Defines the cryptographic capabilities of the key.

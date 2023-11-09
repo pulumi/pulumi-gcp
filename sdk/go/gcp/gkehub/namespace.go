@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -51,7 +51,13 @@ type Namespace struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the namespace
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -64,6 +70,9 @@ type Namespace struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Id of the scope
@@ -97,6 +106,11 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.ScopeNamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'ScopeNamespaceId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
 	err := ctx.RegisterResource("gcp:gkehub/namespace:Namespace", name, args, &resource, opts...)
@@ -124,7 +138,13 @@ type namespaceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the namespace
 	Name *string `pulumi:"name"`
@@ -137,6 +157,9 @@ type namespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope *string `pulumi:"scope"`
 	// Id of the scope
@@ -159,7 +182,13 @@ type NamespaceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the namespace
 	Name pulumi.StringPtrInput
@@ -172,6 +201,9 @@ type NamespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The name of the Scope instance.
 	Scope pulumi.StringPtrInput
 	// Id of the scope
@@ -195,6 +227,9 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Namespace-level cluster namespace labels. These labels are applied
 	// to the related namespace of the member clusters bound to the parent
@@ -218,6 +253,9 @@ type namespaceArgs struct {
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Namespace-level cluster namespace labels. These labels are applied
 	// to the related namespace of the member clusters bound to the parent
@@ -359,7 +397,16 @@ func (o NamespaceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o NamespaceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels for this Namespace.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -382,6 +429,12 @@ func (o NamespaceOutput) NamespaceLabels() pulumi.StringMapOutput {
 // If it is not provided, the provider project is used.
 func (o NamespaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NamespaceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The name of the Scope instance.

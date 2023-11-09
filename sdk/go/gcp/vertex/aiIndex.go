@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,8 +29,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,8 +94,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -189,6 +189,9 @@ type AiIndex struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Stats of the index resource.
@@ -199,6 +202,8 @@ type AiIndex struct {
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
 	IndexUpdateMethod pulumi.StringPtrOutput `pulumi:"indexUpdateMethod"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// An additional information about the Index
 	// Structure is documented below.
@@ -210,6 +215,9 @@ type AiIndex struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the index. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -226,6 +234,11 @@ func NewAiIndex(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiIndex
 	err := ctx.RegisterResource("gcp:vertex/aiIndex:AiIndex", name, args, &resource, opts...)
@@ -260,6 +273,9 @@ type aiIndexState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// Stats of the index resource.
@@ -270,6 +286,8 @@ type aiIndexState struct {
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
 	IndexUpdateMethod *string `pulumi:"indexUpdateMethod"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// An additional information about the Index
 	// Structure is documented below.
@@ -281,6 +299,9 @@ type aiIndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the index. eg us-central1
 	Region *string `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -299,6 +320,9 @@ type AiIndexState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// Stats of the index resource.
@@ -309,6 +333,8 @@ type AiIndexState struct {
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
 	IndexUpdateMethod pulumi.StringPtrInput
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// An additional information about the Index
 	// Structure is documented below.
@@ -320,6 +346,9 @@ type AiIndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the index. eg us-central1
 	Region pulumi.StringPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -342,6 +371,8 @@ type aiIndexArgs struct {
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
 	IndexUpdateMethod *string `pulumi:"indexUpdateMethod"`
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// An additional information about the Index
 	// Structure is documented below.
@@ -366,6 +397,8 @@ type AiIndexArgs struct {
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
 	IndexUpdateMethod pulumi.StringPtrInput
 	// The labels with user-defined metadata to organize your Indexes.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// An additional information about the Index
 	// Structure is documented below.
@@ -511,6 +544,12 @@ func (o AiIndexOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiIndexOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiIndex) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Used to perform consistent read-modify-write updates.
 func (o AiIndexOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -530,6 +569,8 @@ func (o AiIndexOutput) IndexUpdateMethod() pulumi.StringPtrOutput {
 }
 
 // The labels with user-defined metadata to organize your Indexes.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiIndexOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -554,6 +595,12 @@ func (o AiIndexOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AiIndexOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiIndexOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiIndex) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the index. eg us-central1

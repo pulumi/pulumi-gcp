@@ -12,9 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetadata {
     private Map<String,String> annotations;
+    private Map<String,String> effectiveAnnotations;
+    private Map<String,String> effectiveLabels;
     private Integer generation;
     private Map<String,String> labels;
     private String namespace;
+    private Map<String,String> pulumiLabels;
     private String resourceVersion;
     private String selfLink;
     private String uid;
@@ -22,6 +25,12 @@ public final class GetServiceMetadata {
     private GetServiceMetadata() {}
     public Map<String,String> annotations() {
         return this.annotations;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Integer generation() {
         return this.generation;
@@ -31,6 +40,9 @@ public final class GetServiceMetadata {
     }
     public String namespace() {
         return this.namespace;
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public String resourceVersion() {
         return this.resourceVersion;
@@ -52,9 +64,12 @@ public final class GetServiceMetadata {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
+        private Map<String,String> effectiveAnnotations;
+        private Map<String,String> effectiveLabels;
         private Integer generation;
         private Map<String,String> labels;
         private String namespace;
+        private Map<String,String> pulumiLabels;
         private String resourceVersion;
         private String selfLink;
         private String uid;
@@ -62,9 +77,12 @@ public final class GetServiceMetadata {
         public Builder(GetServiceMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.generation = defaults.generation;
     	      this.labels = defaults.labels;
     	      this.namespace = defaults.namespace;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.selfLink = defaults.selfLink;
     	      this.uid = defaults.uid;
@@ -73,6 +91,16 @@ public final class GetServiceMetadata {
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -88,6 +116,11 @@ public final class GetServiceMetadata {
         @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
@@ -108,9 +141,12 @@ public final class GetServiceMetadata {
         public GetServiceMetadata build() {
             final var o = new GetServiceMetadata();
             o.annotations = annotations;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.generation = generation;
             o.labels = labels;
             o.namespace = namespace;
+            o.pulumiLabels = pulumiLabels;
             o.resourceVersion = resourceVersion;
             o.selfLink = selfLink;
             o.uid = uid;

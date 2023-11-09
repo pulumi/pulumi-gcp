@@ -62,7 +62,6 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-               For newly created service attachment, this boolean defaults to true.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         """
         pulumi.set(__self__, "connection_preference", connection_preference)
@@ -232,7 +231,6 @@ class ServiceAttachmentArgs:
         This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
         If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-        For newly created service attachment, this boolean defaults to true.
         """
         return pulumi.get(self, "reconcile_connections")
 
@@ -308,7 +306,6 @@ class _ServiceAttachmentState:
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-               For newly created service attachment, this boolean defaults to true.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
@@ -505,7 +502,6 @@ class _ServiceAttachmentState:
         This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
         If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-        For newly created service attachment, this boolean defaults to true.
         """
         return pulumi.get(self, "reconcile_connections")
 
@@ -632,7 +628,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-               For newly created service attachment, this boolean defaults to true.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
                this service attachment.
@@ -800,7 +795,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-               For newly created service attachment, this boolean defaults to true.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
@@ -938,12 +932,11 @@ class ServiceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reconcileConnections")
-    def reconcile_connections(self) -> pulumi.Output[Optional[bool]]:
+    def reconcile_connections(self) -> pulumi.Output[bool]:
         """
         This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
         If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-        For newly created service attachment, this boolean defaults to true.
         """
         return pulumi.get(self, "reconcile_connections")
 

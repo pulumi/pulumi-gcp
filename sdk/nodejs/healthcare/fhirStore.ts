@@ -215,6 +215,11 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly disableResourceVersioning!: pulumi.Output<boolean | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether to allow the bulk import API to accept history bundles and directly insert historical resource
      * versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
      * occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -241,6 +246,9 @@ export class FhirStore extends pulumi.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -257,6 +265,11 @@ export class FhirStore extends pulumi.CustomResource {
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The fully qualified name of this dataset
      */
@@ -296,12 +309,14 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["defaultSearchHandlingStrict"] = state ? state.defaultSearchHandlingStrict : undefined;
             resourceInputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
             resourceInputs["enableUpdateCreate"] = state ? state.enableUpdateCreate : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -323,9 +338,13 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(FhirStore.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -372,6 +391,11 @@ export interface FhirStoreState {
      */
     disableResourceVersioning?: pulumi.Input<boolean>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether to allow the bulk import API to accept history bundles and directly insert historical resource
      * versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
      * occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -398,6 +422,9 @@ export interface FhirStoreState {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -414,6 +441,11 @@ export interface FhirStoreState {
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The fully qualified name of this dataset
      */
@@ -504,6 +536,9 @@ export interface FhirStoreArgs {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -13,6 +13,7 @@ import com.pulumi.gcp.dataproc.inputs.ClusterState;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterVirtualClusterConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,8 +66,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceAccount.Account;
- * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.dataproc.Cluster;
  * import com.pulumi.gcp.dataproc.ClusterArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
@@ -210,6 +211,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterConfig;
     }
     /**
+     * The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      * 
@@ -226,22 +245,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gracefulDecommissionTimeout);
     }
     /**
-     * The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> labels;
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * @return The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
-    public Output<Map<String,String>> labels() {
-        return this.labels;
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The name of the cluster, unique within the project and
@@ -278,6 +297,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The region in which the cluster and associated nodes will be created in.
@@ -344,6 +377,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

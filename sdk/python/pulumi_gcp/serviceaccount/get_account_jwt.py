@@ -109,7 +109,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
     import json
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+    foo = gcp.serviceaccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
         payload=json.dumps({
             "foo": "bar",
             "sub": "subject",
@@ -130,7 +130,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
     __args__['payload'] = payload
     __args__['targetServiceAccount'] = target_service_account
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountJwt:getAccountJwt', __args__, opts=opts, typ=GetAccountJwtResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getAccountJwt:getAccountJwt', __args__, opts=opts, typ=GetAccountJwtResult).value
 
     return AwaitableGetAccountJwtResult(
         delegates=pulumi.get(__ret__, 'delegates'),
@@ -159,7 +159,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
     import json
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+    foo = gcp.serviceaccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
         payload=json.dumps({
             "foo": "bar",
             "sub": "subject",

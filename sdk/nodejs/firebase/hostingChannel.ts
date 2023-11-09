@@ -98,6 +98,11 @@ export class HostingChannel extends pulumi.CustomResource {
      */
     public readonly channelId!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The time at which the channel will be automatically deleted. If null, the channel
      * will not be automatically deleted. This field is present in the output whether it's
      * set directly or via the `ttl` field.
@@ -105,6 +110,8 @@ export class HostingChannel extends pulumi.CustomResource {
     public readonly expireTime!: pulumi.Output<string>;
     /**
      * Text labels used for extra metadata and/or filtering
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -112,6 +119,11 @@ export class HostingChannel extends pulumi.CustomResource {
      * sites/SITE_ID/channels/CHANNEL_ID
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -142,9 +154,11 @@ export class HostingChannel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as HostingChannelState | undefined;
             resourceInputs["channelId"] = state ? state.channelId : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["retainedReleaseCount"] = state ? state.retainedReleaseCount : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
@@ -162,9 +176,13 @@ export class HostingChannel extends pulumi.CustomResource {
             resourceInputs["retainedReleaseCount"] = args ? args.retainedReleaseCount : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HostingChannel.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -181,6 +199,11 @@ export interface HostingChannelState {
      */
     channelId?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The time at which the channel will be automatically deleted. If null, the channel
      * will not be automatically deleted. This field is present in the output whether it's
      * set directly or via the `ttl` field.
@@ -188,6 +211,8 @@ export interface HostingChannelState {
     expireTime?: pulumi.Input<string>;
     /**
      * Text labels used for extra metadata and/or filtering
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -195,6 +220,11 @@ export interface HostingChannelState {
      * sites/SITE_ID/channels/CHANNEL_ID
      */
     name?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -231,6 +261,8 @@ export interface HostingChannelArgs {
     expireTime?: pulumi.Input<string>;
     /**
      * Text labels used for extra metadata and/or filtering
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

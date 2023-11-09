@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -43,7 +43,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,7 +70,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -105,7 +105,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -163,6 +163,9 @@ type Image struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
 	// image name. The image family always returns its latest image that is
@@ -183,6 +186,8 @@ type Image struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
@@ -199,6 +204,9 @@ type Image struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk ImageRawDiskPtrOutput `pulumi:"rawDisk"`
@@ -236,6 +244,11 @@ func NewImage(ctx *pulumi.Context,
 		args = &ImageArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
 	err := ctx.RegisterResource("gcp:compute/image:Image", name, args, &resource, opts...)
@@ -269,6 +282,9 @@ type imageState struct {
 	Description *string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
 	// image name. The image family always returns its latest image that is
@@ -289,6 +305,8 @@ type imageState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
@@ -305,6 +323,9 @@ type imageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
@@ -346,6 +367,9 @@ type ImageState struct {
 	Description pulumi.StringPtrInput
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The name of the image family to which this image belongs. You can
 	// create disks by specifying an image family instead of a specific
 	// image name. The image family always returns its latest image that is
@@ -366,6 +390,8 @@ type ImageState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this Image.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
@@ -382,6 +408,9 @@ type ImageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
@@ -439,6 +468,8 @@ type imageArgs struct {
 	// Structure is documented below.
 	ImageEncryptionKey *ImageImageEncryptionKey `pulumi:"imageEncryptionKey"`
 	// Labels to apply to this Image.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
@@ -507,6 +538,8 @@ type ImageArgs struct {
 	// Structure is documented below.
 	ImageEncryptionKey ImageImageEncryptionKeyPtrInput
 	// Labels to apply to this Image.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
@@ -684,6 +717,12 @@ func (o ImageOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ImageOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The name of the image family to which this image belongs. You can
 // create disks by specifying an image family instead of a specific
 // image name. The image family always returns its latest image that is
@@ -716,6 +755,8 @@ func (o ImageOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this Image.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ImageOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -742,6 +783,12 @@ func (o ImageOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ImageOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ImageOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The parameters of the raw disk image.

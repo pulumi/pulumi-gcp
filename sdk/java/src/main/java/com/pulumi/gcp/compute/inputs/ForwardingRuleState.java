@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.ForwardingRuleServiceDirectoryRegistrationArgs;
+import com.pulumi.gcp.compute.inputs.ForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -162,6 +162,23 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
@@ -346,12 +363,18 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     /**
      * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -639,6 +662,23 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * A reference to the region where the regional forwarding rule resides.
      * This field is not applicable to global forwarding rules.
      * 
@@ -677,7 +717,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="serviceDirectoryRegistrations")
-    private @Nullable Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>> serviceDirectoryRegistrations;
+    private @Nullable Output<ForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations;
 
     /**
      * @return Service Directory resources to register this forwarding rule with.
@@ -685,7 +725,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>>> serviceDirectoryRegistrations() {
+    public Optional<Output<ForwardingRuleServiceDirectoryRegistrationsArgs>> serviceDirectoryRegistrations() {
         return Optional.ofNullable(this.serviceDirectoryRegistrations);
     }
 
@@ -824,6 +864,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.baseForwardingRule = $.baseForwardingRule;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
@@ -840,6 +881,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.project = $.project;
         this.pscConnectionId = $.pscConnectionId;
         this.pscConnectionStatus = $.pscConnectionStatus;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.selfLink = $.selfLink;
         this.serviceDirectoryRegistrations = $.serviceDirectoryRegistrations;
@@ -1056,6 +1098,29 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param ipAddress IP address for which this forwarding rule accepts traffic. When a client
          * sends traffic to this IP address, the forwarding rule directs the traffic
          * to the referenced `target` or `backendService`.
@@ -1267,6 +1332,9 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -1277,6 +1345,9 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1651,6 +1722,29 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param region A reference to the region where the regional forwarding rule resides.
          * This field is not applicable to global forwarding rules.
          * 
@@ -1702,7 +1796,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder serviceDirectoryRegistrations(@Nullable Output<List<ForwardingRuleServiceDirectoryRegistrationArgs>> serviceDirectoryRegistrations) {
+        public Builder serviceDirectoryRegistrations(@Nullable Output<ForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations) {
             $.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
             return this;
         }
@@ -1715,20 +1809,8 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder serviceDirectoryRegistrations(List<ForwardingRuleServiceDirectoryRegistrationArgs> serviceDirectoryRegistrations) {
+        public Builder serviceDirectoryRegistrations(ForwardingRuleServiceDirectoryRegistrationsArgs serviceDirectoryRegistrations) {
             return serviceDirectoryRegistrations(Output.of(serviceDirectoryRegistrations));
-        }
-
-        /**
-         * @param serviceDirectoryRegistrations Service Directory resources to register this forwarding rule with.
-         * Currently, only supports a single Service Directory resource.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceDirectoryRegistrations(ForwardingRuleServiceDirectoryRegistrationArgs... serviceDirectoryRegistrations) {
-            return serviceDirectoryRegistrations(List.of(serviceDirectoryRegistrations));
         }
 
         /**

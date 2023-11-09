@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,11 +21,11 @@ import (
 //
 // ### ServiceAccount JSON Credential File.
 //
-//	`serviceAccount.getAccountIdToken` will use the configured provider credentials
+//	`serviceaccount.getAccountIdToken` will use the configured provider credentials
 //
 // ### Service Account Impersonation.
 //
-//	`serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceAccount.getAccountAccessToken`.
+//	`serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceaccount.getAccountAccessToken`.
 //
 //	Note: to use the following, you must grant `targetServiceAccount` the
 //	`roles/iam.serviceAccountTokenCreator` role on itself.
@@ -41,7 +41,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-http/sdk/go/http"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -49,7 +49,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			oidc, err := serviceAccount.GetAccountIdToken(ctx, &serviceaccount.GetAccountIdTokenArgs{
+//			oidc, err := serviceaccount.GetAccountIdToken(ctx, &serviceaccount.GetAccountIdTokenArgs{
 //				TargetAudience: "https://your.cloud.run.app/",
 //			}, nil)
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountIdTokenResult
-	err := ctx.Invoke("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

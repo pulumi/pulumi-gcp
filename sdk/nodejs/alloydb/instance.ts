@@ -22,13 +22,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
- *     name: "alloydb-network",
- * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
@@ -37,10 +35,10 @@ import * as utilities from "../utilities";
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
@@ -103,6 +101,8 @@ export class Instance extends pulumi.CustomResource {
 
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -133,6 +133,16 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
     public readonly gceZone!: pulumi.Output<string | undefined>;
@@ -154,6 +164,8 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -165,6 +177,16 @@ export class Instance extends pulumi.CustomResource {
      * The name of the instance resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     */
+    public readonly queryInsightsConfig!: pulumi.Output<outputs.alloydb.InstanceQueryInsightsConfig>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
@@ -206,6 +228,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["databaseFlags"] = state ? state.databaseFlags : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gceZone"] = state ? state.gceZone : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
@@ -213,6 +237,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["machineConfig"] = state ? state.machineConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["queryInsightsConfig"] = state ? state.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = state ? state.readPoolConfig : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -239,16 +265,22 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
+            resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -259,6 +291,8 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -289,6 +323,16 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
     gceZone?: pulumi.Input<string>;
@@ -310,6 +354,8 @@ export interface InstanceState {
     ipAddress?: pulumi.Input<string>;
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -321,6 +367,16 @@ export interface InstanceState {
      * The name of the instance resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     */
+    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
@@ -350,6 +406,8 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -393,6 +451,8 @@ export interface InstanceArgs {
     instanceType: pulumi.Input<string>;
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -400,6 +460,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig>;
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     */
+    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.

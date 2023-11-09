@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.BackupEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.BackupEncryptionInfoArgs;
+import com.pulumi.gcp.alloydb.inputs.BackupExpiryQuantityArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,29 @@ import javax.annotation.Nullable;
 public final class BackupState extends com.pulumi.resources.ResourceArgs {
 
     public static final BackupState Empty = new BackupState();
+
+    /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
 
     /**
      * The ID of the alloydb backup.
@@ -51,18 +75,52 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time the Backup was created in UTC.
+     * Output only. The system-generated UID of the cluster which was used to create this resource.
+     * 
+     */
+    @Import(name="clusterUid")
+    private @Nullable Output<String> clusterUid;
+
+    /**
+     * @return Output only. The system-generated UID of the cluster which was used to create this resource.
+     * 
+     */
+    public Optional<Output<String>> clusterUid() {
+        return Optional.ofNullable(this.clusterUid);
+    }
+
+    /**
+     * Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time the Backup was created in UTC.
+     * @return Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Output only. Delete time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="deleteTime")
+    private @Nullable Output<String> deleteTime;
+
+    /**
+     * @return Output only. Delete time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> deleteTime() {
+        return Optional.ofNullable(this.deleteTime);
     }
 
     /**
@@ -78,6 +136,55 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * User-settable and human-readable display name for the Backup.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return User-settable and human-readable display name for the Backup.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
@@ -115,14 +222,14 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A hash of the resource.
+     * For Resource freshness validation (https://google.aip.dev/154)
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return A hash of the resource.
+     * @return For Resource freshness validation (https://google.aip.dev/154)
      * 
      */
     public Optional<Output<String>> etag() {
@@ -130,14 +237,56 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined labels for the alloydb backup.
+     * Output only. The QuantityBasedExpiry of the backup, specified by the backup&#39;s retention policy.
+     * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="expiryQuantities")
+    private @Nullable Output<List<BackupExpiryQuantityArgs>> expiryQuantities;
+
+    /**
+     * @return Output only. The QuantityBasedExpiry of the backup, specified by the backup&#39;s retention policy.
+     * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackupExpiryQuantityArgs>>> expiryQuantities() {
+        return Optional.ofNullable(this.expiryQuantities);
+    }
+
+    /**
+     * Output only. The time at which after the backup is eligible to be garbage collected.
+     * It is the duration specified by the backup&#39;s retention policy, added to the backup&#39;s createTime.
+     * 
+     */
+    @Import(name="expiryTime")
+    private @Nullable Output<String> expiryTime;
+
+    /**
+     * @return Output only. The time at which after the backup is eligible to be garbage collected.
+     * It is the duration specified by the backup&#39;s retention policy, added to the backup&#39;s createTime.
+     * 
+     */
+    public Optional<Output<String>> expiryTime() {
+        return Optional.ofNullable(this.expiryTime);
+    }
+
+    /**
+     * User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the alloydb backup.
+     * @return User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -196,14 +345,33 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * @return Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -211,18 +379,50 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current state of the backup.
+     * Output only. The size of the backup in bytes.
+     * 
+     */
+    @Import(name="sizeBytes")
+    private @Nullable Output<String> sizeBytes;
+
+    /**
+     * @return Output only. The size of the backup in bytes.
+     * 
+     */
+    public Optional<Output<String>> sizeBytes() {
+        return Optional.ofNullable(this.sizeBytes);
+    }
+
+    /**
+     * Output only. The current state of the backup.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the backup.
+     * @return Output only. The current state of the backup.
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
@@ -241,14 +441,16 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time the Backup was updated in UTC.
+     * Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time the Backup was updated in UTC.
+     * @return Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -258,19 +460,30 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     private BackupState() {}
 
     private BackupState(BackupState $) {
+        this.annotations = $.annotations;
         this.backupId = $.backupId;
         this.clusterName = $.clusterName;
+        this.clusterUid = $.clusterUid;
         this.createTime = $.createTime;
+        this.deleteTime = $.deleteTime;
         this.description = $.description;
+        this.displayName = $.displayName;
+        this.effectiveAnnotations = $.effectiveAnnotations;
+        this.effectiveLabels = $.effectiveLabels;
         this.encryptionConfig = $.encryptionConfig;
         this.encryptionInfos = $.encryptionInfos;
         this.etag = $.etag;
+        this.expiryQuantities = $.expiryQuantities;
+        this.expiryTime = $.expiryTime;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
+        this.sizeBytes = $.sizeBytes;
         this.state = $.state;
+        this.type = $.type;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -291,6 +504,35 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupState defaults) {
             $ = new BackupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**
@@ -336,7 +578,29 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Time the Backup was created in UTC.
+         * @param clusterUid Output only. The system-generated UID of the cluster which was used to create this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterUid(@Nullable Output<String> clusterUid) {
+            $.clusterUid = clusterUid;
+            return this;
+        }
+
+        /**
+         * @param clusterUid Output only. The system-generated UID of the cluster which was used to create this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterUid(String clusterUid) {
+            return clusterUid(Output.of(clusterUid));
+        }
+
+        /**
+         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -347,13 +611,37 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Time the Backup was created in UTC.
+         * @param createTime Output only. Create time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deleteTime Output only. Delete time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(@Nullable Output<String> deleteTime) {
+            $.deleteTime = deleteTime;
+            return this;
+        }
+
+        /**
+         * @param deleteTime Output only. Delete time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(String deleteTime) {
+            return deleteTime(Output.of(deleteTime));
         }
 
         /**
@@ -375,6 +663,73 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param displayName User-settable and human-readable display name for the Backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName User-settable and human-readable display name for the Backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -435,7 +790,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A hash of the resource.
+         * @param etag For Resource freshness validation (https://google.aip.dev/154)
          * 
          * @return builder
          * 
@@ -446,7 +801,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A hash of the resource.
+         * @param etag For Resource freshness validation (https://google.aip.dev/154)
          * 
          * @return builder
          * 
@@ -456,7 +811,70 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the alloydb backup.
+         * @param expiryQuantities Output only. The QuantityBasedExpiry of the backup, specified by the backup&#39;s retention policy.
+         * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryQuantities(@Nullable Output<List<BackupExpiryQuantityArgs>> expiryQuantities) {
+            $.expiryQuantities = expiryQuantities;
+            return this;
+        }
+
+        /**
+         * @param expiryQuantities Output only. The QuantityBasedExpiry of the backup, specified by the backup&#39;s retention policy.
+         * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryQuantities(List<BackupExpiryQuantityArgs> expiryQuantities) {
+            return expiryQuantities(Output.of(expiryQuantities));
+        }
+
+        /**
+         * @param expiryQuantities Output only. The QuantityBasedExpiry of the backup, specified by the backup&#39;s retention policy.
+         * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryQuantities(BackupExpiryQuantityArgs... expiryQuantities) {
+            return expiryQuantities(List.of(expiryQuantities));
+        }
+
+        /**
+         * @param expiryTime Output only. The time at which after the backup is eligible to be garbage collected.
+         * It is the duration specified by the backup&#39;s retention policy, added to the backup&#39;s createTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryTime(@Nullable Output<String> expiryTime) {
+            $.expiryTime = expiryTime;
+            return this;
+        }
+
+        /**
+         * @param expiryTime Output only. The time at which after the backup is eligible to be garbage collected.
+         * It is the duration specified by the backup&#39;s retention policy, added to the backup&#39;s createTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryTime(String expiryTime) {
+            return expiryTime(Output.of(expiryTime));
+        }
+
+        /**
+         * @param labels User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -467,7 +885,10 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the alloydb backup.
+         * @param labels User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -546,7 +967,31 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+         * This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 
@@ -557,7 +1002,8 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+         * This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 
@@ -567,7 +1013,28 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of the backup.
+         * @param sizeBytes Output only. The size of the backup in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeBytes(@Nullable Output<String> sizeBytes) {
+            $.sizeBytes = sizeBytes;
+            return this;
+        }
+
+        /**
+         * @param sizeBytes Output only. The size of the backup in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sizeBytes(String sizeBytes) {
+            return sizeBytes(Output.of(sizeBytes));
+        }
+
+        /**
+         * @param state Output only. The current state of the backup.
          * 
          * @return builder
          * 
@@ -578,13 +1045,36 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of the backup.
+         * @param state Output only. The current state of the backup.
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param type The backup type, which suggests the trigger for the backup.
+         * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The backup type, which suggests the trigger for the backup.
+         * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**
@@ -609,7 +1099,8 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Time the Backup was updated in UTC.
+         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -620,7 +1111,8 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Time the Backup was updated in UTC.
+         * @param updateTime Output only. Update time stamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

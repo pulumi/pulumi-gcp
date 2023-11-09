@@ -14,9 +14,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class GetServiceMetadataResult
     {
         public readonly ImmutableDictionary<string, string> Annotations;
+        public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly int Generation;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Namespace;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ResourceVersion;
         public readonly string SelfLink;
         public readonly string Uid;
@@ -25,11 +28,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         private GetServiceMetadataResult(
             ImmutableDictionary<string, string> annotations,
 
+            ImmutableDictionary<string, string> effectiveAnnotations,
+
+            ImmutableDictionary<string, string> effectiveLabels,
+
             int generation,
 
             ImmutableDictionary<string, string> labels,
 
             string @namespace,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string resourceVersion,
 
@@ -38,9 +47,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             string uid)
         {
             Annotations = annotations;
+            EffectiveAnnotations = effectiveAnnotations;
+            EffectiveLabels = effectiveLabels;
             Generation = generation;
             Labels = labels;
             Namespace = @namespace;
+            PulumiLabels = pulumiLabels;
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
             Uid = uid;

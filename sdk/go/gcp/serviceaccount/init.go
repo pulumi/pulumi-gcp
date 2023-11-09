@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,15 +21,15 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp:serviceAccount/account:Account":
+	case "gcp:serviceaccount/account:Account":
 		r = &Account{}
-	case "gcp:serviceAccount/iAMBinding:IAMBinding":
+	case "gcp:serviceaccount/iAMBinding:IAMBinding":
 		r = &IAMBinding{}
-	case "gcp:serviceAccount/iAMMember:IAMMember":
+	case "gcp:serviceaccount/iAMMember:IAMMember":
 		r = &IAMMember{}
-	case "gcp:serviceAccount/iAMPolicy:IAMPolicy":
+	case "gcp:serviceaccount/iAMPolicy:IAMPolicy":
 		r = &IAMPolicy{}
-	case "gcp:serviceAccount/key:Key":
+	case "gcp:serviceaccount/key:Key":
 		r = &Key{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -46,27 +46,27 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/account",
+		"serviceaccount/account",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMBinding",
+		"serviceaccount/iAMBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMMember",
+		"serviceaccount/iAMMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMPolicy",
+		"serviceaccount/iAMPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/key",
+		"serviceaccount/key",
 		&module{version},
 	)
 }

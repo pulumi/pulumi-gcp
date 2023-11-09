@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -51,7 +51,6 @@ type Provider struct {
 	CloudFunctionsCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"cloudIdsCustomEndpoint"`
-	CloudIotCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"cloudIotCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint     pulumi.StringPtrOutput `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
 	CloudRunV2CustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudRunV2CustomEndpoint"`
@@ -98,7 +97,6 @@ type Provider struct {
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
-	GameServicesCustomEndpoint             pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
 	GkeBackupCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHub2CustomEndpoint                  pulumi.StringPtrOutput `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
@@ -232,7 +230,6 @@ type providerArgs struct {
 	CloudFunctionsCustomEndpoint           *string           `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint            *string           `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                 *string           `pulumi:"cloudIdsCustomEndpoint"`
-	CloudIotCustomEndpoint                 *string           `pulumi:"cloudIotCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint     *string           `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint                 *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudRunV2CustomEndpoint               *string           `pulumi:"cloudRunV2CustomEndpoint"`
@@ -262,6 +259,7 @@ type providerArgs struct {
 	DataprocMetastoreCustomEndpoint        *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint                *string           `pulumi:"datastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               *string           `pulumi:"datastreamCustomEndpoint"`
+	DefaultLabels                          map[string]string `pulumi:"defaultLabels"`
 	DeploymentManagerCustomEndpoint        *string           `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint               *string           `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             *string           `pulumi:"dialogflowCxCustomEndpoint"`
@@ -280,7 +278,6 @@ type providerArgs struct {
 	FirebaseStorageCustomEndpoint          *string           `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            *string           `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint                *string           `pulumi:"firestoreCustomEndpoint"`
-	GameServicesCustomEndpoint             *string           `pulumi:"gameServicesCustomEndpoint"`
 	GkeBackupCustomEndpoint                *string           `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHub2CustomEndpoint                  *string           `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   *string           `pulumi:"gkeHubCustomEndpoint"`
@@ -387,7 +384,6 @@ type ProviderArgs struct {
 	CloudFunctionsCustomEndpoint           pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint            pulumi.StringPtrInput
 	CloudIdsCustomEndpoint                 pulumi.StringPtrInput
-	CloudIotCustomEndpoint                 pulumi.StringPtrInput
 	CloudResourceManagerCustomEndpoint     pulumi.StringPtrInput
 	CloudRunCustomEndpoint                 pulumi.StringPtrInput
 	CloudRunV2CustomEndpoint               pulumi.StringPtrInput
@@ -417,6 +413,7 @@ type ProviderArgs struct {
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrInput
 	DatastoreCustomEndpoint                pulumi.StringPtrInput
 	DatastreamCustomEndpoint               pulumi.StringPtrInput
+	DefaultLabels                          pulumi.StringMapInput
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrInput
 	DialogflowCustomEndpoint               pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint             pulumi.StringPtrInput
@@ -435,7 +432,6 @@ type ProviderArgs struct {
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrInput
 	FirebaserulesCustomEndpoint            pulumi.StringPtrInput
 	FirestoreCustomEndpoint                pulumi.StringPtrInput
-	GameServicesCustomEndpoint             pulumi.StringPtrInput
 	GkeBackupCustomEndpoint                pulumi.StringPtrInput
 	GkeHub2CustomEndpoint                  pulumi.StringPtrInput
 	GkeHubCustomEndpoint                   pulumi.StringPtrInput
@@ -684,10 +680,6 @@ func (o ProviderOutput) CloudIdsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudIdsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) CloudIotCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudIotCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
 func (o ProviderOutput) CloudResourceManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudResourceManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -870,10 +862,6 @@ func (o ProviderOutput) FirebaserulesCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) FirestoreCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirestoreCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) GameServicesCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GameServicesCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) GkeBackupCustomEndpoint() pulumi.StringPtrOutput {

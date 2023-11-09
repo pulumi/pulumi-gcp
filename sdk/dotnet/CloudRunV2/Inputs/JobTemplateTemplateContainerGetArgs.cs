@@ -56,17 +56,6 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string> Image { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        /// This field is not supported in Cloud Run Job currently.
-        /// Structure is documented below.
-        /// 
-        /// &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        /// </summary>
-        [Input("livenessProbe")]
-        public Input<Inputs.JobTemplateTemplateContainerLivenessProbeGetArgs>? LivenessProbe { get; set; }
-
-        /// <summary>
         /// Name of the container specified as a DNS_LABEL.
         /// </summary>
         [Input("name")]
@@ -92,17 +81,6 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// </summary>
         [Input("resources")]
         public Input<Inputs.JobTemplateTemplateContainerResourcesGetArgs>? Resources { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        /// This field is not supported in Cloud Run Job currently.
-        /// Structure is documented below.
-        /// 
-        /// &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        /// </summary>
-        [Input("startupProbe")]
-        public Input<Inputs.JobTemplateTemplateContainerStartupProbeGetArgs>? StartupProbe { get; set; }
 
         [Input("volumeMounts")]
         private InputList<Inputs.JobTemplateTemplateContainerVolumeMountGetArgs>? _volumeMounts;

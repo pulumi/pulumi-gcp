@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -37,7 +37,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -69,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -119,6 +119,9 @@ type CryptoKey struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
@@ -127,9 +130,15 @@ type CryptoKey struct {
 	// ***
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -158,6 +167,11 @@ func NewCryptoKey(ctx *pulumi.Context,
 	if args.KeyRing == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRing'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CryptoKey
 	err := ctx.RegisterResource("gcp:kms/cryptoKey:CryptoKey", name, args, &resource, opts...)
@@ -184,6 +198,9 @@ type cryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
@@ -192,9 +209,15 @@ type cryptoKeyState struct {
 	// ***
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -217,6 +240,9 @@ type CryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
@@ -225,9 +251,15 @@ type CryptoKeyState struct {
 	// ***
 	KeyRing pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -262,6 +294,9 @@ type cryptoKeyArgs struct {
 	// ***
 	KeyRing string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
@@ -296,6 +331,9 @@ type CryptoKeyArgs struct {
 	// ***
 	KeyRing pulumi.StringInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
@@ -434,6 +472,12 @@ func (o CryptoKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CryptoKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether this key may contain imported versions only.
 func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolOutput { return v.ImportOnly }).(pulumi.BoolOutput)
@@ -448,6 +492,9 @@ func (o CryptoKeyOutput) KeyRing() pulumi.StringOutput {
 }
 
 // Labels with user-defined metadata to apply to this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CryptoKeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -455,6 +502,12 @@ func (o CryptoKeyOutput) Labels() pulumi.StringMapOutput {
 // The resource name for the CryptoKey.
 func (o CryptoKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CryptoKeyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The immutable purpose of this CryptoKey. See the

@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string CreateTime;
         public readonly bool DeletionProtection;
         public readonly string DesiredState;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string GcsBucket;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -180,6 +181,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string PemCsr;
         public readonly string? Pool;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool SkipGracePeriod;
         public readonly string State;
         public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
@@ -199,6 +201,8 @@ namespace Pulumi.Gcp.CertificateAuthority
             bool deletionProtection,
 
             string desiredState,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string gcsBucket,
 
@@ -226,6 +230,8 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             bool skipGracePeriod,
 
             string state,
@@ -242,6 +248,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             CreateTime = createTime;
             DeletionProtection = deletionProtection;
             DesiredState = desiredState;
+            EffectiveLabels = effectiveLabels;
             GcsBucket = gcsBucket;
             Id = id;
             IgnoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
@@ -255,6 +262,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             PemCsr = pemCsr;
             Pool = pool;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SkipGracePeriod = skipGracePeriod;
             State = state;
             SubordinateConfigs = subordinateConfigs;

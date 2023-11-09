@@ -3,6 +3,10 @@ resources:
     archive:
         options:
             provider: ${provider}
+            ignoreChanges:
+              - project
+              - region
+              - zone
         properties:
             bucket: ${bucket.name}
             source:

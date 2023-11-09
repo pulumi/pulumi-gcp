@@ -4252,6 +4252,8 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", TypeShape.of(GetInstanceSerialPortResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
@@ -4297,6 +4299,8 @@ public final class ComputeFunctions {
         return getInstanceTemplate(GetInstanceTemplateArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
@@ -4342,6 +4346,8 @@ public final class ComputeFunctions {
         return getInstanceTemplatePlain(GetInstanceTemplatePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
@@ -4387,6 +4393,8 @@ public final class ComputeFunctions {
         return getInstanceTemplate(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
@@ -4432,6 +4440,8 @@ public final class ComputeFunctions {
         return getInstanceTemplatePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
@@ -4477,6 +4487,8 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getInstanceTemplate:getInstanceTemplate", TypeShape.of(GetInstanceTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+     * 
      * Get information about a VM instance template resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and

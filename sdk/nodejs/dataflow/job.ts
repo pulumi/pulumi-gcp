@@ -131,6 +131,11 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly additionalExperiments!: pulumi.Output<string[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */
     public readonly enableStreamingEngine!: pulumi.Output<boolean | undefined>;
@@ -149,10 +154,9 @@ export class Job extends pulumi.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The machine type to use for the job.
      */
@@ -181,6 +185,10 @@ export class Job extends pulumi.CustomResource {
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region in which the created job should run.
      */
@@ -238,6 +246,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
             resourceInputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
             resourceInputs["jobId"] = state ? state.jobId : undefined;
@@ -250,6 +259,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["onDelete"] = state ? state.onDelete : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             resourceInputs["skipWaitOnJobTermination"] = state ? state.skipWaitOnJobTermination : undefined;
@@ -288,11 +298,15 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
             resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -305,6 +319,11 @@ export interface JobState {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */
@@ -324,8 +343,7 @@ export interface JobState {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -356,6 +374,10 @@ export interface JobState {
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which the created job should run.
      */
@@ -423,8 +445,7 @@ export interface JobArgs {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**

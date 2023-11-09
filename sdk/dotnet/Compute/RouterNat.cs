@@ -205,6 +205,113 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Nat Private
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Purpose = "PRIVATE_NAT",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///         Network = net.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var hub = new Gcp.NetworkConnectivity.Hub("hub", new()
+    ///     {
+    ///         Description = "vpc hub for inter vpc nat",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var spoke = new Gcp.NetworkConnectivity.Spoke("spoke", new()
+    ///     {
+    ///         Location = "global",
+    ///         Description = "vpc spoke for inter vpc nat",
+    ///         Hub = hub.Id,
+    ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
+    ///         {
+    ///             ExcludeExportRanges = new[]
+    ///             {
+    ///                 "198.51.100.0/24",
+    ///                 "10.10.0.0/16",
+    ///             },
+    ///             Uri = net.SelfLink,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var natType = new Gcp.Compute.RouterNat("natType", new()
+    ///     {
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         SourceSubnetworkIpRangesToNat = "LIST_OF_SUBNETWORKS",
+    ///         EnableDynamicPortAllocation = false,
+    ///         EnableEndpointIndependentMapping = false,
+    ///         MinPortsPerVm = 32,
+    ///         Type = "PRIVATE",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterNatSubnetworkArgs
+    ///             {
+    ///                 Name = subnet.Id,
+    ///                 SourceIpRangesToNats = new[]
+    ///                 {
+    ///                     "ALL_IP_RANGES",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterNatRuleArgs
+    ///             {
+    ///                 RuleNumber = 100,
+    ///                 Description = "rule for private nat",
+    ///                 Match = "nexthop.hub == \"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\"",
+    ///                 Action = new Gcp.Compute.Inputs.RouterNatRuleActionArgs
+    ///                 {
+    ///                     SourceNatActiveRanges = new[]
+    ///                     {
+    ///                         subnet.SelfLink,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -248,11 +355,11 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableDynamicPortAllocation { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// Enable endpoint independent mapping.
+        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         /// </summary>
         [Output("enableEndpointIndependentMapping")]
-        public Output<bool?> EnableEndpointIndependentMapping { get; private set; } = null!;
+        public Output<bool> EnableEndpointIndependentMapping { get; private set; } = null!;
 
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -294,7 +401,7 @@ namespace Pulumi.Gcp.Compute
         /// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         /// </summary>
         [Output("natIpAllocateOption")]
-        public Output<string> NatIpAllocateOption { get; private set; } = null!;
+        public Output<string?> NatIpAllocateOption { get; private set; } = null!;
 
         /// <summary>
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
@@ -378,6 +485,14 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> TcpTransitoryIdleTimeoutSec { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         /// </summary>
         [Output("udpIdleTimeoutSec")]
@@ -454,8 +569,8 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableDynamicPortAllocation { get; set; }
 
         /// <summary>
-        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// Enable endpoint independent mapping.
+        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         /// </summary>
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
@@ -499,8 +614,8 @@ namespace Pulumi.Gcp.Compute
         /// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
         /// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         /// </summary>
-        [Input("natIpAllocateOption", required: true)]
-        public Input<string> NatIpAllocateOption { get; set; } = null!;
+        [Input("natIpAllocateOption")]
+        public Input<string>? NatIpAllocateOption { get; set; }
 
         [Input("natIps")]
         private InputList<string>? _natIps;
@@ -602,6 +717,14 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         /// </summary>
         [Input("udpIdleTimeoutSec")]
@@ -640,8 +763,8 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableDynamicPortAllocation { get; set; }
 
         /// <summary>
-        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// Enable endpoint independent mapping.
+        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         /// </summary>
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
@@ -786,6 +909,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("tcpTransitoryIdleTimeoutSec")]
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
+
+        /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
+        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.

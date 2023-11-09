@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? NatIp;
         public readonly string? NetworkTier;
         public readonly string? PublicPtrDomainName;
+        public readonly string? SecurityPolicy;
 
         [OutputConstructor]
         private InstanceFromTemplateNetworkInterfaceAccessConfig(
@@ -23,11 +24,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? networkTier,
 
-            string? publicPtrDomainName)
+            string? publicPtrDomainName,
+
+            string? securityPolicy)
         {
             NatIp = natIp;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
         }
     }
 }

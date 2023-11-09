@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container
     /// [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
     /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
     /// 
+    /// &gt; **Note**: On version 5.0.0+ of the provider, you must explicitly set `deletion_protection=false`
+    /// (and run `pulumi up` to write the field to state) in order to destroy a cluster.
+    /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
+    /// 
     /// &gt; **Warning:** All arguments and attributes, including basic auth username and
     /// passwords as well as certificate outputs will be stored in the raw state as
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
@@ -155,7 +159,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Output("clusterIpv4Cidr")]
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
@@ -210,6 +214,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterDefaultSnatStatus> DefaultSnatStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        /// Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the cluster.
         /// </summary>
         [Output("description")]
@@ -229,14 +240,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("enableAutopilot")]
         public Output<bool?> EnableAutopilot { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable Binary Authorization for this cluster.
-        /// If enabled, all container images will be validated by Google Binary Authorization.
-        /// Deprecated in favor of `binary_authorization`.
-        /// </summary>
-        [Output("enableBinaryAuthorization")]
-        public Output<bool?> EnableBinaryAuthorization { get; private set; } = null!;
 
         /// <summary>
         /// )
@@ -332,9 +335,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration of cluster IP allocation for
-        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// making the cluster VPC-native instead of routes-based. Structure is documented
-        /// below.
+        /// VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        /// Structure is documented below.
         /// </summary>
         [Output("ipAllocationPolicy")]
         public Output<Outputs.ClusterIpAllocationPolicy> IpAllocationPolicy { get; private set; } = null!;
@@ -477,8 +479,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         /// </summary>
         [Output("networkingMode")]
         public Output<string> NetworkingMode { get; private set; } = null!;
@@ -783,7 +784,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -838,6 +839,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDefaultSnatStatusArgs>? DefaultSnatStatus { get; set; }
 
         /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        /// Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the cluster.
         /// </summary>
         [Input("description")]
@@ -857,14 +865,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableAutopilot")]
         public Input<bool>? EnableAutopilot { get; set; }
-
-        /// <summary>
-        /// Enable Binary Authorization for this cluster.
-        /// If enabled, all container images will be validated by Google Binary Authorization.
-        /// Deprecated in favor of `binary_authorization`.
-        /// </summary>
-        [Input("enableBinaryAuthorization")]
-        public Input<bool>? EnableBinaryAuthorization { get; set; }
 
         /// <summary>
         /// )
@@ -954,9 +954,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration of cluster IP allocation for
-        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// making the cluster VPC-native instead of routes-based. Structure is documented
-        /// below.
+        /// VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        /// Structure is documented below.
         /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.ClusterIpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
@@ -1085,8 +1084,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         /// </summary>
         [Input("networkingMode")]
         public Input<string>? NetworkingMode { get; set; }
@@ -1345,7 +1343,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -1400,6 +1398,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDefaultSnatStatusGetArgs>? DefaultSnatStatus { get; set; }
 
         /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in
+        /// Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the cluster.
         /// </summary>
         [Input("description")]
@@ -1419,14 +1424,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableAutopilot")]
         public Input<bool>? EnableAutopilot { get; set; }
-
-        /// <summary>
-        /// Enable Binary Authorization for this cluster.
-        /// If enabled, all container images will be validated by Google Binary Authorization.
-        /// Deprecated in favor of `binary_authorization`.
-        /// </summary>
-        [Input("enableBinaryAuthorization")]
-        public Input<bool>? EnableBinaryAuthorization { get; set; }
 
         /// <summary>
         /// )
@@ -1522,9 +1519,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration of cluster IP allocation for
-        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// making the cluster VPC-native instead of routes-based. Structure is documented
-        /// below.
+        /// VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
+        /// Structure is documented below.
         /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.ClusterIpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
@@ -1667,8 +1663,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
+        /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
         /// </summary>
         [Input("networkingMode")]
         public Input<string>? NetworkingMode { get; set; }

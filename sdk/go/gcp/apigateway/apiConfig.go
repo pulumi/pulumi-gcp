@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,7 +32,7 @@ import (
 //	"encoding/base64"
 //	"os"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -109,6 +109,9 @@ type ApiConfig struct {
 	ApiConfigIdPrefix pulumi.StringOutput `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
@@ -117,6 +120,9 @@ type ApiConfig struct {
 	// Structure is documented below.
 	GrpcServices ApiConfigGrpcServiceArrayOutput `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -130,6 +136,9 @@ type ApiConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
 }
@@ -144,6 +153,11 @@ func NewApiConfig(ctx *pulumi.Context,
 	if args.Api == nil {
 		return nil, errors.New("invalid value for required argument 'Api'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiConfig
 	err := ctx.RegisterResource("gcp:apigateway/apiConfig:ApiConfig", name, args, &resource, opts...)
@@ -178,6 +192,9 @@ type apiConfigState struct {
 	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
@@ -186,6 +203,9 @@ type apiConfigState struct {
 	// Structure is documented below.
 	GrpcServices []ApiConfigGrpcService `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -199,6 +219,9 @@ type apiConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId *string `pulumi:"serviceConfigId"`
 }
@@ -215,6 +238,9 @@ type ApiConfigState struct {
 	ApiConfigIdPrefix pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Gateway specific configuration.
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
@@ -223,6 +249,9 @@ type ApiConfigState struct {
 	// Structure is documented below.
 	GrpcServices ApiConfigGrpcServiceArrayInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -236,6 +265,9 @@ type ApiConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId pulumi.StringPtrInput
 }
@@ -264,6 +296,9 @@ type apiConfigArgs struct {
 	// Structure is documented below.
 	GrpcServices []ApiConfigGrpcService `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -298,6 +333,9 @@ type ApiConfigArgs struct {
 	// Structure is documented below.
 	GrpcServices ApiConfigGrpcServiceArrayInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
@@ -445,6 +483,12 @@ func (o ApiConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ApiConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Immutable. Gateway specific configuration.
 // If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 // Structure is documented below.
@@ -459,6 +503,9 @@ func (o ApiConfigOutput) GrpcServices() ApiConfigGrpcServiceArrayOutput {
 }
 
 // Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ApiConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -485,6 +532,12 @@ func (o ApiConfigOutput) OpenapiDocuments() ApiConfigOpenapiDocumentArrayOutput 
 // If it is not provided, the provider project is used.
 func (o ApiConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ApiConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).

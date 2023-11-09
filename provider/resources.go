@@ -13,19 +13,19 @@ import (
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
-	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -255,19 +255,10 @@ var namespaceMap = map[string]string{
 	"gcp": "Gcp",
 }
 
-// There is a bug that 'serviceAccount' is used instead of 'serviceaccount' in Node.js.
-// We should eventually fix it and get rid of this map.
-var specialNamesMap = map[string]string{
-	"ServiceAccount": "serviceAccount",
-}
-
 // gcpMember manufactures a type token for the GCP package and the given module and type.  It automatically uses the GCP
 // package and names the file by simply lower casing the resource's first character.
 func gcpMember(moduleTitle string, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
-	if value, exist := specialNamesMap[moduleTitle]; exist {
-		moduleName = value
-	}
 	namespaceMap[moduleName] = moduleTitle
 	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
 	token := moduleName + "/" + fn
@@ -291,10 +282,6 @@ func gcpResource(mod string, res string) tokens.Type {
 
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
-
-func boolRef(b bool) *bool {
-	return &b
-}
 
 // stringValue gets a string value from a property map if present, else ""
 func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
@@ -390,18 +377,19 @@ func Provider() tfbridge.ProviderInfo {
 		shimv2.NewProvider(gcpProvider.Provider()),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
-		P:                p,
-		Name:             "google-beta",
-		ResourcePrefix:   "google",
-		GitHubOrg:        "hashicorp",
-		Description:      "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:         []string{"pulumi", "gcp"},
-		License:          "Apache-2.0",
-		Homepage:         "https://pulumi.io",
-		Repository:       "https://github.com/pulumi/pulumi-gcp",
-		Version:          version.Version,
-		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
-		UpstreamRepoPath: "./upstream",
+		P:                           p,
+		Name:                        "google-beta",
+		ResourcePrefix:              "google",
+		GitHubOrg:                   "hashicorp",
+		Description:                 "A Pulumi package for creating and managing Google Cloud Platform resources.",
+		Keywords:                    []string{"pulumi", "gcp"},
+		License:                     "Apache-2.0",
+		Homepage:                    "https://pulumi.io",
+		Repository:                  "https://github.com/pulumi/pulumi-gcp",
+		Version:                     version.Version,
+		MetadataInfo:                tfbridge.NewProviderMetadata(metadata),
+		UpstreamRepoPath:            "./upstream",
+		XSkipDetailedDiffForChanges: true,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {
 				Default: &tfbridge.DefaultInfo{
@@ -1652,7 +1640,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_firebase_project_location":  {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
 			"google_firebase_android_app":       {Tok: gcpResource(gcpFirebase, "AndroidApp")},
 			"google_firebase_apple_app":         {Tok: gcpResource(gcpFirebase, "AppleApp")},
 			"google_firebase_web_app":           {Tok: gcpResource(gcpFirebase, "WebApp")},
@@ -2214,15 +2201,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iap_brand":  {Tok: gcpResource(gcpIAP, "Brand")},
 			"google_iap_client": {Tok: gcpResource(gcpIAP, "Client")},
 
-			// Game Services Resources
-			"google_game_services_game_server_cluster":    {Tok: gcpResource(gcpGameServices, "GameServerCluster")},
-			"google_game_services_game_server_config":     {Tok: gcpResource(gcpGameServices, "GameServerConfig")},
-			"google_game_services_game_server_deployment": {Tok: gcpResource(gcpGameServices, "GameServerDeployment")},
-			"google_game_services_realm":                  {Tok: gcpResource(gcpGameServices, "Realm")},
-			"google_game_services_game_server_deployment_rollout": {
-				Tok: gcpResource(gcpGameServices, "GameServerDeploymentRollout"),
-			},
-
 			// Healthcare resources
 			"google_healthcare_dataset": {
 				Tok: gcpResource(gcpHealthcare, "Dataset"),
@@ -2777,27 +2755,6 @@ func Provider() tfbridge.ProviderInfo {
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
 			"google_cloud_identity_group":            {Tok: gcpResource(gcpCloudIdentity, "Group")},
-
-			// CloudIOT
-			"google_cloudiot_device": {Tok: gcpResource(gcpIot, "Device")},
-			"google_cloudiot_registry_iam_binding": {
-				Tok: gcpResource(gcpIot, "RegistryIamBinding"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
-			"google_cloudiot_registry_iam_member": {
-				Tok: gcpResource(gcpIot, "RegistryIamMember"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
-			"google_cloudiot_registry_iam_policy": {
-				Tok: gcpResource(gcpIot, "RegistryIamPolicy"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
 
 			// CloudAsset
 			"google_cloud_asset_folder_feed":       {Tok: gcpResource(gcpCloudAsset, "FolderFeed")},
@@ -3815,11 +3772,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			// GameServices
-			"google_game_services_game_server_deployment_rollout": {
-				Tok: gcpDataSource(gcpGameServices, "getGameServerDeploymentRollout"),
-			},
-
 			// Source repo
 			"google_sourcerepo_repository": {
 				Tok: gcpDataSource(gcpSourceRepo, "getRepository"),
@@ -3922,35 +3874,16 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	prov.RenameResourceWithAlias("google_cloudiot_registry", gcpResource(gcpKMS,
-		"Registry"), gcpResource(gcpIot, "Registry"), gcpKMS, gcpIot, &tfbridge.ResourceInfo{
-		Fields: map[string]*tfbridge.SchemaInfo{
-			// This property's nested type name conflicts with the nested type of the existing (now deprecated)
-			// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
-			// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
-			// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
-			// suffix.
-			"event_notification_configs": {
-				Elem: &tfbridge.SchemaInfo{
-					NestedType: "RegistryEventNotificationConfigItem",
-				},
-			},
-		},
-		Docs: &tfbridge.DocInfo{
-			Source: "cloudiot_registry.html.markdown",
-		},
-	})
-
-	err := x.ComputeDefaults(&prov, x.TokensMappedModules("google_", "",
+	prov.MustComputeTokens(tks.MappedModules("google_", "",
 		moduleMapping, func(module, name string) (string, error) {
 			return string(gcpResource(module, name)), nil
 		}))
-	contract.AssertNoErrorf(err, "Failed to map all tokens")
 
 	prov.SetAutonaming(255, "-")
 
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "Failed to apply automatic aliases")
+	prov.MustApplyAutoAliases()
+
+	fixLabelNames(&prov)
 
 	return prov
 }

@@ -172,6 +172,72 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Remote Apt
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Description = "example remote apt repository",
+    ///         Format = "APT",
+    ///         Location = "us-central1",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             AptRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs
+    ///             {
+    ///                 PublicRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs
+    ///                 {
+    ///                     RepositoryBase = "DEBIAN",
+    ///                     RepositoryPath = "debian/dists/buster",
+    ///                 },
+    ///             },
+    ///             Description = "Debian buster remote repository",
+    ///         },
+    ///         RepositoryId = "debian-buster",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote Yum
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Description = "example remote yum repository",
+    ///         Format = "YUM",
+    ///         Location = "us-central1",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "Centos 8 remote repository",
+    ///             YumRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs
+    ///             {
+    ///                 PublicRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs
+    ///                 {
+    ///                     RepositoryBase = "CENTOS",
+    ///                     RepositoryPath = "8-stream/BaseOs/x86_64/os",
+    ///                 },
+    ///             },
+    ///         },
+    ///         RepositoryId = "centos-8",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Artifact Registry Repository Cleanup
     /// 
     /// ```csharp
@@ -305,6 +371,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<Outputs.RepositoryDockerConfig?> DockerConfig { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The format of packages that are stored in the repository. Supported formats
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
@@ -331,6 +404,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// longer than 63 characters. Label keys must begin with a lowercase letter
         /// and may only contain lowercase letters, numeric characters, underscores,
         /// and dashes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -371,6 +447,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Configuration specific for a Remote Repository.
@@ -422,6 +505,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -508,6 +596,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// longer than 63 characters. Label keys must begin with a lowercase letter
         /// and may only contain lowercase letters, numeric characters, underscores,
         /// and dashes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -613,6 +704,23 @@ namespace Pulumi.Gcp.ArtifactRegistry
         [Input("dockerConfig")]
         public Input<Inputs.RepositoryDockerConfigGetArgs>? DockerConfig { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// The format of packages that are stored in the repository. Supported formats
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -643,6 +751,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// longer than 63 characters. Label keys must begin with a lowercase letter
         /// and may only contain lowercase letters, numeric characters, underscores,
         /// and dashes.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -686,6 +797,23 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// Configuration specific for a Remote Repository.

@@ -52,6 +52,7 @@ export interface GetTopicArgs {
  * A collection of values returned by getTopic.
  */
 export interface GetTopicResult {
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +63,7 @@ export interface GetTopicResult {
     readonly messageStoragePolicies: outputs.pubsub.GetTopicMessageStoragePolicy[];
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
 }
 /**

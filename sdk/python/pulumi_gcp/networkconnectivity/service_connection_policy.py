@@ -35,6 +35,9 @@ class ServiceConnectionPolicyArgs:
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -112,6 +115,9 @@ class ServiceConnectionPolicyArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -163,6 +169,7 @@ class _ServiceConnectionPolicyState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  infrastructure: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -172,15 +179,21 @@ class _ServiceConnectionPolicyState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceConnectionPolicy resources.
         :param pulumi.Input[str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] infrastructure: The type of underlying resources used to create the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
                
                
@@ -193,6 +206,8 @@ class _ServiceConnectionPolicyState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]] psc_connections: Information about each Private Service Connect connection.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -201,6 +216,8 @@ class _ServiceConnectionPolicyState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if infrastructure is not None:
@@ -219,6 +236,8 @@ class _ServiceConnectionPolicyState:
             pulumi.set(__self__, "psc_config", psc_config)
         if psc_connections is not None:
             pulumi.set(__self__, "psc_connections", psc_connections)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if service_class is not None:
             pulumi.set(__self__, "service_class", service_class)
         if update_time is not None:
@@ -249,6 +268,19 @@ class _ServiceConnectionPolicyState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -277,6 +309,9 @@ class _ServiceConnectionPolicyState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -361,6 +396,19 @@ class _ServiceConnectionPolicyState:
     @psc_connections.setter
     def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]]):
         pulumi.set(self, "psc_connections", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="serviceClass")
@@ -454,6 +502,9 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
                
                
@@ -568,10 +619,14 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_class'")
             __props__.__dict__["service_class"] = service_class
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["infrastructure"] = None
             __props__.__dict__["psc_connections"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServiceConnectionPolicy, __self__).__init__(
             'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
             resource_name,
@@ -584,6 +639,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             infrastructure: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -593,6 +649,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_config: Optional[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConfigArgs']]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_class: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ServiceConnectionPolicy':
         """
@@ -604,9 +661,14 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] infrastructure: The type of underlying resources used to create the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
                
                
@@ -619,6 +681,8 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]] psc_connections: Information about each Private Service Connect connection.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -629,6 +693,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["infrastructure"] = infrastructure
         __props__.__dict__["labels"] = labels
@@ -638,6 +703,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_config"] = psc_config
         __props__.__dict__["psc_connections"] = psc_connections
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["service_class"] = service_class
         __props__.__dict__["update_time"] = update_time
         return ServiceConnectionPolicy(resource_name, opts=opts, __props__=__props__)
@@ -657,6 +723,15 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         Free-text description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -679,6 +754,9 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -735,6 +813,15 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "psc_connections")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="serviceClass")

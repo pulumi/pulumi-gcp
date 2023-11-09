@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,8 +87,9 @@ type LookupInstanceResult struct {
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
-	Description   string `pulumi:"description"`
-	DesiredStatus string `pulumi:"desiredStatus"`
+	Description     string            `pulumi:"description"`
+	DesiredStatus   string            `pulumi:"desiredStatus"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -118,6 +119,7 @@ type LookupInstanceResult struct {
 	NetworkPerformanceConfigs []GetInstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	Params                    []GetInstanceParam                    `pulumi:"params"`
 	Project                   *string                               `pulumi:"project"`
+	PulumiLabels              map[string]string                     `pulumi:"pulumiLabels"`
 	ReservationAffinities     []GetInstanceReservationAffinity      `pulumi:"reservationAffinities"`
 	ResourcePolicies          []string                              `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance. Structure is documented below
@@ -244,6 +246,10 @@ func (o LookupInstanceResultOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
+func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether the instance has virtual displays enabled.
 func (o LookupInstanceResultOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.EnableDisplay }).(pulumi.BoolOutput)
@@ -322,6 +328,10 @@ func (o LookupInstanceResultOutput) Params() GetInstanceParamArrayOutput {
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) ReservationAffinities() GetInstanceReservationAffinityArrayOutput {

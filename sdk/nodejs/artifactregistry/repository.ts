@@ -116,6 +116,52 @@ import * as utilities from "../utilities";
  *     repositoryId: "my-repository",
  * });
  * ```
+ * ### Artifact Registry Repository Remote Apt
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example remote apt repository",
+ *     format: "APT",
+ *     location: "us-central1",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         aptRepository: {
+ *             publicRepository: {
+ *                 repositoryBase: "DEBIAN",
+ *                 repositoryPath: "debian/dists/buster",
+ *             },
+ *         },
+ *         description: "Debian buster remote repository",
+ *     },
+ *     repositoryId: "debian-buster",
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Yum
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example remote yum repository",
+ *     format: "YUM",
+ *     location: "us-central1",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "Centos 8 remote repository",
+ *         yumRepository: {
+ *             publicRepository: {
+ *                 repositoryBase: "CENTOS",
+ *                 repositoryPath: "8-stream/BaseOs/x86_64/os",
+ *             },
+ *         },
+ *     },
+ *     repositoryId: "centos-8",
+ * });
+ * ```
  * ### Artifact Registry Repository Cleanup
  *
  * ```typescript
@@ -243,6 +289,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly dockerConfig!: pulumi.Output<outputs.artifactregistry.RepositoryDockerConfig | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
@@ -265,6 +316,9 @@ export class Repository extends pulumi.CustomResource {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -294,6 +348,11 @@ export class Repository extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
@@ -332,6 +391,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dockerConfig"] = state ? state.dockerConfig : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -340,6 +400,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["remoteRepositoryConfig"] = state ? state.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -367,10 +428,14 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Repository.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -403,6 +468,11 @@ export interface RepositoryState {
      */
     dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
@@ -425,6 +495,9 @@ export interface RepositoryState {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -454,6 +527,11 @@ export interface RepositoryState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
@@ -521,6 +599,9 @@ export interface RepositoryArgs {
      * longer than 63 characters. Label keys must begin with a lowercase letter
      * and may only contain lowercase letters, numeric characters, underscores,
      * and dashes.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

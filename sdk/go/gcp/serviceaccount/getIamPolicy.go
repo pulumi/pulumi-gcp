@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.GetIamPolicy(ctx, &serviceaccount.GetIamPolicyArgs{
+//			_, err := serviceaccount.GetIamPolicy(ctx, &serviceaccount.GetIamPolicyArgs{
 //				ServiceAccountId: google_service_account.Test_account.Name,
 //			}, nil)
 //			if err != nil {
@@ -42,7 +42,7 @@ import (
 func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIamPolicyResult
-	err := ctx.Invoke("gcp:serviceAccount/getIamPolicy:getIamPolicy", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getIamPolicy:getIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

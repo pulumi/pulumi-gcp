@@ -143,9 +143,6 @@ export class DomainMapping extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.metadata === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadata'");
-            }
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
@@ -207,7 +204,7 @@ export interface DomainMappingArgs {
      * Metadata associated with this DomainMapping.
      * Structure is documented below.
      */
-    metadata: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */

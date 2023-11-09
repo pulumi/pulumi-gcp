@@ -59,7 +59,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdsCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly cloudIotCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudResourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunV2CustomEndpoint!: pulumi.Output<string | undefined>;
@@ -106,7 +105,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly firebaseStorageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firestoreCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly gameServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHub2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -218,7 +216,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             resourceInputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
             resourceInputs["cloudIdsCustomEndpoint"] = args ? args.cloudIdsCustomEndpoint : undefined;
-            resourceInputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
             resourceInputs["cloudResourceManagerCustomEndpoint"] = args ? args.cloudResourceManagerCustomEndpoint : undefined;
             resourceInputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             resourceInputs["cloudRunV2CustomEndpoint"] = args ? args.cloudRunV2CustomEndpoint : undefined;
@@ -248,6 +245,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
             resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
+            resourceInputs["defaultLabels"] = pulumi.output(args ? args.defaultLabels : undefined).apply(JSON.stringify);
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
@@ -266,7 +264,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["firebaseStorageCustomEndpoint"] = args ? args.firebaseStorageCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
             resourceInputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
-            resourceInputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
             resourceInputs["gkeHub2CustomEndpoint"] = args ? args.gkeHub2CustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
@@ -379,7 +376,6 @@ export interface ProviderArgs {
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
     cloudIdsCustomEndpoint?: pulumi.Input<string>;
-    cloudIotCustomEndpoint?: pulumi.Input<string>;
     cloudResourceManagerCustomEndpoint?: pulumi.Input<string>;
     cloudRunCustomEndpoint?: pulumi.Input<string>;
     cloudRunV2CustomEndpoint?: pulumi.Input<string>;
@@ -409,6 +405,7 @@ export interface ProviderArgs {
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
     datastoreCustomEndpoint?: pulumi.Input<string>;
     datastreamCustomEndpoint?: pulumi.Input<string>;
+    defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
@@ -427,7 +424,6 @@ export interface ProviderArgs {
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
     firestoreCustomEndpoint?: pulumi.Input<string>;
-    gameServicesCustomEndpoint?: pulumi.Input<string>;
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
     gkeHub2CustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;

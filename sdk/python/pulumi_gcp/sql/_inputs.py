@@ -42,7 +42,8 @@ class DatabaseInstanceCloneArgs:
                  source_instance_name: pulumi.Input[str],
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
                  database_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 point_in_time: Optional[pulumi.Input[str]] = None):
+                 point_in_time: Optional[pulumi.Input[str]] = None,
+                 preferred_zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] source_instance_name: Name of the source instance which will be cloned.
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -50,6 +51,7 @@ class DatabaseInstanceCloneArgs:
         :param pulumi.Input[str] point_in_time: The timestamp of the point in time that should be restored.
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -58,6 +60,8 @@ class DatabaseInstanceCloneArgs:
             pulumi.set(__self__, "database_names", database_names)
         if point_in_time is not None:
             pulumi.set(__self__, "point_in_time", point_in_time)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -108,6 +112,18 @@ class DatabaseInstanceCloneArgs:
     @point_in_time.setter
     def point_in_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "point_in_time", value)
+
+    @property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        """
+        return pulumi.get(self, "preferred_zone")
+
+    @preferred_zone.setter
+    def preferred_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_zone", value)
 
 
 @pulumi.input_type
@@ -184,6 +200,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
         :param pulumi.Input[int] master_heartbeat_period: Time in ms between replication
                heartbeats.
         :param pulumi.Input[str] password: Password for the replication connection.
+        :param pulumi.Input[str] ssl_cipher: Permissible ciphers for use in SSL encryption.
         :param pulumi.Input[str] username: Username for replication connection.
         :param pulumi.Input[bool] verify_server_certificate: True if the master's common name
                value is checked during the SSL handshake.
@@ -320,6 +337,9 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @property
     @pulumi.getter(name="sslCipher")
     def ssl_cipher(self) -> Optional[pulumi.Input[str]]:
+        """
+        Permissible ciphers for use in SSL encryption.
+        """
         return pulumi.get(self, "ssl_cipher")
 
     @ssl_cipher.setter

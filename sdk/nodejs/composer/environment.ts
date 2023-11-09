@@ -56,11 +56,18 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.composer.EnvironmentConfig>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
      * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
      * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
      * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -71,6 +78,10 @@ export class Environment extends pulumi.CustomResource {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The location or Compute Engine region for the environment.
      */
@@ -90,9 +101,11 @@ export class Environment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
@@ -101,8 +114,12 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -116,11 +133,18 @@ export interface EnvironmentState {
      */
     config?: pulumi.Input<inputs.composer.EnvironmentConfig>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
      * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
      * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
      * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -131,6 +155,10 @@ export interface EnvironmentState {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location or Compute Engine region for the environment.
      */
@@ -150,7 +178,9 @@ export interface EnvironmentArgs {
      * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
      * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
      * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

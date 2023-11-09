@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,8 +31,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkmanagement"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkmanagement"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -96,6 +96,9 @@ import (
 //					Instance: destination.ID(),
 //				},
 //				Protocol: pulumi.String("TCP"),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -112,8 +115,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkmanagement"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkmanagement"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -216,7 +219,13 @@ type ConnectivityTest struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationOutput `pulumi:"destination"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name for the connectivity test.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -225,6 +234,9 @@ type ConnectivityTest struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -264,6 +276,11 @@ func NewConnectivityTest(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectivityTest
 	err := ctx.RegisterResource("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, args, &resource, opts...)
@@ -306,7 +323,13 @@ type connectivityTestState struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination *ConnectivityTestDestination `pulumi:"destination"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name for the connectivity test.
 	Name *string `pulumi:"name"`
@@ -315,6 +338,9 @@ type connectivityTestState struct {
 	Project *string `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -361,7 +387,13 @@ type ConnectivityTestState struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique name for the connectivity test.
 	Name pulumi.StringPtrInput
@@ -370,6 +402,9 @@ type ConnectivityTestState struct {
 	Project pulumi.StringPtrInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -421,6 +456,9 @@ type connectivityTestArgs struct {
 	// Structure is documented below.
 	Destination ConnectivityTestDestination `pulumi:"destination"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name for the connectivity test.
 	Name *string `pulumi:"name"`
@@ -477,6 +515,9 @@ type ConnectivityTestArgs struct {
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique name for the connectivity test.
 	Name pulumi.StringPtrInput
@@ -647,7 +688,16 @@ func (o ConnectivityTestOutput) Destination() ConnectivityTestDestinationOutput 
 	return o.ApplyT(func(v *ConnectivityTest) ConnectivityTestDestinationOutput { return v.Destination }).(ConnectivityTestDestinationOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ConnectivityTestOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConnectivityTestOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -666,6 +716,12 @@ func (o ConnectivityTestOutput) Project() pulumi.StringOutput {
 // IP Protocol of the test. When not provided, "TCP" is assumed.
 func (o ConnectivityTestOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ConnectivityTestOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Other projects that may be relevant for reachability analysis.

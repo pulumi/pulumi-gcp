@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string CurrentLocationId;
         public readonly string CustomerManagedKey;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -170,6 +171,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string PersistenceIamIdentity;
         public readonly int Port;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ReadEndpoint;
         public readonly int ReadEndpointPort;
         public readonly string ReadReplicasMode;
@@ -203,6 +205,8 @@ namespace Pulumi.Gcp.Redis
 
             string displayName,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string host,
 
             string id,
@@ -228,6 +232,8 @@ namespace Pulumi.Gcp.Redis
             int port,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string readEndpoint,
 
@@ -262,6 +268,7 @@ namespace Pulumi.Gcp.Redis
             CurrentLocationId = currentLocationId;
             CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Host = host;
             Id = id;
             Labels = labels;
@@ -275,6 +282,7 @@ namespace Pulumi.Gcp.Redis
             PersistenceIamIdentity = persistenceIamIdentity;
             Port = port;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ReadEndpoint = readEndpoint;
             ReadEndpointPort = readEndpointPort;
             ReadReplicasMode = readReplicasMode;

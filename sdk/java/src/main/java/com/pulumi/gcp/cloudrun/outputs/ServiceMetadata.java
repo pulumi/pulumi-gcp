@@ -32,9 +32,13 @@ public final class ServiceMetadata {
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     private @Nullable Map<String,String> annotations;
+    private @Nullable Map<String,String> effectiveAnnotations;
+    private @Nullable Map<String,String> effectiveLabels;
     /**
      * @return (Output)
      * A sequence number representing a specific generation of the desired state.
@@ -45,6 +49,8 @@ public final class ServiceMetadata {
      * @return Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -54,6 +60,13 @@ public final class ServiceMetadata {
      * 
      */
     private @Nullable String namespace;
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    private @Nullable Map<String,String> pulumiLabels;
     /**
      * @return (Output)
      * An opaque value that represents the internal version of this object that
@@ -98,10 +111,18 @@ public final class ServiceMetadata {
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
      * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
      *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
+     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations == null ? Map.of() : this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels == null ? Map.of() : this.effectiveLabels;
     }
     /**
      * @return (Output)
@@ -115,6 +136,8 @@ public final class ServiceMetadata {
      * @return Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Map<String,String> labels() {
@@ -127,6 +150,15 @@ public final class ServiceMetadata {
      */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
+    }
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels == null ? Map.of() : this.pulumiLabels;
     }
     /**
      * @return (Output)
@@ -168,9 +200,12 @@ public final class ServiceMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
+        private @Nullable Map<String,String> effectiveAnnotations;
+        private @Nullable Map<String,String> effectiveLabels;
         private @Nullable Integer generation;
         private @Nullable Map<String,String> labels;
         private @Nullable String namespace;
+        private @Nullable Map<String,String> pulumiLabels;
         private @Nullable String resourceVersion;
         private @Nullable String selfLink;
         private @Nullable String uid;
@@ -178,9 +213,12 @@ public final class ServiceMetadata {
         public Builder(ServiceMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.generation = defaults.generation;
     	      this.labels = defaults.labels;
     	      this.namespace = defaults.namespace;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.selfLink = defaults.selfLink;
     	      this.uid = defaults.uid;
@@ -189,6 +227,16 @@ public final class ServiceMetadata {
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(@Nullable Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(@Nullable Map<String,String> effectiveLabels) {
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
@@ -204,6 +252,11 @@ public final class ServiceMetadata {
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(@Nullable Map<String,String> pulumiLabels) {
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
@@ -224,9 +277,12 @@ public final class ServiceMetadata {
         public ServiceMetadata build() {
             final var o = new ServiceMetadata();
             o.annotations = annotations;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.generation = generation;
             o.labels = labels;
             o.namespace = namespace;
+            o.pulumiLabels = pulumiLabels;
             o.resourceVersion = resourceVersion;
             o.selfLink = selfLink;
             o.uid = uid;

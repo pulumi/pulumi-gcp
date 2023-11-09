@@ -6,20 +6,15 @@ package com.pulumi.gcp.secretmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretReplicationAuto;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretReplicationUserManaged;
-import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplication {
-    private Boolean automatic;
     private List<GetSecretReplicationAuto> autos;
     private List<GetSecretReplicationUserManaged> userManageds;
 
     private GetSecretReplication() {}
-    public Boolean automatic() {
-        return this.automatic;
-    }
     public List<GetSecretReplicationAuto> autos() {
         return this.autos;
     }
@@ -36,22 +31,15 @@ public final class GetSecretReplication {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean automatic;
         private List<GetSecretReplicationAuto> autos;
         private List<GetSecretReplicationUserManaged> userManageds;
         public Builder() {}
         public Builder(GetSecretReplication defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.automatic = defaults.automatic;
     	      this.autos = defaults.autos;
     	      this.userManageds = defaults.userManageds;
         }
 
-        @CustomType.Setter
-        public Builder automatic(Boolean automatic) {
-            this.automatic = Objects.requireNonNull(automatic);
-            return this;
-        }
         @CustomType.Setter
         public Builder autos(List<GetSecretReplicationAuto> autos) {
             this.autos = Objects.requireNonNull(autos);
@@ -70,7 +58,6 @@ public final class GetSecretReplication {
         }
         public GetSecretReplication build() {
             final var o = new GetSecretReplication();
-            o.automatic = automatic;
             o.autos = autos;
             o.userManageds = userManageds;
             return o;

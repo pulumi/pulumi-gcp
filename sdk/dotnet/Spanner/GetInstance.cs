@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.Spanner
     {
         public readonly string? Config;
         public readonly string? DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool ForceDestroy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -143,6 +144,7 @@ namespace Pulumi.Gcp.Spanner
         public readonly int NumNodes;
         public readonly int ProcessingUnits;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
 
         [OutputConstructor]
@@ -150,6 +152,8 @@ namespace Pulumi.Gcp.Spanner
             string? config,
 
             string? displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool forceDestroy,
 
@@ -165,10 +169,13 @@ namespace Pulumi.Gcp.Spanner
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string state)
         {
             Config = config;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             ForceDestroy = forceDestroy;
             Id = id;
             Labels = labels;
@@ -176,6 +183,7 @@ namespace Pulumi.Gcp.Spanner
             NumNodes = numNodes;
             ProcessingUnits = processingUnits;
             Project = project;
+            PulumiLabels = pulumiLabels;
             State = state;
         }
     }

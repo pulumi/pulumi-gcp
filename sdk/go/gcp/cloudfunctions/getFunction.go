@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctions"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,9 +72,10 @@ type LookupFunctionResult struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	BuildWorkerPool           string                 `pulumi:"buildWorkerPool"`
 	// Description of the function.
-	Description      string `pulumi:"description"`
-	DockerRegistry   string `pulumi:"dockerRegistry"`
-	DockerRepository string `pulumi:"dockerRepository"`
+	Description      string            `pulumi:"description"`
+	DockerRegistry   string            `pulumi:"dockerRegistry"`
+	DockerRepository string            `pulumi:"dockerRepository"`
+	EffectiveLabels  map[string]string `pulumi:"effectiveLabels"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint           string                 `pulumi:"entryPoint"`
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
@@ -86,17 +87,17 @@ type LookupFunctionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Controls what traffic can reach the function.
-	IngressSettings string `pulumi:"ingressSettings"`
-	KmsKeyName      string `pulumi:"kmsKeyName"`
-	// A map of labels applied to this function.
-	Labels map[string]interface{} `pulumi:"labels"`
+	IngressSettings string                 `pulumi:"ingressSettings"`
+	KmsKeyName      string                 `pulumi:"kmsKeyName"`
+	Labels          map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
 	// The name of the Cloud Function.
-	Name    string  `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
 	// The runtime in which the function is running.
 	Runtime                    string                                 `pulumi:"runtime"`
 	SecretEnvironmentVariables []GetFunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -198,6 +199,10 @@ func (o LookupFunctionResultOutput) DockerRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.DockerRepository }).(pulumi.StringOutput)
 }
 
+func (o LookupFunctionResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 func (o LookupFunctionResultOutput) EntryPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.EntryPoint }).(pulumi.StringOutput)
@@ -235,7 +240,6 @@ func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// A map of labels applied to this function.
 func (o LookupFunctionResultOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
@@ -256,6 +260,10 @@ func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupFunctionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupFunctionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupFunctionResultOutput) Region() pulumi.StringPtrOutput {

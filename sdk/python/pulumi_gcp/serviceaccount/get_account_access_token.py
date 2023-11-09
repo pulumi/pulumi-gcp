@@ -113,7 +113,7 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
+    token_creator_iam = gcp.serviceaccount.IAMBinding("token-creator-iam",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
         role="roles/iam.serviceAccountTokenCreator",
         service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
@@ -128,7 +128,7 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     import pulumi_gcp as gcp
 
     default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceAccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
+    default_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
         scopes=[
             "userinfo-email",
             "cloud-platform",
@@ -153,7 +153,7 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     __args__['scopes'] = scopes
     __args__['targetServiceAccount'] = target_service_account
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts, typ=GetAccountAccessTokenResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts, typ=GetAccountAccessTokenResult).value
 
     return AwaitableGetAccountAccessTokenResult(
         access_token=pulumi.get(__ret__, 'access_token'),
@@ -186,7 +186,7 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     import pulumi
     import pulumi_gcp as gcp
 
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
+    token_creator_iam = gcp.serviceaccount.IAMBinding("token-creator-iam",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
         role="roles/iam.serviceAccountTokenCreator",
         service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
@@ -201,7 +201,7 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     import pulumi_gcp as gcp
 
     default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceAccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
+    default_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
         scopes=[
             "userinfo-email",
             "cloud-platform",

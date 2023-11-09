@@ -15,7 +15,7 @@
 package main
 
 import (
-	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 

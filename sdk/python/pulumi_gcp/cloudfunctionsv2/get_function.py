@@ -22,13 +22,16 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, build_configs=None, description=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, update_time=None, url=None):
+    def __init__(__self__, build_configs=None, description=None, effective_labels=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_configs=None, state=None, update_time=None, url=None):
         if build_configs and not isinstance(build_configs, list):
             raise TypeError("Expected argument 'build_configs' to be a list")
         pulumi.set(__self__, "build_configs", build_configs)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
@@ -53,6 +56,9 @@ class GetFunctionResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if service_configs and not isinstance(service_configs, list):
             raise TypeError("Expected argument 'service_configs' to be a list")
         pulumi.set(__self__, "service_configs", service_configs)
@@ -75,6 +81,11 @@ class GetFunctionResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -120,6 +131,11 @@ class GetFunctionResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="serviceConfigs")
     def service_configs(self) -> Sequence['outputs.GetFunctionServiceConfigResult']:
         return pulumi.get(self, "service_configs")
@@ -148,6 +164,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
         return GetFunctionResult(
             build_configs=self.build_configs,
             description=self.description,
+            effective_labels=self.effective_labels,
             environment=self.environment,
             event_triggers=self.event_triggers,
             id=self.id,
@@ -156,6 +173,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             location=self.location,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             service_configs=self.service_configs,
             state=self.state,
             update_time=self.update_time,
@@ -199,6 +217,7 @@ def get_function(location: Optional[str] = None,
     return AwaitableGetFunctionResult(
         build_configs=pulumi.get(__ret__, 'build_configs'),
         description=pulumi.get(__ret__, 'description'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         environment=pulumi.get(__ret__, 'environment'),
         event_triggers=pulumi.get(__ret__, 'event_triggers'),
         id=pulumi.get(__ret__, 'id'),
@@ -207,6 +226,7 @@ def get_function(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         service_configs=pulumi.get(__ret__, 'service_configs'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'),

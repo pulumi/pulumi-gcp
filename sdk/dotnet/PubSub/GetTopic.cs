@@ -123,6 +123,7 @@ namespace Pulumi.Gcp.PubSub
     [OutputType]
     public sealed class GetTopicResult
     {
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,10 +134,13 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> MessageStoragePolicies;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetTopicSchemaSettingResult> SchemaSettings;
 
         [OutputConstructor]
         private GetTopicResult(
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string id,
 
             string kmsKeyName,
@@ -151,8 +155,11 @@ namespace Pulumi.Gcp.PubSub
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings)
         {
+            EffectiveLabels = effectiveLabels;
             Id = id;
             KmsKeyName = kmsKeyName;
             Labels = labels;
@@ -160,6 +167,7 @@ namespace Pulumi.Gcp.PubSub
             MessageStoragePolicies = messageStoragePolicies;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SchemaSettings = schemaSettings;
         }
     }

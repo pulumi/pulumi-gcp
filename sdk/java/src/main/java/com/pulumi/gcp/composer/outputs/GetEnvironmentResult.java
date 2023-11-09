@@ -19,6 +19,7 @@ public final class GetEnvironmentResult {
      * 
      */
     private List<GetEnvironmentConfig> configs;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -27,6 +28,7 @@ public final class GetEnvironmentResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
 
     private GetEnvironmentResult() {}
@@ -36,6 +38,9 @@ public final class GetEnvironmentResult {
      */
     public List<GetEnvironmentConfig> configs() {
         return this.configs;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -53,6 +58,9 @@ public final class GetEnvironmentResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -67,19 +75,23 @@ public final class GetEnvironmentResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfig> configs;
+        private Map<String,String> effectiveLabels;
         private String id;
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         public Builder() {}
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
         }
 
@@ -90,6 +102,11 @@ public final class GetEnvironmentResult {
         }
         public Builder configs(GetEnvironmentConfig... configs) {
             return configs(List.of(configs));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -112,6 +129,11 @@ public final class GetEnvironmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -119,10 +141,12 @@ public final class GetEnvironmentResult {
         public GetEnvironmentResult build() {
             final var o = new GetEnvironmentResult();
             o.configs = configs;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             return o;
         }

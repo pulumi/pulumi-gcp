@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Zone = "us-central1-a",
     ///         Description = "example google_compute_node_group for the Google Provider",
-    ///         Size = 1,
+    ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///     });
     /// 
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Zone = "us-central1-f",
     ///         Description = "example google_compute_node_group for Terraform Google Provider",
-    ///         Size = 1,
+    ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///         ShareSettings = new Gcp.Compute.Inputs.NodeGroupShareSettingsArgs
     ///         {
@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
+        /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// Structure is documented below.
         /// </summary>
         [Output("autoscalingPolicy")]
@@ -176,7 +177,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// </summary>
         [Output("initialSize")]
         public Output<int?> InitialSize { get; private set; } = null!;
@@ -230,7 +231,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.NodeGroupShareSettings> ShareSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// The total number of nodes in the node group.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -290,6 +291,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
+        /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
@@ -302,7 +304,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// </summary>
         [Input("initialSize")]
         public Input<int>? InitialSize { get; set; }
@@ -350,12 +352,6 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.NodeGroupShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
-        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        /// <summary>
         /// Zone where this node group is located
         /// </summary>
         [Input("zone")]
@@ -372,6 +368,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
+        /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
@@ -390,7 +387,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         /// </summary>
         [Input("initialSize")]
         public Input<int>? InitialSize { get; set; }
@@ -444,7 +441,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.NodeGroupShareSettingsGetArgs>? ShareSettings { get; set; }
 
         /// <summary>
-        /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        /// The total number of nodes in the node group.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

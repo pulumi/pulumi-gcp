@@ -24,6 +24,7 @@ public final class GetAuthorityResult {
     private String createTime;
     private Boolean deletionProtection;
     private String desiredState;
+    private Map<String,String> effectiveLabels;
     private String gcsBucket;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -45,6 +46,7 @@ public final class GetAuthorityResult {
     private String pemCsr;
     private @Nullable String pool;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private Boolean skipGracePeriod;
     private String state;
     private List<GetAuthoritySubordinateConfig> subordinateConfigs;
@@ -69,6 +71,9 @@ public final class GetAuthorityResult {
     }
     public String desiredState() {
         return this.desiredState;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String gcsBucket() {
         return this.gcsBucket;
@@ -117,6 +122,9 @@ public final class GetAuthorityResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Boolean skipGracePeriod() {
         return this.skipGracePeriod;
     }
@@ -148,6 +156,7 @@ public final class GetAuthorityResult {
         private String createTime;
         private Boolean deletionProtection;
         private String desiredState;
+        private Map<String,String> effectiveLabels;
         private String gcsBucket;
         private String id;
         private Boolean ignoreActiveCertificatesOnDeletion;
@@ -161,6 +170,7 @@ public final class GetAuthorityResult {
         private String pemCsr;
         private @Nullable String pool;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private Boolean skipGracePeriod;
         private String state;
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
@@ -175,6 +185,7 @@ public final class GetAuthorityResult {
     	      this.createTime = defaults.createTime;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.desiredState = defaults.desiredState;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gcsBucket = defaults.gcsBucket;
     	      this.id = defaults.id;
     	      this.ignoreActiveCertificatesOnDeletion = defaults.ignoreActiveCertificatesOnDeletion;
@@ -188,6 +199,7 @@ public final class GetAuthorityResult {
     	      this.pemCsr = defaults.pemCsr;
     	      this.pool = defaults.pool;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.skipGracePeriod = defaults.skipGracePeriod;
     	      this.state = defaults.state;
     	      this.subordinateConfigs = defaults.subordinateConfigs;
@@ -229,6 +241,11 @@ public final class GetAuthorityResult {
         @CustomType.Setter
         public Builder desiredState(String desiredState) {
             this.desiredState = Objects.requireNonNull(desiredState);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -303,6 +320,11 @@ public final class GetAuthorityResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipGracePeriod(Boolean skipGracePeriod) {
             this.skipGracePeriod = Objects.requireNonNull(skipGracePeriod);
             return this;
@@ -338,6 +360,7 @@ public final class GetAuthorityResult {
             o.createTime = createTime;
             o.deletionProtection = deletionProtection;
             o.desiredState = desiredState;
+            o.effectiveLabels = effectiveLabels;
             o.gcsBucket = gcsBucket;
             o.id = id;
             o.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
@@ -351,6 +374,7 @@ public final class GetAuthorityResult {
             o.pemCsr = pemCsr;
             o.pool = pool;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.skipGracePeriod = skipGracePeriod;
             o.state = state;
             o.subordinateConfigs = subordinateConfigs;

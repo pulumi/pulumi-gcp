@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/beyondcorp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,16 +67,18 @@ type LookupAppGatewayArgs struct {
 type LookupAppGatewayResult struct {
 	AllocatedConnections []GetAppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
 	DisplayName          string                             `pulumi:"displayName"`
+	EffectiveLabels      map[string]string                  `pulumi:"effectiveLabels"`
 	HostType             string                             `pulumi:"hostType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string            `pulumi:"id"`
-	Labels  map[string]string `pulumi:"labels"`
-	Name    string            `pulumi:"name"`
-	Project *string           `pulumi:"project"`
-	Region  *string           `pulumi:"region"`
-	State   string            `pulumi:"state"`
-	Type    string            `pulumi:"type"`
-	Uri     string            `pulumi:"uri"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
+	State        string            `pulumi:"state"`
+	Type         string            `pulumi:"type"`
+	Uri          string            `pulumi:"uri"`
 }
 
 func LookupAppGatewayOutput(ctx *pulumi.Context, args LookupAppGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAppGatewayResultOutput {
@@ -139,6 +141,10 @@ func (o LookupAppGatewayResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupAppGatewayResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppGatewayResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAppGatewayResultOutput) HostType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) string { return v.HostType }).(pulumi.StringOutput)
 }
@@ -158,6 +164,10 @@ func (o LookupAppGatewayResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupAppGatewayResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAppGatewayResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppGatewayResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAppGatewayResultOutput) Region() pulumi.StringPtrOutput {

@@ -141,6 +141,7 @@ import * as utilities from "../utilities";
  *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
  *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
  *     },
+ *     deletionProtection: true,
  * });
  * const private_zone_gke = new gcp.dns.ManagedZone("private-zone-gke", {
  *     dnsName: "private.example.com.",
@@ -294,6 +295,11 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Set this true to delete all records in the zone.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -306,6 +312,9 @@ export class ManagedZone extends pulumi.CustomResource {
     public readonly forwardingConfig!: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -341,6 +350,11 @@ export class ManagedZone extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
@@ -378,6 +392,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -387,6 +402,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["peeringConfig"] = state ? state.peeringConfig : undefined;
             resourceInputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reverseLookup"] = state ? state.reverseLookup : undefined;
             resourceInputs["serviceDirectoryConfig"] = state ? state.serviceDirectoryConfig : undefined;
             resourceInputs["visibility"] = state ? state.visibility : undefined;
@@ -410,10 +426,14 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["managedZoneId"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ManagedZone.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -446,6 +466,11 @@ export interface ManagedZoneState {
      */
     dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Set this true to delete all records in the zone.
      */
     forceDestroy?: pulumi.Input<boolean>;
@@ -458,6 +483,9 @@ export interface ManagedZoneState {
     forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -493,6 +521,11 @@ export interface ManagedZoneState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
@@ -548,6 +581,9 @@ export interface ManagedZoneArgs {
     forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

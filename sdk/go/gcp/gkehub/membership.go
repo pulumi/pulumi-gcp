@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,8 +31,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,8 +40,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				InitialNodeCount: pulumi.Int(1),
-//				Location:         pulumi.String("us-central1-a"),
+//				DeletionProtection: pulumi.Bool(true),
+//				InitialNodeCount:   pulumi.Int(1),
+//				Location:           pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,6 +54,9 @@ import (
 //							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
 //				},
 //				MembershipId: pulumi.String("basic"),
 //			})
@@ -73,8 +77,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,6 +91,7 @@ import (
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -149,10 +154,16 @@ type Membership struct {
 	//
 	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
 	Endpoint MembershipEndpointPtrOutput `pulumi:"endpoint"`
 	// Labels to apply to this membership.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The client-provided identifier of the membership.
 	//
@@ -163,6 +174,9 @@ type Membership struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewMembership registers a new resource with the given unique name, arguments, and options.
@@ -175,6 +189,11 @@ func NewMembership(ctx *pulumi.Context,
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Membership
 	err := ctx.RegisterResource("gcp:gkehub/membership:Membership", name, args, &resource, opts...)
@@ -210,10 +229,16 @@ type membershipState struct {
 	//
 	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
 	Endpoint *MembershipEndpoint `pulumi:"endpoint"`
 	// Labels to apply to this membership.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The client-provided identifier of the membership.
 	//
@@ -224,6 +249,9 @@ type membershipState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type MembershipState struct {
@@ -239,10 +267,16 @@ type MembershipState struct {
 	//
 	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
 	Endpoint MembershipEndpointPtrInput
 	// Labels to apply to this membership.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The client-provided identifier of the membership.
 	//
@@ -253,6 +287,9 @@ type MembershipState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (MembershipState) ElementType() reflect.Type {
@@ -276,6 +313,9 @@ type membershipArgs struct {
 	// Structure is documented below.
 	Endpoint *MembershipEndpoint `pulumi:"endpoint"`
 	// Labels to apply to this membership.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The client-provided identifier of the membership.
 	//
@@ -304,6 +344,9 @@ type MembershipArgs struct {
 	// Structure is documented below.
 	Endpoint MembershipEndpointPtrInput
 	// Labels to apply to this membership.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The client-provided identifier of the membership.
 	//
@@ -443,6 +486,12 @@ func (o MembershipOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o MembershipOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 // Structure is documented below.
 func (o MembershipOutput) Endpoint() MembershipEndpointPtrOutput {
@@ -450,6 +499,9 @@ func (o MembershipOutput) Endpoint() MembershipEndpointPtrOutput {
 }
 
 // Labels to apply to this membership.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MembershipOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -470,6 +522,12 @@ func (o MembershipOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o MembershipOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MembershipOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type MembershipArrayOutput struct{ *pulumi.OutputState }

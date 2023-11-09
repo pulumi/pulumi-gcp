@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -392,13 +392,6 @@ type SecretReplication struct {
 	// The Secret will automatically be replicated without any restrictions.
 	// Structure is documented below.
 	Auto *SecretReplicationAuto `pulumi:"auto"`
-	// (Optional, Deprecated)
-	// The Secret will automatically be replicated without any restrictions.
-	//
-	// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-	//
-	// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-	Automatic *bool `pulumi:"automatic"`
 	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
 	UserManaged *SecretReplicationUserManaged `pulumi:"userManaged"`
@@ -419,13 +412,6 @@ type SecretReplicationArgs struct {
 	// The Secret will automatically be replicated without any restrictions.
 	// Structure is documented below.
 	Auto SecretReplicationAutoPtrInput `pulumi:"auto"`
-	// (Optional, Deprecated)
-	// The Secret will automatically be replicated without any restrictions.
-	//
-	// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-	//
-	// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
 	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
 	UserManaged SecretReplicationUserManagedPtrInput `pulumi:"userManaged"`
@@ -532,16 +518,6 @@ func (o SecretReplicationOutput) Auto() SecretReplicationAutoPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *SecretReplicationAuto { return v.Auto }).(SecretReplicationAutoPtrOutput)
 }
 
-// (Optional, Deprecated)
-// The Secret will automatically be replicated without any restrictions.
-//
-// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-//
-// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
-}
-
 // The Secret will be replicated to the regions specified by the user.
 // Structure is documented below.
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
@@ -587,21 +563,6 @@ func (o SecretReplicationPtrOutput) Auto() SecretReplicationAutoPtrOutput {
 		}
 		return v.Auto
 	}).(SecretReplicationAutoPtrOutput)
-}
-
-// (Optional, Deprecated)
-// The Secret will automatically be replicated without any restrictions.
-//
-// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-//
-// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecretReplication) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Automatic
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The Secret will be replicated to the regions specified by the user.
@@ -1741,7 +1702,6 @@ func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
 }
 
 type GetSecretReplication struct {
-	Automatic    bool                              `pulumi:"automatic"`
 	Autos        []GetSecretReplicationAuto        `pulumi:"autos"`
 	UserManageds []GetSecretReplicationUserManaged `pulumi:"userManageds"`
 }
@@ -1758,7 +1718,6 @@ type GetSecretReplicationInput interface {
 }
 
 type GetSecretReplicationArgs struct {
-	Automatic    pulumi.BoolInput                          `pulumi:"automatic"`
 	Autos        GetSecretReplicationAutoArrayInput        `pulumi:"autos"`
 	UserManageds GetSecretReplicationUserManagedArrayInput `pulumi:"userManageds"`
 }
@@ -1830,10 +1789,6 @@ func (o GetSecretReplicationOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[GetSecretReplication]{
 		OutputState: o.OutputState,
 	}
-}
-
-func (o GetSecretReplicationOutput) Automatic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSecretReplication) bool { return v.Automatic }).(pulumi.BoolOutput)
 }
 
 func (o GetSecretReplicationOutput) Autos() GetSecretReplicationAutoArrayOutput {

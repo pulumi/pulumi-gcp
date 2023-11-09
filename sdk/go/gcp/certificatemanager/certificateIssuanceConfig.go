@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,11 +144,17 @@ type CertificateIssuanceConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringOutput `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -161,6 +167,9 @@ type CertificateIssuanceConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -191,6 +200,11 @@ func NewCertificateIssuanceConfig(ctx *pulumi.Context,
 	if args.RotationWindowPercentage == nil {
 		return nil, errors.New("invalid value for required argument 'RotationWindowPercentage'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateIssuanceConfig
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, args, &resource, opts...)
@@ -223,11 +237,17 @@ type certificateIssuanceConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -240,6 +260,9 @@ type certificateIssuanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -261,11 +284,17 @@ type CertificateIssuanceConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringPtrInput
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -278,6 +307,9 @@ type CertificateIssuanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -304,6 +336,9 @@ type certificateIssuanceConfigArgs struct {
 	KeyAlgorithm string `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -335,6 +370,9 @@ type CertificateIssuanceConfigArgs struct {
 	KeyAlgorithm pulumi.StringInput
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -485,6 +523,12 @@ func (o CertificateIssuanceConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateIssuanceConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Key algorithm to use when generating the private key.
 // Possible values are: `RSA_2048`, `ECDSA_P256`.
 func (o CertificateIssuanceConfigOutput) KeyAlgorithm() pulumi.StringOutput {
@@ -493,6 +537,9 @@ func (o CertificateIssuanceConfigOutput) KeyAlgorithm() pulumi.StringOutput {
 
 // 'Set of label tags associated with the CertificateIssuanceConfig resource.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateIssuanceConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -518,6 +565,12 @@ func (o CertificateIssuanceConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateIssuanceConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.

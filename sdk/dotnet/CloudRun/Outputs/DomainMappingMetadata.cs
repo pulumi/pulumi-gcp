@@ -20,10 +20,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         /// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         /// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-        /// 
-        /// - - -
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
+        public readonly ImmutableDictionary<string, string>? EffectiveAnnotations;
+        public readonly ImmutableDictionary<string, string>? EffectiveLabels;
         /// <summary>
         /// (Output)
         /// A sequence number representing a specific generation of the desired state.
@@ -34,6 +36,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// (scope and select) objects. May match selectors of replication controllers
         /// and routes.
         /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
@@ -41,6 +45,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// project ID or project number.
         /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? PulumiLabels;
         /// <summary>
         /// (Output)
         /// An opaque value that represents the internal version of this object that
@@ -69,11 +79,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         private DomainMappingMetadata(
             ImmutableDictionary<string, string>? annotations,
 
+            ImmutableDictionary<string, string>? effectiveAnnotations,
+
+            ImmutableDictionary<string, string>? effectiveLabels,
+
             int? generation,
 
             ImmutableDictionary<string, string>? labels,
 
             string @namespace,
+
+            ImmutableDictionary<string, string>? pulumiLabels,
 
             string? resourceVersion,
 
@@ -82,9 +98,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             string? uid)
         {
             Annotations = annotations;
+            EffectiveAnnotations = effectiveAnnotations;
+            EffectiveLabels = effectiveLabels;
             Generation = generation;
             Labels = labels;
             Namespace = @namespace;
+            PulumiLabels = pulumiLabels;
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
             Uid = uid;

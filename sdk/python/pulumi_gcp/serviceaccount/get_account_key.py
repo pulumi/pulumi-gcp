@@ -105,9 +105,9 @@ def get_account_key(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
-    mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+    myaccount = gcp.serviceaccount.Account("myaccount", account_id="dev-foo-account")
+    mykey_key = gcp.serviceaccount.Key("mykeyKey", service_account_id=myaccount.name)
+    mykey_account_key = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
 
@@ -124,7 +124,7 @@ def get_account_key(name: Optional[str] = None,
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceaccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult).value
 
     return AwaitableGetAccountKeyResult(
         id=pulumi.get(__ret__, 'id'),
@@ -149,9 +149,9 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
-    mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+    myaccount = gcp.serviceaccount.Account("myaccount", account_id="dev-foo-account")
+    mykey_key = gcp.serviceaccount.Key("mykeyKey", service_account_id=myaccount.name)
+    mykey_account_key = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
 

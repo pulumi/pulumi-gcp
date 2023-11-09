@@ -64,10 +64,10 @@ public final class GetClusterResult {
     private String datapathProvider;
     private Integer defaultMaxPodsPerNode;
     private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+    private Boolean deletionProtection;
     private String description;
     private List<GetClusterDnsConfig> dnsConfigs;
     private Boolean enableAutopilot;
-    private Boolean enableBinaryAuthorization;
     private Boolean enableFqdnNetworkPolicy;
     private Boolean enableIntranodeVisibility;
     private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
@@ -170,6 +170,9 @@ public final class GetClusterResult {
     public List<GetClusterDefaultSnatStatus> defaultSnatStatuses() {
         return this.defaultSnatStatuses;
     }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
+    }
     public String description() {
         return this.description;
     }
@@ -178,9 +181,6 @@ public final class GetClusterResult {
     }
     public Boolean enableAutopilot() {
         return this.enableAutopilot;
-    }
-    public Boolean enableBinaryAuthorization() {
-        return this.enableBinaryAuthorization;
     }
     public Boolean enableFqdnNetworkPolicy() {
         return this.enableFqdnNetworkPolicy;
@@ -380,10 +380,10 @@ public final class GetClusterResult {
         private String datapathProvider;
         private Integer defaultMaxPodsPerNode;
         private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+        private Boolean deletionProtection;
         private String description;
         private List<GetClusterDnsConfig> dnsConfigs;
         private Boolean enableAutopilot;
-        private Boolean enableBinaryAuthorization;
         private Boolean enableFqdnNetworkPolicy;
         private Boolean enableIntranodeVisibility;
         private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
@@ -457,10 +457,10 @@ public final class GetClusterResult {
     	      this.datapathProvider = defaults.datapathProvider;
     	      this.defaultMaxPodsPerNode = defaults.defaultMaxPodsPerNode;
     	      this.defaultSnatStatuses = defaults.defaultSnatStatuses;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.dnsConfigs = defaults.dnsConfigs;
     	      this.enableAutopilot = defaults.enableAutopilot;
-    	      this.enableBinaryAuthorization = defaults.enableBinaryAuthorization;
     	      this.enableFqdnNetworkPolicy = defaults.enableFqdnNetworkPolicy;
     	      this.enableIntranodeVisibility = defaults.enableIntranodeVisibility;
     	      this.enableK8sBetaApis = defaults.enableK8sBetaApis;
@@ -613,6 +613,11 @@ public final class GetClusterResult {
             return defaultSnatStatuses(List.of(defaultSnatStatuses));
         }
         @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
@@ -628,11 +633,6 @@ public final class GetClusterResult {
         @CustomType.Setter
         public Builder enableAutopilot(Boolean enableAutopilot) {
             this.enableAutopilot = Objects.requireNonNull(enableAutopilot);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
-            this.enableBinaryAuthorization = Objects.requireNonNull(enableBinaryAuthorization);
             return this;
         }
         @CustomType.Setter
@@ -1016,10 +1016,10 @@ public final class GetClusterResult {
             o.datapathProvider = datapathProvider;
             o.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
             o.defaultSnatStatuses = defaultSnatStatuses;
+            o.deletionProtection = deletionProtection;
             o.description = description;
             o.dnsConfigs = dnsConfigs;
             o.enableAutopilot = enableAutopilot;
-            o.enableBinaryAuthorization = enableBinaryAuthorization;
             o.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             o.enableIntranodeVisibility = enableIntranodeVisibility;
             o.enableK8sBetaApis = enableK8sBetaApis;

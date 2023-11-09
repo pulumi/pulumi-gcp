@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -41,6 +41,7 @@ type LookupAiIndexResult struct {
 	DeployedIndexes []GetAiIndexDeployedIndex `pulumi:"deployedIndexes"`
 	Description     string                    `pulumi:"description"`
 	DisplayName     string                    `pulumi:"displayName"`
+	EffectiveLabels map[string]string         `pulumi:"effectiveLabels"`
 	Etag            string                    `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string                `pulumi:"id"`
@@ -51,6 +52,7 @@ type LookupAiIndexResult struct {
 	Metadatas         []GetAiIndexMetadata  `pulumi:"metadatas"`
 	Name              string                `pulumi:"name"`
 	Project           *string               `pulumi:"project"`
+	PulumiLabels      map[string]string     `pulumi:"pulumiLabels"`
 	Region            string                `pulumi:"region"`
 	UpdateTime        string                `pulumi:"updateTime"`
 }
@@ -121,6 +123,10 @@ func (o LookupAiIndexResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupAiIndexResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAiIndexResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -156,6 +162,10 @@ func (o LookupAiIndexResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupAiIndexResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAiIndexResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAiIndexResultOutput) Region() pulumi.StringOutput {

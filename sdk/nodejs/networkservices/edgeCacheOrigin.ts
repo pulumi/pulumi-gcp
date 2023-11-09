@@ -165,6 +165,11 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The Origin resource to try when the current origin cannot be reached.
      * After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
      * The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
@@ -173,6 +178,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
     public readonly failoverOrigin!: pulumi.Output<string | undefined>;
     /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -230,6 +237,11 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -267,6 +279,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             const state = argsOrState as EdgeCacheOriginState | undefined;
             resourceInputs["awsV4Authentication"] = state ? state.awsV4Authentication : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxAttempts"] = state ? state.maxAttempts : undefined;
@@ -277,6 +290,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["retryConditions"] = state ? state.retryConditions : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
@@ -298,8 +312,12 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["retryConditions"] = args ? args.retryConditions : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EdgeCacheOrigin.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -318,6 +336,11 @@ export interface EdgeCacheOriginState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The Origin resource to try when the current origin cannot be reached.
      * After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
      * The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
@@ -326,6 +349,8 @@ export interface EdgeCacheOriginState {
     failoverOrigin?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -383,6 +408,11 @@ export interface EdgeCacheOriginState {
      */
     protocol?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -428,6 +458,8 @@ export interface EdgeCacheOriginArgs {
     failoverOrigin?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

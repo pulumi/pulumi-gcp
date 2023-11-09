@@ -35,6 +35,13 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.sourceNatActiveIps);
     }
 
+    @Import(name="sourceNatActiveRanges")
+    private @Nullable Output<List<String>> sourceNatActiveRanges;
+
+    public Optional<Output<List<String>>> sourceNatActiveRanges() {
+        return Optional.ofNullable(this.sourceNatActiveRanges);
+    }
+
     /**
      * A list of URLs of the IP resources to be drained.
      * These IPs must be valid static external IPs that have been assigned to the NAT.
@@ -56,11 +63,20 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.sourceNatDrainIps);
     }
 
+    @Import(name="sourceNatDrainRanges")
+    private @Nullable Output<List<String>> sourceNatDrainRanges;
+
+    public Optional<Output<List<String>>> sourceNatDrainRanges() {
+        return Optional.ofNullable(this.sourceNatDrainRanges);
+    }
+
     private RouterNatRuleActionArgs() {}
 
     private RouterNatRuleActionArgs(RouterNatRuleActionArgs $) {
         this.sourceNatActiveIps = $.sourceNatActiveIps;
+        this.sourceNatActiveRanges = $.sourceNatActiveRanges;
         this.sourceNatDrainIps = $.sourceNatDrainIps;
+        this.sourceNatDrainRanges = $.sourceNatDrainRanges;
     }
 
     public static Builder builder() {
@@ -118,6 +134,19 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
             return sourceNatActiveIps(List.of(sourceNatActiveIps));
         }
 
+        public Builder sourceNatActiveRanges(@Nullable Output<List<String>> sourceNatActiveRanges) {
+            $.sourceNatActiveRanges = sourceNatActiveRanges;
+            return this;
+        }
+
+        public Builder sourceNatActiveRanges(List<String> sourceNatActiveRanges) {
+            return sourceNatActiveRanges(Output.of(sourceNatActiveRanges));
+        }
+
+        public Builder sourceNatActiveRanges(String... sourceNatActiveRanges) {
+            return sourceNatActiveRanges(List.of(sourceNatActiveRanges));
+        }
+
         /**
          * @param sourceNatDrainIps A list of URLs of the IP resources to be drained.
          * These IPs must be valid static external IPs that have been assigned to the NAT.
@@ -156,6 +185,19 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
          */
         public Builder sourceNatDrainIps(String... sourceNatDrainIps) {
             return sourceNatDrainIps(List.of(sourceNatDrainIps));
+        }
+
+        public Builder sourceNatDrainRanges(@Nullable Output<List<String>> sourceNatDrainRanges) {
+            $.sourceNatDrainRanges = sourceNatDrainRanges;
+            return this;
+        }
+
+        public Builder sourceNatDrainRanges(List<String> sourceNatDrainRanges) {
+            return sourceNatDrainRanges(Output.of(sourceNatDrainRanges));
+        }
+
+        public Builder sourceNatDrainRanges(String... sourceNatDrainRanges) {
+            return sourceNatDrainRanges(List.of(sourceNatDrainRanges));
         }
 
         public RouterNatRuleActionArgs build() {

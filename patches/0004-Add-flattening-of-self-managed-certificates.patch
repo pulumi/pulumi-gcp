@@ -1,17 +1,17 @@
-From d742d3c7ff1ee5975916b8cbc0737baab6b03818 Mon Sep 17 00:00:00 2001
+From 6a7f1d72ed3cb93328e71eb83a5605791f96b543 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:57:44 +0000
-Subject: [PATCH 04/10] Add flattening of self managed certificates
+Subject: [PATCH 4/9] Add flattening of self managed certificates
 
 ---
  ...esource_certificate_manager_certificate.go | 27 +++++++++++++++++++
  1 file changed, 27 insertions(+)
 
 diff --git a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
-index 7c6510d49..8a736788c 100644
+index b0ea6c393..f77dd87e8 100644
 --- a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
 +++ b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
-@@ -414,6 +414,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
+@@ -435,6 +435,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
  	if err := d.Set("scope", flattenCertificateManagerCertificateScope(res["scope"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Certificate: %s", err)
  	}
@@ -21,7 +21,7 @@ index 7c6510d49..8a736788c 100644
  	if err := d.Set("managed", flattenCertificateManagerCertificateManaged(res["managed"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Certificate: %s", err)
  	}
-@@ -589,6 +592,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
+@@ -627,6 +630,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
  	return v
  }
  
@@ -53,5 +53,5 @@ index 7c6510d49..8a736788c 100644
  	if v == nil {
  		return nil
 -- 
-2.41.0
+2.40.0
 

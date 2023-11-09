@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,7 +64,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -149,7 +149,12 @@ type AuthorizationPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the AuthorizationPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the authorization policy.
 	// The default value is `global`.
@@ -161,6 +166,9 @@ type AuthorizationPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
@@ -179,6 +187,11 @@ func NewAuthorizationPolicy(ctx *pulumi.Context,
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthorizationPolicy
 	err := ctx.RegisterResource("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", name, args, &resource, opts...)
@@ -209,7 +222,12 @@ type authorizationPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the AuthorizationPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the authorization policy.
 	// The default value is `global`.
@@ -221,6 +239,9 @@ type authorizationPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
@@ -237,7 +258,12 @@ type AuthorizationPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the AuthorizationPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the authorization policy.
 	// The default value is `global`.
@@ -249,6 +275,9 @@ type AuthorizationPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
@@ -268,6 +297,8 @@ type authorizationPolicyArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the AuthorizationPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the authorization policy.
 	// The default value is `global`.
@@ -293,6 +324,8 @@ type AuthorizationPolicyArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the AuthorizationPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the authorization policy.
 	// The default value is `global`.
@@ -437,7 +470,15 @@ func (o AuthorizationPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AuthorizationPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the AuthorizationPolicy resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AuthorizationPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -459,6 +500,12 @@ func (o AuthorizationPolicyOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AuthorizationPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AuthorizationPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.

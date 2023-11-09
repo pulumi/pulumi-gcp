@@ -97,6 +97,13 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numNodes);
     }
 
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
     /**
      * The storage type to use. One of `&#34;SSD&#34;` or
      * `&#34;HDD&#34;`. Defaults to `&#34;SSD&#34;`.
@@ -140,6 +147,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         this.clusterId = $.clusterId;
         this.kmsKeyName = $.kmsKeyName;
         this.numNodes = $.numNodes;
+        this.state = $.state;
         this.storageType = $.storageType;
         this.zone = $.zone;
     }
@@ -264,6 +272,15 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder numNodes(Integer numNodes) {
             return numNodes(Output.of(numNodes));
+        }
+
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

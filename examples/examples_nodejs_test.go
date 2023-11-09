@@ -5,6 +5,7 @@
 package examples
 
 import (
+	"encoding/json"
 	"path/filepath"
 	"testing"
 
@@ -23,7 +24,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	return baseJS
 }
 
-func TestAccWebserver(t *testing.T) {
+func TestAccWebserverNode(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
@@ -101,5 +102,32 @@ func TestAccServerless(t *testing.T) {
 			}),
 		})
 
+	integration.ProgramTest(t, &test)
+}
+func TestBigqueryDataset(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "bigquery-dataset-ts"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestPulumiLabelsSecretNode(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "nodejs"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				outputBytes, err := json.Marshal(stack.Outputs)
+				assert.NoError(t, err)
+				outputStr := string(outputBytes)
+				// We expect a pulumiLabels field
+				assert.Contains(t, outputStr, "pulumiLabels")
+				// We expect its contents to be secret
+				assert.NotContains(t, outputStr, "hello")
+				// We assert the presence of the "ciphertext" key to denote secretness of the Output.
+				assert.Contains(t, outputStr, "ciphertext")
+			},
+		})
 	integration.ProgramTest(t, &test)
 }

@@ -109,6 +109,11 @@ export class ConsentStore extends pulumi.CustomResource {
      */
     public readonly defaultConsentTtl!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
     public readonly enableConsentCreateOnUpdate!: pulumi.Output<boolean | undefined>;
@@ -121,6 +126,9 @@ export class ConsentStore extends pulumi.CustomResource {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -128,6 +136,11 @@ export class ConsentStore extends pulumi.CustomResource {
      * "consent1"
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConsentStore resource with the given unique name, arguments, and options.
@@ -144,9 +157,11 @@ export class ConsentStore extends pulumi.CustomResource {
             const state = argsOrState as ConsentStoreState | undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["defaultConsentTtl"] = state ? state.defaultConsentTtl : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableConsentCreateOnUpdate"] = state ? state.enableConsentCreateOnUpdate : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
         } else {
             const args = argsOrState as ConsentStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -157,8 +172,12 @@ export class ConsentStore extends pulumi.CustomResource {
             resourceInputs["enableConsentCreateOnUpdate"] = args ? args.enableConsentCreateOnUpdate : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConsentStore.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -181,6 +200,11 @@ export interface ConsentStoreState {
      */
     defaultConsentTtl?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
     enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
@@ -193,6 +217,9 @@ export interface ConsentStoreState {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -200,6 +227,11 @@ export interface ConsentStoreState {
      * "consent1"
      */
     name?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -232,6 +264,9 @@ export interface ConsentStoreArgs {
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

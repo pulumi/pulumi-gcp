@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewIAMBinding(ctx, "token-creator-iam", &serviceAccount.IAMBindingArgs{
+//			_, err := serviceaccount.NewIAMBinding(ctx, "token-creator-iam", &serviceaccount.IAMBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("serviceAccount:service_A@projectA.iam.gserviceaccount.com"),
 //				},
@@ -60,8 +60,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-google/sdk/v1/go/google"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -73,7 +73,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccountAccessToken, err := serviceAccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
+//			defaultAccountAccessToken, err := serviceaccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
 //				TargetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
 //				Scopes: []string{
 //					"userinfo-email",
@@ -105,7 +105,7 @@ import (
 func GetAccountAccessToken(ctx *pulumi.Context, args *GetAccountAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountAccessTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountAccessTokenResult
-	err := ctx.Invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args, &rv, opts...)
+	err := ctx.Invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,10 +29,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,7 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
@@ -175,10 +176,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -199,7 +200,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
@@ -341,6 +342,9 @@ type Function struct {
 	BuildConfig FunctionBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The environment the function is hosted on.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in
@@ -351,17 +355,23 @@ type Function struct {
 	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of this cloud function.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// A user-defined name of the function. Function names must
-	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	//
 	// ***
+	Location pulumi.StringOutput `pulumi:"location"`
+	// A user-defined name of the function. Function names must
+	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig FunctionServiceConfigPtrOutput `pulumi:"serviceConfig"`
@@ -377,9 +387,17 @@ type Function struct {
 func NewFunction(ctx *pulumi.Context,
 	name string, args *FunctionArgs, opts ...pulumi.ResourceOption) (*Function, error) {
 	if args == nil {
-		args = &FunctionArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Function
 	err := ctx.RegisterResource("gcp:cloudfunctionsv2/function:Function", name, args, &resource, opts...)
@@ -409,6 +427,9 @@ type functionState struct {
 	BuildConfig *FunctionBuildConfig `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The environment the function is hosted on.
 	Environment *string `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in
@@ -419,17 +440,23 @@ type functionState struct {
 	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig *FunctionServiceConfig `pulumi:"serviceConfig"`
@@ -448,6 +475,9 @@ type FunctionState struct {
 	BuildConfig FunctionBuildConfigPtrInput
 	// User-provided description of a function.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The environment the function is hosted on.
 	Environment pulumi.StringPtrInput
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in
@@ -458,17 +488,23 @@ type FunctionState struct {
 	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs associated with this Cloud Function.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig FunctionServiceConfigPtrInput
@@ -499,13 +535,16 @@ type functionArgs struct {
 	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
-	Location *string `pulumi:"location"`
-	// A user-defined name of the function. Function names must
-	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	//
 	// ***
+	Location string `pulumi:"location"`
+	// A user-defined name of the function. Function names must
+	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -531,13 +570,16 @@ type FunctionArgs struct {
 	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs associated with this Cloud Function.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
-	Location pulumi.StringPtrInput
-	// A user-defined name of the function. Function names must
-	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	//
 	// ***
+	Location pulumi.StringInput
+	// A user-defined name of the function. Function names must
+	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -670,6 +712,12 @@ func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o FunctionOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The environment the function is hosted on.
 func (o FunctionOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
@@ -689,19 +737,22 @@ func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 // A set of key/value label pairs associated with this Cloud Function.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FunctionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The location of this cloud function.
-func (o FunctionOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+//
+// ***
+func (o FunctionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // A user-defined name of the function. Function names must
 // be unique globally and match pattern `projects/*/locations/*/functions/*`.
-//
-// ***
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -710,6 +761,12 @@ func (o FunctionOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o FunctionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FunctionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Describes the Service being deployed.
