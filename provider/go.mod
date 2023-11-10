@@ -5,10 +5,10 @@ go 1.21.0
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.3
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.4-0.20231102205918-ed35c1e07ed1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.3-0.20231102205918-ed35c1e07ed1
-	github.com/pulumi/pulumi/pkg/v3 v3.91.1
-	github.com/pulumi/pulumi/sdk/v3 v3.91.1
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.4-0.20231108014941-84395afd3203
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.3-0.20231108014941-84395afd3203
+	github.com/pulumi/pulumi/pkg/v3 v3.92.0
+	github.com/pulumi/pulumi/sdk/v3 v3.92.0
 	github.com/stretchr/testify v1.8.4
 )
 
@@ -48,7 +48,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.3 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
-	github.com/ProtonMail/go-crypto v0.0.0-20230717121422-5aa5874ade95 // indirect
+	github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
@@ -90,6 +90,7 @@ require (
 	github.com/cncf/udpa/go v0.0.0-20220112060539-c52dc94e7fbe // indirect
 	github.com/cncf/xds/go v0.0.0-20230607035331-e9ce68804cb4 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
+	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
@@ -104,8 +105,8 @@ require (
 	github.com/gammazero/workerpool v0.0.0-20181230203049-86a96b5d5d92 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.4.1 // indirect
-	github.com/go-git/go-git/v5 v5.8.1 // indirect
+	github.com/go-git/go-billy/v5 v5.5.0 // indirect
+	github.com/go-git/go-git/v5 v5.9.0 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.3 // indirect
@@ -204,10 +205,10 @@ require (
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
-	github.com/pulumi/esc v0.5.6 // indirect
+	github.com/pulumi/esc v0.5.7-0.20231030195049-f71961c0d5fa // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.7-0.20230801203955-5d215c892096 // indirect
-	github.com/pulumi/pulumi-yaml v1.2.2 // indirect
+	github.com/pulumi/pulumi-yaml v1.4.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -260,7 +261,7 @@ require (
 	google.golang.org/genproto v0.0.0-20230803162519-f966b187b2e5 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230803162519-f966b187b2e5 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect
-	google.golang.org/grpc v1.57.0 // indirect
+	google.golang.org/grpc v1.57.1 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
@@ -269,3 +270,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.92.0
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.92.0
