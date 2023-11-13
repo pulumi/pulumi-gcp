@@ -464,8 +464,7 @@ class _SubscriptionState:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -637,8 +636,7 @@ class _SubscriptionState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1366,8 +1364,7 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1510,8 +1507,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

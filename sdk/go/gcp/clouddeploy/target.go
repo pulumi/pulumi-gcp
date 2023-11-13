@@ -200,8 +200,7 @@ type Target struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -292,8 +291,7 @@ type targetState struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -347,8 +345,7 @@ type TargetState struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.MapInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -609,8 +606,7 @@ func (o TargetOutput) EffectiveAnnotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TargetOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

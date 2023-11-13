@@ -183,8 +183,7 @@ class _RestorePlanState:
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -271,8 +270,7 @@ class _RestorePlanState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1191,8 +1189,7 @@ class RestorePlan(pulumi.CustomResource):
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1259,8 +1256,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

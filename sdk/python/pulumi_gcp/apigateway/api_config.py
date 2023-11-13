@@ -235,8 +235,7 @@ class _ApiConfigState:
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ApiConfigGatewayConfigArgs'] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
@@ -343,8 +342,7 @@ class _ApiConfigState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -706,8 +704,7 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
                Structure is documented below.
@@ -789,8 +786,7 @@ class ApiConfig(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

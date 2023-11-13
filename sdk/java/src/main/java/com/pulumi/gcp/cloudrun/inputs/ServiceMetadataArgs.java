@@ -77,9 +77,19 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.effectiveAnnotations);
     }
 
+    /**
+     * (Output)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return (Output)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
@@ -322,11 +332,25 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
+        /**
+         * @param effectiveLabels (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
+        /**
+         * @param effectiveLabels (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }

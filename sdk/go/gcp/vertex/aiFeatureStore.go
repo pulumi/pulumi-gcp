@@ -163,8 +163,7 @@ type AiFeatureStore struct {
 
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -237,8 +236,7 @@ func GetAiFeatureStore(ctx *pulumi.Context,
 type aiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -277,8 +275,7 @@ type aiFeatureStoreState struct {
 type AiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -491,8 +488,7 @@ func (o AiFeatureStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AiFeatureStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

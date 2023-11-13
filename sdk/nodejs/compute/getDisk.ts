@@ -90,6 +90,9 @@ export interface GetDiskResult {
      * internally during updates.
      */
     readonly labelFingerprint: string;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
     readonly labels: {[key: string]: string};
     /**
      * Last attach timestamp in RFC3339 text format.

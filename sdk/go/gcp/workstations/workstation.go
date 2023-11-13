@@ -132,8 +132,7 @@ type Workstation struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
 	Env pulumi.StringMapOutput `pulumi:"env"`
@@ -227,8 +226,7 @@ type workstationState struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
 	Env map[string]string `pulumi:"env"`
@@ -276,8 +274,7 @@ type WorkstationState struct {
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
 	Env pulumi.StringMapInput
@@ -508,8 +505,7 @@ func (o WorkstationOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o WorkstationOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

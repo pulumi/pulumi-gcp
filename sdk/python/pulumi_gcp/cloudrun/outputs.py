@@ -135,6 +135,8 @@ class DomainMappingMetadata(dict):
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param Mapping[str, str] effective_labels: (Output)
+               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
@@ -213,6 +215,10 @@ class DomainMappingMetadata(dict):
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @property
@@ -681,6 +687,8 @@ class ServiceMetadata(dict):
                when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param Mapping[str, str] effective_labels: (Output)
+               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
@@ -761,6 +769,10 @@ class ServiceMetadata(dict):
     @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @property

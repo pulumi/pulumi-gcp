@@ -184,6 +184,9 @@ namespace Pulumi.Gcp.Compute
         /// internally during updates.
         /// </summary>
         public readonly string LabelFingerprint;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Last attach timestamp in RFC3339 text format.

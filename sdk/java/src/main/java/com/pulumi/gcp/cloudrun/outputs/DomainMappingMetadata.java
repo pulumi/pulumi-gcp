@@ -26,6 +26,11 @@ public final class DomainMappingMetadata {
      */
     private @Nullable Map<String,String> annotations;
     private @Nullable Map<String,String> effectiveAnnotations;
+    /**
+     * @return (Output)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     private @Nullable Map<String,String> effectiveLabels;
     /**
      * @return (Output)
@@ -101,6 +106,11 @@ public final class DomainMappingMetadata {
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations == null ? Map.of() : this.effectiveAnnotations;
     }
+    /**
+     * @return (Output)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels == null ? Map.of() : this.effectiveLabels;
     }

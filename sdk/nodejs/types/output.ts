@@ -10535,6 +10535,10 @@ export namespace cloudrun {
          */
         annotations?: {[key: string]: string};
         effectiveAnnotations: {[key: string]: string};
+        /**
+         * (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         */
         effectiveLabels: {[key: string]: string};
         /**
          * (Output)
@@ -10966,6 +10970,10 @@ export namespace cloudrun {
          */
         annotations?: {[key: string]: string};
         effectiveAnnotations: {[key: string]: string};
+        /**
+         * (Output)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         */
         effectiveLabels: {[key: string]: string};
         /**
          * (Output)

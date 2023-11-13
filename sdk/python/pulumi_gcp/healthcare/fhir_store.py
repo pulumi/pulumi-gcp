@@ -365,8 +365,7 @@ class _FhirStoreState:
                cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
                attempts to read the historical versions.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_history_import: Whether to allow the bulk import API to accept history bundles and directly insert historical resource
                versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
                occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -523,8 +522,7 @@ class _FhirStoreState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1152,8 +1150,7 @@ class FhirStore(pulumi.CustomResource):
                cannot be updated. If set to true, no historical versions will be kept. The server will send back errors for
                attempts to read the historical versions.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_history_import: Whether to allow the bulk import API to accept history bundles and directly insert historical resource
                versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
                occurred in the past, which clients may not want to allow. If set to false, history bundles within an import
@@ -1279,8 +1276,7 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

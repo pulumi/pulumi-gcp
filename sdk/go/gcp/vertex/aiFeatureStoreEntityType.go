@@ -156,8 +156,7 @@ type AiFeatureStoreEntityType struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the EntityType.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -231,8 +230,7 @@ type aiFeatureStoreEntityTypeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Description of the EntityType.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -269,8 +267,7 @@ type AiFeatureStoreEntityTypeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Description of the EntityType.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -476,8 +473,7 @@ func (o AiFeatureStoreEntityTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AiFeatureStoreEntityTypeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

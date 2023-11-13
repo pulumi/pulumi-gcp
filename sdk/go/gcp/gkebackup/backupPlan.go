@@ -294,8 +294,7 @@ type BackupPlan struct {
 	Deactivated pulumi.BoolOutput `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -392,8 +391,7 @@ type backupPlanState struct {
 	Deactivated *bool `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -450,8 +448,7 @@ type BackupPlanState struct {
 	Deactivated pulumi.BoolPtrInput
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
 	// updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -712,8 +709,7 @@ func (o BackupPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o BackupPlanOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

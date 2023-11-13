@@ -100,8 +100,7 @@ type ServiceConnectionPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -187,8 +186,7 @@ type serviceConnectionPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -231,8 +229,7 @@ type ServiceConnectionPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -450,8 +447,7 @@ func (o ServiceConnectionPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ServiceConnectionPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

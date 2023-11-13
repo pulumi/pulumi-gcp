@@ -286,8 +286,7 @@ type Certificate struct {
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -364,8 +363,7 @@ func GetCertificate(ctx *pulumi.Context,
 type certificateState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -408,8 +406,7 @@ type certificateState struct {
 type CertificateState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the Certificate resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -646,8 +643,7 @@ func (o CertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

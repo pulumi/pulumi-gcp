@@ -139,8 +139,22 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     *
+     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -385,8 +399,22 @@ export interface TableState {
      */
     description?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     *
+     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

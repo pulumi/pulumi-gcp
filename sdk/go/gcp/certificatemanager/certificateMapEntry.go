@@ -127,8 +127,7 @@ type CertificateMapEntry struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -216,8 +215,7 @@ type certificateMapEntryState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -265,8 +263,7 @@ type CertificateMapEntryState struct {
 	CreateTime pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -504,8 +501,7 @@ func (o CertificateMapEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CertificateMapEntryOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

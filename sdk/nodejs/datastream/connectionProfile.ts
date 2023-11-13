@@ -125,7 +125,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * const db = new gcp.sql.Database("db", {instance: instance.name});
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Random_password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -203,8 +203,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -344,8 +343,7 @@ export interface ConnectionProfileState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

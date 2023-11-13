@@ -18,6 +18,98 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
+ * ### Firestore Default Database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.Sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
+ * ### Firestore Database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const wait60Seconds = new time.Sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
+ * ### Firestore Database In Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const wait60Seconds = new time.Sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "DATASTORE_MODE",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
  * ### Firestore Database With Delete Protection
  *
  * ```typescript

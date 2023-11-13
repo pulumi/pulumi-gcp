@@ -326,8 +326,7 @@ type Subscription struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
@@ -470,8 +469,7 @@ type subscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
@@ -577,8 +575,7 @@ type SubscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
@@ -1013,8 +1010,7 @@ func (o SubscriptionOutput) DeadLetterPolicy() SubscriptionDeadLetterPolicyPtrOu
 	return o.ApplyT(func(v *Subscription) SubscriptionDeadLetterPolicyPtrOutput { return v.DeadLetterPolicy }).(SubscriptionDeadLetterPolicyPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SubscriptionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

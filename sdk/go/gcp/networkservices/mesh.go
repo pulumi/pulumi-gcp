@@ -99,8 +99,7 @@ type Mesh struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
@@ -167,8 +166,7 @@ type meshState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
@@ -201,8 +199,7 @@ type MeshState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
 	// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
@@ -400,8 +397,7 @@ func (o MeshOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o MeshOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

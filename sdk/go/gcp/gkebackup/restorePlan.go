@@ -534,8 +534,7 @@ type RestorePlan struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -619,8 +618,7 @@ type restorePlanState struct {
 	Cluster *string `pulumi:"cluster"`
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -658,8 +656,7 @@ type RestorePlanState struct {
 	Cluster pulumi.StringPtrInput
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -875,8 +872,7 @@ func (o RestorePlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o RestorePlanOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

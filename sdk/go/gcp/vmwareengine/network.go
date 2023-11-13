@@ -14,6 +14,62 @@ import (
 )
 
 // ## Example Usage
+// ### Vmware Engine Network Legacy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			acceptanceProject, err := organizations.NewProject(ctx, "acceptanceProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("vmw-proj"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait60Seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("60s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				acceptanceProject,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			acceptanceService, err := projects.NewService(ctx, "acceptanceService", &projects.ServiceArgs{
+//				Project: acceptanceProject.ProjectId,
+//				Service: pulumi.String("vmwareengine.googleapis.com"),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewNetwork(ctx, "vmw-engine-network", &vmwareengine.NetworkArgs{
+//				Project:     acceptanceService.Project,
+//				Location:    pulumi.String("us-west1"),
+//				Type:        pulumi.String("LEGACY"),
+//				Description: pulumi.String("VMwareEngine legacy network sample"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

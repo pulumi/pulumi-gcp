@@ -92,8 +92,9 @@ type LookupDiskResult struct {
 	Interface string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
-	LabelFingerprint string            `pulumi:"labelFingerprint"`
-	Labels           map[string]string `pulumi:"labels"`
+	LabelFingerprint string `pulumi:"labelFingerprint"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
@@ -244,6 +245,7 @@ func (o LookupDiskResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o LookupDiskResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

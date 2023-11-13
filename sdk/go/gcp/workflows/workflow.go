@@ -105,8 +105,7 @@ type Workflow struct {
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A set of key/value label pairs to assign to this Workflow.
 	//
@@ -186,8 +185,7 @@ type workflowState struct {
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A set of key/value label pairs to assign to this Workflow.
 	//
@@ -233,8 +231,7 @@ type WorkflowState struct {
 	CryptoKeyName pulumi.StringPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A set of key/value label pairs to assign to this Workflow.
 	//
@@ -470,8 +467,7 @@ func (o WorkflowOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o WorkflowOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

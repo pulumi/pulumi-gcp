@@ -198,8 +198,7 @@ type Disk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
@@ -396,8 +395,7 @@ type diskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
@@ -560,8 +558,7 @@ type DiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
@@ -1105,8 +1102,7 @@ func (o DiskOutput) DiskEncryptionKey() DiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(DiskDiskEncryptionKeyPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -272,6 +272,34 @@ class Network(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Vmware Engine Network Legacy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        # there can be only 1 Legacy network per region for a given project,
+        # so creating new project for isolation in CI.
+        acceptance_project = gcp.organizations.Project("acceptanceProject",
+            project_id="vmw-proj",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[acceptance_project]))
+        acceptance_service = gcp.projects.Service("acceptanceService",
+            project=acceptance_project.project_id,
+            service="vmwareengine.googleapis.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[wait60_seconds]))
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            project=acceptance_service.project,
+            location="us-west1",
+            type="LEGACY",
+            description="VMwareEngine legacy network sample",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -310,6 +338,34 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Vmware Engine Network Legacy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        # there can be only 1 Legacy network per region for a given project,
+        # so creating new project for isolation in CI.
+        acceptance_project = gcp.organizations.Project("acceptanceProject",
+            project_id="vmw-proj",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[acceptance_project]))
+        acceptance_service = gcp.projects.Service("acceptanceService",
+            project=acceptance_project.project_id,
+            service="vmwareengine.googleapis.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[wait60_seconds]))
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            project=acceptance_service.project,
+            location="us-west1",
+            type="LEGACY",
+            description="VMwareEngine legacy network sample",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

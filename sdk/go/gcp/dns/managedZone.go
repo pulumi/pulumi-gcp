@@ -433,8 +433,7 @@ type ManagedZone struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set this true to delete all records in the zone.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
@@ -540,8 +539,7 @@ type managedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set this true to delete all records in the zone.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -607,8 +605,7 @@ type ManagedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Set this true to delete all records in the zone.
 	ForceDestroy pulumi.BoolPtrInput
@@ -910,8 +907,7 @@ func (o ManagedZoneOutput) DnssecConfig() ManagedZoneDnssecConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneDnssecConfigPtrOutput { return v.DnssecConfig }).(ManagedZoneDnssecConfigPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ManagedZoneOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

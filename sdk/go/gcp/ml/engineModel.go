@@ -112,8 +112,7 @@ type EngineModel struct {
 	DefaultVersion EngineModelDefaultVersionPtrOutput `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// One or more labels that you can add, to organize your models.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -179,8 +178,7 @@ type engineModelState struct {
 	DefaultVersion *EngineModelDefaultVersion `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// One or more labels that you can add, to organize your models.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -212,8 +210,7 @@ type EngineModelState struct {
 	DefaultVersion EngineModelDefaultVersionPtrInput
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// One or more labels that you can add, to organize your models.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -420,8 +417,7 @@ func (o EngineModelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o EngineModelOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

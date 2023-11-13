@@ -146,8 +146,7 @@ type Snapshot struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringOutput `pulumi:"filesystemUsedBytes"`
@@ -225,8 +224,7 @@ type snapshotState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes *string `pulumi:"filesystemUsedBytes"`
@@ -264,8 +262,7 @@ type SnapshotState struct {
 	CreateTime pulumi.StringPtrInput
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringPtrInput
@@ -478,8 +475,7 @@ func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

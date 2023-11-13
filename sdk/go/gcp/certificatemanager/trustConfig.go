@@ -110,8 +110,7 @@ type TrustConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the trust config.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -183,8 +182,7 @@ type trustConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a trust config.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the trust config.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -219,8 +217,7 @@ type TrustConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the trust config.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -420,8 +417,7 @@ func (o TrustConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TrustConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -137,8 +137,7 @@ type AiEndpoint struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
 	// Structure is documented below.
@@ -222,8 +221,7 @@ type aiEndpointState struct {
 	Description *string `pulumi:"description"`
 	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
 	// Structure is documented below.
@@ -267,8 +265,7 @@ type AiEndpointState struct {
 	Description pulumi.StringPtrInput
 	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
 	// Structure is documented below.
@@ -493,8 +490,7 @@ func (o AiEndpointOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AiEndpointOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

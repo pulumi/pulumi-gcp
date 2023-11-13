@@ -25,7 +25,9 @@ type DomainMappingMetadata struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations          map[string]string `pulumi:"annotations"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -84,7 +86,9 @@ type DomainMappingMetadataArgs struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations          pulumi.StringMapInput `pulumi:"annotations"`
 	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -232,6 +236,8 @@ func (o DomainMappingMetadataOutput) EffectiveAnnotations() pulumi.StringMapOutp
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
+// (Output)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DomainMappingMetadataOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -347,6 +353,8 @@ func (o DomainMappingMetadataPtrOutput) EffectiveAnnotations() pulumi.StringMapO
 	}).(pulumi.StringMapOutput)
 }
 
+// (Output)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DomainMappingMetadataPtrOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -1557,7 +1565,9 @@ type ServiceMetadata struct {
 	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations          map[string]string `pulumi:"annotations"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -1624,7 +1634,9 @@ type ServiceMetadataArgs struct {
 	//   Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations          pulumi.StringMapInput `pulumi:"annotations"`
 	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// (Output)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -1780,6 +1792,8 @@ func (o ServiceMetadataOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
+// (Output)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ServiceMetadataOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -1903,6 +1917,8 @@ func (o ServiceMetadataPtrOutput) EffectiveAnnotations() pulumi.StringMapOutput 
 	}).(pulumi.StringMapOutput)
 }
 
+// (Output)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ServiceMetadataPtrOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {

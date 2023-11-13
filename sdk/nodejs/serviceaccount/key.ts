@@ -26,14 +26,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumiverse/time";
+ * import * as time from "@pulumi/time";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {
  *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
  * // note this requires the terraform to be run regularly
- * const mykeyRotation = new time.Rotating("mykeyRotation", {rotationDays: 30});
+ * const mykeyRotation = new time.index.Time_rotating("mykeyRotation", {rotationDays: 30});
  * const mykey = new gcp.serviceaccount.Key("mykey", {
  *     serviceAccountId: myaccount.name,
  *     keepers: {

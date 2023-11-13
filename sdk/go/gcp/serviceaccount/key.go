@@ -55,8 +55,8 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //

@@ -80,8 +80,7 @@ type Lake struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
 	//
@@ -158,8 +157,7 @@ type lakeState struct {
 	Description *string `pulumi:"description"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
 	//
@@ -199,8 +197,7 @@ type LakeState struct {
 	Description pulumi.StringPtrInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Optional. User-defined labels for the lake.
 	//
@@ -411,8 +408,7 @@ func (o LakeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o LakeOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

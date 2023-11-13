@@ -172,8 +172,7 @@ class _ScopeRbacRoleBindingState:
         Input properties used for looking up and filtering ScopeRbacRoleBinding resources.
         :param pulumi.Input[str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the RBAC Role Binding was deleted in UTC.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
@@ -258,8 +257,7 @@ class _ScopeRbacRoleBindingState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -605,8 +603,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the RBAC Role Binding was deleted in UTC.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
@@ -673,8 +670,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

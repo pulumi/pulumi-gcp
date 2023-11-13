@@ -529,6 +529,80 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Default Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database In Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
         ### Firestore Database With Delete Protection
 
         ```python
@@ -612,6 +686,80 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Default Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database In Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.Sleep("wait60Seconds", create_duration="60s",
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
         ### Firestore Database With Delete Protection
 
         ```python

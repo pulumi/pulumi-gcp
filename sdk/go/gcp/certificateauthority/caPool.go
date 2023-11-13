@@ -76,8 +76,7 @@ import (
 type CaPool struct {
 	pulumi.CustomResourceState
 
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
@@ -151,8 +150,7 @@ func GetCaPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CaPool resources.
 type caPoolState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
@@ -186,8 +184,7 @@ type caPoolState struct {
 }
 
 type CaPoolState struct {
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
@@ -394,8 +391,7 @@ func (o CaPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPool] {
 	}
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CaPoolOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

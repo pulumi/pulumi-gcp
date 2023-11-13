@@ -81,8 +81,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -258,8 +257,7 @@ namespace Pulumi.Gcp.CertificateManager
         private InputMap<string>? _effectiveLabels;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {

@@ -108,8 +108,7 @@ type HostingChannel struct {
 	//
 	// ***
 	ChannelId pulumi.StringOutput `pulumi:"channelId"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
@@ -181,8 +180,7 @@ type hostingChannelState struct {
 	//
 	// ***
 	ChannelId *string `pulumi:"channelId"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
@@ -214,8 +212,7 @@ type HostingChannelState struct {
 	//
 	// ***
 	ChannelId pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
@@ -413,8 +410,7 @@ func (o HostingChannelOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o HostingChannelOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

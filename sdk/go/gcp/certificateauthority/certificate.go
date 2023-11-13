@@ -448,8 +448,7 @@ type Certificate struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringOutput `pulumi:"issuerCertificateAuthority"`
@@ -553,8 +552,7 @@ type certificateState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority *string `pulumi:"issuerCertificateAuthority"`
@@ -618,8 +616,7 @@ type CertificateState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringPtrInput
@@ -893,8 +890,7 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

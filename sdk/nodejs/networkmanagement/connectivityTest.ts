@@ -174,8 +174,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -309,8 +308,7 @@ export interface ConnectivityTestState {
      */
     destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

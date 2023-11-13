@@ -219,8 +219,7 @@ type ConnectivityTest struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationOutput `pulumi:"destination"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -323,8 +322,7 @@ type connectivityTestState struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination *ConnectivityTestDestination `pulumi:"destination"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -387,8 +385,7 @@ type ConnectivityTestState struct {
 	// don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user-provided metadata.
 	//
@@ -688,8 +685,7 @@ func (o ConnectivityTestOutput) Destination() ConnectivityTestDestinationOutput 
 	return o.ApplyT(func(v *ConnectivityTest) ConnectivityTestDestinationOutput { return v.Destination }).(ConnectivityTestDestinationOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ConnectivityTestOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

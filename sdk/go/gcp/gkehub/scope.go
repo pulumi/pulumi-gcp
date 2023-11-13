@@ -81,8 +81,7 @@ type Scope struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels for this Scope.
 	//
@@ -152,8 +151,7 @@ type scopeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels for this Scope.
 	//
@@ -186,8 +184,7 @@ type ScopeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Labels for this Scope.
 	//
@@ -371,8 +368,7 @@ func (o ScopeOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ScopeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

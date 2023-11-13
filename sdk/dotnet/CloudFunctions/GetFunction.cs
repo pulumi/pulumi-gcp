@@ -173,6 +173,9 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly string IngressSettings;
         public readonly string KmsKeyName;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.

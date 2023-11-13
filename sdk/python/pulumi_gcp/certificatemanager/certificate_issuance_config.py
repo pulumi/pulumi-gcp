@@ -209,8 +209,7 @@ class _CertificateIssuanceConfigState:
                accurate to nanoseconds with up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
@@ -305,8 +304,7 @@ class _CertificateIssuanceConfigState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -748,8 +746,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                accurate to nanoseconds with up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
@@ -824,8 +821,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

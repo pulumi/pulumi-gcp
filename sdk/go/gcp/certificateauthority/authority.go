@@ -372,8 +372,7 @@ type Authority struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -511,8 +510,7 @@ type authorityState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState *string `pulumi:"desiredState"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -601,8 +599,7 @@ type AuthorityState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -950,8 +947,7 @@ func (o AuthorityOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AuthorityOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

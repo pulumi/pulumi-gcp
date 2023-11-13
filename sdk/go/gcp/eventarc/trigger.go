@@ -125,8 +125,7 @@ type Trigger struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationOutput `pulumi:"destination"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -209,8 +208,7 @@ type triggerState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination *TriggerDestination `pulumi:"destination"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -250,8 +248,7 @@ type TriggerState struct {
 	CreateTime pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -470,8 +467,7 @@ func (o TriggerOutput) Destination() TriggerDestinationOutput {
 	return o.ApplyT(func(v *Trigger) TriggerDestinationOutput { return v.Destination }).(TriggerDestinationOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TriggerOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

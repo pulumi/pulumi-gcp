@@ -185,8 +185,7 @@ type ExternalVpnGateway struct {
 
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
@@ -258,8 +257,7 @@ func GetExternalVpnGateway(ctx *pulumi.Context,
 type externalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
@@ -297,8 +295,7 @@ type externalVpnGatewayState struct {
 type ExternalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
@@ -510,8 +507,7 @@ func (o ExternalVpnGatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ExternalVpnGatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

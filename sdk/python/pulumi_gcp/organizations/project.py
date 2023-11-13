@@ -206,8 +206,7 @@ class _ProjectState:
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
@@ -286,8 +285,7 @@ class _ProjectState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -640,8 +638,7 @@ class Project(pulumi.CustomResource):
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
                See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
@@ -706,8 +703,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

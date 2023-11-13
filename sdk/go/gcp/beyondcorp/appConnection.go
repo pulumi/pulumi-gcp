@@ -177,8 +177,7 @@ type AppConnection struct {
 	Connectors pulumi.StringArrayOutput `pulumi:"connectors"`
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Gateway used by the AppConnection.
 	// Structure is documented below.
@@ -249,8 +248,7 @@ type appConnectionState struct {
 	Connectors []string `pulumi:"connectors"`
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Gateway used by the AppConnection.
 	// Structure is documented below.
@@ -284,8 +282,7 @@ type AppConnectionState struct {
 	Connectors pulumi.StringArrayInput
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Gateway used by the AppConnection.
 	// Structure is documented below.
@@ -501,8 +498,7 @@ func (o AppConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AppConnectionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

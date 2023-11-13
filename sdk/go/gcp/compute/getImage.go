@@ -106,8 +106,9 @@ type LookupImageResult struct {
 	// The unique identifier for the image.
 	ImageId string `pulumi:"imageId"`
 	// A fingerprint for the labels being applied to this image.
-	LabelFingerprint string            `pulumi:"labelFingerprint"`
-	Labels           map[string]string `pulumi:"labels"`
+	LabelFingerprint string `pulumi:"labelFingerprint"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	Labels map[string]string `pulumi:"labels"`
 	// A list of applicable license URI.
 	Licenses   []string `pulumi:"licenses"`
 	MostRecent *bool    `pulumi:"mostRecent"`
@@ -242,6 +243,7 @@ func (o LookupImageResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o LookupImageResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

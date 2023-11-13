@@ -87,8 +87,7 @@ type DnsAuthorization struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the DNS Authorization resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -157,8 +156,7 @@ type dnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain *string `pulumi:"domain"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the DNS Authorization resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -190,8 +188,7 @@ type DnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the DNS Authorization resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -391,8 +388,7 @@ func (o DnsAuthorizationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DnsAuthorizationOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

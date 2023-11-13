@@ -100,8 +100,7 @@ type Zone struct {
 	DiscoverySpec ZoneDiscoverySpecOutput `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone.
 	//
@@ -190,8 +189,7 @@ type zoneState struct {
 	DiscoverySpec *ZoneDiscoverySpec `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone.
 	//
@@ -231,8 +229,7 @@ type ZoneState struct {
 	DiscoverySpec ZoneDiscoverySpecPtrInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
 	// Optional. User defined labels for the zone.
 	//
@@ -454,8 +451,7 @@ func (o ZoneOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ZoneOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }

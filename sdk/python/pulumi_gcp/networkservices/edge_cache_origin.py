@@ -352,8 +352,7 @@ class _EdgeCacheOriginState:
         :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
@@ -472,8 +471,7 @@ class _EdgeCacheOriginState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1089,8 +1087,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
@@ -1190,8 +1187,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

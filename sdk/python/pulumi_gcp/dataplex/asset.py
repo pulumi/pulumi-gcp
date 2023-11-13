@@ -212,8 +212,7 @@ class _AssetState:
         :param pulumi.Input['AssetDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -345,8 +344,7 @@ class _AssetState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -771,8 +769,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetDiscoveryStatusArgs']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -866,8 +863,7 @@ class Asset(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

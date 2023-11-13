@@ -167,8 +167,7 @@ type ServerTlsPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ServerTlsPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -241,8 +240,7 @@ type serverTlsPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ServerTlsPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -281,8 +279,7 @@ type ServerTlsPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the ServerTlsPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -505,8 +502,7 @@ func (o ServerTlsPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ServerTlsPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

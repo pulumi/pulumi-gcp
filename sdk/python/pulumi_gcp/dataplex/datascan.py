@@ -230,8 +230,7 @@ class _DatascanState:
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]] execution_statuses: Status of the data scan execution.
@@ -386,8 +385,7 @@ class _DatascanState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1147,8 +1145,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the rule.
                The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanExecutionStatusArgs']]]] execution_statuses: Status of the data scan execution.
@@ -1261,8 +1258,7 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

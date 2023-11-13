@@ -267,8 +267,7 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
@@ -391,8 +390,7 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1207,8 +1205,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
                Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
@@ -1300,8 +1297,7 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

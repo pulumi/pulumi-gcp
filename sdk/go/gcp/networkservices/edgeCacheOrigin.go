@@ -203,8 +203,7 @@ type EdgeCacheOrigin struct {
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrOutput `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -318,8 +317,7 @@ type edgeCacheOriginState struct {
 	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -396,8 +394,7 @@ type EdgeCacheOriginState struct {
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The Origin resource to try when the current origin cannot be reached.
 	// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -739,8 +736,7 @@ func (o EdgeCacheOriginOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o EdgeCacheOriginOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

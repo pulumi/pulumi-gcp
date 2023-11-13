@@ -260,8 +260,7 @@ type ConnectionProfile struct {
 	Dbprovider pulumi.StringOutput `pulumi:"dbprovider"`
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
@@ -345,8 +344,7 @@ type connectionProfileState struct {
 	Dbprovider *string `pulumi:"dbprovider"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
@@ -393,8 +391,7 @@ type ConnectionProfileState struct {
 	Dbprovider pulumi.StringPtrInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Output only. The error details in case of state FAILED.
 	// Structure is documented below.
@@ -636,8 +633,7 @@ func (o ConnectionProfileOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ConnectionProfileOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

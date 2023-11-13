@@ -339,8 +339,7 @@ class _GatewayState:
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -486,8 +485,7 @@ class _GatewayState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1189,8 +1187,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1301,8 +1298,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 

@@ -139,8 +139,22 @@ type Table struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The field description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -278,8 +292,22 @@ type tableState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The field description.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -377,8 +405,22 @@ type TableState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The field description.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	//
+	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	EffectiveLabels pulumi.StringMapInput
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -756,8 +798,22 @@ func (o TableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+//
+// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+//
+// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+// string will create a diff, even if the JSON itself hasn't changed.
+// If the API returns a different value for the same schema, e.g. it
+// switched the order of values or replaced `STRUCT` field type with `RECORD`
+// field type, we currently cannot suppress the recurring diff this causes.
+// As a workaround, we recommend using the schema as returned by the API.
+//
+// ~>**NOTE:**  If you use `externalDataConfiguration`
+// documented below and do **not** set
+// `external_data_configuration.connection_id`, schemas must be specified
+// with `external_data_configuration.schema`. Otherwise, schemas must be
+// specified with this top-level field.
 func (o TableOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

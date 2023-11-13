@@ -216,8 +216,7 @@ class _FunctionState:
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -305,8 +304,7 @@ class _FunctionState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1017,8 +1015,7 @@ class Function(pulumi.CustomResource):
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -1088,8 +1085,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
